@@ -18,6 +18,12 @@
         </activity>
         <activity android:name=".Cameratest.OneCameraActivity">
         </activity>
+        <activity android:name=".opengl.OpenGlActivity">
+        </activity>
+        <activity android:name=".recyclerview.RecyclerViewActivity">
+        </activity>
+        <activity android:name=".HomeActivity">
+        </activity>
     </application>
 
 </manifest>
