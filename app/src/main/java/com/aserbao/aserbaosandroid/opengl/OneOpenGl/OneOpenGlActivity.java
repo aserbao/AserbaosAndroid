@@ -10,6 +10,5 @@ public class OneOpenGlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         OneGlSurfaceView glSurfaceView = new OneGlSurfaceView(this);
         setContentView(glSurfaceView);
-
     }
 }
