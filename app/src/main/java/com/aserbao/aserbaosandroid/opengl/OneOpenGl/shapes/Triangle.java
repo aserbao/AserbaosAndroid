@@ -102,7 +102,6 @@ public class Triangle {
         GLES20.glVertexAttribPointer(mPositionHandle, COORDS_PER_VERTEX,
                 GLES20.GL_FLOAT, false,
                 vertexStride, vertexBuffer);
-
         // 获取片段着色器的vColor成员的句柄
         mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
 
