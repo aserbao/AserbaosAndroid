@@ -1,34 +1,28 @@
 package com.aserbao.aserbaosandroid.opengl;
 
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import com.aserbao.aserbaosandroid.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class OpenGlActivity extends AppCompatActivity {
+
+    @BindView(R.id.opengl_recycler_view)
+    RecyclerView mOpenglRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GLSurfaceView glSurfaceView = new GLSurfaceView(this);
-        glSurfaceView.setRenderer(new GLSurfaceView.Renderer() {
-            @Override
-            public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        setContentView(R.layout.activity_open_gl);
+        ButterKnife.bind(this);
+        initView();
+    }
 
-            }
+    private void initView() {
 
-            @Override
-            public void onSurfaceChanged(GL10 gl, int width, int height) {
-
-            }
-
-            @Override
-            public void onDrawFrame(GL10 gl) {
-
-            }
-        });
-        setContentView(glSurfaceView);
     }
 }

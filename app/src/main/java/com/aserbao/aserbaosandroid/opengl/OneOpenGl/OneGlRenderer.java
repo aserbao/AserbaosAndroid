@@ -7,6 +7,7 @@ import android.os.SystemClock;
 
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.Square;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.Triangle;
+import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.TriangleColor;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -19,6 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class OneGlRenderer implements GLSurfaceView.Renderer {
     private Triangle mTriangle;
+    private TriangleColor mTriangleColor;
 
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
@@ -26,6 +28,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
 
         // initialize a triangle
         mTriangle = new Triangle();
+        mTriangleColor = new TriangleColor();
     }
     private float[] mRotationMatrix = new float[16];
     public volatile float mAngle;
@@ -55,7 +58,8 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
         // for the matrix multiplication product to be correct.
         Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
         // 绘制形状
-        mTriangle.draw(scratch);
+//        mTriangle.draw(scratch);
+        mTriangleColor.draw(scratch);
     }
 
     // mMVPMatrix is an abbreviation for "Model View Projection Matrix"

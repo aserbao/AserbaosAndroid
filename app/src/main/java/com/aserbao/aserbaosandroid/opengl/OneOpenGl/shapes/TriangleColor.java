@@ -14,7 +14,7 @@ import java.nio.FloatBuffer;
  * weixin: aserbao
  */
 
-public class Triangle {
+public class TriangleColor {
     private final String vertexShaderCode =
             "uniform mat4 uMVPMatrix;" +
             "attribute vec4 vPosition;" +
@@ -52,7 +52,7 @@ public class Triangle {
     float color[] = {
             1.0f, 0f, 0f, 1.0f ,
     };
-    public Triangle() {
+    public TriangleColor() {
         // initialize vertex byte buffer for shape coordinates
         ByteBuffer bb = ByteBuffer.allocateDirect(
                 // (number of coordinate values * 4 bytes per float)
