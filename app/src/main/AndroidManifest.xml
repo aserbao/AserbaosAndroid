@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.aserbao.aserbaosandroid">
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:name=".AserbaoApplication"
         android:allowBackup="true"
@@ -11,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WelcomeActivity">
-
         </activity>
         <activity android:name=".Cameratest.OneCameraActivity">
         </activity>
@@ -22,11 +28,15 @@
         <activity android:name=".HomeActivity">
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity">
+        </activity>
+        <activity android:name=".opengl.openGlCamera.FuCameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".opengl.openGlCamera.OpenGlAnimationCamera">
         </activity>
     </application>
 
