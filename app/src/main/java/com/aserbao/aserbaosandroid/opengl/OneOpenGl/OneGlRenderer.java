@@ -56,7 +56,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
         Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
         // 绘制形状
 //        mTriangle.draw(scratch);
-        mTriangleColor.draw(scratch);
+        mTriangle.draw(scratch);
     }
 
     // mMVPMatrix is an abbreviation for "Model View Projection Matrix"
