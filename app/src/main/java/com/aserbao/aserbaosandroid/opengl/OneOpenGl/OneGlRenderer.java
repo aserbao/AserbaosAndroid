@@ -3,9 +3,7 @@ package com.aserbao.aserbaosandroid.opengl.OneOpenGl;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.os.SystemClock;
 
-import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.Square;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.Triangle;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.TriangleColor;
 
@@ -24,8 +22,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
 
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
+        GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         // initialize a triangle
         mTriangle = new Triangle();
         mTriangleColor = new TriangleColor();
