@@ -6,5 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.BaseCameraActivity">
-
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <SurfaceView
+                    android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:id="@+id/mSurface" />
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

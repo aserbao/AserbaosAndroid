@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.OpenGlRVAdapter;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
+import com.aserbao.aserbaosandroid.opengl.openGlCamera.BaseCameraActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,8 @@ public class OpenGlActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
+        initGetData();
+        initView();
     }
 
     @Override
@@ -34,12 +36,11 @@ public class OpenGlActivity extends BaseActivity {
         return R.layout.activity_open_gl;
     }
 
-    @Override
     public void initGetData() {
         mOpenGlBeans.add(new OpenGlBean("绘制简单图形", OneOpenGlActivity.class));
+        mOpenGlBeans.add(new OpenGlBean("简单相机视图预览", BaseCameraActivity.class));
     }
 
-    @Override
     public void initView() {
         mOpenGlRVAdapter = new OpenGlRVAdapter(this,this, mOpenGlBeans);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);

@@ -2,6 +2,9 @@ package com.aserbao.aserbaosandroid.base;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import butterknife.ButterKnife;
+
 /*基类*/
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -9,13 +12,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setContentView());
-        initGetData();
-        initView();
+        ButterKnife.bind(this);
     }
 
     public abstract  int setContentView();
 
-    public abstract void initGetData() ;
-
-    public abstract void initView();
 }
