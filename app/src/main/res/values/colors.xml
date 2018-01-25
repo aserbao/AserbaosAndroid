@@ -3,4 +3,29 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    //全局的配置
+    <color name="global_text_color">@color/white</color>
+    //白色
+    <color name="white">#ffffff</color>
+    <color name="white10">#1AFFFFFF</color>
+    <color name="white20">#3effffff</color>
+    <color name="white30">#4bffffff</color>
+    <color name="white40">#66ffffff</color>
+    <color name="white50">#7FFFFFFF</color>
+    <color name="white60">#96ffffff</color>
+    <color name="white70">#B3ffffff</color>
+    <color name="white80">#CCFFFFFF</color>
+    <color name="white90">#E3FFFFFF</color>
+    //黑色
+    <color name="black">#000000</color>
+    <color name="black10">#1A000000</color>
+    <color name="black20">#3e000000</color>
+    <color name="black30">#4b000000</color>
+    <color name="black40">#66000000</color>
+    <color name="black50">#7F000000</color>
+    <color name="black60">#96000000</color>
+    <color name="black70">#B3000000</color>
+    <color name="black80">#CC000000</color>
+    <color name="black90">#E3000000</color>
 </resources>
