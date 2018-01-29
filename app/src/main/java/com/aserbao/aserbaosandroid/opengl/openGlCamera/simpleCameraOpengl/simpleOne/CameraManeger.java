@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl;
+package com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne;
 
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;

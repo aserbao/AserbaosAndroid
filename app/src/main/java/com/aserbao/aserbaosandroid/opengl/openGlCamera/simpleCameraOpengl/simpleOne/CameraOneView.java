@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl;
+package com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne;
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;
@@ -22,12 +22,12 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 
-public class CameraView extends GLSurfaceView implements SurfaceTexture.OnFrameAvailableListener{
-    public CameraView(Context context) {
+public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFrameAvailableListener{
+    public CameraOneView(Context context) {
         this(context, null);
     }
 
-    public CameraView(Context context, AttributeSet attrs) {
+    public CameraOneView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setEGLContextClientVersion(2);
         setRenderer(new CameraRenderer(context));
@@ -122,7 +122,7 @@ public class CameraView extends GLSurfaceView implements SurfaceTexture.OnFrameA
             GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
 
             mCameraTexture = new SurfaceTexture(texture[0]);//以上面OpenGl生成的纹理函数参数创建SurfaceTexture,SurfaceTexture接收的数据将传入该纹理
-            mCameraTexture.setOnFrameAvailableListener(CameraView.this);//设置SurfaceTexture的回调，通过摄像头预览数据已更新
+            mCameraTexture.setOnFrameAvailableListener(CameraOneView.this);//设置SurfaceTexture的回调，通过摄像头预览数据已更新
         }
     }
 

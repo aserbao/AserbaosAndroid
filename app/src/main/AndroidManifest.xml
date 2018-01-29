@@ -51,7 +51,9 @@
         </activity>
         <activity android:name=".opengl.openGlCamera.FilterCameraActivity">
         </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.CameraOpenglActivity">
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity">
+        </activity>
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
         </activity>
     </application>
 

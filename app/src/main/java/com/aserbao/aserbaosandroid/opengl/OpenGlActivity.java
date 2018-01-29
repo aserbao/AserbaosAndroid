@@ -1,7 +1,6 @@
 package com.aserbao.aserbaosandroid.opengl;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -11,13 +10,12 @@ import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.BaseCameraActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.FilterCameraActivity;
-import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.CameraOpenglActivity;
+import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class OpenGlActivity extends BaseActivity {
 

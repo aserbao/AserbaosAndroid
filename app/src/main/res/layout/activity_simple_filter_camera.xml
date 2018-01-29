@@ -5,8 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity">
-    <com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOneView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
+
 </android.support.constraint.ConstraintLayout>
