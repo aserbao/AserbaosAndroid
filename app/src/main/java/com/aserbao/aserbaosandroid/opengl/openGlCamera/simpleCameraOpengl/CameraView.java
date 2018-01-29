@@ -110,6 +110,7 @@ public class CameraView extends GLSurfaceView implements SurfaceTexture.OnFrameA
             GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mMVPMatrix, 0);
             GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, mPosCoordinate.length / 2);
         }
+        /**创建显示的texture*/
         private void createAndBindVideoTexture() {
             int[] texture = new int[1];
 
