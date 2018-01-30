@@ -10,6 +10,7 @@ import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.BaseCameraActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.FilterCameraActivity;
+import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class OpenGlActivity extends BaseActivity {
         mOpenGlBeans.add(new OpenGlBean("绘制简单图形", OneOpenGlActivity.class));
         mOpenGlBeans.add(new OpenGlBean("简单相机视图预览", BaseCameraActivity.class));
         mOpenGlBeans.add(new OpenGlBean("Camera+OpenGl显示", CameraOpenglActivity.class));
-        mOpenGlBeans.add(new OpenGlBean("给相机添加滤镜", FilterCameraActivity.class));
+        mOpenGlBeans.add(new OpenGlBean("给相机添加滤镜", SimpleFilterCameraActivity.class));
     }
 
     public void initView() {
