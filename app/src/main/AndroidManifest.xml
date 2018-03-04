@@ -55,6 +55,8 @@
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
         </activity>
+        <activity android:name=".designMode.strategy.StrategyActivity">
+        </activity>
     </application>
 
 </manifest>
