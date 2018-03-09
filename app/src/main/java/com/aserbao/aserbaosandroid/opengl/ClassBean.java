@@ -8,11 +8,11 @@ import android.app.Activity;
  */
 
 
-public class OpenGlBean {
+public class ClassBean {
     private String name;
     private Class<?> clazz;
 
-    public OpenGlBean(String name, Class<?> clazz) {
+    public ClassBean(String name, Class<?> clazz) {
         this.name = name;
         this.clazz = clazz;
     }

@@ -28,16 +28,14 @@
         </activity>
         <activity android:name=".Cameratest.OneCameraActivity">
         </activity>
-        <activity android:name=".opengl.OpenGlActivity">
+        <activity android:name=".opengl.OpenGlActivity"/>
+        <activity android:name=".recyclerview.RecyclerViewActivity"/>
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".recyclerview.RecyclerViewActivity">
-        </activity>
-        <activity android:name=".HomeActivity">
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity">
         </activity>
@@ -56,6 +54,8 @@
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
         </activity>
         <activity android:name=".designMode.strategy.StrategyActivity">
+        </activity>
+        <activity android:name=".designMode.DesignModeActivity">
         </activity>
     </application>
 

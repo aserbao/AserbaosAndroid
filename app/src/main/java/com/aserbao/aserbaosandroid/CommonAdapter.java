@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.ConstantUtils;
-import com.aserbao.aserbaosandroid.opengl.OpenGlBean;
+import com.aserbao.aserbaosandroid.opengl.ClassBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +25,16 @@ import butterknife.ButterKnife;
  */
 
 
-public class OpenGlRVAdapter extends RecyclerView.Adapter<OpenGlRVAdapter.OpenGlViewHolder> {
+public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.OpenGlViewHolder> {
 
     private Context mContext;
     private Activity mActivity;
-    private List<OpenGlBean> mOpenGlBeans = new ArrayList<>();
+    private List<ClassBean> mClassBeen = new ArrayList<>();
 
-    public OpenGlRVAdapter(Context context, Activity activity, List<OpenGlBean> openGlBeans) {
+    public CommonAdapter(Context context, Activity activity, List<ClassBean> classBeen) {
         mContext = context;
         mActivity = activity;
-        mOpenGlBeans = openGlBeans;
+        mClassBeen = classBeen;
     }
 
     @Override
@@ -45,13 +45,13 @@ public class OpenGlRVAdapter extends RecyclerView.Adapter<OpenGlRVAdapter.OpenGl
 
     @Override
     public void onBindViewHolder(OpenGlViewHolder holder, int position) {
-        final OpenGlBean openGlBean = mOpenGlBeans.get(position);
+        final ClassBean classBean = mClassBeen.get(position);
         holder.mItemCardView.setBackgroundResource(ConstantUtils.getDrawable());
-        holder.mItemTv.setText(openGlBean.getName());
+        holder.mItemTv.setText(classBean.getName());
         holder.mItemCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.startActivity(new Intent(mActivity,openGlBean.getClazz()));
+                mActivity.startActivity(new Intent(mActivity, classBean.getClazz()));
             }
         });
     }
@@ -59,8 +59,8 @@ public class OpenGlRVAdapter extends RecyclerView.Adapter<OpenGlRVAdapter.OpenGl
     @Override
     public int getItemCount() {
         int ret = 0;
-        if (mOpenGlBeans.size() > 0) {
-            ret = mOpenGlBeans.size();
+        if (mClassBeen.size() > 0) {
+            ret = mClassBeen.size();
         }
         return ret;
     }
