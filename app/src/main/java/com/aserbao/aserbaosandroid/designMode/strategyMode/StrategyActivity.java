@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.designMode.strategy;
+package com.aserbao.aserbaosandroid.designMode.strategyMode;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.designMode.strategy.attack.IAttackBehavior;
-import com.aserbao.aserbaosandroid.designMode.strategy.attack.OrdinaryAttack;
-import com.aserbao.aserbaosandroid.designMode.strategy.attack.ReinforceAttack;
-import com.aserbao.aserbaosandroid.designMode.strategy.attack.SuperAttack;
-import com.aserbao.aserbaosandroid.designMode.strategy.speed.FastSpeed;
-import com.aserbao.aserbaosandroid.designMode.strategy.speed.ISpeedBehavior;
-import com.aserbao.aserbaosandroid.designMode.strategy.speed.NormalSpeed;
-import com.aserbao.aserbaosandroid.designMode.strategy.speed.SlowSpeed;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.attack.IAttackBehavior;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.attack.OrdinaryAttack;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.attack.ReinforceAttack;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.attack.SuperAttack;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.speed.FastSpeed;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.speed.ISpeedBehavior;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.speed.NormalSpeed;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.speed.SlowSpeed;
 
 import java.util.Random;
 

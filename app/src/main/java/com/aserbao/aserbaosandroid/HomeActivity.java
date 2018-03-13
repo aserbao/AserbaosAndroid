@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.aserbao.aserbaosandroid.designMode.strategy.StrategyActivity;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.StrategyActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 

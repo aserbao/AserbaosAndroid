@@ -15,8 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <Button
-                android:onClick="btn_stategy"
-                android:text="策略模式"
+            android:onClick="btn_stategy"
+            android:text="策略模式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            <Button
+                android:onClick="btn_observer"
+                android:text="观察者模式"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

@@ -45,17 +45,18 @@
         </activity>
         <activity android:name=".opengl.openGlCamera.BaseCameraActivity">
         </activity>
-        <activity android:name=".base.BaseActivity">
-        </activity>
+        <activity android:name=".base.BaseActivity"/>
         <activity android:name=".opengl.openGlCamera.FilterCameraActivity">
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity">
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
         </activity>
-        <activity android:name=".designMode.strategy.StrategyActivity">
+        <activity android:name=".designMode.strategyMode.StrategyActivity">
         </activity>
         <activity android:name=".designMode.DesignModeActivity">
+        </activity>
+        <activity android:name=".designMode.observerMode.ObserverActivity">
         </activity>
     </application>
 

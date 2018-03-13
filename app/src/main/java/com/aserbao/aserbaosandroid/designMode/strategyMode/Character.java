@@ -1,7 +1,7 @@
-package com.aserbao.aserbaosandroid.designMode.strategy;
+package com.aserbao.aserbaosandroid.designMode.strategyMode;
 
-import com.aserbao.aserbaosandroid.designMode.strategy.attack.IAttackBehavior;
-import com.aserbao.aserbaosandroid.designMode.strategy.speed.ISpeedBehavior;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.attack.IAttackBehavior;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.speed.ISpeedBehavior;
 
 /**
  * Created by aserbao on 2018 2018/3/4.22:47

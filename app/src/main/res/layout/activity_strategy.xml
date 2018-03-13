@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.designMode.strategy.StrategyActivity">
+    tools:context="com.aserbao.aserbaosandroid.designMode.strategyMode.StrategyActivity">
     <Button
         android:id="@+id/btn_change_zombie"
         android:text="换个僵尸"

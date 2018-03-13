@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.designMode.strategy.StrategyActivity;
+import com.aserbao.aserbaosandroid.designMode.observerMode.ObserverActivity;
+import com.aserbao.aserbaosandroid.designMode.strategyMode.StrategyActivity;
 
 public class DesignModeActivity extends AppCompatActivity {
 
@@ -18,5 +19,9 @@ public class DesignModeActivity extends AppCompatActivity {
 
     public void btn_stategy(View view) {
         startActivity(new Intent(this, StrategyActivity.class));
+    }
+
+    public void btn_observer(View view) {
+        startActivity(new Intent(this, ObserverActivity.class));
     }
 }
