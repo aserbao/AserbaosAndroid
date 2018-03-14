@@ -66,7 +66,7 @@ public class ObserverActivity extends AppCompatActivity {
                 if (mSecondObserver == null) {
                     mSecondObserver = new SecondObserver();
                 }
-                if(mFirstObserverBtn.getText().equals("订阅报纸")){
+                if(mSencondObserverBtn.getText().equals("订阅报纸")){
                     mSencondObserverBtn.setText("取消订阅");
                     mNewsPaperOffice.registerObserver(mSecondObserver);
                 }else{

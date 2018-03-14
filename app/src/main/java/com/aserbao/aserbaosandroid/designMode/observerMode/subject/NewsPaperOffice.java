@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public class NewsPaperOffice implements ISubject {
-
+    private int time = 1;
     private List<IObserver> mList = new ArrayList<>();
 
     @Override
@@ -30,7 +30,8 @@ public class NewsPaperOffice implements ISubject {
     @Override
     public void notifyObserver() {
         for (int i = 0; i < mList.size(); i++) {
-            mList.get(i).update("一个大新闻");
+            mList.get(i).update("第"+time +"次发的新闻");
         }
+        time ++ ;
     }
 }
