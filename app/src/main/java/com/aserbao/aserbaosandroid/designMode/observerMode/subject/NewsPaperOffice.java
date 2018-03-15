@@ -11,7 +11,7 @@ import java.util.List;
  * weixin: aserbao
  */
 
-public class NewsPaperOffice implements ISubject {
+public class NewsPaperOffice implements ISubject {//报社（主题）
     private int time = 1;
     private List<IObserver> mList = new ArrayList<>();
 

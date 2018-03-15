@@ -47,8 +47,12 @@ public class ObserverActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_send_broadcast:
                 mNewsPaperOffice.notifyObserver();
-                mFirstObserverTv.setText(mFirstObserver.getMessage());
-                mSecondObserverTv.setText(mSecondObserver.getMessage());
+                if (mFirstObserver != null) {
+                    mFirstObserverTv.setText(mFirstObserver.getMessage());
+                }
+                if (mSecondObserver != null) {
+                    mSecondObserverTv.setText(mSecondObserver.getMessage());
+                }
                 break;
             case R.id.first_observer_btn:
                 if (mFirstObserver == null) {

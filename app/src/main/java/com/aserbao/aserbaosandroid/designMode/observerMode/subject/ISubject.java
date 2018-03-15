@@ -8,7 +8,7 @@ import com.aserbao.aserbaosandroid.designMode.observerMode.observer.IObserver;
  * weixin: aserbao
  */
 
-public interface ISubject {
+public interface ISubject {//主题接口
     void registerObserver(IObserver iObserver);
     void removeObserver(IObserver iObserver);
     void notifyObserver();

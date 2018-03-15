@@ -6,7 +6,7 @@ package com.aserbao.aserbaosandroid.designMode.observerMode.observer;
  * weixin: aserbao
  */
 
-public class FirstObserver implements IObserver {
+public class FirstObserver implements IObserver {//观察者实现
     private String message;
 
     public String getMessage() {

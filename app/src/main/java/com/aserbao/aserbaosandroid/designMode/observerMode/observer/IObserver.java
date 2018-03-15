@@ -6,6 +6,6 @@ package com.aserbao.aserbaosandroid.designMode.observerMode.observer;
  * weixin: aserbao
  */
 
-public interface IObserver {
+public interface IObserver {//观察者接口
     void update(String s);
 }
