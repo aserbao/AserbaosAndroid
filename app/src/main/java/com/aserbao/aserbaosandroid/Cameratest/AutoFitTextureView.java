@@ -6,7 +6,7 @@ import android.view.TextureView;
 
 /**
  * Created by aserbao on 2018 2018/1/11.22:28
- * Email:1142803753@qq.com
+ * Email:aserbao@163.com
  * weixin: aserbao
  */
 

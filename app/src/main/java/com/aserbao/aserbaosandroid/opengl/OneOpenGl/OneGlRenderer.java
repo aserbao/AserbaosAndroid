@@ -12,7 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Created by aserbao on 2018 2018/1/16.23:15
- * Email:1142803753@qq.com
+ * Email:aserbao@163.com
  * weixin: aserbao
  */
 
