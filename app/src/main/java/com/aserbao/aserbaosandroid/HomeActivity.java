@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
+import com.aserbao.aserbaosandroid.media.MediaActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private void initGetData() {
         mClassBeen.add(new ClassBean("OpenGl", OpenGlActivity.class));
         mClassBeen.add(new ClassBean("策略模式", DesignModeActivity.class));
+        mClassBeen.add(new ClassBean("多媒体", MediaActivity.class));
     }
 
     private void initView() {

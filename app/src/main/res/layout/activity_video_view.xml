@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.media.videoView.VideoViewActivity">
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="500dp"
+        android:layout_height="400dp"/>
+    <SeekBar
+        android:max="100"
+        android:id="@+id/video_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>
