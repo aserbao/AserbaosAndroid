@@ -63,7 +63,9 @@
         </activity>
         <activity android:name=".media.videoView.VideoViewActivity">
         </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceTextureActivity">
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewActivity">
+        </activity>
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity">
         </activity>
     </application>
 
