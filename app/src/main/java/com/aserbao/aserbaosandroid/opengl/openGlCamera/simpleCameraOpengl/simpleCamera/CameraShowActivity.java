@@ -19,6 +19,6 @@ public class CameraShowActivity extends AppCompatActivity {
         startActivity(new Intent(this,CameraSurfaceViewShowActivity.class));
     }
     public void btn_camera_texture_view(View view) {
-        startActivity(new Intent(this,CameraTextureViewActivity.class));
+        startActivity(new Intent(this,CameraTextureViewShowActivity.class));
     }
 }

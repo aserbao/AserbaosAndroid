@@ -5,15 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity">
-    <TextureView
-        android:id="@+id/camera_texture_view"
+    tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity">
+    <android.opengl.GLSurfaceView
+        android:id="@+id/camera_glsurface_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <Button
-        android:id="@+id/btn_texture_anim"
-        android:textAllCaps="false"
-        android:text="使用TextureView动画"
+        android:id="@+id/btn_gl_surface_view_animator"
+        android:text="设置动画效果"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </android.support.constraint.ConstraintLayout>

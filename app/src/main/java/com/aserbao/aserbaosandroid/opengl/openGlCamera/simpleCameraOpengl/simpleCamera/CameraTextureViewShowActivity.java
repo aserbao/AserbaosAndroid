@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CameraTextureViewActivity extends AppCompatActivity implements TextureView.SurfaceTextureListener {
+public class CameraTextureViewShowActivity extends AppCompatActivity implements TextureView.SurfaceTextureListener {
 
     @BindView(R.id.camera_texture_view)
     TextureView mCameraTextureView;
