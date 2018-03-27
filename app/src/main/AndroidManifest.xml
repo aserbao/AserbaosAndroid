@@ -69,6 +69,8 @@
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity">
         </activity>
+        <activity android:name=".customView.CustomViewActivity">
+        </activity>
     </application>
 
 </manifest>
