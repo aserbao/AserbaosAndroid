@@ -56,7 +56,7 @@ public class CountDownView extends View {
         mTimeTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTimeTextPaint.setColor(Color.parseColor("#FAE000"));
         mTimeTextPaint.setTextAlign(Paint.Align.CENTER);
-        mTimeTextPaint.setTextSize(DisplayUtil.sp2px(mContext,12));
+        mTimeTextPaint.setTextSize(DisplayUtil.sp2px(mContext,15));
         mTimeTextPaint.setFakeBoldText(true);
 
 
@@ -147,7 +147,7 @@ public class CountDownView extends View {
         setMeasuredDimension(widthSize, heightSize);
     }
 
-static class MyHandler extends Handler{
+    static class MyHandler extends Handler{
         private WeakReference<CountDownView> mCountDownViewWeakReference;
 
         public MyHandler(CountDownView countDownViewWeakReference) {
