@@ -12,9 +12,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CustomViewActivity extends AppCompatActivity {
-
+//2018-03-28 11:09:16
     @BindView(R.id.custom_tainer)
     FrameLayout mCustomTainer;
+    @BindView(R.id.custom_count_down_view)
+    CountDownView mCountDownView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +26,6 @@ public class CustomViewActivity extends AppCompatActivity {
     }
 
     public void btn_count_down_btn(View view) {
-        CountDownView countDownView = new CountDownView(this);
-        mCustomTainer.addView(countDownView);
-        countDownView.invalidate();
+        mCountDownView.setTimes("2018-03-28 11:16:00");
     }
 }
