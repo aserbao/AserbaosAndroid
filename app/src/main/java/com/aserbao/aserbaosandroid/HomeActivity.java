@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -41,9 +42,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initView() {
         CommonAdapter adapter = new CommonAdapter(this, this, mClassBeen);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
-                false);
-        mHomeRecyclerView.setLayoutManager(linearLayoutManager);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        mHomeRecyclerView.setLayoutManager(gridLayoutManager);
         mHomeRecyclerView.setAdapter(adapter);
     }
 }

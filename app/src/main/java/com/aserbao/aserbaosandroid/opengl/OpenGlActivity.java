@@ -46,7 +46,7 @@ public class OpenGlActivity extends BaseActivity {
 
     public void initView() {
         mCommonAdapter = new CommonAdapter(this,this, mClassBeen);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
     }

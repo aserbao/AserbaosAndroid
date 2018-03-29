@@ -26,6 +26,6 @@ public class CustomViewActivity extends AppCompatActivity {
     }
 
     public void btn_count_down_btn(View view) {
-        mCountDownView.setTimes("2018-03-28 11:16:00");
+        mCountDownView.setTimes("2018-03-29 14:15:30");
     }
 }

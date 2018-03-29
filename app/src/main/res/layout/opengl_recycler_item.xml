@@ -3,8 +3,8 @@
     android:id="@+id/item_card_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/eight"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="100dp">
     <TextView
         android:id="@+id/item_tv"
         style="@style/global_text_view_style"

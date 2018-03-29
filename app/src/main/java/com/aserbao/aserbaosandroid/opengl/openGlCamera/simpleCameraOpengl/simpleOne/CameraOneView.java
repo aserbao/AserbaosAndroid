@@ -55,8 +55,16 @@ public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFra
         private float[] mMVPMatrix     = new float[16];
         private float[] mTempMatrix     = new float[16];
 
-        private float[] mPosCoordinate = {-1, -1, -1, 1, 1, -1, 1, 1};
-        private float[] mTexCoordinate = {0, 1, 1, 1, 0, 0, 1, 0};
+        private float[] mPosCoordinate = {
+                -1, -1,
+                -1, 1,
+                1, -1,
+                1, 1};
+        private float[] mTexCoordinate = {
+                0, 1,
+                1, 1,
+                0, 0,
+                1, 0};
 
         private FloatBuffer mPosBuffer;
         private FloatBuffer mTexBuffer;
