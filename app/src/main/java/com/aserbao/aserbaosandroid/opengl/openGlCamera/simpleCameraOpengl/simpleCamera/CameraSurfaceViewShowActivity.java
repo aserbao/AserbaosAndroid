@@ -44,7 +44,7 @@ public class CameraSurfaceViewShowActivity extends AppCompatActivity implements 
     public void surfaceCreated(SurfaceHolder holder) {
         try {
             // Open the Camera in preview mode
-            mCamera = Camera.open(1);
+            mCamera = Camera.open(0);
             mCamera.setDisplayOrientation(90);
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
@@ -54,20 +54,20 @@ public class CameraSurfaceViewShowActivity extends AppCompatActivity implements 
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        /*mCamera.autoFocus(new Camera.AutoFocusCallback() {
+        mCamera.autoFocus(new Camera.AutoFocusCallback() {
             @Override
             public void onAutoFocus(boolean success, Camera camera) {
                 if (success) {
                     mParameters = mCamera.getParameters();
                     mParameters.setPictureFormat(PixelFormat.JPEG); //图片输出格式
-                    mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//预览持续发光
+//                    mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//预览持续发光
                     mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);//持续对焦模式
                     mCamera.setParameters(mParameters);
                     mCamera.startPreview();
                     mCamera.cancelAutoFocus();
                 }
             }
-        });*/
+        });
     }
 
     @Override
@@ -81,19 +81,11 @@ public class CameraSurfaceViewShowActivity extends AppCompatActivity implements 
 
     @OnClick(R.id.btn_change)
     public void onViewClicked() {
-        /*mSurfaceView.setScaleX(0.5f);
-        mSurfaceView.setScaleY(0.5f);
-        mSurfaceView.setRotation(50);
-        mSurfaceView.setTranslationX(10);*/
-//        mSurfaceView.setAlpha(0.9f); //设置透明度SurfaceView将绘制不出来
-        //SurfaceView不支持透明度动画效果
-        PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofFloat("rotationY", 0.0f, 90.0f, 0.0F);
-        PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("rotationX", 0.0f, 90.0f, 0.0F);
-        PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 0.5f);
-        PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 0.5f);
-//        PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.3f, 1.0F);
-
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mSurfaceView, valuesHolder, valuesHolder1, valuesHolder2,valuesHolder3);
-        objectAnimator.setDuration(2000).start();
+//        PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("rotationX", 0.0f, 360.0f, 0.0F);
+        PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofFloat("rotationY", 0.0f, 360.0f, 0.0F);
+        PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 0.5f,1.0f);
+        PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 0.5f,1.0f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mSurfaceView,  valuesHolder,valuesHolder1,valuesHolder3);
+        objectAnimator.setDuration(5000).start();
     }
 }

@@ -33,7 +33,7 @@ public class CameraTextureViewShowActivity extends AppCompatActivity implements 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         try {
-            mCamera = Camera.open(1);
+            mCamera = Camera.open(0);
             mCamera.setDisplayOrientation(90);
             mCamera.setPreviewTexture(mCameraTextureView.getSurfaceTexture());
             mCamera.startPreview();
