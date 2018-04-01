@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://F:\Android\AserbaoTestSummary\AserbaosAndroid\Aserbao'sAndroid.iml" filepath="F:\Android\AserbaoTestSummary\AserbaosAndroid\Aserbao'sAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Aserbao'sAndroid.iml" filepath="$PROJECT_DIR$/Aserbao'sAndroid.iml" />
+      <module fileurl="file://F:/Android/AserbaoTestSummary/AserbaosAndroid/Aserbao'sAndroid.iml" filepath="F:/Android/AserbaoTestSummary/AserbaosAndroid/Aserbao'sAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/AserbaosAndroid.iml" filepath="$PROJECT_DIR$/AserbaosAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
