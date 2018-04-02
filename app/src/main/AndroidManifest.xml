@@ -32,6 +32,11 @@
         <activity android:name=".opengl.OpenGlActivity"/>
         <activity android:name=".recyclerview.RecyclerViewActivity"/>
         <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity">
         </activity>
@@ -61,15 +66,12 @@
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity">
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity">
         </activity>
         <activity android:name=".customView.CustomViewActivity">
+        </activity>
+        <activity android:name=".media.audio.AudioRecordActivity">
         </activity>
     </application>
 

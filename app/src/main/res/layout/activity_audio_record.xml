@@ -5,23 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.media.MediaActivity">
+    tools:context="com.aserbao.aserbaosandroid.media.audio.AudioRecordActivity">
     <Button
-        android:onClick="btn_audio_record_activity"
-        android:text="audio_record"
-        android:textAllCaps="false"
+        android:id="@+id/btn_record"
+        android:text="开始录音"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"/>
+        android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/btn_tanslter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button"
-        android:onClick="btn_video_view"
-        android:text="videoView"
-        android:textAllCaps="false"/>
-
+        android:layout_below="@+id/btn_record"
+        android:text="pcm转wav"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="0dp"/>
 </RelativeLayout>
