@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.media.audio.AudioRecordActivity;
 import com.aserbao.aserbaosandroid.media.videoView.VideoViewActivity;
 
 public class MediaActivity extends AppCompatActivity {
@@ -18,5 +19,9 @@ public class MediaActivity extends AppCompatActivity {
 
     public void btn_video_view(View view) {
         startActivity(new Intent(this, VideoViewActivity.class));
+    }
+
+    public void btn_audio_record_activity(View view) {
+        startActivity(new Intent(this, AudioRecordActivity.class));
     }
 }
