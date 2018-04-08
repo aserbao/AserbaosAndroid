@@ -51,8 +51,10 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
     }
 
     private void initModule(String path) {
+//        mMediaSurfaceView = new SurfaceView(this);
         mMediaPlayer = new MediaPlayer();
         try {
+//            path = "/storage/emulated/0/DCIM/Camera/1521791992849.mp4";
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
