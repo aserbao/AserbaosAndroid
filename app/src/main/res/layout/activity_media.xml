@@ -23,5 +23,13 @@
         android:onClick="btn_video_view"
         android:text="videoView"
         android:textAllCaps="false"/>
+    <Button
+        android:layout_toRightOf="@+id/button"
+        android:textAllCaps="false"
+        android:id="@+id/btn_media_player"
+        android:onClick="btn_media_player"
+        android:text="MediaPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

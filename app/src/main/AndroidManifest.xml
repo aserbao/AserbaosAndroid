@@ -75,6 +75,8 @@
         </activity>
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity">
         </activity>
+        <activity android:name=".media.mediaplayer.MediaPlayerActivity">
+        </activity>
         <activity android:name=".designMode.factoryMode.FactoryActivity">
         </activity>
     </application>
