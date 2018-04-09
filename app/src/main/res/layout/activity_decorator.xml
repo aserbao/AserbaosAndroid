@@ -77,4 +77,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="21dp"/>
+
+    <TextView
+        android:text="拿铁 价格：25 \n 卡布奇洛 22 \n 糖 2 \n 奶油 1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
 </RelativeLayout>

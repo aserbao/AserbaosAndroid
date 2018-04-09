@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.designMode.decoratorPattern.DecoratorActivity;
+import com.aserbao.aserbaosandroid.designMode.factoryMode.FactoryActivity;
 import com.aserbao.aserbaosandroid.designMode.observerMode.ObserverActivity;
 import com.aserbao.aserbaosandroid.designMode.strategyMode.StrategyActivity;
 
@@ -23,5 +25,13 @@ public class DesignModeActivity extends AppCompatActivity {
 
     public void btn_observer(View view) {
         startActivity(new Intent(this, ObserverActivity.class));
+    }
+
+    public void btn_decorator(View view) {
+        startActivity(new Intent(this, DecoratorActivity.class));
+    }
+
+    public void btn_factory(View view) {
+        startActivity(new Intent(this, FactoryActivity.class));
     }
 }
