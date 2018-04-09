@@ -9,7 +9,7 @@ android {
     }
     defaultConfig {
         applicationId "com.aserbao.aserbaosandroid"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
