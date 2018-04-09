@@ -45,7 +45,8 @@ public class DecoratorActivity extends AppCompatActivity {
                 mCoffee = new Cream(mCoffee);
                 break;
             case R.id.summary:
-                mResult.setText("您点了：" + mCoffee.description() + "\n一共消费了：" + mCoffee.cost());
+//                mResult.setText("您点了：" + mCoffee.description() + "\n一共消费了：" + mCoffee.cost());
+                mResult.setText("您点了：" + new Soul(new Latte()).description() + "\n一共消费了：" + mCoffee.cost());
                 break;
         }
     }

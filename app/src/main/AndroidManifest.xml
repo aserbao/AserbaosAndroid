@@ -77,11 +77,15 @@
         </activity>
         <activity android:name=".media.mediaplayer.MediaPlayerActivity">
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".opengl.openGlCamera.recordCamera.RecordCameraActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity android:name=".media.mediaMuxer.MediaMuxerActivity">
+=======
+        <activity android:name=".designMode.factoryMode.FactoryActivity">
+>>>>>>> e1ca272468744689a698d20e71a174544e2a13b7
         </activity>
     </application>
 

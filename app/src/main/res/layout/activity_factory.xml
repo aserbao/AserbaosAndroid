@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.designMode.factoryMode.FactoryActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_sichuang"
+            android:text="来一个四川馍"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_chongqing"
+            android:text="来一个重庆馍"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_hunan"
+            android:text="来一个湖南馍"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/factory_tv"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+</RelativeLayout>

@@ -7,8 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.designMode.DesignModeActivity">
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
         <LinearLayout
             android:layout_gravity="center"
             android:orientation="vertical"
@@ -22,6 +24,16 @@
             <Button
                 android:onClick="btn_observer"
                 android:text="观察者模式"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+            android:onClick="btn_decorator"
+            android:text="装饰者模式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            <Button
+                android:onClick="btn_factory"
+                android:text="工厂模式"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
