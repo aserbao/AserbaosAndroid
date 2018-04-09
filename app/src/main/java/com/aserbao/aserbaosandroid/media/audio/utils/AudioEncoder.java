@@ -17,8 +17,8 @@ public class AudioEncoder {
     private static final int AUDIO_SOURCE = MediaRecorder.AudioSource.MIC; //音频源（麦克风）
     private static final String AUDIO_MIME_TYPE = "audio/mp4a-latm"; //音频类型
     private static final int SAMPLE_RATE = 44100; //采样率(CD音质)
-    private static final int BIT_RATE = 128000; //比特率
-    private static final int CHANNEL_COUNT = 1;//声道
+    private static final int BIT_RATE = 96000; //比特率
+    private static final int CHANNEL_COUNT = 2;//声道
 
 
     private MediaCodec mAudioCodec; //音频编解码器

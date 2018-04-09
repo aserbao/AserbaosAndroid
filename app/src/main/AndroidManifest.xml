@@ -77,6 +77,12 @@
         </activity>
         <activity android:name=".media.mediaplayer.MediaPlayerActivity">
         </activity>
+        <activity
+            android:name=".opengl.openGlCamera.recordCamera.RecordCameraActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
+        <activity android:name=".media.mediaMuxer.MediaMuxerActivity">
+        </activity>
     </application>
 
 </manifest>
