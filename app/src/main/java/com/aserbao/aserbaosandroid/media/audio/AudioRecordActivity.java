@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.media.audio.utils.AudioEncoder;
 
 import java.io.File;
 
@@ -47,7 +48,15 @@ public class AudioRecordActivity extends AppCompatActivity {
                 status ^= 1;
                 break;
             case R.id.btn_tanslter:
-                mInstance.playAudio();
+//                mInstance.playAudio();
+                AudioEncoder audioEncoder = new AudioEncoder();
+                if(status == 0){
+                    audioEncoder.initAudio();
+                    audioEncoder.start();
+                }else{
+                    audioEncoder.stop();
+                }
+                status ^= 1;
                 break;
         }
     }
