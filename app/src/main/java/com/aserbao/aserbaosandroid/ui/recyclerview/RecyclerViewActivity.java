@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.recyclerview;
+package com.aserbao.aserbaosandroid.ui.recyclerview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
     }
-
     private void initView() {
 
     }

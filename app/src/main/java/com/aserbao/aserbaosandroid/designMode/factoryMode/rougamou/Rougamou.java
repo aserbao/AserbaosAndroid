@@ -7,10 +7,15 @@ package com.aserbao.aserbaosandroid.designMode.factoryMode.rougamou;
  */
 
 public abstract class Rougamou {
-    public void prepare(){
-        System.out.println("Rougamou is prepareing");
-        cut();
-        box();
+    private Rougamou rougamou;
+    public void prepare(String type){
+        if(type.equals("Sichuang")){
+            rougamou = new SiChuang();
+        /*}else if(type.equals("Chongqing")){
+            rougamou = new Chongqing();*/
+        }else if(type.equals("Hunan")){
+            rougamou = new Hunan();
+        }
     }
     abstract void cut();
     abstract void box();

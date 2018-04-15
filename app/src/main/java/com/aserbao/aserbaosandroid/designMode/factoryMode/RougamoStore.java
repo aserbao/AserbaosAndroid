@@ -18,8 +18,8 @@ public class RougamoStore {
 
     public void createRougamo(String style){
         Rougamou rougamou = mRougamoFractory.make(style);
-        rougamou.prepare();
+        rougamou.prepare("Hunan");
     }
-
+    
 
 }

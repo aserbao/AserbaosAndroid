@@ -30,7 +30,7 @@
         <activity android:name=".Cameratest.OneCameraActivity">
         </activity>
         <activity android:name=".opengl.OpenGlActivity"/>
-        <activity android:name=".recyclerview.RecyclerViewActivity"/>
+        <activity android:name=".ui.recyclerview.RecyclerViewActivity"/>
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -78,6 +78,8 @@
         <activity android:name=".media.mediaplayer.MediaPlayerActivity">
         </activity>
         <activity android:name=".designMode.factoryMode.FactoryActivity">
+        </activity>
+        <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity">
         </activity>
     </application>
 

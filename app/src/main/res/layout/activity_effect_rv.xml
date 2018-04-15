@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.ui.recyclerview.RecyclerViewActivity">
+    tools:context="com.aserbao.aserbaosandroid.ui.recyclerview.aEffect.EffectRVActivity">
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/effect_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

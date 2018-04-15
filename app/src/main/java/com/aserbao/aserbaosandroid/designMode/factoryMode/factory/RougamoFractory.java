@@ -15,11 +15,11 @@ public class RougamoFractory {
 
     public Rougamou make(String type){
         switch (type){
-            case "四川":
+            case "Sichuang":
                 return new SiChuang();
-            case "重庆":
+            case "Chongqing":
                 return new Chongqing();
-            case "湖南":
+            case "Hunan":
                 return new Hunan();
             default:
                 return null;
