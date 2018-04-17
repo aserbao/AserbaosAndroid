@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.media.audio.AudioRecordActivity;
+import com.aserbao.aserbaosandroid.media.mediacodec.MediaCodecActivity;
 import com.aserbao.aserbaosandroid.media.mediaplayer.MediaPlayerActivity;
 import com.aserbao.aserbaosandroid.media.videoView.VideoViewActivity;
 
@@ -28,5 +29,9 @@ public class MediaActivity extends AppCompatActivity {
 
     public void btn_media_player(View view) {
         startActivity(new Intent(this, MediaPlayerActivity.class));
+    }
+
+    public void btn_media_codec(View view) {
+        startActivity(new Intent(this, MediaCodecActivity.class));
     }
 }
