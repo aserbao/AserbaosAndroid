@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.aserbao.aserbaosandroid">
+    package="com.aserbao.aserbaosandroid">
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true"/>
+        android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"
-        android:required="false"/>
+        android:required="false" />
 
     <application
         android:name=".AserbaoApplication"
@@ -25,71 +25,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity">
-        </activity>
-        <activity android:name=".Cameratest.OneCameraActivity">
-        </activity>
-        <activity android:name=".opengl.OpenGlActivity"/>
-        <activity android:name=".ui.recyclerview.RecyclerViewActivity"/>
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".Cameratest.OneCameraActivity" />
+        <activity android:name=".opengl.OpenGlActivity" />
+        <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.FuCameraActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.OpenGlAnimationCamera">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity">
-        </activity>
-        <activity android:name=".base.BaseActivity"/>
-        <activity android:name=".opengl.openGlCamera.FilterCameraActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity">
-        </activity>
-        <activity android:name=".designMode.strategyMode.StrategyActivity">
-        </activity>
-        <activity android:name=".designMode.DesignModeActivity">
-        </activity>
-        <activity android:name=".designMode.observerMode.ObserverActivity">
-        </activity>
-        <activity android:name=".media.MediaActivity">
-        </activity>
-        <activity android:name=".media.videoView.VideoViewActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity">
-        </activity>
-        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity">
-        </activity>
-        <activity android:name=".customView.CustomViewActivity">
-        </activity>
-        <activity android:name=".media.audio.AudioRecordActivity">
-        </activity>
-        <activity android:name=".designMode.decoratorPattern.DecoratorActivity">
-        </activity>
-        <activity android:name=".media.mediaplayer.MediaPlayerActivity">
-        </activity>
+        <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
+        <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
+        <activity android:name=".opengl.openGlCamera.OpenGlAnimationCamera" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity" />
+        <activity android:name=".base.BaseActivity" />
+        <activity android:name=".opengl.openGlCamera.FilterCameraActivity" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity" />
+        <activity android:name=".designMode.strategyMode.StrategyActivity" />
+        <activity android:name=".designMode.DesignModeActivity" />
+        <activity android:name=".designMode.observerMode.ObserverActivity" />
+        <activity android:name=".media.MediaActivity" />
+        <activity android:name=".media.videoView.VideoViewActivity" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
+        <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
+        <activity android:name=".customView.CustomViewActivity" />
+        <activity android:name=".media.audio.AudioRecordActivity" />
+        <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
+        <activity android:name=".media.mediaplayer.MediaPlayerActivity" />
         <activity
             android:name=".opengl.openGlCamera.recordCamera.RecordCameraActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
-        <activity android:name=".media.mediaMuxer.MediaMuxerActivity"/>
-        <activity android:name=".designMode.factoryMode.FactoryActivity">
-        </activity>
-        <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity">
-        </activity>
-        <activity android:name=".media.mediacodec.mcRecordVideo.MCRecordVideoActivity">
-        </activity>
-        <activity android:name=".media.mediacodec.MediaCodecActivity">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".media.mediaMuxer.MediaMuxerActivity" />
+        <activity android:name=".designMode.factoryMode.FactoryActivity" />
+        <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity" />
+        <activity android:name=".media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
+        <activity android:name=".media.mediacodec.MediaCodecActivity" />
+        <activity android:name=".ui.rv.RecyclerViewActivity" />
+        <activity android:name=".ui.UIActivity" />
+        <activity android:name=".ui.colorPicker.ColorPickerActivity"></activity>
     </application>
 
 </manifest>

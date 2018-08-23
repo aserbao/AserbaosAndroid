@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="custom">
+
+        <attr name="colorOrientation">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+
+        <!--颜色拾取控件拖动-->
+        <attr name="thumbDrawable" format="reference" />
+
+        <!--颜色条大小-->
+        <attr name="colorPanelWidth" format="dimension" />
+
+        <!--渐变颜色数组-->
+        <attr name="gradientArray" format="reference" />
+    </declare-styleable>
+
+    //=====holoColorPicker
+    <declare-styleable name="ColorPicker">
+        <attr name="color_wheel_radius" format="dimension" />
+        <attr name="color_wheel_thickness" format="dimension" />
+        <attr name="color_center_radius" format="dimension" />
+        <attr name="color_center_halo_radius" format="dimension"/>
+        <attr name="color_pointer_radius" format="dimension" />
+        <attr name="color_pointer_halo_radius" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ColorBars">
+        <attr name="bar_thickness" format="dimension" />
+        <attr name="bar_length" format="dimension" />
+        <attr name="bar_pointer_radius" format="dimension" />
+        <attr name="bar_pointer_halo_radius" format="dimension" />
+        <attr name="bar_orientation_horizontal" format="boolean" />
+    </declare-styleable>
+
+    //====ColorPickerView
+    <declare-styleable name="ColorPickerView">
+        <attr name="palette" format="reference"/>
+        <attr name="selector" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="MultiColorPickerView">
+        <attr name="palette2" format="reference"/>
+    </declare-styleable>
+</resources>

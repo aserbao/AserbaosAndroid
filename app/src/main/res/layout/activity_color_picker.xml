@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity">
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/color_iv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/first_btn"
+            android:layout_marginLeft="10dp"
+            android:text="第一种"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/second_btn"
+            android:layout_marginLeft="10dp"
+            android:text="第二种"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/three_btn"
+            android:layout_marginLeft="10dp"
+            android:text="第三种"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/color_card_view"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp">
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker
+            android:id="@+id/linear_color_picker"
+            app:colorOrientation = "vertical"
+            android:layout_width="50dp"
+            android:layout_height="400dp" />
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/holo_color_ll"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.ColorPicker
+        android:id="@+id/holo_color_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_gravity="center"
+            android:text="不透明度调整"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.OpacityBar
+            android:id="@+id/opacity_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_gravity="center"
+            android:text="饱和度调整"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.SaturationBar
+            android:id="@+id/saturation_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.ValueBar
+            android:visibility="gone"
+            android:id="@+id/value_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.SVBar
+            android:visibility="gone"
+            android:id="@+id/sv_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
