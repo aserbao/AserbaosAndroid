@@ -1,5 +1,4 @@
-
-package com.aserbao.aserbaosandroid.ui.rv;
+package com.aserbao.aserbaosandroid.ui.editTexts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,17 +10,15 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
-import com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity;
+import com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
+import com.aserbao.aserbaosandroid.ui.rv.RecyclerViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class RecyclerViewActivity extends BaseActivity {
-
-
-
+public class EditTextsActivity extends BaseActivity {
 
     @Override
     public int setContentView() {
@@ -29,8 +26,9 @@ public class RecyclerViewActivity extends BaseActivity {
     }
 
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Item侧滑删除", MoveToDeleteActivity.class));
+        mClassBeen.add(new ClassBean("计算软键盘的高度", SoftHeightMeasureActivity.class));
 
     }
+
 
 }

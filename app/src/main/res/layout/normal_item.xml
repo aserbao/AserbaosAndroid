@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aserbao.aserbaosandroid.AUtils.AUI.slideLayout.SlideLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <TextView
+
+        android:background="@color/black10"
+        android:id="@+id/normal_item"
+        android:text="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <TextView
+        android:id="@+id/tv_group_del"
+        android:layout_width="120dip"
+        android:layout_height="50dp"
+        android:text="删除"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="18dip"
+        android:background="#ff3a1c" />
+</com.aserbao.aserbaosandroid.AUtils.AUI.slideLayout.SlideLayout>

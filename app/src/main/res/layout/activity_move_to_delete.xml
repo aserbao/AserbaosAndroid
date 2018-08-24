@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity">
+    <!--<com.aserbao.aserbaosandroid.AUtils.AUI.rv.APullRecyclerViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+    </com.aserbao.aserbaosandroid.AUtils.AUI.rv.APullRecyclerViewGroup>-->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:overScrollMode="never"
+            android:id="@+id/move_to_delete_rv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+    </android.support.v7.widget.CardView>
+        <Button
+            android:id="@+id/move_to_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+</RelativeLayout>

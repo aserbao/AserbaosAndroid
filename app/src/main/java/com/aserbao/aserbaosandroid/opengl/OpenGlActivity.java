@@ -21,17 +21,7 @@ import butterknife.BindView;
 
 public class OpenGlActivity extends BaseActivity {
 
-    private List<ClassBean> mClassBeen = new ArrayList<>();
-    @BindView(R.id.opengl_recycler_view)
-    RecyclerView mOpenglRecyclerView;
-    public CommonAdapter mCommonAdapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initGetData();
-        initView();
-    }
 
     @Override
     public int setContentView() {
@@ -46,10 +36,4 @@ public class OpenGlActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("给相机添加滤镜", FilterCameraActivity.class));
     }
 
-    public void initView() {
-        mCommonAdapter = new CommonAdapter(this,this, mClassBeen);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
-        mOpenglRecyclerView.setAdapter(mCommonAdapter);
-    }
 }
