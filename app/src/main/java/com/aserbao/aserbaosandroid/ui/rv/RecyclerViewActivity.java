@@ -30,6 +30,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
     public void initGetData() {
         mClassBeen.add(new ClassBean("Item侧滑删除", MoveToDeleteActivity.class));
+        mClassBeen.add(new ClassBean("打造公用的Adapter", MoveToDeleteActivity.class));
 
     }
 
