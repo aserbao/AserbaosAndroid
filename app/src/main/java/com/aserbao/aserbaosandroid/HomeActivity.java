@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
+import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
 import com.aserbao.aserbaosandroid.media.MediaActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
@@ -40,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("多媒体", MediaActivity.class));
         mClassBeen.add(new ClassBean("自定义View", CustomViewActivity.class));
         mClassBeen.add(new ClassBean("View", UIActivity.class));
+        mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
     }
 
     private void initView() {

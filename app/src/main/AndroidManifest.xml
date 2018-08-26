@@ -71,7 +71,10 @@
         <activity android:name=".ui.editTexts.EditTextsActivity" />
         <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
-        <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity"></activity>
+        <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
+        <activity android:name=".functions.FunctionsActivity" />
+        <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
+        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity"></activity>
     </application>
 
 </manifest>
