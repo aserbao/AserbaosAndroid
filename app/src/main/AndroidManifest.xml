@@ -68,6 +68,13 @@
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
+        <activity android:name=".ui.editTexts.EditTextsActivity" />
+        <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity" />
+        <!-- android:windowSoftInputMode="adjustNothing" -->
+        <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
+        <activity android:name=".functions.FunctionsActivity" />
+        <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
+        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity"></activity>
         <activity android:name=".ui.toasts.ToastActivity"></activity>
     </application>
 

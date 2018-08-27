@@ -36,7 +36,7 @@ public class AudioRecordActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_record:
                 if (status == 0) {
-                    mPath = Environment.getExternalStorageDirectory() + "/Test";
+                    mPath = Environment.getExternalStorageDirectory() + "/JumpCuurApp";
                     if (!new File(mPath).exists()) {
                         File file = new File(mPath);
                         file.mkdir();

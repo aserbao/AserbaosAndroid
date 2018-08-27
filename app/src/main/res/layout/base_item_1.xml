@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/base_item_tv"
+        android:text="我是BaseItem1"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/black40"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>
