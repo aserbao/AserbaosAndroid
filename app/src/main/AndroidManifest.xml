@@ -66,7 +66,9 @@
         <activity android:name=".media.mediacodec.MediaCodecActivity" />
         <activity android:name=".ui.rv.RecyclerViewActivity" />
         <activity android:name=".ui.UIActivity" />
-        <activity android:name=".ui.colorPicker.ColorPickerActivity"></activity>
+        <activity android:name=".ui.colorPicker.ColorPickerActivity" />
+        <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
+        <activity android:name=".ui.toasts.ToastActivity"></activity>
     </application>
 
 </manifest>
