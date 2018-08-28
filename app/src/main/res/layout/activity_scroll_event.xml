@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context="com.aserbao.aserbaosandroid.functions.events.scrollEvent.ScrollEventActivity">
+    <TextureView
+        android:visibility="visible"
+        android:background="@color/black30"
+        android:id="@+id/texture_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:background="@color/black"
+        android:id="@+id/scroll_view_iv"
+        android:src="@drawable/palette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,4 +25,4 @@
             android:id="@+id/pop_scroll_view"
             android:text="可滚动的popupwindow" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
-</LinearLayout>
+</FrameLayout>

@@ -30,7 +30,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_activity);
         ButterKnife.bind(this);
-
         initGetData();
         initView();
     }
