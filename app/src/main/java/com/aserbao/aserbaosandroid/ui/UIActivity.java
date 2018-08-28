@@ -6,20 +6,17 @@ import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 import com.aserbao.aserbaosandroid.ui.editTexts.EditTextsActivity;
 import com.aserbao.aserbaosandroid.ui.rv.RecyclerViewActivity;
+import com.aserbao.aserbaosandroid.ui.toasts.ToastActivity;
 
 public class UIActivity extends BaseActivity {
 
 
 
-    @Override
-    public int setContentView() {
-        return R.layout.base_activity;
-    }
-
     public void initGetData() {
         mClassBeen.add(new ClassBean("RecyclerView的使用", RecyclerViewActivity.class));
         mClassBeen.add(new ClassBean("EditText的使用", EditTextsActivity.class));
         mClassBeen.add(new ClassBean("ColorPicker取色器的使用", ColorPickerActivity.class));
+        mClassBeen.add(new ClassBean("Toast的使用", ToastActivity.class));
 
     }
 

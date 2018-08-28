@@ -74,8 +74,11 @@
         <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
         <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
-        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity"></activity>
-        <activity android:name=".ui.toasts.ToastActivity"></activity>
+        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
+        <activity android:name=".ui.toasts.ToastActivity" />
+        <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
+        <activity android:name=".functions.events.EventDealActivity" />
+        <activity android:name=".functions.events.scrollEvent.ScrollEventActivity"></activity>
     </application>
 
 </manifest>

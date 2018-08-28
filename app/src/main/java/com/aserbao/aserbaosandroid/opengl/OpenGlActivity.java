@@ -11,12 +11,6 @@ import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simple
 public class OpenGlActivity extends BaseActivity {
 
 
-
-    @Override
-    public int setContentView() {
-        return R.layout.base_activity;
-    }
-
     public void initGetData() {
         mClassBeen.add(new ClassBean("绘制简单图形", OneOpenGlActivity.class));
         mClassBeen.add(new ClassBean("简单相机视图预览", CameraShowActivity.class));

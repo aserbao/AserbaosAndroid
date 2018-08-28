@@ -36,7 +36,6 @@ public class MoveToDeleteActivity extends AppCompatActivity {
                 initPop();
             }
         });
-
     }
 
     private void initPop() {

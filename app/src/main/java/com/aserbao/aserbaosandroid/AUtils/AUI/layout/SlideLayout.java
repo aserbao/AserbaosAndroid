@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.aserbao.aserbaosandroid.AUtils.AUI.slideLayout;
+package com.aserbao.aserbaosandroid.AUtils.AUI.layout;
 
 import android.content.Context;
 import android.content.res.TypedArray;

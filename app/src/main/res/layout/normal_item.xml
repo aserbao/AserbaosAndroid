@@ -1,17 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aserbao.aserbaosandroid.AUtils.AUI.slideLayout.SlideLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<com.aserbao.aserbaosandroid.AUtils.AUI.layout.SlideLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp">
-    <TextView
 
-        android:background="@color/black10"
-        android:id="@+id/normal_item"
-        android:text="1"
-        android:gravity="center"
-        android:textSize="20sp"
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:background="@color/black30"
+        android:layout_height="60dp">
+
+        <View
+            android:layout_toRightOf="@+id/iv_head"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentBottom="true"
+            android:background="#e0e0e0"/>
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_marginLeft="16dip"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="28dip"
+            android:text="123"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true"/>
+
+        <LinearLayout
+            android:layout_toRightOf="@id/iv_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            android:layout_centerVertical="true">
+            <TextView
+                android:background="@color/black10"
+                android:id="@+id/normal_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:text="dasf "
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textColor="#646464"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/tv_group_del"
         android:layout_width="120dip"
@@ -21,4 +77,4 @@
         android:textColor="#ffffff"
         android:textSize="18dip"
         android:background="#ff3a1c" />
-</com.aserbao.aserbaosandroid.AUtils.AUI.slideLayout.SlideLayout>
+</com.aserbao.aserbaosandroid.AUtils.AUI.layout.SlideLayout>

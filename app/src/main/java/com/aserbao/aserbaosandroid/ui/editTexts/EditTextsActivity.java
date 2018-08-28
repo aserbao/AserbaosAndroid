@@ -7,11 +7,6 @@ import com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeas
 
 public class EditTextsActivity extends BaseActivity {
 
-    @Override
-    public int setContentView() {
-        return R.layout.base_activity;
-    }
-
     public void initGetData() {
         mClassBeen.add(new ClassBean("计算软键盘的高度", SoftHeightMeasureActivity.class));
 

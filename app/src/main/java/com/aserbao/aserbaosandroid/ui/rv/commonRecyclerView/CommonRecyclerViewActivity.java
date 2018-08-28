@@ -7,10 +7,6 @@ import com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.MoveToDeleteAc
 
 public class CommonRecyclerViewActivity extends BaseActivity {
 
-    @Override
-    public int setContentView() {
-        return R.layout.base_activity;
-    }
 
     public void initGetData() {
         mClassBeen.add(new ClassBean("Item侧滑删除", MoveToDeleteActivity.class));

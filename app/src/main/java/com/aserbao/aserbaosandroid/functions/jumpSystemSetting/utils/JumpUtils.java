@@ -1,12 +1,50 @@
 package com.aserbao.aserbaosandroid.functions.jumpSystemSetting.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 
-public class JumpCuurApp {
+
+public class JumpUtils {
+
+
+    /*跳到设置界面，所有手机通用*/
+    public static void jumpSetting(Activity activity){
+        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+        activity.startActivity(intent);
+    }
+    /*跳到设置界面，所有手机通用*/
+    public static void jumpListenerSetting(Activity activity){
+        Intent intent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);
+        activity.startActivity(intent);
+    }
+
+
+
+    /**
+     * 调到应用通知设计界面
+     * @param activity
+     */
+    public static void jumpSystemNotification(Activity activity){
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Intent intent = new Intent();
+            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+            intent.putExtra("app_package", activity.getPackageName());
+            intent.putExtra("app_uid", activity.getApplicationInfo().uid);
+            activity.startActivity(intent);
+        } else if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.setData(Uri.parse("package:" + activity.getPackageName()));
+            activity.startActivity(intent);
+        }
+    }
+
+    //跳到当前应用活动界面
     private static final String SCHEME = "package";
     /**
      * 调用系统InstalledAppDetails界面所需的Extra名称(用于Android 2.1及之前版本)
@@ -51,4 +89,6 @@ public class JumpCuurApp {
         }
         context.startActivity(intent);
     }
+
+
 }
