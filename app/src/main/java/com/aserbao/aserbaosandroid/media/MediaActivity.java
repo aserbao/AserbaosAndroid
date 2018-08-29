@@ -6,32 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.media.audio.AudioRecordActivity;
+import com.aserbao.aserbaosandroid.media.exoplayer.ExoPlayerPActivity;
 import com.aserbao.aserbaosandroid.media.mediacodec.MediaCodecActivity;
 import com.aserbao.aserbaosandroid.media.mediaplayer.MediaPlayerActivity;
 import com.aserbao.aserbaosandroid.media.videoView.VideoViewActivity;
+import com.aserbao.aserbaosandroid.opengl.ClassBean;
 
-public class MediaActivity extends AppCompatActivity {
+public class MediaActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media);
+    public void initGetData() {
+        mClassBeen.add(new ClassBean("video_view",VideoViewActivity.class));
+        mClassBeen.add(new ClassBean("audio_record",AudioRecordActivity.class));
+        mClassBeen.add(new ClassBean("media_play",MediaPlayerActivity.class));
+        mClassBeen.add(new ClassBean("media_codec",MediaCodecActivity.class));
+        mClassBeen.add(new ClassBean("exoplayer",ExoPlayerPActivity.class));
     }
 
-    public void btn_video_view(View view) {
-        startActivity(new Intent(this, VideoViewActivity.class));
-    }
-
-    public void btn_audio_record_activity(View view) {
-        startActivity(new Intent(this, AudioRecordActivity.class));
-    }
-
-    public void btn_media_player(View view) {
-        startActivity(new Intent(this, MediaPlayerActivity.class));
-    }
-
-    public void btn_media_codec(View view) {
-        startActivity(new Intent(this, MediaCodecActivity.class));
-    }
 }

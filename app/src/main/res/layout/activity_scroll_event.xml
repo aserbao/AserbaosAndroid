@@ -25,12 +25,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <TextureView
-            android:background="@color/black30"
-            android:id="@+id/texture_view"
+        <com.aserbao.aserbaosandroid.functions.events.scrollEvent.MyJZVideoPlayer
+            android:id="@+id/jz_video_player"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+            android:layout_height="match_parent"/>
         <ImageView
             android:src="@drawable/palette"
             android:layout_width="100dp"
