@@ -5,18 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="com.aserbao.aserbaosandroid.functions.events.scrollEvent.ScrollEventActivity">
-    <TextureView
+    <!--<TextureView
         android:visibility="visible"
         android:background="@color/black30"
         android:id="@+id/texture_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <ImageView
-        android:background="@color/black"
-        android:id="@+id/scroll_view_iv"
-        android:src="@drawable/palette"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />-->
+
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,4 +20,20 @@
             android:id="@+id/pop_scroll_view"
             android:text="可滚动的popupwindow" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+    <FrameLayout
+        android:id="@+id/scroll_view_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextureView
+            android:background="@color/black30"
+            android:id="@+id/texture_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:src="@drawable/palette"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+    </FrameLayout>
 </FrameLayout>
