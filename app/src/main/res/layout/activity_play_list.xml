@@ -10,8 +10,38 @@
         android:id="@+id/player_list_player_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/btn_start"
+            android:text="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_pause"
+            android:text="pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_add"
+            android:text="add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
     <Button
-        android:onClick="btn_click"
+        android:id="@+id/btn_before"
+        android:text="before"
+        android:layout_gravity="bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:layout_gravity="bottom|right"
+        android:id="@+id/btn_next"
+        android:text="next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </FrameLayout>

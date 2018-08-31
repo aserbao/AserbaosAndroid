@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.functions.events.scrollEvent;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -58,6 +59,7 @@ public class ScrollEventActivity extends AppCompatActivity {
             };
 
     private void initPlayer() {
+
         mJzVideoPlayer.setUp(videoUrlList[mCuurPosition], JZVideoPlayer.CURRENT_STATE_NORMAL,"");
         mJzVideoPlayer.startVideo();
 

@@ -87,7 +87,9 @@
         </activity>
         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
         <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
-        <activity android:name=".media.exoplayer.playerlist.PlayListActivity"></activity>
+        <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
+        <activity android:name=".ui.textViews.TextViewActivity" />
+        <activity android:name=".ui.textViews.shadow.TextShadowActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,12 @@
 package com.aserbao.aserbaosandroid.media.videoView;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.VideoView;
 
@@ -13,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class VideoViewActivity extends AppCompatActivity {
-
+    private static final String TAG = "VideoViewActivity";
     @BindView(R.id.video_view)
     VideoView mVideoView;
     @BindView(R.id.video_seek_bar)
@@ -25,9 +28,24 @@ public class VideoViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_view);
         ButterKnife.bind(this);
+        String uriString = "android.resource://" + getPackageName() + "/" + R.raw.black;
+        Uri mUri = Uri.parse(uriString);
 //        mVideoView.setVideoURI(Uri.parse(videoUrl1));
-        mVideoView.setVideoPath(videoUrl1);
+        mVideoView.setVideoPath(uriString);
+        mVideoView.setMediaController(new MediaController(this));
         mVideoView.start();
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                Log.e(TAG, "onPrepared: " );
+            }
+        });
+        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Log.e(TAG, "onCompletion: " );
+            }
+        });
         mVideoSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

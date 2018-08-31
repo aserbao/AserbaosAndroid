@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tbi_tv_color"
+            android:text="change_color"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker
+            android:id="@+id/linear_color_picker"
+            app:colorOrientation = "horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+        <TextView
+            android:id="@+id/tbi_tv_radius"
+            android:text="change_radius"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="49"
+            android:id="@+id/text_bar_item_seek_bar_radius"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tbi_tv_dx"
+            android:text="change_Dx"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="49"
+            android:id="@+id/text_bar_item_seek_bar_dx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tbi_tv_dy"
+            android:text="change_dy"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="49"
+            android:id="@+id/text_bar_item_seek_bar_dy"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tbi_tv_alpha"
+            android:text="change_alpha"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="100"
+            android:progress="100"
+            android:id="@+id/text_bar_item_seek_bar_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tbi_tv_elevation"
+            android:text="change_elevation"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="49"
+            android:id="@+id/text_bar_item_seek_bar_elevation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tbi_tv_rotate"
+            android:text="change_rotate x|y"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="360"
+            android:id="@+id/text_bar_item_seek_bar_rotatex"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <SeekBar
+            android:max="360"
+            android:id="@+id/text_bar_item_seek_bar_rotatey"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tbi_tv_size"
+            android:text="change_text_size"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:max="50"
+            android:progress="25"
+            android:id="@+id/text_bar_item_seek_bar_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker
+            android:id="@+id/linear_color_text_color_picker"
+            app:colorOrientation = "horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_diaplay"
+            android:text="Text Shadow Text"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
