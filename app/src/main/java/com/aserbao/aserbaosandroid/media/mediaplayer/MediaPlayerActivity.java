@@ -41,7 +41,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
         setContentView(R.layout.activity_media_player);
         ButterKnife.bind(this);
         mHolder = mMediaSurfaceView.getHolder();
-//        initModule("");
+        initModule("");
     }
 
     @Override

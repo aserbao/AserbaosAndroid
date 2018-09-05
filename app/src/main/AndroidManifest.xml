@@ -89,7 +89,9 @@
         <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
         <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
         <activity android:name=".ui.textViews.TextViewActivity" />
-        <activity android:name=".ui.textViews.shadow.TextShadowActivity"></activity>
+        <activity android:name=".ui.textViews.shadow.TextShadowActivity" />
+        <activity android:name=".functions.cache.CacheActivity" />
+        <activity android:name=".functions.cache.aSimpleCache.ASimpleCacheActivity"></activity>
     </application>
 
 </manifest>

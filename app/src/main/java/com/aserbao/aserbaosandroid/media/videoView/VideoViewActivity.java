@@ -28,10 +28,10 @@ public class VideoViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_view);
         ButterKnife.bind(this);
-        String uriString = "android.resource://" + getPackageName() + "/" + R.raw.black;
-        Uri mUri = Uri.parse(uriString);
+//        String uriString = "android.resource://" + getPackageName() + "/" + R.raw.black;
+//        Uri mUri = Uri.parse(uriString);
 //        mVideoView.setVideoURI(Uri.parse(videoUrl1));
-        mVideoView.setVideoPath(uriString);
+        mVideoView.setVideoPath("http://npic.getremark.com/7e7aafb9292ac82b6e2c70eea4c4d36a-bdfb8cd2de3f77178f354c1cbb28bc7e");
         mVideoView.setMediaController(new MediaController(this));
         mVideoView.start();
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

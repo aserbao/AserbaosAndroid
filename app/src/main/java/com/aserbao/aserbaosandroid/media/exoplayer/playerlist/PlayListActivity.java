@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.media.exoplayer.playerlist;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -41,7 +42,8 @@ import butterknife.OnClick;
 public class PlayListActivity extends AppCompatActivity {
     public static String[] videoUrlList =
             {
-                    "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4",
+                    "http://npic.getremark.com/7e7aafb9292ac82b6e2c70eea4c4d36a-bdfb8cd2de3f77178f354c1cbb28bc7e",
+                    "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4"
             };
     public static String[] videoUrlLiswt =
             {
@@ -89,6 +91,8 @@ public class PlayListActivity extends AppCompatActivity {
 
     @BindView(R.id.player_list_player_view)
     PlayerView mPlayerListPlayerView;
+    @BindView(R.id.frame_layout)
+    FrameLayout mFrameLayout;
     private SimpleExoPlayer mPlayer;
 
     @Override
@@ -182,15 +186,23 @@ public class PlayListActivity extends AppCompatActivity {
                 mPlayer.seekTo(nextWindowIndex, 0);
                 break;
             case R.id.btn_before:
-                ImageView imageViewPrev = (ImageView) findViewById(R.id.exo_prev);
-                imageViewPrev.performClick();
+                /*ImageView imageViewPrev = (ImageView) findViewById(R.id.exo_prev);
+                imageViewPrev.performClick();*/
+
+                ObjectAnimator rotationY = ObjectAnimator.ofFloat(mPlayerListPlayerView, "rotationY", 0, 30);
+                rotationY.setDuration(1000);
+                rotationY.start();
                 break;
             case R.id.btn_start:
-                ImageView imageViewPlay = (ImageView) findViewById(R.id.exo_play);
+                /*ImageView imageViewPlay = (ImageView) findViewById(R.id.exo_play);
                 if (imageViewPlay.getParent() instanceof LinearLayout) {
                     ((LinearLayout)(((LinearLayout) imageViewPlay.getParent()).getParent())).setVisibility(View.GONE);
                 }
-                imageViewPlay.performClick();
+                imageViewPlay.performClick();*/
+                ObjectAnimator animator = ObjectAnimator.ofFloat(mFrameLayout, "rotationY", 0, 30);
+                animator.setDuration(1000);
+                animator.start();
+
                 break;
             case R.id.btn_pause:
                 ImageView imageViewPause = (ImageView) findViewById(R.id.exo_pause);

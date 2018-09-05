@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/frame_layout"
     tools:context="com.aserbao.aserbaosandroid.media.exoplayer.playerlist.PlayListActivity">
 
-    <com.google.android.exoplayer2.ui.PlayerView
+    <com.aserbao.aserbaosandroid.media.exoplayer.playerlist.MyPlayerView
+        app:resize_mode="fixed_width"
         android:id="@+id/player_list_player_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
