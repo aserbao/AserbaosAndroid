@@ -13,6 +13,7 @@ import com.aserbao.aserbaosandroid.media.MediaActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.aserbao.aserbaosandroid.ui.constantUtilsShow.ConstantsUtilsShowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("自定义View", CustomViewActivity.class));
         mClassBeen.add(new ClassBean("View", UIActivity.class));
         mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
+        mClassBeen.add(new ClassBean("常用数据", ConstantsUtilsShowActivity.class));
     }
 
     private void initView() {

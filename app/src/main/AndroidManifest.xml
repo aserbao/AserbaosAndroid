@@ -30,7 +30,8 @@
         <activity android:name=".Cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.HomeActivity">
+        <activity android:name=".HomeActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,7 +70,13 @@
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
-        <activity android:name=".ui.editTexts.EditTextsActivity" />
+        <activity android:name=".ui.editTexts.EditTextsActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
         <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
@@ -78,8 +85,7 @@
         <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
         <activity android:name=".ui.toasts.ToastActivity" />
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
-        <activity android:name=".functions.events.EventDealActivity">
-        </activity>
+        <activity android:name=".functions.events.EventDealActivity" />
         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
         <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
         <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
@@ -87,7 +93,11 @@
         <activity android:name=".ui.textViews.shadow.TextShadowActivity" />
         <activity android:name=".functions.cache.CacheActivity" />
         <activity android:name=".functions.cache.aSimpleCache.ASimpleCacheActivity" />
-        <activity android:name=".functions.database.DataBaseActivity"></activity>
+        <activity android:name=".functions.database.DataBaseActivity" />
+        <activity
+            android:name=".ui.editTexts.autoAdjustSoftHeight.AutoAdjustSoftHeightActivity"
+            android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity"></activity>
     </application>
 
 </manifest>

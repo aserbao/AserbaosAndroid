@@ -1,0 +1,1142 @@
+Index: app/src/main/java/com/aserbao/aserbaosandroid/functions/events/scrollEvent/ScrollEventActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/functions/events/scrollEvent/ScrollEventActivity.java	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/java/com/aserbao/aserbaosandroid/functions/events/scrollEvent/ScrollEventActivity.java	(date 1535691249000)
+@@ -3,6 +3,7 @@
+ import android.animation.ObjectAnimator;
+ import android.animation.PropertyValuesHolder;
+ import android.media.MediaPlayer;
++import android.net.Uri;
+ import android.os.Bundle;
+ import android.support.v7.app.AppCompatActivity;
+ import android.util.Log;
+@@ -58,6 +59,7 @@
+             };
+ 
+     private void initPlayer() {
++
+         mJzVideoPlayer.setUp(videoUrlList[mCuurPosition], JZVideoPlayer.CURRENT_STATE_NORMAL,"");
+         mJzVideoPlayer.startVideo();
+ 
+Index: app/src/main/java/com/aserbao/aserbaosandroid/media/exoplayer/playerlist/PlayListActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/media/exoplayer/playerlist/PlayListActivity.java	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/java/com/aserbao/aserbaosandroid/media/exoplayer/playerlist/PlayListActivity.java	(date 1535690813000)
+@@ -1,12 +1,17 @@
+ package com.aserbao.aserbaosandroid.media.exoplayer.playerlist;
+ 
+ import android.content.Context;
++import android.content.res.AssetFileDescriptor;
++import android.content.res.AssetManager;
++import android.media.MediaPlayer;
+ import android.net.Uri;
+ import android.os.Bundle;
+ import android.os.Handler;
+ import android.support.v7.app.AppCompatActivity;
+-import android.util.Log;
+ import android.view.View;
++import android.widget.FrameLayout;
++import android.widget.ImageView;
++import android.widget.LinearLayout;
+ 
+ import com.aserbao.aserbaosandroid.R;
+ import com.google.android.exoplayer2.ExoPlayerFactory;
+@@ -18,7 +23,6 @@
+ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+ import com.google.android.exoplayer2.trackselection.TrackSelection;
+-import com.google.android.exoplayer2.ui.PlayerControlView;
+ import com.google.android.exoplayer2.ui.PlayerView;
+ import com.google.android.exoplayer2.upstream.BandwidthMeter;
+ import com.google.android.exoplayer2.upstream.DataSource;
+@@ -26,22 +30,62 @@
+ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+ import com.google.android.exoplayer2.util.Util;
+ 
+-import java.lang.reflect.Field;
+-import java.lang.reflect.Method;
++import java.io.File;
++import java.io.FileDescriptor;
++import java.io.IOException;
+ 
+ import butterknife.BindView;
+ import butterknife.ButterKnife;
++import butterknife.OnClick;
+ 
+ public class PlayListActivity extends AppCompatActivity {
+     public static String[] videoUrlList =
+             {
+                     "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4",
++            };
++    public static String[] videoUrlLiswt =
++            {
+                     "http://jzvd.nathen.cn/63f3f73712544394be981d9e4f56b612/69c5767bb9e54156b5b60a1b6edeb3b5-5287d2089db37e62345123a1be272f8b.mp4",
+                     "http://jzvd.nathen.cn/b201be3093814908bf987320361c5a73/2f6d913ea25941ffa78cc53a59025383-5287d2089db37e62345123a1be272f8b.mp4",
+                     "http://jzvd.nathen.cn/25a8d119cfa94b49a7a4117257d8ebd7/f733e65a22394abeab963908f3c336db-5287d2089db37e62345123a1be272f8b.mp4",
+                     "http://jzvd.nathen.cn/7512edd1ad834d40bb5b978402274b1a/9691c7f2d7b74b5e811965350a0e5772-5287d2089db37e62345123a1be272f8b.mp4",
+                     "http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4"
+             };
++    public static String[] videoUrlList0 = {
++            "https://s.sc-cdn.net/1d/cZWfwwS0cns89PxIyIv0UeA1YPA5mW7OXjBRLrI2UIc=/default/embedded.mp4",
++            "https://s.sc-cdn.net/1d/zb8OiN6q_xbblEu8Fquyt1JaEXKTwC7veN7tMI8GmYU=/default/embedded.mp4",
++            "https://s.sc-cdn.net/2cxxyodwA1VBvqsfQ4P9WTLtBQYjcxctTZBXo3_4Rt8=/default/embedded.mp4",
++            "https://s.sc-cdn.net/3Rkyjb15qI7K7BoY2-TiHC5nzeIZU602ZAGsXvSpnYk=/default/embedded.mp4",
++            "https://s.sc-cdn.net/3btq0j2eW5qGkOnMMvkxdL76_vQFtqv0-W7njZOtQuI=/default/embedded.mp4",
++            "https://s.sc-cdn.net/4ZDsSf2stQBdPIuOnvaWzsyhzju7z-r7liIb2Wc9dak=/default/embedded.mp4",
++            "https://s.sc-cdn.net/54T8Kh4Y2gVQZqMf0GpJyNJeu1DZvWX3HKp84zpzb3I=/default/embedded.mp4",
++            "https://s.sc-cdn.net/5MYiJi2qQBfF2tjBH2pQm3kBhsgvWZXMhrMchQa41DQ=/default/embedded.mp4",
++            "https://s.sc-cdn.net/6xbLT9Le5ZvFOY3x3ckA5LXUIM0pP_lejLnw0LHi35U=/default/embedded.mp4",
++            "https://s.sc-cdn.net/ChmLqyOyoyeLgeavk75l1seQPH9i8U0QInoj43u2quk=/default/embedded.mp4",
++            "https://s.sc-cdn.net/FxEjQ2YRccA9CdKEZuAPbwebNEjG_Aqj2pqC3F3csGA=/default/embedded.mp4",
++            "https://s.sc-cdn.net/IU5aV2ddmOORo33oickrd72BSirwEERSpuIs8TqDUDc=/default/embedded.mp4",
++            "https://s.sc-cdn.net/P1SGGpH1G4eqVxlU1cLGnMGsDy0rBD7Q7aKlDZ4pXRo=/default/embedded.mp4",
++            "https://s.sc-cdn.net/PMgkBXoPZENmdCgNlkQ6ZKBeOTPYwQpbetHPmX_L6o8=/default/embedded.mp4",
++            "https://s.sc-cdn.net/RSkmiMzCTGu4L3ixL5Cg5sJBwWI7rI2kh85cEa31qMo=/default/embedded.mp4",
++            "https://s.sc-cdn.net/S2tr0HlhyvNlMjHyvELPe9-d_rbJp4QkU4GpaiFVjb0=/default/embedded.mp4",
++            "https://s.sc-cdn.net/TAnhisjWSHAN6RwjMgvLA-utmjf7mWpvMy7731TP-6g=/default/embedded.mp4",
++            "https://s.sc-cdn.net/X4FP93vQ3GK9Q_JZ-KNm0z-exjuas5u79Pw7neUBg8U=/default/embedded.mp4",
++            "https://s.sc-cdn.net/XZLHjX7i5Fmbs22IJdJRW54nus69JOdz-zea_bsU4Kg=/default/embedded.mp4",
++            "https://s.sc-cdn.net/brvfysM9hh2UF6igXkyMW_EGOIbqSKy-j03-f0AsCnM=/default/embedded.mp4",
++            "https://s.sc-cdn.net/cz6vExbiUih4-pFi0JamzZ4jjRyMhkzjRI7uPeMYpuM=/default/embedded.mp4",
++            "https://s.sc-cdn.net/iYcuW9fH-O86K7m5sWDBSRklKqr9yreus1Y3dqu3ZVg=/default/embedded.mp4",
++            "https://s.sc-cdn.net/m6HeShLuqyo16IaWkLcI-cUb3ReZWvSEN5jbswlh-S0=/default/embedded.mp4",
++            "https://s.sc-cdn.net/nUqhukymPuMgto1rVoFraC7Feruv8eRaDnjNhL7iBHo=/default/embedded.mp4",
++            "https://s.sc-cdn.net/pqNNwpose7Pnwae9U3ytAb1Mxhj3j-B9iY7s3laaa60=/default/embedded.mp4",
++            "https://s.sc-cdn.net/qCuIFs3DAkS3or-u_9z_rYvxrB3EAJFgl22fKIGuXlM=/default/embedded.mp4",
++            "https://s.sc-cdn.net/qTraLgHoD0kVmBJFd0mD2TIR9H-8vWc3RpiignY6tNM=/default/embedded.mp4",
++            "https://s.sc-cdn.net/rJvHaUYhqu3VJPUl9pCIsBehTxNSnhBqrX00HNgx7Pw=/default/embedded.mp4",
++            "https://s.sc-cdn.net/uoiIYVo952KFX5YnvvE7-EoeYhUQ1Su_W0s8oyRUyRA=/default/embedded.mp4",
++            "https://s.sc-cdn.net/vDn9vU-u9ZfQOh-FqkUIoV5Zo3-eT-GEIpSyj-ii1M8=/default/embedded.mp4",
++            "https://s.sc-cdn.net/xU2hCWj8iYhLZ0XjpRFNzXENvptozUKeJz8J5uqEVQM=/default/embedded.mp4",
++            "https://s.sc-cdn.net/ySaMjExKgJBVugvyHnlXPC_wlLD595G3lbGNvicBY7I=/default/embedded.mp4"
++    };
++    
+ 
+     @BindView(R.id.player_list_player_view)
+     PlayerView mPlayerListPlayerView;
+@@ -75,9 +119,17 @@
+                 Util.getUserAgent(context, "yourApplicationName"), null);
+         // This is the MediaSource representing the media to be played.
+         ExtractorMediaSource.Factory factory = new ExtractorMediaSource.Factory(dataSourceFactory);
+-        MediaSource[] mediaSources = new MediaSource[videoUrlList.length];
+-        for (int i = 0; i < videoUrlList.length; i++) {
+-            mediaSources[i] = factory.createMediaSource(Uri.parse(videoUrlList[i]));
++        MediaSource[] mediaSources = new MediaSource[videoUrlList0.length];
++        try {
++            AssetFileDescriptor fd = getAssets().openFd("black.mp4");
++            FileDescriptor fileDescriptor = fd.getFileDescriptor();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++        Uri mUri = Uri.parse("android.resource://" + getPackageName() + "/"+ R.raw.black);
++        for (int i = 0; i < videoUrlList0.length; i++) {
++//            mediaSources[i] = factory.createMediaSource(Uri.parse(videoUrlList0[i]));
++            mediaSources[i] = factory.createMediaSource(mUri);
+         }
+ 
+ 
+@@ -85,20 +137,18 @@
+                 new ConcatenatingMediaSource(firstSource, secondSource);*/
+ // Prepare the player with the source.
+         mPlayer.prepare(new ConcatenatingMediaSource(mediaSources));
+-        mPlayer.addListener(new Player.DefaultEventListener() {
+-            @Override
+-            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+-                super.onPlayerStateChanged(playWhenReady, playbackState);
+-            }
+-        });
+ 
+         mPlayer.setPlayWhenReady(true);
+     }
+ 
+     private static final String TAG = "PlayListActivity";
+ 
+-    public void btn_click(View view) {
+-        /*Class<?>[] declaredClasses = mPlayerListPlayerView.getClass().getDeclaredClasses();
++
++    @OnClick({R.id.btn_next, R.id.btn_before,R.id.btn_start,R.id.btn_pause,R.id.btn_add})
++    public void onViewClicked(View view) {
++        switch (view.getId()) {
++            case R.id.btn_next:
++                /*Class<?>[] declaredClasses = mPlayerListPlayerView.getClass().getDeclaredClasses();
+         for (int i = 0; i < declaredClasses.length; i++) {
+             Log.e(TAG, "Clasees :  " + declaredClasses[i].getName());
+         }
+@@ -128,7 +178,40 @@
+         }*/
+ 
+ 
+-        int nextWindowIndex = mPlayer.getNextWindowIndex();
+-        mPlayer.seekTo(nextWindowIndex,0);
++                int nextWindowIndex = mPlayer.getNextWindowIndex();
++                mPlayer.seekTo(nextWindowIndex, 0);
++                break;
++            case R.id.btn_before:
++                ImageView imageViewPrev = (ImageView) findViewById(R.id.exo_prev);
++                imageViewPrev.performClick();
++                break;
++            case R.id.btn_start:
++                ImageView imageViewPlay = (ImageView) findViewById(R.id.exo_play);
++                if (imageViewPlay.getParent() instanceof LinearLayout) {
++                    ((LinearLayout)(((LinearLayout) imageViewPlay.getParent()).getParent())).setVisibility(View.GONE);
++                }
++                imageViewPlay.performClick();
++                break;
++            case R.id.btn_pause:
++                ImageView imageViewPause = (ImageView) findViewById(R.id.exo_pause);
++                imageViewPause.performClick();
++                break;
++            case R.id.btn_add:
++                DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(PlayListActivity.this,
++                        Util.getUserAgent(PlayListActivity.this, "AserbaoApplication"), null);
++                // This is the MediaSource representing the media to be played.
++                ExtractorMediaSource.Factory factory = new ExtractorMediaSource.Factory(dataSourceFactory);
++                MediaSource[] mediaSources = new MediaSource[videoUrlList0.length + videoUrlList.length];
++                for (int i = 0; i < videoUrlList0.length; i++) {
++                    mediaSources[i] = factory.createMediaSource(Uri.parse(videoUrlList0[i]));
++                }
++                for (int i = videoUrlList0.length; i < videoUrlList0.length + videoUrlList.length ; i++) {
++                    mediaSources[i] = factory.createMediaSource(Uri.parse(videoUrlList[i - videoUrlList0.length]));
++                }
++                mPlayer.prepare(new ConcatenatingMediaSource(mediaSources));
++                mPlayer.seekTo(videoUrlList0.length, 0);
++                mPlayer.setPlayWhenReady(true);
++                break;
++        }
+     }
+ }
+Index: app/src/main/java/com/aserbao/aserbaosandroid/media/videoView/VideoViewActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/media/videoView/VideoViewActivity.java	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/java/com/aserbao/aserbaosandroid/media/videoView/VideoViewActivity.java	(date 1535691362000)
+@@ -1,9 +1,12 @@
+ package com.aserbao.aserbaosandroid.media.videoView;
+ 
++import android.media.MediaPlayer;
+ import android.net.Uri;
+ import android.os.Bundle;
+ import android.os.Environment;
+ import android.support.v7.app.AppCompatActivity;
++import android.util.Log;
++import android.widget.MediaController;
+ import android.widget.SeekBar;
+ import android.widget.VideoView;
+ 
+@@ -13,7 +16,7 @@
+ import butterknife.ButterKnife;
+ 
+ public class VideoViewActivity extends AppCompatActivity {
+-
++    private static final String TAG = "VideoViewActivity";
+     @BindView(R.id.video_view)
+     VideoView mVideoView;
+     @BindView(R.id.video_seek_bar)
+@@ -25,9 +28,24 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_video_view);
+         ButterKnife.bind(this);
++        String uriString = "android.resource://" + getPackageName() + "/" + R.raw.black;
++        Uri mUri = Uri.parse(uriString);
+ //        mVideoView.setVideoURI(Uri.parse(videoUrl1));
+-        mVideoView.setVideoPath(videoUrl1);
++        mVideoView.setVideoPath(uriString);
++        mVideoView.setMediaController(new MediaController(this));
+         mVideoView.start();
++        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
++            @Override
++            public void onPrepared(MediaPlayer mp) {
++                Log.e(TAG, "onPrepared: " );
++            }
++        });
++        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++            @Override
++            public void onCompletion(MediaPlayer mp) {
++                Log.e(TAG, "onCompletion: " );
++            }
++        });
+         mVideoSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+             @Override
+             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+Index: app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowActivity.java	(date 1535719224000)
++++ app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowActivity.java	(date 1535719224000)
+@@ -0,0 +1,187 @@
++package com.aserbao.aserbaosandroid.ui.textViews.shadow;
++
++import android.graphics.Color;
++import android.os.Bundle;
++import android.support.v7.app.AppCompatActivity;
++import android.view.View;
++import android.widget.SeekBar;
++import android.widget.TextView;
++
++import com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker;
++import com.aserbao.aserbaosandroid.R;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import butterknife.BindView;
++import butterknife.ButterKnife;
++
++public class TextShadowActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
++    @BindView(R.id.tbi_tv_color)
++    TextView mTbiTvColor;
++    @BindView(R.id.linear_color_picker)
++    LinearColorPicker mLinearColorPicker;
++    @BindView(R.id.linear_color_text_color_picker)
++    LinearColorPicker mLinearColorTextColorPicker;
++    @BindView(R.id.tbi_tv_radius)
++    TextView mTbiTvRadius;
++    @BindView(R.id.text_bar_item_seek_bar_radius)
++    SeekBar mTextBarItemSeekBarRadius;
++    @BindView(R.id.tbi_tv_dx)
++    TextView mTbiTvDx;
++    @BindView(R.id.text_bar_item_seek_bar_dx)
++    SeekBar mTextBarItemSeekBarDx;
++    @BindView(R.id.tbi_tv_dy)
++    TextView mTbiTvDy;
++    @BindView(R.id.text_bar_item_seek_bar_dy)
++    SeekBar mTextBarItemSeekBarDy;
++    @BindView(R.id.tbi_tv_alpha)
++    TextView mTbiTvAlpha;
++    @BindView(R.id.text_bar_item_seek_bar_alpha)
++    SeekBar mTextBarItemSeekBarAlpha;
++    @BindView(R.id.tbi_tv_elevation)
++    TextView mTbiTvElevation;
++    @BindView(R.id.text_bar_item_seek_bar_elevation)
++    SeekBar mTextBarItemSeekBarElevation;
++    @BindView(R.id.tbi_tv_rotate)
++    TextView mTbiTvRotate;
++    @BindView(R.id.text_bar_item_seek_bar_rotatex)
++    SeekBar mTextBarItemSeekBarRotateX;
++    @BindView(R.id.text_bar_item_seek_bar_rotatey)
++    SeekBar mTextBarItemSeekBarRotateY;
++    @BindView(R.id.tv_diaplay)
++    TextView mTvDiaplay;
++    @BindView(R.id.tbi_tv_size)
++    TextView mTbiTvSize;
++    @BindView(R.id.text_bar_item_seek_bar_text_size)
++    SeekBar mTextBarItemSeekBarTextSize;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.text_bar_item);
++        ButterKnife.bind(this);
++        initData();
++        mTextBarItemSeekBarRadius.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarDx.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarDy.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarAlpha.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarRotateX.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarRotateY.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarTextSize.setOnSeekBarChangeListener(this);
++        mTextBarItemSeekBarElevation.setOnSeekBarChangeListener(this);
++        mLinearColorPicker.setOnColorSelectListener(new LinearColorPicker.OnColorSelectListener() {
++            @Override
++            public void onColorSelect(int color, int progress) {
++                mShadowColor = color;
++                changeText(mShadowColor, mRadius, mdx, mdy, mAlpha, mEveation, mRotateX, mRotateY);
++            }
++        });
++        mLinearColorTextColorPicker.setOnColorSelectListener(new LinearColorPicker.OnColorSelectListener() {
++            @Override
++            public void onColorSelect(int color, int progress) {
++                mTextColor = color;
++                changeText(mShadowColor, mRadius, mdx, mdy, mAlpha, mEveation, mRotateX, mRotateY);
++            }
++        });
++        mTvDiaplay.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                mRadius = 0;mdx = 0;mdy = 0; mShadowColor = Color.YELLOW; mRotateX = 0; mRotateY = 0; mTextColor = Color.BLACK;mTextSize = 25;
++                changeText(mShadowColor, mRadius, mdx, mdy, mAlpha, mEveation, mRotateX, mRotateY);
++            }
++        });
++    }
++
++
++    public int mRadius = 0, mdx = 0, mdy = 0, mShadowColor = Color.YELLOW, mEveation, mRotateX = 0, mRotateY = 0, mTextColor = Color.BLACK,mTextSize = 25;
++    private float mAlpha = 1;
++    private List<TextView> mListView = new ArrayList<>();
++
++
++    private void initData() {
++        mListView.add(mTbiTvColor);
++        mListView.add(mTbiTvDx);
++        mListView.add(mTbiTvDy);
++        mListView.add(mTbiTvElevation);
++        mListView.add(mTbiTvAlpha);
++        mListView.add(mTbiTvSize);
++        mListView.add(mTbiTvRadius);
++        mListView.add(mTbiTvRotate);
++    }
++
++    @Override
++    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
++        switch (seekBar.getId()) {
++            case R.id.text_bar_item_seek_bar_radius:
++                mRadius = progress;
++                mTbiTvRadius.setText("Radius = " + progress);
++                break;
++            case R.id.text_bar_item_seek_bar_dx:
++                mTbiTvDx.setText("Dx = " + mdx);
++                mdx = progress;
++                break;
++            case R.id.text_bar_item_seek_bar_dy:
++                mTbiTvDy.setText("Dy = " + progress);
++                mdy = progress;
++                break;
++            case R.id.text_bar_item_seek_bar_alpha:
++                float v = (float) progress / (float) 100;
++                mAlpha = v;
++                mTbiTvAlpha.setText("Alpha = " + v);
++                break;
++            case R.id.text_bar_item_seek_bar_elevation:
++                break;
++            case R.id.text_bar_item_seek_bar_rotatex:
++                mTbiTvRotate.setText("rotateX = " +mRotateX + "rotateY = " + mRotateY );
++                mRotateX = progress;
++                break;
++            case R.id.text_bar_item_seek_bar_rotatey:
++                mTbiTvRotate.setText("rotateX = " +mRotateX + "rotateY = " + mRotateY );
++                mRotateY = progress;
++                break;
++            case R.id.text_bar_item_seek_bar_text_size:
++                mTextSize = progress;
++                break;
++        }
++        changeText(mShadowColor, mRadius, mdx, mdy, mAlpha, mEveation, mRotateX, mRotateY);
++    }
++
++    public void changeViewText(TextView textView,int value){
++        textView.setText(textView.getText() + String.valueOf(value));
++    }
++    @Override
++    public void onStartTrackingTouch(SeekBar seekBar) {
++
++    }
++
++    @Override
++    public void onStopTrackingTouch(SeekBar seekBar) {
++
++    }
++
++    public void changeText(int color, int radius, int dx, int dy, float alpha, int evelation, int rotateX, int rotateY) {
++        for (TextView textView : mListView) {
++            textView.setShadowLayer(radius, dx, dy, color);
++            textView.setAlpha(alpha);
++            textView.setRotationY(rotateX);
++            textView.setRotationY(rotateY);
++            textView.setTextSize(mTextSize);
++            textView.setTextColor(mTextColor);
++        }
++
++        String result = "shadowColor : " + String.valueOf(color) + "\n" +
++                "dx : " + String.valueOf(dx) + "\n" +
++                "dy : " + String.valueOf(dy) + "\n" +
++                "alpha : " + String.valueOf(alpha) + "\n" +
++                "radius : " + String.valueOf(radius) + "\n" +
++                "rotateX : " + String.valueOf(rotateX) + "\n" +
++                "rotateY : " + String.valueOf(rotateY) + "\n" +
++                "mTextColor : " + String.valueOf(mTextColor) + "\n" +
++                "mTextSize : " + String.valueOf(mTextSize);
++        ;
++        mTvDiaplay.setText(result);
++    }
++
++
++}
+Index: app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowAdapter.java	(date 1535715994000)
++++ app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/shadow/TextShadowAdapter.java	(date 1535715994000)
+@@ -0,0 +1,185 @@
++package com.aserbao.aserbaosandroid.ui.textViews.shadow;
++
++import android.content.Context;
++import android.support.annotation.NonNull;
++import android.support.v7.widget.RecyclerView;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.SeekBar;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker;
++import com.aserbao.aserbaosandroid.R;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import butterknife.BindView;
++import butterknife.ButterKnife;
++
++public class TextShadowAdapter extends RecyclerView.Adapter<TextShadowAdapter.TextShadowViewHolder> {
++
++
++    private Context mContext;
++
++    public TextShadowAdapter(Context mContext) {
++        this.mContext = mContext;
++    }
++
++    @NonNull
++    @Override
++    public TextShadowViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
++        View view = LayoutInflater.from(mContext).inflate(R.layout.text_bar_item, viewGroup, false);
++        return new TextShadowViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(@NonNull TextShadowViewHolder holder, int i) {
++
++    }
++
++    @Override
++    public int getItemCount() {
++        return 1;
++    }
++
++
++    public static class TextShadowViewHolder extends RecyclerView.ViewHolder implements SeekBar.OnSeekBarChangeListener {
++        @BindView(R.id.tbi_tv_color)
++        TextView mTbiTvColor;
++        @BindView(R.id.linear_color_picker)
++        LinearColorPicker mLinearColorPicker;
++        @BindView(R.id.linear_color_text_color_picker)
++        LinearColorPicker mLinearColorTextColorPicker;
++        @BindView(R.id.tbi_tv_radius)
++        TextView mTbiTvRadius;
++        @BindView(R.id.text_bar_item_seek_bar_radius)
++        SeekBar mTextBarItemSeekBarRadius;
++        @BindView(R.id.tbi_tv_dx)
++        TextView mTbiTvDx;
++        @BindView(R.id.text_bar_item_seek_bar_dx)
++        SeekBar mTextBarItemSeekBarDx;
++        @BindView(R.id.tbi_tv_dy)
++        TextView mTbiTvDy;
++        @BindView(R.id.text_bar_item_seek_bar_dy)
++        SeekBar mTextBarItemSeekBarDy;
++        @BindView(R.id.tbi_tv_alpha)
++        TextView mTbiTvAlpha;
++        @BindView(R.id.text_bar_item_seek_bar_alpha)
++        SeekBar mTextBarItemSeekBarAlpha;
++        @BindView(R.id.tbi_tv_elevation)
++        TextView mTbiTvElevation;
++        @BindView(R.id.text_bar_item_seek_bar_elevation)
++        SeekBar mTextBarItemSeekBarElevation;
++        @BindView(R.id.tbi_tv_rotate)
++        TextView mTbiTvRotate;
++        @BindView(R.id.text_bar_item_seek_bar_rotatex)
++        SeekBar mTextBarItemSeekBarRotateX;
++        @BindView(R.id.text_bar_item_seek_bar_rotatey)
++        SeekBar mTextBarItemSeekBarRotateY;
++
++        @BindView(R.id.tv_diaplay)
++        TextView mTvDiaplay;
++
++        public int mRadius, mdx, mdy, mShadowColor,mEveation,mRotateX,mRotateY,mTextColor;
++        private float mAlpha = 1.0f;
++        private List<TextView> mListView = new ArrayList<>();
++
++
++        public TextShadowViewHolder(@NonNull View itemView) {
++            super(itemView);
++            ButterKnife.bind(this, itemView);
++            initData();
++            mTextBarItemSeekBarRadius.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarDx.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarDy.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarAlpha.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarRotateX.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarRotateY.setOnSeekBarChangeListener(this);
++            mTextBarItemSeekBarElevation.setOnSeekBarChangeListener(this);
++            mLinearColorPicker.setOnColorSelectListener(new LinearColorPicker.OnColorSelectListener() {
++                @Override
++                public void onColorSelect(int color, int progress) {
++                    mShadowColor = color;
++
++                }
++            });
++            mLinearColorTextColorPicker.setOnColorSelectListener(new LinearColorPicker.OnColorSelectListener() {
++                @Override
++                public void onColorSelect(int color, int progress) {
++                    mTextColor = color;
++                }
++            });
++        }
++
++        private void initData() {
++            mListView.add(mTbiTvColor);
++            mListView.add(mTbiTvDx);
++            mListView.add(mTbiTvDy);
++            mListView.add(mTbiTvElevation);
++            mListView.add(mTbiTvAlpha);
++            mListView.add(mTbiTvRotate);
++        }
++
++        @Override
++        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
++            switch (seekBar.getId()) {
++                case R.id.text_bar_item_seek_bar_radius:
++                    mRadius = progress;
++                    break;
++                case R.id.text_bar_item_seek_bar_dx:
++                    mdx = progress;
++                    break;
++                case R.id.text_bar_item_seek_bar_dy:
++                    mdy = progress;
++                    break;
++                case R.id.text_bar_item_seek_bar_alpha:
++                    mAlpha = progress;
++                    break;
++                case R.id.text_bar_item_seek_bar_elevation:
++                    break;
++                case R.id.text_bar_item_seek_bar_rotatex:
++                    mRotateX = progress;
++                    break;
++                case R.id.text_bar_item_seek_bar_rotatey:
++                    mRotateY = progress;
++                    break;
++            }
++            changeText(mShadowColor,mRadius,mdx,mdy,mAlpha,mEveation,mRotateX,mRotateY);
++        }
++
++        @Override
++        public void onStartTrackingTouch(SeekBar seekBar) {
++
++        }
++
++        @Override
++        public void onStopTrackingTouch(SeekBar seekBar) {
++
++        }
++
++        public void changeText(int color, int radius, int dx, int dy, float alpha,int evelation,int rotateX,int rotateY) {
++            for (TextView textView : mListView) {
++                textView.setShadowLayer(radius,dx,dy,color);
++                textView.setAlpha(alpha);
++                textView.setRotationY(rotateX);
++                textView.setRotationY(rotateY);
++                textView.setTextColor(mTextColor);
++            }
++
++            String result = "shadowColor : " + String.valueOf(color) + "\n" +
++                    "dx : " + String.valueOf(dx) + "\n" +
++                    "dy : " + String.valueOf(dy) + "\n" +
++                    "alpha : " + String.valueOf(alpha) + "\n" +
++                    "radius : " + String.valueOf(radius) + "\n" +
++                    "rotateX : " + String.valueOf(rotateX) + "\n" +
++                    "rotateY : " + String.valueOf(rotateY);
++                    ;
++            mTvDiaplay.setText(result);
++        }
++
++
++    }
++}
+Index: app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/TextViewActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/TextViewActivity.java	(date 1535710235000)
++++ app/src/main/java/com/aserbao/aserbaosandroid/ui/textViews/TextViewActivity.java	(date 1535710235000)
+@@ -0,0 +1,17 @@
++package com.aserbao.aserbaosandroid.ui.textViews;
++
++import android.support.v7.app.AppCompatActivity;
++import android.os.Bundle;
++
++import com.aserbao.aserbaosandroid.base.BaseActivity;
++import com.aserbao.aserbaosandroid.opengl.ClassBean;
++import com.aserbao.aserbaosandroid.ui.textViews.shadow.TextShadowActivity;
++
++public class TextViewActivity extends BaseActivity {
++
++
++    @Override
++    public void initGetData() {
++        mClassBeen.add(new ClassBean("textView的阴影效果", TextShadowActivity.class));
++    }
++}
+Index: app/src/main/java/com/aserbao/aserbaosandroid/ui/UIActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/aserbao/aserbaosandroid/ui/UIActivity.java	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/java/com/aserbao/aserbaosandroid/ui/UIActivity.java	(date 1535715932000)
+@@ -6,6 +6,7 @@
+ import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
+ import com.aserbao.aserbaosandroid.ui.editTexts.EditTextsActivity;
+ import com.aserbao.aserbaosandroid.ui.rv.RecyclerViewActivity;
++import com.aserbao.aserbaosandroid.ui.textViews.TextViewActivity;
+ import com.aserbao.aserbaosandroid.ui.toasts.ToastActivity;
+ 
+ public class UIActivity extends BaseActivity {
+@@ -15,6 +16,7 @@
+     public void initGetData() {
+         mClassBeen.add(new ClassBean("RecyclerView的使用", RecyclerViewActivity.class));
+         mClassBeen.add(new ClassBean("EditText的使用", EditTextsActivity.class));
++        mClassBeen.add(new ClassBean("TextView的使用", TextViewActivity.class));
+         mClassBeen.add(new ClassBean("ColorPicker取色器的使用", ColorPickerActivity.class));
+         mClassBeen.add(new ClassBean("Toast的使用", ToastActivity.class));
+ 
+Index: app/src/main/res/drawable/play_btn.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/play_btn.xml	(date 1535595029000)
++++ app/src/main/res/drawable/play_btn.xml	(date 1535595029000)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++    <corners android:radius="15dp"/>
++    <solid android:color="@color/white"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/player_bottom_bg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/player_bottom_bg.xml	(date 1535594894000)
++++ app/src/main/res/drawable/player_bottom_bg.xml	(date 1535594894000)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++    <solid android:color="@color/black30"/>
++    <corners android:radius="20dp"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_play_list.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_play_list.xml	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/res/layout/activity_play_list.xml	(date 1535620828000)
+@@ -10,8 +10,38 @@
+         android:id="@+id/player_list_player_view"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
++    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content">
++
++
++        <Button
++            android:id="@+id/btn_start"
++            android:text="start"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content" />
++        <Button
++            android:id="@+id/btn_pause"
++            android:text="pause"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content" />
++        <Button
++            android:id="@+id/btn_add"
++            android:text="add"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content" />
++    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+     <Button
+-        android:onClick="btn_click"
++        android:id="@+id/btn_before"
++        android:text="before"
++        android:layout_gravity="bottom"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content" />
++    <Button
++        android:layout_gravity="bottom|right"
++        android:id="@+id/btn_next"
++        android:text="next"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
++
+ </FrameLayout>
+Index: app/src/main/res/layout/activity_text_shadow.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_text_shadow.xml	(date 1535710235000)
++++ app/src/main/res/layout/activity_text_shadow.xml	(date 1535710235000)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context="com.aserbao.aserbaosandroid.ui.textViews.shadow.TextShadowActivity">
++    <android.support.v7.widget.RecyclerView
++    android:id="@+id/shadow_recycler_view"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"/>
++</android.support.constraint.ConstraintLayout>
+Index: app/src/main/res/layout/exo_playback_control_views.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/exo_playback_control_views.xml	(date 1535597017000)
++++ app/src/main/res/layout/exo_playback_control_views.xml	(date 1535597017000)
+@@ -0,0 +1,99 @@
++<?xml version="1.0" encoding="utf-8"?>
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <android.support.constraint.ConstraintLayout
++        android:visibility="gone"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_gravity="bottom"
++        android:background="@drawable/player_bottom_bg">
++
++        <TextView
++            android:id="@+id/exo_position"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="10dp"
++            android:layout_marginEnd="10dp"
++            android:layout_marginTop="10dp"
++            android:textColor="@android:color/white"
++            app:layout_constraintLeft_toLeftOf="parent" />
++
++        <TextView
++            android:id="@+id/exo_duration"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginEnd="10dp"
++            android:layout_marginStart="10dp"
++            android:layout_marginTop="10dp"
++            android:textColor="@android:color/white"
++            app:layout_constraintRight_toRightOf="parent" />
++
++
++
++        <com.google.android.exoplayer2.ui.DefaultTimeBar
++            android:id="@id/exo_progress"
++            android:layout_width="0dp"
++            android:layout_height="26dp"
++            android:layout_weight="1"
++            app:layout_constraintBottom_toBottomOf="@id/exo_position"
++            app:layout_constraintLeft_toRightOf="@id/exo_position"
++            app:layout_constraintRight_toLeftOf="@id/exo_duration"
++            app:layout_constraintTop_toTopOf="@id/exo_position"
++            app:played_color="#FFDE81"
++            app:unplayed_color="@android:color/black"
++            app:buffered_color="@android:color/darker_gray"/>
++
++        <ImageView
++            android:id="@+id/exo_play"
++            android:layout_width="40dp"
++            android:layout_height="40dp"
++            android:layout_marginRight="200dp"
++            android:src="@drawable/play_btn"
++            app:layout_constraintLeft_toLeftOf="parent"
++            app:layout_constraintRight_toRightOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/exo_progress" />
++
++        <ImageView
++            android:id="@+id/exo_pause"
++            android:layout_width="40dp"
++            android:layout_height="40dp"
++            android:layout_marginLeft="250dp"
++            android:src="@drawable/play_btn"
++            app:layout_constraintLeft_toLeftOf="parent"
++            app:layout_constraintRight_toRightOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/exo_progress" />
++
++        <android.support.constraint.Guideline
++            android:id="@+id/gl"
++            android:layout_width="wrap_content"
++            android:layout_height="match_parent"
++            android:orientation="vertical"
++            app:layout_constraintGuide_percent="0.5"
++            />
++
++        <ImageView
++            android:id="@+id/exo_rew"
++            android:layout_width="40dp"
++            android:layout_height="40dp"
++            android:src="@drawable/play_btn"
++            android:layout_marginEnd="8dp"
++            app:layout_constraintRight_toLeftOf="@id/gl"
++            app:layout_constraintTop_toTopOf="@id/exo_play" />
++
++        <ImageView
++            android:id="@+id/exo_ffwd"
++            android:layout_width="40dp"
++            android:layout_height="40dp"
++            android:src="@drawable/play_btn"
++            android:layout_marginStart="8dp"
++            app:layout_constraintLeft_toRightOf="@id/gl"
++            app:layout_constraintTop_toTopOf="@id/exo_play" />
++
++
++
++    </android.support.constraint.ConstraintLayout>
++
++</FrameLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/text_bar_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/text_bar_item.xml	(date 1535719561000)
++++ app/src/main/res/layout/text_bar_item.xml	(date 1535719561000)
+@@ -0,0 +1,131 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.v4.widget.NestedScrollView
++    android:orientation="vertical"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++    <LinearLayout
++        android:orientation="vertical"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content">
++        <TextView
++            android:id="@+id/tbi_tv_color"
++            android:text="change_color"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker
++            android:id="@+id/linear_color_picker"
++            app:colorOrientation = "horizontal"
++            android:layout_width="match_parent"
++            android:layout_height="100dp" />
++        <TextView
++            android:id="@+id/tbi_tv_radius"
++            android:text="change_radius"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="49"
++            android:id="@+id/text_bar_item_seek_bar_radius"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <TextView
++            android:id="@+id/tbi_tv_dx"
++            android:text="change_Dx"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="49"
++            android:id="@+id/text_bar_item_seek_bar_dx"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <TextView
++            android:id="@+id/tbi_tv_dy"
++            android:text="change_dy"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="49"
++            android:id="@+id/text_bar_item_seek_bar_dy"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <TextView
++            android:id="@+id/tbi_tv_alpha"
++            android:text="change_alpha"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="100"
++            android:progress="100"
++            android:id="@+id/text_bar_item_seek_bar_alpha"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++
++        <TextView
++            android:id="@+id/tbi_tv_elevation"
++            android:text="change_elevation"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="49"
++            android:id="@+id/text_bar_item_seek_bar_elevation"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <TextView
++            android:id="@+id/tbi_tv_rotate"
++            android:text="change_rotate x|y"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="360"
++            android:id="@+id/text_bar_item_seek_bar_rotatex"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <SeekBar
++            android:max="360"
++            android:id="@+id/text_bar_item_seek_bar_rotatey"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++
++        <TextView
++            android:id="@+id/tbi_tv_size"
++            android:text="change_text_size"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <SeekBar
++            android:max="50"
++            android:progress="25"
++            android:id="@+id/text_bar_item_seek_bar_text_size"
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++        <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.LinearColorPicker
++            android:id="@+id/linear_color_text_color_picker"
++            app:colorOrientation = "horizontal"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++        <TextView
++            android:id="@+id/tv_diaplay"
++            android:text="Text Shadow Text"
++            android:textSize="25sp"
++            android:gravity="center"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++
++    </LinearLayout>
++</android.support.v4.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 624966444749b988d78db9a49e1f93a8f5b81e91)
++++ app/src/main/AndroidManifest.xml	(date 1535709512000)
+@@ -87,7 +87,9 @@
+         </activity>
+         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
+         <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
+-        <activity android:name=".media.exoplayer.playerlist.PlayListActivity"></activity>
++        <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
++        <activity android:name=".ui.textViews.TextViewActivity" />
++        <activity android:name=".ui.textViews.shadow.TextShadowActivity"></activity>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+diff --git app/src/main/assets/black.mp4 app/src/main/assets/black.mp4
+new file mode 100644
+index 0000000000000000000000000000000000000000..ea876851da16e39b8bc7fb21f32aa169bcb59eee
+GIT binary patch
+literal 5564
+zc%1E5UuYaf7@xaKlUQ1t(5BRq%2cBdC3m;Gxh833F_#cbrBx}~QW2NA-MQ@c_Fr}<
+z$z7!op_V=ff=D0@UQnzxSWplxf)bHFwNJho@j(%!C7?k?twPRk_LAOZ&y$+BzzsJu
+z-{0T&eKTLOy9gniWd+yp9Sfl-;yX-<Osb;grbL8LYu2L_p&f5n8ew4bLG!j!>HTj<
+zZh!vc(&)9B?yvFE!$19;mwHn;j#bB_SWNX}PwIp9NFOCMD}iD(0S3wA&x||~PvP{*
+zVX)Mw3W{OJEtoXRup|gQaY+z+L8vq44kVLPQ&WjaL!*vK?1bZuC3%#D&MXsb9G4l6
+z?GIp;WQZz@*rQpw2WvEAI%-Z92ZR9u6PuU?pUOhMXF$k{Vh^^ctkXR9Co(|wVb?E!
+zE3AsA$znnPCs?p$<f*1`L=ij`kJw{WhSXHub1b5OtB9FLP1Ep!>d*IUDg#0tw`2iQ
+zAlg~Srm`e<iz3bvpDC`NGhA*_1{il0C!6&tlj9O*x(6NrBw^EWazqDCSr<y!Hw~3m
+z1Om3bAc$&Mgz-cSn^DgsU<C4vIpL9lqB@pK81O2b5%Y*)0|Xd)gxh32Vo@JXE2Fpt
+zpbZV;WE7$imzR-IG6vz1G{d7oVN=u?(^&>6$ECJ1=D46O3te!{(E?!0(qUnZR4l^=
+z7W*o-sXD>rlz@Zi{7gOS>)`IG%H49g-cx1O%VH}72g}O>MwWUK0v_kZ$U>qQNS6Z#
+zJITwvM}Y7db>$Q`T(~9Z2)IPRBID2i{5sJzwD8mP;(7E~Y4wk%7Nc{|et9VN`l;=|
+z-+1TI)1RKmMSgh~p<kao{np}3H($K9vaJ;%^ZG{zzB+ih|JB!eKSU@N{>7F7vMqh7
+z%N$-@U6=`^vpmesba5#EN+}S0@-i1hii8a<27=$F%L4Vxx`12kO<&TFzL(Z#kF`#f
+z?t*d6u5|IjNPBm3Biv<H?G1t}XR7f5?kd2U8{wwQa5qLe!f?04*)50RR%+qO+0EZy
+z12-QJWjCJ;!Of-WWjBAK7H&M0-Mk-$%h%0rrV4J&`{QtS*Fsk@_gUTSzNyXbPB^>2
+z!*Ji#%dYrfO?E{&d=-y}8>Or6%?{Px?7j8fzh`%$7Ov5EjlOI2U8C<BeYXYruA|a-
+zPHFYZd9H~hH`{g{m9`rztrpw3rs>Vic3nrM>rRzc`v<wEePxqPcOSAGXA%^qHK}W8
+z!-(BNX!k`FLHt)4k&RYieh~fVh{EU4A$W_;0sR8Y1u<i_Xb?9%?jddjmS}&#c2SM_
+zuy<0^XB7{Q+qCA}^0uWJ1PE+t;o2pbf1&5D2TWYoOmAJozox1!Px7y;QDSQ*<u)zH
+z;q^KT#GXkj0Ig25ODpR-HF$@wDr3ilXW}y5veRc76X*q>`C66DEdQXaa}-cGlsyW>
+zXg!OXv9APuf_eaTIHIAB()Vcp80=S<(t}6uxa~p5^F`XVH$D?V&HC~WHy`=}T-sdX
+zyK5o%+~>34q}Riq3oaQB01Bv<bF@FzitV|wtZ7ZZ9c|>-{h|$hL*LMEZG9*FFHkG8
+zV6OfBM_WO67F7nwW6iMdf!SU)_ru)X;I|C_!2jgod7(O}Ja~TyFf$VxBd|Yj(O~D}
+sVD-}&p5PvFT@zJ}xKV!OKeE6a4tPK#fpgH5$H-*%a9^TNOo)Q;55`RqZ2$lO
+
+diff --git app/src/main/res/raw/black.mp4 app/src/main/res/raw/black.mp4
+new file mode 100644
+index 0000000000000000000000000000000000000000..ea876851da16e39b8bc7fb21f32aa169bcb59eee
+GIT binary patch
+literal 5564
+zc%1E5UuYaf7@xaKlUQ1t(5BRq%2cBdC3m;Gxh833F_#cbrBx}~QW2NA-MQ@c_Fr}<
+z$z7!op_V=ff=D0@UQnzxSWplxf)bHFwNJho@j(%!C7?k?twPRk_LAOZ&y$+BzzsJu
+z-{0T&eKTLOy9gniWd+yp9Sfl-;yX-<Osb;grbL8LYu2L_p&f5n8ew4bLG!j!>HTj<
+zZh!vc(&)9B?yvFE!$19;mwHn;j#bB_SWNX}PwIp9NFOCMD}iD(0S3wA&x||~PvP{*
+zVX)Mw3W{OJEtoXRup|gQaY+z+L8vq44kVLPQ&WjaL!*vK?1bZuC3%#D&MXsb9G4l6
+z?GIp;WQZz@*rQpw2WvEAI%-Z92ZR9u6PuU?pUOhMXF$k{Vh^^ctkXR9Co(|wVb?E!
+zE3AsA$znnPCs?p$<f*1`L=ij`kJw{WhSXHub1b5OtB9FLP1Ep!>d*IUDg#0tw`2iQ
+zAlg~Srm`e<iz3bvpDC`NGhA*_1{il0C!6&tlj9O*x(6NrBw^EWazqDCSr<y!Hw~3m
+z1Om3bAc$&Mgz-cSn^DgsU<C4vIpL9lqB@pK81O2b5%Y*)0|Xd)gxh32Vo@JXE2Fpt
+zpbZV;WE7$imzR-IG6vz1G{d7oVN=u?(^&>6$ECJ1=D46O3te!{(E?!0(qUnZR4l^=
+z7W*o-sXD>rlz@Zi{7gOS>)`IG%H49g-cx1O%VH}72g}O>MwWUK0v_kZ$U>qQNS6Z#
+zJITwvM}Y7db>$Q`T(~9Z2)IPRBID2i{5sJzwD8mP;(7E~Y4wk%7Nc{|et9VN`l;=|
+z-+1TI)1RKmMSgh~p<kao{np}3H($K9vaJ;%^ZG{zzB+ih|JB!eKSU@N{>7F7vMqh7
+z%N$-@U6=`^vpmesba5#EN+}S0@-i1hii8a<27=$F%L4Vxx`12kO<&TFzL(Z#kF`#f
+z?t*d6u5|IjNPBm3Biv<H?G1t}XR7f5?kd2U8{wwQa5qLe!f?04*)50RR%+qO+0EZy
+z12-QJWjCJ;!Of-WWjBAK7H&M0-Mk-$%h%0rrV4J&`{QtS*Fsk@_gUTSzNyXbPB^>2
+z!*Ji#%dYrfO?E{&d=-y}8>Or6%?{Px?7j8fzh`%$7Ov5EjlOI2U8C<BeYXYruA|a-
+zPHFYZd9H~hH`{g{m9`rztrpw3rs>Vic3nrM>rRzc`v<wEePxqPcOSAGXA%^qHK}W8
+z!-(BNX!k`FLHt)4k&RYieh~fVh{EU4A$W_;0sR8Y1u<i_Xb?9%?jddjmS}&#c2SM_
+zuy<0^XB7{Q+qCA}^0uWJ1PE+t;o2pbf1&5D2TWYoOmAJozox1!Px7y;QDSQ*<u)zH
+z;q^KT#GXkj0Ig25ODpR-HF$@wDr3ilXW}y5veRc76X*q>`C66DEdQXaa}-cGlsyW>
+zXg!OXv9APuf_eaTIHIAB()Vcp80=S<(t}6uxa~p5^F`XVH$D?V&HC~WHy`=}T-sdX
+zyK5o%+~>34q}Riq3oaQB01Bv<bF@FzitV|wtZ7ZZ9c|>-{h|$hL*LMEZG9*FFHkG8
+zV6OfBM_WO67F7nwW6iMdf!SU)_ru)X;I|C_!2jgod7(O}Ja~TyFf$VxBd|Yj(O~D}
+sVD-}&p5PvFT@zJ}xKV!OKeE6a4tPK#fpgH5$H-*%a9^TNOo)Q;55`RqZ2$lO
+
+diff --git .idea/caches/build_file_checksums.ser .idea/caches/build_file_checksums.ser
+index 7754581f6cef0a20c4585655dbbf5512c9412bf4..6c76ad1df1e9d4af1e9bf5256b79b2059816af91
+GIT binary patch
+literal 537
+zc${1FmVvdnh`~NNKUXg?FQq6yGexf?KR>5fFEb@IQ7^qHF(oHeub?PDD>b=9F91S2
+zm1gFoxMk*~I%lLNXBU^|7Q2L-Ts|(GuF1r}<i#MFTj`TnT;dMa8(f)}9Fm!vT3nKt
+zTj0aMpIeEdv4nx&Co8cmQNOe#Ge_SyvB0{bfPsNAwLkm27tmdTAUQpdoSsKwaRyMH
+zmHpPi!(s^+nHiYe7`Srs6I0w0lS}f8JQ+AkGKx}*GxBp%Dhli!7(jrhoC8P-05KcT
+zqT<w&lFYpHVyLf5ix`-qoz{F7|G~x)@_>nf0c10S!18}mhbLxkeX0=^7o4WADqX^$
+zp&weDT2!o`2qcpd^Yx+n^$~$nkXlrdnOa<0$WX_?1~TM|Y|qVphD|Il8#rgY`QcPo
+z!oZUR3N)D2aD_orUhLa2sq_1TceT%3ymBN<7zA?ilM{2Wnz}Soc|mn{zuQfNZ+=ZV
+z7I`HMf_U6u@-y7cGvT`2{i|Z9J|rt{2O6DNP@s?99kQjh=MVW=zwB~!Q}Ulz8&d%Q
+DqJX@*
+
