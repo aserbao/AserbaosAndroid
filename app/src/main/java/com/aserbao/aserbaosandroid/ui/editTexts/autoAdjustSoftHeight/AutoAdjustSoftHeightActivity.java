@@ -3,14 +3,15 @@ package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AutoAdjustSoftHeightActivity extends AppCompatActivity {
+public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private static final String TAG = "AutoAdjustSoftHeightAct";
     @BindView(R.id.imageView)
     ImageView mImageView;
@@ -34,13 +35,15 @@ public class AutoAdjustSoftHeightActivity extends AppCompatActivity {
     @BindView(R.id.editText)
     EditText mEditText;
     @BindView(R.id.viewEdit)
-    RelativeLayout mViewEdit;
+    LinearLayout mViewEdit;
     @BindView(R.id.btn_show)
     Button mBtnShow;
     @BindView(R.id.result_tv)
     TextView mResultTv;
     @BindView(R.id.auto_rl)
     RelativeLayout mAutoRl;
+    @BindView(R.id.text_view)
+    TextView mTextView;
 
 
     private int mHeight;
@@ -50,11 +53,13 @@ public class AutoAdjustSoftHeightActivity extends AppCompatActivity {
     private int mBtnShowWidth;
     private float mLastX;
     private float mLastY;
+    private View mContentChild;
+    private FrameLayout mChildContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto_adjust_soft_height1);
+        setContentView(R.layout.activity_auto_adjust_soft_height2);
         ButterKnife.bind(this);
         mBtnShow.post(new Runnable() {
             @Override
@@ -67,40 +72,164 @@ public class AutoAdjustSoftHeightActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
-        /*mBtnShow.setOnTouchListener(new View.OnTouchListener() {
+
+        initDragEvent();
+
+        /*new SoftKeyboardStateHelper(getWindow().getDecorView()).addSoftKeyboardStateListener(new SoftKeyboardStateHelper.SoftKeyboardStateListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        mLastX = event.getRawX();
-                        mLastY = event.getRawY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        int x = ((int) event.getRawX());
-                        int y = ((int) event.getRawY());
-                        float chaXm = x - mLastX;
-                        float chaYm = y - mLastY;
-                        int halfWidth = (int) (mBtnShowWidth / 2);
-                        int halfHeight = mBtnShowHeight / 2;
-                        mBtnShow.layout(x - halfWidth, y - halfHeight, x + halfWidth, y + halfHeight);
-                        Log.e(TAG, "onTouch: chaX = " + chaXm + " ChaY = " + chaYm);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                    case MotionEvent.ACTION_CANCEL:
-                        float chaXu = event.getX() - mLastX;
-                        float chaYu = event.getY() - mLastY;
-                        Log.e(TAG, "onTouch: chaX = " + chaXu + " ChaY = " + chaYu);
-                        break;
-                }
-                return false;
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTextView.getLayoutParams();
+                int navigationBarrH = AppScreenMgr.getNavigationBarrH(AutoAdjustSoftHeightActivity.this);
+//                layoutParams.height = keyboardHeightInPx - navigationBarrH;
+                layoutParams.height = keyboardHeightInPx ;
+                mTextView.setLayoutParams(layoutParams);
+                mTextView.postInvalidate();
+
+                Log.e(TAG, "onSoftKeyboardOpened: " + keyboardHeightInPx);
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+                mTextView.setVisibility(View.GONE);
+                Log.e(TAG, "onSoftKeyboardClosed: 关闭了哈哈哈哈……");
             }
         });*/
 
+        //拿到当前XML文件的根布局
+        mChildContent = (FrameLayout) findViewById(android.R.id.content);
+
+        //监听当前View的状态,进行通知回调,即"软键盘弹出""
+        View  childew = mChildContent.getChildAt(0);
+        childew.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            public void onGlobalLayout() {
+
+                View decorView = getWindow().getDecorView();
+                Rect r = new Rect();
+                //r will be populated with the coordinates of your view that area still visible.
+                decorView.getWindowVisibleDisplayFrame(r);
+                int heightDifference = decorView.getRootView().getHeight() - (r.bottom - r.top);
+                if(mLastHeight != heightDifference) {
+                    if(heightDifference > 300) {
+                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTextView.getLayoutParams();
+                        boolean isHaveNarBar = AppScreenMgr.isNavigationBarShow(AutoAdjustSoftHeightActivity.this);
+                        int navigationBarrH = AppScreenMgr.getNavigationBarrH(AutoAdjustSoftHeightActivity.this);
+                        if(isHaveNarBar) {
+                            layoutParams.height = heightDifference - navigationBarrH;
+                        }else{
+                            layoutParams.height = heightDifference;
+                        }
+                        mTextView.setLayoutParams(layoutParams);
+                        mTextView.postInvalidate();
+                    }else{
+                        mTextView.setVisibility(View.GONE);
+                    }
+                    mLastHeight = heightDifference;
+                    Log.e(TAG, "onSoftKeyboardOpened: " + heightDifference + "mLastHeight" + mLastHeight);
+                }
+            }
+        });
+        mEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextView.setVisibility(View.VISIBLE);
+                Log.e(TAG, "onClick: " );
+            }
+        });
+        mEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.e(TAG, "onTouch: " + event.getAction());
+                return false;
+            }
+        });
+
+    }
+
+    private int mLastHeight = 0;
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void initGetData() {
+        View decorView = getWindow().getDecorView();
+        mScreeenWidth = decorView.getWidth();
+        mScreenHeight = AppScreenMgr.getScreenHeight(this);
+        mBtnShowHeight = mBtnShow.getHeight();
+        mBtnShowWidth = mBtnShow.getWidth();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Log.e(TAG, "onWindowFocusChanged: " + hasFocus);
+    }
+
+
+    @OnClick({R.id.btn_do_something, R.id.btn_do_second, R.id.btn_show})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_do_something:
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                try {
+                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
+                    method.setAccessible(true);
+                    mHeight = (Integer) method.invoke(inputMethodManager, null);
+                    Log.e(TAG, "initView: " + mHeight);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                int top = mScreenHeight - mHeight - mBtnShowHeight;
+                int bottom = mScreenHeight - mHeight;
+//                mBtnShow.layout(mScreeenWidth - mBtnShow.getWidth(), top, mScreeenWidth, bottom);
+
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mBtnShow.getLayoutParams();
+                int l = layoutParams.leftMargin;
+                int height = mAutoRl.getHeight();
+                int t = mScreenHeight - mHeight - mBtnShowHeight;
+                int b = mAutoRl.getHeight() - t - mBtnShow.getHeight();
+                int r = mAutoRl.getWidth() - l - mBtnShow.getWidth();
+
+                layoutParams.leftMargin = l;
+                layoutParams.topMargin = t;
+                layoutParams.bottomMargin = b;
+                layoutParams.rightMargin = r;
+
+                mBtnShow.setLayoutParams(layoutParams);
+                mBtnShow.postInvalidate();
+
+                Log.e(TAG, "initView: top:  " + top + " bottom = " + bottom + " mBtnShowHeight : " + mBtnShowHeight);
+                break;
+            case R.id.btn_do_second:
+                View mChildOfContent = mAutoRl.getChildAt(0);
+                mChildOfContent.getViewTreeObserver()
+                        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                            public void onGlobalLayout() {
+                                Rect r = new Rect();
+                                mAutoRl.getWindowVisibleDisplayFrame(r);
+                                int screenHeight = mAutoRl.getRootView().getHeight();
+                                int heightDifference = screenHeight - (r.bottom);
+
+                                mBtnShow.layout(mScreeenWidth - mBtnShow.getWidth(), heightDifference + mBtnShowHeight, mScreeenWidth, heightDifference);
+                                Log.e(TAG, "onGlobalLayout: " + heightDifference);
+                            }
+                        });
+                break;
+            case R.id.btn_show:
+                mResultTv.setText(AppScreenMgr.getScreenInfo(this));
+                break;
+        }
+    }
+
+
+    private void initDragEvent() {
         mBtnShow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 //拖动事件处理
-
                 boolean mIsClick = false;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -157,76 +286,5 @@ public class AutoAdjustSoftHeightActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    private void initGetData() {
-        View decorView = getWindow().getDecorView();
-        mScreeenWidth = decorView.getWidth();
-        mScreenHeight = AppScreenMgr.getScreenHeight(this);
-        mBtnShowHeight = mBtnShow.getHeight();
-        mBtnShowWidth = mBtnShow.getWidth();
-    }
-
-    @OnClick({R.id.btn_do_something, R.id.btn_do_second, R.id.btn_show})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_do_something:
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                try {
-                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
-                    method.setAccessible(true);
-                    mHeight = (Integer) method.invoke(inputMethodManager, null);
-                    Log.e(TAG, "initView: " + mHeight);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                int top = mScreenHeight - mHeight - mBtnShowHeight;
-                int bottom = mScreenHeight - mHeight;
-//                mBtnShow.layout(mScreeenWidth - mBtnShow.getWidth(), top, mScreeenWidth, bottom);
-
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mBtnShow.getLayoutParams();
-                int l = layoutParams.leftMargin ;
-                int height = mAutoRl.getHeight();
-                int t = mScreenHeight - mHeight - mBtnShowHeight;
-                int b = mAutoRl.getHeight() - t - mBtnShow.getHeight();
-//                int b = 0;
-                int r = mAutoRl.getWidth() - l - mBtnShow.getWidth();
-
-                layoutParams.leftMargin = l;
-                layoutParams.topMargin = t;
-                layoutParams.bottomMargin = b;
-                layoutParams.rightMargin = r;
-
-                mBtnShow.setLayoutParams(layoutParams);
-                mBtnShow.postInvalidate();
-
-                Log.e(TAG, "initView: top:  " + top + " bottom = " + bottom + " mBtnShowHeight : " + mBtnShowHeight);
-                break;
-            case R.id.btn_do_second:
-                View mChildOfContent = mViewEdit.getChildAt(0);
-                mChildOfContent.getViewTreeObserver()
-                        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                            public void onGlobalLayout() {
-                                Rect r = new Rect();
-                                mViewEdit.getWindowVisibleDisplayFrame(r);
-                                int screenHeight = mViewEdit.getRootView().getHeight();
-                                int heightDifference = screenHeight - (r.bottom);
-
-                                mBtnShow.layout(mScreeenWidth - mBtnShow.getWidth(), heightDifference + mBtnShowHeight, mScreeenWidth, heightDifference);
-                                Log.e(TAG, "onGlobalLayout: " + heightDifference);
-                            }
-                        });
-                break;
-            case R.id.btn_show:
-                mResultTv.setText(AppScreenMgr.getScreenInfo(this));
-                break;
-        }
-    }
-
 
 }

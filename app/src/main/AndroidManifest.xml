@@ -31,7 +31,6 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,11 +70,14 @@
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
         <activity android:name=".ui.editTexts.EditTextsActivity">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
@@ -96,8 +98,9 @@
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity
             android:name=".ui.editTexts.autoAdjustSoftHeight.AutoAdjustSoftHeightActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
-        <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity"></activity>
+            android:windowSoftInputMode="adjustResize|stateUnspecified" />
+        <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
+        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"></activity>
     </application>
 
 </manifest>

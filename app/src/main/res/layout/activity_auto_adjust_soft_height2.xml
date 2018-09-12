@@ -6,7 +6,7 @@ android:layout_height="match_parent">
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:overScrollMode="never"
     android:scrollbars="none">
 
@@ -24,24 +24,31 @@ android:layout_height="match_parent">
             android:src="@drawable/palette"/>
     </LinearLayout>
 </ScrollView>
-
-<RelativeLayout
-    android:id="@+id/viewEdit"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:layout_alignParentBottom="true"
-    android:background="#88f1abcd">
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true" />
-
-
-</RelativeLayout>
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:id="@+id/viewEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:background="#88f1abcd"
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true" />
+
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="visible"
         android:layout_centerInParent="true"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -56,6 +63,7 @@ android:layout_height="match_parent">
             android:id="@+id/btn_do_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
     <Button
         android:id="@+id/btn_show"

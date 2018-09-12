@@ -6,12 +6,17 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Picture;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -37,14 +42,60 @@ import java.util.Date;
 public class AppScreenMgr {
 
     /**
-     * Get the width of the screen.
-     *获得屏幕宽度
-     * @param context
-     *            The context to use. Usually your
-     *            {@link android.app.Application} or
-     *            {@link Activity} object.
-     * @return Return the width of the screen.
+     * judge if there is a navigation bar（判断当前手机是否有导航栏）
+     * @param activity
+     * @return
      */
+    public static boolean checkDeviceHasNavigationBars(Context activity) {
+
+        //通过判断设备是否有返回键、菜单键(不是虚拟键,是手机屏幕外的按键)来确定是否有navigation bar
+        boolean hasMenuKey = ViewConfiguration.get(activity)
+                .hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap
+                .deviceHasKey(KeyEvent.KEYCODE_BACK);
+
+        if (!hasMenuKey && !hasBackKey) {
+            // 做任何你需要做的,这个设备有一个导航栏
+            return true;
+        }
+        return false;
+
+    }
+
+    /**
+     * judge if there is a navigation bar（判断当前手机是否有导航栏）
+     * @param activity
+     * @return
+     */
+    public static boolean isNavigationBarShow(Activity activity){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Display display = activity.getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            Point realSize = new Point();
+            display.getSize(size);
+            display.getRealSize(realSize);
+            boolean  result  = realSize.y!=size.y;
+            return realSize.y!=size.y;
+        }else {
+            boolean menu = ViewConfiguration.get(activity).hasPermanentMenuKey();
+            boolean back = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+            if(menu || back) {
+                return false;
+            }else {
+                return true;
+            }
+        }
+    }
+
+        /**
+         * Get the width of the screen.
+         *获得屏幕宽度
+         * @param context
+         *            The context to use. Usually your
+         *            {@link android.app.Application} or
+         *            {@link Activity} object.
+         * @return Return the width of the screen.
+         */
     public static int getScreenWidth(Context context) {
         WindowManager windowManager = (WindowManager) context
             .getSystemService(Context.WINDOW_SERVICE);
