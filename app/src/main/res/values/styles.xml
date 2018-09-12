@@ -10,6 +10,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+
     
     <style name="global_text_view_style">
         <item name="android:layout_width">wrap_content</item>
@@ -34,6 +35,12 @@
     </declare-styleable>
 
     <style name="common_btn">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/common_btn_bg</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

@@ -1,9 +1,8 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.views;
+package com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class ResizeLayout extends RelativeLayout {

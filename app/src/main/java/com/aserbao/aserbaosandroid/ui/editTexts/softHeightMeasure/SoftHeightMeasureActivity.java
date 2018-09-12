@@ -3,7 +3,6 @@ package com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SoftHeightMeasureActivity extends AppCompatActivity {
 
@@ -43,7 +43,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
         View rootView = LayoutInflater.from(this).inflate(R.layout.test_pop, null);
         mPopupWindow = new PopupWindow(rootView.getRootView(), WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setOutsideTouchable(true);
-        mPopupWindow.showAtLocation(rootView.getRootView(), Gravity.AXIS_Y_SHIFT,0,-offy);
+        mPopupWindow.showAtLocation(rootView.getRootView(), Gravity.AXIS_Y_SHIFT, 0, -offy);
     }
 
     private void initListener() {
@@ -53,17 +53,6 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 initPop(mHeightDifference);
             }
         });
-        /*softHeightRl.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                Rect r = new Rect();
-                softHeightRl.getWindowVisibleDisplayFrame(r);
-                int screenHeight = softHeightRl.getRootView().getHeight();
-                int heightDifference = screenHeight - (r.bottom);
-                showSoftHeightTv.setText(String.valueOf(heightDifference));
-            }
-        });*/
-
         View mChildOfContent = softHeightRl.getChildAt(0);
         mChildOfContent.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -78,10 +67,31 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                                 "检测布局屏幕显示的Bottom:" + r.bottom + "\n" +
                                 "检测布局屏幕显示的Left:" + r.left + "\n" +
                                 "检测布局屏幕显示的Right:" + r.right + "\n" +
-                                "检测布局屏幕getHeight:" +screenHeight + "\n" +
-                                "检测布局屏幕getWidth:" +screenWidth + "\n" +
+                                "检测布局屏幕getHeight:" + screenHeight + "\n" +
+                                "检测布局屏幕getWidth:" + screenWidth + "\n" +
                                 "检测布局屏幕显示高度差为:" + mHeightDifference + "\n" +
-                                "检测布局屏幕显示宽度差为:" + + widthDifference );
-                    }});
+                                "检测布局屏幕显示宽度差为:" + +widthDifference);
+                    }
+                });
+    }
+
+    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified,R.id.btn_adjustNothing})
+    public void onViewClicked(View view) {
+        int inputMode = 0;
+        switch (view.getId()) {
+            case R.id.bt_adjustPan:
+                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
+                break;
+            case R.id.bt_adjustResize:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
+                break;
+            case R.id.bt_adjustUnspecified:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED;
+                break;
+            case R.id.btn_adjustNothing:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING;
+                break;
+        }
+        getWindow().setSoftInputMode(inputMode);
     }
 }

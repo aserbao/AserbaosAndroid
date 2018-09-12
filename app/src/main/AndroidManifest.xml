@@ -79,7 +79,9 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity" />
+        <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!-- android:windowSoftInputMode="adjustNothing" -->
         <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
@@ -97,7 +99,7 @@
         <activity android:name=".functions.cache.aSimpleCache.ASimpleCacheActivity" />
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity
-            android:name=".ui.editTexts.autoAdjustSoftHeight.AutoAdjustSoftHeightActivity"
+            android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
         <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
         <activity android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"></activity>

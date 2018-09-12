@@ -1,10 +1,9 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
+package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen;
 
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.CustomActivity;
 
 import java.lang.reflect.Method;
 
@@ -26,6 +26,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 全屏
+ */
 public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private static final String TAG = "AutoAdjustSoftHeightAct";
     @BindView(R.id.imageView)
@@ -74,27 +77,6 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private void initListener() {
 
         initDragEvent();
-
-        /*new SoftKeyboardStateHelper(getWindow().getDecorView()).addSoftKeyboardStateListener(new SoftKeyboardStateHelper.SoftKeyboardStateListener() {
-            @Override
-            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTextView.getLayoutParams();
-                int navigationBarrH = AppScreenMgr.getNavigationBarrH(AutoAdjustSoftHeightActivity.this);
-//                layoutParams.height = keyboardHeightInPx - navigationBarrH;
-                layoutParams.height = keyboardHeightInPx ;
-                mTextView.setLayoutParams(layoutParams);
-                mTextView.postInvalidate();
-
-                Log.e(TAG, "onSoftKeyboardOpened: " + keyboardHeightInPx);
-            }
-
-            @Override
-            public void onSoftKeyboardClosed() {
-                mTextView.setVisibility(View.GONE);
-                Log.e(TAG, "onSoftKeyboardClosed: 关闭了哈哈哈哈……");
-            }
-        });*/
-
         //拿到当前XML文件的根布局
         mChildContent = (FrameLayout) findViewById(android.R.id.content);
 

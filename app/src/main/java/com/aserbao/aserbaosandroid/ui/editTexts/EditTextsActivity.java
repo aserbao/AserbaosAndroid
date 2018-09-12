@@ -2,7 +2,7 @@ package com.aserbao.aserbaosandroid.ui.editTexts;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
-import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.AutoAdjustSoftHeightActivity;
+import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity;
 import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity;
 import com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
 

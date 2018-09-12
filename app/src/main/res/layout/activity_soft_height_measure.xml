@@ -1,27 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aserbao.aserbaosandroid.ui.editTexts.views.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/soft_height_rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
-    <EditText
-        android:hint="我是来测量软件盘高度的"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/soft_et"
-        android:background="@color/black40"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
-
     <TextView
+        android:background="@color/white"
+        android:text="我是头布局"
+        android:textColor="@color/black"
         android:gravity="center"
-        android:layout_centerInParent="true"
-        android:id="@+id/show_soft_height_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</com.aserbao.aserbaosandroid.ui.editTexts.views.ResizeLayout>
+        android:layout_height="30dp" />
+    <ScrollView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/black50"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:text="黑色50%部分被滚动布局（ScrollView）包裹着"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:id="@+id/show_soft_height_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/bt_adjustPan"
+            android:text="adjustPan"
+            style="@style/common_btn"
+             />
+        <Button
+            android:id="@+id/bt_adjustResize"
+            android:text="adjustResize"
+            style="@style/common_btn"
+            />
+        <Button
+            android:id="@+id/bt_adjustUnspecified"
+            android:text="adjustUnspecified"
+            style="@style/common_btn"
+            />
+        <Button
+            android:id="@+id/btn_adjustNothing"
+            android:text="adjustNothing"
+            style="@style/common_btn"
+            />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+    <LinearLayout
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:hint="点击我来测量软件盘高度的"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/soft_et"
+            android:background="@color/black40"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+    <TextView
+        android:background="@color/white"
+        android:text="我是尾布局"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+</com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views.ResizeLayout>
