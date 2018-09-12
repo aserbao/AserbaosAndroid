@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 全屏
+ * 全屏状态下的软键盘显示
  */
 public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private static final String TAG = "AutoAdjustSoftHeightAct";

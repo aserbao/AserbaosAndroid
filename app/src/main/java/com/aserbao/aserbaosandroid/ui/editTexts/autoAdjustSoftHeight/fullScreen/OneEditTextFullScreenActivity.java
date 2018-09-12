@@ -8,6 +8,9 @@ import com.aserbao.aserbaosandroid.ui.editTexts.utils.AndroidBug5497Workaround;
 
 import butterknife.ButterKnife;
 
+/**
+ * 全屏模式下的Activity的软键盘的显示技巧
+ */
 public class OneEditTextFullScreenActivity extends AppCompatActivity {
 
     @Override

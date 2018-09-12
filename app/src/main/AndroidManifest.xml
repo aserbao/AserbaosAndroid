@@ -102,7 +102,7 @@
             android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
         <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
-        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"></activity>
+        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity" />
     </application>
 
 </manifest>
