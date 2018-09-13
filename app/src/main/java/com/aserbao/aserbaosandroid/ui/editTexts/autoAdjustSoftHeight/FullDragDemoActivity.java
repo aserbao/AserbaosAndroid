@@ -1,5 +1,8 @@
 package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +17,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
+import com.aserbao.aserbaosandroid.AUtils.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
@@ -41,11 +45,16 @@ public class FullDragDemoActivity extends AppCompatActivity {
     @BindView(R.id.iamge_view)
     ImageView mIamgeView;
     @BindView(R.id.drag_iv)
-    ImageView mDragIv;
+    ACustomRecordProgress mDragIv;
     @BindView(R.id.move_view_container_rl)
     RelativeLayout mMoveViewContainerRl;
+    @BindView(R.id.include_rl)
+    RelativeLayout mIncludeRl;
     @BindView(R.id.default_record_iv)
-    ImageView mDefaultRecordIv;
+    View mDefaultRecordIv;
+    @BindView(R.id.bottom_input_ll)
+    LinearLayout mBottomInputLl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,7 @@ public class FullDragDemoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initListener();
     }
+
 
     @Override
     protected void onResume() {
@@ -68,9 +78,33 @@ public class FullDragDemoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 float x = mDefaultRecordIv.getX();
                 float y = mDefaultRecordIv.getY();
+                float includeRlY = mIncludeRl.getY();
                 Rect r = new Rect();
                 mDefaultRecordIv.getWindowVisibleDisplayFrame(r);
-                Log.e(TAG, "onClick: getX =  " +  x + "  getY = " +  y + " r :" +  r.toString());
+                Log.e(TAG, "onClick: WindowVisibleDisplayFrame : " + r.toString());
+                mDefaultRecordIv.getGlobalVisibleRect(r);
+                Log.e(TAG, "onClick: getGlobalVisibleRect : " + r.toString());
+                mDefaultRecordIv.getLocalVisibleRect(r);
+                Log.e(TAG, "onClick: getLocalVisibleRect : " + r.toString());
+                int[] location = new int[2];
+                mDefaultRecordIv.getLocationInWindow(location); //获取在当前窗口内的绝对坐标
+                Log.e(TAG, " \nonClick:   原录制按钮窗口内的位置：x = " + location[0] + " Y = " + location[1]);
+                mDefaultRecordIv.getLocationOnScreen(location);//获取在整个屏幕内的绝对坐标
+                Log.e(TAG, "onClick:   原录制按钮屏幕中的位置：x = " + location[0] + " Y = " + location[1]);
+
+
+                int[] location1 = new int[2];
+                mDragIv.getLocationOnScreen(location1);
+                Log.e(TAG, "onClick:   结果录制按钮屏幕中的位置：x = " + location1[0] + " Y = " + location1[1]);
+
+
+                int chaX = location[0] - location1[0];
+                int chaY = location[1] - location1[1];
+
+                Log.e(TAG, "onClick: chaX = " + chaX + " ChaY = " + chaY);
+                PropertyValuesHolder translationX = PropertyValuesHolder.ofFloat("X", 0.0f, chaX);
+                PropertyValuesHolder translationY = PropertyValuesHolder.ofFloat("Y", 0.0f, chaY);
+                ObjectAnimator.ofPropertyValuesHolder(mDragIv, translationX, translationY).setDuration(0).start();
             }
         });
         mDefaultRecordIv.setOnLongClickListener(new View.OnLongClickListener() {
@@ -88,6 +122,20 @@ public class FullDragDemoActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        mSwitchCameraV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDragIv.startRecording();
+            }
+        });
+
+        mPhotoSelectionIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDragIv.stopRecording();
+            }
+        });
         initDragEvent();
     }
 
@@ -96,11 +144,13 @@ public class FullDragDemoActivity extends AppCompatActivity {
     private int mMeasureSoftKBHeight;
     private int mLastHeight = 0;
 
-    private void initCheckKeyBoardIsShow(EditText editText) {
-        editText.setOnClickListener(new View.OnClickListener() {
+    private void initCheckKeyBoardIsShow(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+                editText.setCursorVisible(true);
                 mPlaceholderTv.setVisibility(View.VISIBLE);
+                return false;
             }
         });
         //拿到当前XML文件的根布局
@@ -143,7 +193,10 @@ public class FullDragDemoActivity extends AppCompatActivity {
                         layoutParams.height = result;
                         mPlaceholderTv.setLayoutParams(layoutParams);
                         mPlaceholderTv.postInvalidate();
+                        setRecordBtnMargain(mMeasureSoftKBHeight);
                     } else {
+                        setRecordBtnMargain(0);
+                        mNewStoryEt.setCursorVisible(false);
                         mPlaceholderTv.setVisibility(View.GONE);
                     }
                     mLastHeight = mMeasureSoftKBHeight;
@@ -152,69 +205,50 @@ public class FullDragDemoActivity extends AppCompatActivity {
         });
     }
 
-    private float mLastX;
-    private float mLastY;
+    private void setRecordBtnMargain(int increaseHeight) {
+        RelativeLayout.LayoutParams dragIvLayoutParams = (RelativeLayout.LayoutParams) mDragIv.getLayoutParams();
+        dragIvLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM | RelativeLayout.CENTER_HORIZONTAL);
+        int oneIncludeBottomMargin = DisplayUtil.dp2px(FullDragDemoActivity.this, 36);
+        int bottomMargin = oneIncludeBottomMargin + increaseHeight;
+
+        dragIvLayoutParams.bottomMargin = bottomMargin;
+        dragIvLayoutParams.topMargin = bottomMargin - mDragIv.getHeight();
+        mDragIv.setLayoutParams(dragIvLayoutParams);
+    }
+
 
     private void initDragEvent() {
         mDragIv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 //拖动事件处理
-                boolean mIsClick = false;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //v.setBackgroundResource(R.mipmap.btn_style_one_press);
-                        mIsClick = false;//当按下的时候设置isclick为false，具体原因看后边的讲解
-                        mLastX = (int) event.getRawX();
-                        mLastY = (int) event.getRawY();//按钮初始的横纵坐标
 
-                        break;
                     case MotionEvent.ACTION_MOVE:
-                        mIsClick = true;//当按钮被移动的时候设置isclick为true
-                        float currentX = event.getRawX();
-                        float currentY = event.getRawY();
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v.getLayoutParams();
-                        int dx = (int) (currentX - mLastX);
-                        int dy = (int) (currentY - mLastY);//按钮被移动的距离
-                        int l = layoutParams.leftMargin + dx;
-                        int t = layoutParams.topMargin + dy;
-                        int b = mMoveViewContainerRl.getHeight() - t - v.getHeight();
-                        int r = mMoveViewContainerRl.getWidth() - l - v.getWidth();
-                        if (l < 0) {//处理按钮被移动到上下左右四个边缘时的情况，决定着按钮不会被移动到屏幕外边去
-                            l = 0;
-                            r = mMoveViewContainerRl.getWidth() - v.getWidth();
-                        }
-                        if (t < 0) {
-                            t = 0;
-                            b = mMoveViewContainerRl.getHeight() - v.getHeight();
-                        }
-
-                        if (r < 0) {
-                            r = 0;
-                            l = mMoveViewContainerRl.getWidth() - v.getWidth();
-                        }
-                        if (b < 0) {
-                            b = 0;
-                            t = mMoveViewContainerRl.getHeight() - v.getHeight();
-                        }
-                        layoutParams.leftMargin = l;
-                        layoutParams.topMargin = t;
-                        layoutParams.bottomMargin = b;
-                        layoutParams.rightMargin = r;
-
-                        v.setLayoutParams(layoutParams);
-                        mLastX = (int) currentX;
-                        mLastY = (int) currentY;
+                        closeKeybord(mNewStoryEt,FullDragDemoActivity.this);
+                        mBottomInputLl.setVisibility(View.GONE);
+                        int currentX = (int) event.getRawX();
+                        int currentY = (int) event.getRawY();
+                        int halfHeight = mDragIv.getHeight() / 2;
+                        int halfWidth = mDragIv.getWidth() / 2;
+                        v.layout(currentX - halfWidth, currentY - halfHeight, currentX + halfWidth, currentY + halfHeight);
                         v.postInvalidate();
-                        Log.e(TAG, "onTonTouchouch: " + currentX + "  cuurentY =  " + currentY );
                         break;
                     case MotionEvent.ACTION_UP:
-                        break;
-                    default:
+                        mBottomInputLl.setVisibility(View.VISIBLE);
+                        mMoveViewContainerRl.requestLayout();
+                        Log.e(TAG, "onTouch: ActionUP");
                         break;
                 }
-                return mIsClick;
+                return true;
             }
         });
+    }
+
+    public  void closeKeybord(EditText mEditText, Context mContext)
+    {
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }
 }

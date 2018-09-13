@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:id="@+id/move_view_container_rl"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     >
     <ImageView
         android:id="@+id/iamge_view"
@@ -13,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <LinearLayout
+        android:id="@+id/bottom_input_ll"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -33,6 +32,7 @@
                         style="@style/my_edit_text_style"
                         />
                     <RelativeLayout
+                        android:id="@+id/include_rl"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="36dp"
                         android:orientation="horizontal"
@@ -81,18 +81,23 @@
                     </RelativeLayout>
                 </LinearLayout>
             <TextView
-                android:visibility="visible"
+                android:visibility="gone"
                 android:id="@+id/placeholder_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <ImageView
-        android:layout_centerHorizontal="true"
-        android:id="@+id/drag_iv"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/round_red_bg"
-        android:layout_width="96dp"
-        android:layout_height="96dp" />
-
+<RelativeLayout
+    android:id="@+id/move_view_container_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="36dp"
+            android:id="@+id/drag_iv"
+            android:src="@drawable/round_white_bg"
+            android:layout_width="96dp"
+            android:layout_height="96dp" />
+</RelativeLayout>
 </RelativeLayout>
