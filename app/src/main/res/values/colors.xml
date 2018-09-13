@@ -7,6 +7,10 @@
     //全局的配置
     <color name="global_text_color">@color/white</color>
     <color name="transparent">#00000000</color>
+    //基色
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
     //白色
     <color name="white">#ffffff</color>
     <color name="white10">#1AFFFFFF</color>

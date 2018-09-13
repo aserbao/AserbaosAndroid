@@ -87,6 +87,8 @@ public class AppScreenMgr {
         }
     }
 
+
+
         /**
          * Get the width of the screen.
          *获得屏幕宽度

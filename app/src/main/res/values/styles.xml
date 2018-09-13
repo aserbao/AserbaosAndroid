@@ -44,4 +44,17 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+
+    //=============带阴影的字体
+    <style name="text_shadow_style">
+        <item name="android:shadowRadius">8</item>
+        <item name="android:shadowColor">@color/black70</item>
+        <item name="android:shadowDy">4</item>
+    </style>
+
+    <style name="my_edit_text_style">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
 </resources>

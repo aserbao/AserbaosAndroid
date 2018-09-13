@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -11,14 +12,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/palette"/>
+                android:scaleType="center"
+                android:src="@drawable/mm_4"/>
         </LinearLayout>
     </ScrollView>
+
+
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:id="@+id/viewEdit"

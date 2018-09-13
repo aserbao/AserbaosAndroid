@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.CustomActivity;
 
 import java.lang.reflect.Method;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 全屏状态下的软键盘显示
+ * 全屏状态下的软键盘显示（通过在EditText下隐藏布局的方式实现）
  */
 public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private static final String TAG = "AutoAdjustSoftHeightAct";
@@ -58,6 +59,7 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
     private float mLastY;
     private View mContentChild;
     private FrameLayout mChildContent;
+    private int mMeasureSoftKBHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +75,33 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
         initListener();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mImageView.setImageResource(ImageSource.getRandomImageId());
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
 
         initDragEvent();
+        initCheckKeyBoardIsShow1();
+
+        mEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextView.setVisibility(View.VISIBLE);
+                Log.e(TAG, "onClick: " );
+            }
+        });
+    }
+
+    private void initCheckKeyBoardIsShow() {
         //拿到当前XML文件的根布局
         mChildContent = (FrameLayout) findViewById(android.R.id.content);
 
         //监听当前View的状态,进行通知回调,即"软键盘弹出""
-        View  childew = mChildContent.getChildAt(0);
+        View childew = mChildContent.getChildAt(0);
         childew.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             public void onGlobalLayout() {
 
@@ -89,13 +109,15 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                 Rect r = new Rect();
                 //r will be populated with the coordinates of your view that area still visible.
                 decorView.getWindowVisibleDisplayFrame(r);
-                int heightDifference = decorView.getRootView().getHeight() - (r.bottom - r.top);
+                int rootHeight = decorView.getRootView().getHeight();
+                int rH = r.bottom - r.top;
+                int heightDifference = rootHeight - rH;
                 if(mLastHeight != heightDifference) {
                     if(heightDifference > 300) {
                         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTextView.getLayoutParams();
                         boolean isHaveNarBar = AppScreenMgr.isNavigationBarShow(AutoAdjustSoftHeightActivity.this);
                         int navigationBarrH = AppScreenMgr.getNavigationBarrH(AutoAdjustSoftHeightActivity.this);
-                        if(isHaveNarBar) {
+                        if(!isHaveNarBar) {
                             layoutParams.height = heightDifference - navigationBarrH;
                         }else{
                             layoutParams.height = heightDifference;
@@ -106,34 +128,64 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                         mTextView.setVisibility(View.GONE);
                     }
                     mLastHeight = heightDifference;
-                    Log.e(TAG, "onSoftKeyboardOpened: " + heightDifference + "mLastHeight" + mLastHeight);
+                }
+                Log.e(TAG, "onSoftKeyboardOpened: " + heightDifference + "  mLastHeight" + mLastHeight + " rBottom = " + r.bottom + " rTop = " + r.top + " RootHeight = " + rootHeight);
+            }
+        });
+    }
+
+    private void initCheckKeyBoardIsShow1() {
+        //拿到当前XML文件的根布局
+        mChildContent = (FrameLayout) findViewById(android.R.id.content);
+
+        //监听当前View的状态,进行通知回调,即"软键盘弹出""
+        View childew = mChildContent.getChildAt(0);
+        childew.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            public void onGlobalLayout() {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                int injectSoftHeight = 0;
+                try {
+                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
+                    method.setAccessible(true);
+                    injectSoftHeight = (Integer) method.invoke(inputMethodManager, null);
+                    Log.e(TAG, "initView: " + mHeight);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                View decorView = getWindow().getDecorView();
+                Rect r = new Rect();
+                //r will be populated with the coordinates of your view that area still visible.
+                decorView.getWindowVisibleDisplayFrame(r);
+                int rootHeight = decorView.getRootView().getHeight();
+                int rH = r.bottom - r.top;
+                int measureDVHeight = rootHeight - rH;
+
+                if(injectSoftHeight > 200){
+                    mMeasureSoftKBHeight = injectSoftHeight < measureDVHeight ? injectSoftHeight : measureDVHeight;
+                }else if(injectSoftHeight <= 200 ){
+                    mMeasureSoftKBHeight = measureDVHeight;
+                }
+                Log.e(TAG, "onGlobalLayout: heightDifference" + measureDVHeight + "mMeasureSoftKBHeight =  " + mMeasureSoftKBHeight );
+
+                if(mLastHeight != mMeasureSoftKBHeight) {
+                    if(mMeasureSoftKBHeight > 200) {
+                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTextView.getLayoutParams();
+                        int result = 0;
+                        result = mMeasureSoftKBHeight;
+                        layoutParams.height = result;
+                        mTextView.setLayoutParams(layoutParams);
+                        mTextView.postInvalidate();
+                    }else{
+                        mTextView.setVisibility(View.GONE);
+                    }
+                    mLastHeight = mMeasureSoftKBHeight;
                 }
             }
         });
-        mEditText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mTextView.setVisibility(View.VISIBLE);
-                Log.e(TAG, "onClick: " );
-            }
-        });
-        mEditText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.e(TAG, "onTouch: " + event.getAction());
-                return false;
-            }
-        });
-
     }
 
     private int mLastHeight = 0;
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     private void initGetData() {
         View decorView = getWindow().getDecorView();

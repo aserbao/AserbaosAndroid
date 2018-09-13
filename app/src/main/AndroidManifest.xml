@@ -79,9 +79,10 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
         <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
@@ -102,7 +103,10 @@
             android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
         <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
-        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity" />
+        <activity
+            android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.FullDragDemoActivity"></activity>
     </application>
 
 </manifest>

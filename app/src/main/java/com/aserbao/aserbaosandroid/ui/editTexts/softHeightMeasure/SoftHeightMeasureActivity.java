@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,8 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     TextView showSoftHeightTv;
     @BindView(R.id.soft_height_rl)
     RelativeLayout softHeightRl;
+    @BindView(R.id.image_view_bg)
+    ImageView mImageViewBg;
     private int mHeightDifference;
     private PopupWindow mPopupWindow;
 
@@ -40,6 +44,12 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initListener();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mImageViewBg.setImageResource(ImageSource.getRandomImageId());
     }
 
     private void initPop(int offy) {
@@ -78,12 +88,12 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 });
     }
 
-    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified,R.id.btn_adjustNothing})
+    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing})
     public void onViewClicked(View view) {
         int inputMode = 0;
         switch (view.getId()) {
             case R.id.bt_adjustPan:
-                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
                 break;
             case R.id.bt_adjustResize:
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;

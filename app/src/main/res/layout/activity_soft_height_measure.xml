@@ -7,39 +7,30 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
     <TextView
+        android:gravity="center"
         android:background="@color/white"
         android:text="我是头布局"
         android:textColor="@color/black"
-        android:gravity="center"
+        android:id="@+id/show_soft_height_tv"
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="wrap_content" />
     <ScrollView
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:background="@color/black50"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:gravity="center"
-                android:text="黑色50%部分被滚动布局（ScrollView）包裹着"
+            <ImageView
+                android:id="@+id/image_view_bg"
+                android:src="@drawable/mm_1"
+                android:scaleType="center"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:gravity="center"
-                android:layout_centerInParent="true"
-                android:id="@+id/show_soft_height_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+>
         </LinearLayout>
     </ScrollView>
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
