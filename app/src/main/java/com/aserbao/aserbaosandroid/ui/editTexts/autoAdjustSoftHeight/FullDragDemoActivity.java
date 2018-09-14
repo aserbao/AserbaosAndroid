@@ -116,26 +116,7 @@ public class FullDragDemoActivity extends AppCompatActivity {
             }
         });
 
-        mDefaultRecordIv.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
-            }
-        });
 
-        mSwitchCameraV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDragIv.startRecording();
-            }
-        });
-
-        mPhotoSelectionIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDragIv.stopRecording();
-            }
-        });
         initDragEvent();
     }
 
@@ -226,6 +207,7 @@ public class FullDragDemoActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_DOWN:
 
                     case MotionEvent.ACTION_MOVE:
+                        mDragIv.startRecording();
                         closeKeybord(mNewStoryEt,FullDragDemoActivity.this);
                         mBottomInputLl.setVisibility(View.GONE);
                         int currentX = (int) event.getRawX();
@@ -236,6 +218,7 @@ public class FullDragDemoActivity extends AppCompatActivity {
                         v.postInvalidate();
                         break;
                     case MotionEvent.ACTION_UP:
+                        mDragIv.stopRecording();
                         mBottomInputLl.setVisibility(View.VISIBLE);
                         mMoveViewContainerRl.requestLayout();
                         Log.e(TAG, "onTouch: ActionUP");
