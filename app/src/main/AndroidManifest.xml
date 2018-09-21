@@ -31,11 +31,7 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
@@ -69,7 +65,7 @@
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
-        <activity android:name=".ui.editTexts.EditTextsActivity">
+        <activity android:name=".ui.texts.editTexts.EditTextsActivity">
 
             <!--
             <intent-filter>
@@ -80,7 +76,7 @@
             -->
         </activity>
         <activity
-            android:name=".ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
+            android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
@@ -94,22 +90,28 @@
         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
         <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
         <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
-        <activity android:name=".ui.textViews.TextViewActivity" />
-        <activity android:name=".ui.textViews.shadow.TextShadowActivity" />
+        <activity android:name=".ui.texts.textViews.TextViewsActivity" />
+        <activity android:name=".ui.texts.textViews.shadowText.TextShadowActivity" />
         <activity android:name=".functions.cache.CacheActivity" />
         <activity android:name=".functions.cache.aSimpleCache.ASimpleCacheActivity" />
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity
-            android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
+            android:name=".ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
         <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
         <activity
-            android:name=".ui.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"
+            android:name=".ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.editTexts.autoAdjustSoftHeight.FullDragDemoActivity">
+        <activity android:name=".ui.texts.editTexts.autoAdjustSoftHeight.FullDragDemoActivity" />
+        <activity android:name=".ui.simpleDraw.SimpleDrawActivity" />
+        <activity android:name=".ui.texts.TextsActivity" />
+        <activity android:name=".ui.texts.textViews.picTxt.PicTxtActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ui.simpleDraw.SimpleDrawActivity"></activity>
     </application>
 
 </manifest>

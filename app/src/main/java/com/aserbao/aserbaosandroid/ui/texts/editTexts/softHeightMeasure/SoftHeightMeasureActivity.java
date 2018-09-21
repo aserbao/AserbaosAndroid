@@ -1,5 +1,6 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,10 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +37,18 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     RelativeLayout softHeightRl;
     @BindView(R.id.image_view_bg)
     ImageView mImageViewBg;
+    @BindView(R.id.soft_height_fl)
+    FlowLayout mSoftHeightFl;
     private int mHeightDifference;
     private PopupWindow mPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        int intExtra = getIntent().getIntExtra(StaticFinalValues.TYPE, -1);
+        if (intExtra != -1) {
+            getWindow().setSoftInputMode(intExtra);
+        }
         setContentView(R.layout.activity_soft_height_measure);
         ButterKnife.bind(this);
         initListener();
@@ -76,6 +85,13 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                         int screenWidth = softHeightRl.getRootView().getWidth();
                         mHeightDifference = screenHeight - (r.bottom);
                         int widthDifference = screenWidth - (r.right);
+                        if(mHeightDifference > 200){
+                            //软键盘显示
+                            mSoftHeightFl.setVisibility(View.GONE);
+                        }else{
+                            //软键盘隐藏
+                            mSoftHeightFl.setVisibility(View.VISIBLE);
+                        }
                         showSoftHeightTv.setText("检测布局屏幕显示的Top:" + r.top + "\n" +
                                 "检测布局屏幕显示的Bottom:" + r.bottom + "\n" +
                                 "检测布局屏幕显示的Left:" + r.left + "\n" +
@@ -88,7 +104,8 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 });
     }
 
-    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing})
+    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
+            R.id.btn_stateHidden, R.id.btn_stateAlwaysHidden, R.id.btn_stateVisible, R.id.btn_stateAlwaysVisible})
     public void onViewClicked(View view) {
         int inputMode = 0;
         switch (view.getId()) {
@@ -104,7 +121,30 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
             case R.id.btn_adjustNothing:
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING;
                 break;
+            case R.id.btn_stateHidden:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN;
+                startActivityOwn(inputMode);
+                break;
+            case R.id.btn_stateAlwaysHidden:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN;
+                startActivityOwn(inputMode);
+                break;
+            case R.id.btn_stateVisible:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE;
+                startActivityOwn(inputMode);
+                break;
+            case R.id.btn_stateAlwaysVisible:
+                inputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE;
+                startActivityOwn(inputMode);
+                break;
         }
         getWindow().setSoftInputMode(inputMode);
     }
+
+    public void startActivityOwn(int input) {
+        Intent intent = new Intent(this, SoftHeightMeasureActivity.class);
+        intent.putExtra(StaticFinalValues.TYPE, input);
+        startActivity(intent);
+    }
+
 }

@@ -8,4 +8,8 @@ public class StaticFinalValues {
     //=================================Handler
     public static final int EMPTY = 0;
 
+
+    //=================================bundler
+    public static final String TYPE = "type";
+
 }

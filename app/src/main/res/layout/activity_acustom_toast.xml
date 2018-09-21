@@ -10,9 +10,9 @@
     <Button
         android:id="@+id/iamge_btn"
         android:text="自定义图片toast"
-        style="@style/common_btn" />
+        style="@style/global_btn_style" />
     <Button
         android:id="@+id/second_btn"
         android:text="第二种toast"
-        style="@style/common_btn" />
+        style="@style/global_btn_style" />
 </LinearLayout>

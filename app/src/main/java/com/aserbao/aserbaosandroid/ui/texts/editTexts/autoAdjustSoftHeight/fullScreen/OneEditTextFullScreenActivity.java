@@ -1,19 +1,21 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.fullScreen;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.ui.editTexts.utils.AndroidBug5497Workaround;
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.utils.AndroidSoftBoardAdjustHeightUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 全屏模式下的Activity的软键盘的显示技巧
@@ -32,7 +34,7 @@ public class OneEditTextFullScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_edit_text_full_screen);
         ButterKnife.bind(this);
-        AndroidBug5497Workaround.assistActivity(this);
+        AndroidSoftBoardAdjustHeightUtil.assistActivity(this);
     }
 
     @Override
@@ -105,5 +107,21 @@ public class OneEditTextFullScreenActivity extends AppCompatActivity {
                 return mIsClick;
             }
         });
+    }
+
+    @OnClick({R.id.btn_do_something, R.id.btn_do_second})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_do_something:
+                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mAutoRl.getLayoutParams();
+                layoutParams.height = mAutoRl.getHeight() / 2 ;
+                mAutoRl.requestLayout();
+                break;
+            case R.id.btn_do_second:
+                FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) mAutoRl.getLayoutParams();
+                layoutParams1.height = getWindow().getDecorView().getHeight() ;
+                mAutoRl.requestLayout();
+                break;
+        }
     }
 }

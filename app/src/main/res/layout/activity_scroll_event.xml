@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            style="@style/common_btn"
+            style="@style/global_btn_style"
             android:id="@+id/pop_scroll_view"
             android:text="可滚动的popupwindow" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>

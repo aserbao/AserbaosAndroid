@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

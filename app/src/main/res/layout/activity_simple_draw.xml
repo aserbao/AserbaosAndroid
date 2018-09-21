@@ -9,6 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.aserbao.aserbaosandroid.ui.simpleDraw.canvas.DrawCircleBitmap
+            android:background="@drawable/test"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <com.aserbao.aserbaosandroid.ui.simpleDraw.canvas.DrawCircleBitmap1
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <ImageView
+            android:src="@drawable/test"
             android:layout_width="100dp"
             android:layout_height="100dp" />
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -134,9 +134,10 @@ public class FullDragDemoActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
         //拿到当前XML文件的根布局
         mChildContent = (FrameLayout) findViewById(android.R.id.content);
-
         //监听当前View的状态,进行通知回调,即"软键盘弹出""
         View childew = mChildContent.getChildAt(0);
         childew.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

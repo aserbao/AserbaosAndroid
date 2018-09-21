@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.fullScreen;
 
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.AUtils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.CustomActivity;
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.CustomActivity;
 
 import java.lang.reflect.Method;
 

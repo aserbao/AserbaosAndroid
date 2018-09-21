@@ -46,11 +46,13 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:text="点击查看原理"
             android:id="@+id/btn_do_something"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
+            android:text="复原"
             android:id="@+id/btn_do_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

@@ -9,7 +9,7 @@ android:paddingLeft="@dimen/activity_horizontal_margin"
 android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 android:background="@drawable/palette"
-tools:context="com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity">
+tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity">
 
 <!--在你想上移的区域加上android:fitsSystemWindows="true",我的加在了这里-->
 <LinearLayout

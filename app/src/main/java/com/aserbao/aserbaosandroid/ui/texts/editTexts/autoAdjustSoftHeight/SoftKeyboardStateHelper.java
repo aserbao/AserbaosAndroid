@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight;
 
 import android.graphics.Rect;
 import android.view.View;

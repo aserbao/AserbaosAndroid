@@ -6,13 +6,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -33,17 +30,17 @@ import static android.graphics.PorterDuff.Mode.SRC_IN;
  * email: 1142803753@qq.com
  */
 
-public class DrawCircleBitmap extends View{
+public class DrawCircleBitmap1 extends View{
 
-    public DrawCircleBitmap(Context context) {
+    public DrawCircleBitmap1(Context context) {
         this(context,null);
     }
 
-    public DrawCircleBitmap(Context context, @Nullable AttributeSet attrs) {
+    public DrawCircleBitmap1(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public DrawCircleBitmap(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DrawCircleBitmap1(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initData();
     }
@@ -54,6 +51,7 @@ public class DrawCircleBitmap extends View{
         mTargetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTargetPaint.setXfermode(new PorterDuffXfermode(SRC_IN));
 
+//        mSourceBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
         mSourceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mm_5);
         Glide.with(this).load("http://ppic.getremark.com/109c6a12d65f9296d0011e0e387a6b16-c899d76e-2ec6-44c5-a345-a19461b51c47-f1143f5fffdfc22d0179698d3365f513")
                 .into(new SimpleTarget<Drawable>() {
@@ -88,26 +86,28 @@ public class DrawCircleBitmap extends View{
 
     @Override
     protected void onDraw(Canvas canvas) {
-        mPaint.setShadowLayer(5.5f,6.0f,6.0f,0x80000000);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setLayerType(LAYER_TYPE_SOFTWARE, mPaint);
-        }
         // 生成圆形Bitmap过程.
         int radius = Math.min(mWidth, mHeight) / 2;
         // 先绘制圆形
-        mTargetCanvas.drawCircle(mWidth / 2, mHeight / 2, radius - 20, mPaint);
+
+//        mPaint.setColor(Color.parseColor("#FF0000"));
+        mTargetCanvas.drawCircle(mWidth / 2, mHeight / 2, radius, mPaint);
         // 再绘制Bitmap
         mTargetCanvas.drawBitmap(mSourceBitmap, 0, 0, mTargetPaint);
 
-
         canvas.drawBitmap(mTargetBitmap, 0, 0, null);
+    /*    int imagePadding = 0;
+        Rect src = new Rect(0,0,mTargetBitmap.getWidth(),mTargetBitmap.getHeight());
 
+        Rect dst = new Rect(imagePadding,imagePadding,getWidth() - imagePadding,getHeight() -imagePadding);
+        canvas.drawBitmap(mTargetBitmap,src,dst,mPaint);
+*/
 
-
+       /* mPaint.setColor(Color.parseColor("#000000"));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(10);
         int r = 5;
-        canvas.drawArc(r,r,getWidth() - r,getHeight() -r,-90,180,false,mPaint);
+        canvas.drawArc(r,r,getWidth() - r,getHeight() -r,-90,180,false,mPaint);*/
 
     }
 

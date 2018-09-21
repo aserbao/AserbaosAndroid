@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.editTexts.autoAdjustSoftHeight;
+package com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight;
 
 import android.app.assist.AssistContent;
 import android.content.ComponentCallbacks;

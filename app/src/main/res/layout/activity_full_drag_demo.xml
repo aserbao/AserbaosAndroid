@@ -22,6 +22,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
+                        android:cursorVisible="false"
+                        android:focusable="true"
                         android:id="@+id/new_story_et"
                         android:hint="在干嘛么？"
                         android:textSize="30sp"

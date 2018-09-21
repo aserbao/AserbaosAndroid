@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.views.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/soft_height_rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
-    <TextView
-        android:gravity="center"
-        android:background="@color/white"
-        android:text="我是头布局"
-        android:textColor="@color/black"
-        android:id="@+id/show_soft_height_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
+
     <ScrollView
-        android:layout_marginTop="30dp"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -29,33 +22,62 @@
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
->
         </LinearLayout>
     </ScrollView>
+    <ImageView
+        android:src="@drawable/mm_5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:text="我是头布局"
+        android:textColor="@color/black"
+        android:id="@+id/show_soft_height_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:id="@+id/soft_height_fl"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/bt_adjustPan"
             android:text="adjustPan"
-            style="@style/common_btn"
+            style="@style/global_btn_style"
              />
         <Button
             android:id="@+id/bt_adjustResize"
             android:text="adjustResize"
-            style="@style/common_btn"
+            style="@style/global_btn_style"
             />
         <Button
             android:id="@+id/bt_adjustUnspecified"
             android:text="adjustUnspecified"
-            style="@style/common_btn"
+            style="@style/global_btn_style"
             />
         <Button
             android:id="@+id/btn_adjustNothing"
             android:text="adjustNothing"
-            style="@style/common_btn"
+            style="@style/global_btn_style"
+            />
+        <Button
+            android:id="@+id/btn_stateHidden"
+            android:text="stateHidden"
+            style="@style/global_btn_style"
+            />
+        <Button
+            android:id="@+id/btn_stateAlwaysHidden"
+            android:text="stateAlwaysHidden"
+            style="@style/global_btn_style"
+            />
+        <Button
+            android:id="@+id/btn_stateVisible"
+            android:text="stateVisible"
+            style="@style/global_btn_style"
+            />
+        <Button
+            android:id="@+id/btn_stateAlwaysVisible"
+            android:text="stateAlwaysVisible"
+            style="@style/global_btn_style"
             />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
     <LinearLayout
@@ -82,4 +104,4 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
-</com.aserbao.aserbaosandroid.ui.editTexts.softHeightMeasure.views.ResizeLayout>
+</com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.views.ResizeLayout>
