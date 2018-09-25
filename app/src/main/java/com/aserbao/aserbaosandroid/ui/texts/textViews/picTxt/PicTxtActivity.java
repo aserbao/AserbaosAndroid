@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.texts.textViews.picTxt;
 
+import android.content.Intent;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
@@ -41,6 +42,7 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.AUtils.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.HtmlTextActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,9 +108,15 @@ public class PicTxtActivity extends AppCompatActivity {
     }
 
     private void initView() {
-//        我愿游遍每<font color= '#ff0000'>一</font>个角落
         initPassSpannable();
-        mThreePictxtTv.setText(Html.fromHtml("我愿游遍每<font color= '#ff0000'>一</font>个角落"));
+        mThreePictxtTv.setText(Html.fromHtml("点击我，带你到HtmlTextActivity中去<font color= '#ff0000'>textView通过Html实现图文混排</font> 点击这一段"));
+        mThreePictxtTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PicTxtActivity.this, HtmlTextActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

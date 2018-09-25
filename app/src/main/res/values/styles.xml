@@ -55,7 +55,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/global_text_size</item>
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:minHeight">30dp</item>
+        <item name="android:minHeight">40dp</item>
     </style>
 
     //=============带阴影的字体
