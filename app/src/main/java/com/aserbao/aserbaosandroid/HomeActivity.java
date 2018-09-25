@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.aserbao.aserbaosandroid.component.activitys.ActivitySummary;
 import com.aserbao.aserbaosandroid.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
@@ -44,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("View", UIActivity.class));
         mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
         mClassBeen.add(new ClassBean("常用数据", ConstantsUtilsShowActivity.class));
+        mClassBeen.add(new ClassBean("四大组件", ActivitySummary.class));
     }
 
     private void initView() {

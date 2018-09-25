@@ -69,9 +69,7 @@
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
-        <activity android:name=".ui.texts.editTexts.EditTextsActivity">
-
-        </activity>
+        <activity android:name=".ui.texts.editTexts.EditTextsActivity" />
         <activity
             android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -104,9 +102,12 @@
         <activity android:name=".ui.texts.TextsActivity" />
         <activity
             android:name=".ui.texts.textViews.picTxt.PicTxtActivity"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
-        <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity"></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity" />
+        <activity android:name=".component.activitys.ActivitySummary" />
+        <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
+        <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
+        <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity"></activity>
     </application>
 
 </manifest>
