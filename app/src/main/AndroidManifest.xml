@@ -31,7 +31,11 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
@@ -67,13 +71,6 @@
         <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
         <activity android:name=".ui.texts.editTexts.EditTextsActivity">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
@@ -105,13 +102,11 @@
         <activity android:name=".ui.texts.editTexts.autoAdjustSoftHeight.FullDragDemoActivity" />
         <activity android:name=".ui.simpleDraw.SimpleDrawActivity" />
         <activity android:name=".ui.texts.TextsActivity" />
-        <activity android:name=".ui.texts.textViews.picTxt.PicTxtActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".ui.texts.textViews.picTxt.PicTxtActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
+        <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity"></activity>
     </application>
 
 </manifest>

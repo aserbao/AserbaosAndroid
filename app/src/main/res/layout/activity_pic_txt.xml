@@ -18,10 +18,24 @@
             android:text="第一种方式：\n通过drawableLeft来实现\n上下左右中间文字"
             style="@style/picTxt_tv_style"
              />
+        <TextView
+            android:id="@+id/three_pictxt_tv"
+            android:minHeight="50dp"
+            style="@style/picTxt_tv_style"
+            android:layout_width="match_parent"
+            />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/dynamicDrawable_span_tv"
+                style="@style/picTxt_tv_style"
+                />
+            <TextView
+                android:id="@+id/iamge_span_tv"
+                style="@style/picTxt_tv_style"
+                />
             <TextView
                 android:id="@+id/foregroundColor_tv"
                 style="@style/picTxt_tv_style"
@@ -35,11 +49,30 @@
                 style="@style/picTxt_tv_style"
                 />
             <TextView
-                android:id="@+id/maskFilter_span_tv"
+                android:id="@+id/blurMaskFilter_span_outer_tv"
+                android:textSize="21sp"
+                style="@style/picTxt_tv_style"
+                />
+
+            <TextView
+                android:textSize="22sp"
+                android:id="@+id/blurMaskFilter_span_inner_tv"
                 style="@style/picTxt_tv_style"
                 />
             <TextView
-                android:id="@+id/rasterizer_span_tv"
+                android:textSize="23sp"
+                android:id="@+id/blurMaskFilter_span_solid_tv"
+                style="@style/picTxt_tv_style"
+                />
+            <TextView
+                android:textSize="24sp"
+                android:id="@+id/blurMaskFilter_span_normal_tv"
+                style="@style/picTxt_tv_style"
+                />
+            <TextView
+                android:id="@+id/embossmask_span_tv"
+                android:textColor="@color/gray"
+                android:textSize="35sp"
                 style="@style/picTxt_tv_style"
                 />
             <TextView
@@ -51,23 +84,24 @@
                 style="@style/picTxt_tv_style"
                 />
             <TextView
+                android:id="@+id/underLine_span_tv"
+                style="@style/picTxt_tv_style"
+                />
+            <TextView
                 android:id="@+id/absolute_span_tv"
                 style="@style/picTxt_tv_style"
                 />
-            <TextView
-                android:id="@+id/dynamicDrawable_span_tv"
-                style="@style/picTxt_tv_style"
-                />
-            <TextView
-                android:id="@+id/iamge_span_tv"
-                style="@style/picTxt_tv_style"
-                />
+
             <TextView
                 android:id="@+id/relativeSize_span_tv"
                 style="@style/picTxt_tv_style"
                 />
             <TextView
                 android:id="@+id/scaleX_span_tv"
+                style="@style/picTxt_tv_style"
+                />
+            <TextView
+                android:id="@+id/styleSpan_span_tv"
                 style="@style/picTxt_tv_style"
                 />
             <TextView
@@ -92,11 +126,6 @@
                 />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/three_pictxt_tv"
-            android:minHeight="50dp"
-            style="@style/picTxt_tv_style"
-            android:layout_width="match_parent"
-            />
+
     </LinearLayout>
 </ScrollView>
