@@ -1,8 +1,7 @@
 [TOC]
 
 # AserbaosAndroid
-This is my summary of android's notes
-
+aserbao的个人Android学习总结项目，希望这个项目能成为最全面的Android开发学习项目，当然这是个美好的愿景，项目中还有很多未涉及到的地方，有很多没有讲到的点，希望看到这个项目的朋友，如果你在开发中遇到什么问题，在这个项目中没有找到对应的解决办法，希望你能够提出来，在我的微信公众号aserbao给我留言或者在项目github地址提issues,我有时间就会更新项目没有涉及到的部分！项目会一直维护下去。当然，我希望是Aserbao’sAndroid 能为所有Android开发者提供到帮助！也期望更多Android开发者能参与进来，只要你熟悉Android某一块，都可以将你的代码pull上分支供大家学习！
 
 ### 文本总结
 #### 文本（TextsActivity）
