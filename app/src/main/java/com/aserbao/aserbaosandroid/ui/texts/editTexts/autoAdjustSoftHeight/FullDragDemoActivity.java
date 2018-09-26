@@ -145,9 +145,9 @@ public class FullDragDemoActivity extends AppCompatActivity {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 int injectSoftHeight = 0;
                 try {
-                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
+                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", ((Class<?>) null));
                     method.setAccessible(true);
-                    injectSoftHeight = (Integer) method.invoke(inputMethodManager, null);
+                    injectSoftHeight = (Integer) method.invoke(inputMethodManager, ((Class<?>) null));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

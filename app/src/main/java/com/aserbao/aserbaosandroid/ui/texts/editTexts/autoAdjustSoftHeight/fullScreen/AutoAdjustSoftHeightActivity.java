@@ -145,9 +145,9 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 int injectSoftHeight = 0;
                 try {
-                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
+                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", ((Class<?>) null));
                     method.setAccessible(true);
-                    injectSoftHeight = (Integer) method.invoke(inputMethodManager, null);
+                    injectSoftHeight = (Integer) method.invoke(inputMethodManager, ((Class<?>) null));
                     Log.e(TAG, "initView: " + mHeight);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -208,9 +208,9 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
             case R.id.btn_do_something:
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 try {
-                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", null);
+                    Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", ((Class<?>) null));
                     method.setAccessible(true);
-                    mHeight = (Integer) method.invoke(inputMethodManager, null);
+                    mHeight = (Integer) method.invoke(inputMethodManager, ((Class<?>) null));
                     Log.e(TAG, "initView: " + mHeight);
                 } catch (Exception e) {
                     e.printStackTrace();

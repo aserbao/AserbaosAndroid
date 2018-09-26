@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.database.greenDao.GreenDaoActivity">
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/a_green_dao_submit_et"
+        android:layout_toLeftOf="@+id/a_green_dao_submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/a_green_dao_submit_btn"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/a_green_dao_search_et"
+        android:layout_below="@+id/a_green_dao_submit_et"
+        android:layout_toLeftOf="@+id/a_green_dao_submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_below="@+id/a_green_dao_submit_btn"
+        android:id="@+id/a_green_dao_search_btn"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/a_green_dao_search_et"
+        android:id="@+id/a_green_dao_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

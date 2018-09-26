@@ -89,7 +89,6 @@
         <activity android:name=".ui.texts.textViews.shadowText.TextShadowActivity" />
         <activity android:name=".functions.cache.CacheActivity" />
         <activity android:name=".functions.cache.aSimpleCache.ASimpleCacheActivity" />
-        <activity android:name=".functions.database.DataBaseActivity" />
         <activity
             android:name=".ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
@@ -109,8 +108,8 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
-        <activity android:name=".database.DataBaseActivity" />
-        <activity android:name=".database.greenDao.GreenDaoActivity"></activity>
+        <activity android:name=".functions.database.greenDao.GreenDaoActivity"/>
+        <activity android:name=".functions.database.DataBaseActivity"/>
     </application>
 
 </manifest>
