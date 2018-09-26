@@ -69,27 +69,28 @@ public class HtmlTextActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             if (htmlContent != null) {
 
-                htmlContent = htmlContent.replace("<img src=\"imgs/","<br><img src=\""+artImg);
+                htmlContent = htmlContent.replace("<img src=\"imgs/", "<br><img src=\"" + artImg);
 
-                htmlContent = htmlContent.replaceAll("<head>([\\s\\S]*)<\\/head>","");
+                htmlContent = htmlContent.replaceAll("<head>([\\s\\S]*)<\\/head>", "");
                 if (htmlContent.contains("><p>")) {
                     String regularExpression1 = "(<[^\\/]\\w><p>)";
                     Pattern pat1 = Pattern.compile(regularExpression1);
                     Matcher mat1 = pat1.matcher(htmlContent);
-                    if(mat1.find()){
+                    if (mat1.find()) {
                         for (int i = 0; i < mat1.groupCount(); i++) {
                             System.out.println(mat1.group(i));
                             String temp = mat1.group(i).replace("<p>", "");
                             htmlContent = htmlContent.replace(mat1.group(i), temp);
                             String tail = temp.replace("<", "</");
-                            htmlContent = htmlContent.replace("</p>"+tail, tail);
+                            htmlContent = htmlContent.replace("</p>" + tail, tail);
                             System.out.println(htmlContent);
                         }
                     }
                 }
             }
             try{
-                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this), new MTagHandler()));
+//                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this), new MTagHandler()));
+                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this),null));
                 Handler handler = new Handler() {
                     public void handleMessage(Message msg) {
                         int what = msg.what;

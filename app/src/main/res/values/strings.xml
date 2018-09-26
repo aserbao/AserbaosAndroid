@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Aserbao\'s Android</string>
+    <string name="long_text">"aserbao的个人Android总结项目，希望这个项目能成为最全面的Android开发学习项目，当然，这是个美好的愿景，项目中肯定有很多未涉及到的地方，有很多没有讲到的点，
+        希望看到这个项目的朋友，如果你在项目中遇到什么问题，在这个项目中没有找到对应的解决办法，你能够提出来，给我留言或者在项目github地址提issues,抽时间会更新项目没有涉及到的部分！
+        当然，我的期望是Aserbao'sAndroid 能为所有Android学习者提供或多或少的帮助！所以这个庞大的工程我一个人肯定很难实现，希望更多Android开发者能参与进来，只要你熟悉Android某一块，都可以将你的代码
+        pull上分支供大家学习！"</string>
 </resources>

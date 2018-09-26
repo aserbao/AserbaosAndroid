@@ -107,7 +107,8 @@
         <activity android:name=".component.activitys.ActivitySummary" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
-        <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity"></activity>
+        <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
+        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity"></activity>
     </application>
 
 </manifest>

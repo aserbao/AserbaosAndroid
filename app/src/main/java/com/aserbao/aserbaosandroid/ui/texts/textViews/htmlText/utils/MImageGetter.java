@@ -45,7 +45,5 @@ public class MImageGetter implements ImageGetter {
             }
 	       
 	    }
-	 
-
 
 }
