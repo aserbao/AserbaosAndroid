@@ -108,7 +108,9 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
-        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity"></activity>
+        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
+        <activity android:name=".database.DataBaseActivity" />
+        <activity android:name=".database.greenDao.GreenDaoActivity"></activity>
     </application>
 
 </manifest>
