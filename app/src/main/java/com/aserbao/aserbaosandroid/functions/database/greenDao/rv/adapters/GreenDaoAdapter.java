@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao.rv.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.aserbao.aserbaosandroid.AUtils.date.AppDateMgr;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.rv.viewHolder.TextViewHolder;
@@ -40,6 +43,10 @@ public class GreenDaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         notifyDataSetChanged();
     }
+    public void refreshData(){
+        mThing = ((AserbaoApplication) ((Activity)mContext).getApplication()).getDaoSession().getThingDao().loadAll();
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -49,14 +56,29 @@ public class GreenDaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
         if(mThing.size() <= position ){
             return;
         }
         if(viewHolder instanceof TextViewHolder){
-            Thing thing = mThing.get(position);
+            final Thing thing = mThing.get(position);
             ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage());
-            ((TextViewHolder) viewHolder).mTextViewHolderTimeTv.setText(thing.getMessage());
+            ((TextViewHolder) viewHolder).mTextViewHolderTimeTv.setText(AppDateMgr.formatFriendly(thing.getTime()));
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((AserbaoApplication)((Activity) mContext).getApplication()).getDaoSession().delete(thing);
+                    mThing.remove(thing);
+                    notifyItemRemoved(position);
+                }
+            });
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    ((AserbaoApplication)((Activity) mContext).getApplication()).getDaoSession().deleteAll(Thing.class);
+                    return false;
+                }
+            });
         }
     }
 

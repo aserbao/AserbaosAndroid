@@ -26,6 +26,11 @@ public class Thing {
     public Thing() {
     }
 
+    public Thing(String message, long time) {
+        this.message = message;
+        this.time = time;
+    }
+
     public long getId() {
         return id;
     }

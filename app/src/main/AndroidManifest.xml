@@ -31,11 +31,7 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
@@ -108,7 +104,13 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
-        <activity android:name=".functions.database.greenDao.GreenDaoActivity"/>
+        <activity android:name=".functions.database.greenDao.GreenDaoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".functions.database.DataBaseActivity"/>
     </application>
 

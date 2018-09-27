@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,4 +28,5 @@ public class TextViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         ButterKnife.bind(this,itemView);
     }
+
 }

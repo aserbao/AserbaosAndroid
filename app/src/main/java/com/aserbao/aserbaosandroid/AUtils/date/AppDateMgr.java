@@ -793,6 +793,33 @@ public class AppDateMgr {
         return "刚刚";
     }
 
+
+    public static String formatFriendly(long timeStamp) {
+        long diff = new Date().getTime() - timeStamp;
+        long r = 0;
+        if (diff > YEAR) {
+            r = (diff / YEAR);
+            return r + "年前";
+        }
+        if (diff > MONTH) {
+            r = (diff / MONTH);
+            return r + "个月前";
+        }
+        if (diff > DAY) {
+            r = (diff / DAY);
+            return r + "天前";
+        }
+        if (diff > HOUR) {
+            r = (diff / HOUR);
+            return r + "个小时前";
+        }
+        if (diff > MINUTE) {
+            r = (diff / MINUTE);
+            return r + "分钟前";
+        }
+        return "刚刚";
+    }
+
     /**
      * 将日期以yyyy-MM-dd HH:mm:ss格式化
      *
