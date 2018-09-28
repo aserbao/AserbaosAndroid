@@ -2,7 +2,9 @@
 <RelativeLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="10dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/database_black30_10r_tv_bg"
+    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView

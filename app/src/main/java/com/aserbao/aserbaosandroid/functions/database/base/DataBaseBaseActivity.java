@@ -6,7 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.adapters.DataBaseAdapter;
@@ -36,10 +38,14 @@ public abstract class DataBaseBaseActivity extends AppCompatActivity {
     EditText mADataBaseSearchEt;
     @BindView(R.id.a_data_base_recycler_view)
     RecyclerView mADataBaseRecyclerView;
-    public  DataBaseAdapter mDataBaseAdapter;
+    public DataBaseAdapter mDataBaseAdapter;
 
     public List<Thing> things = new ArrayList<>();
     public LinearLayoutManager mLinearLayoutManager;
+    @BindView(R.id.a_database_which_method_btn)
+    public Button mADatabaseWhichMethodBtn;
+    @BindView(R.id.a_database_time_show_tv)
+    public TextView mADatabaseTimeShowTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +66,12 @@ public abstract class DataBaseBaseActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(Thing s) {
                 String message = s.getMessage();
-                if(message.startsWith("已经")){
+                if (message.startsWith("已经")) {
                     CharSequence sequence = message.subSequence(6, message.length());
                     String toString = sequence.toString();
                     s.setMessage(toString);
-                }else{
-                    s.setMessage( "已经被修改了" + s.getMessage());
+                } else {
+                    s.setMessage("已经被修改了" + s.getMessage());
                 }
 
                 s.setTime(System.currentTimeMillis());
@@ -78,15 +84,15 @@ public abstract class DataBaseBaseActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.a_database_submit_btn, R.id.a_database_search_btn,R.id.a_database_delete_all,R.id.a_database_show_all_data_tv})
+    @OnClick({R.id.a_database_submit_btn, R.id.a_database_search_btn, R.id.a_database_delete_all, R.id.a_database_show_all_data_tv})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.a_database_submit_btn:
                 String content = mADataBaseSubmitEt.getText().toString().trim();
-                if(TextUtils.isEmpty(content)) {
+                if (TextUtils.isEmpty(content)) {
                     insertData(null);
-                }else{
-                    insertData(new Thing(content,System.currentTimeMillis()));
+                } else {
+                    insertData(new Thing(content, System.currentTimeMillis()));
                 }
                 break;
             case R.id.a_database_search_btn:
@@ -98,23 +104,33 @@ public abstract class DataBaseBaseActivity extends AppCompatActivity {
             case R.id.a_database_show_all_data_tv:
                 refreshAdapter(mCuurType);
                 break;
+
         }
     }
 
-    private int mCuurType  = 0;
-    public void refreshAdapter(int type){
+    private int mCuurType = 0;
+
+    public void refreshAdapter(int type) {
         mCuurType = type;
         if (mDataBaseAdapter != null) {
             mDataBaseAdapter.refreshData(type);
         }
     }
 
-    public void deleteAll(){}
-    public void insertData(Thing s){
+    public void deleteAll() {
+    }
+
+    public void insertData(Thing s) {
         mDataBaseAdapter.addThingData(s);
-    };
+    }
+
+    ;
+
     public abstract void updataData(Thing s);
+
     public abstract void deleteData(Thing s);
+
     public abstract void queryData(String s);
+
     public abstract void initDatabase();
 }
