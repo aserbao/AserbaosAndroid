@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.functions.database.greenDao.rv.adapters;
+package com.aserbao.aserbaosandroid.functions.database.base.rv.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,19 +7,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.date.AppDateMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.functions.database.base.rv.interfaces.ItemBackListener;
+import com.aserbao.aserbaosandroid.functions.database.base.rv.viewHolder.TextViewHolder;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.rv.viewHolder.TextViewHolder;
+import com.aserbao.aserbaosandroid.functions.database.mySql.beans.ThingDBController;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import butterknife.BindView;
+import static com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity.GREEN_DAO;
+import static com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity.SQL_LITE;
 
 /**
  * 主要功能:
@@ -27,14 +28,16 @@ import butterknife.BindView;
  * date : On 2018/9/26
  * email: 1142803753@qq.com
  */
-public class GreenDaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DataBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Thing> mThing = new ArrayList<>();
     private Context mContext;
+    private ItemBackListener mItemBackListener;
 
-    public GreenDaoAdapter(List<Thing> mThing, Context mContext) {
+    public DataBaseAdapter(List<Thing> mThing, Context mContext,ItemBackListener itemBackListener) {
         this.mThing = mThing;
         this.mContext = mContext;
+        mItemBackListener = itemBackListener;
     }
 
     public void addThingData(Thing data) {
@@ -43,8 +46,22 @@ public class GreenDaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         notifyDataSetChanged();
     }
-    public void refreshData(){
-        mThing = ((AserbaoApplication) ((Activity)mContext).getApplication()).getDaoSession().getThingDao().loadAll();
+
+    public void addNewThingData(List<Thing> data){
+        mThing.clear();
+        mThing.addAll(data);
+        notifyDataSetChanged();
+    }
+    public void refreshData(int type){
+        switch (type){
+            case SQL_LITE:
+                ThingDBController thingDBController = new ThingDBController(mContext);
+                mThing = thingDBController.queryAll();
+                break;
+            case GREEN_DAO:
+                mThing = ((AserbaoApplication) ((Activity)mContext).getApplication()).getDaoSession().getThingDao().loadAll();
+                break;
+        }
         notifyDataSetChanged();
     }
 
@@ -62,25 +79,28 @@ public class GreenDaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         if(viewHolder instanceof TextViewHolder){
             final Thing thing = mThing.get(position);
-            ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage());
+            ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage() +  " Id 为：" + String.valueOf(thing.getId()));
             ((TextViewHolder) viewHolder).mTextViewHolderTimeTv.setText(AppDateMgr.formatFriendly(thing.getTime()));
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((AserbaoApplication)((Activity) mContext).getApplication()).getDaoSession().delete(thing);
                     mThing.remove(thing);
                     notifyItemRemoved(position);
+                    notifyItemRangeChanged(position,mThing.size() - position);
+                    mItemBackListener.onItemClick(thing);
                 }
             });
             viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((AserbaoApplication)((Activity) mContext).getApplication()).getDaoSession().deleteAll(Thing.class);
+                    mItemBackListener.onItemLongClick(thing);
                     return false;
                 }
             });
         }
     }
+
+
 
     @Override
     public int getItemCount() {

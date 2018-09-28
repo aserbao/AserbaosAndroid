@@ -24,7 +24,7 @@ public class ThingDao extends AbstractDao<Thing, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", false, "ID");
+        public final static Property Id = new Property(0, int.class, "id", false, "ID");
         public final static Property Message = new Property(1, String.class, "message", false, "MESSAGE");
         public final static Property Time = new Property(2, long.class, "time", false, "TIME");
     }
@@ -85,7 +85,7 @@ public class ThingDao extends AbstractDao<Thing, Void> {
     @Override
     public Thing readEntity(Cursor cursor, int offset) {
         Thing entity = new Thing( //
-            cursor.getLong(offset + 0), // id
+            cursor.getInt(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // message
             cursor.getLong(offset + 2) // time
         );
@@ -94,7 +94,7 @@ public class ThingDao extends AbstractDao<Thing, Void> {
      
     @Override
     public void readEntity(Cursor cursor, Thing entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
+        entity.setId(cursor.getInt(offset + 0));
         entity.setMessage(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTime(cursor.getLong(offset + 2));
      }

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.functions.database.greenDao.rv.viewHolder;
+package com.aserbao.aserbaosandroid.functions.database.base.rv.viewHolder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

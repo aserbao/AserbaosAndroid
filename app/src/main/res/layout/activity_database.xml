@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity">
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:hint="点击删除，常按修改数据"
+            android:id="@+id/a_database_submit_et"
+            android:layout_toLeftOf="@+id/a_database_submit_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="添加"
+            android:id="@+id/a_database_submit_btn"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/a_green_dao_search_et"
+            android:hint="输入查询的id"
+            android:inputType="number"
+            android:layout_below="@+id/a_database_submit_et"
+            android:layout_toLeftOf="@+id/a_database_submit_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="搜索"
+            android:layout_below="@+id/a_database_submit_btn"
+            android:id="@+id/a_database_search_btn"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="删除所有"
+            android:layout_below="@+id/a_database_submit_btn"
+            android:id="@+id/a_database_delete_all"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="显示所有数据"
+            android:id="@+id/a_database_show_all_data_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/a_green_dao_search_et"
+        android:id="@+id/a_data_base_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

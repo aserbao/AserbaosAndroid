@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initView() {
         CommonAdapter adapter = new CommonAdapter(this, this, mClassBeen);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+//        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mHomeRecyclerView.setLayoutManager(gridLayoutManager);
         mHomeRecyclerView.setAdapter(adapter);
