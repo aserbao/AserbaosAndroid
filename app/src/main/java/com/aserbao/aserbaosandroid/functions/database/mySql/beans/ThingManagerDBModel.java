@@ -39,7 +39,6 @@ public final class ThingManagerDBModel {
 
     public ContentValues toContentValues(){
         ContentValues cv = new ContentValues();
-//        cv.put(ID, null);
         cv.put(MESSAGE, message);
         cv.put(TIME, time);
         return cv;

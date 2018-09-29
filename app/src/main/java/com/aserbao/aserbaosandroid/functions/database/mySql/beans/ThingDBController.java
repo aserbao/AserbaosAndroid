@@ -149,16 +149,6 @@ public class ThingDBController {
         return null;
     }
 
-    //删除某一个表
-    public void deleteTable(){
-        db.execSQL("drop table " + TABLE_NAME);
-    }
-
-    //清空某一个表
-    public void clearTable(){
-        db.execSQL("delete from " + TABLE_NAME);
-    }
-
 
 
     public void dbClose(){

@@ -1,27 +1,16 @@
 package com.aserbao.aserbaosandroid.functions.database.mySql.beans;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class ThingManagerDBOpenHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "mysql.db";
     private static final int VERSION = 1;
-    public static final String CREAT_ETABLE_DOG = "CREATE TABLE mysql_thing(_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " message TEXT,time LONG)";
-    public static final String DROP_TABLE_DOG = "DROP TABLE IF EXISTS mysql_thing";
-
     public ThingManagerDBOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
-    }
-
-    /**
-     * 每次打开数据库最先被执行
-     * @param db
-     */
-    @Override
-    public void onOpen(SQLiteDatabase db) {
-        super.onOpen(db);
     }
 
     @Override
@@ -43,9 +32,24 @@ public class ThingManagerDBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if(newVersion == 2) {
-            db.execSQL(DROP_TABLE_DOG);
-            db.execSQL(CREAT_ETABLE_DOG);
+        switch (oldVersion){
+            case 1:
+                upToDbVersion2(db);
+            case 2:
+                upToDbVersion3(db);
+            default:
+              break;
         }
     }
+    public void upToDbVersion2(SQLiteDatabase db){
+        db.execSQL("ALTER TABLE " + ThingDBController.TABLE_NAME + " ADD COLUMN add_user_name text");
+    }
+
+    public void upToDbVersion3(SQLiteDatabase db) {
+        ContentValues values = new ContentValues();
+        values.put("message", "版本升级后的数据");
+        db.update(ThingDBController.TABLE_NAME, values, null, null);
+    }
+
+
 }
