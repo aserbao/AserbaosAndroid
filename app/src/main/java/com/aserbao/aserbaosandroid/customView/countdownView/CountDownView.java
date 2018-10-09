@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.DisplayUtil;
-import com.aserbao.aserbaosandroid.AUtils.date.AppDateMgr;
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.date.AppDateMgr;
 
 import java.lang.ref.WeakReference;
 

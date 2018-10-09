@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
-import android.graphics.MaskFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -33,14 +32,13 @@ import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.HtmlTextActivity;
 

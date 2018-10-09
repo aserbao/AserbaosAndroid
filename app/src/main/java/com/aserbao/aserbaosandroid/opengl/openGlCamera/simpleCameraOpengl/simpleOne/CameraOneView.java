@@ -8,8 +8,8 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.AttributeSet;
 
-import com.aserbao.aserbaosandroid.AUtils.BufferUtil;
-import com.aserbao.aserbaosandroid.AUtils.ShaderUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.BufferUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.ShaderUtils;
 
 import java.nio.FloatBuffer;
 

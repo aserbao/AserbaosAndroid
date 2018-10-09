@@ -1,6 +1,5 @@
 package com.aserbao.aserbaosandroid.opengl.openGlCamera;
 
-import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.opengl.GLES20;
@@ -10,10 +9,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Surface;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.CameraUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.CameraUtils;
 import com.aserbao.aserbaosandroid.R;
 
 import java.io.IOException;

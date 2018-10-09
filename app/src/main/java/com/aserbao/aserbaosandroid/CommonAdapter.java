@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.ConstantUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.ConstantUtils;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 
 import java.util.ArrayList;

@@ -8,7 +8,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
@@ -30,7 +33,13 @@
         <activity android:name=".Cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
         <activity android:name=".opengl.openGlCamera.OpenGlAnimationCamera" />
@@ -102,15 +111,13 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
-        <activity android:name=".functions.database.greenDao.GreenDaoActivity"/>
-        <activity android:name=".functions.database.DataBaseActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".functions.database.mySql.MySqlActivity"></activity>
+        <activity android:name=".functions.database.greenDao.GreenDaoActivity" />
+        <activity android:name=".functions.database.DataBaseActivity" />
+        <activity android:name=".functions.database.mySql.MySqlActivity" />
+        <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
+        <activity android:name=".ui.animation.AnimationActivity" />
+        <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
+        <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity"></activity>
     </application>
 
 </manifest>

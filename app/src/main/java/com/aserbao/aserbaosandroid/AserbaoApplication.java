@@ -14,7 +14,6 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 
 public class AserbaoApplication extends Application {
 
-    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -31,7 +30,7 @@ public class AserbaoApplication extends Application {
     }
 
     /**
-     * 初始化GreenDao
+     * 初始化GreenDao,直接在Application中进行初始化操作
      */
     private void initGreenDao() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "aserbao.db");
@@ -40,6 +39,7 @@ public class AserbaoApplication extends Application {
         daoSession = daoMaster.newSession();
     }
 
+    private DaoSession daoSession;
     public DaoSession getDaoSession() {
         return daoSession;
     }

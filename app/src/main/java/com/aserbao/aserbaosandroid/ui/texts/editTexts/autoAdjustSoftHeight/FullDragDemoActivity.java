@@ -19,7 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
-import com.aserbao.aserbaosandroid.AUtils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 

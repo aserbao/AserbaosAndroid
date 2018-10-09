@@ -20,7 +20,7 @@ public class ThingDBController {
     }
 
     // ============ 使用Api实现增删改查
-    public boolean insertApi(int id, String message, long time){
+    public boolean insertApi(long id, String message, long time){
         ThingManagerDBModel dbModel = new ThingManagerDBModel();
         if(id >= 0) {
             dbModel.id = id;
@@ -38,7 +38,7 @@ public class ThingDBController {
         return sucess;
     }
 
-    public boolean updateApi(int id,String message,long time){
+    public boolean updateApi(long id,String message,long time){
         ThingManagerDBModel dbModel = new ThingManagerDBModel();
         if(id >= 0) {
             dbModel.id = id;
@@ -65,7 +65,7 @@ public class ThingDBController {
             }
             do {
                 Thing model = new Thing();
-                model.setId(c.getInt(c.getColumnIndexOrThrow(ThingManagerDBModel.ID)));
+                model.setId(c.getLong(c.getColumnIndexOrThrow(ThingManagerDBModel.ID)));
                 model.setTime(c.getLong(c.getColumnIndexOrThrow(ThingManagerDBModel.TIME)));
                 model.setMessage(c.getString(c.getColumnIndexOrThrow(ThingManagerDBModel.MESSAGE)));
                 arrayList.add(model);
@@ -77,7 +77,6 @@ public class ThingDBController {
         }finally {
             dbClose();
         }
-
         return new ArrayList<>();
     }
 
@@ -99,7 +98,7 @@ public class ThingDBController {
         dbClose();
     }
 
-    public void updateRaw(int id,String message,long time){
+    public void updateRaw(long id,String message,long time){
         String sql = "update "+TABLE_NAME + " set message = ?,time = ? where _id = ?";
         Object[] args = {message,time,id};
         db.execSQL(sql,args);
@@ -115,7 +114,7 @@ public class ThingDBController {
         }
         do {
             Thing model = new Thing();
-            model.setId(cursor.getInt(cursor.getColumnIndex(ThingManagerDBModel.ID)));
+            model.setId((long)cursor.getInt(cursor.getColumnIndex(ThingManagerDBModel.ID)));
             model.setTime(cursor.getLong(cursor.getColumnIndex(ThingManagerDBModel.TIME)));
             model.setMessage(cursor.getString(cursor.getColumnIndexOrThrow(ThingManagerDBModel.MESSAGE)));
             arrayList.add(model);
@@ -134,7 +133,7 @@ public class ThingDBController {
             }
             do {
                 Thing model = new Thing();
-                model.setId(c.getInt(c.getColumnIndex(ThingManagerDBModel.ID)));
+                model.setId((long)c.getInt(c.getColumnIndex(ThingManagerDBModel.ID)));
                 model.setTime(c.getLong(c.getColumnIndex(ThingManagerDBModel.TIME)));
                 model.setMessage(c.getString(c.getColumnIndexOrThrow(ThingManagerDBModel.MESSAGE)));
                 arrayList.add(model);

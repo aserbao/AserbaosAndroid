@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.database.mySql;
 
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
@@ -11,8 +13,9 @@ import java.util.List;
 import static com.aserbao.aserbaosandroid.functions.database.mySql.beans.ThingManagerDBOpenHelper.DB_NAME;
 
 public class MySqlActivity extends DataBaseBaseActivity {
+    private static final String TAG = "MySqlActivity";
     private ThingDBController dbController;
-    public int use_type = 1;//0表示使用Android Api,1表示使用sql语句
+    public int use_type = 0;//0表示使用Android Api,1表示使用sql语句
 
     @Override
     public void initDatabase() {
@@ -21,6 +24,19 @@ public class MySqlActivity extends DataBaseBaseActivity {
         if (things != null) {
             this.things = things;
         }
+        mADatabaseWhichMethodBtn.setVisibility(View.VISIBLE);
+        mADatabaseWhichMethodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(use_type == 0){
+                    use_type = 1;
+                    mADatabaseWhichMethodBtn.setText("使用SQl语句");
+                }else{
+                    use_type = 0;
+                    mADatabaseWhichMethodBtn.setText("使用Android Api方式");
+                }
+            }
+        });
     }
 
     @Override

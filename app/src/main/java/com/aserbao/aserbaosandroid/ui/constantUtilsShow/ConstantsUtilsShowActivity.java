@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.date.AppScreenMgr;
+import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;

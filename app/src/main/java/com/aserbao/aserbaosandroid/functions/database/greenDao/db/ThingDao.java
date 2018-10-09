@@ -15,7 +15,7 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 /** 
  * DAO for table "THING".
 */
-public class ThingDao extends AbstractDao<Thing, Void> {
+public class ThingDao extends AbstractDao<Thing, Long> {
 
     public static final String TABLENAME = "THING";
 
@@ -24,8 +24,8 @@ public class ThingDao extends AbstractDao<Thing, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, int.class, "id", false, "ID");
-        public final static Property Message = new Property(1, String.class, "message", false, "MESSAGE");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Message = new Property(1, String.class, "message", false, "message");
         public final static Property Time = new Property(2, long.class, "time", false, "TIME");
     }
 
@@ -42,9 +42,12 @@ public class ThingDao extends AbstractDao<Thing, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"THING\" (" + //
-                "\"ID\" INTEGER NOT NULL ," + // 0: id
-                "\"MESSAGE\" TEXT," + // 1: message
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"message\" TEXT," + // 1: message
                 "\"TIME\" INTEGER NOT NULL );"); // 2: time
+        // Add Indexes
+        db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_THING_message ON \"THING\"" +
+                " (\"message\" ASC);");
     }
 
     /** Drops the underlying database table. */
@@ -56,7 +59,11 @@ public class ThingDao extends AbstractDao<Thing, Void> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, Thing entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String message = entity.getMessage();
         if (message != null) {
@@ -68,7 +75,11 @@ public class ThingDao extends AbstractDao<Thing, Void> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, Thing entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String message = entity.getMessage();
         if (message != null) {
@@ -78,14 +89,14 @@ public class ThingDao extends AbstractDao<Thing, Void> {
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public Thing readEntity(Cursor cursor, int offset) {
         Thing entity = new Thing( //
-            cursor.getInt(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // message
             cursor.getLong(offset + 2) // time
         );
@@ -94,26 +105,29 @@ public class ThingDao extends AbstractDao<Thing, Void> {
      
     @Override
     public void readEntity(Cursor cursor, Thing entity, int offset) {
-        entity.setId(cursor.getInt(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setMessage(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTime(cursor.getLong(offset + 2));
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(Thing entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final Long updateKeyAfterInsert(Thing entity, long rowId) {
+        entity.setId(rowId);
+        return rowId;
     }
     
     @Override
-    public Void getKey(Thing entity) {
-        return null;
+    public Long getKey(Thing entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(Thing entity) {
-        // TODO
-        return false;
+        return entity.getId() != null;
     }
 
     @Override

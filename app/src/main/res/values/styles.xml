@@ -58,6 +58,13 @@
         <item name="android:minHeight">40dp</item>
     </style>
 
+    <declare-styleable name="gallery_recyclerview">
+        <attr name="helper" format="string">
+            <enum name="LinearSnapHelper" value="0" />
+            <enum name="PagerSnapHelper" value="1" />
+        </attr>
+    </declare-styleable>
+
     //=============带阴影的字体
     <style name="text_shadow_style">
         <item name="android:shadowRadius">8</item>

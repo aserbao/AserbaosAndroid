@@ -2,7 +2,10 @@ package com.aserbao.aserbaosandroid.functions.database.greenDao.beans;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
+import org.greenrobot.greendao.annotation.Property;
 
 /**
  * 主要功能:
@@ -12,17 +15,14 @@ import org.greenrobot.greendao.annotation.Keep;
  */
 @Entity
 public class Thing {
-    int id;
-    String message;
-    long time;
+    @Id(autoincrement = true)
+    Long id;
 
-    @Generated(hash = 922201001)
-    @Keep
-    public Thing(int id, String message, long time) {
-        this.id = id;
-        this.message = message;
-        this.time = time;
-    }
+    @Property(nameInDb="message")
+            @Index(unique = true)
+    String message;
+
+    long time;
 
     @Generated(hash = 1981866127)
     public Thing() {
@@ -33,11 +33,20 @@ public class Thing {
         this.time = time;
     }
 
-    public int getId() {
+
+    @Generated(hash = 19372714)
+    public Thing(Long id, String message, long time) {
+        this.id = id;
+        this.message = message;
+        this.time = time;
+    }
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,5 +65,6 @@ public class Thing {
     public void setTime(long time) {
         this.time = time;
     }
+
 
 }

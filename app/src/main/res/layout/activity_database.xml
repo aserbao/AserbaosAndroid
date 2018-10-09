@@ -51,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
+            android:visibility="gone"
             android:text="使用Android Api方式"
             android:textAllCaps="false"
             android:id="@+id/a_database_which_method_btn"

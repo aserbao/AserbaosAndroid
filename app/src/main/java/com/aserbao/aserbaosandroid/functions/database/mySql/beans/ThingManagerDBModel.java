@@ -9,15 +9,15 @@ public final class ThingManagerDBModel {
     public static final String MESSAGE = "message";
     public static final String TIME = "time";
 
-    int id;
+    long id;
     String message;
     long time;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
