@@ -4,10 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -16,7 +14,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -52,7 +49,7 @@ public class DrawCircleBitmap1 extends View{
         mTargetPaint.setXfermode(new PorterDuffXfermode(SRC_IN));
 
 //        mSourceBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
-        mSourceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mm_5);
+        mSourceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.starry_sky_5);
         Glide.with(this).load("http://ppic.getremark.com/109c6a12d65f9296d0011e0e387a6b16-c899d76e-2ec6-44c5-a345-a19461b51c47-f1143f5fffdfc22d0179698d3365f513")
                 .into(new SimpleTarget<Drawable>() {
                     @Override

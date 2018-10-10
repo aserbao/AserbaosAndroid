@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="center"
-                android:src="@drawable/mm_4"/>
+                android:src="@drawable/starry_sky_4"/>
         </LinearLayout>
     </ScrollView>
 

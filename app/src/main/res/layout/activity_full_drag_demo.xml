@@ -6,7 +6,7 @@
     >
     <ImageView
         android:id="@+id/iamge_view"
-        android:src="@drawable/mm_7"
+        android:src="@drawable/starry_sky_7"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

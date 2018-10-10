@@ -19,7 +19,7 @@ public class Thing {
     Long id;
 
     @Property(nameInDb="message")
-            @Index(unique = true)
+//            @Index(unique = true)
     String message;
 
     long time;

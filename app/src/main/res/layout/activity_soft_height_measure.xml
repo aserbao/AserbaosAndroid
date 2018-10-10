@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/image_view_bg"
-                android:src="@drawable/mm_1"
+                android:src="@drawable/starry_sky_1"
                 android:scaleType="center"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         </LinearLayout>
     </ScrollView>
     <ImageView
-        android:src="@drawable/mm_5"
+        android:src="@drawable/starry_sky_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <TextView

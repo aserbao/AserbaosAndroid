@@ -46,7 +46,7 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
                 daoSession.insertOrReplace(thing);
             }
         }else{
-            daoSession.insert(s);
+            daoSession.insertOrReplace(s);
         }
         refreshAdapter(GREEN_DAO);
     }

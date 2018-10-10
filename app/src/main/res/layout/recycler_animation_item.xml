@@ -5,7 +5,7 @@
     <ImageView
         android:id="@+id/item_iv"
         android:background="@color/gray"
-        android:src="@drawable/emoji_00"
+        android:src="@drawable/starry_sky_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

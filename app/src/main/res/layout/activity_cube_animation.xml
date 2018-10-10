@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity">
+    <com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.SquareLayout
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="350dp">
+        <ImageView
+            android:src="@drawable/starry_sky_1"
+            android:scaleType="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:scaleType="center"
+            android:src="@drawable/starry_sky_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:scaleType="center"
+            android:src="@drawable/starry_sky_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:scaleType="center"
+            android:src="@drawable/starry_sky_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:scaleType="center"
+            android:src="@drawable/starry_sky_5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:scaleType="center"
+            android:src="@drawable/starry_sky_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.SquareLayout>
+</FrameLayout>

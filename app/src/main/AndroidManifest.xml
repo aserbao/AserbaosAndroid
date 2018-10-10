@@ -56,7 +56,7 @@
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
-        <activity android:name=".customView.CustomViewActivity" />
+        <activity android:name=".ui.customView.CustomViewActivity" />
         <activity android:name=".media.audio.AudioRecordActivity" />
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
         <activity android:name=".media.mediaplayer.MediaPlayerActivity" />
@@ -115,9 +115,12 @@
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity android:name=".functions.database.mySql.MySqlActivity" />
         <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
-        <activity android:name=".ui.animation.AnimationActivity" />
+        <activity android:name=".ui.animation.AnimationActivity" >
+
+        </activity>
         <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
-        <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity"></activity>
+        <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity"/>
+        <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity"/>
     </application>
 
 </manifest>

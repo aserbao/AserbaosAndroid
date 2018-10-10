@@ -3,11 +3,10 @@ package com.aserbao.aserbaosandroid;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.component.activitys.ActivitySummary;
-import com.aserbao.aserbaosandroid.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
 import com.aserbao.aserbaosandroid.media.MediaActivity;
@@ -41,7 +40,6 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("OpenGl", OpenGlActivity.class));
         mClassBeen.add(new ClassBean("策略模式", DesignModeActivity.class));
         mClassBeen.add(new ClassBean("多媒体", MediaActivity.class));
-        mClassBeen.add(new ClassBean("自定义View", CustomViewActivity.class));
         mClassBeen.add(new ClassBean("View", UIActivity.class));
         mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
         mClassBeen.add(new ClassBean("常用数据", ConstantsUtilsShowActivity.class));

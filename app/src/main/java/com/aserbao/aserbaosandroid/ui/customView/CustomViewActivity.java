@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.customView;
+package com.aserbao.aserbaosandroid.ui.customView;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.customView.countdownView.CountDownView;
+import com.aserbao.aserbaosandroid.ui.customView.countdownView.CountDownView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

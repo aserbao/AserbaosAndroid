@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.customView.countdownView;
+package com.aserbao.aserbaosandroid.ui.customView.countdownView;
 
 import android.content.Context;
 import android.graphics.Canvas;

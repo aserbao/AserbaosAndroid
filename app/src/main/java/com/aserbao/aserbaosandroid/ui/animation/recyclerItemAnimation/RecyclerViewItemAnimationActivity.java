@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.adapters.AnimationAdapter;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.A3DReyclcerView;
+import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.SquareRecyclerView;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.AnimManager;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.GalleryRecyclerView;
 
@@ -18,8 +19,8 @@ import butterknife.ButterKnife;
 
 public class RecyclerViewItemAnimationActivity extends AppCompatActivity {
 
-    @BindView(R.id.recycler_view)
-    A3DReyclcerView mRecyclerView;
+    @BindView(R.id.animation_recycler_view)
+    SquareRecyclerView mRecyclerView;
     private AnimationAdapter animationAdapter;
 
     @Override

@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.customView.CustomViewActivity">
+    tools:context="com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity">
     <FrameLayout
         android:id="@+id/custom_tainer"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="300dp">
-        <com.aserbao.aserbaosandroid.customView.countdownView.CountDownView
+        <com.aserbao.aserbaosandroid.ui.customView.countdownView.CountDownView
             android:id="@+id/custom_count_down_view"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"

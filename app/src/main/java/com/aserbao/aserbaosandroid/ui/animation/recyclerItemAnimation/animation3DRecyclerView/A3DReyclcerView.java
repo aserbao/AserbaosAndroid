@@ -1,6 +1,9 @@
 package com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView;
 
 import android.content.Context;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -101,6 +104,9 @@ public class A3DReyclcerView extends RecyclerView {
             SLIDE_TOP = 3;     // 上滑
     private static final int SLIDE_BOTTOM = 4;  // 下滑
     private int mLastHorizontalScrollOffset;
+
+
+    private final Camera mCamera = new Camera();
     /**
      * 水平滑动
      *
@@ -133,17 +139,42 @@ public class A3DReyclcerView extends RecyclerView {
 
 //                float percent = (float) (mConsumeX - computeHorizontalScrollOffset) / shouldConsumeX;
                 float percent = (float) (computeHorizontalScrollOffset - firstVisibleItemPosition * shouldConsumeX) / shouldConsumeX;
-                Log.d(TAG, "mConsumeX=" + mConsumeX + "; dx=" + dx +  " dx == " + dx + "  percent = " + percent + " \ncomputeHorizontalScrollRange = "
-                        + computeHorizontalScrollRange + " computeHorizontalScrollExtent = " + computeHorizontalScrollExtent +  " computeHorizontalScrollOffset = " + computeHorizontalScrollOffset);
+                /*Log.d(TAG, "mConsumeX=" + mConsumeX + "; dx=" + dx + "  percent = " + percent + " \ncomputeHorizontalScrollRange = "
+                        + computeHorizontalScrollRange + " computeHorizontalScrollExtent = " + computeHorizontalScrollExtent +  " computeHorizontalScrollOffset = " + computeHorizontalScrollOffset +
+                        " cuurposition = "  + firstVisibleItemPosition);*/
 
-                View leftView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition - 1);
+//                View leftView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition - 1);
                 View currentView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition );
                 View rightView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition + 1);
 
+                /*if (currentView != null) {
+                    currentView.setRotationY(360 * percent);
+                }
+                if (rightView != null) {
+                    rightView.setRotationY(360 * (1 - percent));
+                }*/
+
+                final Camera camera = mCamera;
+                camera.save();
+                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+                    float z = -(10 * percent);
+                    camera.setLocation(0, 0, -8);
+
+                    Log.e(TAG, "run:  z = " + z);
+                }*/
+                float z = (1000 * percent);
+
+                camera.translate(0, z, 0);    // camera - 沿y轴正方向平移100像素
+
+                Matrix matrix = new Matrix();
+                camera.getMatrix(matrix);
+                matrix.postTranslate(0,z);    // matrix - 沿y轴正方向平移100像素
+                Log.e(TAG, "run:  z = " + z);
+                camera.restore();
             }
         });
-
     }
+
 
 
     /**

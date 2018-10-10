@@ -45,9 +45,6 @@ public class ThingDao extends AbstractDao<Thing, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"message\" TEXT," + // 1: message
                 "\"TIME\" INTEGER NOT NULL );"); // 2: time
-        // Add Indexes
-        db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_THING_message ON \"THING\"" +
-                " (\"message\" ASC);");
     }
 
     /** Drops the underlying database table. */
