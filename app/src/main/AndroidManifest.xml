@@ -115,12 +115,11 @@
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity android:name=".functions.database.mySql.MySqlActivity" />
         <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
-        <activity android:name=".ui.animation.AnimationActivity" >
-
-        </activity>
+        <activity android:name=".ui.animation.AnimationActivity"></activity>
         <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
-        <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity"/>
-        <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity"/>
+        <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity" />
+        <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity" />
+        <activity android:name=".functions.events.recyclerviewEvent.RecyclerViewEventActivity"></activity>
     </application>
 
 </manifest>
