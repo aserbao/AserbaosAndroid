@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.adapters.AnimationAdapter;
@@ -13,6 +14,7 @@ import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.SquareRecyclerView;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.AnimManager;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.GalleryRecyclerView;
+import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.linearManagers.ALinearManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,8 +22,9 @@ import butterknife.ButterKnife;
 public class RecyclerViewItemAnimationActivity extends AppCompatActivity {
 
     @BindView(R.id.animation_recycler_view)
-    SquareRecyclerView mRecyclerView;
+    RecyclerView mRecyclerView;
     private AnimationAdapter animationAdapter;
+    private ALinearManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,15 @@ public class RecyclerViewItemAnimationActivity extends AppCompatActivity {
 
     private void init() {
         animationAdapter = new AnimationAdapter(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager = new ALinearManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(animationAdapter);
+        new PagerSnapHelper().attachToRecyclerView(mRecyclerView);
+    }
 
+    public void btn_next(View view) {
+        int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+        mRecyclerView.smoothScrollToPosition(firstVisibleItemPosition + 1);
     }
 
     /*public void initGalleryRecycle(){

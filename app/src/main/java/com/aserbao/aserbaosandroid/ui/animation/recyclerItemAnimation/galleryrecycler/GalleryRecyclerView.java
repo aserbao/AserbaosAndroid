@@ -24,8 +24,6 @@ public class GalleryRecyclerView extends RecyclerView {
 
     public boolean mHasWindowFocus = false;
 
-
-
     private ScrollManager mScrollManager;
     private GalleryItemDecoration mDecoration;
 
@@ -67,14 +65,6 @@ public class GalleryRecyclerView extends RecyclerView {
         if (getAdapter().getItemCount() <= 0) {
             return;
         }
-        // 获得焦点后滑动至第0项，避免第0项的margin不对
-//        if (hasWindowFocus) {
-//            //scrollToPosition(0);
-//            smoothScrollToPosition(StaticFinalValues.SEL_VIDEO_ROWS * 100 +);
-//        } else {
-//            scrollToPosition(0);
-//        }
-
         mScrollManager.initScrollListener();
 
         if (mScrollManager != null) {

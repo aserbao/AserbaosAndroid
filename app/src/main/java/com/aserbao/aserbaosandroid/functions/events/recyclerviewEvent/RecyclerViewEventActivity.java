@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.adapters.RecyclerEventAdapter;
+import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.layoutManagers.ARecyclerEventLinearManager;
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.recyclers.AEventRecyclerView;
 
 import butterknife.BindView;
@@ -24,6 +25,7 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
     AEventRecyclerView mRecyclerEventRv;
     @BindView(R.id.recycler_event_rl)
     RelativeLayout mTopVideoParentRl;
+    private ARecyclerEventLinearManager mLinearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,8 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_event);
         ButterKnife.bind(this);
         RecyclerEventAdapter recyclerEventAdapter = new RecyclerEventAdapter(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerEventRv.setLayoutManager(linearLayoutManager);
+        mLinearLayoutManager = new ARecyclerEventLinearManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerEventRv.setLayoutManager(mLinearLayoutManager);
         mRecyclerEventRv.setAdapter(recyclerEventAdapter);
         new PagerSnapHelper().attachToRecyclerView(mRecyclerEventRv);
     }
@@ -42,7 +44,7 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
     private long mStartClickDownTime, mLastClickDownTime, mLastStartClickTime;//点击时间
     private float mLastX;
     private float mLastY;
-    private boolean isLongClick,isDrag;//是否是常按,是否拖动
+    private boolean isLongClick,isDrag,mFirstDrag,mIsUpAndDown;//是否是常按,是否拖动
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -52,6 +54,7 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
                 mStartClickDownTime = System.currentTimeMillis();
                 mLastX = ev.getX();
                 mLastY = ev.getY();
+                mFirstDrag = true;
                 Log.e(TAG, "dispatchTouchEvent: ACTION_DOWN ===== "   + b);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -60,16 +63,26 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
                 long l = System.currentTimeMillis() - mStartClickDownTime;
                 if(l > 200 && Math.abs(chaX) + Math.abs(chaY) > 200){
                     isDrag = true;
+                }
+                if(isDrag & mFirstDrag){
+                    mFirstDrag = false;
                     if(Math.abs(chaX) > Math.abs(chaY)){
+                        mIsUpAndDown = false;
                         Log.e(TAG, "dispatchTouchEvent:  左右滑动 ");
-                        return super.dispatchTouchEvent(ev);
                     }else{
-                        b = false;
-                        dealUpAndDown(chaY, chaX);
+                        mIsUpAndDown = true;
                         Log.e(TAG, "dispatchTouchEvent:  上下滑动 ");
                     }
                 }
 
+                if(mIsUpAndDown){
+                    b = false;
+                    dealUpAndDown(chaY, chaX);
+                    mLinearLayoutManager.setCanScrollHorizontally(false);
+                }else{
+                    mLinearLayoutManager.setCanScrollHorizontally(true);
+                    return super.dispatchTouchEvent(ev);
+                }
 
                 Log.e(TAG, "dispatchTouchEvent: ACTION_MOVE ===== "   + b + "  chaX = " + chaX +  "  chaY = " + chaY);
                 break;

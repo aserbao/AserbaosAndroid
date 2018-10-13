@@ -5,9 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity">
-    <com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.A3DReyclcerView
+    <android.support.v7.widget.RecyclerView
         android:layout_gravity="center"
         android:id="@+id/animation_recycler_view"
-        android:layout_width="300dp"
-        android:layout_height="500dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <Button
+        android:onClick="btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>
