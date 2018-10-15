@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +80,11 @@ public class DataBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         if(viewHolder instanceof TextViewHolder){
             final Thing thing = mThing.get(position);
-            ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage() +  " Id 为：" + String.valueOf(thing.getId()));
+            if(!TextUtils.isEmpty(thing.getName())){
+                ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText("name为："+ thing.getName() + " Id 为：" + String.valueOf(thing.getId()));
+            }else {
+                ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage() + " Id 为：" + String.valueOf(thing.getId()));
+            }
             ((TextViewHolder) viewHolder).mTextViewHolderTimeTv.setText(AppDateMgr.formatFriendly(thing.getTime()));
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

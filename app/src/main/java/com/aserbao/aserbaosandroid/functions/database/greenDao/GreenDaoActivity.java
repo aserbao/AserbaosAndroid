@@ -40,9 +40,10 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
     @Override
     public void insertData(Thing s) {
         if(s == null ) {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100; i++) {
                 String content = "第" + i + "个数据";
-                Thing thing = new Thing(content, System.currentTimeMillis() - 60 * 1000 * i);
+                String name = "第" + i + "个名字";
+                Thing thing = new Thing(content,name, System.currentTimeMillis() - 60 * 1000 * i);
                 daoSession.insertOrReplace(thing);
             }
         }else{
