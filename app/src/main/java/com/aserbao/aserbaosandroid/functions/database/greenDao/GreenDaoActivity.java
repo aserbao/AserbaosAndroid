@@ -82,8 +82,9 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
     public List quetyList(String message){
         QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
         List<Thing> list = qb.list(); // 查出所有的数据
-        QueryBuilder<Thing> thingQueryBuilder = qb.where(ThingDao.Properties.Message.gt(message)).orderAsc(ThingDao.Properties.Message);
+        QueryBuilder<Thing> thingQueryBuilder = qb.where(ThingDao.Properties.Message.like(message)).orderAsc(ThingDao.Properties.Message);
         List<Thing> thingList = thingQueryBuilder.list(); //查出当前对应message的数据
+//        qb.where(ThingDao.Properties.Message.eq())
         return list;
     }
 

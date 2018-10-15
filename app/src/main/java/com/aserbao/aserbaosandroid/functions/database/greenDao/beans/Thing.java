@@ -21,7 +21,6 @@ public class Thing {
     @Property(nameInDb="message")
 //            @Index(unique = true)
     String message;
-
     long time;
 
     @Generated(hash = 1981866127)
@@ -32,6 +31,7 @@ public class Thing {
         this.message = message;
         this.time = time;
     }
+
 
 
     @Generated(hash = 19372714)
