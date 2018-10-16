@@ -40,7 +40,7 @@ public class CompoundActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mInitBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.starry_sky_1);
         mSecondBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
-        mBlurBitmap = EasyBlur.with(this).bitmap(mInitBitmap).radius(15).scale(4).blur();
+        mBlurBitmap = EasyBlur.with(this).bitmap(mInitBitmap).radius(25).scale(2).blur();
         mCompoundOneIv.setImageBitmap(mBlurBitmap);
     }
 
