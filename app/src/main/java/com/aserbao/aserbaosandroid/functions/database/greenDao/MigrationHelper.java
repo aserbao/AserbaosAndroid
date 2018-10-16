@@ -295,7 +295,6 @@ public final class MigrationHelper {
             Cursor cursor = db.rawQuery(sql, null);
             if (cursor == null)
                 return new ArrayList<>();
-
             TableInfo tableInfo;
             List<TableInfo> tableInfos = new ArrayList<>();
             while (cursor.moveToNext()) {

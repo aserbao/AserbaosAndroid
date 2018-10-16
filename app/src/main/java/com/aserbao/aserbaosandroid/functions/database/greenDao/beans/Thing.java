@@ -6,6 +6,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Transient;
 
 /**
  * 主要功能:
@@ -28,24 +29,9 @@ public class Thing {
     @Property(nameInDb="message")
 //            @Index(unique = true)
     String message;
-
     String name;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Keep
-    public Thing(String message, String name, long time) {
-        this.message = message;
-        this.name = name;
-        this.time = time;
-    }
-
+    @Transient
     long time;
 
     @Generated(hash = 1981866127)
@@ -58,23 +44,19 @@ public class Thing {
     }
 
     @Generated(hash = 363139733)
-    public Thing(Long id, String message, String name, long time) {
+    @Keep
+    public Thing(Long id, String message,long time) {
         this.id = id;
         this.message = message;
-        this.name = name;
         this.time = time;
     }
 
-
-
-    /*@Generated(hash = 363139733)
-    public Thing(Long id, String message, String name, long time) {
+    @Generated(hash = 196461523)
+    public Thing(Long id, String message, String name) {
         this.id = id;
         this.message = message;
         this.name = name;
-        this.time = time;
     }
-    */
 
     public String getMessage() {
         return message;
@@ -91,6 +73,16 @@ public class Thing {
     public void setTime(long time) {
         this.time = time;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
 
 }

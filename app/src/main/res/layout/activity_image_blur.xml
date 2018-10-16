@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.ImageBlurActivity">
+    <ImageView
+        android:src="@drawable/starry_sky_1"
+        android:scaleType="fitXY"
+        android:id="@+id/blur_iamge_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:text="开始模糊"
+        android:id="@+id/start_blur_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/blur_scale_tv"
+            android:layout_gravity="center"
+            android:text="scale = 2"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:min="1"
+            android:max="10"
+            android:progress="2"
+            android:id="@+id/blur_scale_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <TextView
+            android:textSize="18sp"
+            android:id="@+id/blur_radius_tv"
+            android:layout_gravity="center"
+            android:text="raduis = 10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <SeekBar
+            android:id="@+id/blur_radius_seek_bar"
+            android:max="25"
+            android:min="1"
+            android:progress="10"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+</FrameLayout>

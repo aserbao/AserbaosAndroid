@@ -1,29 +1,17 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-
 import com.aserbao.aserbaosandroid.AserbaoApplication;
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao;
-import com.aserbao.aserbaosandroid.functions.database.base.rv.adapters.DataBaseAdapter;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import static com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao.Properties.Id;
+import static com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao.Properties.Message;
 
 public class GreenDaoActivity extends DataBaseBaseActivity {
     private static final String TAG = "GreenDaoActivity";
@@ -43,7 +31,7 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
             for (int i = 0; i < 100; i++) {
                 String content = "第" + i + "个数据";
                 String name = "第" + i + "个名字";
-                Thing thing = new Thing(content,name, System.currentTimeMillis() - 60 * 1000 * i);
+                Thing thing = new Thing(content, System.currentTimeMillis() - 60 * 1000 * i);
                 daoSession.insertOrReplace(thing);
             }
         }else{
@@ -85,7 +73,18 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
         List<Thing> list = qb.list(); // 查出所有的数据
         QueryBuilder<Thing> thingQueryBuilder = qb.where(ThingDao.Properties.Message.like(message)).orderAsc(ThingDao.Properties.Message);
         List<Thing> thingList = thingQueryBuilder.list(); //查出当前对应message的数据
-//        qb.where(ThingDao.Properties.Message.eq())
+
+        //查询Message值为message时，按Name值排序的结果
+        qb = daoSession.queryBuilder(Thing.class);
+        List<Thing> list1 = qb.where(ThingDao.Properties.Message.eq(message)).orderAsc(ThingDao.Properties.Name).list();
+
+        //嵌套查询： 查询Id大于5小于5，且Message值为message的数据
+        qb = daoSession.queryBuilder(Thing.class);
+        List<Thing> list2 = qb.where(ThingDao.Properties.Message.eq(message),
+                qb.and(ThingDao.Properties.Id.gt(5),
+                        ThingDao.Properties.Id.le(50))).list();
+
+        List<Thing> youngJoes = qb.list();
         return list;
     }
 

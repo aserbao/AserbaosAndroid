@@ -27,7 +27,6 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Message = new Property(1, String.class, "message", false, "message");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
-        public final static Property Time = new Property(3, long.class, "time", false, "TIME");
     }
 
 
@@ -45,8 +44,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"THING\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"message\" TEXT," + // 1: message
-                "\"NAME\" TEXT," + // 2: name
-                "\"TIME\" INTEGER NOT NULL );"); // 3: time
+                "\"NAME\" TEXT);"); // 2: name
     }
 
     /** Drops the underlying database table. */
@@ -73,7 +71,6 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         if (name != null) {
             stmt.bindString(3, name);
         }
-        stmt.bindLong(4, entity.getTime());
     }
 
     @Override
@@ -94,7 +91,6 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         if (name != null) {
             stmt.bindString(3, name);
         }
-        stmt.bindLong(4, entity.getTime());
     }
 
     @Override
@@ -107,8 +103,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         Thing entity = new Thing( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // message
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // name
-            cursor.getLong(offset + 3) // time
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // name
         );
         return entity;
     }
@@ -118,7 +113,6 @@ public class ThingDao extends AbstractDao<Thing, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setMessage(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setTime(cursor.getLong(offset + 3));
      }
     
     @Override

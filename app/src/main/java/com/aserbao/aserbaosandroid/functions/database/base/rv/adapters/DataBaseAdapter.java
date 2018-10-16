@@ -80,11 +80,7 @@ public class DataBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         if(viewHolder instanceof TextViewHolder){
             final Thing thing = mThing.get(position);
-            if(!TextUtils.isEmpty(thing.getName())){
-                ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText("name为："+ thing.getName() + " Id 为：" + String.valueOf(thing.getId()));
-            }else {
                 ((TextViewHolder) viewHolder).mTextViewHolderContentTv.setText(thing.getMessage() + " Id 为：" + String.valueOf(thing.getId()));
-            }
             ((TextViewHolder) viewHolder).mTextViewHolderTimeTv.setText(AppDateMgr.formatFriendly(thing.getTime()));
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
