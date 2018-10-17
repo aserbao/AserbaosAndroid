@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initGetData() {
+        mClassBeen.add(new ClassBean("测试", TestActivity.class));
         mClassBeen.add(new ClassBean("OpenGl", OpenGlActivity.class));
         mClassBeen.add(new ClassBean("策略模式", DesignModeActivity.class));
         mClassBeen.add(new ClassBean("多媒体", MediaActivity.class));

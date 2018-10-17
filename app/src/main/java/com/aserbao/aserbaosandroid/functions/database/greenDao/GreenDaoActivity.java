@@ -6,12 +6,12 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao;
 
+import org.greenrobot.greendao.query.DeleteQuery;
+import org.greenrobot.greendao.query.Query;
 import org.greenrobot.greendao.query.QueryBuilder;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.List;
-
-import static com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao.Properties.Id;
-import static com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao.Properties.Message;
 
 public class GreenDaoActivity extends DataBaseBaseActivity {
     private static final String TAG = "GreenDaoActivity";
@@ -20,7 +20,7 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
 
     @Override
     public void initDatabase() {
-        daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+       daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
         ThingDao thingDao = daoSession.getThingDao();
         things = thingDao.loadAll();
     }
@@ -60,8 +60,13 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
 
     @Override
     public void queryData(String s) {
-        List<Thing> things = daoSession.queryRaw(Thing.class, " where id = ?", s);
-        mDataBaseAdapter.addNewThingData(things);
+        /*List<Thing> things = daoSession.queryRaw(Thing.class, " where id = ?", s);
+        mDataBaseAdapter.addNewThingData(things);*/
+//        mDataBaseAdapter.addNewThingData(queryListByOther());
+//        mDataBaseAdapter.addNewThingData(queryListByMoreTime());
+//        mDataBaseAdapter.addNewThingData(queryListBySqL());
+        deleteItem();
+        mDataBaseAdapter.notifyDataSetChanged();
     }
 
     public List queryAll(){
@@ -70,9 +75,12 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
     }
     public List quetyList(String message){
         QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
-        List<Thing> list = qb.list(); // 查出所有的数据
+        // 查出所有的数据
+        List<Thing> list = qb.list();
+
+        //查出当前对应message的数据
         QueryBuilder<Thing> thingQueryBuilder = qb.where(ThingDao.Properties.Message.like(message)).orderAsc(ThingDao.Properties.Message);
-        List<Thing> thingList = thingQueryBuilder.list(); //查出当前对应message的数据
+        List<Thing> thingList = thingQueryBuilder.list();
 
         //查询Message值为message时，按Name值排序的结果
         qb = daoSession.queryBuilder(Thing.class);
@@ -84,10 +92,63 @@ public class GreenDaoActivity extends DataBaseBaseActivity {
                 qb.and(ThingDao.Properties.Id.gt(5),
                         ThingDao.Properties.Id.le(50))).list();
 
-        List<Thing> youngJoes = qb.list();
+
         return list;
     }
 
+    public List queryList(){
+        DaoSession daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+        QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
+        //嵌套查询： 查询Id大于5小于5，且Message值为message的数据
+        qb = daoSession.queryBuilder(Thing.class);
+        List<Thing> list2 = qb.where(ThingDao.Properties.Message.eq("一"),
+                qb.and(ThingDao.Properties.Id.gt(5),
+                        ThingDao.Properties.Id.le(50))).list();
+        return  list2;
+    }
+
+    public List queryListByOther(){
+        DaoSession daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+        QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
+
+        //搜索条件为Id值大于1，即结果为[2,3,4,5,6,7,8,9,10,11];
+        // offset(2)表示往后偏移2个，结果为[4,5,6,7,8,9,10,11,12,13];
+        List<Thing> list = qb.where(ThingDao.Properties.Id.gt(1)).limit(10).offset(2).list();
+        return list;
+    }
+
+    public List queryListByMoreTime(){
+        DaoSession daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+        QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
+
+        //搜索条件为Id值大于1，即结果为[2,3,4,5,6,7,8,9,10,11];
+        // offset(2)表示往后偏移2个，结果为[4,5,6,7,8,9,10,11,12,13];
+        Query<Thing> query = qb.where(ThingDao.Properties.Id.gt(1)).limit(10).offset(2).build();
+        List<Thing> list = query.list();
+
+        //通过SetParameter来修改上面的查询条件，比如我们将上面条件修改取10条Id值大于5，往后偏移两位的数据，方法如下！
+        query.setParameter(0,5);
+        List<Thing> list1 = query.list();
+        return list1;
+    }
+
+    public List queryListBySqL(){
+        DaoSession daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+        Query<Thing> query = daoSession.queryBuilder(Thing.class).where(
+                new WhereCondition.StringCondition("_ID IN " +
+                        "(SELECT _ID FROM THING WHERE _ID > 5)")
+        ).build();
+        List<Thing> list = query.list();
+        return list;
+    }
+
+    public boolean deleteItem(){
+        DaoSession daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+        QueryBuilder<Thing> where = daoSession.queryBuilder(Thing.class).where(ThingDao.Properties.Id.gt(5));
+        DeleteQuery<Thing> deleteQuery = where.buildDelete();
+        deleteQuery.executeDeleteWithoutDetachingEntities();
+        return false;
+    }
 
 
 

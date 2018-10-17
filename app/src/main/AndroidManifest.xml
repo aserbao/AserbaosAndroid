@@ -132,7 +132,9 @@
         <activity android:name=".functions.iamgePhotoshop.ImagePhotoShopActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
-        <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity"></activity>
+        <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
+        <activity android:name=".ui.texts.editTexts.others.OthersActivity"></activity>
+        <activity android:name=".TestActivity"/>
     </application>
 
 </manifest>
