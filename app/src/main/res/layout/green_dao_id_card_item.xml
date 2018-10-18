@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/green_dao_id_card_name_tv"
+        android:text="姓名：张三"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/green_dao_id_card_no_tv"
+        android:textSize="20sp"
+        android:text="身份证号：329481 19920228 379X"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

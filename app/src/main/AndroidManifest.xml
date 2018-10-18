@@ -51,23 +51,23 @@
         <activity android:name=".designMode.strategyMode.StrategyActivity" />
         <activity android:name=".designMode.DesignModeActivity" />
         <activity android:name=".designMode.observerMode.ObserverActivity" />
-        <activity android:name=".media.MediaActivity" />
-        <activity android:name=".media.videoView.VideoViewActivity" />
+        <activity android:name=".AudioAndVideo.media.MediaActivity" />
+        <activity android:name=".AudioAndVideo.media.videoView.VideoViewActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
         <activity android:name=".ui.customView.CustomViewActivity" />
-        <activity android:name=".media.audio.AudioRecordActivity" />
+        <activity android:name=".AudioAndVideo.media.audio.AudioRecordActivity" />
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
-        <activity android:name=".media.mediaplayer.MediaPlayerActivity" />
+        <activity android:name=".AudioAndVideo.media.mediaplayer.MediaPlayerActivity" />
         <activity
             android:name=".opengl.openGlCamera.recordCamera.RecordCameraActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".media.mediaMuxer.MediaMuxerActivity" />
+        <activity android:name=".AudioAndVideo.media.mediaMuxer.MediaMuxerActivity" />
         <activity android:name=".designMode.factoryMode.FactoryActivity" />
         <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity" />
-        <activity android:name=".media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
-        <activity android:name=".media.mediacodec.MediaCodecActivity" />
+        <activity android:name=".AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
+        <activity android:name=".AudioAndVideo.media.mediacodec.MediaCodecActivity" />
         <activity android:name=".ui.rv.RecyclerViewActivity" />
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
@@ -86,8 +86,8 @@
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name=".functions.events.EventDealActivity" />
         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
-        <activity android:name=".media.exoplayer.ExoPlayerPActivity" />
-        <activity android:name=".media.exoplayer.playerlist.PlayListActivity" />
+        <activity android:name=".AudioAndVideo.media.exoplayer.ExoPlayerPActivity" />
+        <activity android:name=".AudioAndVideo.media.exoplayer.playerlist.PlayListActivity" />
         <activity android:name=".ui.texts.textViews.TextViewsActivity" />
         <activity android:name=".ui.texts.textViews.shadowText.TextShadowActivity" />
         <activity android:name=".functions.cache.CacheActivity" />
@@ -111,7 +111,7 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
-        <activity android:name=".functions.database.greenDao.GreenDaoActivity" />
+        <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity">
 
             <!--
@@ -133,8 +133,14 @@
         <activity android:name=".functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
         <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
-        <activity android:name=".ui.texts.editTexts.others.OthersActivity"></activity>
-        <activity android:name=".TestActivity"/>
+        <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
+        <activity android:name=".AudioAndVideo.jnis.JnisActivity" />
+        <activity android:name=".AudioAndVideo.jnis.javaCallC.JavaCallCActivity" />
+        <activity android:name=".functions.database.greenDao.relation.RelationActivity" />
+        <activity android:name=".functions.database.greenDao.relation.toOne.GreenDaoRelationActivity" />
+        <activity android:name=".functions.database.greenDao.GreenDaoActivity"></activity>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context="com.aserbao.aserbaosandroid.media.MediaActivity">
+    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.MediaActivity">
     <Button
         android:onClick="btn_audio_record_activity"
         android:text="audio_record"

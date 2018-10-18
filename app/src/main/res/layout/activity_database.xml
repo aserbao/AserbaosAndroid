@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity">
+    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoSimpleActivity">
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

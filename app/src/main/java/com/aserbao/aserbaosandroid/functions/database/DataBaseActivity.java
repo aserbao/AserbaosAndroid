@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.functions.database;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoSimpleActivity;
 import com.aserbao.aserbaosandroid.functions.database.mySql.MySqlActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 

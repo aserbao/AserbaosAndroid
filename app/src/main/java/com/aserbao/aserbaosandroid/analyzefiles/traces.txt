@@ -1,13 +1,13 @@
 
 ----- pid 20063 at 2018-09-06 19:52:03 -----
 Cmd line: com.getremark.spot
-Build fingerprint: 'HONOR/DUK-AL20/HWDUK:8.0.0/HUAWEIDUK-AL20/351(C00):user/release-keys'
+Build fingerprint: 'HONOR/DUK-AL20/HWDUK:8.0.0/HUAWEIDUK-AL20/351(C00):student/release-keys'
 ABI: 'arm64'
 Build type: optimized
 Zygote loaded classes=4762 post zygote classes=5250
 Intern table: 52126 strong; 171 weak
 JNI: CheckJNI is off; globals=980 (plus 10653 weak)
-Libraries: /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libCGE.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libCGEExt.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libffmpeg.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libmapbox-gl.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libtpnsSecurity.so /data/app/com.google.android.webview-pg8JK6TB6M741OvKVHHA3w==/lib/arm64/libwebviewchromium.so /data/user/0/com.getremark.spot/files/loc_cozip/3b86ed8655d179c94516c1d960394d14/libs/arm64-v8a/libapssdk.so /system/lib64/libandroid.so /system/lib64/libcompiler_rt.so /system/lib64/libhwaps.so /system/lib64/libhwlog_jni.so /system/lib64/libiAwareSdk_jni.so /system/lib64/libjavacrypto.so /system/lib64/libjnigraphics.so /system/lib64/libmedia_jni.so /system/lib64/libmediamonitor_jni.so /system/lib64/libsoundpool.so /system/lib64/libwebviewchromium_loader.so /system/lib64/libwebviewchromium_plat_support.so libjavacore.so libopenjdk.so (21)
+Libraries: /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libCGE.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libCGEExt.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libffmpeg.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libmapbox-gl.so /data/app/com.getremark.spot-y_abejg9WDYKQ2LxTMUQLQ==/lib/arm64/libtpnsSecurity.so /data/app/com.google.android.webview-pg8JK6TB6M741OvKVHHA3w==/lib/arm64/libwebviewchromium.so /data/student/0/com.getremark.spot/files/loc_cozip/3b86ed8655d179c94516c1d960394d14/libs/arm64-v8a/libapssdk.so /system/lib64/libandroid.so /system/lib64/libcompiler_rt.so /system/lib64/libhwaps.so /system/lib64/libhwlog_jni.so /system/lib64/libiAwareSdk_jni.so /system/lib64/libjavacrypto.so /system/lib64/libjnigraphics.so /system/lib64/libmedia_jni.so /system/lib64/libmediamonitor_jni.so /system/lib64/libsoundpool.so /system/lib64/libwebviewchromium_loader.so /system/lib64/libwebviewchromium_plat_support.so libjavacore.so libopenjdk.so (21)
 Heap: 46% free, 10MB/18MB; 169742 objects
 Dumping cumulative Gc timings
 Start Dumping histograms for 28 iterations for concurrent copying

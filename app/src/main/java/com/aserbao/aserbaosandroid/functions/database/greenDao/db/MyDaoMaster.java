@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.aserbao.aserbaosandroid.functions.database.greenDao.MigrationHelper;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster.OpenHelper;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 
 import org.greenrobot.greendao.database.Database;
 

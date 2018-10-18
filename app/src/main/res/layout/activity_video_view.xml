@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.media.videoView.VideoViewActivity">
+    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.videoView.VideoViewActivity">
     <VideoView
         android:id="@+id/video_view"
         android:layout_width="500dp"
