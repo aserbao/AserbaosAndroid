@@ -5,25 +5,35 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:layout_height="wrap_content">
-    <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_above="@+id/test_show"
-        android:text="法律上看到飞机撒来得及发来看撒娇地方法律上看到飞机撒来得及发来看撒娇地方了如果在多个线程中使用查询，则必须调用 forCurrentThread （）以获取当前线程的Query实例。Query的对象实例绑定到构建查询的拥有线程。
-    这使您可以安全地在Query对象上设置参数，而其他线程不会干扰。如果其他线程尝试在查询上设置参数或执行绑定到另一个线程的查询，则会抛出异常。像这样，您不需要同步语句。实际上，您应该避免锁定，因为如果并发事务使用相同的Query对象，这可能会导致死锁。就是离开东方嘉盛考虑到解放路口涉及到风口浪尖上看到发 了就是离开东方嘉盛考虑到解放路口涉及到风口浪尖上看到发 "
-        android:textSize="28sp"
-        android:layout_width="match_parent"
-        android:layout_height="400dp" />
+
+            <ScrollView
+                android:layout_above="@+id/test_show"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+                    <EditText
+                        android:layout_above="@+id/test_show"
+                        android:text="法律上看到飞机撒来得及发来看撒娇"
+                        android:textSize="28sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp" />
+
+                </LinearLayout>
+            </ScrollView>
     <TextView
         android:layout_alignParentBottom="true"
         android:id="@+id/test_show"
-        android:background="@color/white"
+        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
-</LinearLayout>
     <Button
+        android:layout_centerInParent="true"
         android:id="@+id/btn_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -2,10 +2,14 @@ package com.aserbao.aserbaosandroid;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;
+
+import java.io.File;
 
 /**
  * Created by aserbao on 2018 2018/1/15.23:27
@@ -34,7 +38,13 @@ public class AserbaoApplication extends Application {
      * 初始化GreenDao,直接在Application中进行初始化操作
      */
     private void initGreenDao() {
-        MyDaoMaster helper = new MyDaoMaster(this, "aserbao.db");
+
+       /* File databasePath = getDatabasePath("aserbaos.db");
+        boolean exists = databasePath.exists();
+        File file = new File(databasePath.getParentFile(), "aserbaos.db");
+        databasePath.renameTo(file);
+        Log.e("test", "initGreenDao: " + databasePath.getAbsolutePath());*/
+        MyDaoMaster helper = new MyDaoMaster(this, "aserbaos.db");
 //        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "aserbao.db");
         SQLiteDatabase db = helper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(db);

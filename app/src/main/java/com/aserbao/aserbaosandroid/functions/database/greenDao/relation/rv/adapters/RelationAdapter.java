@@ -78,6 +78,10 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         notifyDataSetChanged();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return cuurType;
+    }
 
     @NonNull
     @Override
@@ -104,8 +108,10 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 ((StudentViewHolder) viewHolder).mGreenDaoStudentNameTv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String userName = ((StudentViewHolder) viewHolder).mGreenDaoStudentNameTv.getText().toString().trim();
-                        mIdCardList = daoSession.queryBuilder(IdCard.class).where(IdCardDao.Properties.UserName.eq(userName)).list();
+                        String name = ((StudentViewHolder) viewHolder).mGreenDaoStudentNameTv.getText().toString().trim();
+                        String[] split = name.split(" ");
+                        String userName = split[1];
+                        mIdCardList = daoSession.queryBuilder(IdCard.class).where(IdCardDao.Properties.UserName.like(userName)).list();
                         cuurType = IDCARD;
                         notifyDataSetChanged();
                     }
