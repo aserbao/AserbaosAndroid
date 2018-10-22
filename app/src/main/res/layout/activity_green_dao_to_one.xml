@@ -15,18 +15,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/to_one_add_btn"
-            android:text="随机添加五条学生数据"
+            android:id="@+id/to_one_add_data_btn"
+            android:text="随机添加五条数据"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/to_one_query_btn"
-            android:text="查找最后5条数据"
+            android:id="@+id/to_one_add_teacher_btn"
+            android:text="随机添加五条老师数据"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/show_teacher_btn"
+            android:text="显示所有老师数据"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/show_student_btn"
             android:text="显示所有学生数据"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/show_id_card_btn"
+            android:text="显示所有身份证数据"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/show_credit_card_btn"
+            android:text="显示所有信用卡数据"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>

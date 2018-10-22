@@ -3,10 +3,12 @@ package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.adap
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AserbaoApplication;
@@ -17,10 +19,11 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Cr
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Teacher;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.AllDataViewHolder;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.CreditCardViewHolder;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.IdCardViewHolder;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.StudentViewHolder;
-
-import org.greenrobot.greendao.query.QueryBuilder;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.TeacherViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +41,14 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static final int TEACHER = 1;
     public static final int IDCARD = 2;
     public static final int CREDITCARD = 3;
+    public static final int ALLDATA = 4;
 
 
 
     private int cuurType = STUDENT;
 
     private Context mContext;
-    private Activity activity;
+    private AppCompatActivity activity;
     private DaoSession daoSession;
 
     List<Student> mStudentList = new ArrayList<>();
@@ -52,17 +56,19 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     List<IdCard> mIdCardList = new ArrayList<>();
     List<CreditCard> mCreditCardList = new ArrayList<>();
 
-    public RelationAdapter(Context mContext, Activity activity) {
+    public RelationAdapter(Context mContext, AppCompatActivity activity) {
         this.mContext = mContext;
         this.activity = activity;
         daoSession = ((AserbaoApplication) activity.getApplication()).getDaoSession();
     }
-    public void refreshAllData(int type){
+
+    public void refreshAllData(int type) {
         cuurType = type;
 
-        switch (type){
+        switch (type) {
+            case ALLDATA:
             case STUDENT:
-                mStudentList =  daoSession.loadAll(Student.class);
+                mStudentList = daoSession.loadAll(Student.class);
                 break;
             case TEACHER:
                 mTeacherList = daoSession.loadAll(Teacher.class);
@@ -74,7 +80,6 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 mCreditCardList = daoSession.loadAll(CreditCard.class);
                 break;
         }
-
         notifyDataSetChanged();
     }
 
@@ -95,14 +100,23 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case IDCARD:
                 view = inflater.inflate(R.layout.green_dao_id_card_item, viewGroup, false);
                 return new IdCardViewHolder(view);
+            case CREDITCARD:
+                view = inflater.inflate(R.layout.green_dao_credit_card_item, viewGroup, false);
+                return new CreditCardViewHolder(view);
+            case TEACHER:
+                view = inflater.inflate(R.layout.green_dao_teacher_item, viewGroup, false);
+                return new TeacherViewHolder(view);
+            case ALLDATA:
+                view = inflater.inflate(R.layout.green_dao_all_data_item, viewGroup, false);
+                return new TeacherViewHolder(view);
         }
         return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
-        if (viewHolder instanceof StudentViewHolder){
-            if(i < mStudentList.size()) {
+        if (viewHolder instanceof StudentViewHolder) {
+            if (i < mStudentList.size()) {
                 Student student = mStudentList.get(i);
                 ((StudentViewHolder) viewHolder).setDataSource(student);
                 ((StudentViewHolder) viewHolder).mGreenDaoStudentNameTv.setOnClickListener(new View.OnClickListener() {
@@ -117,10 +131,25 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     }
                 });
             }
-        }else if(viewHolder instanceof IdCardViewHolder){
-            if (i < mIdCardList.size()){
+        } else if (viewHolder instanceof IdCardViewHolder) {
+            if (i < mIdCardList.size()) {
                 IdCard idCard = mIdCardList.get(i);
                 ((IdCardViewHolder) viewHolder).setDataSource(idCard);
+            }
+        } else if (viewHolder instanceof CreditCardViewHolder) {
+            if (i < mCreditCardList.size()) {
+                CreditCard creditCard = mCreditCardList.get(i);
+                ((CreditCardViewHolder) viewHolder).setDataSource(creditCard);
+            }
+        } else if (viewHolder instanceof TeacherViewHolder) {
+            if (i < mTeacherList.size()) {
+                Teacher teacher = mTeacherList.get(i);
+                ((TeacherViewHolder) viewHolder).setDataSource(teacher);
+            }
+        }else if (viewHolder instanceof AllDataViewHolder){
+            if (i < mStudentList.size()) {
+                Student student = mStudentList.get(i);
+                ((AllDataViewHolder) viewHolder).setDataSource(student,activity);
             }
         }
     }
@@ -128,7 +157,8 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemCount() {
         int ret = 0;
-        switch (cuurType){
+        switch (cuurType) {
+            case ALLDATA:
             case STUDENT:
                 if (mStudentList != null) {
                     ret = ret + mStudentList.size();
