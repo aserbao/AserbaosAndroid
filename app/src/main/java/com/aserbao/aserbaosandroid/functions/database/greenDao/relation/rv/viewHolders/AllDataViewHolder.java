@@ -85,6 +85,8 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
             IdCard idCard = idCardQueryBuilder.where(IdCardDao.Properties.UserName.like(student.getName())).unique();
             mGreenDaoAllDataIdCardTv.setText("身份证号 ： " + idCard.getIdNo());
 
+
+            mGreenDaoAllDataCreditCardLl.removeAllViews();
             QueryBuilder<CreditCard> creditCardQueryBuilder = daoSession.queryBuilder(CreditCard.class);
             List<CreditCard> creditCardList = creditCardQueryBuilder.where(CreditCardDao.Properties.UserId.eq(student.getId())).list();
             for (int i = 0; i < creditCardList.size(); i++) {
@@ -95,6 +97,7 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
             }
 
 
+            mGreenDaoAllDataTeachersLl.removeAllViews();
             QueryBuilder<StudentAndTeacherBean> studentAndTeacherBeanQueryBuilder = daoSession.queryBuilder(StudentAndTeacherBean.class);
             QueryBuilder<Teacher> teacherQueryBuilder = daoSession.queryBuilder(Teacher.class);
             QueryBuilder<Student> studentQueryBuilder = daoSession.queryBuilder(Student.class);
@@ -102,8 +105,11 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
             for (int i = 0; i < studentAndTeacherBeans.size(); i++) {
                 StudentAndTeacherBean studentAndTeacherBean = studentAndTeacherBeans.get(i);
                 Long teacherId = studentAndTeacherBean.getTeacherId();
-                Teacher teacher = teacherQueryBuilder.where(TeacherDao.Properties.Id.eq(teacherId)).unique();
+                Teacher teacher = teacherQueryBuilder.where(TeacherDao.Properties.Id.like(String.valueOf(teacherId))).unique();
                 View teacherView = LayoutInflater.from(context).inflate(R.layout.green_dao_all_data_teacher_item, null);
+                if (teacher == null){
+                    return;
+                }
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_name_tv)).setText(" 他的" +teacher.getSubject() + " 老师 ： " + teacher.getName()  );
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_id_tv)).setText(" ID 为：" + teacher.getId());
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_no_tv)).setText(" 工号为： " + teacher.getTeacherNo());
@@ -111,9 +117,8 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_sex_tv)).setText(" 性别："+ teacher.getSex());
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_tel_tv)).setText(" 手机号：" + teacher.getTelPhone());
                 FlowLayout flowLayout = (FlowLayout) teacherView.findViewById(R.id.green_dao_all_data_flow_layout);
-                mGreenDaoAllDataTeachersLl.addView(teacherView);
 
-                List<StudentAndTeacherBean> teacherBeanList = studentAndTeacherBeanQueryBuilder.where(StudentAndTeacherBeanDao.Properties.TeacherId.eq(teacher.getId())).list();
+                List<StudentAndTeacherBean> teacherBeanList = studentAndTeacherBeanQueryBuilder.where(StudentAndTeacherBeanDao.Properties.TeacherId.eq(String.valueOf(teacher.getId()))).list();
                 for (int j = 0; j < teacherBeanList.size(); j++) {
                     StudentAndTeacherBean studentAndTeacherBean1 = teacherBeanList.get(j);
                     Long studentId = studentAndTeacherBean1.getStudentId();
@@ -122,7 +127,7 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
                     textView.setText(student1.getName());
                     flowLayout.addView(textView);
                 }
-
+                mGreenDaoAllDataTeachersLl.addView(teacherView);
             }
         }
     }

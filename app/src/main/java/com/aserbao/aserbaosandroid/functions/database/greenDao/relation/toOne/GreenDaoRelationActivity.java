@@ -12,12 +12,15 @@ import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.db.TeacherDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.StudentAndTeacherBean;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Teacher;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.adapters.RelationAdapter;
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -54,7 +57,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
         mToOneOneReyclerView.setAdapter(mRelationAdapter);
     }
 
-    @OnClick({R.id.to_one_add_data_btn, R.id.to_one_add_teacher_btn,R.id.show_student_btn,R.id.show_credit_card_btn,R.id.show_id_card_btn,R.id.show_teacher_btn})
+    @OnClick({R.id.to_one_add_data_btn, R.id.to_one_add_teacher_btn,R.id.show_student_btn,R.id.show_credit_card_btn,R.id.show_id_card_btn,R.id.show_teacher_btn,R.id.show_all_data_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.to_one_add_data_btn:
@@ -137,6 +140,13 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                 break;
             case R.id.show_teacher_btn:
                 mRelationAdapter.refreshAllData(RelationAdapter.TEACHER);
+                break;
+            case R.id.show_all_data_btn:
+                /*daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+                QueryBuilder<Teacher> teacherQueryBuilder = daoSession.queryBuilder(Teacher.class);
+                Teacher list = teacherQueryBuilder.where(TeacherDao.Properties.Id.eq("9")).unique();
+                Log.e("kiust", "onViewClicked: " );*/
+                mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
                 break;
         }
     }

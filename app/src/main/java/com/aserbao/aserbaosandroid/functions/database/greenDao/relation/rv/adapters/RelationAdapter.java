@@ -108,7 +108,7 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 return new TeacherViewHolder(view);
             case ALLDATA:
                 view = inflater.inflate(R.layout.green_dao_all_data_item, viewGroup, false);
-                return new TeacherViewHolder(view);
+                return new AllDataViewHolder(view);
         }
         return null;
     }
@@ -149,7 +149,7 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }else if (viewHolder instanceof AllDataViewHolder){
             if (i < mStudentList.size()) {
                 Student student = mStudentList.get(i);
-                ((AllDataViewHolder) viewHolder).setDataSource(student,activity);
+                ((AllDataViewHolder) viewHolder).setDataSource(student,activity,mContext);
             }
         }
     }
