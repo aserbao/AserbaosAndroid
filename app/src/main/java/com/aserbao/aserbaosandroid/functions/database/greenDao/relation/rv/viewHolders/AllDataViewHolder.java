@@ -99,12 +99,11 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
 
             mGreenDaoAllDataTeachersLl.removeAllViews();
             QueryBuilder<StudentAndTeacherBean> studentAndTeacherBeanQueryBuilder = daoSession.queryBuilder(StudentAndTeacherBean.class);
-            QueryBuilder<Teacher> teacherQueryBuilder = daoSession.queryBuilder(Teacher.class);
-            QueryBuilder<Student> studentQueryBuilder = daoSession.queryBuilder(Student.class);
             List<StudentAndTeacherBean> studentAndTeacherBeans = studentAndTeacherBeanQueryBuilder.where(StudentAndTeacherBeanDao.Properties.StudentId.eq(student.getId())).list();
             for (int i = 0; i < studentAndTeacherBeans.size(); i++) {
                 StudentAndTeacherBean studentAndTeacherBean = studentAndTeacherBeans.get(i);
                 Long teacherId = studentAndTeacherBean.getTeacherId();
+                QueryBuilder<Teacher> teacherQueryBuilder = daoSession.queryBuilder(Teacher.class);
                 Teacher teacher = teacherQueryBuilder.where(TeacherDao.Properties.Id.like(String.valueOf(teacherId))).unique();
                 View teacherView = LayoutInflater.from(context).inflate(R.layout.green_dao_all_data_teacher_item, null);
                 if (teacher == null){
@@ -118,13 +117,16 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
                 ((TextView) teacherView.findViewById(R.id.green_dao_all_data_teacher_tel_tv)).setText(" 手机号：" + teacher.getTelPhone());
                 FlowLayout flowLayout = (FlowLayout) teacherView.findViewById(R.id.green_dao_all_data_flow_layout);
 
-                List<StudentAndTeacherBean> teacherBeanList = studentAndTeacherBeanQueryBuilder.where(StudentAndTeacherBeanDao.Properties.TeacherId.eq(String.valueOf(teacher.getId()))).list();
+                QueryBuilder<StudentAndTeacherBean> studentAndTeacherBeanQueryBuilder1 = daoSession.queryBuilder(StudentAndTeacherBean.class);
+                List<StudentAndTeacherBean> teacherBeanList = studentAndTeacherBeanQueryBuilder1.where(StudentAndTeacherBeanDao.Properties.TeacherId.eq(String.valueOf(teacher.getId()))).list();
                 for (int j = 0; j < teacherBeanList.size(); j++) {
                     StudentAndTeacherBean studentAndTeacherBean1 = teacherBeanList.get(j);
                     Long studentId = studentAndTeacherBean1.getStudentId();
+
+                    QueryBuilder<Student> studentQueryBuilder = daoSession.queryBuilder(Student.class);
                     Student student1 = studentQueryBuilder.where(StudentDao.Properties.Id.eq(studentId)).unique();
                     TextView textView = new TextView(context);
-                    textView.setText(student1.getName());
+                    textView.setText(" 学生名字："+ student1.getName());
                     flowLayout.addView(textView);
                 }
                 mGreenDaoAllDataTeachersLl.addView(teacherView);
