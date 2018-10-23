@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -67,7 +68,7 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this,itemView);
     }
 
-    public void setDataSource(Student student, AppCompatActivity activity,Context context){
+    public void setDataSource(Student student, AppCompatActivity activity, Context context, final IOnBackListener onBackListener){
         if (student != null) {
             mGreenDaoAllDataNameTv.setText("名字： " + student.getName());
             mGreenDaoAllDataIdTv.setText("ID： " + student.getId());
@@ -126,12 +127,25 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
                     QueryBuilder<Student> studentQueryBuilder = daoSession.queryBuilder(Student.class);
                     Student student1 = studentQueryBuilder.where(StudentDao.Properties.Id.eq(studentId)).unique();
                     TextView textView = new TextView(context);
+                    textView.setTextColor(Color.parseColor("#0000FF"));
                     textView.setText(" 学生名字："+ student1.getName());
+                    textView.setTag(student1.getId());
                     flowLayout.addView(textView);
+
+                    textView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onBackListener.onUserNameClick((Long) v.getTag());
+                        }
+                    });
                 }
                 mGreenDaoAllDataTeachersLl.addView(teacherView);
             }
         }
+    }
+
+    public interface IOnBackListener{
+        void onUserNameClick(Long studentId);
     }
 
 }

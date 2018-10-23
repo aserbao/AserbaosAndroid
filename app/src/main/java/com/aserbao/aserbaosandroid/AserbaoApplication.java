@@ -9,6 +9,8 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;
 
+import org.greenrobot.greendao.database.Database;
+
 import java.io.File;
 
 /**
@@ -46,7 +48,8 @@ public class AserbaoApplication extends Application {
         Log.e("test", "initGreenDao: " + databasePath.getAbsolutePath());*/
         MyDaoMaster helper = new MyDaoMaster(this, "aserbaos.db");
 //        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "aserbao.db");
-        SQLiteDatabase db = helper.getWritableDatabase();
+//        SQLiteDatabase db = helper.getWritableDatabase();
+        Database db = helper.getEncryptedWritableDb("aserbao");
         DaoMaster daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
     }

@@ -14,8 +14,8 @@ import org.greenrobot.greendao.annotation.Generated;
 public class StudentAndTeacherBean {
     @Id(autoincrement = true)
     Long id;
-    Long studentId;
-    Long teacherId;
+    Long studentId;//学生ID
+    Long teacherId;//老师ID
     @Generated(hash = 2146410221)
     public StudentAndTeacherBean(Long id, Long studentId, Long teacherId) {
         this.id = id;

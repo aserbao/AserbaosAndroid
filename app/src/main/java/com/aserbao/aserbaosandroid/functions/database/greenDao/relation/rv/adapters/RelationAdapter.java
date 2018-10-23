@@ -15,6 +15,7 @@ import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.IdCardDao;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.db.StudentDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
@@ -50,15 +51,17 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context mContext;
     private AppCompatActivity activity;
     private DaoSession daoSession;
+    private RecyclerView mRecyclerView;
 
     List<Student> mStudentList = new ArrayList<>();
     List<Teacher> mTeacherList = new ArrayList<>();
     List<IdCard> mIdCardList = new ArrayList<>();
     List<CreditCard> mCreditCardList = new ArrayList<>();
 
-    public RelationAdapter(Context mContext, AppCompatActivity activity) {
+    public RelationAdapter(Context mContext, AppCompatActivity activity,RecyclerView recyclerView) {
         this.mContext = mContext;
         this.activity = activity;
+        mRecyclerView = recyclerView;
         daoSession = ((AserbaoApplication) activity.getApplication()).getDaoSession();
     }
 
@@ -149,7 +152,18 @@ public class RelationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }else if (viewHolder instanceof AllDataViewHolder){
             if (i < mStudentList.size()) {
                 Student student = mStudentList.get(i);
-                ((AllDataViewHolder) viewHolder).setDataSource(student,activity,mContext);
+                ((AllDataViewHolder) viewHolder).setDataSource(student, activity, mContext, new AllDataViewHolder.IOnBackListener() {
+                    @Override
+                    public void onUserNameClick(Long studentId) {
+                        for (int i1 = 0; i1 < mStudentList.size(); i1++) {
+                            Student student1 = mStudentList.get(i1);
+                            if(student1.getId() == studentId){
+                                mRecyclerView.smoothScrollToPosition(i1);
+                                break;
+                            }
+                        }
+                    }
+                });
             }
         }
     }

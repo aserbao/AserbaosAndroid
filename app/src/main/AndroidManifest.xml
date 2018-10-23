@@ -138,8 +138,7 @@
         <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
         <activity android:name=".AudioAndVideo.jnis.JnisActivity" />
         <activity android:name=".AudioAndVideo.jnis.javaCallC.JavaCallCActivity" />
-        <activity android:name=".functions.database.greenDao.relation.RelationActivity" />
-        <activity android:name=".functions.database.greenDao.relation.toOne.GreenDaoRelationActivity" />
+        <activity android:name=".functions.database.greenDao.relation.GreenDaoRelationActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoActivity" />
         <activity android:name=".other.OthersActivity" />
         <activity android:name=".other.compare.CompareActivity"></activity>

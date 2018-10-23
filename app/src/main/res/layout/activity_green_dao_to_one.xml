@@ -5,23 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.relation.toOne.GreenDaoRelationActivity">
-    <TextView
-        android:gravity="center"
-        android:text="点击item删除，常按修改"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="com.aserbao.aserbaosandroid.functions.database.greenDao.relation.GreenDaoRelationActivity">
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/to_one_add_data_btn"
-            android:text="随机添加五条数据"
+            android:text="随机添加五条学生数据"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/to_one_add_teacher_btn"
-            android:text="随机添加五条老师数据"
+            android:text="随机添加几条老师数据"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button

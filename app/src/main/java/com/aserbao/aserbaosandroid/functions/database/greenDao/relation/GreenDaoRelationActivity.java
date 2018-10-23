@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.toOne;
+package com.aserbao.aserbaosandroid.functions.database.greenDao.relation;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -51,7 +51,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
         initView();
     }
     private void initView() {
-        mRelationAdapter = new RelationAdapter(this,this);
+        mRelationAdapter = new RelationAdapter(this,this,mToOneOneReyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mToOneOneReyclerView.setLayoutManager(linearLayoutManager);
         mToOneOneReyclerView.setAdapter(mRelationAdapter);
@@ -64,9 +64,9 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                 DaoSession daoSession = null;
                 List<Student> students = null;
                 int size = 0;
-                    daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
-                    students = daoSession.loadAll(Student.class);
-                    size = students.size();
+                daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
+                students = daoSession.loadAll(Student.class);
+                size = students.size();
                 List<Teacher> teacherList = daoSession.loadAll(Teacher.class);
                 if(teacherList.size() > 0) {
                     for (int i = size; i < size + 5; i++) {
@@ -142,10 +142,6 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                 mRelationAdapter.refreshAllData(RelationAdapter.TEACHER);
                 break;
             case R.id.show_all_data_btn:
-                /*daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
-                QueryBuilder<Teacher> teacherQueryBuilder = daoSession.queryBuilder(Teacher.class);
-                Teacher list = teacherQueryBuilder.where(TeacherDao.Properties.Id.eq("9")).unique();
-                Log.e("kiust", "onViewClicked: " );*/
                 mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
                 break;
         }
@@ -161,7 +157,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
             CreditCard creditCard = new CreditCard();
             creditCard.setUserId(id);
             creditCard.setUserName(userName);
-            creditCard.setCardNum(String.valueOf(random.nextInt(899999999) + 100000000));
+            creditCard.setCardNum(String.valueOf(random.nextInt(899999999) + 100000000) + String.valueOf(random.nextInt(899999999) + 100000000));
             creditCard.setWhichBank(RandomValue.getBankName());
             creditCard.setCardType(random.nextInt(10));
             daoSession.insert(creditCard);
