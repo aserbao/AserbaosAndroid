@@ -33,7 +33,7 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
                 String content = "第" + i + "个数据";
                 String name = "第" + i + "个名字";
                 Thing thing = new Thing(content, System.currentTimeMillis() - 60 * 1000 * i);
-                daoSession.insertOrReplace(thing);
+                daoSession.insert(thing);
             }
         }else{
             daoSession.insertOrReplace(s);

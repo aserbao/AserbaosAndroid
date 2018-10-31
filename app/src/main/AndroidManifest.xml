@@ -141,7 +141,12 @@
         <activity android:name=".functions.database.greenDao.relation.GreenDaoRelationActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoActivity" />
         <activity android:name=".other.OthersActivity" />
-        <activity android:name=".other.compare.CompareActivity"></activity>
+        <activity android:name=".other.compare.CompareActivity" />
+        <activity android:name=".AudioAndVideo.media.image2video.Image2VideoActivity" />
+        <activity android:name=".AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
+        <activity android:name=".functions.how_create_so.HowCreateSoActivity" />
+        <activity android:name=".functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
+        <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity"></activity>
     </application>
 
 </manifest>

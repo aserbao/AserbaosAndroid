@@ -27,7 +27,7 @@ public class Thing {
     }
 
     @Property(nameInDb="message")
-//            @Index(unique = true)
+    @Index(unique = true)
     String message;
     String name;
 
