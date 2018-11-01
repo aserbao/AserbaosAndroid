@@ -146,7 +146,8 @@
         <activity android:name=".AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
         <activity android:name=".functions.how_create_so.HowCreateSoActivity" />
         <activity android:name=".functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
-        <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity"></activity>
+        <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
+        <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity"></activity>
     </application>
 
 </manifest>
