@@ -12,6 +12,6 @@ public class UseNdkBuildActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_ndk_build);
-        ((TextView) findViewById(R.id.use_ndk_build_tv)).setText(CallUtils.callSimpleInfo());
+        ((TextView) findViewById(R.id.use_ndk_build_tv)).setText(CallUtils.callSimpleInfo() + " \n" + CallUtils.callSimpleInfo2());
     }
 }

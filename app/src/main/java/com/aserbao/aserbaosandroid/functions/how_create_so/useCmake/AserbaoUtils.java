@@ -8,8 +8,8 @@ package com.aserbao.aserbaosandroid.functions.how_create_so.useCmake;
  */
 public class AserbaoUtils {
     static {
-        System.loadLibrary("aserbao-one-lib");
-        System.loadLibrary("aserbao-two-lib");
+        System.loadLibrary("use_cmake_build");
+        System.loadLibrary("use_cmake_build2");
     }
     public static native String getSimpleInfoFromOne();
     public static native String getSimpleInfoFromTwo();

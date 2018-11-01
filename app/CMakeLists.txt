@@ -26,7 +26,7 @@ cmake_minimum_required(VERSION 3.4.1)
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             aserbao-one-lib
+             use_cmake_build
 
              # Sets the library as a shared library.
              SHARED
@@ -35,7 +35,7 @@ add_library( # Sets the name of the library.
              src/main/cpp/num_one/aserbao-one-lib.cpp )
 
 add_library( # Sets the name of the library.
-             aserbao-two-lib
+             use_cmake_build2
 
              # Sets the library as a shared library.
              SHARED
@@ -61,14 +61,14 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-                       aserbao-one-lib
+                       use_cmake_build
 
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
 
 target_link_libraries( # Specifies the target library.
-                       aserbao-two-lib
+                       use_cmake_build2
 
                        # Links the target library to the log library
                        # included in the NDK.
