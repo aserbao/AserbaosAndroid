@@ -16,6 +16,7 @@ public class StudentAndTeacherBean {
     Long id;
     Long studentId;//学生ID
     Long teacherId;//老师ID
+
     @Generated(hash = 2146410221)
     public StudentAndTeacherBean(Long id, Long studentId, Long teacherId) {
         this.id = id;

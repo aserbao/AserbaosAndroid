@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 
+
 public class UseNdkBuildActivity extends AppCompatActivity {
 
     @Override

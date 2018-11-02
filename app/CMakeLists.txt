@@ -32,16 +32,8 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/num_one/aserbao-one-lib.cpp )
+             src/main/cpp/num_one/aserbao-one-lib.cpp src/main/cpp/num_two/aserbao-two-lib.cpp)
 
-add_library( # Sets the name of the library.
-             use_cmake_build2
-
-             # Sets the library as a shared library.
-             SHARED
-
-             # Provides a relative path to your source file(s).
-             src/main/cpp/num_two/aserbao-two-lib.cpp )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -62,13 +54,6 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        use_cmake_build
-
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib} )
-
-target_link_libraries( # Specifies the target library.
-                       use_cmake_build2
 
                        # Links the target library to the log library
                        # included in the NDK.
