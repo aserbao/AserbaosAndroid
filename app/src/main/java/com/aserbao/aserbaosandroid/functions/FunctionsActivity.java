@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.functions.events.EventDealActivity;
 import com.aserbao.aserbaosandroid.functions.how_create_so.HowCreateSoActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.ImagePhotoShopActivity;
 import com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSettingActivity;
+import com.aserbao.aserbaosandroid.functions.shark.SharkActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 
@@ -20,6 +21,7 @@ public class FunctionsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("数据库的使用", DataBaseActivity.class));
         mClassBeen.add(new ClassBean("图片的处理", ImagePhotoShopActivity.class));
         mClassBeen.add(new ClassBean("so库文件的生成", HowCreateSoActivity.class));
+        mClassBeen.add(new ClassBean("摇一摇", SharkActivity.class));
 
     }
 

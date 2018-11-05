@@ -13,7 +13,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags " "
-                abiFilters  "armeabi","armeabi-v7a","arm64-v8a","mips","mips64","x86","x86_64"
+                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
             }
         }
     }
@@ -28,8 +28,8 @@ android {
             path "CMakeLists.txt"
         }
     }
-    sourceSets{
-        main{
+    sourceSets {
+        main {
             jniLibs.srcDirs = ['libs']
         }
     }
@@ -69,4 +69,5 @@ dependencies {
     implementation 'org.jcodec:jcodec-android:0.2.3'*/
 
     implementation 'org.jcodec:jcodec-android:0.1.9'
+    implementation 'com.airbnb.android:lottie:2.7.0'
 }

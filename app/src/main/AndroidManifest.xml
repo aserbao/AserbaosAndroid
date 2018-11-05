@@ -6,6 +6,7 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -147,7 +148,9 @@
         <activity android:name=".functions.how_create_so.HowCreateSoActivity" />
         <activity android:name=".functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
-        <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity"></activity>
+        <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity" />
+        <activity android:name=".functions.shark.SharkActivity" />
+        <activity android:name=".ui.animation.lottie.LottieActivity"></activity>
     </application>
 
 </manifest>
