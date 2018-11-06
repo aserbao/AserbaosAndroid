@@ -21,7 +21,7 @@ public class LottieActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
         super.onResume();
         mAnimationView.post(new Runnable() {
@@ -38,5 +38,5 @@ public class LottieActivity extends AppCompatActivity {
         animationView.loop(true);//设置动画循环播放
 //        animationView.setImageAssetsFolder("images/");//assets目录下的子目录，存放动画所需的图片
         animationView.playAnimation();//播放动画
-    }
+    }*/
 }
