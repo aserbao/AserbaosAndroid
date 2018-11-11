@@ -149,8 +149,11 @@
         <activity android:name=".functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity" />
-        <activity android:name=".functions.shark.SharkActivity" />
-        <activity android:name=".ui.animation.lottie.LottieActivity"></activity>
+        <activity android:name=".functions.sensors.SharkActivity" />
+        <activity android:name=".ui.animation.lottie.LottieActivity" />
+        <activity android:name=".functions.sensors.SensorsActivity" />
+        <activity android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

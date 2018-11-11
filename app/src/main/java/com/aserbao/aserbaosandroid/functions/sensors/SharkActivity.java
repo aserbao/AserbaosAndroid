@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.functions.shark;
+package com.aserbao.aserbaosandroid.functions.sensors;
 
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
