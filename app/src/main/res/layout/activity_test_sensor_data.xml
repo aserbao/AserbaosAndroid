@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.functions.sensors.testSensorData.TestSensorDataActivity">
+    <TextView
+        android:id="@+id/sensor_type_tv"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="未设置,请点击"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/sensor_info_tv"
+        android:gravity="center"
+        android:text="传感器详细信息"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:id="@+id/sensor_flow_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:tag="0"
+            android:id="@+id/type_accelerometer"
+            android:text="type_accelerometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="1"
+            android:id="@+id/type_magnetic_field"
+            android:text="type_magnetic_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="2"
+            android:id="@+id/type_orientation"
+            android:text="type_orientation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="3"
+            android:id="@+id/type_gyroscope"
+            android:text="type_gyroscope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="4"
+            android:id="@+id/type_light"
+            android:text="type_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="5"
+            android:id="@+id/type_pressure"
+            android:text="type_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="6"
+            android:id="@+id/type_temperature"
+            android:text="type_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="7"
+            android:id="@+id/type_proximity"
+            android:text="type_proximity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="8"
+            android:id="@+id/type_gravity"
+            android:text="type_gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:tag="9"
+            android:id="@+id/type_linear_acceleration"
+            android:text="type_linear_acceleration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/sensor_real_time_info_tv"
+            android:text="实时值获取"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+</LinearLayout>
