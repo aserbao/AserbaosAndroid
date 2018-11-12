@@ -152,8 +152,9 @@
         <activity android:name=".functions.sensors.SharkActivity" />
         <activity android:name=".ui.animation.lottie.LottieActivity" />
         <activity android:name=".functions.sensors.SensorsActivity" />
-        <activity android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
