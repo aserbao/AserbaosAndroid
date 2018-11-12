@@ -9,4 +9,5 @@ package com.example.aserbaoffmpeg;
 public class Master {
     private String s = " Master提交";
     private String s2 = " Master第二次提交";
+    private String s3 = " Master第三次提交";
 }
