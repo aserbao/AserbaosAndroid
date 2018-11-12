@@ -7,6 +7,7 @@ package com.example.aserbaoffmpeg;
  * email: 1142803753@qq.com
  */
 public class FFmpegUtils {
+    private String s = " 这是Master";
     static {
         System.loadLibrary("avcodec");
         System.loadLibrary("avfilter");
