@@ -103,6 +103,7 @@
         <activity android:name=".ui.texts.editTexts.autoAdjustSoftHeight.FullDragDemoActivity" />
         <activity android:name=".ui.simpleDraw.SimpleDrawActivity" />
         <activity android:name=".ui.texts.TextsActivity" />
+
         <activity
             android:name=".ui.texts.textViews.picTxt.PicTxtActivity"
             android:windowSoftInputMode="stateHidden" />
@@ -111,7 +112,9 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
-        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
+        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" >
+
+        </activity>
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity">
 
@@ -155,6 +158,10 @@
         <activity
             android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".AudioAndVideo.detail_Info.DetailInfoActivity" />
+        <activity android:name=".AudioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity" />
+        <activity android:name=".functions.network.NetWorkActivity" />
+        <activity android:name=".functions.network.okhttp.OkhttpActivity"></activity>
     </application>
 
 </manifest>

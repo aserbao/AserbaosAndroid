@@ -89,6 +89,4 @@ public class JumpUtils {
         }
         context.startActivity(intent);
     }
-
-
 }

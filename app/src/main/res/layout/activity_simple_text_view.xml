@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.textViews.simple.SimpleTextViewActivity">
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.RequestSoftInput
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.EditTestMultiLine
+        android:layout_gravity="center"
+        android:id="@+id/multi_line_edit_text"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:visibility="gone"
+        android:maxLines="2"
+        style="?android:attr/textViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
     <TextView
+        android:visibility="gone"
         android:text="@string/long_text"
         android:textSize="10sp"
         android:textColor="@color/black"
@@ -15,4 +31,4 @@
         android:shadowDy="4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</RelativeLayout>
+</FrameLayout>

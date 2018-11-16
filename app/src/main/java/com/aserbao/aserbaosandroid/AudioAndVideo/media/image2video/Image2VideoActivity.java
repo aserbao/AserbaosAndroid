@@ -7,6 +7,9 @@ import com.aserbao.aserbaosandroid.AudioAndVideo.media.image2video.jcodec.JCodec
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 
+/**
+ * 图片转视频
+ */
 public class Image2VideoActivity extends BaseActivity {
 
     @Override
