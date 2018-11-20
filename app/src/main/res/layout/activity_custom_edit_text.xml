@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <EditText
+            android:focusable="false"
+            android:layout_toLeftOf="@+id/common_btn"
+            android:id="@+id/common_edit_text"
+            android:hint="正常的EditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:text="正常的EditText"
+            android:layout_alignParentRight="true"
+            android:id="@+id/common_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.EmojiCustomEditText
+            android:layout_toLeftOf="@id/emoji_custom_btn"
+            android:id="@+id/test_emoji_edit_text"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:hint="自定义@Emoji插入到最前面"
+            android:textSize="16sp"
+            android:gravity="center|left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/emoji_custom_btn"
+            android:text="插入@Emoji"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

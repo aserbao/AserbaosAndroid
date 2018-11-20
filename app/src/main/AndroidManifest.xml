@@ -35,11 +35,11 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
@@ -103,7 +103,6 @@
         <activity android:name=".ui.texts.editTexts.autoAdjustSoftHeight.FullDragDemoActivity" />
         <activity android:name=".ui.simpleDraw.SimpleDrawActivity" />
         <activity android:name=".ui.texts.TextsActivity" />
-
         <activity
             android:name=".ui.texts.textViews.picTxt.PicTxtActivity"
             android:windowSoftInputMode="stateHidden" />
@@ -112,9 +111,7 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
-        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" >
-
-        </activity>
+        <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity">
 
@@ -161,7 +158,16 @@
         <activity android:name=".AudioAndVideo.detail_Info.DetailInfoActivity" />
         <activity android:name=".AudioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity" />
         <activity android:name=".functions.network.NetWorkActivity" />
-        <activity android:name=".functions.network.okhttp.OkhttpActivity"></activity>
+        <activity android:name=".functions.network.okhttp.OkhttpActivity" />
+        <activity android:name=".ui.cardView.CardViewActivity" />
+        <activity android:name=".ui.cardView.simpleCardView.SimpleCardViewActivity" />
+        <activity android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

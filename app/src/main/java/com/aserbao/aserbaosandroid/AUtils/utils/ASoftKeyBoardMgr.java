@@ -10,7 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class AppKeyBoardMgr {
+public class ASoftKeyBoardMgr {
     /**
      * 打开软键盘
      * @param mEditText  输入框
