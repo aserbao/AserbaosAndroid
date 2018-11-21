@@ -58,7 +58,7 @@ public class EmojiCustomEditText extends EditText {
     public boolean onPreDraw() {
         boolean b = super.onPreDraw();
         int selectionStart = getSelectionStart();
-        if (isEmoji && selectionStart == 1 || selectionStart == 2){
+        if (isEmoji && (selectionStart == 1 || selectionStart == 2)){
            setSelection(3);
         }
         return b;
@@ -78,7 +78,6 @@ public class EmojiCustomEditText extends EditText {
                 if(event.getKeyCode() == KeyEvent.KEYCODE_DEL){
                     String trim = getText().toString().trim();
                     if (event.getAction() == KeyEvent.ACTION_DOWN){
-                        Log.e(TAG, "onKey: " + trim.length() +" getAction "+ event.getAction() );
                         if (trim.startsWith("@") && isEmoji){
                             if (getSelectionStart() == 3){
                                 setSelection(0,3);
