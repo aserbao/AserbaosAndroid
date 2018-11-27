@@ -71,4 +71,7 @@ dependencies {
     implementation 'org.jcodec:jcodec-android:0.1.9'
     implementation 'com.airbnb.android:lottie:2.7.0'
     implementation project(':aserbaoffmpeg')
+
+   // mqtt
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
 }
