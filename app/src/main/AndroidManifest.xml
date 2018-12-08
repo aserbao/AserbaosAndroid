@@ -35,7 +35,8 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-            <!--<intent-filter>
+
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -161,8 +162,13 @@
         <activity android:name=".functions.network.okhttp.OkhttpActivity" />
         <activity android:name=".ui.cardView.CardViewActivity" />
         <activity android:name=".ui.cardView.simpleCardView.SimpleCardViewActivity" />
-        <activity android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".functions.network.mqtt.MqttActivity" />
+        <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity">
+        </activity>
+        <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
