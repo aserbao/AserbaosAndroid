@@ -36,4 +36,7 @@
 
     //灰色
     <color name="gray">#BEBEBE</color>
+
+
+    <color name="text_show">#ffffff</color>
 </resources>

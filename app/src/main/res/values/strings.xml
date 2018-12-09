@@ -4,4 +4,6 @@
         希望看到这个项目的朋友，如果你在项目中遇到什么问题，在这个项目中没有找到对应的解决办法，你能够提出来，给我留言或者在项目github地址提issues,抽时间会更新项目没有涉及到的部分！
         当然，我的期望是Aserbao'sAndroid 能为所有Android学习者提供或多或少的帮助！所以这个庞大的工程我一个人肯定很难实现，希望更多Android开发者能参与进来，只要你熟悉Android某一块，都可以将你的代码
         pull上分支供大家学习！"</string>
+    <string name="show_text">\"学习项目，仅供参考\"</string>
+    <string name="show_text2">\"喜欢学习就好！\"</string>
 </resources>
