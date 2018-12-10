@@ -17,4 +17,5 @@
         <dimen name="bar_pointer_halo_radius">14dp</dimen>
     <dimen name="activity_vertical_margin">10dp</dimen>
         <dimen name="activity_horizontal_margin">10dp</dimen>
+        <dimen name="explosion_wh">50dp</dimen>
 </resources>
