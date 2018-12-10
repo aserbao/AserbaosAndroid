@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class Particle {
 
-    public static final int PART_WH = 8; //默认小球宽高
+    public static final int PART_WH = 4; //默认小球宽高
 
     //原本的值（不可变）
 //    float originCX;
