@@ -166,14 +166,16 @@
         <activity android:name=".ui.cardView.simpleCardView.SimpleCardViewActivity" />
         <activity
             android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
+        <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity"></activity>
+        <activity android:name=".functions.events.viewTouch.ViewTouchActivity" />
+        <activity android:name=".functions.events.viewTouch.outSideTouch.OutSideActivity"></activity>
     </application>
 
 </manifest>

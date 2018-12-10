@@ -16,4 +16,5 @@ public class EventDealActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("滚动冲突处理", ScrollEventActivity.class));
         mClassBeen.add(new ClassBean("RecyclerView滚动冲突处理", RecyclerViewEventActivity.class));
     }
+
 }
