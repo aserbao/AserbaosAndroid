@@ -30,11 +30,8 @@ import static java.lang.Math.PI;
  */
 public class MoveView extends View {
 
-    public List<Shot> mShotList = new ArrayList<>();
+    public ArrayList<Shot> mShotList = new ArrayList<>();
     private Context mContext;
-    private int aX;
-    private int aY;
-    private int anInt;
 
     public MoveView(Context context) {
         this(context,null);
@@ -47,93 +44,21 @@ public class MoveView extends View {
     public MoveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        init();
-    }
-    private Paint mPaint;
-    private float x,y;
-    public float mMaxWidth,mMaxHeight;
-    public void init(){
-        mPaint = new Paint();
-        mPaint.setColor(Color.RED);
-        mPaint.setAntiAlias(false);
-        mMaxWidth = DisplayUtil.getScreenWidth(mContext);
-        mMaxHeight = DisplayUtil.getScreenHeight(mContext);
-        x = mMaxWidth/2;
-        y = mMaxHeight;
     }
 
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawCircle(x,y,20,mPaint);
-    }
-
-    public void start(ImageView view){
-        aX = (view.getRight() + view.getLeft()) / 2;
-        aY = (view.getBottom() + view.getTop()) / 2;
-        anInt = view.getHeight() / 2;
-        myHandler.sendEmptyMessage(0);
-    }
-    public float distance = 5;
-    public float mAngle = 83;
-
-    private static final String TAG = "MoveView";
-    public void update(){
-        double addx = distance * Math.cos(2*PI/360*mAngle);
-        x =  x + (float) addx;
-        double addY = distance * Math.sin(2*PI/360*mAngle);
-        y =  y - (float) addY;
-        Log.e(TAG, "update: " + x + " y = " + y + " addx = " + addx + " addy = " + addY);
-        if (y > mMaxHeight || y < 0 || x < 0 || x > mMaxWidth){
-            stop();
-            x = mMaxWidth /2 ;
-            y = mMaxHeight;
-            Log.e(TAG, "update: 出去了 "  );
-        }else{
-            myHandler.sendEmptyMessageDelayed(0,10);
-        }
-        float v = (float) Math.sqrt(Math.pow(x - aX, 2) + Math.pow(y - aY, 2));
-        Log.e(TAG, "update: V = " + v );
-        if (v < 20 + anInt){
-            Toast.makeText(mContext, "到了", Toast.LENGTH_SHORT).show();
-        }
-        invalidate();
-    }
-
-    public void stop(){
-        myHandler.removeMessages(0);
-        myHandler.removeCallbacksAndMessages(null);
-    }
-
-    public MyHandler myHandler = new MyHandler(new WeakReference<MoveView>(this));
-    public class MyHandler extends Handler {
-        public WeakReference<MoveView> mWeakReference;
-
-        public MyHandler(WeakReference<MoveView> mWeakReference) {
-            this.mWeakReference = mWeakReference;
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            MoveView moveView = mWeakReference.get();
-            if (moveView != null) {
-                switch (msg.what){
-                    case 0:
-                        moveView.update();
-                        break;
-                }
+        if (mShotList != null) {
+            for (int i = 0; i < mShotList.size(); i++) {
+                mShotList.get(i).draw(canvas);
             }
         }
     }
 
-    /**
-     * @param bitmap 图片
-     * @param initX  初始值X
-     * @param initY  初始值Y
-     * @param angle  起始角度
-     */
-   /* public void addShot(Bitmap bitmap, float initX, float initY, float angle){
-        mShotList.add(new Shot(mContext,bitmap,initX,initY,angle));
-    }*/
+    public void setmShotList(ArrayList<Shot> shotList){
+        mShotList = shotList;
+    }
+
 }
