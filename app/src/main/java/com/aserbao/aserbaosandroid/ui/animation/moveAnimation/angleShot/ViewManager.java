@@ -32,7 +32,15 @@ public class ViewManager implements IShotListener{
     }
 
     public void addShot(Bitmap bitmap, float initX, float initY, float angle, int targetX, int targetY, int targetRadius){
-        Shot shot = new Shot(mContext, bitmap, initX, initY, angle, targetX, targetY, targetRadius,this);
+        Shot shot = new Shot(mContext, bitmap, initX, initY, angle, targetX, targetY, targetRadius,this,null);
+        mShotList.add(shot);
+        if (!isStart) {
+            myHandler.sendEmptyMessage(0);
+            isStart = true;
+        }
+    }
+    public void addShot(Bitmap bitmap, float initX, float initY, float angle, int targetX, int targetY, int targetRadius,List<float[]> mTargetData){
+        Shot shot = new Shot(mContext, bitmap, initX, initY, angle, targetX, targetY, targetRadius,this,mTargetData);
         mShotList.add(shot);
         if (!isStart) {
             myHandler.sendEmptyMessage(0);

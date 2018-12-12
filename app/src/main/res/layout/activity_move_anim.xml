@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/move_frame_layout"
     tools:context="com.aserbao.aserbaosandroid.ui.animation.moveAnimation.MoveAnimActivity">
-    <Button
-        android:id="@+id/move_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="发射"
+            android:id="@+id/move_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="添加靶子"
+            android:id="@+id/move_add_iv_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="清空靶子"
+            android:id="@+id/move_clear_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+
     <com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.MoveView
         android:id="@+id/move_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <ImageView
-        android:id="@+id/move_anim_iv"
-        android:layout_gravity="center"
-        android:src="@drawable/emoji_07"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:id="@+id/target_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </FrameLayout>

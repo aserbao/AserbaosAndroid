@@ -14,6 +14,7 @@ import android.util.Log;
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import static java.lang.Math.PI;
 
@@ -24,8 +25,7 @@ import static java.lang.Math.PI;
  * email: 1142803753@qq.com
  */
 public class Shot  {
-    private int time = 10;
-    public int distance = 10;
+    public int distance = 50;
     protected Bitmap mImage;
     public float mCurrentX;
     public float mCurrentY;
@@ -44,6 +44,7 @@ public class Shot  {
     private int mBitmapHalfHeight;
 
     private IShotListener mIshotListener;
+    private List<float[]> mTargetData;
     /**
      * @param context
      * @param bitmap        图片
@@ -55,7 +56,7 @@ public class Shot  {
      * @param targetRadius  被击中物体的半径
      * @param iShotListener
      */
-    protected Shot(Context context, Bitmap bitmap, float initX, float initY, float angle,int targetX,int targetY,int targetRadius,IShotListener iShotListener) {
+    protected Shot(Context context, Bitmap bitmap, float initX, float initY, float angle,int targetX,int targetY,int targetRadius,IShotListener iShotListener,List<float[]> mt) {
         mMatrix = new Matrix();
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
@@ -63,8 +64,9 @@ public class Shot  {
         mMaxWidth = DisplayUtil.getScreenWidth(context);
         mMaxHeight = DisplayUtil.getScreenHeight(context);
         mImage = bitmap;
-        mBitmapHalfWidth = bitmap.getWidth();
-        mBitmapHalfHeight = bitmap.getHeight();
+        mBitmapHalfWidth = bitmap.getWidth() / 2;
+//        mBitmapHalfHeight = bitmap.getHeight()/2;
+        mBitmapHalfHeight = 30;
         mCurrentX =initX;
         mCurrentY =initY;
         mAngle = (float)(2*PI/360*angle);
@@ -72,16 +74,21 @@ public class Shot  {
         shotTargetY = targetY;
         shotTargetRadius = targetRadius;
         mIshotListener = iShotListener;
+        mTargetData = mt;
     }
 
     public void draw(Canvas canvas){
         updateData();
-        mMatrix.reset();
-        mMatrix.postRotate(mRotation, mBitmapHalfWidth/2, mBitmapHalfHeight/2);
+        /*mMatrix.reset();
+        mMatrix.postRotate(mRotation, mBitmapHalfWidth, mBitmapHalfHeight);
         mMatrix.postTranslate(mCurrentX, mCurrentY);
-        canvas.drawBitmap(mImage,mMatrix,mPaint);
-//        canvas.drawCircle(mCurrentX,mCurrentY,25,mPaint);
+        canvas.drawBitmap(mImage,mMatrix,mPaint);*/
+        canvas.drawCircle(mCurrentX,mCurrentY,mBitmapHalfHeight,mPaint);
         canvas.drawCircle(shotTargetX,shotTargetY,shotTargetRadius,mPaint);
+        for (int i = 0; i < mTargetData.size(); i++) {
+            float[] floats = mTargetData.get(i);
+            canvas.drawCircle(floats[0],floats[1],floats[2],mPaint);
+        }
         judge();
     }
 
@@ -102,6 +109,15 @@ public class Shot  {
             float v = (float) Math.sqrt(Math.pow(mCurrentX - shotTargetX, 2) + Math.pow(mCurrentY - shotTargetY, 2));
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
                 mIshotListener.isHit(this);
+            }
+        }
+
+        for (int i = 0; i < mTargetData.size(); i++) {
+            float[] floats = mTargetData.get(i);
+            float v = (float) Math.sqrt(Math.pow(mCurrentX - floats[0], 2) + Math.pow(mCurrentY - floats[1], 2));
+            if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
+                mIshotListener.isHit(this);
+                break;
             }
         }
     }
