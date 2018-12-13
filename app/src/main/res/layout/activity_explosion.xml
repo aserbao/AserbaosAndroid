@@ -16,30 +16,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/explosion1_iv"
                 android:src="@drawable/emoji_00"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion2_iv"
                 android:src="@drawable/emoji_01"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion3_iv"
                 android:src="@drawable/emoji_02"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion4_iv"
                 android:src="@drawable/emoji_03"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion5_iv"
                 android:src="@drawable/emoji_04"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion6_iv"
                 android:src="@drawable/emoji_05"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
             <ImageView
+                android:id="@+id/explosion7_iv"
                 android:src="@drawable/emoji_06"
                 android:layout_width="@dimen/explosion_wh"
                 android:layout_height="@dimen/explosion_wh" />
@@ -51,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <ImageView
+                android:id="@+id/explosion8_iv"
                 style="@style/text_shadow_style"
                 android:layout_margin="5dp"
                 android:background="@color/gray"
@@ -59,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
             <ImageView
+                android:id="@+id/explosion9_iv"
                 style="@style/text_shadow_style"
                 android:layout_margin="5dp"
                 android:background="@color/black70"
@@ -68,6 +77,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <TextView
+            android:id="@+id/explosion10_iv"
             style="@style/text_shadow_style"
             android:layout_margin="10dp"
             android:gravity="center"

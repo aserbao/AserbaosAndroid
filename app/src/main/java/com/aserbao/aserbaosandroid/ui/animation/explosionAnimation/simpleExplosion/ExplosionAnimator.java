@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.explosion;
+package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.simpleExplosion;
 
 import android.animation.ValueAnimator;
 import android.graphics.Bitmap;

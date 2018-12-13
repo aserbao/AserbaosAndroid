@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.explosion;
+package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.simpleExplosion;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,21 +16,18 @@ import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 import java.util.ArrayList;
 
-/**
- * Created by azz on 15/11/19.
- */
-public class ExplosionField extends View {
+public class SimpleExplosionField extends View {
     private static final String TAG = "ExplosionField";
     private static final Canvas mCanvas = new Canvas();
     private ArrayList<ExplosionAnimator> explosionAnimators;
     private View.OnClickListener onClickListener;
 
-    public ExplosionField(Context context) {
+    public SimpleExplosionField(Context context) {
         super(context);
         init();
     }
 
-    public ExplosionField(Context context, AttributeSet attrs) {
+    public SimpleExplosionField(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
@@ -139,7 +136,7 @@ public class ExplosionField extends View {
             onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ExplosionField.this.explode(v);
+                    SimpleExplosionField.this.explode(v);
 
 //                view.setOnClickListener(null); // 用过一次就不需要了
                 }

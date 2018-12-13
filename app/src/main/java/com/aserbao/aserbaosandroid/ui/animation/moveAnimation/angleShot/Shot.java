@@ -105,18 +105,18 @@ public class Shot  {
                 mIshotListener.isLoseEfficacy(this);
             }
         }
-        if (shotTargetRadius > 0) {
+        /*if (shotTargetRadius > 0) {
             float v = (float) Math.sqrt(Math.pow(mCurrentX - shotTargetX, 2) + Math.pow(mCurrentY - shotTargetY, 2));
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
                 mIshotListener.isHit(this);
             }
-        }
+        }*/
 
         for (int i = 0; i < mTargetData.size(); i++) {
             float[] floats = mTargetData.get(i);
             float v = (float) Math.sqrt(Math.pow(mCurrentX - floats[0], 2) + Math.pow(mCurrentY - floats[1], 2));
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
-                mIshotListener.isHit(this);
+                mIshotListener.isHit(this,floats);
                 break;
             }
         }

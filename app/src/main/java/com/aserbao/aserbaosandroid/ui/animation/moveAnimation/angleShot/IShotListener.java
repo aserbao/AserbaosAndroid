@@ -7,6 +7,6 @@ package com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot;
  * email: 1142803753@qq.com
  */
 public interface IShotListener {
-    void isHit(Shot shot);
+    void isHit(Shot shot,float[] shotFloat);
     void isLoseEfficacy(Shot shot);
 }

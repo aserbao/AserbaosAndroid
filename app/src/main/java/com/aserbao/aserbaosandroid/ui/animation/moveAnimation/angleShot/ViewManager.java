@@ -49,7 +49,7 @@ public class ViewManager implements IShotListener{
     }
 
     @Override
-    public void isHit(Shot shot) {
+    public void isHit(Shot shot,float[] shotFloat) {
         removeShot(shot);
         Toast.makeText(mContext, "爆炸💥", Toast.LENGTH_SHORT).show();
     }
@@ -58,6 +58,7 @@ public class ViewManager implements IShotListener{
     public void isLoseEfficacy(Shot shot) {
         removeShot(shot);
     }
+
     private void removeShot(Shot shot) {
         if (mShotList != null) {
             mShotList.remove(shot);
