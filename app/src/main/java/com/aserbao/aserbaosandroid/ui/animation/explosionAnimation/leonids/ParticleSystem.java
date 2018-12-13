@@ -618,8 +618,10 @@ public class ParticleSystem {
 		// It works with an emision range
 		int[] location = new int[2];
 		emitter.getLocationInWindow(location);
-		Log.e("test", "configureEmitter: " + location[0] + " location[1] :" + location[1] );
-
+		mEmitterXMin = 100;
+		mEmitterXMax = 600;
+		mEmitterYMin = 100;
+		mEmitterYMax = 1000;
 		// Check horizontal gravity and set range
 		if (hasGravity(gravity, Gravity.LEFT)) {
 			mEmitterXMin = location[0] - mParentLocation[0];
@@ -656,6 +658,7 @@ public class ParticleSystem {
 			mEmitterYMin = location[1] - mParentLocation[1];
 			mEmitterYMax = location[1] + emitter.getHeight() - mParentLocation[1];
 		}
+		Log.e("test", "configureEmitter: mEmitterYMin = " + mEmitterYMin + " mEmitterYMax :" +mEmitterYMax + " mEmitterXMin = " + mEmitterXMin + " mEmitterXMax :" +mEmitterXMax  );
 	}
 
 	private boolean hasGravity(int gravity, int gravityToCheck) {
@@ -671,7 +674,7 @@ public class ParticleSystem {
 		}
 		int particleX = getFromRange (mEmitterXMin, mEmitterXMax);
 		int particleY = getFromRange (mEmitterYMin, mEmitterYMax);
-		p.configure(mTimeToLive, particleX, particleY);
+		p.configure(mParentView.getContext(),mTimeToLive, particleX, particleY);
 		p.activate(delay, mModifiers);
 		mActiveParticles.add(p);
 		mActivatedParticles++;

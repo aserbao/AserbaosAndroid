@@ -159,15 +159,15 @@
         <activity android:name=".functions.events.viewTouch.ViewTouchActivity" />
         <activity android:name=".functions.events.viewTouch.outSideTouch.OutSideActivity" />
         <activity android:name=".ui.animation.explosionAnimation.viewExplosion.ViewExplosionActivity" />
-        <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity">
+        <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity"/>
+        <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
+        <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
-        <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,10 +1,13 @@
 package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.util.Log;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids.modifiers.ParticleModifier;
 
 import java.util.List;
@@ -62,18 +65,21 @@ public class Particle {
 		mAlpha = 255;	
 	}
 	
-	public void configure(long timeToLive, float emiterX, float emiterY) {
+	public void configure(Context context, long timeToLive, float emiterX, float emiterY) {
 		mBitmapHalfWidth = mImage.getWidth()/2;
 		mBitmapHalfHeight = mImage.getHeight()/2;
-		
-		mInitialX = emiterX - mBitmapHalfWidth;
-		mInitialY = emiterY - mBitmapHalfHeight;
+
+		/*mInitialX = emiterX - mBitmapHalfWidth;
+		mInitialY = emiterY - mBitmapHalfHeight;*/
+		mInitialX = DisplayUtil.getScreenWidth(context)/2;
+		mInitialY = DisplayUtil.getScreenHeight(context)/2;
 		mCurrentX = mInitialX;
 		mCurrentY = mInitialY;
 		
 		mTimeToLive = timeToLive;
 	}
 
+	private static final String TAG = "Particle";
 	public boolean update (long miliseconds) {
 		long realMiliseconds = miliseconds - mStartingMilisecond;
 		if (realMiliseconds > mTimeToLive) {
@@ -81,7 +87,8 @@ public class Particle {
 		}
 		mCurrentX = mInitialX+mSpeedX*realMiliseconds+mAccelerationX*realMiliseconds*realMiliseconds;
 		mCurrentY = mInitialY+mSpeedY*realMiliseconds+mAccelerationY*realMiliseconds*realMiliseconds;
-		mRotation = mInitialRotation + mRotationSpeed*realMiliseconds/1000;
+		Log.e(TAG, "update: " + mCurrentX + " mCurrentY = " + mCurrentY );
+//		mRotation = mInitialRotation + mRotationSpeed*realMiliseconds/1000;
 		for (int i=0; i<mModifiers.size(); i++) {
 			mModifiers.get(i).apply(this, realMiliseconds);
 		}
