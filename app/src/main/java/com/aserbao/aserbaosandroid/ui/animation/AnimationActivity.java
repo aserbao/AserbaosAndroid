@@ -1,9 +1,5 @@
 package com.aserbao.aserbaosandroid.ui.animation;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity;
@@ -21,7 +17,7 @@ public class AnimationActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("RecyclerView的3D切换效果", RecyclerViewItemAnimationActivity.class));
         mClassBeen.add(new ClassBean("CubeAnimation效果", CubeAnimationActivity.class));
         mClassBeen.add(new ClassBean("Lottie的效果", LottieActivity.class));
-        mClassBeen.add(new ClassBean("View爆炸粒子", ExplosionActivity.class));
+        mClassBeen.add(new ClassBean("爆炸效果", ExplosionActivity.class));
         mClassBeen.add(new ClassBean("射击动画", MoveAnimActivity.class));
     }
 }

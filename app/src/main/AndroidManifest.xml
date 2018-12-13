@@ -113,7 +113,7 @@
         <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
-        <activity android:name=".functions.database.DataBaseActivity"></activity>
+        <activity android:name=".functions.database.DataBaseActivity" />
         <activity android:name=".functions.database.mySql.MySqlActivity" />
         <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
         <activity android:name=".ui.animation.AnimationActivity" />
@@ -155,20 +155,19 @@
         <activity
             android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity">
-
-
-        </activity>
+        <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity" />
         <activity android:name=".functions.events.viewTouch.ViewTouchActivity" />
         <activity android:name=".functions.events.viewTouch.outSideTouch.OutSideActivity" />
-        <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
+        <activity android:name=".ui.animation.explosionAnimation.viewExplosion.ViewExplosionActivity" />
         <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity">
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-              <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
+        <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity"></activity>
     </application>
 
 </manifest>
