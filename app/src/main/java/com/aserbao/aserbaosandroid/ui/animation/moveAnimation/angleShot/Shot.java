@@ -1,19 +1,15 @@
 package com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import static java.lang.Math.PI;
@@ -36,7 +32,7 @@ public class Shot  {
     private float shotTargetX,shotTargetY,shotTargetRadius = 0 ;
 
     private float mRotation;
-    private float mAngle;
+    private float mDetailAngle,mInitAngle; //mDetailAngle(和水平线夹角 0-90)，mInitAngle(和水平线夹角 0 - 360)
 
     private Matrix mMatrix;
     private Paint mPaint;
@@ -45,6 +41,9 @@ public class Shot  {
 
     private IShotListener mIshotListener;
     private List<float[]> mTargetData;
+    private int angleType; // 判断角度在第几象限
+    
+
     /**
      * @param context
      * @param bitmap        图片
@@ -69,12 +68,19 @@ public class Shot  {
         mBitmapHalfHeight = 30;
         mCurrentX =initX;
         mCurrentY =initY;
-        mAngle = (float)(2*PI/360*angle);
+        calculateAngle(angle);
         shotTargetX = targetX;
         shotTargetY = targetY;
         shotTargetRadius = targetRadius;
         mIshotListener = iShotListener;
         mTargetData = mt;
+    }
+
+    public void calculateAngle(float angle){
+        angleType = (int)angle / 90;
+        mInitAngle = angle;
+        mDetailAngle = mInitAngle % 90;
+        mDetailAngle = (float)(2*PI/360* mDetailAngle);
     }
 
     public void draw(Canvas canvas){
@@ -94,17 +100,25 @@ public class Shot  {
 
     private static final String TAG = "Shot";
     public void updateData(){
-        mCurrentX =  mCurrentX + (float)(distance * Math.cos(mAngle));
-        mCurrentY =  mCurrentY - (float)(distance * Math.sin(mAngle));
-        Log.e(TAG, "updateData: mCurrentY = " + mCurrentY );
+        if(angleType == 0){
+            mCurrentX = mCurrentX + (float) (distance * Math.cos(mDetailAngle));
+            mCurrentY =  mCurrentY - (float)(distance * Math.sin(mDetailAngle));
+        }else if(angleType == 1){
+            mCurrentX = mCurrentX - (float) (distance * Math.sin(mDetailAngle));
+            mCurrentY =  mCurrentY - (float)(distance * Math.cos(mDetailAngle));
+        }else if(angleType == 2){
+            mCurrentX = mCurrentX - (float) (distance * Math.cos(mDetailAngle));
+            mCurrentY =  mCurrentY + (float)(distance * Math.sin(mDetailAngle));
+        }else{
+            mCurrentX = mCurrentX + (float) (distance * Math.sin(mDetailAngle));
+            mCurrentY =  mCurrentY + (float)(distance * Math.cos(mDetailAngle));
+        }
         mRotation = (mRotation + 10) % 360;
     }
+
+
     private void judge() {
-        if (mCurrentY > mMaxHeight || mCurrentY < 0 || mCurrentX < 0 || mCurrentX > mMaxWidth){
-            if (mIshotListener != null) {
-                mIshotListener.isLoseEfficacy(this);
-            }
-        }
+        springback();
         /*if (shotTargetRadius > 0) {
             float v = (float) Math.sqrt(Math.pow(mCurrentX - shotTargetX, 2) + Math.pow(mCurrentY - shotTargetY, 2));
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
@@ -118,6 +132,40 @@ public class Shot  {
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
                 mIshotListener.isHit(this,floats);
                 break;
+            }
+        }
+    }
+    private boolean isNeedSpringBack = true;
+    private int mMaxSpringTime = 10;
+    private int mCuurSpringTime = 0;
+    public void springback(){
+        if (isNeedSpringBack & mCuurSpringTime < mMaxSpringTime){
+            if (mCurrentY - mBitmapHalfHeight <= 0 || mCurrentY + mBitmapHalfHeight >= mMaxHeight){
+                mInitAngle = 360 - mInitAngle;
+                calculateAngle(mInitAngle);
+                mCuurSpringTime ++;
+            }else if(mCurrentX - mBitmapHalfHeight <= 0){
+                if (mInitAngle >= 90 && mInitAngle <= 180){
+                    mInitAngle = 180 - mInitAngle;
+                }else if(mInitAngle > 180 && mInitAngle < 270){
+                    mInitAngle = 540 - mInitAngle;
+                }
+                calculateAngle(mInitAngle);
+                mCuurSpringTime ++;
+            }else if(mCurrentX + mBitmapHalfHeight >= mMaxWidth){
+                if (mInitAngle <= 90){
+                    mInitAngle = 180 - mInitAngle;
+                }else if(mInitAngle > 270 && mInitAngle < 360){
+                    mInitAngle = 540 - mInitAngle;
+                }
+                calculateAngle(mInitAngle);
+                mCuurSpringTime ++;
+            }
+        }else{
+            if (mCurrentY > mMaxHeight || mCurrentY < 0 || mCurrentX < 0 || mCurrentX > mMaxWidth){
+                if (mIshotListener != null) {
+                    mIshotListener.isLoseEfficacy(this);
+                }
             }
         }
     }

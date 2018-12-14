@@ -94,7 +94,7 @@ public class MoveAnimActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.move_btn:
-                for (int i = 0; i < 30; i++) {
+                for (int i = 0; i < 5; i++) {
                     int angle = mRandom.nextInt(135)%(135-50 +1) + 45;
                     int shotX = screenWidth / 2;
                     int shotY = this.screenHeight;
