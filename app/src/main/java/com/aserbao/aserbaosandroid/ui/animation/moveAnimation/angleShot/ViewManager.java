@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -26,7 +27,16 @@ public class ViewManager implements IShotListener{
 
     public boolean isStart = false;//是否已开启handler处理？
 
-    public ViewManager(MoveView mMoveView, Context mContext) {
+    private Activity mActivity;
+    public static ViewManager viewManager ;
+    public static ViewManager getInstance(Activity activity, MoveView mMoveView, Context context){
+        if (viewManager == null) {
+            viewManager = new ViewManager(activity,mMoveView,context);
+        }
+        return viewManager;
+    }
+    public ViewManager(Activity activity,MoveView mMoveView, Context mContext) {
+        mActivity = activity;
         this.mMoveView = mMoveView;
         this.mContext = mContext;
     }

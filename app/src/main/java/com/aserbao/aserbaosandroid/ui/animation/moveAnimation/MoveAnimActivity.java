@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.ui.animation.moveAnimation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.MoveView;
 import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.ViewManager;
@@ -48,7 +50,7 @@ public class MoveAnimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_move_anim);
         ButterKnife.bind(this);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
-        viewManager = new ViewManager(mMoveView, this);
+        viewManager = new ViewManager(this,mMoveView, this);
 
         screenWidth = DisplayUtil.getScreenWidth(this);
         screenHeight = DisplayUtil.getScreenHeight(this);
@@ -148,5 +150,98 @@ public class MoveAnimActivity extends AppCompatActivity {
             }
         }
         return resultFloat;
+    }
+
+    public void fromShot(int shootX,int shootY, float angle){
+
+        float mAngle = 0;
+        int halfScreenWidth = AserbaoApplication.screenWidth / 2;
+        int halfScreenHeight = AserbaoApplication.screenHeight / 2;
+        float receiveX = halfScreenWidth;
+        float receiveY = halfScreenHeight * 2;
+        float x,y = 0;
+        float shotX = shootX;
+        float shotY = shootY;
+        if(shotX > 0 && shotX < AserbaoApplication.screenWidth && shotY > 0 && shotY < AserbaoApplication.screenHeight){
+            x = shotX;
+            y = shotY;
+        }else {
+            if (angle == 90) {
+                x = receiveX;
+                y = 0;
+            } else if (angle == 0) {
+                x = AserbaoApplication.screenWidth;
+                y = receiveY;
+            } else if (angle == 180) {
+                x = 0;
+                y = receiveY;
+            } else if (angle == 270) {
+                x = receiveX;
+                y = AserbaoApplication.screenHeight;
+            } else if (receiveY / halfScreenWidth == Math.tan(mAngle)) {
+                if (angle < 90 || angle > 270 && angle < 360) {
+                    x = AserbaoApplication.screenWidth;
+                } else {
+                    x = 0;
+                }
+                if (angle > 180) {
+                    y = AserbaoApplication.screenHeight;
+                } else {
+                    y = 0;
+                }
+            } else if (receiveY / halfScreenWidth < Math.tan(mAngle)) {
+                if (angle < 180) {
+                    if (angle > 90) {
+                        mAngle = 180 - angle;
+                    }
+                    mAngle = (float) (2 * PI / 360 * mAngle);
+                    y = (float) (halfScreenWidth * Math.tan(mAngle));
+                } else if (angle > 180 && angle < 360) {
+                    if (angle < 270) {
+                        mAngle = angle - 180;
+                    } else {
+                        mAngle = 360 - angle;
+                    }
+                    mAngle = (float) (2 * PI / 360 * mAngle);
+                    y = receiveY + (float) (halfScreenWidth * Math.tan(mAngle));
+                }
+                if (angle < 90 || angle > 270 && angle < 360) {
+                    x = AserbaoApplication.screenWidth;
+                } else {
+                    x = 0;
+                }
+            } else {
+                if (angle < 90 && angle > 270 && angle < 360) {
+                    if (angle > 270) {
+                        mAngle = 360 - angle;
+                    }
+                    mAngle = (float) (2 * PI / 360 * mAngle);
+                    x = halfScreenWidth + (float) (halfScreenHeight / Math.tan(mAngle));
+                } else {
+                    if (angle < 180) {
+                        mAngle = 180 - angle;
+                    } else {
+                        mAngle = angle - 180;
+                    }
+                    mAngle = (float) (2 * PI / 360 * mAngle);
+                    x = (float) (halfScreenHeight / Math.tan(mAngle));
+                }
+
+                if (angle < 180) {
+                    y = 0;
+                } else {
+                    y = AserbaoApplication.screenHeight;
+                }
+            }
+        }
+
+        float[] floats = new float[3];
+        floats[0] = receiveX;
+        floats[1] = receiveY;
+        floats[2] = 70;
+
+
+
+//        ViewManager.getInstance(this, mMoveView, this).addShot(mCurrentBulletBitmap, x, y, angle, markerBeans);
     }
 }
