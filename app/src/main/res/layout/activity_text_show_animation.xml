@@ -48,6 +48,7 @@
             style="@style/show_text_anim_style"
             />
         <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.fall.FallTextView
+            android:visibility="gone"
             android:id="@+id/fall_text_view"
             style="@style/show_text_anim_style" />
         <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.scale.ScaleTextView
