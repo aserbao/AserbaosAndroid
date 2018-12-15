@@ -35,11 +35,11 @@
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
@@ -171,11 +171,11 @@
         <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity"/>
         <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
         <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity"/>
 
