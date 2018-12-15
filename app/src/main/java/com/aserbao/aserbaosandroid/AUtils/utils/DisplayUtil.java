@@ -13,6 +13,10 @@ import android.util.TypedValue;
  */
 public class DisplayUtil
 {
+    /**
+     * 密度
+     */
+    public static final float DENSITY = Resources.getSystem().getDisplayMetrics().density;
 
     public static int px2dp(Context context, float pxValue)
     {
@@ -26,6 +30,10 @@ public class DisplayUtil
 
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static int dp2px(int dp) {
+        return Math.round(dp * DENSITY);
     }
 
     public static int dipToPX( float dip) {

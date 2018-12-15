@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Boshiga o‘tish"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Yuqoriga o‘tish"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Boshqa parametrlar"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Tayyor"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Hammasi"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Dastur tanlang"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"O‘CHIQ"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"YONIQ"</string>
+    <string msgid="1302280443949172191" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="1324831542140195728" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="8362206064229013510" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="8341180395196749340" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="4792426091847145555" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="7643535737296831317" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="8126296154200614004" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2378550843553983978" name="abc_menu_space_shortcut_label">"Probel"</string>
+    <string msgid="9002602288060866689" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="1351762916121158029" name="abc_prepend_shortcut_label">"Menyu+"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Qidirish…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"So‘rovni tozalash"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"So‘rovni izlash"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Qidirish"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"So‘rov yaratish"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Ovozli qidiruv"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Ruxsat berish"</string>
+    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> orqali ulashish"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Yig‘ish"</string>
+    <string name="exo_controls_fastforward_description">Oldinga o‘tkazish</string>
+    <string name="exo_controls_fullscreen_description">Butun ekran rejimi</string>
+    <string name="exo_controls_next_description">Keyingi trek</string>
+    <string name="exo_controls_pause_description">Pauza</string>
+    <string name="exo_controls_play_description">Ijro</string>
+    <string name="exo_controls_previous_description">Avvalgi trek</string>
+    <string name="exo_controls_repeat_all_description">Hammasini takrorlash</string>
+    <string name="exo_controls_repeat_off_description">Takrorlanmasin</string>
+    <string name="exo_controls_repeat_one_description">Bittasini takrorlash</string>
+    <string name="exo_controls_rewind_description">Orqaga qaytarish</string>
+    <string name="exo_controls_shuffle_description">Aralash</string>
+    <string name="exo_controls_stop_description">To‘xtatish</string>
+    <string name="exo_download_completed">Yuklab olindi</string>
+    <string name="exo_download_description">Yuklab olish</string>
+    <string name="exo_download_downloading">Yuklab olinmoqda</string>
+    <string name="exo_download_failed">Yuklab olinmadi</string>
+    <string name="exo_download_notification_channel_name">Yuklanmalar</string>
+    <string name="exo_download_removing">Yuklanmalar olib tashlanmoqda</string>
+    <string name="exo_item_list">%1$s, %2$s</string>
+    <string name="exo_track_bitrate">%1$.2f Mbit/s</string>
+    <string name="exo_track_mono">Mono</string>
+    <string name="exo_track_resolution">%1$d × %2$d</string>
+    <string name="exo_track_selection_auto">Avtomatik</string>
+    <string name="exo_track_selection_none">Hech qanday</string>
+    <string name="exo_track_selection_title_audio">Audio</string>
+    <string name="exo_track_selection_title_text">Matn</string>
+    <string name="exo_track_selection_title_video">Video</string>
+    <string name="exo_track_stereo">Stereo</string>
+    <string name="exo_track_surround">Qamrovli ovoz</string>
+    <string name="exo_track_surround_5_point_1">5.1 qamrovli ovoz</string>
+    <string name="exo_track_surround_7_point_1">7.1 qamrovli ovoz</string>
+    <string name="exo_track_unknown">Notanish</string>
+    <string msgid="146198913615257606" name="search_menu_title">"Qidirish"</string>
+    <string msgid="7988687684186075107" name="status_bar_notification_info_overflow">"999+"</string>
+</resources>

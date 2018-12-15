@@ -20,7 +20,7 @@ import android.util.Log;
  * @Description: MQTT管理者
  * @author jiangrongtao
  * @version V1.0
- * Copyright: Copyright (c) 2017 
+ * Copyright: Copyright (c) 2017
  */
 public class MQTTManager {
     private static final String TAG = "MQTTManager";
@@ -30,7 +30,7 @@ public class MQTTManager {
     private MqttClient client;
     private MqttConnectOptions options;
 
-    private MessageHandlerCallBack callBack;  
+    private MessageHandlerCallBack callBack;
        private MQTTManager(Context context){
             clientid+=MqttClient.generateClientId();
        }
@@ -62,32 +62,32 @@ public class MQTTManager {
     public void connect(){
           Log.d(TAG,"开始连接MQtt");
           try {
-             // host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存    
+             // host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存
               client = new MqttClient(SERVER_HOST, "e3aa30b46b1701884945e5c437794ead", new MemoryPersistence());
-              // MQTT的连接设置    
-              options = new MqttConnectOptions();    
-              // 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，这里设置为true表示每次连接到服务器都以新的身份连接    
-//              options.setCleanSession(true);   
-             // 设置连接的用户名    
+              // MQTT的连接设置
+              options = new MqttConnectOptions();
+              // 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，这里设置为true表示每次连接到服务器都以新的身份连接
+//              options.setCleanSession(true);
+             // 设置连接的用户名
               options.setUserName("7302");
-            // 设置连接的密码    
+            // 设置连接的密码
               options.setPassword("5c63f0dfdb599c99a3ed7dfa04434003254599fd".toCharArray());
-              // 设置超时时间 单位为秒    
+              // 设置超时时间 单位为秒
               options.setConnectionTimeout(30);
-              // 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送个消息判断客户端是否在线，但这个方法并没有重连的机制    
+              // 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送个消息判断客户端是否在线，但这个方法并没有重连的机制
               options.setKeepAliveInterval(30);
               options.setAutomaticReconnect(true);
-              // 设置回调    
-//              MqttTopic topic = client.getTopic(TOPIC);    
-             //setWill方法，如果项目中需要知道客户端是否掉线可以调用该方法。设置最终端口的通知消息      
-//              options.setWill(topic, "close".getBytes(), 2, true);    
-             client.setCallback(new PushCallback());    
+              // 设置回调
+//              MqttTopic topic = client.getTopic(TOPIC);
+             //setWill方法，如果项目中需要知道客户端是否掉线可以调用该方法。设置最终端口的通知消息
+//              options.setWill(topic, "close".getBytes(), 2, true);
+             client.setCallback(new PushCallback());
              client.connect(options);
             Log.d(TAG,"ClientId="+client.getClientId());
         } catch (MqttException e) {
               Log.e(TAG, "connect: " + e );
             e.printStackTrace();
-        }    
+        }
     }
 
     /**
@@ -96,14 +96,14 @@ public class MQTTManager {
      */
     public void subscribeMsg(String topic,int qos){
         if (client!=null) {
-             int[] Qos  = {qos};    
-              String[] topic1 = {topic};    
+             int[] Qos  = {qos};
+              String[] topic1 = {topic};
                try {
              client.subscribe(topic1, Qos);
              Log.d(TAG,"开始订阅topic="+topic);
             } catch (MqttException e) {
                 e.printStackTrace();
-            }  
+            }
         }
     }
 
@@ -116,10 +116,10 @@ public class MQTTManager {
     public void publish(String topic,String msg,boolean isRetained,int qos) {
           try {
                 if (client!=null) {
-                    MqttMessage message = new MqttMessage();  
-                    message.setQos(qos);  
-                    message.setRetained(isRetained);  
-                    message.setPayload(msg.getBytes());  
+                    MqttMessage message = new MqttMessage();
+                    message.setQos(qos);
+                    message.setRetained(isRetained);
+                    message.setPayload(msg.getBytes());
                     client.publish(topic, message);
                  Log.d(TAG,"topic="+topic+"--msg="+msg+"--isRetained"+isRetained);
                 }
@@ -127,16 +127,16 @@ public class MQTTManager {
                 e.printStackTrace();
             } catch (MqttException e) {
                 e.printStackTrace();
-            } 
+            }
     }
      int count=0;
      /**
       * 发布和订阅消息的回调
       *
       */
-     public class PushCallback implements MqttCallback {    
+     public class PushCallback implements MqttCallback {
 
-            public void connectionLost(Throwable cause) {   
+            public void connectionLost(Throwable cause) {
                 /*if (count<5) {
                     count++;//5次重连
                     Log.d(TAG,"断开连接，重新连接"+count+"次"+cause);
@@ -147,30 +147,30 @@ public class MQTTManager {
                         e.printStackTrace();
                     }
                 }*/
-            }    
+            }
          /**
-          * 发布消息的回调     
+          * 发布消息的回调
           */
-         @Override  
-         public void deliveryComplete(IMqttDeliveryToken token) {  
-            //publish后会执行到这里  
+         @Override
+         public void deliveryComplete(IMqttDeliveryToken token) {
+            //publish后会执行到这里
              Log.d(TAG,"发布消息成功的回调"+token.isComplete());
-         }  
+         }
 
           /**
            * 接收消息的回调方法
            */
-         @Override  
-         public void messageArrived(final String topicName, final MqttMessage message)  
-                 throws Exception {  
-             //subscribe后得到的消息会执行到这里面    
+         @Override
+         public void messageArrived(final String topicName, final MqttMessage message)
+                 throws Exception {
+             //subscribe后得到的消息会执行到这里面
              Log.d(TAG,"接收消息=="+new String(message.getPayload()));
              if (callBack!=null) {
                    callBack.messageSuccess(topicName,new String(message.getPayload()));
-             } 
-        }  
+             }
+        }
 
-     }  
+     }
      /**
       *  设置接收消息的回调方法
       * @param callBack
@@ -214,5 +214,5 @@ public class MQTTManager {
             return client.isConnected();
         }
         return false;
-    }   
+    }
 }

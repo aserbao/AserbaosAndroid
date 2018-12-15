@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;
@@ -20,7 +21,7 @@ import java.io.File;
  */
 
 public class AserbaoApplication extends Application {
-
+    public static int screenWidth,screenHeight;
 
     @Override
     public void onCreate() {
@@ -33,6 +34,8 @@ public class AserbaoApplication extends Application {
     }
 
     private void initData() {
+        screenWidth = DisplayUtil.getScreenWidth(this);
+        screenHeight = DisplayUtil.getScreenHeight(this);
         initGreenDao();
     }
 

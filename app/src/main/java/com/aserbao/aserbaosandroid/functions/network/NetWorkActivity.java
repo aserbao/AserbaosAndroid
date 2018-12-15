@@ -13,6 +13,6 @@ public class NetWorkActivity extends BaseActivity {
     @Override
     public void initGetData() {
         mClassBeen.add(new ClassBean("Htpp网络请求", OkhttpActivity.class));
-        mClassBeen.add(new ClassBean("Mqtt", MqttActivity.class));
+        mClassBeen.add(new ClassBean("MQTT协议", MqttActivity.class));
     }
 }
