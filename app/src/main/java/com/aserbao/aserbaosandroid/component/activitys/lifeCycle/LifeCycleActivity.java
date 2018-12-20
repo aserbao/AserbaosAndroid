@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aserbao.aserbaosandroid.AUtils.ALogUtils;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
@@ -49,6 +50,7 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() called");
+        ALogUtils.logError(TAG, "onViewClicked: " ,1);
     }
 
     @Override
@@ -84,6 +86,7 @@ public class LifeCycleActivity extends AppCompatActivity {
     @OnClick({R.id.jump_life_cycle_activity, R.id.jump_life_cycle2_activity, R.id.jump_life_cycle3_activity})
     public void onViewClicked(View view) {
         Intent intent = null;
+        ALogUtils.logError(TAG, "onViewClicked: " ,0);
         switch (view.getId()) {
             case R.id.jump_life_cycle_activity:
                 intent = new Intent(this, LifeCycleActivity.class);

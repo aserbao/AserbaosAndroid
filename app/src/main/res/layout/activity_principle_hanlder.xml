@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/handler_fl"
+    android:orientation="vertical"
+    tools:context="com.aserbao.aserbaosandroid.system.handlers.principle_for_handler.PrincipleHanlderActivity">
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+        <!--android:background="@color/black"-->
+        <!--android:id="@+id/animation_view"-->
+        <!--app:lottie_fileName="lottiefiles/data.json"-->
+        <!--app:lottie_imageAssetsFolder="images"-->
+        <!--app:lottie_loop="true"-->
+        <!--app:lottie_autoPlay="true"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/handler_first_btn"
+            android:text="发第一个"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/handler_second_btn"
+            android:text="发第二个"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/handler_three_btn"
+            android:text="发第三个"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+
+</FrameLayout>
