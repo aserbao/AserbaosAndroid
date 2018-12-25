@@ -1,10 +1,10 @@
-package com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter;
+package com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter.viewholders.BaseViewHolder;
+import com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.viewholders.BaseViewHolder;
 
 
 public abstract class BaseAdapter extends RecyclerView.Adapter<BaseViewHolder>{

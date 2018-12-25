@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.adapters;
+package com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

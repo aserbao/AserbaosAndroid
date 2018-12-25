@@ -36,7 +36,7 @@ public class DisplayUtil
         return Math.round(dp * DENSITY);
     }
 
-    public static int dipToPX( float dip) {
+    public static int dip2px(float dip) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, Resources.getSystem().getDisplayMetrics());
     }
     public static int px2sp(Context context, float pxValue)

@@ -1,5 +1,5 @@
 // Generated code from Butter Knife. Do not modify!
-package com.aserbao.aserbaosandroid.ui.rv.addItemRecyclerView;
+package com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;

@@ -79,20 +79,20 @@
         <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerview.aEffect.EffectRVActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.mediacodec.MediaCodecActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.ui.rv.RecyclerViewActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.UIActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.texts.editTexts.EditTextsActivity" />
         <activity
             android:name="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
-        <activity android:name="com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.FunctionsActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSettingActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.toasts.ToastActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.events.EventDealActivity" />
@@ -143,7 +143,7 @@
         <activity android:name="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.ImagePhotoShopActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.compound.CompoundActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.texts.editTexts.others.OthersActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.TestActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity" />

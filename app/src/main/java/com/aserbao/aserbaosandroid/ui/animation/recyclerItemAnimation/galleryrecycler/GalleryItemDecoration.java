@@ -55,15 +55,15 @@ public class GalleryItemDecoration extends RecyclerView.ItemDecoration {
 
     private void onSetVerticalParams(ViewGroup parent, View itemView, int position, int itemCount) {
         int itemNewWidth = parent.getWidth();
-        int itemNewHeight = parent.getHeight() - DisplayUtil.dipToPX(4 * mPageMargin + 2 * mLeftPageVisibleWidth);
+        int itemNewHeight = parent.getHeight() - DisplayUtil.dip2px(4 * mPageMargin + 2 * mLeftPageVisibleWidth);
 
-        mItemComusemY = itemNewHeight + DisplayUtil.dipToPX(2 * mPageMargin);
+        mItemComusemY = itemNewHeight + DisplayUtil.dip2px(2 * mPageMargin);
 
 
 
         // 适配第0页和最后一页没有左页面和右页面，让他们保持左边距和右边距和其他项一样
-        int topMargin = position == 0 ? DisplayUtil.dipToPX(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dipToPX(mPageMargin);
-        int bottomMargin = position == itemCount - 1 ? DisplayUtil.dipToPX(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dipToPX(mPageMargin);
+        int topMargin = position == 0 ? DisplayUtil.dip2px(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dip2px(mPageMargin);
+        int bottomMargin = position == itemCount - 1 ? DisplayUtil.dip2px(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dip2px(mPageMargin);
 
         setLayoutParams(itemView, 0, topMargin, 0, bottomMargin, itemNewWidth, itemNewHeight);
     }
@@ -77,18 +77,18 @@ public class GalleryItemDecoration extends RecyclerView.ItemDecoration {
      * @param itemCount
      */
     private void onSetHoritiontalParams(ViewGroup parent, View itemView, int position, int itemCount) {
-        int itemNewWidth = parent.getWidth() - DisplayUtil.dipToPX(4 * mPageMargin + 2 * mLeftPageVisibleWidth);
+        int itemNewWidth = parent.getWidth() - DisplayUtil.dip2px(4 * mPageMargin + 2 * mLeftPageVisibleWidth);
         int itemNewHeight = parent.getHeight();
 
-        mItemComusemX = itemNewWidth + DisplayUtil.dipToPX(2 * mPageMargin);
+        mItemComusemX = itemNewWidth + DisplayUtil.dip2px(2 * mPageMargin);
 
 
         // 适配第0页和最后一页没有左页面和右页面，让他们保持左边距和右边距和其他项一样
-//        int leftMargin = position == 400 ? DisplayUtil.dipToPX(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dipToPX(mPageMargin);
-//        int leftMargin = position == 400 ? DisplayUtil.dipToPX(mLeftPageVisibleWidth +  mPageMargin) : DisplayUtil.dipToPX(mPageMargin);
-//        int rightMargin = position == itemCount - 1 ? DisplayUtil.dipToPX(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dipToPX(mPageMargin);
-        int leftMargin = DisplayUtil.dipToPX(mPageMargin);
-        int rightMargin = DisplayUtil.dipToPX(mPageMargin);
+//        int leftMargin = position == 400 ? DisplayUtil.dip2px(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dip2px(mPageMargin);
+//        int leftMargin = position == 400 ? DisplayUtil.dip2px(mLeftPageVisibleWidth +  mPageMargin) : DisplayUtil.dip2px(mPageMargin);
+//        int rightMargin = position == itemCount - 1 ? DisplayUtil.dip2px(mLeftPageVisibleWidth + 2 * mPageMargin) : DisplayUtil.dip2px(mPageMargin);
+        int leftMargin = DisplayUtil.dip2px(mPageMargin);
+        int rightMargin = DisplayUtil.dip2px(mPageMargin);
 
         setLayoutParams(itemView, leftMargin, 0, rightMargin, 0, itemNewWidth, itemNewHeight);
         Log.e(TAG, "onSetHoritiontalParams: " + leftMargin + "rightMargin : "  + rightMargin + "; position = "+ position + "; itemNewWidth" + itemNewHeight);

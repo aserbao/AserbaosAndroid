@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity">
+    tools:context="com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity">
     <!--<com.aserbao.aserbaosandroid.AUtils.AUI.rv.APullRecyclerViewGroup
         android:layout_width="match_parent"
         android:layout_height="500dp">

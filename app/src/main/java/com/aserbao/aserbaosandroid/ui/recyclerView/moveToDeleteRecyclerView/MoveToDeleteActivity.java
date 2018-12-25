@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView;
+package com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.adapters.MoveToDeleteAda;
+import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adapters.MoveToDeleteAda;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

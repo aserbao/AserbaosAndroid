@@ -48,7 +48,7 @@ public class LifeCycle3Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() called");
-        ALogUtils.logError(TAG, "onViewClicked: " ,1);
+        ALogUtils.logErrorTime(TAG, "onViewClicked: " ,1);
     }
 
     @Override

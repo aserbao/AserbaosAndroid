@@ -68,8 +68,8 @@ public class ScrollManager {
     }
 
     public void updateComsume() {
-        mConsumeX += DisplayUtil.dipToPX(GalleryItemDecoration.mLeftPageVisibleWidth + GalleryItemDecoration.mPageMargin * 2);
-        mConsumeY +=  DisplayUtil.dipToPX(GalleryItemDecoration.mLeftPageVisibleWidth + GalleryItemDecoration.mPageMargin * 2);
+        mConsumeX += DisplayUtil.dip2px(GalleryItemDecoration.mLeftPageVisibleWidth + GalleryItemDecoration.mPageMargin * 2);
+        mConsumeY +=  DisplayUtil.dip2px(GalleryItemDecoration.mLeftPageVisibleWidth + GalleryItemDecoration.mPageMargin * 2);
         Log.d(TAG, "updateComsume mConsumeX=" + mConsumeX);
     }
 

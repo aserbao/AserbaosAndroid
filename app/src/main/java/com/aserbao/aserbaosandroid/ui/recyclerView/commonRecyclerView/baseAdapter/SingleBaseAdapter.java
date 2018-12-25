@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter;
+package com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter.viewholders.BaseViewHolder;
-import com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter.viewholders.HeadViewHolder;
+import com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.viewholders.BaseViewHolder;
+import com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.viewholders.HeadViewHolder;
 
 
 public class SingleBaseAdapter<K> extends BaseAdapter {

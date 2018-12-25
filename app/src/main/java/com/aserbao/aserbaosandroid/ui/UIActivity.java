@@ -6,7 +6,7 @@ import com.aserbao.aserbaosandroid.ui.animation.AnimationActivity;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.ui.texts.TextsActivity;
-import com.aserbao.aserbaosandroid.ui.rv.RecyclerViewActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.simpleDraw.SimpleDrawActivity;
 import com.aserbao.aserbaosandroid.ui.toasts.ToastActivity;
 

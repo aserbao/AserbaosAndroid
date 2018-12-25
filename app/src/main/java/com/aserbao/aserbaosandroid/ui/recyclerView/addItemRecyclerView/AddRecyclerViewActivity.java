@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.addItemRecyclerView;
+package com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.rv.addItemRecyclerView.adapters.AddAdapters;
+import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.adapters.AddAdapters;
 
 import java.util.ArrayList;
 import java.util.List;

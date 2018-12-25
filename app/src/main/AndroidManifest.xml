@@ -69,20 +69,20 @@
         <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity" />
         <activity android:name=".AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
         <activity android:name=".AudioAndVideo.media.mediacodec.MediaCodecActivity" />
-        <activity android:name=".ui.rv.RecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
-        <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
+        <activity android:name=".ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity" />
         <activity android:name=".ui.texts.editTexts.EditTextsActivity" />
         <activity
             android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <!-- android:windowSoftInputMode="adjustNothing" -->
-        <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
         <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
-        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
+        <activity android:name=".ui.recyclerView.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
         <activity android:name=".ui.toasts.ToastActivity" />
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name=".functions.events.EventDealActivity" />
@@ -124,7 +124,7 @@
         <activity android:name=".functions.iamgePhotoshop.ImagePhotoShopActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
-        <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
@@ -161,16 +161,17 @@
         <activity android:name=".ui.animation.explosionAnimation.viewExplosion.ViewExplosionActivity" />
         <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity" />
         <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
-        <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity">
+        <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity"/>
+        <activity android:name=".system.SystemActivity" />
+        <activity android:name=".system.handlers.HandlerActivity" />
+        <activity android:name=".system.handlers.principle_for_handler.PrincipleHanlderActivity" />
+        <activity android:name=".ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".system.SystemActivity"/>
-        <activity android:name=".system.handlers.HandlerActivity" />
-        <activity android:name=".system.handlers.principle_for_handler.PrincipleHanlderActivity"></activity>
     </application>
 
 </manifest>

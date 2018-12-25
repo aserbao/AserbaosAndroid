@@ -5,15 +5,9 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-import com.aserbao.aserbaosandroid.R;
-
-import java.util.ArrayList;
 
 public class StoriesViewProgressBar extends View{
     private int mProgressCount = 1;
@@ -41,7 +35,7 @@ public class StoriesViewProgressBar extends View{
 
     private void init() {
         mScreenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int dp2 = DisplayUtil.dipToPX(2);
+        int dp2 = DisplayUtil.dip2px(2);
     }
 
     @Override

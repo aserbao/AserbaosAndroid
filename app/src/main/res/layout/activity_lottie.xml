@@ -9,7 +9,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:background="@color/black"
         android:id="@+id/animation_view"
-        app:lottie_fileName="lottiefiles/data.json"
+        app:lottie_fileName="lottiefiles/data1.json"
         app:lottie_imageAssetsFolder="images"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"

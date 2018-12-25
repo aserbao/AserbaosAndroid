@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.addItemRecyclerView.adapters;
+package com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

@@ -1,5 +1,5 @@
 // Generated code from Butter Knife. Do not modify!
-package com.aserbao.aserbaosandroid.ui.rv.moveToDeleteRecyclerView.adapters;
+package com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adapters;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;

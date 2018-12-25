@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter.viewholders;
+package com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.viewholders;
 
 import android.support.annotation.NonNull;
 import android.view.View;

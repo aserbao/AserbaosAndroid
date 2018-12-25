@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.rv.commonRecyclerView.baseAdapter;
+package com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
