@@ -1,7 +1,6 @@
-package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.viewHolders;
+package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.common.viewHolders;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 

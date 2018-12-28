@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.library;
+package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.library;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearSnapHelper;

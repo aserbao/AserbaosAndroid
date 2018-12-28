@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.library;
+package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.library;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler;
+package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_two_method.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,11 +11,12 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 
-
 /**
- * Created by RyanLee on 2017/12/8.
+ * 功能:
+ * author aserbao
+ * date : On 2018/12/25
+ * email: 1142803753@qq.com
  */
-
 public class GalleryRecyclerView extends RecyclerView {
     private int FLING_SPEED = 1000; // 滑动速度
 
@@ -23,6 +24,8 @@ public class GalleryRecyclerView extends RecyclerView {
     public static final int PagerSnapHelper = 1;
 
     public boolean mHasWindowFocus = false;
+
+
 
     private ScrollManager mScrollManager;
     private GalleryItemDecoration mDecoration;
@@ -61,10 +64,6 @@ public class GalleryRecyclerView extends RecyclerView {
         super.onWindowFocusChanged(hasWindowFocus);
 
         this.mHasWindowFocus = hasWindowFocus;
-
-        if (getAdapter() == null){
-            return;
-        }
 
         if (getAdapter().getItemCount() <= 0) {
             return;

@@ -33,6 +33,11 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    useLibrary 'org.apache.http.legacy'
 }
 greendao {
     schemaVersion 3 //数据库版本号
@@ -72,5 +77,10 @@ dependencies {
     // mqtt
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+
+    // ==========网络相关库
+    implementation 'com.squareup.okhttp3:okhttp:3.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
 
 }

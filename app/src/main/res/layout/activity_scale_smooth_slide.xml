@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity">
-    <com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.library.SpeedRecyclerView
+    tools:context="com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.ScaleSmoothSlideOneActivity">
+    <com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.library.SpeedRecyclerView
+        android:visibility="gone"
         android:layout_gravity="center"
         android:orientation="horizontal"
         android:id="@+id/scale_smooth_slide_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.GalleryRecyclerView
+        android:id="@+id/scale_smooth_slide_gallery_view"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </FrameLayout>
