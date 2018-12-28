@@ -52,4 +52,23 @@
             <enum name="right" value="1" />
         </attr>
     </declare-styleable>
+
+
+    //=============textShow
+    <declare-styleable name="FadeTextView">
+        <attr name="fade_animationDuration" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="LineTextView">
+        <attr name="lineWidth" format="dimension" />
+        <attr name="lineColor" format="color" />
+        <attr name="animationDuration" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="RainbowTextView">
+        <attr name="colorSpeed" format="dimension" />
+        <attr name="colorSpace" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="TyperTextView">
+        <attr name="typerSpeed" format="integer" />
+        <attr name="charIncrease" format="integer" />
+    </declare-styleable>
 </resources>

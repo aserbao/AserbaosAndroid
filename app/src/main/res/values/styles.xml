@@ -65,6 +65,19 @@
         </attr>
     </declare-styleable>
 
+    //============文字显示动画
+    <style name="show_text_anim_style">
+        <item name="android:shadowRadius">8</item>
+        <item name="android:shadowColor">@color/black70</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_show</item>
+        <item name="android:text">@string/show_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     //=============带阴影的字体
     <style name="text_shadow_style">
         <item name="android:shadowRadius">8</item>

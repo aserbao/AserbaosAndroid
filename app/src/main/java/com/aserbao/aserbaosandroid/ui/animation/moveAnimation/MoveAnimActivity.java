@@ -2,9 +2,7 @@ package com.aserbao.aserbaosandroid.ui.animation.moveAnimation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PointF;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +11,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.IShotListener;
 import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.MoveView;
+import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.Shot;
+import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.TargetView;
 import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot.ViewManager;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import butterknife.OnClick;
 
 import static java.lang.Math.PI;
 
-public class MoveAnimActivity extends AppCompatActivity {
+public class MoveAnimActivity extends AppCompatActivity implements IShotListener{
 
     @BindView(R.id.move_btn)
     Button mMoveBtn;
@@ -50,14 +50,13 @@ public class MoveAnimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_move_anim);
         ButterKnife.bind(this);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
-        viewManager = new ViewManager(this,mMoveView, this);
+        viewManager = new ViewManager(this,mMoveView, this,this);
 
         screenWidth = DisplayUtil.getScreenWidth(this);
         screenHeight = DisplayUtil.getScreenHeight(this);
         mRandom = new Random();
     }
-    private List<float[]> mTargetData = new ArrayList<>();
-    private List<ImageView> mImageViewList = new ArrayList<>();
+    private List<TargetView> mTargetViewList = new ArrayList<>();
     public void addRandomIV() {
         for (int i = 0; i < 10; i++) {
             ImageView imageView = new ImageView(this);
@@ -66,32 +65,15 @@ public class MoveAnimActivity extends AppCompatActivity {
             int y = mRandom.nextInt(screenWidth);
             imageView.setX(x);
             imageView.setY(y);
-          /*  int x = screenWidth / 100 * (i + 1);
-            int y = 200;
-            imageView.setX(x);
-            imageView.setY(200);*/
-            mTargetFl.addView(imageView, 50,50);
-            mImageViewList.add(imageView);
             float[] s = new float[3];
             s[0] = x + 25;
             s[1] = y + 25;
             s[2] = 25;
-            mTargetData.add(s);
+            mTargetFl.addView(imageView,50,50);
+            mTargetViewList.add( new TargetView(imageView,s));
         }
     }
 
-    public void getImageViewData(){
-        for (int i = 0; i < mImageViewList.size(); i++) {
-            ImageView imageView = mImageViewList.get(i);
-            float x = imageView.getX();
-            float y = imageView.getY();
-            float[] s = new float[3];
-            s[0] = x + imageView.getWidth() / 2;
-            s[1] = y + imageView.getHeight() / 2;
-            s[2] = imageView.getHeight() /2;
-            mTargetData.add(s);
-        }
-    }
     @OnClick({R.id.move_btn, R.id.move_add_iv_btn,R.id.move_clear_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -100,11 +82,11 @@ public class MoveAnimActivity extends AppCompatActivity {
                     int angle = mRandom.nextInt(135)%(135-50 +1) + 45;
                     int shotX = screenWidth / 2;
                     int shotY = this.screenHeight;
-                    float[] floats = calculateLine(shotX, shotY, angle, mTargetData);
+                    float[] floats = calculateLine(shotX, shotY, angle, mTargetViewList);
                     int targetX = (int)floats[0];
                     int targetY = (int)floats[1];
                     int targetRadius = (int)floats[2];
-                    viewManager.addShot(bitmap, shotX, shotY, angle, targetX, targetY, targetRadius,mTargetData);
+                    viewManager.addShot(bitmap, shotX, shotY, angle, targetX, targetY, targetRadius,mTargetViewList);
                 }
                 break;
             case R.id.move_add_iv_btn:
@@ -112,19 +94,18 @@ public class MoveAnimActivity extends AppCompatActivity {
                 break;
             case R.id.move_clear_btn:
                 mTargetFl.removeAllViews();
-                mImageViewList.clear();
-                mTargetData.clear();
+                mTargetViewList.clear();
                 break;
         }
     }
 
     private static final String TAG = "MoveAnimActivity";
 
-    public float[] calculateLine(int shotX,int shotY,float shotAngle,List<float[]> targetData){
+    public float[] calculateLine(int shotX,int shotY,float shotAngle,List<TargetView> targetData){
         float[] resultFloat = new float[3];
         float cuurMaxY = 0;
         for (int i = 0; i < targetData.size(); i++) {
-            float[] floats = targetData.get(i);
+            float[] floats = targetData.get(i).getFloats();
             float x = floats[0];
             float y = floats[1];
             float radius = floats[2];
@@ -152,96 +133,13 @@ public class MoveAnimActivity extends AppCompatActivity {
         return resultFloat;
     }
 
-    public void fromShot(int shootX,int shootY, float angle){
+    @Override
+    public void isHit(Shot shot, TargetView targetView) {
+        mTargetFl.removeView(targetView.getImageView());
+    }
 
-        float mAngle = 0;
-        int halfScreenWidth = AserbaoApplication.screenWidth / 2;
-        int halfScreenHeight = AserbaoApplication.screenHeight / 2;
-        float receiveX = halfScreenWidth;
-        float receiveY = halfScreenHeight * 2;
-        float x,y = 0;
-        float shotX = shootX;
-        float shotY = shootY;
-        if(shotX > 0 && shotX < AserbaoApplication.screenWidth && shotY > 0 && shotY < AserbaoApplication.screenHeight){
-            x = shotX;
-            y = shotY;
-        }else {
-            if (angle == 90) {
-                x = receiveX;
-                y = 0;
-            } else if (angle == 0) {
-                x = AserbaoApplication.screenWidth;
-                y = receiveY;
-            } else if (angle == 180) {
-                x = 0;
-                y = receiveY;
-            } else if (angle == 270) {
-                x = receiveX;
-                y = AserbaoApplication.screenHeight;
-            } else if (receiveY / halfScreenWidth == Math.tan(mAngle)) {
-                if (angle < 90 || angle > 270 && angle < 360) {
-                    x = AserbaoApplication.screenWidth;
-                } else {
-                    x = 0;
-                }
-                if (angle > 180) {
-                    y = AserbaoApplication.screenHeight;
-                } else {
-                    y = 0;
-                }
-            } else if (receiveY / halfScreenWidth < Math.tan(mAngle)) {
-                if (angle < 180) {
-                    if (angle > 90) {
-                        mAngle = 180 - angle;
-                    }
-                    mAngle = (float) (2 * PI / 360 * mAngle);
-                    y = (float) (halfScreenWidth * Math.tan(mAngle));
-                } else if (angle > 180 && angle < 360) {
-                    if (angle < 270) {
-                        mAngle = angle - 180;
-                    } else {
-                        mAngle = 360 - angle;
-                    }
-                    mAngle = (float) (2 * PI / 360 * mAngle);
-                    y = receiveY + (float) (halfScreenWidth * Math.tan(mAngle));
-                }
-                if (angle < 90 || angle > 270 && angle < 360) {
-                    x = AserbaoApplication.screenWidth;
-                } else {
-                    x = 0;
-                }
-            } else {
-                if (angle < 90 && angle > 270 && angle < 360) {
-                    if (angle > 270) {
-                        mAngle = 360 - angle;
-                    }
-                    mAngle = (float) (2 * PI / 360 * mAngle);
-                    x = halfScreenWidth + (float) (halfScreenHeight / Math.tan(mAngle));
-                } else {
-                    if (angle < 180) {
-                        mAngle = 180 - angle;
-                    } else {
-                        mAngle = angle - 180;
-                    }
-                    mAngle = (float) (2 * PI / 360 * mAngle);
-                    x = (float) (halfScreenHeight / Math.tan(mAngle));
-                }
+    @Override
+    public void isLoseEfficacy(Shot shot) {
 
-                if (angle < 180) {
-                    y = 0;
-                } else {
-                    y = AserbaoApplication.screenHeight;
-                }
-            }
-        }
-
-        float[] floats = new float[3];
-        floats[0] = receiveX;
-        floats[1] = receiveY;
-        floats[2] = 70;
-
-
-
-//        ViewManager.getInstance(this, mMoveView, this).addShot(mCurrentBulletBitmap, x, y, angle, markerBeans);
     }
 }

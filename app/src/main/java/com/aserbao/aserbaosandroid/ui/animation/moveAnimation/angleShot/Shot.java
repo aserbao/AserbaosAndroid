@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.util.Log;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
@@ -25,7 +24,7 @@ public class Shot  {
     protected Bitmap mImage;
     public float mCurrentX;
     public float mCurrentY;
-
+    private Context mContext;
     public float mMaxWidth;
     public float mMaxHeight;
 
@@ -40,7 +39,7 @@ public class Shot  {
     private int mBitmapHalfHeight;
 
     private IShotListener mIshotListener;
-    private List<float[]> mTargetData;
+    private List<TargetView> mTargetViewList;
     private int angleType; // 判断角度在第几象限
     
 
@@ -55,7 +54,8 @@ public class Shot  {
      * @param targetRadius  被击中物体的半径
      * @param iShotListener
      */
-    protected Shot(Context context, Bitmap bitmap, float initX, float initY, float angle,int targetX,int targetY,int targetRadius,IShotListener iShotListener,List<float[]> mt) {
+    protected Shot(Context context, Bitmap bitmap, float initX, float initY, float angle,int targetX,int targetY,int targetRadius,IShotListener iShotListener,List<TargetView> targetViewList) {
+        mContext = context;
         mMatrix = new Matrix();
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
@@ -73,7 +73,7 @@ public class Shot  {
         shotTargetY = targetY;
         shotTargetRadius = targetRadius;
         mIshotListener = iShotListener;
-        mTargetData = mt;
+        mTargetViewList = targetViewList;
     }
 
     public void calculateAngle(float angle){
@@ -91,8 +91,8 @@ public class Shot  {
         canvas.drawBitmap(mImage,mMatrix,mPaint);*/
         canvas.drawCircle(mCurrentX,mCurrentY,mBitmapHalfHeight,mPaint);
         canvas.drawCircle(shotTargetX,shotTargetY,shotTargetRadius,mPaint);
-        for (int i = 0; i < mTargetData.size(); i++) {
-            float[] floats = mTargetData.get(i);
+        for (int i = 0; i < mTargetViewList.size(); i++) {
+            float[] floats = mTargetViewList.get(i).getFloats();
             canvas.drawCircle(floats[0],floats[1],floats[2],mPaint);
         }
         judge();
@@ -126,11 +126,13 @@ public class Shot  {
             }
         }*/
 
-        for (int i = 0; i < mTargetData.size(); i++) {
-            float[] floats = mTargetData.get(i);
+        for (int i = 0; i < mTargetViewList.size(); i++) {
+            TargetView targetView = mTargetViewList.get(i);
+            float[] floats = targetView.getFloats();
             float v = (float) Math.sqrt(Math.pow(mCurrentX - floats[0], 2) + Math.pow(mCurrentY - floats[1], 2));
             if (v <= mBitmapHalfHeight + shotTargetRadius && mIshotListener!=null){
-                mIshotListener.isHit(this,floats);
+                mIshotListener.isHit(this,targetView);
+                mTargetViewList.remove(targetView);
                 break;
             }
         }
@@ -138,6 +140,10 @@ public class Shot  {
     private boolean isNeedSpringBack = true;
     private int mMaxSpringTime = 10;
     private int mCuurSpringTime = 0;
+
+    /**
+     * 角度反射
+     */
     public void springback(){
         if (isNeedSpringBack & mCuurSpringTime < mMaxSpringTime){
             if (mCurrentY - mBitmapHalfHeight <= 0 || mCurrentY + mBitmapHalfHeight >= mMaxHeight){

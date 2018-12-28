@@ -31,12 +31,14 @@ public class ViewManager implements IShotListener{
     public static ViewManager viewManager ;
     public static ViewManager getInstance(Activity activity, MoveView mMoveView, Context context){
         if (viewManager == null) {
-            viewManager = new ViewManager(activity,mMoveView,context);
+            viewManager = new ViewManager(activity,mMoveView,context,null);
         }
         return viewManager;
     }
-    public ViewManager(Activity activity,MoveView mMoveView, Context mContext) {
+    public IShotListener mIShotListener;
+    public ViewManager(Activity activity,MoveView mMoveView, Context mContext,IShotListener iShotListener) {
         mActivity = activity;
+        mIShotListener = iShotListener;
         this.mMoveView = mMoveView;
         this.mContext = mContext;
     }
@@ -49,7 +51,7 @@ public class ViewManager implements IShotListener{
             isStart = true;
         }
     }
-    public void addShot(Bitmap bitmap, float initX, float initY, float angle, int targetX, int targetY, int targetRadius,List<float[]> mTargetData){
+    public void addShot(Bitmap bitmap, float initX, float initY, float angle, int targetX, int targetY, int targetRadius,List<TargetView> mTargetData){
         Shot shot = new Shot(mContext, bitmap, initX, initY, angle, targetX, targetY, targetRadius,this,mTargetData);
         mShotList.add(shot);
         if (!isStart) {
@@ -59,14 +61,19 @@ public class ViewManager implements IShotListener{
     }
 
     @Override
-    public void isHit(Shot shot,float[] shotFloat) {
+    public void isHit(Shot shot,TargetView targetView) {
         removeShot(shot);
-        Toast.makeText(mContext, "爆炸💥", Toast.LENGTH_SHORT).show();
+        if (mIShotListener != null) {
+            mIShotListener.isHit(shot,targetView);
+        }
     }
 
     @Override
     public void isLoseEfficacy(Shot shot) {
         removeShot(shot);
+        if (mIShotListener != null) {
+            mIShotListener.isLoseEfficacy(shot);
+        }
     }
 
     private void removeShot(Shot shot) {

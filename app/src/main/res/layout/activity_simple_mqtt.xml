@@ -9,13 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_configuration"
-            android:text="配置mqtt"
+            android:id="@+id/btn_start_link"
+            android:text="连接"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/send_btn"
-            android:text="发送消息"
+            android:id="@+id/btn_unlink"
+            android:text="断开连接"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_send_message"
+            android:text="发送"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>

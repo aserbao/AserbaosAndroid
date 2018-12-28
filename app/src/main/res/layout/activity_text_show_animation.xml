@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    tools:context="com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.TextShowAnimationActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/anim_start_btn"
+                android:text="开始动画"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.animTextView.FlyTxtView
+            android:id="@+id/anim_fly_txt_view"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"/>
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.animTextView.ShadeAnimTextView
+            android:id="@+id/anim_shade_txt_view"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/text_show_seek_bar"
+            android:max="100"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.fade.FadeTextView
+            android:id="@+id/fade_text_view"
+            style="@style/show_text_anim_style" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.evaporate.EvaporateTextView
+            android:id="@+id/evapotate_text_view"
+            style="@style/show_text_anim_style"
+            />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.evaporate.EvaporateTextView
+            android:id="@+id/evaporate_txt_view_2"
+            style="@style/show_text_anim_style"
+            />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.fall.FallTextView
+            android:visibility="gone"
+            android:id="@+id/fall_text_view"
+            style="@style/show_text_anim_style" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.scale.ScaleTextView
+            android:id="@+id/scale_text_view"
+            style="@style/show_text_anim_style" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.typer.TyperTextView
+            android:id="@+id/typer_text_view"
+            style="@style/show_text_anim_style" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.line.LineTextView
+            android:id="@+id/line_text_view"
+            style="@style/show_text_anim_style" />
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.rainbow.RainbowTextView
+            android:id="@+id/rainbow_text_view"
+            style="@style/show_text_anim_style"/>
+    </LinearLayout>
+</ScrollView>
