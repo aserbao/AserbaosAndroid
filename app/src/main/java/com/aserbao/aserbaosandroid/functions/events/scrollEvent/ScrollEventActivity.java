@@ -50,7 +50,7 @@ public class ScrollEventActivity extends AppCompatActivity {
     private int mCuurPosition = 0;
     public static String[] videoUrlList =
             {
-                    "http://v.douyin.com/8vgcDj/",
+                    "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f220000bgapopir863s3spbh19g&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0",
                     "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4",
                     "http://jzvd.nathen.cn/63f3f73712544394be981d9e4f56b612/69c5767bb9e54156b5b60a1b6edeb3b5-5287d2089db37e62345123a1be272f8b.mp4",
                     "http://jzvd.nathen.cn/b201be3093814908bf987320361c5a73/2f6d913ea25941ffa78cc53a59025383-5287d2089db37e62345123a1be272f8b.mp4",

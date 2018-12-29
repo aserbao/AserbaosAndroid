@@ -167,18 +167,17 @@
         <activity android:name=".system.handlers.principle_for_handler.PrincipleHanlderActivity" />
         <activity android:name=".ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.ScaleSmoothSlideOneActivity" />
         <activity android:name=".ui.recyclerView.scale_smooth_slide.scale_smooth_slide_two_method.ScaleSmoothSlideTwoActivity" />
-        <activity android:name=".ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity">
+        <activity android:name=".ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity"/>
+        <activity android:name=".functions.hobbies_and_interests.HobbiesAndInterestsActivity" />
+        <activity android:name=".functions.hobbies_and_interests.urlAnalyze.UrlAnalyzeActivity" />
+        <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity" />
+        <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".functions.hobbies_and_interests.HobbiesAndInterestsActivity" />
-        <activity android:name=".functions.hobbies_and_interests.urlAnalyze.UrlAnalyzeActivity"></activity>
-
-        <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity"/>
-
     </application>
 
 </manifest>
