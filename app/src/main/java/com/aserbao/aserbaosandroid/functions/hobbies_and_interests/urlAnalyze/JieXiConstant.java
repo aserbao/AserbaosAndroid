@@ -94,7 +94,7 @@ public class JieXiConstant {
 
             HttpParams params = new BasicHttpParams();
             HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-            HttpProtocolParams.setContentCharset(params, StandardCharsets.UTF_8);
+//            HttpProtocolParams.setContentCharset(params, StandardCharsets.UTF_8);
 
             SchemeRegistry registry = new SchemeRegistry();
             registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
