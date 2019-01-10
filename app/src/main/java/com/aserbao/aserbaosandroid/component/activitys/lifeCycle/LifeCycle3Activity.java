@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.ALogUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 

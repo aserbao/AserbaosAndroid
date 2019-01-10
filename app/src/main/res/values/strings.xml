@@ -8,7 +8,6 @@
     <string name="show_text2">\"喜欢学习就好！\"</string>
 
 
-
     <!--网址-->
     <string name="url_douyin_regex">(?s).*?(www\.iesdouyin\.com|v\.douyin\.com).*?</string>
     <string name="exception_invalid_video">无法获取到有效的视频</string>

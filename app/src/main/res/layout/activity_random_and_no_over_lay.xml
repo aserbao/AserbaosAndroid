@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.RandomAndNoOverLayActivity">
+    <com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.RandomAndNoOverLay
+        android:id="@+id/random_and_no_over_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids.HexagonalGridView
+        android:id="@+id/hexagonal_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="btn_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="hex grid offic"
+            android:textAllCaps="false"
+            android:id="@+id/hex_grid_offic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+
+
+</android.support.constraint.ConstraintLayout>

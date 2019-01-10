@@ -41,14 +41,14 @@ import java.util.Map;
 /**
  * 主要功能:手机管理工具类
  */
-public class AppPhoneMgr {
-    private static AppPhoneMgr phoneUtil;
+public class APhoneUtils {
+    private static APhoneUtils phoneUtil;
 
-    public static AppPhoneMgr getInstance() {
+    public static APhoneUtils getInstance() {
         if (phoneUtil == null) {
-            synchronized (AppPhoneMgr.class) {
+            synchronized (APhoneUtils.class) {
                 if (phoneUtil == null) {
-                    phoneUtil = new AppPhoneMgr();
+                    phoneUtil = new APhoneUtils();
                 }
             }
         }

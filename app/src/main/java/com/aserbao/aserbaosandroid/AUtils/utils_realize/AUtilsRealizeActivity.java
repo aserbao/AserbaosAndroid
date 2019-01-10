@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.phone.AppPhoneMgr;
+import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
 import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;
@@ -25,6 +25,6 @@ public class AUtilsRealizeActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_get_phone_info)
     public void onViewClicked() {
-        mUtilsResultTv.setText(AppPhoneMgr.getInstance().getPhoneStatus(this));
+        mUtilsResultTv.setText(APhoneUtils.getInstance().getPhoneStatus(this));
     }
 }

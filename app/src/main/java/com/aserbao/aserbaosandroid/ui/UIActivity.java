@@ -5,6 +5,7 @@ import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.animation.AnimationActivity;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.RandomAndNoOverLayActivity;
 import com.aserbao.aserbaosandroid.ui.texts.TextsActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.simpleDraw.SimpleDrawActivity;
@@ -15,6 +16,7 @@ public class UIActivity extends BaseActivity {
 
 
     public void initGetData() {
+        mClassBeen.add(new ClassBean("随机生成不重叠的圆", RandomAndNoOverLayActivity.class));
         mClassBeen.add(new ClassBean("动画效果", AnimationActivity.class));
         mClassBeen.add(new ClassBean("自定义View", CustomViewActivity.class));
         mClassBeen.add(new ClassBean("Android自定义绘制这边走", SimpleDrawActivity.class));
