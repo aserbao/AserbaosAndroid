@@ -7,8 +7,6 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids.HexagonalGridView;
-
-
 import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids_offical.Hex;
 
 import java.util.ArrayList;
@@ -34,27 +32,41 @@ public class RandomAndNoOverLayActivity extends AppCompatActivity {
 
     public void btn_click(View view) {
 //        mRandomAndNoOverLay.start();
-        mHexagonalGridView.start();
+
     }
 
     private static final String TAG = "RandomAndNoOverLayActiv";
-    @OnClick(R.id.hex_grid_offic_btn)
-    public void onViewClicked() {
-        Hex hex = new Hex(0, 0, 0);
-        cubeSpiral(hex,1);
+
+
+
+
+    @OnClick({R.id.no_overlap_btn, R.id.hex_grid_offic_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.no_overlap_btn:
+                mHexagonalGridView.start();
+                break;
+            case R.id.hex_grid_offic_btn:
+                Hex hex = new Hex(0, 0, 0);
+                cubeSpiral(hex, 1);
+                break;
+        }
     }
-    public void cubeSpiral(Hex hex,int radius){
+
+
+    public void cubeSpiral(Hex hex, int radius) {
         List<Hex> result = new ArrayList<>();
         result.add(hex);
         for (int i = 1; i <= radius; i++) {
-            result = cubeRing(result,hex,radius);
+            result = cubeRing(result, hex, radius);
         }
         for (int i = 0; i < result.size(); i++) {
             Hex hex1 = result.get(i);
-            Log.e(TAG, "cubeSpiral: q = "+ hex1.q  + " r = "+ hex1.r  + " s = " + hex1.s);
+            Log.e(TAG, "cubeSpiral: q = " + hex1.q + " r = " + hex1.r + " s = " + hex1.s);
         }
     }
-    public List<Hex> cubeRing(List<Hex> result ,Hex hex,int radius){
+
+    public List<Hex> cubeRing(List<Hex> result, Hex hex, int radius) {
         hex = hex.add(hex.direction(4).scale(radius));
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < radius; j++) {

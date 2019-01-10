@@ -59,8 +59,8 @@ public class HexagonalGridView extends View {
         int screenHeight = AserbaoApplication.screenHeight;
         for (int i = 0; i < 1000; i++) {
             float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/4;
-            aFloat[1] = screenHeight/4;
+            aFloat[0] = screenWidth/2;
+            aFloat[1] = screenHeight/2;
             aFloat[2] = 10;
             cal(aFloat,screenWidth,screenHeight);
         }
@@ -119,7 +119,6 @@ public class HexagonalGridView extends View {
         return hexPoints;
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -132,7 +131,7 @@ public class HexagonalGridView extends View {
                 int x = hexPoint.x;
                 int y = hexPoint.y;
                 paint.setColor(Color.RED);
-                canvas.drawCircle(x, y,hexPoint.radius * 2,paint);
+                canvas.drawCircle(x, y,hexPoint.radius * 2 - 5,paint);
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(12);

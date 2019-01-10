@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:onClick="btn_click"
+            android:id="@+id/no_overlap_btn"
+            android:text="点我看效果,哈哈哈"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
