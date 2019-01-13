@@ -56,31 +56,31 @@ public class HexPoint {
     public float[] getChildScreen(int cuurLayer,int lastPosition,int position,Map<Integer,LinkedList<HexPoint>> cuurMap){
         Hex hex = new Hex(0, 0, 0);
         List<Hex> hexes = cubeSpiral(hex, cuurLayer);
-        for (int i = 0; i < hexes.size(); i++) {
-            if (i <= lastPosition){
-                continue;
-            }
-            Hex hex1 = hexes.get(i);
-            int xC = hex1.q;
-            int yC = hex1.s;
-            int zC = hex1.r;
-            if (Math.abs(xC) <= cuurLayer && Math.abs(yC) <= cuurLayer && Math.abs(zC) <= cuurLayer) {
-                double screenX = xC * (float)radius * Math.sqrt(3) - yC * (float) radius * Math.sqrt(3) + x;
-                double screenY = zC * (float)radius * 2 - xC * (float) radius - yC * (float)radius + y;
-                if (screenX > radius && screenX < maxWidth -radius && screenY > radius && screenY < maxHeight - radius){
-                    float[] floats = new float[3];
-                    floats[0] = (float) screenX;
-                    floats[1] = (float) screenY;
-                    floats[2] = radius;
-                    if (!calIsOverLayout(floats, cuurMap)){
-                        cuurWhichLayer = cuurLayer;
-                        mCorrespondenceMap.put(position,i);
-                        return floats;
-                    }
+            for (int i = 0; i < hexes.size(); i++) {
+                if (i <= lastPosition) {
+                    continue;
                 }
-                lastPosition ++; // 用来记录不用计算的点
+                Hex hex1 = hexes.get(i);
+                int xC = hex1.q;
+                int yC = hex1.s;
+                int zC = hex1.r;
+                if (Math.abs(xC) <= cuurLayer && Math.abs(yC) <= cuurLayer && Math.abs(zC) <= cuurLayer) {
+                    double screenX = xC * (float) radius * Math.sqrt(3) - yC * (float) radius * Math.sqrt(3) + x;
+                    double screenY = zC * (float) radius * 2 - xC * (float) radius - yC * (float) radius + y;
+                    if (screenX > radius && screenX < maxWidth - radius && screenY > radius && screenY < maxHeight - radius) {
+                        float[] floats = new float[3];
+                        floats[0] = (float) screenX;
+                        floats[1] = (float) screenY;
+                        floats[2] = radius;
+                        if (!calIsOverLayout(floats, cuurMap)) {
+                            cuurWhichLayer = cuurLayer;
+                            mCorrespondenceMap.put(position, i);
+                            return floats;
+                        }
+                    }
+                    lastPosition++; // 用来记录不用计算的点
+                }
             }
-        }
         cuurWhichLayer++;
         cycleTime++;
         Log.e(TAG, "getChildScreen: " + "当前点，即：position =  " + position  +" 一共计算了 =" + cycleTime + " 次");
@@ -99,7 +99,8 @@ public class HexPoint {
             if (next.getKey() != type) {
                 LinkedList<HexPoint> value = next.getValue();
                 for (HexPoint hexPoint : value) {
-                    if(floats[2] + hexPoint.radius > Math.sqrt(Math.pow((hexPoint.x  - floats[0]),2) +  Math.pow((hexPoint.y  - floats[1]),2))){
+                    double v = Math.pow((hexPoint.x - floats[0]), 2) + Math.pow((hexPoint.y - floats[1]), 2);
+                    if(floats[2] + hexPoint.radius > Math.sqrt(v)){
                         return true;
                     }
                 }
@@ -118,15 +119,7 @@ public class HexPoint {
             }
         }
         int lastPosition = position - 1;
-
         int lastHexPosition = (int)mCorrespondenceMap.get(lastPosition);// 上个hex grid 中对应的位置
-        while(true){
-           if ((cuurWhichLayer * cuurWhichLayer + 1) * 3 + 1 > lastHexPosition){
-              break;
-           }else{
-               cuurWhichLayer++;
-           }
-        }
         return getChildScreen(cuurWhichLayer,lastHexPosition,position,cuurMap);
     }
 
@@ -134,8 +127,8 @@ public class HexPoint {
     public List<Hex> cubeSpiral(Hex hex,int radius){
         List<Hex> result = new ArrayList<>();
         result.add(hex);
-        for (int i = 1; i <= radius; i++) {
-            result = cubeRing(result,hex,radius);
+        for (int i = 0; i < radius; i++) {
+            result = cubeRing(result,hex,i);
         }
         return result;
     }

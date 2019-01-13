@@ -57,13 +57,27 @@ public class HexagonalGridView extends View {
         random = new Random();
         int screenWidth = AserbaoApplication.screenWidth;
         int screenHeight = AserbaoApplication.screenHeight;
-        for (int i = 0; i < 1000; i++) {
+        Random random = new Random();
+        for (int i = 0; i < 500; i++) {
             float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/2;
-            aFloat[1] = screenHeight/2;
-            aFloat[2] = 10;
+            aFloat[0] = screenWidth/2  + 100;
+            aFloat[1] = screenHeight/2 + 300;
+            aFloat[2] = 20;
             cal(aFloat,screenWidth,screenHeight);
         }
+
+        /*float[] aFloat = new float[3];
+        aFloat[0] = 466.87897f ;
+        aFloat[1] = 1070.7234f ;
+        aFloat[2] = 20;
+        cal(aFloat,screenWidth,screenHeight);
+
+        float[] aFloat1 = new float[3];
+        aFloat1[0] = 495.08124f;
+        aFloat1[1] = 1020.1505f;
+        aFloat1[2] = 20;
+        cal(aFloat1,screenWidth,screenHeight);*/
+
         paint = new Paint();
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.FILL);
@@ -114,6 +128,7 @@ public class HexagonalGridView extends View {
         float[] childPoint = centerFisrt.getChildPoint(size,cuurScreenMap);
         HexPoint hexPoint = new HexPoint((int)childPoint[0], (int)childPoint[1], (int)childPoint[2], false);
         hexPoint.type = centerFisrt.type;
+        hexPoint.hexPoint = centerFisrt;
         hexPoints.add(hexPoint);
         return hexPoints;
     }
@@ -123,18 +138,20 @@ public class HexagonalGridView extends View {
         super.onDraw(canvas);
         Iterator<Map.Entry<Integer, LinkedList<HexPoint>>> entryIterator = cuurScreenMap.entrySet().iterator();
         int num = 0;
-        if (entryIterator.hasNext()) {
+        while (entryIterator.hasNext()) {
             Map.Entry<Integer, LinkedList<HexPoint>> next = entryIterator.next();
+            Integer key = next.getKey();
             LinkedList<HexPoint> value = next.getValue();
             for (HexPoint hexPoint : value) {
                 int x = hexPoint.x;
                 int y = hexPoint.y;
                 paint.setColor(Color.RED);
-                canvas.drawCircle(x, y,hexPoint.radius * 2 - 5,paint);
+                canvas.drawCircle(x, y,hexPoint.radius/2 * 3,paint);
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(12);
-                canvas.drawText(String.valueOf(num),x,y,paint);
+                canvas.drawText(String.valueOf(num) + "k"+String.valueOf(key),x,y,paint);
+                Log.e(TAG, "onDraw: num = "+ num);
                 num++;
             }
         }

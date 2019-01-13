@@ -173,7 +173,8 @@
         <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity" />
         <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity">
         </activity>
-        <activity android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity">
+        <activity android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

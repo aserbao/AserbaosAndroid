@@ -46,25 +46,26 @@ public class RandomAndNoOverLayActivity extends AppCompatActivity {
                 break;
             case R.id.hex_grid_offic_btn:
                 Hex hex = new Hex(0, 0, 0);
-                cubeSpiral(hex, 1);
+                List<Hex> hexes = cubeSpiral(hex, 3);
+//                List<Hex> hexes = cubeRing(hex, 3);
+                Log.e(TAG, "onViewClicked: " + hexes.size() );
                 break;
         }
     }
 
 
-    public void cubeSpiral(Hex hex, int radius) {
+
+    public List<Hex> cubeSpiral(Hex hex, int radius) {
         List<Hex> result = new ArrayList<>();
         result.add(hex);
-        for (int i = 1; i <= radius; i++) {
-            result = cubeRing(result, hex, radius);
+        for (int i = 0; i <= radius; i++) {
+            result.addAll( cubeRing(hex, i));
         }
-        for (int i = 0; i < result.size(); i++) {
-            Hex hex1 = result.get(i);
-            Log.e(TAG, "cubeSpiral: q = " + hex1.q + " r = " + hex1.r + " s = " + hex1.s);
-        }
+        return result;
     }
 
-    public List<Hex> cubeRing(List<Hex> result, Hex hex, int radius) {
+    public List<Hex> cubeRing(Hex hex, int radius) {
+        List<Hex> result = new ArrayList<>();
         hex = hex.add(hex.direction(4).scale(radius));
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < radius; j++) {
