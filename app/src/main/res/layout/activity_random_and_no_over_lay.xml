@@ -19,10 +19,11 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/no_overlap_btn"
-            android:text="点我看效果,哈哈哈"
+            android:text="点我生成效果"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
+            android:visibility="gone"
             android:text="hex grid offic"
             android:textAllCaps="false"
             android:id="@+id/hex_grid_offic_btn"
