@@ -59,15 +59,24 @@ public class HexagonalGridView extends View {
         int screenWidth = AserbaoApplication.screenWidth;
         int screenHeight = AserbaoApplication.screenHeight;
         Random random = new Random();
-        for (int i = 0; i < ballNum; i++) {
+        /*for (int i = 0; i < ballNum; i++) {
             float[] aFloat = new float[3];
             aFloat[0] = screenWidth/2 ;
             aFloat[1] = screenHeight/2;
             aFloat[2] = 20;
             cal(aFloat,screenWidth,screenHeight);
+        }*/
+
+        for (int i = 0; i < ballNum; i++) {
+            float[] aFloat = new float[3];
+            aFloat[0] = screenWidth/2 + random.nextFloat() * screenWidth/4 ;
+            aFloat[1] = screenHeight/2 + random.nextFloat() *  screenHeight/4;
+            aFloat[2] = 20;
+            cal(aFloat,screenWidth,screenHeight);
+            Log.e(TAG, "init: "+ i + " x= " + aFloat[0] + " y = "+ aFloat[1]);
         }
 
-        /*float[] aFloat = new float[3];
+       /* float[] aFloat = new float[3];
         aFloat[0] = 466.87897f ;
         aFloat[1] = 1070.7234f ;
         aFloat[2] = 20;
@@ -147,7 +156,7 @@ public class HexagonalGridView extends View {
                 int x = hexPoint.x;
                 int y = hexPoint.y;
                 paint.setColor(Color.RED);
-                canvas.drawCircle(x, y,hexPoint.radius/2 * 3,paint);
+                canvas.drawCircle(x, y,hexPoint.radius,paint);
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(12);

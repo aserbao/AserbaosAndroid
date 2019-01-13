@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.ui.randomAndNoOverLay;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -45,9 +46,10 @@ public class RandomAndNoOverLayActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.no_overlap_btn:
-                int ballNum = Integer.parseInt(mInputNumEditText.getText().toString().trim());
-                if (ballNum < 7){
-                    ballNum = 200;
+                String s = mInputNumEditText.getText().toString();
+                int ballNum = 10;
+                if (!TextUtils.isEmpty(s)){
+                    ballNum = Integer.parseInt(s.trim());
                 }
                 closeKeybord(mInputNumEditText,RandomAndNoOverLayActivity.this);
                 mHexagonalGridView.start(ballNum);
