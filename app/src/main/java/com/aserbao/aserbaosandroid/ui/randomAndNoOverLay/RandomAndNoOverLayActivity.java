@@ -31,8 +31,6 @@ public class RandomAndNoOverLayActivity extends AppCompatActivity {
     }
 
     public void btn_click(View view) {
-//        mRandomAndNoOverLay.start();
-
     }
 
     private static final String TAG = "RandomAndNoOverLayActiv";

@@ -104,7 +104,6 @@ public class HexagonalGridView extends View {
             linkedList.add(hexPoint);
         }
         cuurScreenMap.put(type,linkedList);
-        Log.e(TAG, "addScreenHexPoint: " + cuurScreenMap.size() );
     }
 
     private static final String TAG = "HexagonalGridView";
@@ -112,7 +111,7 @@ public class HexagonalGridView extends View {
     public LinkedList<HexPoint> calcNextScreenLocation(LinkedList<HexPoint> hexPoints){
         HexPoint centerFisrt = hexPoints.getFirst().getHexPoint();
         int size = hexPoints.size();
-        float[] childPoint = centerFisrt.getChildPoint(size);
+        float[] childPoint = centerFisrt.getChildPoint(size,cuurScreenMap);
         HexPoint hexPoint = new HexPoint((int)childPoint[0], (int)childPoint[1], (int)childPoint[2], false);
         hexPoint.type = centerFisrt.type;
         hexPoints.add(hexPoint);
