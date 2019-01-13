@@ -49,19 +49,20 @@ public class HexagonalGridView extends View {
     private Map<Integer,LinkedList<HexPoint>> cuurScreenMap = new LinkedHashMap<>();
 
 
-    public void start(){
-        init();
+    public void start(int ballNum){
+        init(ballNum);
     }
-    private void init() {
+
+    private void init(int ballNum) {
         cuurScreenMap.clear();
         random = new Random();
         int screenWidth = AserbaoApplication.screenWidth;
         int screenHeight = AserbaoApplication.screenHeight;
         Random random = new Random();
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < ballNum; i++) {
             float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/2  + 100;
-            aFloat[1] = screenHeight/2 + 300;
+            aFloat[0] = screenWidth/2 ;
+            aFloat[1] = screenHeight/2;
             aFloat[2] = 20;
             cal(aFloat,screenWidth,screenHeight);
         }
