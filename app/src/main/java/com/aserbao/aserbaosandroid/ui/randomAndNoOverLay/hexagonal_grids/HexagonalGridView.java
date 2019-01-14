@@ -49,44 +49,34 @@ public class HexagonalGridView extends View {
     private Map<Integer,LinkedList<HexPoint>> cuurScreenMap = new LinkedHashMap<>();
 
 
-    public void start(int ballNum){
-        init(ballNum);
+    public void start(int ballNum,boolean isRandom){
+        init(ballNum,isRandom);
     }
 
-    private void init(int ballNum) {
+    private void init(int ballNum,boolean isRandom) {
         cuurScreenMap.clear();
         random = new Random();
         int screenWidth = AserbaoApplication.screenWidth;
         int screenHeight = AserbaoApplication.screenHeight;
         Random random = new Random();
-        /*for (int i = 0; i < ballNum; i++) {
-            float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/2 ;
-            aFloat[1] = screenHeight/2;
-            aFloat[2] = 20;
-            cal(aFloat,screenWidth,screenHeight);
-        }*/
-
-        for (int i = 0; i < ballNum; i++) {
-            float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/2 + random.nextFloat() * screenWidth/4 ;
-            aFloat[1] = screenHeight/2 + random.nextFloat() *  screenHeight/4;
-            aFloat[2] = 20;
-            cal(aFloat,screenWidth,screenHeight);
-            Log.e(TAG, "init: "+ i + " x= " + aFloat[0] + " y = "+ aFloat[1]);
+        if (isRandom) {
+            for (int i = 0; i < ballNum; i++) {
+                float[] aFloat = new float[3];
+                aFloat[0] = random.nextFloat() * screenWidth ;
+                aFloat[1] = random.nextFloat() * screenHeight;
+                aFloat[2] = 20;
+                cal(aFloat, screenWidth, screenHeight);
+                Log.e(TAG, "init: " + i + " x= " + aFloat[0] + " y = " + aFloat[1]);
+            }
+        }else {
+            for (int i = 0; i < ballNum; i++) {
+                float[] aFloat = new float[3];
+                aFloat[0] = screenWidth / 2;
+                aFloat[1] = screenHeight / 2;
+                aFloat[2] = 20;
+                cal(aFloat, screenWidth, screenHeight);
+            }
         }
-
-       /* float[] aFloat = new float[3];
-        aFloat[0] = 466.87897f ;
-        aFloat[1] = 1070.7234f ;
-        aFloat[2] = 20;
-        cal(aFloat,screenWidth,screenHeight);
-
-        float[] aFloat1 = new float[3];
-        aFloat1[0] = 495.08124f;
-        aFloat1[1] = 1020.1505f;
-        aFloat1[2] = 20;
-        cal(aFloat1,screenWidth,screenHeight);*/
 
         paint = new Paint();
         paint.setStrokeWidth(5);
@@ -161,7 +151,7 @@ public class HexagonalGridView extends View {
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(12);
                 canvas.drawText(String.valueOf(num) + "k"+String.valueOf(key),x,y,paint);
-                Log.e(TAG, "onDraw: num = "+ num);
+                Log.e(TAG, "onDraw: num = "+ num + " x= " +x +" y = "+ y + " 屏幕宽" + AserbaoApplication.screenWidth);
                 num++;
             }
         }

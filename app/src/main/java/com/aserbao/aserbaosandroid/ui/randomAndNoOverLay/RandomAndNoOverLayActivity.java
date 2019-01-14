@@ -42,47 +42,22 @@ public class RandomAndNoOverLayActivity extends AppCompatActivity {
     private static final String TAG = "RandomAndNoOverLayActiv";
 
 
-    @OnClick({R.id.no_overlap_btn, R.id.hex_grid_offic_btn})
+    @OnClick({R.id.no_overlap_btn, R.id.screen_random_no_overlay_btn})
     public void onViewClicked(View view) {
+        String s = mInputNumEditText.getText().toString();
+        int ballNum = 10;
+        if (!TextUtils.isEmpty(s)){
+            ballNum = Integer.parseInt(s.trim());
+        }
+        closeKeybord(mInputNumEditText,RandomAndNoOverLayActivity.this);
         switch (view.getId()) {
             case R.id.no_overlap_btn:
-                String s = mInputNumEditText.getText().toString();
-                int ballNum = 10;
-                if (!TextUtils.isEmpty(s)){
-                    ballNum = Integer.parseInt(s.trim());
-                }
-                closeKeybord(mInputNumEditText,RandomAndNoOverLayActivity.this);
-                mHexagonalGridView.start(ballNum);
+                mHexagonalGridView.start(ballNum,false);
                 break;
-            case R.id.hex_grid_offic_btn:
-                Hex hex = new Hex(0, 0, 0);
-                List<Hex> hexes = cubeSpiral(hex, 3);
-//                List<Hex> hexes = cubeRing(hex, 3);
-                Log.e(TAG, "onViewClicked: " + hexes.size());
+            case R.id.screen_random_no_overlay_btn:
+                mHexagonalGridView.start(ballNum,true);
                 break;
         }
-    }
-
-
-    public List<Hex> cubeSpiral(Hex hex, int radius) {
-        List<Hex> result = new ArrayList<>();
-        result.add(hex);
-        for (int i = 0; i <= radius; i++) {
-            result.addAll(cubeRing(hex, i));
-        }
-        return result;
-    }
-
-    public List<Hex> cubeRing(Hex hex, int radius) {
-        List<Hex> result = new ArrayList<>();
-        hex = hex.add(hex.direction(4).scale(radius));
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < radius; j++) {
-                result.add(hex);
-                hex = hex.neighbor(i);
-            }
-        }
-        return result;
     }
 
     public static void closeKeybord(EditText mEditText, Context mContext)

@@ -67,12 +67,16 @@ public class HexPoint {
                 if (Math.abs(xC) <= cuurLayer && Math.abs(yC) <= cuurLayer && Math.abs(zC) <= cuurLayer) {
                     double screenX = xC * (float) radius * Math.sqrt(3) - yC * (float) radius * Math.sqrt(3) + x;
                     double screenY = zC * (float) radius * 2 - xC * (float) radius - yC * (float) radius + y;
+                    if (screenX > 1070){
+                        Log.e(TAG, "getChildScreen: " + screenX +" screenY =" + screenY );
+                    }
                     if (screenX > radius && screenX < maxWidth - radius && screenY > radius && screenY < maxHeight - radius) {
                         float[] floats = new float[3];
                         floats[0] = (float) screenX;
                         floats[1] = (float) screenY;
                         floats[2] = radius;
                         if (!calIsOverLayout(floats, cuurMap)) {
+                            Log.e(TAG, "getChildScreen2: " + screenX +" screenY =" + screenY );
                             cuurWhichLayer = cuurLayer;
                             mCorrespondenceMap.put(position, i);
                             return floats;

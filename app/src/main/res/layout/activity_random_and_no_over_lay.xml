@@ -19,14 +19,13 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/no_overlap_btn"
-            android:text="点我生成效果"
+            android:text="点我从中心点散开效果"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:visibility="gone"
-            android:text="hex grid offic"
+            android:text="屏幕随机点不重合效果"
             android:textAllCaps="false"
-            android:id="@+id/hex_grid_offic_btn"
+            android:id="@+id/screen_random_no_overlay_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
