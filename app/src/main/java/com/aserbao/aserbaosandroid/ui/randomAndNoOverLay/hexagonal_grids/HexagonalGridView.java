@@ -49,21 +49,35 @@ public class HexagonalGridView extends View {
     private Map<Integer,LinkedList<HexPoint>> cuurScreenMap = new LinkedHashMap<>();
 
 
-    public void start(){
-        init();
+    public void start(int ballNum,boolean isRandom){
+        init(ballNum,isRandom);
     }
-    private void init() {
+
+    private void init(int ballNum,boolean isRandom) {
         cuurScreenMap.clear();
         random = new Random();
         int screenWidth = AserbaoApplication.screenWidth;
         int screenHeight = AserbaoApplication.screenHeight;
-        for (int i = 0; i < 1000; i++) {
-            float[] aFloat = new float[3];
-            aFloat[0] = screenWidth/2;
-            aFloat[1] = screenHeight/2;
-            aFloat[2] = 10;
-            cal(aFloat,screenWidth,screenHeight);
+        Random random = new Random();
+        if (isRandom) {
+            for (int i = 0; i < ballNum; i++) {
+                float[] aFloat = new float[3];
+                aFloat[0] = random.nextFloat() * screenWidth ;
+                aFloat[1] = random.nextFloat() * screenHeight;
+                aFloat[2] = 20;
+                cal(aFloat, screenWidth, screenHeight);
+                Log.e(TAG, "init: " + i + " x= " + aFloat[0] + " y = " + aFloat[1]);
+            }
+        }else {
+            for (int i = 0; i < ballNum; i++) {
+                float[] aFloat = new float[3];
+                aFloat[0] = screenWidth / 2;
+                aFloat[1] = screenHeight / 2;
+                aFloat[2] = 20;
+                cal(aFloat, screenWidth, screenHeight);
+            }
         }
+
         paint = new Paint();
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.FILL);
@@ -104,7 +118,6 @@ public class HexagonalGridView extends View {
             linkedList.add(hexPoint);
         }
         cuurScreenMap.put(type,linkedList);
-        Log.e(TAG, "addScreenHexPoint: " + cuurScreenMap.size() );
     }
 
     private static final String TAG = "HexagonalGridView";
@@ -112,9 +125,10 @@ public class HexagonalGridView extends View {
     public LinkedList<HexPoint> calcNextScreenLocation(LinkedList<HexPoint> hexPoints){
         HexPoint centerFisrt = hexPoints.getFirst().getHexPoint();
         int size = hexPoints.size();
-        float[] childPoint = centerFisrt.getChildPoint(size);
+        float[] childPoint = centerFisrt.getChildPoint(size,cuurScreenMap);
         HexPoint hexPoint = new HexPoint((int)childPoint[0], (int)childPoint[1], (int)childPoint[2], false);
         hexPoint.type = centerFisrt.type;
+        hexPoint.hexPoint = centerFisrt;
         hexPoints.add(hexPoint);
         return hexPoints;
     }
@@ -124,18 +138,20 @@ public class HexagonalGridView extends View {
         super.onDraw(canvas);
         Iterator<Map.Entry<Integer, LinkedList<HexPoint>>> entryIterator = cuurScreenMap.entrySet().iterator();
         int num = 0;
-        if (entryIterator.hasNext()) {
+        while (entryIterator.hasNext()) {
             Map.Entry<Integer, LinkedList<HexPoint>> next = entryIterator.next();
+            Integer key = next.getKey();
             LinkedList<HexPoint> value = next.getValue();
             for (HexPoint hexPoint : value) {
                 int x = hexPoint.x;
                 int y = hexPoint.y;
                 paint.setColor(Color.RED);
-                canvas.drawCircle(x, y,hexPoint.radius * 2 - 5,paint);
+                canvas.drawCircle(x, y,hexPoint.radius,paint);
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(12);
-                canvas.drawText(String.valueOf(num),x,y,paint);
+                canvas.drawText(String.valueOf(num) + "k"+String.valueOf(key),x,y,paint);
+                Log.e(TAG, "onDraw: num = "+ num + " x= " +x +" y = "+ y + " 屏幕宽" + AserbaoApplication.screenWidth);
                 num++;
             }
         }

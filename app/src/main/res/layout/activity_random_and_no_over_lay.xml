@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,20 +14,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_below="@+id/input_num_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/no_overlap_btn"
-            android:text="点我看效果,哈哈哈"
+            android:text="点我从中心点散开效果"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:text="hex grid offic"
+            android:text="屏幕随机点不重合效果"
             android:textAllCaps="false"
-            android:id="@+id/hex_grid_offic_btn"
+            android:id="@+id/screen_random_no_overlay_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
 
+    <EditText
+        android:hint="点击输入显示的个数，不超过500个"
+        android:background="@null"
+        android:inputType="number"
+        android:id="@+id/input_num_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
