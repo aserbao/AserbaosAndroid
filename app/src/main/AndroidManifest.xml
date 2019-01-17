@@ -126,7 +126,6 @@
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
         <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
-        <activity android:name=".TestActivity" />
         <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
         <activity android:name=".AudioAndVideo.jnis.JnisActivity" />
         <activity android:name=".AudioAndVideo.jnis.javaCallC.JavaCallCActivity" />
@@ -143,6 +142,7 @@
         <activity android:name=".functions.sensors.SharkActivity" />
         <activity android:name=".ui.animation.lottie.LottieActivity" />
         <activity android:name=".functions.sensors.SensorsActivity" />
+        <activity android:name=".test.TestActivity" />
         <activity
             android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
             android:screenOrientation="portrait" />
@@ -171,8 +171,7 @@
         <activity android:name=".functions.hobbies_and_interests.HobbiesAndInterestsActivity" />
         <activity android:name=".functions.hobbies_and_interests.urlAnalyze.UrlAnalyzeActivity" />
         <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity" />
-        <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity">
-        </activity>
+        <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity"></activity>
         <activity android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -180,6 +179,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.canvas.CanvasActivity"></activity>
+        <activity android:name=".ui.canvas.matrix.MatrixActivity"></activity>
     </application>
 
 </manifest>

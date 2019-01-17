@@ -145,7 +145,7 @@
         <activity android:name="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.compound.CompoundActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.texts.editTexts.others.OthersActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.TestActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.test.TestActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.jnis.JnisActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.jnis.javaCallC.JavaCallCActivity" />
