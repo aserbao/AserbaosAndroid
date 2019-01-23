@@ -64,7 +64,7 @@ public class HexagonalGridView extends View {
                 float[] aFloat = new float[3];
                 aFloat[0] = random.nextFloat() * screenWidth ;
                 aFloat[1] = random.nextFloat() * screenHeight;
-                aFloat[2] = 20;
+                aFloat[2] = 80;
                 cal(aFloat, screenWidth, screenHeight);
                 Log.e(TAG, "init: " + i + " x= " + aFloat[0] + " y = " + aFloat[1]);
             }
@@ -73,7 +73,7 @@ public class HexagonalGridView extends View {
                 float[] aFloat = new float[3];
                 aFloat[0] = screenWidth / 2;
                 aFloat[1] = screenHeight / 2;
-                aFloat[2] = 20;
+                aFloat[2] = 100;
                 cal(aFloat, screenWidth, screenHeight);
             }
         }
@@ -133,6 +133,7 @@ public class HexagonalGridView extends View {
         return hexPoints;
     }
 
+    double sqrt3 = Math.sqrt(3);
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -146,11 +147,25 @@ public class HexagonalGridView extends View {
                 int x = hexPoint.x;
                 int y = hexPoint.y;
                 paint.setColor(Color.RED);
-                canvas.drawCircle(x, y,hexPoint.radius,paint);
+//                canvas.drawCircle(x, y,hexPoint.radius  * 3/(float)2,paint);
+//                float radius = hexPoint.radius * 7/(float)4;
+                float radius = hexPoint.radius;
+                canvas.drawCircle(x, y, radius,paint);
+
+                paint.setColor(Color.BLACK);
+                canvas.drawCircle(x,y-radius,5,paint);
+                canvas.drawCircle(x,y+radius,5,paint);
+                canvas.drawCircle((float) (x - radius*sqrt3/2),y - radius/2,5,paint);
+                canvas.drawCircle((float) (x - radius*sqrt3/2),y + radius/2,5,paint);
+                canvas.drawCircle((float) (x + radius*sqrt3/2),y - radius/2,5,paint);
+                canvas.drawCircle((float) (x + radius*sqrt3/2),y + radius/2,5,paint);
+//                canvas.drawCircle();
+
                 paint.setTextAlign(Paint.Align.CENTER);
                 paint.setColor(Color.WHITE);
-                paint.setTextSize(12);
-                canvas.drawText(String.valueOf(num) + "k"+String.valueOf(key),x,y,paint);
+                paint.setTextSize(14);
+//                canvas.drawText(String.valueOf(num) + "k"+String.valueOf(key),x,y,paint);
+                canvas.drawText(String.valueOf(x) + " "+String.valueOf(y),x,y,paint);
                 Log.e(TAG, "onDraw: num = "+ num + " x= " +x +" y = "+ y + " 屏幕宽" + AserbaoApplication.screenWidth);
                 num++;
             }

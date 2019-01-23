@@ -89,6 +89,12 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
     </style>
-
-
+    <declare-styleable name="CYTextView">
+        <attr name="textwidth" />
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="reference|color"/>
+        <attr name="lineSpacingExtra" format="dimension"/>
+        <attr name="typeface" />
+    </declare-styleable>
 </resources>
+

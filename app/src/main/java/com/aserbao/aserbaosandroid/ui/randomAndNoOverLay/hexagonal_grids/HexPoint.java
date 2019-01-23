@@ -65,8 +65,18 @@ public class HexPoint {
                 int yC = hex1.s;
                 int zC = hex1.r;
                 if (Math.abs(xC) <= cuurLayer && Math.abs(yC) <= cuurLayer && Math.abs(zC) <= cuurLayer) {
-                    double screenX = xC * (float) radius * Math.sqrt(3) - yC * (float) radius * Math.sqrt(3) + x;
-                    double screenY = zC * (float) radius * 2 - xC * (float) radius - yC * (float) radius + y;
+                    double screenX = xC * (float) radius - yC * (float) radius + x;
+//                    double screenY = zC * (float) radius * Math.sqrt(3)  - xC * (float) radius * Math.sqrt(3) / 2 - yC * (float) radius * Math.sqrt(3) / 2 + y;
+                    double screenY = zC * (float) radius * Math.sqrt(3)+ y;
+
+
+                  /*  double sqrt3 = Math.sqrt(3);
+                    double screenX =(xC * (float) radius * Math.sqrt(3) - yC * (float) radius * Math.sqrt(3))* sqrt3/2 + x;
+                    double dy = (zC * (float) radius * Math.sqrt(3) - xC * (float) radius - yC * (float) radius);
+                    double screenY = dy * sqrt3/2  + y;*/
+                    /*double sqrt3 = Math.sqrt(3);
+                    double screenX = radius * sqrt3  * sqrt3* (xC - yC)/2+ x;
+                    double screenY = radius * sqrt3 * (zC - yC/2 - xC/2)+ y;*/
                     if (screenX > 1070){
                         Log.e(TAG, "getChildScreen: " + screenX +" screenY =" + screenY );
                     }

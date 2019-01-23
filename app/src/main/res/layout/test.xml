@@ -5,54 +5,9 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:layout_height="wrap_content">
-    <com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixView
-        android:id="@+id/test_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="旋转"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <SeekBar
-            android:id="@+id/rotate_sb"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-        <TextView
-            android:text="位移X"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <SeekBar
-            android:id="@+id/translateX_sb"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-        <TextView
-            android:text="位移Y"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <SeekBar
-            android:id="@+id/translateY_sb"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-        <TextView
-            android:text="缩放"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <SeekBar
-            android:id="@+id/scale_sb"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-    </LinearLayout>
+   <Button
+       android:id="@+id/test_btn"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
 
 </RelativeLayout>

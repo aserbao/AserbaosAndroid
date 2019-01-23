@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.canvas.canvas.CanvasPropertyActivity">
+        <com.aserbao.aserbaosandroid.ui.canvas.canvas.CircleView
+            android:id="@+id/circle_view_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/canvas_btn"
+            android:text="测试"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/input_num_edit_text"
+            android:hint="绘制个数"
+            android:inputType="number"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:hint="运行结果为："
+            android:gravity="center"
+            android:id="@+id/canvas_result_tv"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+</RelativeLayout>

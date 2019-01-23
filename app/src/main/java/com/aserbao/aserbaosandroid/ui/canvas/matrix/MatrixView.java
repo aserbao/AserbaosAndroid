@@ -60,7 +60,8 @@ public class MatrixView extends View {
         mMatrix.reset();
         mMatrix.postRotate(mRotateDegress,arrowBitmapWidth/2,arrowBitmapHeight/2);
         mMatrix.postScale(mScale,mScale);
-        mMatrix.postTranslate(mTranslateX,mTranslateY);
+//        mMatrix.postTranslate(mTranslateX,mTranslateY);
+        mMatrix.postTranslate((width - arrowBitmapWidth)/2,(height - arrowBitmapWidth)/2);
         canvas.drawBitmap(mOtherArrowBitmap,mMatrix,mPaint);
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.FILL);

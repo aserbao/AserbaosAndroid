@@ -30,6 +30,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity"></activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
@@ -77,8 +78,7 @@
         <activity
             android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateUnspecified" />
-        <!-- android:windowSoftInputMode="adjustNothing" -->
+            android:windowSoftInputMode="adjustPan|stateUnspecified" /> <!-- android:windowSoftInputMode="adjustNothing" -->
         <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
         <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
@@ -171,18 +171,19 @@
         <activity android:name=".functions.hobbies_and_interests.HobbiesAndInterestsActivity" />
         <activity android:name=".functions.hobbies_and_interests.urlAnalyze.UrlAnalyzeActivity" />
         <activity android:name=".ui.texts.textViews.textShowAnimation.TextShowAnimationActivity" />
-        <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity">
-        </activity>
-        <activity android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".functions.hobbies_and_interests.douyinUrl.ADYUrlActivity" />
+        <activity
+            android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.canvas.CanvasActivity" />
+        <activity android:name=".ui.canvas.matrix.MatrixActivity" />
+        <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.canvas.CanvasActivity"></activity>
-        <activity android:name=".ui.canvas.matrix.MatrixActivity"></activity>
     </application>
 
 </manifest>
