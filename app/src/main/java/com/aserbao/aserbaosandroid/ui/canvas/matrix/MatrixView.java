@@ -58,11 +58,16 @@ public class MatrixView extends View {
         int arrowBitmapWidth = mOtherArrowBitmap.getWidth();
 
         mMatrix.reset();
-        mMatrix.postRotate(mRotateDegress,arrowBitmapWidth/2,arrowBitmapHeight/2);
-        mMatrix.postScale(mScale,mScale);
-//        mMatrix.postTranslate(mTranslateX,mTranslateY);
-        mMatrix.postTranslate((width - arrowBitmapWidth)/2,(height - arrowBitmapWidth)/2);
+//        mMatrix.postScale(mScale,mScale,halfWidth,halfHeight);
+        float scaleHeight = arrowBitmapHeight * mScale;
+        float scaleWidth = arrowBitmapWidth * mScale;
+        float dx = (width - arrowBitmapWidth * mScale) / 2;
+        float dy = (height - arrowBitmapWidth * mScale) / 2;
+        mMatrix.postTranslate(dx, dy);
+        mMatrix.postScale(mScale,mScale,dx,dy);
+        mMatrix.postRotate(mRotateDegress,dx + scaleWidth/2,dy + scaleHeight/2);
         canvas.drawBitmap(mOtherArrowBitmap,mMatrix,mPaint);
+
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(halfWidth,halfHeight,10,mPaint);
@@ -70,7 +75,7 @@ public class MatrixView extends View {
     private int mRotateDegress = 0;
     private int mTranslateX = 1080;
     private int mTranslateY = 0;
-    private float mScale = 1;
+    private float mScale = 0.5f;
 
     public void setmRotateDegress(int mRotateDegress) {
         this.mRotateDegress = mRotateDegress;
