@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/smooth_rl"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.recyclerView.smooth.SmoothActivitiy">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/smooth_recycler_view"
+        android:layout_alignParentRight="true"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"/>
+    <android.support.v7.widget.CardView
+        android:id="@+id/smooth_card_view"
+        android:layout_marginTop="240dp"
+        android:layout_toLeftOf="@+id/smooth_recycler_view"
+        android:layout_width="180dp"
+        android:layout_height="320dp">
+        <TextView
+            android:id="@+id/smooth_tv"
+            android:layout_gravity="center"
+            android:text="1"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

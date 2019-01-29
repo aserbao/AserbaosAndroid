@@ -6,6 +6,7 @@ import com.aserbao.aserbaosandroid.opengl.ClassBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.SmoothActivitiy;
 
 public class RecyclerViewActivity extends BaseActivity {
 
@@ -15,6 +16,7 @@ public class RecyclerViewActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("打造公用的Adapter", MoveToDeleteActivity.class));
         mClassBeen.add(new ClassBean("左右滑动的RecyclerView", ScaleSmoothSlideActivity.class));
         mClassBeen.add(new ClassBean("空白的RecyclerView", AddRecyclerViewActivity.class));
+        mClassBeen.add(new ClassBean("滑动的RecyclerView", SmoothActivitiy.class));
     }
 
 }

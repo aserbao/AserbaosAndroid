@@ -12,4 +12,13 @@ public class StaticFinalValues {
     //=================================bundler
     public static final String TYPE = "type";
 
+
+    //=================================RecyclerView
+    public static final int HEAD = 0;
+    public static final int NOCONTENT = 1;
+    public static final int CONTENT = 4;
+    public static final int CONTENT1 = 5;
+    public static final int CONTENT2 = 6;
+    public static final int FOOT = 8;
+
 }
