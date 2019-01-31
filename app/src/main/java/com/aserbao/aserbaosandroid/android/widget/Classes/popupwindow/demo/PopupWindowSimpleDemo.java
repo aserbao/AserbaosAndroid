@@ -116,6 +116,10 @@ public class PopupWindowSimpleDemo extends AppCompatActivity {
                     x = ints[0] + mPopCenterBtn.getWidth()/2 - view.getMeasuredWidth()/2;
                     y = ints[1] - view.getMeasuredHeight() - mPopCenterBtn.getHeight()/2;
                     break;
+                case Gravity.CENTER:
+                    x = ints[0] + mPopCenterBtn.getWidth()/2 - view.getMeasuredWidth()/2;
+                    y = ints[1] - view.getMeasuredHeight()/2;
+                    break;
                 case Gravity.RIGHT:
                     x = ints[0] + mPopCenterBtn.getWidth() ;
                     y = ints[1] - view.getMeasuredHeight()/2;
@@ -125,8 +129,6 @@ public class PopupWindowSimpleDemo extends AppCompatActivity {
                     y = ints[1] + mPopCenterBtn.getHeight()/2;
                     break;
             }
-
-
             mPopupWindow.showAtLocation(mPopCenterBtn,Gravity.NO_GRAVITY,x,y);
         }else {
             mPopupWindow.showAtLocation(mPopSimpleContainer,gravity, 0, 0);
