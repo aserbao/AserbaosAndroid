@@ -20,7 +20,6 @@ import com.aserbao.aserbaosandroid.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.adapters.SmoothAdapter;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans.SimpleBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.interfaces.ISmoothCallBackListener;
-import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.layoutManager.OffsetLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +43,7 @@ public class SmoothActivitiy extends AppCompatActivity {
     RelativeLayout mSmoothRl;
     private int mSmoothHeadHeight;
     private boolean isClick = false;
-    private OffsetLinearLayoutManager mLinearLayoutManager;
+    private LinearLayoutManager mLinearLayoutManager;
     private SmoothAdapter mSmoothAdapter;
 
     @Override
@@ -83,7 +82,7 @@ public class SmoothActivitiy extends AppCompatActivity {
             }
         });
         mTotal = (int) mSmoothHeadHeight;
-        mLinearLayoutManager = new OffsetLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mSmoothRecyclerView.setLayoutManager(mLinearLayoutManager);
         mSmoothRecyclerView.setAdapter(mSmoothAdapter);
         mSmoothRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -115,8 +114,7 @@ public class SmoothActivitiy extends AppCompatActivity {
 
 
     public void changeCardViewPosition(int movePosition) {
-//        int scrollOffset = mSmoothRecyclerView.computeVerticalScrollOffset();
-        int scrollOffset = mLinearLayoutManager.computeVerticalScrollOffset();
+        int scrollOffset = mSmoothRecyclerView.computeVerticalScrollOffset();
         int computeVerticalScrollExtent = mSmoothRecyclerView.computeVerticalScrollExtent();
         int scrollRange = mSmoothRecyclerView.computeVerticalScrollRange();
 

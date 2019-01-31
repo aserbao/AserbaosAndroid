@@ -30,13 +30,18 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.recyclerView.smooth.SmoothActivitiy"
-            android:screenOrientation="portrait">
+        <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".android.widget.Classes.popupwindow.PopupWindowActivity" />
+        <activity android:name=".android.widget.Classes.AndroidWidgetClasses" />
+        <activity
+            android:name=".ui.recyclerView.smooth.SmoothActivitiy"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
         <activity android:name=".WelcomeActivity" />
@@ -185,8 +190,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.canvas.matrix.MatrixActivity" />
-        <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity">
-        </activity>
+        <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity" />
     </application>
 
 </manifest>
