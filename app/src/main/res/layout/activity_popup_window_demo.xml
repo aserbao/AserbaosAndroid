@@ -31,4 +31,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+    <Button
+        android:id="@+id/pop_simple_btn"
+        android:text="屏幕位置的pop显示"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/pop_center_btn"
+        android:text="依附该View的Pop显示"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>
