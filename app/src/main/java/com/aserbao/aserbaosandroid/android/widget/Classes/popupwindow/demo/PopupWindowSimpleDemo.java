@@ -48,22 +48,6 @@ public class PopupWindowSimpleDemo extends AppCompatActivity {
         createPop();
     }
 
-    public void xmlAttr() {
-        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));                  // 部分机型点击返回键PopupWindow不消失，可以通过设置此方法解决
-        mPopupWindow.setAnimationStyle(R.anim.quit_fullscreen);                             // 设置动画
-        mPopupWindow.setElevation(4.0f);                                                    // 设置elevation
-        mPopupWindow.setOverlapAnchor(true);                                                // 是否遮盖附着View？默认是false。
-        mPopupWindow.setEnterTransition(new Slide());                                       // 设置显示动画 系统动画有三种Explode,Slide,Fade
-        mPopupWindow.setExitTransition(new Slide());                                        // 设置退出动画 系统动画有三种Explode,Slide,Fade
-        mPopupWindow.setSoftInputMode(INPUT_METHOD_FROM_FOCUSABLE);                         // Popup和输入法之间的设置联系
-        mPopupWindow.dismiss();                                                             // 消失
-        mPopupWindow.setClippingEnabled(true);                                              // 是否允许父布局对Pop进行裁剪，默认为true
-        mPopupWindow.setFocusable(true);                                                    // 是否能聚焦
-        mPopupWindow.setOutsideTouchable(true);                                             // 是否点击外部可以消失
-        mPopupWindow.isShowing();                                                           // 判断Popup是否显示？
-        mPopupWindow.setTouchable(false);                                                   // 是否有touch事件 默认为true
-        mPopupWindow.setOnDismissListener(null);                                            // 消失监听
-    }
 
     @NonNull
     private View getView() {
@@ -164,5 +148,23 @@ public class PopupWindowSimpleDemo extends AppCompatActivity {
                 showPop(Gravity.TOP);
                 break;
         }
+    }
+
+
+    public void xmlAttr() {
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));                  // 部分机型点击返回键PopupWindow不消失，可以通过设置此方法解决
+        mPopupWindow.setAnimationStyle(R.anim.quit_fullscreen);                             // 设置动画
+        mPopupWindow.setElevation(4.0f);                                                    // 设置elevation
+        mPopupWindow.setOverlapAnchor(true);                                                // 是否遮盖附着View？默认是false。
+        mPopupWindow.setEnterTransition(new Slide());                                       // 设置显示动画 系统动画有三种Explode,Slide,Fade
+        mPopupWindow.setExitTransition(new Slide());                                        // 设置退出动画 系统动画有三种Explode,Slide,Fade
+        mPopupWindow.setSoftInputMode(INPUT_METHOD_FROM_FOCUSABLE);                         // Popup和输入法之间的设置联系
+        mPopupWindow.dismiss();                                                             // 消失
+        mPopupWindow.setClippingEnabled(true);                                              // 是否允许父布局对Pop进行裁剪，默认为true
+        mPopupWindow.setFocusable(true);                                                    // 是否能聚焦
+        mPopupWindow.setOutsideTouchable(true);                                             // 是否点击外部可以消失
+        mPopupWindow.isShowing();                                                           // 判断Popup是否显示？
+        mPopupWindow.setTouchable(false);                                                   // 是否有touch事件 默认为true
+        mPopupWindow.setOnDismissListener(null);                                            // 消失监听
     }
 }
