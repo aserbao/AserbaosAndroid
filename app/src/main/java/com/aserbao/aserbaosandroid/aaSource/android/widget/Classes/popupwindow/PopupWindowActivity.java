@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.
+package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

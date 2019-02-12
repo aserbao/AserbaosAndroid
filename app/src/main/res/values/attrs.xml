@@ -23,7 +23,7 @@
         <attr name="color_wheel_radius" format="dimension" />
         <attr name="color_wheel_thickness" format="dimension" />
         <attr name="color_center_radius" format="dimension" />
-        <attr name="color_center_halo_radius" format="dimension"/>
+        <attr name="color_center_halo_radius" format="dimension" />
         <attr name="color_pointer_radius" format="dimension" />
         <attr name="color_pointer_halo_radius" format="dimension" />
     </declare-styleable>
@@ -37,11 +37,11 @@
 
     //====ColorPickerView
     <declare-styleable name="ColorPickerView">
-        <attr name="palette" format="reference"/>
-        <attr name="selector" format="reference"/>
+        <attr name="palette" format="reference" />
+        <attr name="selector" format="reference" />
     </declare-styleable>
     <declare-styleable name="MultiColorPickerView">
-        <attr name="palette2" format="reference"/>
+        <attr name="palette2" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="TagFlowLayout">
@@ -70,5 +70,14 @@
     <declare-styleable name="TyperTextView">
         <attr name="typerSpeed" format="integer" />
         <attr name="charIncrease" format="integer" />
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 </resources>

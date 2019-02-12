@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aserbao.aserbaosandroid">
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -30,17 +34,40 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".aaSource.android.app.AppActivity"></activity>
+        <activity android:name=".aaSource.android.AndroidActivity" />
+        <activity
+            android:name=".aaSource.android.app.Activity.PersonListActivity"
+            android:label="@string/title_person_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".aaSource.android.app.Activity.PersonDetailActivity"
+            android:label="@string/title_person_detail"
+            android:parentActivityName=".aaSource.android.app.Activity.PersonListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.PersonListActivity" />
+        </activity>
+        <activity
+            android:name=".aaSource.android.app.Activity.LoginActivity"
+            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".aaSource.android.app.Activity.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".aaSource.android.app.Activity.FragmentViewModelActivity" />
+        <activity
+            android:name=".aaSource.android.app.Activity.BottomNavigationActivity"
+            android:label="@string/title_activity_bottom_navigation" />
         <activity
             android:name=".aaSource.android.app.Activity.BasicActivity"
             android:label="@string/title_activity_basic"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".aaSource.android.app.Activity.ActivityClass" />
         <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".android.widget.Classes.popupwindow.PopupWindowActivity" />
         <activity android:name=".android.widget.Classes.AndroidWidgetClasses" />

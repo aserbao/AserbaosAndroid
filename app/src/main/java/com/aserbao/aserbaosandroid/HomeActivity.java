@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.component.activitys.ActivitySummary;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
@@ -40,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initGetData() {
+        mClassBeen.add(new ClassBean("Android", AndroidActivity.class));
         mClassBeen.add(new ClassBean("测试", TestActivity.class));
         mClassBeen.add(new ClassBean("OpenGl", OpenGlActivity.class));
         mClassBeen.add(new ClassBean("策略模式", DesignModeActivity.class));
