@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
-import com.aserbao.aserbaosandroid.component.activitys.ActivitySummary;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
@@ -49,7 +48,6 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("View", UIActivity.class));
         mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
         mClassBeen.add(new ClassBean("常用数据", ConstantsUtilsShowActivity.class));
-        mClassBeen.add(new ClassBean("四大组件", ActivitySummary.class));
         mClassBeen.add(new ClassBean("系统类", SystemActivity.class));
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));

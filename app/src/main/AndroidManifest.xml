@@ -81,9 +81,9 @@
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".aaSource.android.app.Activity.ActivityClass" />
-        <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
-        <activity android:name=".android.widget.Classes.popupwindow.PopupWindowActivity" />
-        <activity android:name=".android.widget.Classes.AndroidWidgetClasses" />
+        <activity android:name=".aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
+        <activity android:name=".aaSource.android.widget.Classes.popupwindow.PopupWindowActivity" />
+        <activity android:name=".aaSource.android.widget.Classes.AndroidWidgetClasses" />
         <activity
             android:name=".ui.recyclerView.smooth.SmoothActivitiy"
             android:screenOrientation="portrait" />
@@ -91,7 +91,7 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
-        <activity android:name=".ui.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,9 +101,7 @@
         </activity>
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
-        <activity android:name=".opengl.openGlCamera.OpenGlAnimationCamera" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity" />
-        <activity android:name=".base.BaseActivity" />
         <activity android:name=".opengl.openGlCamera.FilterCameraActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOpenglActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleFilter.SimpleFilterCameraActivity" />
@@ -124,22 +122,20 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".AudioAndVideo.media.mediaMuxer.MediaMuxerActivity" />
         <activity android:name=".designMode.factoryMode.FactoryActivity" />
-        <activity android:name=".ui.recyclerview.aEffect.EffectRVActivity" />
         <activity android:name=".AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
         <activity android:name=".AudioAndVideo.media.mediacodec.MediaCodecActivity" />
-        <activity android:name=".ui.rv.RecyclerViewActivity" />
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
-        <activity android:name=".ui.rv.moveToDeleteRecyclerView.MoveToDeleteActivity" />
+        <activity android:name=".ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity" />
         <activity android:name=".ui.texts.editTexts.EditTextsActivity" />
         <activity
             android:name=".ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" /> <!-- android:windowSoftInputMode="adjustNothing" -->
-        <activity android:name=".ui.rv.commonRecyclerView.CommonRecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.commonRecyclerView.CommonRecyclerViewActivity" />
         <activity android:name=".functions.FunctionsActivity" />
         <activity android:name=".functions.jumpSystemSetting.JumpSystemSettingActivity" />
-        <activity android:name=".ui.rv.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
+        <activity android:name=".ui.recyclerView.commonRecyclerView.baseAdapter.BaseAdapterActivity" />
         <activity android:name=".ui.toasts.ToastActivity" />
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name=".functions.events.EventDealActivity" />
@@ -164,10 +160,9 @@
             android:name=".ui.texts.textViews.picTxt.PicTxtActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity" />
-        <activity android:name=".component.activitys.ActivitySummary" />
-        <activity android:name=".component.activitys.lifeCycle.LifeCycleActivity" />
-        <activity android:name=".component.activitys.lifeCycle.LifeCycle2Activity" />
-        <activity android:name=".component.activitys.lifeCycle.LifeCycle3Activity" />
+        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycleActivity" />
+        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle2Activity" />
+        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity" />
@@ -181,7 +176,7 @@
         <activity android:name=".functions.iamgePhotoshop.ImagePhotoShopActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
-        <activity android:name=".ui.rv.addItemRecyclerView.AddRecyclerViewActivity" />
+        <activity android:name=".ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
         <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
         <activity android:name=".AudioAndVideo.jnis.JnisActivity" />
@@ -193,7 +188,6 @@
         <activity android:name=".AudioAndVideo.media.image2video.Image2VideoActivity" />
         <activity android:name=".AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
         <activity android:name=".functions.how_create_so.HowCreateSoActivity" />
-        <activity android:name=".functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity" />
         <activity android:name=".functions.sensors.SharkActivity" />
@@ -213,8 +207,6 @@
             android:name=".ui.texts.editTexts.customEdittext.CustomEditTextActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".functions.network.mqtt.simple.SimpleMqttActivity" />
-        <activity android:name=".functions.events.viewTouch.ViewTouchActivity" />
-        <activity android:name=".functions.events.viewTouch.outSideTouch.OutSideActivity" />
         <activity android:name=".ui.animation.explosionAnimation.viewExplosion.ViewExplosionActivity" />
         <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity" />
         <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />

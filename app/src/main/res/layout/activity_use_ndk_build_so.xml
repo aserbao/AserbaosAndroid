@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.functions.how_create_so.useNdk.UseNdkBuildSoActivity">
+    android:layout_height="match_parent">
     <TextView
         android:layout_gravity="center"
         android:id="@+id/use_ndk_tv"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.component.activitys.lifeCycle.LifeCycleActivity">
+    tools:context="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity">
 
     <ImageView
         android:id="@+id/life_cycle_iv"

@@ -118,9 +118,9 @@
             android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.HtmlTextActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.component.activitys.ActivitySummary" />
-        <activity android:name="com.aserbao.aserbaosandroid.component.activitys.lifeCycle.LifeCycleActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.component.activitys.lifeCycle.LifeCycle2Activity" />
-        <activity android:name="com.aserbao.aserbaosandroid.component.activitys.lifeCycle.LifeCycle3Activity" />
+        <activity android:name="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycle2Activity" />
+        <activity android:name="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.database.DataBaseActivity" >
@@ -156,7 +156,6 @@
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.image2video.Image2VideoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.how_create_so.HowCreateSoActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.functions.how_create_so.useNdk.UseNdkBuildSoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.how_create_so.useNdkBuild.UseNdkBuildActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.functions.sensors.SharkActivity" />

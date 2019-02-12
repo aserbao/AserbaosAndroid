@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.component.activitys.lifeCycle;
+package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle;
 
 import android.content.Intent;
 import android.os.PersistableBundle;
