@@ -1,13 +1,13 @@
-package com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow;
+package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.PopupWindowActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
 
-public class PopupWindowActivity extends BaseActivity {
+public class AndroidWidgetClasses extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,6 @@ public class PopupWindowActivity extends BaseActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("SimpleDemo", PopupWindowSimpleDemo.class));
+        mClassBeen.add(new ClassBean("PopupWindow弹出框",PopupWindowActivity.class));
     }
 }

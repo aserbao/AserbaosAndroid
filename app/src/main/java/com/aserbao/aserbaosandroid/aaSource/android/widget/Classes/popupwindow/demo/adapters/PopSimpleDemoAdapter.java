@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo.adapters;
+package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo.PopBean;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.PopBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * @date : On 2019/1/30 2:26 PM
  * @email: 1142803753@qq.com
  * @project:AserbaosAndroid
- * @package:com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo.adapters
+ * @package:com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.adapters
  */
 public class PopSimpleDemoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

@@ -11,19 +11,15 @@
     </style>
 
 
-    
-
-
-
     <declare-styleable name="SlideLayout">
         <attr name="slideDirection">
-            <enum name="fromRight" value="0"/>
-            <enum name="fromLeft" value="1"/>
-            <enum name="fromTop" value="2"/>
-            <enum name="fromBottom" value="3"/>
+            <enum name="fromRight" value="0" />
+            <enum name="fromLeft" value="1" />
+            <enum name="fromTop" value="2" />
+            <enum name="fromBottom" value="3" />
         </attr>
 
-        <attr name="slideCriticalValue" format="dimension"/>
+        <attr name="slideCriticalValue" format="dimension" />
     </declare-styleable>
 
     <style name="global_btn_style">
@@ -36,6 +32,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="global_text_view_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -66,6 +63,7 @@
     </declare-styleable>
 
     //============文字显示动画
+
     <style name="show_text_anim_style">
         <item name="android:shadowRadius">8</item>
         <item name="android:shadowColor">@color/black70</item>
@@ -79,6 +77,7 @@
     </style>
 
     //=============带阴影的字体
+
     <style name="text_shadow_style">
         <item name="android:shadowRadius">8</item>
         <item name="android:shadowColor">@color/black70</item>
@@ -89,12 +88,22 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
     </style>
+
     <declare-styleable name="CYTextView">
         <attr name="textwidth" />
-        <attr name="textSize" format="dimension"/>
-        <attr name="textColor" format="reference|color"/>
-        <attr name="lineSpacingExtra" format="dimension"/>
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="reference|color" />
+        <attr name="lineSpacingExtra" format="dimension" />
         <attr name="typeface" />
     </declare-styleable>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
 

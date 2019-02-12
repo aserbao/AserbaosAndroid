@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo;
+package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo;
 
 /**
  * 功能:
@@ -7,7 +7,7 @@ package com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo;
  * @date : On 2019/1/30 2:26 PM
  * @email: 1142803753@qq.com
  * @project:AserbaosAndroid
- * @package:com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo
+ * @package:com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo
  */
 public class PopBean {
     String content;

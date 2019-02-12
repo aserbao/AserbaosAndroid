@@ -30,6 +30,11 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".aaSource.android.app.Activity.BasicActivity"
+            android:label="@string/title_activity_basic"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".aaSource.android.app.Activity.ActivityClass" />
         <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,8 +46,7 @@
         <activity android:name=".android.widget.Classes.AndroidWidgetClasses" />
         <activity
             android:name=".ui.recyclerView.smooth.SmoothActivitiy"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Cameratest.OneCameraActivity" />

@@ -5,7 +5,7 @@
     android:id="@+id/pop_simple_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
+    tools:context="com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:visibility="gone"
         android:layout_width="match_parent"
