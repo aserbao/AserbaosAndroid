@@ -16,5 +16,9 @@ public class ActivityClass extends BaseActivity {
         mClassBeen.add(new ClassBean("FullscreenActivity",FullscreenActivity.class));
         mClassBeen.add(new ClassBean("LoginActivity",LoginActivity.class));
         mClassBeen.add(new ClassBean("Master/Detail flow",PersonListActivity.class));
+        mClassBeen.add(new ClassBean("NavigationDrawerActivity",NavigationDrawerActivity.class));
+        mClassBeen.add(new ClassBean("ScrollingActivity",ScrollingActivity.class));
+        mClassBeen.add(new ClassBean("SettingActivity",SettingsActivity.class));
+        mClassBeen.add(new ClassBean("TabbedActivity",TabbedActivity.class));
     }
 }

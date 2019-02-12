@@ -34,7 +34,22 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aaSource.android.app.AppActivity"></activity>
+        <activity
+            android:name=".aaSource.android.app.Activity.TabbedActivity"
+            android:label="@string/title_activity_tabbed"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".aaSource.android.app.Activity.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".aaSource.android.app.Activity.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".aaSource.android.app.Activity.NavigationDrawerActivity"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".aaSource.android.app.AppActivity" />
         <activity android:name=".aaSource.android.AndroidActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.PersonListActivity"
@@ -52,7 +67,6 @@
         <activity
             android:name=".aaSource.android.app.Activity.LoginActivity"
             android:label="@string/title_activity_login" />
-            android:label="@string/title_activity_login" />
         <activity
             android:name=".aaSource.android.app.Activity.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -67,8 +81,7 @@
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".aaSource.android.app.Activity.ActivityClass" />
-        <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo">
-        </activity>
+        <activity android:name=".android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
         <activity android:name=".android.widget.Classes.popupwindow.PopupWindowActivity" />
         <activity android:name=".android.widget.Classes.AndroidWidgetClasses" />
         <activity
