@@ -34,10 +34,27 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity"></activity>
+        <activity
+            android:name=".aaSource.android.app.Activity.launchMode.StandardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".aaSource.android.app.Activity.launchMode.SingleInstanceActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".aaSource.android.app.Activity.launchMode.SingleTopActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".aaSource.android.app.Activity.launchMode.SingleTaskActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".aaSource.android.app.Activity.TabbedActivity"
             android:label="@string/title_activity_tabbed"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".aaSource.android.app.Activity.SettingsActivity"
             android:label="@string/title_activity_settings" />
