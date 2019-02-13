@@ -5,6 +5,6 @@ public class SingleInstanceActivity extends BaseLaunchModeActivity {
 
     @Override
     public void setTextViewContent() {
-        mLaunchModeTv.setText(String.valueOf(getTaskId()) +"SingleInstanceActivity \n SingleInstance");
+        mLaunchModeTv.setText(String.valueOf(getTaskId()) +"\n SingleInstanceActivity \n SingleInstance");
     }
 }

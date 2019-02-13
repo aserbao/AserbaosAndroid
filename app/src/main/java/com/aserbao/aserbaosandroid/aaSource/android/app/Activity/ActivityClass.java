@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode.LaunchModeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.opengl.ClassBean;
@@ -11,7 +12,7 @@ public class ActivityClass extends BaseActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Activity的启动模式", LifeCycleActivity.class));
+        mClassBeen.add(new ClassBean("Activity的启动模式", LaunchModeActivity.class));
         mClassBeen.add(new ClassBean("Activity的生命周期", LifeCycleActivity.class));
         mClassBeen.add(new ClassBean("BasicActivity",BasicActivity.class));
         mClassBeen.add(new ClassBean("BottomNavigationActivity",BottomNavigationActivity.class));

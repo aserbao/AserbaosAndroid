@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 
-public class LaunchModeActivity extends BaseActivity {
+public class LaunchModeActivity extends BaseLaunchModeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +13,7 @@ public class LaunchModeActivity extends BaseActivity {
     }
 
     @Override
-    public void initGetData() {
-
+    public void setTextViewContent() {
+        mLaunchModeTv.setText(String.valueOf(getTaskId()) +" \n Initialization LaunchMode");
     }
 }

@@ -15,4 +15,32 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/standard_btn"
+            android:text="standard"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/singleInstance_btn"
+            android:text="singleInstance"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/singletop_btn"
+            android:text="singletop"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/singletask_btn"
+            android:text="singletask"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
 </FrameLayout>
