@@ -34,7 +34,13 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".aaSource.android.app.Activity.launchMode.StandardActivity"
             android:screenOrientation="portrait" />

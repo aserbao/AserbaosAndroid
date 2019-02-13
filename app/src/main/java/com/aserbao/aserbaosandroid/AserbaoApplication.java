@@ -22,7 +22,7 @@ import java.io.File;
 
 public class AserbaoApplication extends Application {
     public static int screenWidth,screenHeight;
-
+    public static AserbaoApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -37,6 +37,7 @@ public class AserbaoApplication extends Application {
         screenWidth = DisplayUtil.getScreenWidth(this);
         screenHeight = DisplayUtil.getScreenHeight(this);
         initGreenDao();
+        instance = this;
     }
 
     /**

@@ -42,5 +42,10 @@
             android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/clear_all_activity_btn"
+            android:text="退出所有Activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
 </FrameLayout>
