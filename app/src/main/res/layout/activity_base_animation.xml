@@ -5,8 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.overridePendingTransition.AAnimationActivity">
+    <TextView
+        android:id="@+id/animation_tv"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/animation_pending_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/animation_pending_ll"
+        android:id="@+id/animation_pending_top_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/animation_pending_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/animation_pending_left_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/animation_pending_right_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/animation_pending_ll"
+        android:id="@+id/animation_pending_bottom_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>
