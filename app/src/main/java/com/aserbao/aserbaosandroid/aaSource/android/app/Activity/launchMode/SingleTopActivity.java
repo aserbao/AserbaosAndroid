@@ -5,4 +5,11 @@ public class SingleTopActivity extends BaseLaunchModeActivity {
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) +" \n SingleTopActivity \n SingleTop");
     }
+
+
+    @Override
+    public void onBackPressed() {
+        sBackList.add("C");
+        super.onBackPressed();
+    }
 }

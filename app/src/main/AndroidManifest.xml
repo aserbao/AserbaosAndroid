@@ -34,6 +34,10 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".aaSource.android.app.Activity.animation.overridePendingTransition.AAnimationActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.overridePendingTransition.BAnimationActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.AnimationActivty" />
+        <activity android:name=".aaSource.android.app.Activity.functions.FunctionActivity" />
         <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

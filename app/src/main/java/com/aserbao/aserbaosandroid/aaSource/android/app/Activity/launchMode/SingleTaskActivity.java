@@ -7,4 +7,10 @@ public class SingleTaskActivity extends BaseLaunchModeActivity {
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) +"\n SingleTaskActivity \n SingleTask");
     }
+
+    @Override
+    public void onBackPressed() {
+        sBackList.add("D");
+        super.onBackPressed();
+    }
 }

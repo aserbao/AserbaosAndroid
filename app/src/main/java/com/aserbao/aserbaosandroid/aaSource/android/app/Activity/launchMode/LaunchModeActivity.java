@@ -16,4 +16,11 @@ public class LaunchModeActivity extends BaseLaunchModeActivity {
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) +" \n Initialization LaunchMode");
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        sJumpList.clear();
+        sBackList.clear();
+    }
 }
