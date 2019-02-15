@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.overridePendingTransition;
+package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byTheme;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,14 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AAnimationActivity extends AppCompatActivity {
 
+public class BByThemeAnimationActivity extends AppCompatActivity {
     @BindView(R.id.animation_pending_top_btn)
     Button mAnimationPendingTopBtn;
     @BindView(R.id.animation_pending_left_btn)
@@ -28,9 +29,9 @@ public class AAnimationActivity extends AppCompatActivity {
     @BindView(R.id.animation_tv)
     TextView mAnimationTv;
 
-    public static void launch(Activity activity, int type) {
-        Intent intent = new Intent(activity, AAnimationActivity.class);
-        intent.putExtra(StaticFinalValues.TYPE, type);
+    public static void launch(Activity activity, int type){
+        Intent intent = new Intent(activity, BByThemeAnimationActivity.class);
+        intent.putExtra(StaticFinalValues.TYPE,type);
         activity.startActivity(intent);
     }
 
@@ -39,31 +40,30 @@ public class AAnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
-        mAnimationTv.setText("A");
-        mAnimationPendingTopBtn.setText("从上出现转到B");
-        mAnimationPendingBottomBtn.setText("从下出现转到B");
-        mAnimationPendingLeftBtn.setText("从左出现转到B");
-        mAnimationPendingRightBtn.setText("从右出现转到B");
-        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
+        mAnimationTv.setText("B");
+        mAnimationPendingTopBtn.setText("从上出现转到A");
+        mAnimationPendingBottomBtn.setText("从下出现转到A");
+        mAnimationPendingLeftBtn.setText("从左出现转到A");
+        mAnimationPendingRightBtn.setText("从右出现转到A");
+        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE,0));
     }
 
     private void overridePendintAnimation(int type) {
-        switch (type) {
+        switch (type){
             case StaticFinalValues.LEFT:
-                overridePendingTransition(R.anim.activity_left_to_screen_anim, R.anim.activity_screen_to_right_anim);
+                overridePendingTransition(R.anim.activity_left_to_screen_anim,R.anim.activity_screen_to_right_anim);
                 break;
             case StaticFinalValues.TOP:
-                overridePendingTransition(R.anim.activity_top_to_screen_anim, R.anim.activity_screen_to_bottom_anim);
+                overridePendingTransition(R.anim.activity_top_to_screen_anim,R.anim.activity_screen_to_bottom_anim);
                 break;
             case StaticFinalValues.RIGHT:
-                overridePendingTransition(R.anim.activity_right_to_screen_anim, R.anim.activity_screen_to_left_anim);
+                overridePendingTransition(R.anim.activity_right_to_screen_anim,R.anim.activity_screen_to_left_anim);
                 break;
             case StaticFinalValues.BOTTOM:
-                overridePendingTransition(R.anim.activity_bottom_to_screen_anim, R.anim.activity_screen_to_top_anim);
+                overridePendingTransition(R.anim.activity_bottom_to_screen_anim,R.anim.activity_screen_to_top_anim);
                 break;
         }
     }
-
     @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn})
     public void onViewClicked(View view) {
         int type = 0;
@@ -81,6 +81,6 @@ public class AAnimationActivity extends AppCompatActivity {
                 type = 3;
                 break;
         }
-        BAnimationActivity.launch(this, type);
+        AAnimationActivity.launch(this,type);
     }
 }
