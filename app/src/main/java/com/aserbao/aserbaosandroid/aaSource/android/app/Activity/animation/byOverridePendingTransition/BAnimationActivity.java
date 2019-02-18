@@ -47,12 +47,6 @@ public class BAnimationActivity extends AppCompatActivity {
         mAnimationPendingLeftBtn.setText("从左出现转到A");
         mAnimationPendingRightBtn.setText("从右出现转到A");
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE,0));
-        mAnimationPendingTopBtn.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                overridePendingTransition(R.anim.activity_left_to_screen_anim,R.anim.activity_screen_to_right_anim);
-            }
-        },1);
     }
 
     private void overridePendintAnimation(int type) {
