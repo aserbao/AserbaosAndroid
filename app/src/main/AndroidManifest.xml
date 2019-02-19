@@ -34,11 +34,19 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity"></activity>
-        <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.BAnimationActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.BAnimationActivity" />
+        <activity
+            android:name=".aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/a_by_theme_animation_theme" />
+        <activity
+            android:name=".aaSource.android.app.Activity.animation.byTheme.BByThemeAnimationActivity"
+            android:launchMode="standard" />
         <activity android:name=".aaSource.android.app.Activity.animation.AnimationActivty" />
         <activity android:name=".aaSource.android.app.Activity.functions.FunctionActivity" />
-        <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.launchMode.LaunchModeActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.launchMode.StandardActivity"
             android:screenOrientation="portrait" />
@@ -101,7 +109,7 @@
             android:name=".aaSource.android.app.Activity.BasicActivity"
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".aaSource.android.app.Activity.ActivityClass" >
+        <activity android:name=".aaSource.android.app.Activity.ActivityClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

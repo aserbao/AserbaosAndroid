@@ -17,6 +17,10 @@ public class StaticFinalValues {
     public static final int TOP = 1;
     public static final int RIGHT = 2;
     public static final int BOTTOM = 3;
+    public static final int EXPLORE = 4;
+    public static final int FADE = 5;
+    public static final int MOVE = 6;
+    public static final int NO_TRANSITION = 7;
 
 
 

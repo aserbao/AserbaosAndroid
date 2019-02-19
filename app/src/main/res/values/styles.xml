@@ -117,5 +117,27 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    
+    <style name="a_by_theme_animation_theme" mce_bogus="1" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/test_animation</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="test_animation" parent="android:Animation.Activity">
+         <item name="android:windowEnterAnimation">@anim/activity_bottom_to_screen_anim</item>
+        <item name="android:windowExitAnimation">@anim/activity_screen_to_top_anim</item>
+        <!--<item name="android:activityOpenEnterAnimation">@anim/activity_top_to_screen_anim</item>-->
+        <!--<item name="android:activityOpenExitAnimation">@anim/activity_screen_to_top_anim</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/activity_left_to_screen_anim</item>-->
+        <!--<item name="android:activityCloseExitAnimation">@anim/activity_screen_to_right_anim</item>-->
+        <!--<item name="android:activityOpenEnterAnimation">@null</item>-->
+        <!--<item name="android:activityOpenExitAnimation">@null</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@null</item>-->
+        <!--<item name="android:activityCloseExitAnimation">@null</item>-->
+        <!--<item name="android:windowEnterAnimation">@null</item>-->
+        <!--<item name="android:windowExitAnimation">@null</item>-->
+        <!--<item name="android:windowHideAnimation">@null</item>-->
+        <!--<item name="android:windowShowAnimation">@null</item>-->
+    </style>
 </resources>
 

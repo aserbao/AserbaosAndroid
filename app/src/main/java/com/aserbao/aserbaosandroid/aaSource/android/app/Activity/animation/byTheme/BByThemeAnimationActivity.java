@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.BAnimationActivity;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
@@ -29,9 +30,9 @@ public class BByThemeAnimationActivity extends AppCompatActivity {
     @BindView(R.id.animation_tv)
     TextView mAnimationTv;
 
-    public static void launch(Activity activity, int type){
+    public static void launch(Activity activity, int type) {
         Intent intent = new Intent(activity, BByThemeAnimationActivity.class);
-        intent.putExtra(StaticFinalValues.TYPE,type);
+        intent.putExtra(StaticFinalValues.TYPE, type);
         activity.startActivity(intent);
     }
 
@@ -39,48 +40,20 @@ public class BByThemeAnimationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_animation);
+        getWindow().setWindowAnimations(R.style.test_animation);
         ButterKnife.bind(this);
         mAnimationTv.setText("B");
-        mAnimationPendingTopBtn.setText("从上出现转到A");
-        mAnimationPendingBottomBtn.setText("从下出现转到A");
-        mAnimationPendingLeftBtn.setText("从左出现转到A");
-        mAnimationPendingRightBtn.setText("从右出现转到A");
-        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE,0));
+        mAnimationPendingTopBtn.setText("跳转到A");
+        mAnimationPendingBottomBtn.setVisibility(View.GONE);
+        mAnimationPendingLeftBtn.setVisibility(View.GONE);
+        mAnimationPendingRightBtn.setVisibility(View.GONE);
     }
 
-    private void overridePendintAnimation(int type) {
-        switch (type){
-            case StaticFinalValues.LEFT:
-                overridePendingTransition(R.anim.activity_left_to_screen_anim,R.anim.activity_screen_to_right_anim);
-                break;
-            case StaticFinalValues.TOP:
-                overridePendingTransition(R.anim.activity_top_to_screen_anim,R.anim.activity_screen_to_bottom_anim);
-                break;
-            case StaticFinalValues.RIGHT:
-                overridePendingTransition(R.anim.activity_right_to_screen_anim,R.anim.activity_screen_to_left_anim);
-                break;
-            case StaticFinalValues.BOTTOM:
-                overridePendingTransition(R.anim.activity_bottom_to_screen_anim,R.anim.activity_screen_to_top_anim);
-                break;
-        }
-    }
+
+
     @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn})
     public void onViewClicked(View view) {
         int type = 0;
-        switch (view.getId()) {
-            case R.id.animation_pending_left_btn:
-                type = 0;
-                break;
-            case R.id.animation_pending_top_btn:
-                type = 1;
-                break;
-            case R.id.animation_pending_right_btn:
-                type = 2;
-                break;
-            case R.id.animation_pending_bottom_btn:
-                type = 3;
-                break;
-        }
-        AAnimationActivity.launch(this,type);
+        AByThemeAnimationActivity.launch(this, type);
     }
 }

@@ -14,6 +14,32 @@
         android:textSize="50sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/animation_pending_top_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+            <Button
+                android:visibility="gone"
+                android:id="@+id/animation_extra_one_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/animation_extra_two_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/animation_extra_three_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/animation_extra_four_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
     <Button
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/animation_pending_ll"
@@ -40,4 +66,5 @@
         android:id="@+id/animation_pending_bottom_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 </RelativeLayout>

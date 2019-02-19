@@ -38,50 +38,21 @@ public class AByThemeAnimationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setWindowAnimations(R.style.test_animation);
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
         mAnimationTv.setText("A");
-        mAnimationPendingTopBtn.setText("从上出现转到B");
-        mAnimationPendingBottomBtn.setText("从下出现转到B");
-        mAnimationPendingLeftBtn.setText("从左出现转到B");
-        mAnimationPendingRightBtn.setText("从右出现转到B");
-        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
+        mAnimationPendingTopBtn.setText("跳转到B");
+        mAnimationPendingBottomBtn.setVisibility(View.GONE);
+        mAnimationPendingLeftBtn.setVisibility(View.GONE);
+        mAnimationPendingRightBtn.setVisibility(View.GONE);
     }
 
-    private void overridePendintAnimation(int type) {
-        switch (type) {
-            case StaticFinalValues.LEFT:
-                overridePendingTransition(R.anim.activity_left_to_screen_anim, R.anim.activity_screen_to_right_anim);
-                break;
-            case StaticFinalValues.TOP:
-                overridePendingTransition(R.anim.activity_top_to_screen_anim, R.anim.activity_screen_to_bottom_anim);
-                break;
-            case StaticFinalValues.RIGHT:
-                overridePendingTransition(R.anim.activity_right_to_screen_anim, R.anim.activity_screen_to_left_anim);
-                break;
-            case StaticFinalValues.BOTTOM:
-                overridePendingTransition(R.anim.activity_bottom_to_screen_anim, R.anim.activity_screen_to_top_anim);
-                break;
-        }
-    }
+
 
     @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn})
     public void onViewClicked(View view) {
         int type = 0;
-        switch (view.getId()) {
-            case R.id.animation_pending_left_btn:
-                type = 0;
-                break;
-            case R.id.animation_pending_top_btn:
-                type = 1;
-                break;
-            case R.id.animation_pending_right_btn:
-                type = 2;
-                break;
-            case R.id.animation_pending_bottom_btn:
-                type = 3;
-                break;
-        }
-        BAnimationActivity.launch(this, type);
+        BByThemeAnimationActivity.launch(this, type);
     }
 }
