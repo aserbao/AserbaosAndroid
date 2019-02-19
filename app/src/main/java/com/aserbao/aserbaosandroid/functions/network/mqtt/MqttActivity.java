@@ -1,11 +1,8 @@
 package com.aserbao.aserbaosandroid.functions.network.mqtt;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.network.mqtt.simple.SimpleMqttActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 /**
  * 功能:
  * author aserbao

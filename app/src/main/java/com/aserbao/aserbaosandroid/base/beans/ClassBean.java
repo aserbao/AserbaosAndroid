@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.opengl;
+package com.aserbao.aserbaosandroid.base.beans;
 
 import android.app.Activity;
 

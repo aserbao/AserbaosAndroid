@@ -1,13 +1,9 @@
 package com.aserbao.aserbaosandroid.functions.events;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerViewEventActivity;
 import com.aserbao.aserbaosandroid.functions.events.scrollEvent.ScrollEventActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class EventDealActivity extends BaseActivity {
 

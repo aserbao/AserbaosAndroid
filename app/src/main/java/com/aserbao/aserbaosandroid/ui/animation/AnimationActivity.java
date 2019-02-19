@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.animation;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.ExplosionActivity;
 import com.aserbao.aserbaosandroid.ui.animation.fragments3DAnimation.Fragment3DAnimationActivity;

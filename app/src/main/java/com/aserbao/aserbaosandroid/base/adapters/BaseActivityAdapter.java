@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid;
+package com.aserbao.aserbaosandroid.base.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.ConstantUtils;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +26,13 @@ import butterknife.ButterKnife;
  */
 
 
-public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.OpenGlViewHolder> {
+public class BaseActivityAdapter extends RecyclerView.Adapter<BaseActivityAdapter.OpenGlViewHolder> {
 
     private Context mContext;
     private Activity mActivity;
     private List<ClassBean> mClassBeen = new ArrayList<>();
 
-    public CommonAdapter(Context context, Activity activity, List<ClassBean> classBeen) {
+    public BaseActivityAdapter(Context context, Activity activity, List<ClassBean> classBeen) {
         mContext = context;
         mActivity = activity;
         mClassBeen = classBeen;
@@ -39,7 +40,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.OpenGlView
 
     @Override
     public OpenGlViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.opengl_recycler_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.base_activity_item, parent, false);
         return new OpenGlViewHolder(view);
     }
 

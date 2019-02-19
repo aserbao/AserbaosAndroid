@@ -35,6 +35,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.BActivityOptionsActivity"></activity>
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.BAnimationActivity" />
         <activity

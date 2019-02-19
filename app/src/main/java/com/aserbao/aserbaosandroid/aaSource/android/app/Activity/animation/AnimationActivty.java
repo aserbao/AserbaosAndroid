@@ -4,7 +4,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activ
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class AnimationActivty extends BaseActivity {
 

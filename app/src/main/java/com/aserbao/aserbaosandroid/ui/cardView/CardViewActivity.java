@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.ui.cardView;
 import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.ui.cardView.simpleCardView.SimpleCardViewActivity;
 
 public class CardViewActivity extends BaseActivity {

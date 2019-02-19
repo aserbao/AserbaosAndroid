@@ -6,7 +6,7 @@ import com.aserbao.aserbaosandroid.AudioAndVideo.media.exoplayer.ExoPlayerPActiv
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.mediacodec.MediaCodecActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.mediaplayer.MediaPlayerActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.videoView.VideoViewActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class MediaActivity extends BaseActivity {
 

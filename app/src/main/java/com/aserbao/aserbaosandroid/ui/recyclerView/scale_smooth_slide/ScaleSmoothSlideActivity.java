@@ -1,10 +1,9 @@
 package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.ScaleSmoothSlideOneActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_two_method.ScaleSmoothSlideTwoActivity;
 

@@ -7,9 +7,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
+import com.aserbao.aserbaosandroid.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        CommonAdapter adapter = new CommonAdapter(this, this, mClassBeen);
+        BaseActivityAdapter adapter = new BaseActivityAdapter(this, this, mClassBeen);
 //        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mHomeRecyclerView.setLayoutManager(gridLayoutManager);

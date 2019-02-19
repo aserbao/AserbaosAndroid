@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.system;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.system.handlers.HandlerActivity;
 
 /**

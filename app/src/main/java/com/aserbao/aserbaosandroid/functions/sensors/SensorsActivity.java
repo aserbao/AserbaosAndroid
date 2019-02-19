@@ -1,11 +1,8 @@
 package com.aserbao.aserbaosandroid.functions.sensors;
 
-import android.app.Activity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.testSensorData.TestSensorDataActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class SensorsActivity extends BaseActivity {
 

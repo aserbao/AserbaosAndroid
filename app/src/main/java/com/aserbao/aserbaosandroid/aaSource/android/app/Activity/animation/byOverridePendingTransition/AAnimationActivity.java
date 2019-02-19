@@ -9,13 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AAnimationActivity extends AppCompatActivity {
+public class AAnimationActivity extends BaseRecyclerViewActivity {
 
     @BindView(R.id.animation_pending_top_btn)
     Button mAnimationPendingTopBtn;
@@ -46,6 +48,22 @@ public class AAnimationActivity extends AppCompatActivity {
         mAnimationPendingRightBtn.setText("从右出现转到B");
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
     }
+
+    @Override
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从上出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从下出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从左出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从右出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("淡入淡出"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("放大缩小"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("转动淡出效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("左上角淡出效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("压缩变小效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("交错效果"));
+    }
+
+
 
     private void overridePendintAnimation(int type) {
         switch (type) {
@@ -82,5 +100,10 @@ public class AAnimationActivity extends AppCompatActivity {
                 break;
         }
         BAnimationActivity.launch(this, type);
+    }
+
+    @Override
+    public void itemClickBack(int position) {
+
     }
 }

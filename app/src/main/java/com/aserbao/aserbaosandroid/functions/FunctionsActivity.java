@@ -9,8 +9,7 @@ import com.aserbao.aserbaosandroid.functions.how_create_so.HowCreateSoActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.ImagePhotoShopActivity;
 import com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSettingActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
-import com.aserbao.aserbaosandroid.functions.sensors.SharkActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class FunctionsActivity extends BaseActivity {
 

@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AActivityOptionsActivity extends AppCompatActivity {
+public class BActivityOptionsActivity extends AppCompatActivity {
 
     @BindView(R.id.animation_pending_top_btn)
     Button mAnimationPendingTopBtn;
@@ -41,7 +41,7 @@ public class AActivityOptionsActivity extends AppCompatActivity {
     Button mAnimationExtraFourBtn;
 
     public static void launch(Activity activity, int type) {
-        Intent intent = new Intent(activity, AActivityOptionsActivity.class);
+        Intent intent = new Intent(activity, BActivityOptionsActivity.class);
         intent.putExtra(StaticFinalValues.TYPE, type);
         activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
     }
@@ -55,7 +55,7 @@ public class AActivityOptionsActivity extends AppCompatActivity {
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
-        mAnimationTv.setText("A");
+        mAnimationTv.setText("B");
         mAnimationPendingTopBtn.setText("slide_top");
         mAnimationPendingBottomBtn.setText("slide_bottom");
         mAnimationPendingLeftBtn.setText("slide_left");
@@ -132,7 +132,7 @@ public class AActivityOptionsActivity extends AppCompatActivity {
                 type = StaticFinalValues.NO_TRANSITION;
                 break;
         }
-        BActivityOptionsActivity.launch(this, type);
+        AActivityOptionsActivity.launch(this, type);
     }
 
 

@@ -1,11 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids.LeonidsActivity;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.viewExplosion.ViewExplosionActivity;
 

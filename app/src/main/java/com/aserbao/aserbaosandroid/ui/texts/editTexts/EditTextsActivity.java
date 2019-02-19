@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.FullDragDemoActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity;

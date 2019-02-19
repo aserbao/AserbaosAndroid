@@ -1,12 +1,11 @@
 package com.aserbao.aserbaosandroid.functions.how_create_so;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.how_create_so.useCmake.UseCMakeBuildSoActivity;
 import com.aserbao.aserbaosandroid.functions.how_create_so.useNdkBuild.UseNdkBuildActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class HowCreateSoActivity extends BaseActivity {
 

@@ -1,11 +1,10 @@
 package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.PopupWindowActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class AndroidWidgetClasses extends BaseActivity {
 

@@ -1,12 +1,9 @@
 package com.aserbao.aserbaosandroid.functions.network;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.network.mqtt.MqttActivity;
 import com.aserbao.aserbaosandroid.functions.network.okhttp.OkhttpActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class NetWorkActivity extends BaseActivity {
 

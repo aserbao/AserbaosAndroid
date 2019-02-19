@@ -1,12 +1,10 @@
 package com.aserbao.aserbaosandroid.AudioAndVideo;
 
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.AudioAndVideo.detail_Info.DetailInfoActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.jnis.JnisActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.MediaActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class AudioAndVideoActivity extends BaseActivity {
 

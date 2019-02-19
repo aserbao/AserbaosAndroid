@@ -1,13 +1,10 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.AnimationActivty;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode.LaunchModeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class ActivityClass extends BaseActivity {
 

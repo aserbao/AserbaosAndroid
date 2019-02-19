@@ -1,12 +1,9 @@
 package com.aserbao.aserbaosandroid.functions.iamgePhotoshop;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.ImageBlurActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.compound.CompoundActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class ImagePhotoShopActivity extends BaseActivity {
 

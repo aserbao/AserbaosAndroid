@@ -1,11 +1,8 @@
 package com.aserbao.aserbaosandroid.aaSource.android;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.aaSource.android.app.AppActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.opengl.ClassBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
 public class AndroidActivity extends BaseActivity {
 
