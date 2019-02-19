@@ -19,16 +19,9 @@ import butterknife.OnClick;
 
 public class AAnimationActivity extends BaseRecyclerViewActivity {
 
-    @BindView(R.id.animation_pending_top_btn)
-    Button mAnimationPendingTopBtn;
-    @BindView(R.id.animation_pending_left_btn)
-    Button mAnimationPendingLeftBtn;
-    @BindView(R.id.animation_pending_right_btn)
-    Button mAnimationPendingRightBtn;
-    @BindView(R.id.animation_pending_bottom_btn)
-    Button mAnimationPendingBottomBtn;
-    @BindView(R.id.animation_tv)
-    TextView mAnimationTv;
+
+    @BindView(R.id.base_recycler_tv)
+    TextView mBaseRecyclerTv;
 
     public static void launch(Activity activity, int type) {
         Intent intent = new Intent(activity, AAnimationActivity.class);
@@ -41,11 +34,7 @@ public class AAnimationActivity extends BaseRecyclerViewActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
-        mAnimationTv.setText("A");
-        mAnimationPendingTopBtn.setText("从上出现转到B");
-        mAnimationPendingBottomBtn.setText("从下出现转到B");
-        mAnimationPendingLeftBtn.setText("从左出现转到B");
-        mAnimationPendingRightBtn.setText("从右出现转到B");
+        mBaseRecyclerTv.setText("A");
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
     }
 
@@ -63,47 +52,37 @@ public class AAnimationActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("交错效果"));
     }
 
-
+    @Override
+    public void itemClickBack(int position){
+        AAnimationActivity.launch(this, position);
+    }
 
     private void overridePendintAnimation(int type) {
         switch (type) {
-            case StaticFinalValues.LEFT:
+            case 0:
                 overridePendingTransition(R.anim.activity_left_to_screen_anim, R.anim.activity_screen_to_right_anim);
                 break;
-            case StaticFinalValues.TOP:
+            case 1:
                 overridePendingTransition(R.anim.activity_top_to_screen_anim, R.anim.activity_screen_to_bottom_anim);
                 break;
-            case StaticFinalValues.RIGHT:
+            case 2:
                 overridePendingTransition(R.anim.activity_right_to_screen_anim, R.anim.activity_screen_to_left_anim);
                 break;
-            case StaticFinalValues.BOTTOM:
+            case 3:
                 overridePendingTransition(R.anim.activity_bottom_to_screen_anim, R.anim.activity_screen_to_top_anim);
                 break;
-        }
-    }
-
-    @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn})
-    public void onViewClicked(View view) {
-        int type = 0;
-        switch (view.getId()) {
-            case R.id.animation_pending_left_btn:
-                type = 0;
+            case 4:
+                overridePendingTransition(R.anim.activity_alpha0_to_alpha1_anim, R.anim.activity_alpha1_to_alpha0_anim);
                 break;
-            case R.id.animation_pending_top_btn:
-                type = 1;
+            case 5:
+                overridePendingTransition(R.anim.activity_scale0_to_scale1_anim, R.anim.activity_scale1_to_scale0_anim);
                 break;
-            case R.id.animation_pending_right_btn:
-                type = 2;
+            case 6:
+                overridePendingTransition(R.anim.activity_scale021_and_rotate_anim, R.anim.activity_scale120_and_rotate_anim);
                 break;
-            case R.id.animation_pending_bottom_btn:
-                type = 3;
+            case 7:
+                overridePendingTransition(R.anim.activity_scale021_and_translate_anim, R.anim.activity_scale120_and_translate_anim);
                 break;
         }
-        BAnimationActivity.launch(this, type);
-    }
-
-    @Override
-    public void itemClickBack(int position) {
-
     }
 }

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
@@ -18,21 +20,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class BAnimationActivity extends AppCompatActivity {
-    @BindView(R.id.animation_pending_top_btn)
-    Button mAnimationPendingTopBtn;
-    @BindView(R.id.animation_pending_left_btn)
-    Button mAnimationPendingLeftBtn;
-    @BindView(R.id.animation_pending_right_btn)
-    Button mAnimationPendingRightBtn;
-    @BindView(R.id.animation_pending_bottom_btn)
-    Button mAnimationPendingBottomBtn;
-    @BindView(R.id.animation_tv)
-    TextView mAnimationTv;
+public class BAnimationActivity extends BaseRecyclerViewActivity {
 
-    public static void launch(Activity activity, int type){
-        Intent intent = new Intent(activity, BAnimationActivity.class);
-        intent.putExtra(StaticFinalValues.TYPE,type);
+    @BindView(R.id.base_recycler_tv)
+    TextView mBaseRecyclerTv;
+
+    public static void launch(Activity activity, int type) {
+        Intent intent = new Intent(activity, AAnimationActivity.class);
+        intent.putExtra(StaticFinalValues.TYPE, type);
         activity.startActivity(intent);
     }
 
@@ -41,47 +36,55 @@ public class BAnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
-        mAnimationTv.setText("B");
-        mAnimationPendingTopBtn.setText("从上出现转到A");
-        mAnimationPendingBottomBtn.setText("从下出现转到A");
-        mAnimationPendingLeftBtn.setText("从左出现转到A");
-        mAnimationPendingRightBtn.setText("从右出现转到A");
-        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE,0));
+        mBaseRecyclerTv.setText("A");
+        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
+    }
+
+    @Override
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从上出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从下出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从左出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("从右出现转到B"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("淡入淡出"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("放大缩小"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("转动缩放效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("左上角淡出效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("压缩变小效果"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("交错效果"));
+    }
+
+    @Override
+    public void itemClickBack(int position){
+        AAnimationActivity.launch(this, position);
     }
 
     private void overridePendintAnimation(int type) {
-        switch (type){
-            case StaticFinalValues.LEFT:
-                overridePendingTransition(R.anim.activity_left_to_screen_anim,R.anim.activity_screen_to_right_anim);
+        switch (type) {
+            case 0:
+                overridePendingTransition(R.anim.activity_left_to_screen_anim, R.anim.activity_screen_to_right_anim);
                 break;
-            case StaticFinalValues.TOP:
-                overridePendingTransition(R.anim.activity_top_to_screen_anim,R.anim.activity_screen_to_bottom_anim);
+            case 1:
+                overridePendingTransition(R.anim.activity_top_to_screen_anim, R.anim.activity_screen_to_bottom_anim);
                 break;
-            case StaticFinalValues.RIGHT:
-                overridePendingTransition(R.anim.activity_right_to_screen_anim,R.anim.activity_screen_to_left_anim);
+            case 2:
+                overridePendingTransition(R.anim.activity_right_to_screen_anim, R.anim.activity_screen_to_left_anim);
                 break;
-            case StaticFinalValues.BOTTOM:
-                overridePendingTransition(R.anim.activity_bottom_to_screen_anim,R.anim.activity_screen_to_top_anim);
+            case 3:
+                overridePendingTransition(R.anim.activity_bottom_to_screen_anim, R.anim.activity_screen_to_top_anim);
                 break;
-        }
-    }
-    @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn})
-    public void onViewClicked(View view) {
-        int type = 0;
-        switch (view.getId()) {
-            case R.id.animation_pending_left_btn:
-                type = 0;
+            case 4:
+                overridePendingTransition(R.anim.activity_alpha0_to_alpha1_anim, R.anim.activity_alpha1_to_alpha0_anim);
                 break;
-            case R.id.animation_pending_top_btn:
-                type = 1;
+            case 5:
+                overridePendingTransition(R.anim.activity_scale0_to_scale1_anim, R.anim.activity_scale1_to_scale0_anim);
                 break;
-            case R.id.animation_pending_right_btn:
-                type = 2;
+            case 6:
+                overridePendingTransition(R.anim.activity_scale021_and_rotate_anim, R.anim.activity_scale120_and_rotate_anim);
                 break;
-            case R.id.animation_pending_bottom_btn:
-                type = 3;
+            case 7:
+                overridePendingTransition(R.anim.activity_scale021_and_translate_anim, R.anim.activity_scale120_and_translate_anim);
                 break;
         }
-        AAnimationActivity.launch(this,type);
     }
 }
