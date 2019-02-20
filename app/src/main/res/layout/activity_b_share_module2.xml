@@ -11,7 +11,6 @@
         android:id="@+id/b_share_module_civ"
         android:layout_marginTop="190dp"
         android:layout_gravity="center|top"
-        android:transitionName="aserbao_share_name"
         android:src="@drawable/mm_3"
         android:layout_width="150dp"
         android:layout_height="150dp" />

@@ -33,8 +33,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"></activity>
+        android:theme="@style/AFullscreenTheme">
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
+            android:theme="@style/TransparentTheme"
+            ></activity>
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.BActivityOptionsActivity" />
