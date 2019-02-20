@@ -34,11 +34,9 @@ public class BAnimationActivity extends BaseRecyclerViewActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base_animation);
-        ButterKnife.bind(this);
-        mBaseRecyclerTv.setText("A");
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
     }
+
 
     @Override
     public void initGetData() {
@@ -52,6 +50,7 @@ public class BAnimationActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("左上角淡出效果"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("压缩变小效果"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("交错效果"));
+        mBaseRecyclerTv.setText("A");
     }
 
     @Override

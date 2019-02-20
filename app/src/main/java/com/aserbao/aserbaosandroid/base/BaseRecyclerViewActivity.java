@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.R;
@@ -49,8 +50,8 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void initView() {
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this,this, mBaseRecyclerBeen,this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mOpenglRecyclerView.setLayoutManager(linearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
     }
 }

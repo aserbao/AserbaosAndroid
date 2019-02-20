@@ -32,8 +32,6 @@ public class AAnimationActivity extends BaseRecyclerViewActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base_animation);
-        ButterKnife.bind(this);
         mBaseRecyclerTv.setText("A");
         overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
     }
