@@ -21,24 +21,6 @@ import butterknife.OnClick;
 
 public class BActivityOptionsActivity extends AppCompatActivity {
 
-    @BindView(R.id.animation_pending_top_btn)
-    Button mAnimationPendingTopBtn;
-    @BindView(R.id.animation_pending_left_btn)
-    Button mAnimationPendingLeftBtn;
-    @BindView(R.id.animation_pending_right_btn)
-    Button mAnimationPendingRightBtn;
-    @BindView(R.id.animation_pending_bottom_btn)
-    Button mAnimationPendingBottomBtn;
-    @BindView(R.id.animation_tv)
-    TextView mAnimationTv;
-    @BindView(R.id.animation_extra_one_btn)
-    Button mAnimationExtraOneBtn;
-    @BindView(R.id.animation_extra_two_btn)
-    Button mAnimationExtraTwoBtn;
-    @BindView(R.id.animation_extra_three_btn)
-    Button mAnimationExtraThreeBtn;
-    @BindView(R.id.animation_extra_four_btn)
-    Button mAnimationExtraFourBtn;
 
     public static void launch(Activity activity, int type) {
         Intent intent = new Intent(activity, BActivityOptionsActivity.class);
@@ -49,8 +31,9 @@ public class BActivityOptionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        Transition explode = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);//特别注意：此方法必须在setContentView之前调用，否则会报错
+//        Transition explode = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
+        Transition explode = TransitionInflater.from(this).inflateTransition(R.transition.custom_explode);
         getWindow().setEnterTransition(explode);
         setContentView(R.layout.activity_base_animation);
         ButterKnife.bind(this);
