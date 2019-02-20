@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.BAnimationActivity;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;

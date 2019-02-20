@@ -13,62 +13,31 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AActivityOptionsActivity extends AppCompatActivity {
+public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
 
-    @BindView(R.id.animation_pending_top_btn)
-    Button mAnimationPendingTopBtn;
-    @BindView(R.id.animation_pending_left_btn)
-    Button mAnimationPendingLeftBtn;
-    @BindView(R.id.animation_pending_right_btn)
-    Button mAnimationPendingRightBtn;
-    @BindView(R.id.animation_pending_bottom_btn)
-    Button mAnimationPendingBottomBtn;
-    @BindView(R.id.animation_tv)
-    TextView mAnimationTv;
-    @BindView(R.id.animation_extra_one_btn)
-    Button mAnimationExtraOneBtn;
-    @BindView(R.id.animation_extra_two_btn)
-    Button mAnimationExtraTwoBtn;
-    @BindView(R.id.animation_extra_three_btn)
-    Button mAnimationExtraThreeBtn;
-    @BindView(R.id.animation_extra_four_btn)
-    Button mAnimationExtraFourBtn;
 
     public static void launch(Activity activity, int type) {
         Intent intent = new Intent(activity, AActivityOptionsActivity.class);
         intent.putExtra(StaticFinalValues.TYPE, type);
         activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
     }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-       /* Transition explode = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
-        getWindow().setEnterTransition(explode);*/
-        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
-        setContentView(R.layout.activity_base_animation);
-        ButterKnife.bind(this);
-        mAnimationTv.setText("A");
-        mAnimationPendingTopBtn.setText("slide_top");
-        mAnimationPendingBottomBtn.setText("slide_bottom");
-        mAnimationPendingLeftBtn.setText("slide_left");
-        mAnimationPendingRightBtn.setText("slide_right");
-
-        mAnimationExtraOneBtn.setVisibility(View.VISIBLE);
-        mAnimationExtraOneBtn.setText("explode");
-        mAnimationExtraTwoBtn.setVisibility(View.VISIBLE);
-        mAnimationExtraTwoBtn.setText("fade");
-        mAnimationExtraThreeBtn.setVisibility(View.VISIBLE);
-        mAnimationExtraThreeBtn.setText("move");
-        mAnimationExtraFourBtn.setVisibility(View.VISIBLE);
-        mAnimationExtraFourBtn.setText("no_transition");
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_left"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_top"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_right"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_bottom"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("explode"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("fade"));
+        mBaseRecyclerTv.setText("A");
     }
 
     private void overridePendintAnimation(int type) {
@@ -101,39 +70,18 @@ public class AActivityOptionsActivity extends AppCompatActivity {
         }
         getWindow().setEnterTransition(transition);
     }
-
-    @OnClick({R.id.animation_pending_top_btn, R.id.animation_pending_left_btn, R.id.animation_pending_right_btn, R.id.animation_pending_bottom_btn,
-        R.id.animation_extra_one_btn, R.id.animation_extra_two_btn,R.id.animation_extra_three_btn, R.id.animation_extra_four_btn})
-    public void onViewClicked(View view) {
-        int type = 0;
-        switch (view.getId()) {
-            case R.id.animation_pending_left_btn:
-                type = StaticFinalValues.LEFT;
-                break;
-            case R.id.animation_pending_top_btn:
-                type = StaticFinalValues.TOP;
-                break;
-            case R.id.animation_pending_right_btn:
-                type = StaticFinalValues.RIGHT;
-                break;
-            case R.id.animation_pending_bottom_btn:
-                type = StaticFinalValues.BOTTOM;
-                break;
-            case R.id.animation_extra_one_btn:
-                type = StaticFinalValues.EXPLORE;
-                break;
-            case R.id.animation_extra_two_btn:
-                type = StaticFinalValues.FADE;
-                break;
-            case R.id.animation_extra_three_btn:
-                type = StaticFinalValues.MOVE;
-                break;
-            case R.id.animation_extra_four_btn:
-                type = StaticFinalValues.NO_TRANSITION;
-                break;
-        }
-        BActivityOptionsActivity.launch(this, type);
+    @Override
+    public void setTranslations(){
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        overridePendintAnimation(getIntent().getIntExtra(StaticFinalValues.TYPE, 0));
     }
 
-
+    @Override
+    public void itemClickBack(int position) {
+        if (position == 4) {
+            BActivityOptionsActivity.launch(this, position);
+        }else{
+            AActivityOptionsActivity.launch(this, position);
+        }
+    }
 }

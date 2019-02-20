@@ -16,9 +16,6 @@ import butterknife.BindView;
 public class AAnimationActivity extends BaseRecyclerViewActivity {
 
 
-    @BindView(R.id.base_recycler_tv)
-    TextView mBaseRecyclerTv;
-
     public static void launch(Activity activity, int type) {
         Intent intent = new Intent(activity, AAnimationActivity.class);
         intent.putExtra(StaticFinalValues.TYPE, type);
