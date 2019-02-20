@@ -34,8 +34,10 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity"></activity>
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.BActivityOptionsActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.BActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity"

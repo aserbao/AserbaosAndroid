@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/show_activity_name_tv"
+    android:layout_marginTop="10dp"
+    android:layout_gravity="center|top"
+    android:layout_centerHorizontal="true"
+    android:text="ceshi"
+    android:textSize="18sp"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+</TextView>
