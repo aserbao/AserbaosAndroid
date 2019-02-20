@@ -1,25 +1,15 @@
-package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions;
+package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.officalTransition;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
 

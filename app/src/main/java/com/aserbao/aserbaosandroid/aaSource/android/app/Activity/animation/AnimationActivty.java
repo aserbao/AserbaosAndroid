@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation;
 
-import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity;

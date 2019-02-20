@@ -38,8 +38,8 @@
             android:theme="@style/TransparentTheme"
             ></activity>
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity" />
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.AActivityOptionsActivity" />
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.BActivityOptionsActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.BActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity"
