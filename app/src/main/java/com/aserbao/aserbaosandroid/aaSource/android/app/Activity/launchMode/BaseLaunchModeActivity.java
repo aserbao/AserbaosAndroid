@@ -33,7 +33,9 @@ import butterknife.OnClick;
  * @package:com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode
  */
 public abstract class BaseLaunchModeActivity extends AppCompatActivity {
-    private static final String TAG = "BaseLaunchModeActivity";
+    private static final String mCuurActivityName = "BaseLaunchModeActivity";
+    public String mActivityName = "";
+
     @BindView(R.id.launch_mode_tv)
     public TextView mLaunchModeTv;
     @BindView(R.id.jump_activity_tv)
@@ -57,13 +59,17 @@ public abstract class BaseLaunchModeActivity extends AppCompatActivity {
         for (ActivityManager.RunningTaskInfo runningTask : runningTasks) {
             String shortClassName = runningTask.topActivity.getShortClassName();
             String baseShortClassName = runningTask.baseActivity.getShortClassName();
-            Log.e(TAG, "onCreate: " + shortClassName + "  baseShortClassName =  " + baseShortClassName + " num = " + runningTask.numActivities + " numRuning = " + runningTask.numRunning);
+//            Log.e(mActivityName, "onCreate: " + shortClassName + "  baseShortClassName =  " + baseShortClassName + " num = " + runningTask.numActivities + " numRuning = " + runningTask.numRunning);
         }
+        Log.e(mActivityName, "onCreate: " );
     }
+
+
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e(mActivityName, "onResume: " );
         StringBuffer sJump = new StringBuffer();
         for (String s : sJumpList) {
             sJump.append(s).append(" --> \n");
@@ -77,6 +83,45 @@ public abstract class BaseLaunchModeActivity extends AppCompatActivity {
     }
 
     public abstract void setTextViewContent();
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(mActivityName, "onStart() called");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e(mActivityName, "onNewIntent() called with: intent = [" + intent + "]");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(mActivityName, "onPause() called" + " \n ================================");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(mActivityName, "onStop() called" + " \n ================================");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(mActivityName, "onDestroy() called");
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        Log.e(mActivityName, "finish() called" + " \n ================================");
+    }
+
 
     @OnClick({R.id.clear_all_activity_btn, R.id.standard_btn, R.id.singleInstance_btn, R.id.singletop_btn, R.id.singletask_btn})
     public void onViewClicked(View view) {
@@ -99,12 +144,15 @@ public abstract class BaseLaunchModeActivity extends AppCompatActivity {
                         topActivityClassName = taskInfo.topActivity.getClassName();
                     }
                     int persistentId = taskInfo.persistentId;
-                    Log.e(TAG, "description = " + description + "onViewClicked: " + " topActivityClassName = " + topActivityClassName + " persistentId = " + String.valueOf(persistentId));
+                    Log.e(mActivityName, "description = " + description + "onViewClicked: " + " topActivityClassName = " + topActivityClassName + " persistentId = " + String.valueOf(persistentId));
                 }
                 /*List<Activity> activitiesByApplication = getActivitiesByApplication(AserbaoApplication.instance);
                 for (Activity activity : activitiesByApplication) {
-                    Log.e(TAG, "onViewClicked: " + activity.getLocalClassName()  + " TaskId =  " + activity.getTaskId() );
+                    Log.e(mActivityName, "onViewClicked: " + activity.getLocalClassName()  + " TaskId =  " + activity.getTaskId() );
                 }*/
+               /* sJumpList.add("LMA");
+                intent = new Intent(getApplicationContext(), LaunchModeActivity.class);
+                startActivity(intent);*/
                 break;
             case R.id.standard_btn:
                 sJumpList.add("A");
