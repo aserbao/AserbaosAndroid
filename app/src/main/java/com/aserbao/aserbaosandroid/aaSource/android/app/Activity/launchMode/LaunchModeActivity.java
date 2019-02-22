@@ -15,6 +15,7 @@ public class LaunchModeActivity extends BaseLaunchModeActivity {
     @Override
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) +" \n Initialization LaunchMode");
+        mActivityName = "LaunchModeActivity ==";
     }
 
     @Override

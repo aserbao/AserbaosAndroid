@@ -12,6 +12,7 @@ public class StandardActivity extends BaseLaunchModeActivity {
     @Override
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) + "StandardActivity \n Standard " );
+        mActivityName = "StandardActivity ==";
     }
 
     @Override

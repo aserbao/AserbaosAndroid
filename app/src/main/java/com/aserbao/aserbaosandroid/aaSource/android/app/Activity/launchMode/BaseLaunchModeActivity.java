@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.content.Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
 
 /**
  * 功能:
@@ -117,11 +120,28 @@ public abstract class BaseLaunchModeActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(mActivityName, "onRestart: " );
+    }
+
+    @Override
     public void finish() {
         super.finish();
         Log.e(mActivityName, "finish() called" + " \n ================================");
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.e(mActivityName, "onRestoreInstanceState: ");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e(mActivityName, "onSaveInstanceState: ");
+    }
 
     @OnClick({R.id.clear_all_activity_btn, R.id.standard_btn, R.id.singleInstance_btn, R.id.singletop_btn, R.id.singletask_btn})
     public void onViewClicked(View view) {
@@ -157,6 +177,7 @@ public abstract class BaseLaunchModeActivity extends AppCompatActivity {
             case R.id.standard_btn:
                 sJumpList.add("A");
                 intent = new Intent(getApplicationContext(), StandardActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(intent);
                 break;
             case R.id.singleInstance_btn:

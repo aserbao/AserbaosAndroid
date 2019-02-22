@@ -6,6 +6,7 @@ public class SingleTaskActivity extends BaseLaunchModeActivity {
     @Override
     public void setTextViewContent() {
         mLaunchModeTv.setText(String.valueOf(getTaskId()) +"\n SingleTaskActivity \n SingleTask");
+        mActivityName = "SingleTaskActivity == ";
     }
 
     @Override
