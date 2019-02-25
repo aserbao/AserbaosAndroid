@@ -34,9 +34,10 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
-            android:theme="@style/TransparentTheme"
-            ></activity>
+        <activity android:name=".aaSource.android.material.MaterialActivity"></activity>
+        <activity
+            android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
+            android:theme="@style/TransparentTheme" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.BActivityOptionsActivity" />
