@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scalpel_fl"
+    tools:context="com.aserbao.aserbaosandroid.ui.animation.scalpeAnimation.ScalpeAniamtionActivity">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/scale_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <Button
+        android:elevation="1dp"
+        android:layout_gravity="center"
+        android:text="布局检测"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:elevation="4dp"
+        android:background="@color/black30"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:text="布局检测工具"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout>

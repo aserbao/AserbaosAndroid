@@ -5,19 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.base.adapters.BaseActivityAdapter;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
 import com.aserbao.aserbaosandroid.ui.constantUtilsShow.ConstantsUtilsShowActivity;
-import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
 
+    @BindView(R.id.container)
+    ScalpelFrameLayout mContainer;
     private List<ClassBean> mClassBeen = new ArrayList<>();
     @BindView(R.id.home_recycler_view)
     RecyclerView mHomeRecyclerView;
@@ -38,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initGetData();
         initView();
+        mContainer.setLayerInteractionEnabled(false);
     }
 
     private void initGetData() {

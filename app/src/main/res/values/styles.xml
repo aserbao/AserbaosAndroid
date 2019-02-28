@@ -1,7 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!--<style name="AppTheme" parent="Base.Theme.MaterialComponents.Light.DarkActionBar">-->
+    <!--<style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">-->
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -122,7 +124,11 @@
     <style name="TransparentTheme" parent="AppTheme">
         <item name="android:background">@color/transparent</item>
     </style>
-
+    <style name="windowIsTranslucent"  parent="AppTheme">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
@@ -147,6 +153,25 @@
         <!--<item name="android:windowExitAnimation">@null</item>-->
         <!--<item name="android:windowHideAnimation">@null</item>-->
         <!--<item name="android:windowShowAnimation">@null</item>-->
+    </style>
+
+    <style name="TextButton" >
+
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@animator/mtrl_btn_unelevated_state_list_anim</item>
+        <item name="elevation">0dp</item>
+        <!--<item name="backgroundTint">@color/mtrls_btn_text_btn_bg_color_selector</item>-->
+        <!--<item name="backgroundTint">@color/mtrls_btn_text_btn_ripple_color_bg</item>-->
+        <!--<item name="android:background">@color/white</item>-->
+        <!--<item name="android:background">@color/mtrls_btn_text_btn_ripple_color_bg</item>-->
+        <!--<item name="rippleColor">@color/mtrls_btn_text_btn_ripple_color</item>-->
+
+        <item name="android:textColor">@color/mtrl_text_btn_text_color_selector</item>
+        <item name="android:paddingLeft">@dimen/mtrl_btn_text_btn_padding_left</item>
+        <item name="android:paddingRight">@dimen/mtrl_btn_text_btn_padding_right</item>
+        <item name="iconTint">@color/mtrl_text_btn_text_color_selector</item>
+        <item name="iconPadding">@dimen/mtrl_btn_text_btn_icon_padding</item>
+        <item name="backgroundTint">@color/mtrls_btn_text_btn_bg_color_selector</item>
+        <item name="rippleColor">@color/mtrl_btn_text_btn_ripple_color</item>
     </style>
 </resources>
 

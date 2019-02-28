@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.AudioAndVideo.media;
 
+import com.aserbao.aserbaosandroid.AudioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.audio.AudioRecordActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.exoplayer.ExoPlayerPActivity;
@@ -18,6 +19,7 @@ public class MediaActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("media_play",MediaPlayerActivity.class));
         mClassBeen.add(new ClassBean("media_codec",MediaCodecActivity.class));
         mClassBeen.add(new ClassBean("exoplayer",ExoPlayerPActivity.class));
+        mClassBeen.add(new ClassBean("JZVideoPlayer", JCVideoPlayerActivity.class));
     }
 
 }

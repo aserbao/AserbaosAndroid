@@ -34,7 +34,13 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.material.MaterialActivity"></activity>
+        <activity android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
+            android:theme="@style/windowIsTranslucent"></activity>
+        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity" />
+        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity" />
+        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity" />
+        <activity android:name=".aaSource.android.material.button.MaterialButtonActivity" />
+        <activity android:name=".aaSource.android.material.MaterialActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
             android:theme="@style/TransparentTheme" />
@@ -115,11 +121,14 @@
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".aaSource.android.app.Activity.ActivityClass">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.PopupWindowActivity" />
@@ -208,7 +217,7 @@
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity android:name=".functions.database.mySql.MySqlActivity" />
         <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
-        <activity android:name=".ui.animation.AnimationActivity" />
+        <activity android:name=".ui.animation.AnimationActivity"/>
         <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
         <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity" />
         <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity" />

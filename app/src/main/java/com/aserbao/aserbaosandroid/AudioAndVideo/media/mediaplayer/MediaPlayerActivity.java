@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -54,9 +55,10 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
 //        mMediaSurfaceView = new SurfaceView(this);
         mMediaPlayer = new MediaPlayer();
         try {
-//            path = "/storage/emulated/0/DCIM/Camera/1521791992849.mp4";
+            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
