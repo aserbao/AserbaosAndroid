@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scalpel_fl"
+    android:background="@drawable/mm_2"
+    android:id="@+id/scalpel_one_fl"
     tools:context="com.aserbao.aserbaosandroid.ui.animation.scalpeAnimation.ScalpeAniamtionActivity">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/scale_recycler_view"
@@ -13,7 +14,7 @@
     <Button
         android:elevation="1dp"
         android:layout_gravity="center"
-        android:text="布局检测"
+        android:text="检测"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <FrameLayout
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
         <TextView
-            android:text="布局检测工具"
+            android:text="这是个检测页面"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="23dp"

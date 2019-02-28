@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.ui.animation.fragments3DAnimation.Fragment3DA
 import com.aserbao.aserbaosandroid.ui.animation.lottie.LottieActivity;
 import com.aserbao.aserbaosandroid.ui.animation.moveAnimation.MoveAnimActivity;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity;
+import com.aserbao.aserbaosandroid.ui.animation.reside.ResideActivity;
 import com.aserbao.aserbaosandroid.ui.animation.scalpeAnimation.ScalpeAniamtionActivity;
 
 public class AnimationActivity extends BaseActivity {
@@ -21,5 +22,6 @@ public class AnimationActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("爆炸效果", ExplosionActivity.class));
         mClassBeen.add(new ClassBean("射击动画", MoveAnimActivity.class));
         mClassBeen.add(new ClassBean("布局检测", ScalpeAniamtionActivity.class));
+        mClassBeen.add(new ClassBean("Reside", ResideActivity.class));
     }
 }

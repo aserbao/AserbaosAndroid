@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aserbao.aserbaosandroid.AUtils.AUI.layout.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.ui.animation.reside.ResideActivity">
+    <include layout="@layout/simple_base_two_layout"/>
+    <include layout="@layout/simple_base_one_layout"/>
+</com.aserbao.aserbaosandroid.AUtils.AUI.layout.ResideLayout>

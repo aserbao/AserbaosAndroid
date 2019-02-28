@@ -173,5 +173,16 @@
         <item name="backgroundTint">@color/mtrls_btn_text_btn_bg_color_selector</item>
         <item name="rippleColor">@color/mtrl_btn_text_btn_ripple_color</item>
     </style>
+
+    <style name="MenuStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:layout_marginRight">80dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/black50</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
 

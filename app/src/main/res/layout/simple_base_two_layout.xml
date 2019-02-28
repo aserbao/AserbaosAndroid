@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scalpel_two_fl"
+    android:background="@drawable/mm_1"
+    tools:context="com.aserbao.aserbaosandroid.ui.animation.scalpeAnimation.ScalpeAniamtionActivity">
+    <ScrollView
+        android:layout_gravity="center"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_menu"
+        android:layout_below="@+id/top_menu">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_collect"
+                style="@style/MenuStyle"
+                android:text="collection" />
+
+            <TextView
+                android:id="@+id/tv_mydown"
+                style="@style/MenuStyle"
+                android:text="download" />
+
+            <TextView
+                android:id="@+id/tv_fuli"
+                style="@style/MenuStyle"
+                android:text="fuli" />
+
+            <TextView
+                android:id="@+id/tv_share"
+                style="@style/MenuStyle"
+                android:text="share" />
+
+            <TextView
+                android:id="@+id/tv_feedback"
+                style="@style/MenuStyle"
+                android:text="feedback" />
+
+            <TextView
+                android:id="@+id/tv_setting"
+                style="@style/MenuStyle"
+                android:text="setting" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

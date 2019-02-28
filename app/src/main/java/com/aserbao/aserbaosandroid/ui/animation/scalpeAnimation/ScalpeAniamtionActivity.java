@@ -24,13 +24,13 @@ public class ScalpeAniamtionActivity extends AppCompatActivity implements IBaseR
 
     @BindView(R.id.scale_recycler_view)
     RecyclerView mScaleRecyclerView;
-    @BindView(R.id.scalpel_fl)
+    @BindView(R.id.scalpel_one_fl)
     ScalpelFrameLayout mScalpelFl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scalpe_aniamtion);
+        setContentView(R.layout.simple_base_one_layout);
         ButterKnife.bind(this);
         initGetData();
         initView();

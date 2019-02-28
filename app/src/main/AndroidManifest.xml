@@ -34,8 +34,10 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
-            android:theme="@style/windowIsTranslucent"></activity>
+        <activity android:name=".ui.animation.reside.ResideActivity"></activity>
+        <activity
+            android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
+            android:theme="@style/windowIsTranslucent" />
         <activity android:name=".AudioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity" />
         <activity android:name=".AudioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity" />
         <activity android:name=".AudioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity" />
@@ -217,7 +219,7 @@
         <activity android:name=".functions.database.DataBaseActivity" />
         <activity android:name=".functions.database.mySql.MySqlActivity" />
         <activity android:name=".AUtils.utils_realize.AUtilsRealizeActivity" />
-        <activity android:name=".ui.animation.AnimationActivity"/>
+        <activity android:name=".ui.animation.AnimationActivity" />
         <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
         <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity" />
         <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity" />
