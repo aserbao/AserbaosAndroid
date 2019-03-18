@@ -7,8 +7,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -75,6 +77,7 @@ public class EmojiCustomEditText extends EditText {
         setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+                Log.e(TAG, "onKey: "  );
                 if(event.getKeyCode() == KeyEvent.KEYCODE_DEL){
                     String trim = getText().toString().trim();
                     if (event.getAction() == KeyEvent.ACTION_DOWN){
@@ -89,7 +92,26 @@ public class EmojiCustomEditText extends EditText {
                 return false;
             }
         });
+        addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e(TAG, "beforeTextChanged: " );
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.e(TAG, "onTextChanged: " );
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e(TAG, "afterTextChanged: " + s.toString() );
+            }
+        });
+
     }
+
+
 
     public void setContents(String url, final String content){
         Glide.with(mContext)

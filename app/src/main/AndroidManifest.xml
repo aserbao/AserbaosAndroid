@@ -34,7 +34,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.animation.reside.ResideActivity"></activity>
+        <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity"></activity>
+        <activity android:name=".functions.events.onTouch.OnTouchActivity" />
+        <activity android:name=".ui.animation.reside.ResideActivity" />
         <activity
             android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
             android:theme="@style/windowIsTranslucent" />
