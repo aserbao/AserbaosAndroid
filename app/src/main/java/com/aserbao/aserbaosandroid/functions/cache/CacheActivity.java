@@ -9,6 +9,7 @@ public class CacheActivity extends BaseActivity {
 
     @Override
     public void initGetData() {
+
         mClassBeen.add(new ClassBean("ASimpleCache", ASimpleCacheActivity.class));
     }
 }
