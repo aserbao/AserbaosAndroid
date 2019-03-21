@@ -61,7 +61,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    testImplementation 'junit:junit:4.12'
     implementation 'com.hjq:xxpermissions:3.8'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
@@ -98,7 +97,8 @@ dependencies {
     implementation 'com.squareup.moshi:moshi-adapters:1.6.0'
     implementation 'org.jsoup:jsoup:1.11.3'
 
-    //=============material
-    implementation 'com.android.support:design:28.0.0'
+    // ===========
+    implementation 'com.google.dagger:dagger:2.21'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
 
 }

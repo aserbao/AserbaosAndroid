@@ -7,6 +7,7 @@ import android.content.pm.ResolveInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
@@ -23,7 +24,7 @@ public class Jump2OtherActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(int position) {
+    public void itemClickBack(View view , int position) {
         switch (position){
             case 0:
                 /*Intent intent1 = new Intent();

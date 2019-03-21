@@ -34,7 +34,11 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity"></activity>
+        <activity android:name=".aaThird.dagger2.MainActivity"></activity>
+        <activity android:name=".ui.buttons.ButtonActivity" />
+        <activity android:name=".aaThird.dagger2.DaggerActivity" />
+        <activity android:name=".aaThird.ThirdActivity" />
+        <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity" />
         <activity android:name=".functions.events.onTouch.OnTouchActivity" />
         <activity android:name=".ui.animation.reside.ResideActivity" />
         <activity

@@ -5,6 +5,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.View;
 import android.view.Window;
 
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
@@ -67,7 +68,7 @@ public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(int position) {
+    public void itemClickBack(View view , int position) {
         if (position == 4) {
             BActivityOptionsActivity.launch(this, position);
         }else{

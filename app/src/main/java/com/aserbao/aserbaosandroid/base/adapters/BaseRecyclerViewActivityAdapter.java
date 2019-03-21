@@ -53,7 +53,7 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<BaseRe
         holder.mBaseRecyclerViewItemTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIBaseRecyclerItemClickListener.itemClickBack(position);
+                mIBaseRecyclerItemClickListener.itemClickBack(v,position);
             }
         });
     }

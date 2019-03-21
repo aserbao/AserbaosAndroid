@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.AudioAndVideo.media.jCVideoPlayer.live;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.aserbao.aserbaosandroid.AudioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity;
 import com.aserbao.aserbaosandroid.R;
@@ -17,7 +18,7 @@ public class JCLivePlayerActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(int position) {
+    public void itemClickBack(View view , int position) {
         switch (position){
             case 0:
 //                JCPlayerActivity.lanuch(this,"http://tv.cctv.com/live/cctv1/?date=2019-02-28&index=0");

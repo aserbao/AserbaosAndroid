@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.base.interfaces;
 
+import android.view.View;
+
 /**
  * 功能:
  *
@@ -10,5 +12,5 @@ package com.aserbao.aserbaosandroid.base.interfaces;
  * @package:com.aserbao.aserbaosandroid.base.interfaces
  */
 public interface IBaseRecyclerItemClickListener {
-   public void itemClickBack(int position);
+   public void itemClickBack(View view, int position);
 }

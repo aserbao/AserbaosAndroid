@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.R;
@@ -76,7 +77,7 @@ public class ScalpeAniamtionActivity extends AppCompatActivity implements IBaseR
     }
 
     @Override
-    public void itemClickBack(int position) {
+    public void itemClickBack(View view , int position) {
         Snackbar.make(mScaleRecyclerView,"点什么点？",Snackbar.LENGTH_SHORT);
     }
 }
