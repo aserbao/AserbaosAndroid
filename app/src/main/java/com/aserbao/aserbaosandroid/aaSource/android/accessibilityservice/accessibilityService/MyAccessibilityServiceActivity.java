@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.phone.AJumpUtils;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 
@@ -19,6 +20,7 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("AccessibilityService"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开抖音"));
     }
 
     private static final String TAG = "MyAccessibilityServiceA";
@@ -32,6 +34,9 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 }else{
                     startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
                 }
+                break;
+            case 1:
+                AJumpUtils.jumpToTikTok(this);
                 break;
         }
     }
