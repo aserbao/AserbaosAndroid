@@ -17,7 +17,6 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -34,7 +33,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity"></activity>
+        <activity android:name=".aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity"></activity>
+        <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity" />
         <activity android:name=".aaThird.dagger2.MainActivity" />
         <activity android:name=".ui.buttons.ButtonActivity" />
         <activity android:name=".aaThird.dagger2.DaggerActivity" />
@@ -285,6 +285,21 @@
         <activity android:name=".ui.canvas.CanvasActivity" />
         <activity android:name=".ui.canvas.matrix.MatrixActivity" />
         <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity" />
+
+        <service
+            android:name=".aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Aserbao 测试脚本"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/my_accessibility_service" />
+        </service>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android;
 
+import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.AccessibilityServiceActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.AppActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.MaterialActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
@@ -11,5 +12,6 @@ public class AndroidActivity extends BaseActivity {
     public void initGetData() {
         mClassBeen.add(new ClassBean("App", AppActivity.class));
         mClassBeen.add(new ClassBean("Material", MaterialActivity.class));
+        mClassBeen.add(new ClassBean("AccessibilityService", AccessibilityServiceActivity.class));
     }
 }
