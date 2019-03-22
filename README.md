@@ -8,6 +8,11 @@ Mr. Zhu ，英文名aserbao! 从事Android开发多年，技术不高，用来�
  2. [一篇好文之Android数据库 GreenDao的完全解析](https://blog.csdn.net/qq_32175491/article/details/82913904)
  3. [一篇好文之Android数据库 SQLite全解析](https://blog.csdn.net/qq_32175491/article/details/82886652)
  4. [一篇好文之Android 调用C代码及生成调试so库](https://blog.csdn.net/qq_32175491/article/details/83588167)
+ 5. [Android性能优化之APK瘦身详解(瘦身73%)](https://blog.csdn.net/qq_32175491/article/details/80071987)
+ 6. [Android性能优化之内存泄漏处理（图文）](https://blog.csdn.net/qq_32175491/article/details/79629900)
+ 7. [Android openGl开发详解(一)——绘制简单图形](https://blog.csdn.net/qq_32175491/article/details/79091647)
+ 8. [Android openGl开发详解(二)——通过SurfaceView，TextureView，GlSurfaceView显示相机预览（附Demo）](https://blog.csdn.net/qq_32175491/article/details/79755424)
+ 9. [Android 自定义相机开发（三) —— EGL介绍](https://blog.csdn.net/qq_32175491/article/details/80271016)
 
 # AserbaosAndroid项目介绍
 aserbao的个人Android学习总结项目，希望这个项目能成为最全面的Android开发学习项目，当然这是个美好的愿景，项目中还有很多未涉及到的地方，有很多没有讲到的点，希望看到这个项目的朋友，如果你在开发中遇到什么问题，在这个项目中没有找到对应的解决办法，希望你能够提出来，在我的微信公众号aserbao给我留言或者在项目github地址提issues,我有时间就会更新项目没有涉及到的部分！项目会一直维护下去。当然，我希望是Aserbao’sAndroid 能为所有Android开发者提供到帮助！也期望更多Android开发者能参与进来，只要你熟悉Android某一块，都可以将你的代码pull上分支供大家学习！
