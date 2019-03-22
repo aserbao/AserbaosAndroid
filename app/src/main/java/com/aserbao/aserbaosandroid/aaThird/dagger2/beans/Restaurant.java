@@ -2,6 +2,8 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 /**
  * 功能:
  *
@@ -12,8 +14,10 @@ import android.util.Log;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Restaurant {
-    String resName; // 餐厅名字
 
+    @Inject
+    public Restaurant() {
+    }
 
     public void  cooking(){
         Log.e("dagger2", "cooking: " );

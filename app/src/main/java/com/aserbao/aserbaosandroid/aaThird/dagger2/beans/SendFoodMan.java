@@ -2,6 +2,8 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 /**
  * 功能:
  *
@@ -12,7 +14,10 @@ import android.util.Log;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class SendFoodMan {
-    int no;//编号
+
+    @Inject
+    public SendFoodMan() {
+    }
 
     public void getFood(){
         Log.e("dagger", "I had get the Food" );

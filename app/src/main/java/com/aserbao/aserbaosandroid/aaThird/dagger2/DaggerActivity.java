@@ -14,9 +14,15 @@ import javax.inject.Inject;
 
 public class DaggerActivity extends BaseRecyclerViewActivity {
 
-  /*  @Inject
-    Student mStudent;
-*/
+    @Inject
+    Restaurant restaurant1;
+    @Inject
+    SendFoodMan sendFoodMan1;
+    @Inject
+    LazyMan lazyMan1;
+
+
+
     @Override
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("不使用Dagger2的做法"));
@@ -39,14 +45,14 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
                 lazyMan.receiveFood();
                 break;
             case 1:
-                /*DaggerMainComponent.create().inject(this);
-//                DaggerActivity_MembersInjector.injectMStudent(this,new Student("123",15));
-                String name = mStudent.getName();
-
-                Log.e(TAG, "itemClickBack: " + name);
-                Snackbar.make(view,name,Snackbar.LENGTH_SHORT).show();*/
-//                DaggerMainComponent.builder().appModules(new AppModules()).build().inject(this);
-//                DaggerMainComponent.create().inject(this);
+                DaggerActivity_MembersInjector.injectRestaurant1(this,new Restaurant());
+                DaggerActivity_MembersInjector.injectSendFoodMan1(this,new SendFoodMan());
+                DaggerActivity_MembersInjector.injectLazyMan1(this,new LazyMan());
+                restaurant1.cooking();
+                sendFoodMan1.getFood();
+                sendFoodMan1.sendFood();
+                sendFoodMan1.finishSendFood();
+                lazyMan1.receiveFood();
                 break;
             case 2:
                 ButtonActivity.launch(this);

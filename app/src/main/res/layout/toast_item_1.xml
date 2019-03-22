@@ -7,7 +7,6 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/toast_item_iv"
-        android:src="@drawable/five"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
     <TextView

@@ -16,8 +16,9 @@ import dagger.Provides;
  */
 @Module
 public class ActivityModule {
-    @Provides
+   /* @Provides
     public Student providesStudent(){
         return new Student("123",18);
-    }
+    }*/
+
 }

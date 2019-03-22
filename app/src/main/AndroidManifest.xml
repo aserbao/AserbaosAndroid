@@ -34,7 +34,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.dagger2.MainActivity"></activity>
+        <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity"></activity>
+        <activity android:name=".aaThird.dagger2.MainActivity" />
         <activity android:name=".ui.buttons.ButtonActivity" />
         <activity android:name=".aaThird.dagger2.DaggerActivity" />
         <activity android:name=".aaThird.ThirdActivity" />
