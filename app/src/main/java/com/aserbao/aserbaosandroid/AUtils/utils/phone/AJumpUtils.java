@@ -22,6 +22,14 @@ public class AJumpUtils {
         activity.startActivity(intentDouYin);
     }
 
+    public static void jumpToPackage(Activity activity,String pkg,String cls){
+        Intent intentDouYin = new Intent();
+        ComponentName componentNameDouYin = new ComponentName(pkg, cls);
+        intentDouYin.setComponent(componentNameDouYin);
+        intentDouYin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intentDouYin);
+    }
+
 
     public static void jumpToKuaiShou(Activity activity){
         Intent intentKuaiShou = new Intent();
