@@ -56,7 +56,7 @@ public class MyAccessibilityService extends AccessibilityService {
             switch (msg.what){
                 case 0:
                     Log.e(TAG, "handleMessage: " + msg.what );
-                    slideVertical(15,5);
+                    slideVertical(19,0);
                     break;
             }
         }
@@ -77,19 +77,22 @@ public class MyAccessibilityService extends AccessibilityService {
                 break;
             case TYPE_WINDOW_STATE_CHANGED: //窗口状态改变，可见的View 窗口发生了变化
                 mHandler.sendEmptyMessageDelayed(0,1500);
-                /*if (packageName.equals("com.getremark.spot")) {
+//                if (packageName.equals("com.getremark.spot")) {
+                if (packageName.equals("com.aserbao.aserbaosandroid")) {
                     accessibilityNodeInfo = this.getRootInActiveWindow();
-                    Rect rect = new Rect();
-                    accessibilityNodeInfo.getBoundsInScreen(rect);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                         if (accessibilityNodeInfo != null) {
-                            Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
+                            List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
+                            if (nodeInfosByViewId != null) {
+//                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
+                                Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
+                            }
 //                            accessibilityNodeInfo.performAction(GESTURE_SWIPE_DOWN);
 //                            performSwipeRight(accessibilityNodeInfo);
 
                         }
                     }
-                }*/
+                }
                 break;
             case TYPE_NOTIFICATION_STATE_CHANGED: // 这个是监听状态栏来的通知的，软键盘弹出
                 break;
@@ -123,6 +126,7 @@ public class MyAccessibilityService extends AccessibilityService {
                 break;
         }
     }
+
 
 
 
@@ -173,22 +177,22 @@ public class MyAccessibilityService extends AccessibilityService {
             .addStroke(new GestureDescription.
                 StrokeDescription(path,
                 200,
-                200))
-            .build();
+                1000)).build();
 
-        dispatchGesture(gestureDescription, new AccessibilityService.GestureResultCallback() {
+        boolean dispatchGesture = dispatchGesture(gestureDescription, new GestureResultCallback() {
             @Override
             public void onCompleted(GestureDescription gestureDescription) {
                 super.onCompleted(gestureDescription);
-                Log.e(TAG, "onCompleted: " + gestureDescription.toString() );
+                Log.e(TAG, "onCompleted: " + gestureDescription.toString());
             }
 
             @Override
             public void onCancelled(GestureDescription gestureDescription) {
                 super.onCancelled(gestureDescription);
-                Log.e(TAG, "onCancelled: " + gestureDescription.toString() );
+                Log.e(TAG, "onCancelled: " + gestureDescription.toString());
             }
         }, null);
+        Log.e(TAG, "slideVertical: " + dispatchGesture );
     }
 
 }

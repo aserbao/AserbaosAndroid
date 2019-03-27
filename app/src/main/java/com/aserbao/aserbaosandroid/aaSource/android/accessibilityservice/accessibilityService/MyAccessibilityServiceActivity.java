@@ -13,6 +13,9 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.AJumpUtils;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
 
@@ -23,6 +26,7 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开抖音"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开spot"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开微信"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开Item侧滑删除"));
     }
 
     private static final String TAG = "MyAccessibilityServiceA";
@@ -46,6 +50,10 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 break;
             case 3:
                 AJumpUtils.jumpToWeChat(this);
+                break;
+            case 4:
+                Intent intent = new Intent(this, MoveToDeleteActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -73,6 +81,7 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 }
             }
         }
+        Glide.with(mContext).load("").apply(new RequestOptions().diskCacheStrategy())
         return false;
     }
 }
