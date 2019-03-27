@@ -1,11 +1,19 @@
 package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService;
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.GestureDescription;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+
+import com.airbnb.lottie.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 import java.util.List;
 
@@ -41,38 +49,21 @@ import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CH
  */
 public class MyAccessibilityService extends AccessibilityService {
     private static final String TAG = "MyAccessibilityService";
-
+    private AccessibilityNodeInfo accessibilityNodeInfo;
+    private android.os.Handler mHandler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 0:
+                    Log.e(TAG, "handleMessage: " + msg.what );
+                    slideVertical(15,5);
+                    break;
+            }
+        }
+    };
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
-        if (packageName.equals("com.getremark.spot")) {
-            AccessibilityNodeInfo accessibilityNodeInfo = this.getRootInActiveWindow();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                Log.e(TAG, "onAccessibilityEvent: " + event.toString() );
-                if (accessibilityNodeInfo != null) {
-//                    List<AccessibilityNodeInfo> nodeInfosByText = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.getremark.spot:id/tab_chat");
-//                    List<AccessibilityNodeInfo> nodeInfosByText = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.getremark.spot:id/note_peek_entry_btn");
-                    List<AccessibilityNodeInfo> nodeInfosByText = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.getremark.spot:id/tv_my_account");
-//                    List<AccessibilityNodeInfo> nodeInfosByText = accessibilityNodeInfo.findAccessibilityNodeInfosByText("聊天");
-                    accessibilityNodeInfo.recycle();
-                    if (nodeInfosByText != null) {
-                        for (AccessibilityNodeInfo item : nodeInfosByText) {
-                            Log.e(TAG, "onAccessibilityEvent s: " + item.toString() );
-//                            item.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-//                            item.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT);
-                            item.setEditable(true);
-//                            item.setSealed(false);
-                            Bundle arguments=new Bundle();
-                            arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE,"哈哈");
-                            item.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT,arguments);
-
-//                            item.setText("hahha");
-                        }
-                    }
-                }
-            }
-        }
-
         int eventType = event.getEventType();
         Log.e(TAG, "onAccessibilityEvent: " + event.toString());
         switch (eventType) {
@@ -85,6 +76,20 @@ public class MyAccessibilityService extends AccessibilityService {
             case TYPE_VIEW_TEXT_CHANGED://界面文字改动
                 break;
             case TYPE_WINDOW_STATE_CHANGED: //窗口状态改变，可见的View 窗口发生了变化
+                mHandler.sendEmptyMessageDelayed(0,1500);
+                /*if (packageName.equals("com.getremark.spot")) {
+                    accessibilityNodeInfo = this.getRootInActiveWindow();
+                    Rect rect = new Rect();
+                    accessibilityNodeInfo.getBoundsInScreen(rect);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                        if (accessibilityNodeInfo != null) {
+                            Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
+//                            accessibilityNodeInfo.performAction(GESTURE_SWIPE_DOWN);
+//                            performSwipeRight(accessibilityNodeInfo);
+
+                        }
+                    }
+                }*/
                 break;
             case TYPE_NOTIFICATION_STATE_CHANGED: // 这个是监听状态栏来的通知的，软键盘弹出
                 break;
@@ -131,4 +136,59 @@ public class MyAccessibilityService extends AccessibilityService {
     public void onInterrupt() {
         Log.e(TAG, "onInterrupt: ");
     }
+
+
+    private void performSwipeRight(final AccessibilityNodeInfo accessibilityNodeInfo) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        mHandler.sendEmptyMessage(0);
+                        Thread.sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }).start();
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void slideVertical(int startSlideRatio, int stopSlideRatio) {
+        int screenHeight = DisplayUtil.getScreenHeight(getApplicationContext());
+        int screenWidth = DisplayUtil.getScreenWidth(getApplicationContext());
+        Log.e("","屏幕：" + (screenHeight - (screenHeight / 10)) + "/" +
+            (screenHeight - (screenHeight - (screenHeight / 10))) + "/" + screenWidth / 2);
+
+        Path path = new Path();
+        int start = (screenHeight / 20) * startSlideRatio;
+        int stop = (screenHeight / 20) * stopSlideRatio;
+        path.moveTo(screenWidth / 2, start);//如果只是设置moveTo就是点击
+        path.lineTo(screenWidth / 2, stop);//如果设置这句就是滑动
+        GestureDescription.Builder builder = new GestureDescription.Builder();
+        GestureDescription gestureDescription = builder
+            .addStroke(new GestureDescription.
+                StrokeDescription(path,
+                200,
+                200))
+            .build();
+
+        dispatchGesture(gestureDescription, new AccessibilityService.GestureResultCallback() {
+            @Override
+            public void onCompleted(GestureDescription gestureDescription) {
+                super.onCompleted(gestureDescription);
+                Log.e(TAG, "onCompleted: " + gestureDescription.toString() );
+            }
+
+            @Override
+            public void onCancelled(GestureDescription gestureDescription) {
+                super.onCancelled(gestureDescription);
+                Log.e(TAG, "onCancelled: " + gestureDescription.toString() );
+            }
+        }, null);
+    }
+
 }

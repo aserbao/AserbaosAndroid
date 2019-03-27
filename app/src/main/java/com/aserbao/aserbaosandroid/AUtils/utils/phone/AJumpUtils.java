@@ -38,4 +38,12 @@ public class AJumpUtils {
         intentKuaiShou.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intentKuaiShou);
     }
+
+    public static void jumpToWeChat(Activity activity){
+        Intent intentWeChat = new Intent();
+        ComponentName componentNameKuaiShou = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
+        intentWeChat.setComponent(componentNameKuaiShou);
+        intentWeChat.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intentWeChat);
+    }
 }

@@ -22,6 +22,7 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("AccessibilityService"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开抖音"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开spot"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开微信"));
     }
 
     private static final String TAG = "MyAccessibilityServiceA";
@@ -42,6 +43,9 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
             case 2:
 //              com.getremark.spot/.act.SplashActivity
                 AJumpUtils.jumpToPackage(this,"com.getremark.spot","com.getremark.spot.act.SplashActivity");
+                break;
+            case 3:
+                AJumpUtils.jumpToWeChat(this);
                 break;
         }
     }
