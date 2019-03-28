@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService;
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -66,6 +67,10 @@ public class MyAccessibilityService extends AccessibilityService {
         }
     };
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
