@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:accessibilityEventTypes="typeAllMask"
-    android:accessibilityFeedbackType="feedbackGeneric"
-    android:accessibilityFlags="flagReportViewIds"
+    android:accessibilityFeedbackType="feedbackAllMask"
     android:canRetrieveWindowContent="true"
+    android:notificationTimeout="100"
     android:canPerformGestures="true"
+    android:canRequestFingerprintGestures="true"
+    android:accessibilityFlags="flagDefault|flagRequestFingerprintGestures"
+    android:canRequestTouchExplorationMode="true"
     android:description="@string/app_name"/>
 

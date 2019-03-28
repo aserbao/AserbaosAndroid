@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -50,6 +51,9 @@ import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CH
 public class MyAccessibilityService extends AccessibilityService {
     private static final String TAG = "MyAccessibilityService";
     private AccessibilityNodeInfo accessibilityNodeInfo;
+
+
+
     private android.os.Handler mHandler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -61,6 +65,8 @@ public class MyAccessibilityService extends AccessibilityService {
             }
         }
     };
+
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
@@ -142,22 +148,18 @@ public class MyAccessibilityService extends AccessibilityService {
     }
 
 
-    private void performSwipeRight(final AccessibilityNodeInfo accessibilityNodeInfo) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        mHandler.sendEmptyMessage(0);
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }).start();
+    @Override
+    protected boolean onGesture(int gestureId) {
+        Log.e(TAG, "onGesture: " +gestureId);
+        return super.onGesture(gestureId);
     }
+
+    @Override
+    protected boolean onKeyEvent(KeyEvent event) {
+        Log.e(TAG, "onKeyEvent: " +event.getAction() );
+        return super.onKeyEvent(event);
+    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)

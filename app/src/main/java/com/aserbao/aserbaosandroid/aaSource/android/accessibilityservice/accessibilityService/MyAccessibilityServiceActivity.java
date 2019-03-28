@@ -81,7 +81,6 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 }
             }
         }
-        Glide.with(mContext).load("").apply(new RequestOptions().diskCacheStrategy())
         return false;
     }
 }
