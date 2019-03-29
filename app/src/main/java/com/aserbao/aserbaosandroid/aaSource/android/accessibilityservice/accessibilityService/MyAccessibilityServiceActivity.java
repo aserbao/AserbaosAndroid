@@ -3,19 +3,30 @@ package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.access
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.LocaleSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.AJumpUtils;
+import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import java.util.Locale;
+
+import static android.media.AudioManager.ADJUST_RAISE;
 
 public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
 
@@ -27,6 +38,8 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开spot"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开微信"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("打开Item侧滑删除"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开Setting界面"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("测试"));
     }
 
     private static final String TAG = "MyAccessibilityServiceA";
@@ -55,7 +68,27 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 Intent intent = new Intent(this, MoveToDeleteActivity.class);
                 startActivity(intent);
                 break;
+            case 5:
+                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+                break;
+            case 6:
+                TextView localeWrappedTextView = findViewById(R.id.base_recycler_tv);
+                localeWrappedTextView.setText(wrapTextInLocaleSpan("Bonjour!", Locale.FRANCE));
+                break;
         }
+    }
+
+
+
+    private SpannableStringBuilder wrapTextInLocaleSpan(
+        CharSequence originalText, Locale loc) {
+        SpannableStringBuilder myLocaleBuilder =
+            new SpannableStringBuilder(originalText);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            myLocaleBuilder.setSpan(new LocaleSpan(loc), 0,
+                originalText.length() - 1, 0);
+        }
+        return myLocaleBuilder;
     }
 
     public static boolean isAccessibilitySettingsOn(Context mContext, Class<? extends AccessibilityService> clazz) {

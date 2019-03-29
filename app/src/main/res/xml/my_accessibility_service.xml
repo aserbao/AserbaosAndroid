@@ -2,11 +2,12 @@
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:accessibilityEventTypes="typeAllMask"
     android:accessibilityFeedbackType="feedbackGeneric"
-    android:accessibilityFlags="flagReportViewIds"
+    android:accessibilityFlags="flagDefault|flagEnableAccessibilityVolume|flagRequestAccessibilityButton|flagRequestFingerprintGestures|flagRequestTouchExplorationMode"
     android:canRetrieveWindowContent="true"
     android:canPerformGestures="true"
     android:canRequestFilterKeyEvents="true"
     android:canRequestTouchExplorationMode="true"
+    android:canRequestFingerprintGestures="true"
     android:notificationTimeout="50"
     android:description="@string/app_name"/>
 

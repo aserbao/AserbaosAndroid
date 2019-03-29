@@ -1,14 +1,18 @@
 package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService;
 
+import android.accessibilityservice.AccessibilityButtonController;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.accessibilityservice.FingerprintGestureController;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.accessibility.AccessibilityEvent;
@@ -19,6 +23,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 import java.util.List;
 
+import static android.media.AudioManager.ADJUST_RAISE;
 import static android.view.accessibility.AccessibilityEvent.TYPE_ANNOUNCEMENT;
 import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_END;
 import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_START;
@@ -50,7 +55,7 @@ import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CH
  * @package:com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService
  */
 public class MyAccessibilityService extends AccessibilityService {
-    private static final String TAG = "MyAccessibilityService";
+    private static final String TAG = "fingerprintGestures";
     private AccessibilityNodeInfo accessibilityNodeInfo;
 
 
@@ -64,19 +69,18 @@ public class MyAccessibilityService extends AccessibilityService {
                     slideVertical(19,0);
                     break;
             }
+            Log.e(TAG, "handleMessage: " + msg.what );
         }
     };
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
+
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
         int eventType = event.getEventType();
         Log.e(TAG, "onAccessibilityEvent: " + event.toString());
+
         switch (eventType) {
             case TYPE_VIEW_CLICKED://界面点击
                 break;
@@ -87,22 +91,30 @@ public class MyAccessibilityService extends AccessibilityService {
             case TYPE_VIEW_TEXT_CHANGED://界面文字改动
                 break;
             case TYPE_WINDOW_STATE_CHANGED: //窗口状态改变，可见的View 窗口发生了变化
-                mHandler.sendEmptyMessageDelayed(0,1500);
 //                if (packageName.equals("com.getremark.spot")) {
-                if (packageName.equals("com.aserbao.aserbaosandroid")) {
+//                mHandler.sendEmptyMessageDelayed(0,1500);
+                if (packageName.equals("com.example.aserbao.aserbaosandroid")) {
+                    Log.e(TAG, "onAccessibilityEvent TYPE_WINDOW_STATE_CHANGED : " );
                     accessibilityNodeInfo = this.getRootInActiveWindow();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                    /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                         if (accessibilityNodeInfo != null) {
                             List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
-                            if (nodeInfosByViewId != null) {
-//                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
+                            if (nodeInfosByViewId != null && nodeInfosByViewId.size() > 0) {
+                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
                                 Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
                             }
 //                            accessibilityNodeInfo.performAction(GESTURE_SWIPE_DOWN);
 //                            performSwipeRight(accessibilityNodeInfo);
-
                         }
-                    }
+                    }*/
+
+                    AccessibilityNodeInfo interactedNodeInfo = event.getSource();
+
+                    /*if (interactedNodeInfo != null && !TextUtils.isEmpty(interactedNodeInfo.getText())&& interactedNodeInfo.getText().equals("Increase volume")) {
+                        Log.e(TAG, "onAccessibilityEvent: Increase volume"  );
+                        AudioManager    audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+                        audioManager.adjustStreamVolume(AudioManager.STREAM_ACCESSIBILITY, ADJUST_RAISE, 0);
+                    }*/
                 }
                 break;
             case TYPE_NOTIFICATION_STATE_CHANGED: // 这个是监听状态栏来的通知的，软键盘弹出
@@ -135,11 +147,19 @@ public class MyAccessibilityService extends AccessibilityService {
                 break;
             case  TYPE_WINDOWS_CHANGED:// 系统窗口中的时间更改通知
                 break;
+            default:
+                break;
         }
     }
 
 
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (getServiceInfo() != null) {
+            getServiceInfo().flags = AccessibilityServiceInfo.FLAG_REQUEST_TOUCH_EXPLORATION_MODE;
+        }
+    }
 
     @Override
     protected void onServiceConnected() {
@@ -202,4 +222,104 @@ public class MyAccessibilityService extends AccessibilityService {
         Log.e(TAG, "slideVertical: " + dispatchGesture );
     }
 
+    //=====================指纹手势检测
+    private FingerprintGestureController gestureController;
+    private FingerprintGestureController
+        .FingerprintGestureCallback fingerprintGestureCallback;
+    private boolean mIsGestureDetectionAvailable;
+    public void fingerprintGestures(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Log.e(TAG, "fingerprintGestures: " );
+//            mIsGestureDetectionAvailable = gestureController.isGestureDetectionAvailable();
+            if (fingerprintGestureCallback != null || !mIsGestureDetectionAvailable) {
+                return;
+            }
+
+
+            fingerprintGestureCallback = new FingerprintGestureController.FingerprintGestureCallback() {
+                    @Override
+                    public void onGestureDetected(int gesture) {
+                        switch (gesture) {
+                            case FingerprintGestureController.FINGERPRINT_GESTURE_SWIPE_DOWN:
+                                Log.e(TAG, "onGestureDetected: FINGERPRINT_GESTURE_SWIPE_DOWN" + gesture  );
+                                break;
+                            case FingerprintGestureController.FINGERPRINT_GESTURE_SWIPE_LEFT:
+                                Log.e(TAG, "onGestureDetected: FINGERPRINT_GESTURE_SWIPE_LEFT" + gesture );
+                                break;
+                            case FingerprintGestureController.FINGERPRINT_GESTURE_SWIPE_RIGHT:
+                                Log.e(TAG, "onGestureDetected: FINGERPRINT_GESTURE_SWIPE_RIGHT"+gesture  );
+                                break;
+                            case FingerprintGestureController.FINGERPRINT_GESTURE_SWIPE_UP:
+                                Log.e(TAG, "onGestureDetected: FINGERPRINT_GESTURE_SWIPE_UP" +gesture );
+                                break;
+                            default:
+                                Log.e(TAG, "onGestureDetected: DEFAULT" +gesture );
+                                break;
+                        }
+                    }
+                    @Override
+                    public void onGestureDetectionAvailabilityChanged(boolean available) {
+                        Log.e(TAG, "onGestureDetectionAvailabilityChanged: " + available );
+                        mIsGestureDetectionAvailable = available;
+                    }
+            };
+
+            if (fingerprintGestureCallback != null) {
+                gestureController.registerFingerprintGestureCallback(fingerprintGestureCallback, mHandler);
+            }
+        }else{
+            Log.e(TAG, "fingerprintGestures: false" );
+        }
+    }
+
+    //======================辅助功能快捷方式
+    private AccessibilityButtonController accessibilityButtonController;
+    private AccessibilityButtonController
+        .AccessibilityButtonCallback accessibilityButtonCallback;
+    private boolean mIsAccessibilityButtonAvailable;
+    public void userAccessibilityButtonController(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            accessibilityButtonController = getAccessibilityButtonController();
+            mIsAccessibilityButtonAvailable =
+                accessibilityButtonController.isAccessibilityButtonAvailable();
+        }
+        if (!mIsAccessibilityButtonAvailable) {
+            return;
+        }
+
+        AccessibilityServiceInfo serviceInfo = getServiceInfo();
+        serviceInfo.flags |= AccessibilityServiceInfo.FLAG_REQUEST_ACCESSIBILITY_BUTTON;
+        setServiceInfo(serviceInfo);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            accessibilityButtonCallback =new AccessibilityButtonController.AccessibilityButtonCallback() {
+                @Override
+                public void onClicked(AccessibilityButtonController controller) {
+                    Log.d("MY_APP_TAG", "Accessibility button pressed!");
+
+                    // Add custom logic for a service to react to the
+                    // accessibility button being pressed.
+                }
+
+                @Override
+                public void onAvailabilityChanged(
+                    AccessibilityButtonController controller, boolean available) {
+                    if (controller.equals(accessibilityButtonController)) {
+                        mIsAccessibilityButtonAvailable = available;
+                    }
+                }
+            };
+        }else{
+            Log.e(TAG, "onServiceConnected: " );
+        }
+
+        if (accessibilityButtonCallback != null && accessibilityButtonController!= null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                accessibilityButtonController.registerAccessibilityButtonCallback(
+                    accessibilityButtonCallback, mHandler);
+            }else{
+                Log.e(TAG, "onServiceConnected:registerAccessibilityButtonCallback " );
+            }
+        }
+    }
 }
