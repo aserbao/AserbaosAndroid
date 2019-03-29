@@ -5,5 +5,8 @@
     android:accessibilityFlags="flagDefault"
     android:canRetrieveWindowContent="true"
     android:canPerformGestures="true"
+    android:canRequestFilterKeyEvents="true"
+    android:canRequestTouchExplorationMode="true"
+    android:notificationTimeout="50"
     android:description="@string/app_name"/>
 

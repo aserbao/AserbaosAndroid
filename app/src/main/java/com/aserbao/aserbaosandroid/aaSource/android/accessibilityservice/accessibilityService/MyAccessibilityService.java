@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService;
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -52,6 +54,9 @@ import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CH
 public class MyAccessibilityService extends AccessibilityService {
     private static final String TAG = "MyAccessibilityService";
     private AccessibilityNodeInfo accessibilityNodeInfo;
+
+
+
     private android.os.Handler mHandler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -63,6 +68,12 @@ public class MyAccessibilityService extends AccessibilityService {
             }
         }
     };
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
 
     private AudioManager audioManager =
         (AudioManager) getSystemService(AUDIO_SERVICE);
@@ -92,10 +103,10 @@ public class MyAccessibilityService extends AccessibilityService {
                 mHandler.sendEmptyMessageDelayed(0,1500);
 //                if (packageName.equals("com.getremark.spot")) {
                 if (packageName.equals("com.aserbao.aserbaosandroid")) {
-                    this.accessibilityNodeInfo = this.getRootInActiveWindow();
+                    accessibilityNodeInfo = this.getRootInActiveWindow();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                        if (this.accessibilityNodeInfo != null) {
-                            List<AccessibilityNodeInfo> nodeInfosByViewId = this.accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
+                        if (accessibilityNodeInfo != null) {
+                            List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
                             if (nodeInfosByViewId != null) {
 //                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
                                 Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
@@ -157,9 +168,17 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     protected boolean onGesture(int gestureId) {
-        Log.e(TAG, "onGesture: " + gestureId );
+        Log.e(TAG, "onGesture: " +gestureId);
         return super.onGesture(gestureId);
     }
+
+    @Override
+    protected boolean onKeyEvent(KeyEvent event) {
+        Log.e(TAG, "onKeyEvent: " +event.getAction() );
+        return super.onKeyEvent(event);
+    }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void slideVertical(int startSlideRatio, int stopSlideRatio) {
