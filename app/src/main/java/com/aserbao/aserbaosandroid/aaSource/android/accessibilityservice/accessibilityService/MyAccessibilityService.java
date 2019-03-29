@@ -4,6 +4,7 @@ import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -17,6 +18,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 import java.util.List;
 
+import static android.media.AudioManager.ADJUST_RAISE;
 import static android.view.accessibility.AccessibilityEvent.TYPE_ANNOUNCEMENT;
 import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_END;
 import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_START;
@@ -61,10 +63,21 @@ public class MyAccessibilityService extends AccessibilityService {
             }
         }
     };
+
+    private AudioManager audioManager =
+        (AudioManager) getSystemService(AUDIO_SERVICE);
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
         int eventType = event.getEventType();
+        AccessibilityNodeInfo interactedNodeInfo =
+            event.getSource();
+        if (interactedNodeInfo.getText().equals("Increase volume")) {
+            audioManager.adjustStreamVolume(AudioManager.STREAM_ACCESSIBILITY,
+                ADJUST_RAISE, 0);
+        }
+
         Log.e(TAG, "onAccessibilityEvent: " + event.toString());
         switch (eventType) {
             case TYPE_VIEW_CLICKED://界面点击
@@ -79,10 +92,10 @@ public class MyAccessibilityService extends AccessibilityService {
                 mHandler.sendEmptyMessageDelayed(0,1500);
 //                if (packageName.equals("com.getremark.spot")) {
                 if (packageName.equals("com.aserbao.aserbaosandroid")) {
-                    accessibilityNodeInfo = this.getRootInActiveWindow();
+                    this.accessibilityNodeInfo = this.getRootInActiveWindow();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                        if (accessibilityNodeInfo != null) {
-                            List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
+                        if (this.accessibilityNodeInfo != null) {
+                            List<AccessibilityNodeInfo> nodeInfosByViewId = this.accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
                             if (nodeInfosByViewId != null) {
 //                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
                                 Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
@@ -142,23 +155,11 @@ public class MyAccessibilityService extends AccessibilityService {
     }
 
 
-    private void performSwipeRight(final AccessibilityNodeInfo accessibilityNodeInfo) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        mHandler.sendEmptyMessage(0);
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }).start();
+    @Override
+    protected boolean onGesture(int gestureId) {
+        Log.e(TAG, "onGesture: " + gestureId );
+        return super.onGesture(gestureId);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void slideVertical(int startSlideRatio, int stopSlideRatio) {
