@@ -75,10 +75,21 @@ public class MyAccessibilityService extends AccessibilityService {
 
 
 
+
+    private AudioManager audioManager =
+        (AudioManager) getSystemService(AUDIO_SERVICE);
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
         int eventType = event.getEventType();
+        AccessibilityNodeInfo interactedNodeInfo =
+            event.getSource();
+        if (interactedNodeInfo.getText().equals("Increase volume")) {
+            audioManager.adjustStreamVolume(AudioManager.STREAM_ACCESSIBILITY,
+                ADJUST_RAISE, 0);
+        }
+
         Log.e(TAG, "onAccessibilityEvent: " + event.toString());
 
         switch (eventType) {
