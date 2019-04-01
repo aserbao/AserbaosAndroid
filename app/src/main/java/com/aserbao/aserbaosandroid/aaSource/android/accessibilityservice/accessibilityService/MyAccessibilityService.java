@@ -78,64 +78,14 @@ public class MyAccessibilityService extends AccessibilityService {
     };
     private boolean isSend = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
         int eventType = event.getEventType();
-        Log.e(TAG, "onAccessibilityEvent: " + event.toString());
+        Log.e(TAG, "onAccessibilityEvent: =======" + event.toString() + "\n"+packageName +" ======== "+ event.getClassName());
+        accessibilityNodeInfo = getRootInActiveWindow();
         weChatZan(event);
-        switch (eventType) {
-            case TYPE_VIEW_CLICKED://界面点击
-                break;
-            case TYPE_VIEW_SELECTED://视图选择
-                break;
-            case TYPE_VIEW_FOCUSED: // 视图聚焦
-                break;
-            case TYPE_VIEW_TEXT_CHANGED://界面文字改动
-                break;
-            case TYPE_WINDOW_STATE_CHANGED: //窗口状态改变，可见的View 窗口发生了变化
-//                mHandler.sendEmptyMessageDelayed(0,1500);
-//                if (packageName.equals("com.example.aserbao.aserbaosandroid")) {
-                /*if (!isSend) {
-                    isSend = true;
-                    mHandler.sendEmptyMessageDelayed(0, 1500);
-                }*/
-                if (packageName.equals("com.tencent.mm")){
-                }
-                break;
-            case TYPE_NOTIFICATION_STATE_CHANGED: // 这个是监听状态栏来的通知的，软键盘弹出
-                break;
-            case TYPE_VIEW_HOVER_ENTER://界面停留
-                break;
-            case TYPE_VIEW_HOVER_EXIT: //退出停留状态
-                break;
-            case TYPE_TOUCH_EXPLORATION_GESTURE_START: //手势开始
-                break;
-            case TYPE_TOUCH_EXPLORATION_GESTURE_END://手势结束
-                break;
-            case TYPE_WINDOW_CONTENT_CHANGED://页面有内容发生改变，比如添加或者删除一个view，checkbox选中变成非选中，一个textview的内容变化了,对View进行了动画等等
-                break;
-            case TYPE_VIEW_SCROLLED: // 视图滚动
-                break;
-            case TYPE_VIEW_TEXT_SELECTION_CHANGED://视图文字改变
-                break;
-            case TYPE_ANNOUNCEMENT: //应用程序发出通知
-                break;
-            case TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY: //
-                break;
-            case TYPE_GESTURE_DETECTION_START://开始手势检测
-                break;
-            case TYPE_GESTURE_DETECTION_END: //手势检测结束
-                break;
-            case TYPE_TOUCH_INTERACTION_START: //用户开始触碰屏幕
-                break;
-            case TYPE_TOUCH_INTERACTION_END: // 用户手离开屏幕
-                break;
-            case  TYPE_WINDOWS_CHANGED:// 系统窗口中的时间更改通知
-                break;
-            default:
-                break;
-        }
     }
 
 
@@ -317,31 +267,32 @@ public class MyAccessibilityService extends AccessibilityService {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public void  weChatZan(AccessibilityEvent event){
         CharSequence packageName = event.getPackageName();
+        CharSequence className = event.getClassName();
+        CharSequence contentDescription = event.getContentDescription();
+        List<CharSequence> text = event.getText();
         int eventType = event.getEventType();
-        switch (eventType){
-            case TYPE_WINDOW_STATE_CHANGED:
-//            case TYPE_VIEW_CLICKED:
-                accessibilityNodeInfo = getRootInActiveWindow();
-                if (packageName.equals("com.tencent.mm")){
-                    Log.e(TAG, "weChatZan: =======" + event.toString());
-//                    mHandler.sendEmptyMessageDelayed(1,1000);
-                    MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"发现",false);
-//                    MyAccessibilityUtils.findNodeByIdTextAndClick(accessibilityNodeInfo,"com.tencent.mm:id/d7b","发现",false);
-                }
-
-
-                /*if (packageName.equals("com.getremark.spot")){
-                    List<AccessibilityNodeInfo> findListInfo = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.getremark.spot:id/tab_add_friend");
-                    if (findListInfo!=null && findListInfo.size() > 0) {
-                        Log.e(TAG, "spot: +++++" + findListInfo.size() );
-                        for (AccessibilityNodeInfo nodeInfo : findListInfo) {
-                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+        if (!TextUtils.isEmpty(packageName) && packageName.equals("com.tencent.mm") ){
+            if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ) {
+                if (className.equals(WeChatFinal.LauncherUI)){
+                    MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "发现", false);
+                }else if(className.equals(WeChatFinal.SNSTIMELINEUI)){
+                    Log.e(TAG, "weChatZan: hahh "  );
+                    if (contentDescription.equals(WeChatFinal.FRIENDCIRCLE)){
+                        List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ee2");
+                        Log.e(TAG, "weChatZan: yoyou" + nodeInfosByViewId.size());
+                        if (nodeInfosByViewId.size() > 0){
+                            nodeInfosByViewId.get(0).performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         }
                     }
-                }*/
-
-
-                break;
+                }
+            }else if(eventType == AccessibilityEvent.TYPE_VIEW_CLICKED){
+                if(className.equals(WeChatFinal.IMAGEVIEW) && contentDescription.equals("评论")){
+                    MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"赞",false);
+                }else if (String.valueOf(text).equals("[发现]")) {
+                    MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "朋友圈", false);
+                }
+            }
+            Log.e(TAG, "weChatZan: =======" + event.toString() + "\n"+packageName +" ======== "+ className + " === " + text);
         }
     }
 
