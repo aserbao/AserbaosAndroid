@@ -272,7 +272,22 @@ public class MyAccessibilityService extends AccessibilityService {
         List<CharSequence> text = event.getText();
         int eventType = event.getEventType();
         if (!TextUtils.isEmpty(packageName) && packageName.equals("com.tencent.mm") ){
-            if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ) {
+//            boolean b = MyAccessibilityUtils.performScroll(accessibilityNodeInfo);
+            int childCount = accessibilityNodeInfo.getChildCount();
+            Log.e(TAG, "weChatZan: ++++" + childCount );
+            for (int i = 0; i < childCount; i++) {
+                AccessibilityNodeInfo nodeInfoChild = accessibilityNodeInfo.getChild(i);
+                int childCount1 = nodeInfoChild.getChildCount();
+                for (int j = 0; j < childCount1 ; j++) {
+                    AccessibilityNodeInfo nodeInfoChildChild = nodeInfoChild.getChild(j);
+                    Log.e(TAG, "weChatZan: =====" + nodeInfoChildChild.toString());
+                }
+                if (nodeInfoChild.isScrollable()){
+                    boolean b1 = MyAccessibilityUtils.performScroll(nodeInfoChild);
+                }
+                Log.e(TAG, "weChatZan: " + nodeInfoChild.toString()  );
+            }
+            /*if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ) {
                 if (className.equals(WeChatFinal.LauncherUI)){
                     MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "发现", false);
                 }else if(className.equals(WeChatFinal.SNSTIMELINEUI)){
@@ -290,9 +305,11 @@ public class MyAccessibilityService extends AccessibilityService {
                     MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"赞",false);
                 }else if (String.valueOf(text).equals("[发现]")) {
                     MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "朋友圈", false);
+                }else if(String.valueOf(text).equals("[赞]")){
+                    MyAccessibilityUtils.performScroll(accessibilityNodeInfo);
                 }
-            }
-            Log.e(TAG, "weChatZan: =======" + event.toString() + "\n"+packageName +" ======== "+ className + " === " + text);
+            }*/
+//            Log.e(TAG, "weChatZan: =======" + event.toString() + "\n"+packageName +" ======== "+ className + " === " + text);
         }
     }
 
