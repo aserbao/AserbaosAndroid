@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.functions.how_create_so.HowCreateSoActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.ImagePhotoShopActivity;
 import com.aserbao.aserbaosandroid.functions.jump2OtherApp.Jump2OtherActivity;
 import com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSettingActivity;
+import com.aserbao.aserbaosandroid.functions.listener.ListenerActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
@@ -24,6 +25,7 @@ public class FunctionsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("so库文件的生成", HowCreateSoActivity.class));
         mClassBeen.add(new ClassBean("传感器", SensorsActivity.class));
         mClassBeen.add(new ClassBean("小兴趣", HobbiesAndInterestsActivity.class));
+        mClassBeen.add(new ClassBean("常用系统监听", ListenerActivity.class));
 
     }
 

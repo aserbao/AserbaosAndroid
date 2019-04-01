@@ -72,8 +72,6 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
                 startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
                 break;
             case 6:
-                TextView localeWrappedTextView = findViewById(R.id.base_recycler_tv);
-                localeWrappedTextView.setText(wrapTextInLocaleSpan("Bonjour!", Locale.FRANCE));
                 break;
         }
     }
