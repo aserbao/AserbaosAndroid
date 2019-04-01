@@ -73,25 +73,12 @@ public class MyAccessibilityService extends AccessibilityService {
         }
     };
 
-
-
-
-    private AudioManager audioManager =
-        (AudioManager) getSystemService(AUDIO_SERVICE);
-
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         CharSequence packageName = event.getPackageName();
         int eventType = event.getEventType();
-        AccessibilityNodeInfo interactedNodeInfo =
-            event.getSource();
-        if (interactedNodeInfo.getText().equals("Increase volume")) {
-            audioManager.adjustStreamVolume(AudioManager.STREAM_ACCESSIBILITY,
-                ADJUST_RAISE, 0);
-        }
-
         Log.e(TAG, "onAccessibilityEvent: " + event.toString());
-
+        weChatZan(event);
         switch (eventType) {
             case TYPE_VIEW_CLICKED://界面点击
                 break;
@@ -102,30 +89,9 @@ public class MyAccessibilityService extends AccessibilityService {
             case TYPE_VIEW_TEXT_CHANGED://界面文字改动
                 break;
             case TYPE_WINDOW_STATE_CHANGED: //窗口状态改变，可见的View 窗口发生了变化
-//                if (packageName.equals("com.getremark.spot")) {
 //                mHandler.sendEmptyMessageDelayed(0,1500);
                 if (packageName.equals("com.example.aserbao.aserbaosandroid")) {
-                    Log.e(TAG, "onAccessibilityEvent TYPE_WINDOW_STATE_CHANGED : " );
-                    accessibilityNodeInfo = this.getRootInActiveWindow();
-                    /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                        if (accessibilityNodeInfo != null) {
-                            List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.example.aserbao.aserbaosandroid:id/move_to_delete_rv");
-                            if (nodeInfosByViewId != null && nodeInfosByViewId.size() > 0) {
-                                nodeInfosByViewId.get(0).performAction(GESTURE_SWIPE_UP);
-                                Log.e(TAG, "onAccessibilityEvent: GESTURE_SWIPE_UP_AND_DOWN " + event.toString() );
-                            }
-//                            accessibilityNodeInfo.performAction(GESTURE_SWIPE_DOWN);
-//                            performSwipeRight(accessibilityNodeInfo);
-                        }
-                    }*/
 
-                    AccessibilityNodeInfo interactedNodeInfo = event.getSource();
-
-                    /*if (interactedNodeInfo != null && !TextUtils.isEmpty(interactedNodeInfo.getText())&& interactedNodeInfo.getText().equals("Increase volume")) {
-                        Log.e(TAG, "onAccessibilityEvent: Increase volume"  );
-                        AudioManager    audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-                        audioManager.adjustStreamVolume(AudioManager.STREAM_ACCESSIBILITY, ADJUST_RAISE, 0);
-                    }*/
                 }
                 break;
             case TYPE_NOTIFICATION_STATE_CHANGED: // 这个是监听状态栏来的通知的，软键盘弹出
@@ -195,6 +161,7 @@ public class MyAccessibilityService extends AccessibilityService {
         Log.e(TAG, "onKeyEvent: " +event.getAction() );
         return super.onKeyEvent(event);
     }
+
 
 
 
@@ -331,6 +298,41 @@ public class MyAccessibilityService extends AccessibilityService {
             }else{
                 Log.e(TAG, "onServiceConnected:registerAccessibilityButtonCallback " );
             }
+        }
+    }
+
+
+    //=====================微信朋友圈点赞功能
+    public void  weChatZan(AccessibilityEvent event){
+        CharSequence packageName = event.getPackageName();
+        int eventType = event.getEventType();
+        switch (eventType){
+            case TYPE_WINDOW_STATE_CHANGED:
+            case TYPE_VIEW_CLICKED:
+                accessibilityNodeInfo = getRootInActiveWindow();
+                if (packageName.equals("com.tencent.mm")){
+                    Log.e(TAG, "weChatZan: =======" + event.toString());
+                    List<AccessibilityNodeInfo> findListInfo = accessibilityNodeInfo.findAccessibilityNodeInfosByText("朋友圈");
+//                    List<AccessibilityNodeInfo> findListInfo = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/d7b");
+                    if (findListInfo!=null && findListInfo.size() > 0) {
+                        Log.e(TAG, "weChatZan: +++++" + findListInfo.size() );
+                        for (AccessibilityNodeInfo nodeInfo : findListInfo) {
+                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
+                    }
+                }
+
+
+                if (packageName.equals("com.getremark.spot")){
+                    List<AccessibilityNodeInfo> findListInfo = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.getremark.spot:id/tab_add_friend");
+                    if (findListInfo!=null && findListInfo.size() > 0) {
+                        Log.e(TAG, "spot: +++++" + findListInfo.size() );
+                        for (AccessibilityNodeInfo nodeInfo : findListInfo) {
+                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                        }
+                    }
+                }
+                break;
         }
     }
 }
