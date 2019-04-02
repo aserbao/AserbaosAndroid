@@ -11,6 +11,13 @@ import android.app.Activity;
 public class ClassBean {
     private String name;
     private Class<?> clazz;
+    int flag;
+
+    public ClassBean(String name, Class<?> clazz, int flag) {
+        this.name = name;
+        this.clazz = clazz;
+        this.flag = flag;
+    }
 
     public ClassBean(String name, Class<?> clazz) {
         this.name = name;
@@ -31,5 +38,13 @@ public class ClassBean {
 
     public void setClazz(Class<?> clazz) {
         this.clazz = clazz;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }
