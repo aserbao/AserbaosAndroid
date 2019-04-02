@@ -331,8 +331,8 @@ public class MyAccessibilityService extends AccessibilityService {
                         Log.e(TAG, "weChatZan: "+ className + contentDescription + nodeInfosByViewId.size() + "\n === " + i);
 
                         if (i == childCount - 1){
-//                            MyAccessibilityUtils.performScroll(childListView);
-                            slideVertical(5,18);
+                            MyAccessibilityUtils.performScroll(childListView);
+//                            slideVertical(5,18);
                             Log.e(TAG, "weChatZan:  " + i +  "   ======scroll" );
                         }
                    /* if (TextUtils.isEmpty(className)){
