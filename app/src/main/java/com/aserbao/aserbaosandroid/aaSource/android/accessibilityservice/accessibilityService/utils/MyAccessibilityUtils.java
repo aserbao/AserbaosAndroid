@@ -2,14 +2,23 @@ package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.access
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.GestureDescription;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
 
 import com.airbnb.lottie.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
+
+import org.jsoup.select.NodeFilter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,15 +35,20 @@ import java.util.List;
  */
 public class MyAccessibilityUtils {
     private static final String TAG = "MyAccessibilityUtils";
-    private static long millis = 100;
+    private static long millis = 1000;
     public static void sleep() {
+        sleep(millis);
+    }
+
+    public static void sleep(long m) {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(m);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    
     public static boolean checkNodeText(AccessibilityNodeInfo nodeInfo) {
         if (nodeInfo == null) {
             return false;
@@ -68,26 +82,47 @@ public class MyAccessibilityUtils {
         return false;
     }
 
+    public static AccessibilityNodeInfo findNodeByText(AccessibilityNodeInfo root, String text) {
+        if (root == null || TextUtils.isEmpty(text)) {
+            return null;
+        }
+        List<AccessibilityNodeInfo> nodeList = root.findAccessibilityNodeInfosByText(text);
 
-    public static boolean performScroll(AccessibilityNodeInfo scrollerNode) {
-        while (scrollerNode != null && !scrollerNode.isScrollable()) {
-            scrollerNode = scrollerNode.getParent();
+        if (nodeList == null || nodeList.isEmpty()) {
+            return null;
         }
-        if (scrollerNode != null) {
-            boolean result = false;
-            try {
-                result = scrollerNode.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
-                //wait some times
-                Thread.sleep(millis);
-            } catch (Exception e) {
-                e.printStackTrace();
+        AccessibilityNodeInfo clickNode = null;
+        for (AccessibilityNodeInfo nodeInfo : nodeList) {
+            boolean eqText = nodeInfo.getText() != null && nodeInfo.getText().toString().equals(text);
+            boolean eqDesc = nodeInfo.getContentDescription() != null && nodeInfo.getContentDescription().toString().equals(text);
+            if (eqText || eqDesc) {
+                clickNode = nodeInfo;
+                break;
             }
-            return result;
         }
-        Log.e(TAG, "scrollerNode is null");
-        return false;
+        return clickNode;
     }
 
+    public static AccessibilityNodeInfo findNodeContainsText(AccessibilityNodeInfo root, String text) {
+        if (root == null || TextUtils.isEmpty(text)) {
+            return null;
+        }
+        List<AccessibilityNodeInfo> nodeList = root.findAccessibilityNodeInfosByText(text);
+
+        if (nodeList == null || nodeList.isEmpty()) {
+            return null;
+        }
+        AccessibilityNodeInfo clickNode = null;
+        for (AccessibilityNodeInfo nodeInfo : nodeList) {
+            boolean eqText = nodeInfo.getText() != null && nodeInfo.getText().toString().contains(text);
+            boolean eqDesc = nodeInfo.getContentDescription() != null && nodeInfo.getContentDescription().toString().contains(text);
+            if (eqText || eqDesc) {
+                clickNode = nodeInfo;
+                break;
+            }
+        }
+        return clickNode;
+    }
     public static boolean findNodeByTextAndClick(AccessibilityNodeInfo root, String text) {
         return findNodeByTextAndClick(root, text, false);
     }
@@ -128,6 +163,27 @@ public class MyAccessibilityUtils {
         }
         Log.e(TAG, "clickNode is null");
         return false;
+    }
+    public static boolean findNodeContainsTextAndClick(AccessibilityNodeInfo root, String text) {
+        if (root == null || TextUtils.isEmpty(text)) {
+            return false;
+        }
+        List<AccessibilityNodeInfo> nodeList = root.findAccessibilityNodeInfosByText(text);
+
+        if (nodeList == null || nodeList.isEmpty()) {
+            return false;
+        }
+        AccessibilityNodeInfo clickNode = null;
+        for (AccessibilityNodeInfo nodeInfo : nodeList) {
+            boolean eqText = nodeInfo.getText() != null && nodeInfo.getText().toString().contains(text);
+            boolean eqDesc = nodeInfo.getContentDescription() != null && nodeInfo.getContentDescription().toString().contains(text);
+            if (eqText || eqDesc) {
+                clickNode = nodeInfo;
+                break;
+            }
+        }
+        Log.i(TAG, "点击："+text+"！");
+        return performClick(clickNode);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
@@ -179,6 +235,19 @@ public class MyAccessibilityUtils {
         return false;
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    public static boolean findNodeByIdAndClick(AccessibilityNodeInfo root, String id) {
+        if (root == null || TextUtils.isEmpty(id)) {
+            return false;
+        }
+        List<AccessibilityNodeInfo> nodeList = root.findAccessibilityNodeInfosByViewId(id);
+
+        if (nodeList == null || nodeList.isEmpty()) {
+            return false;
+        }
+        return performClick(nodeList.get(0));
+    }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static boolean findNodeByIdClassAndClick(AccessibilityNodeInfo root, String id, String className, boolean isNewPage) {
         if (root == null) {
@@ -227,12 +296,86 @@ public class MyAccessibilityUtils {
         return false;
     }
 
+
+    public static boolean performScroll(AccessibilityNodeInfo scrollerNode) {
+        while (scrollerNode != null && !scrollerNode.isScrollable()) {
+            scrollerNode = scrollerNode.getParent();
+        }
+        if (scrollerNode != null) {
+            boolean result = false;
+            try {
+                result = scrollerNode.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+                //wait some times
+                Thread.sleep(millis);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+        Log.e(TAG, "scrollerNode is null");
+        return false;
+    }
+
+    public static boolean performScrollBack(AccessibilityNodeInfo scrollerNode) {
+        while (scrollerNode != null && !scrollerNode.isScrollable()) {
+            scrollerNode = scrollerNode.getParent();
+        }
+        if (scrollerNode != null) {
+            boolean result = scrollerNode.performAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
+            sleep();
+            return result;
+        }
+        return false;
+    }
+
+    /**
+     *  执行粘贴操作（注意：执行之后，会 sleep 0.1s）
+     * @param ct
+     * @param node
+     * @param text
+     * @return
+     */
+    public static boolean performPaste(Context ct, AccessibilityNodeInfo node, String text) {
+        if (node == null || TextUtils.isEmpty(text)) {
+            return false;
+        }
+        boolean result;
+        if (Build.VERSION.SDK_INT >= 21) {
+            Bundle arguments = new Bundle();
+            arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
+            result = node.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
+            sleep();
+            return result;
+        } else {
+            ClipboardManager cm = (ClipboardManager) ct.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData mClipData = ClipData.newPlainText("text", text);
+            cm.setPrimaryClip(mClipData);
+            result = node.performAction(AccessibilityNodeInfo.ACTION_PASTE);
+            sleep();
+            return result;
+        }
+    }
+
+    public static boolean hasNode(AccessibilityNodeInfo root, String text) {
+        if (root == null || TextUtils.isEmpty(text)) {
+            return false;
+        }
+        List<AccessibilityNodeInfo> nodeList = root.findAccessibilityNodeInfosByText(text);
+
+        if (nodeList == null || nodeList.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+
     /**
      * @param root
      * @param id
      * @param className
      * @return
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static List<AccessibilityNodeInfo> findNodeByIdAndClassNameList(AccessibilityNodeInfo root, String id, String className) {
         if (root == null) {
             return null;
@@ -335,6 +478,47 @@ public class MyAccessibilityUtils {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @param node
+     * @param startSlideRatio   0~20
+     * @param stopSlideRatio    0~20
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void slideVertical(AccessibilityService node,int startSlideRatio, int stopSlideRatio) {
+        int screenHeight = AserbaoApplication.screenHeight;
+        int screenWidth = AserbaoApplication.screenWidth;
+        Log.e("","屏幕：" + (screenHeight - (screenHeight / 10)) + "/" +
+            (screenHeight - (screenHeight - (screenHeight / 10))) + "/" + screenWidth / 2);
+
+        Path path = new Path();
+        int start = (screenHeight / 20) * startSlideRatio;
+        int stop = (screenHeight / 20) * stopSlideRatio;
+        path.moveTo(screenWidth / 2, start);//如果只是设置moveTo就是点击
+        path.lineTo(screenWidth / 2, stop);//如果设置这句就是滑动
+        GestureDescription.Builder builder = new GestureDescription.Builder();
+        GestureDescription gestureDescription = builder
+            .addStroke(new GestureDescription.
+                StrokeDescription(path,
+                200,
+                1000)).build();
+
+        boolean dispatchGesture = node.dispatchGesture(gestureDescription, new AccessibilityService.GestureResultCallback() {
+            @Override
+            public void onCompleted(GestureDescription gestureDescription) {
+                super.onCompleted(gestureDescription);
+                Log.e(TAG, "onCompleted: " + gestureDescription.toString());
+            }
+
+            @Override
+            public void onCancelled(GestureDescription gestureDescription) {
+                super.onCancelled(gestureDescription);
+                Log.e(TAG, "onCancelled: " + gestureDescription.toString());
+            }
+        }, null);
+        Log.e(TAG, "slideVertical: " + dispatchGesture );
     }
 
 }

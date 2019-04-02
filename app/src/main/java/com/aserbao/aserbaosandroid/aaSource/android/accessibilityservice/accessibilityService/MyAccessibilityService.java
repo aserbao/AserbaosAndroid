@@ -20,10 +20,12 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 import com.airbnb.lottie.L;
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService.utils.MyAccessibilityUtils;
 
 import java.util.List;
 
+import static android.accessibilityservice.GestureDescription.getMaxGestureDuration;
 import static android.media.AudioManager.ADJUST_RAISE;
 import static android.view.accessibility.AccessibilityEvent.TYPE_ANNOUNCEMENT;
 import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_END;
@@ -59,7 +61,7 @@ public class MyAccessibilityService extends AccessibilityService {
     private static final String TAG = "fingerprintGestures";
     private AccessibilityNodeInfo accessibilityNodeInfo;
 
-    private android.os.Handler mHandler = new android.os.Handler() {
+    /*private android.os.Handler mHandler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
@@ -75,7 +77,7 @@ public class MyAccessibilityService extends AccessibilityService {
             }
 //            Log.e(TAG, "handleMessage: " + msg.what );
         }
-    };
+    };*/
     private boolean isSend = false;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
@@ -86,6 +88,14 @@ public class MyAccessibilityService extends AccessibilityService {
         Log.e(TAG, "onAccessibilityEvent: =======" + event.toString() + "\n"+packageName +" ======== "+ event.getClassName());
         accessibilityNodeInfo = getRootInActiveWindow();
         weChatZan(event);
+
+        /*switch (eventType){
+            case TYPE_WINDOW_STATE_CHANGED:
+                if (packageName.equals("com.example.aserbao.aserbaosandroid")){
+                    slideVertical(19,0);
+                }
+                break;
+        }*/
     }
 
 
@@ -126,22 +136,25 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void slideVertical(int startSlideRatio, int stopSlideRatio) {
-        int screenHeight = DisplayUtil.getScreenHeight(getApplicationContext());
-        int screenWidth = DisplayUtil.getScreenWidth(getApplicationContext());
-        Log.e("","屏幕：" + (screenHeight - (screenHeight / 10)) + "/" +
-            (screenHeight - (screenHeight - (screenHeight / 10))) + "/" + screenWidth / 2);
+        int screenHeight = AserbaoApplication.screenHeight;
+        int screenWidth = AserbaoApplication.screenWidth;
 
         Path path = new Path();
         int start = (screenHeight / 20) * startSlideRatio;
         int stop = (screenHeight / 20) * stopSlideRatio;
+
+        Log.e(TAG,"屏幕：" + (screenHeight - (screenHeight / 10)) + "/" +(screenHeight - (screenHeight - (screenHeight / 10))) + "/" + screenWidth / 2 + "/" + start + " /stop" + stop);
+
         path.moveTo(screenWidth / 2, start);//如果只是设置moveTo就是点击
         path.lineTo(screenWidth / 2, stop);//如果设置这句就是滑动
         GestureDescription.Builder builder = new GestureDescription.Builder();
         GestureDescription gestureDescription = builder
             .addStroke(new GestureDescription.
                 StrokeDescription(path,
-                200,
-                1000)).build();
+                100,
+                50)).build();
+        long maxGestureDuration = getMaxGestureDuration();
+        Log.e(TAG, "slideVertical: maxGestureDuration = " + maxGestureDuration + " path =  " + path.toString() );
 
         boolean dispatchGesture = dispatchGesture(gestureDescription, new GestureResultCallback() {
             @Override
@@ -255,7 +268,7 @@ public class MyAccessibilityService extends AccessibilityService {
         if (accessibilityButtonCallback != null && accessibilityButtonController!= null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 accessibilityButtonController.registerAccessibilityButtonCallback(
-                    accessibilityButtonCallback, mHandler);
+                    accessibilityButtonCallback, null);
             }else{
                 Log.e(TAG, "onServiceConnected:registerAccessibilityButtonCallback " );
             }
@@ -272,14 +285,13 @@ public class MyAccessibilityService extends AccessibilityService {
         List<CharSequence> text = event.getText();
         int eventType = event.getEventType();
         if (!TextUtils.isEmpty(packageName) && packageName.equals("com.tencent.mm") ){
-            if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ) {
+            /*if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ) {
                 if (className.equals(WeChatFinal.LauncherUI)){
                     MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "发现", false);
                 }else if(className.equals(WeChatFinal.SNSTIMELINEUI)){
-                    Log.e(TAG, "weChatZan: hahh "  );
                     if (contentDescription.equals(WeChatFinal.FRIENDCIRCLE)){
                         List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ee2");
-                        Log.e(TAG, "weChatZan: yoyou" + nodeInfosByViewId.size());
+                        Log.e(TAG, "weChatZan: hahh " + nodeInfosByViewId.size());
                         if (nodeInfosByViewId.size() > 0){
                             nodeInfosByViewId.get(0).performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         }
@@ -291,8 +303,81 @@ public class MyAccessibilityService extends AccessibilityService {
                 }else if (String.valueOf(text).equals("[发现]")) {
                     MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo, "朋友圈", false);
                 }
+            }*/
+            accessibilityNodeInfo = getRootInActiveWindow();
+            if (accessibilityNodeInfo == null){
+                return;
             }
-            Log.e(TAG, "weChatZan: =======" + event.toString() + "\n"+packageName +" ======== "+ className + " === " + text);
+            if (eventType == TYPE_WINDOW_STATE_CHANGED || eventType == TYPE_VIEW_SCROLLED) {
+                    List<AccessibilityNodeInfo> child = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/eew");
+                    if (child.size() <= 0) {
+                        return;
+                    }
+                    AccessibilityNodeInfo childListView = child.get(0);
+                    int childCount = childListView.getChildCount();
+                    for (int i = 0; i < childCount; i++) {
+                        AccessibilityNodeInfo childItem = childListView.getChild(i);
+    //                Log.e(TAG, "weChatZan: " + event.getEventType() + " " + className + " contentDescription = "+ contentDescription );
+                        List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ee2");
+
+                        if (i < nodeInfosByViewId.size()){
+                            nodeInfosByViewId.get(i).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                            MyAccessibilityUtils.sleep(200);
+                            MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"赞",false);
+//                            MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"取消",false);
+                            MyAccessibilityUtils.sleep(300);
+                        }
+
+                        Log.e(TAG, "weChatZan: "+ className + contentDescription + nodeInfosByViewId.size() + "\n === " + i);
+
+                        if (i == childCount - 1){
+//                            MyAccessibilityUtils.performScroll(childListView);
+                            slideVertical(5,18);
+                            Log.e(TAG, "weChatZan:  " + i +  "   ======scroll" );
+                        }
+                   /* if (TextUtils.isEmpty(className)){
+                        return;
+                    }
+                    if (TextUtils.isEmpty(contentDescription)){
+                        return;
+                    }
+
+                    if (contentDescription.equals(WeChatFinal.FRIENDCIRCLE)){
+                            List<AccessibilityNodeInfo> nodeInfosByViewId = accessibilityNodeInfo.findAccessibilityNodeInfosByViewId("com.tencent.mm:id/ee2");
+                            Log.e(TAG, "weChatZan: hahh " + nodeInfosByViewId.size());
+                            if (nodeInfosByViewId.size() > 0){
+                                nodeInfosByViewId.get(0).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                            }
+                    }*/
+                    /*if (contentDescription.equals("评论") && className.equals(WeChatFinal.IMAGEVIEW)){
+                        MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"赞",false);
+                    }
+                    if (i == childCount -1){
+                        MyAccessibilityUtils.performScroll(childListView);
+                        Log.e(TAG, "weChatZan:  " + i +  "   ======scroll" );
+                    }
+                    MyAccessibilityUtils.sleep();*/
+                        }
+
+    //            Log.e(TAG, "weChatZan: " + childListView.toString() + " \n" + childListView.isScrollable() );
+                /*int childCount = accessibilityNodeInfo.getChildCount();
+                for (int i = 0; i < childCount; i++) {
+                    AccessibilityNodeInfo child = accessibilityNodeInfo.getChild(i);
+                    int childCount1 = child.getChildCount();
+                    for (int j = 0; j < childCount1; j++) {
+                        AccessibilityNodeInfo childListView = child.getChild(j);
+                        if (childListView.isScrollable()){
+                            MyAccessibilityUtils.performScroll(childListView);
+                        }
+                        Log.e(TAG, "weChatZan: " + childListView.toString() + " \n" + childListView.isScrollable() );
+                    }
+                }*/
+                    Log.e(TAG, "weChatZan: =======" + event.toString() + "\n" + packageName + " ======== " + className + " === " + text);
+            }else if (eventType == AccessibilityEvent.TYPE_VIEW_CLICKED){
+                if (!TextUtils.isEmpty(contentDescription) && contentDescription.equals("评论") && className.equals(WeChatFinal.IMAGEVIEW)){
+                    MyAccessibilityUtils.findNodeByTextAndClick(accessibilityNodeInfo,"赞",false);
+                }
+            }
         }
     }
 

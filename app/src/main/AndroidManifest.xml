@@ -40,7 +40,13 @@
         <activity android:name=".functions.listener.constractListener.ConstractListener"></activity>
         <activity android:name=".functions.listener.ListenerActivity" />
         <activity android:name=".aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity" />
         <activity android:name=".aaThird.dagger2.MainActivity" />
         <activity android:name=".ui.buttons.ButtonActivity" />
@@ -137,14 +143,6 @@
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".aaSource.android.app.Activity.ActivityClass">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
         </activity>
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.PopupWindowActivity" />
