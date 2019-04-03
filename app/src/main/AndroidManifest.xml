@@ -23,7 +23,6 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -40,6 +39,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
+        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".aaSource.android.material.floatView.FloatWindowActivity"></activity>
+        <activity android:name=".aaSource.android.material.floatView.FloatWindowActivity" />
         <activity android:name=".functions.listener.constractListener.ConstractListener" />
         <activity android:name=".functions.listener.ListenerActivity" />
         <activity
@@ -154,7 +155,7 @@
             android:name=".aaSource.android.app.Activity.BasicActivity"
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".aaSource.android.app.Activity.ActivityClass"></activity>
+        <activity android:name=".aaSource.android.app.Activity.ActivityClass" />
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo" />
         <activity android:name=".aaSource.android.widget.Classes.popupwindow.PopupWindowActivity" />
         <activity android:name=".aaSource.android.widget.Classes.AndroidWidgetClasses" />
@@ -166,7 +167,6 @@
         <activity android:name=".Cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
-
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
         <activity android:name=".opengl.openGlCamera.FuCameraActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity" />
@@ -311,7 +311,7 @@
                 android:resource="@xml/my_accessibility_service" />
         </service>
         <service android:name=".functions.listener.constractListener.ContactIntentService" />
-        <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService"/>
+        <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService" />
     </application>
 
 </manifest>

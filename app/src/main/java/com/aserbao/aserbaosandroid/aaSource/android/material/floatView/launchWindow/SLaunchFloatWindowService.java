@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.R;
 
 /**
- * 功能: 全局悬浮窗
+ * 功能: 悬浮窗
  *
  * @author aserbao
  * @date : On 2019/4/2 5:18 PM
