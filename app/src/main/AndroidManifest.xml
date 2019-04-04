@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -39,8 +40,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity"></activity>
-        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuActivity" />
+        <activity android:name=".aaSource.android.widget.Classes.notification.NotificationActivity"></activity>
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,17 +48,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".functions.launch.demo.LaunchDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".functions.launch.LaunchActivity" />
+        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity" />
+        <activity android:name=".aaSource.android.widget.Classes.Menu.MenuActivity" />
         <activity android:name=".aaSource.android.material.floatView.FloatWindowActivity" />
         <activity android:name=".functions.listener.constractListener.ConstractListener" />
         <activity android:name=".functions.listener.ListenerActivity" />
         <activity
             android:name=".aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity"
             android:screenOrientation="portrait">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity" />
         <activity android:name=".aaThird.dagger2.MainActivity" />
