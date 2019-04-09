@@ -11,6 +11,9 @@ import android.util.Log;
 
 import java.util.HashMap;
 
+/**
+ * 联系人/通讯录列表变化
+ */
 public class ContactIntentService extends IntentService {
 
     private static final String TAG = "ContactIntentService";

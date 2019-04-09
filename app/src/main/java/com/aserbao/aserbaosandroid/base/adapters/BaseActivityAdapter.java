@@ -52,7 +52,11 @@ public class BaseActivityAdapter extends RecyclerView.Adapter<BaseActivityAdapte
         holder.mItemCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.startActivity(new Intent(mActivity, classBean.getClazz()));
+                Intent intent = new Intent(mActivity, classBean.getClazz());
+                if (classBean.getFlag() >= 0){
+                    intent.setFlags(classBean.getFlag());
+                }
+                mActivity.startActivity(intent);
             }
         });
     }

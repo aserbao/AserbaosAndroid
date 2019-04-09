@@ -62,4 +62,5 @@ public class AserbaoApplication extends Application {
     public DaoSession getDaoSession() {
         return daoSession;
     }
+
 }
