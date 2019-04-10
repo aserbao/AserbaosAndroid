@@ -40,7 +40,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.widget.Classes.notification.NotificationActivity"></activity>
+        <activity android:name=".ui.customView.CustomViewActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.notification.NotificationActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -196,7 +197,7 @@
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
-        <activity android:name=".ui.customView.CustomViewActivity" />
+        <activity android:name=".ui.customView.countdownView.CountDownViewActivity" />
         <activity android:name=".AudioAndVideo.media.audio.AudioRecordActivity" />
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
         <activity android:name=".AudioAndVideo.media.mediaplayer.MediaPlayerActivity" />

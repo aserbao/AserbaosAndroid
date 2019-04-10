@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
@@ -34,9 +35,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     @BindView(R.id.opengl_recycler_view)
     public RecyclerView mOpenglRecyclerView;
     @BindView(R.id.base_recycler_view_fl)
-    public FrameLayout mBaseRecyclerViewFl;
+    public RelativeLayout mBaseRecyclerViewFl;
+    @BindView(R.id.base_recycler_empty_container)
+    public FrameLayout mBaseRecyclerEmptyContainer;
 
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
+    public int mOrientation = LinearLayoutManager.VERTICAL;
 
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
 
@@ -51,14 +55,20 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initGetData();
         initView();
     }
-    public void setTranslations(){}
+
+    public void setTranslations() {
+    }
 
     public abstract void initGetData();
 
 
+    public void setLinearLayoutOrientationHorizontal() {
+        mOrientation = LinearLayoutManager.HORIZONTAL;
+    }
+
     public void initView() {
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         mOpenglRecyclerView.setLayoutManager(linearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());

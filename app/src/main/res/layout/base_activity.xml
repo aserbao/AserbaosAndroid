@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,8 +10,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/opengl_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
     <TextView
+        android:layout_centerInParent="true"
         android:id="@+id/base_recycler_tv"
         android:textSize="30sp"
         android:textColor="@color/black"
@@ -19,4 +20,10 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/base_recycler_empty_container"
+        android:layout_below="@+id/opengl_recycler_view"
+        android:background="@color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

@@ -6,6 +6,7 @@ import com.aserbao.aserbaosandroid.ui.animation.AnimationActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.customView.countdownView.CountDownViewActivity;
 import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.RandomAndNoOverLayActivity;
 import com.aserbao.aserbaosandroid.ui.texts.TextsActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;

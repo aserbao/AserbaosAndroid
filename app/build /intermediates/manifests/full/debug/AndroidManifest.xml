@@ -67,7 +67,7 @@
         <activity android:name="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
-        <activity android:name="com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity" />
+        <activity android:name="com.aserbao.aserbaosandroid.ui.customView.countdownView.CountDownViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.audio.AudioRecordActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.designMode.decoratorPattern.DecoratorActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.AudioAndVideo.media.mediaplayer.MediaPlayerActivity" />
