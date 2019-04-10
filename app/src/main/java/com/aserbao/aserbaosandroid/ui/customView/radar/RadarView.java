@@ -49,22 +49,22 @@ public class RadarView extends View {
     private Runnable run = new Runnable() {
         @Override
         public void run() {
-            scanAngle = (scanAngle + scanSpeed) % 360;
-            matrix.postRotate(scanSpeed, mWidth / 2, mHeight / 2);
-            invalidate();
-            postDelayed(run, 130);
-            //开始扫描显示标志为true 且 只扫描一圈
-            if (startScan && currentScanningCount <= (360 / scanSpeed)) {
-                if (iScanningListener != null && currentScanningCount % scanSpeed == 0
+                scanAngle = (scanAngle + scanSpeed) % 360;
+                matrix.postRotate(scanSpeed, mWidth / 2, mHeight / 2);
+                invalidate();
+                postDelayed(run, 130);
+                //开始扫描显示标志为true 且 只扫描一圈
+                if (startScan && currentScanningCount <= (360 / scanSpeed)) {
+                    if (iScanningListener != null && currentScanningCount % scanSpeed == 0
                         && currentScanningItem < maxScanItemCount) {
 
-                    iScanningListener.onScanning(currentScanningItem, scanAngle);
-                    currentScanningItem++;
-                } else if (iScanningListener != null && currentScanningItem == maxScanItemCount) {
-                    iScanningListener.onScanSuccess();
+                        iScanningListener.onScanning(currentScanningItem, scanAngle);
+                        currentScanningItem++;
+                    } else if (iScanningListener != null && currentScanningItem == maxScanItemCount) {
+                        iScanningListener.onScanSuccess();
+                    }
+                    currentScanningCount++;
                 }
-                currentScanningCount++;
-            }
         }
     };
 
@@ -79,7 +79,6 @@ public class RadarView extends View {
     public RadarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
-        post(run);
     }
 
 
@@ -96,6 +95,7 @@ public class RadarView extends View {
 
         mPaintScan = new Paint();
         mPaintScan.setStyle(Paint.Style.FILL_AND_STROKE);
+        post(run);
     }
 
     @Override
@@ -107,7 +107,20 @@ public class RadarView extends View {
         centerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
         //设置扫描渲染的shader
         scanShader = new SweepGradient(mWidth / 2, mHeight / 2,
-                new int[]{Color.TRANSPARENT, Color.parseColor("#84B5CA")}, null);
+            new int[]{Color.TRANSPARENT, Color.parseColor("#000000")}, null);
+    }
+
+    public void setGradient(int[] gradientColor){
+
+
+//        gradientColor = new int[]{Color.parseColor("#FFFFFF"),Color.parseColor("#000000")};
+        scanShader = new SweepGradient(mWidth / 2, mHeight / 2,
+            new int[]{Color.TRANSPARENT, Color.parseColor("#000000")}, null);
+//        scanShader = new SweepGradient(mWidth / 2, mHeight / 2,gradientColor , null);
+
+        mPaintScan.setShader(null);
+        mPaintScan.setShader(scanShader);
+        post(run);
     }
 
     private int measureSize(int measureSpec) {
@@ -128,7 +141,9 @@ public class RadarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         drawCircle(canvas);
-        drawScan(canvas);
+        if (startScan) {
+            drawScan(canvas);
+        }
         drawCenterIcon(canvas);
     }
 

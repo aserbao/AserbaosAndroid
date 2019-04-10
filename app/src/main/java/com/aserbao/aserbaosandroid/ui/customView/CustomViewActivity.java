@@ -23,6 +23,8 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         switch (position){
             case 0:
                 RadarView radarView = new RadarView(this);
+                radarView.setGradient(new int[2]);
+                radarView.startScan();
                 mBaseRecyclerEmptyContainer.addView(radarView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
         }
