@@ -80,9 +80,9 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                         if (i % 2 == 0) {
                             student.setSex("男");
                         } else {
+                        student.setAddress(RandomValue.getRoad());
                             student.setSex("女");
                         }
-                        student.setAddress(RandomValue.getRoad());
                         student.setGrade(String.valueOf(age % 10) + "年纪");
                         student.setSchoolName(RandomValue.getSchoolName());
                         daoSession.insert(student);

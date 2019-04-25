@@ -9,21 +9,21 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/utils_result_tv"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/btn_get_phone_info"
-                    android:text="获取当前手机信息"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_get_phone_info"
+                android:text="获取当前手机信息"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+        <TextView
+            android:id="@+id/utils_result_tv"
+            android:textColor="@color/black"
+            android:gravity="center|left"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>

@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * 功能:
  * author aserbao
  * date : On 2018/10/17
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class MatrixActivity extends AppCompatActivity {
     @BindView(R.id.rotate_sb)

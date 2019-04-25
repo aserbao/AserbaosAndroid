@@ -10,7 +10,7 @@ import java.io.File;
  * 功能: 多媒体工具类
  * @author aserbao
  * @date : On 2019/1/15 11:14 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:android-spot
  * @package:com.getremark.spot.aa.common.utils.media
  */

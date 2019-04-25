@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * 功能:
  * author aserbao
  * date : On 2018/10/22
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class CreditCardViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.green_dao_credit_card_name_tv)

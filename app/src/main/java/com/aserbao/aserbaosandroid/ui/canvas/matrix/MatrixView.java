@@ -17,7 +17,7 @@ import com.aserbao.aserbaosandroid.R;
  *
  * @author aserbao
  * @date : On 2019/1/17 3:18 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.test
  */

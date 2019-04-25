@@ -4,7 +4,7 @@ package com.example.aserbaoffmpeg;
  * 功能:
  * author aserbao
  * date : On 2018/11/8
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class FFmpegUtils {
     static {

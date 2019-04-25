@@ -2,17 +2,11 @@ package com.aserbao.aserbaosandroid;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;
-
-import org.greenrobot.greendao.database.Database;
-
-import java.io.File;
 
 /**
  * Created by aserbao on 2018 2018/1/15.23:27

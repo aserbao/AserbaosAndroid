@@ -5,7 +5,7 @@ package com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans;
  *
  * @author aserbao
  * @date : On 2019/1/28 11:52 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans
  */

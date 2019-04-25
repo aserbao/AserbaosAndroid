@@ -9,7 +9,7 @@ import android.content.Intent;
  *
  * @author aserbao
  * @date : On 2019/3/22 8:39 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.AUtils.utils.phone
  */

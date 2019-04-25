@@ -7,7 +7,7 @@ import android.view.View;
  *
  * @author aserbao
  * @date : On 2019/2/19 4:53 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.base.interfaces
  */

@@ -11,7 +11,7 @@ import java.util.List;
  * 功能:
  * author aserbao
  * date : On 2018/10/19
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class Message implements Comparable<Message>{
     private static final String TAG = "Message";

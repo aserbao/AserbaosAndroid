@@ -17,7 +17,7 @@ import java.util.List;
  * 功能:
  * author aserbao
  * date : On 2018/12/12
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class ViewManager implements IShotListener{
     private static final String TAG = "ViewManager";

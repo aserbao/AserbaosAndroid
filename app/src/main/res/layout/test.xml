@@ -2,12 +2,32 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:layout_height="wrap_content">
-   <Button
-       android:id="@+id/test_btn"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content" />
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:background="@drawable/test_bg"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+    <TextView
+        android:id="@+id/constraint_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:ellipsize="end"
+        android:gravity="center|left"
+        android:maxLines="1"
+        android:layout_toLeftOf="@+id/test_fl"
+        android:text="kdfks123asdffasdhjfkhasdfkdfks"
+        />
+    <FrameLayout
+        android:id="@+id/test_fl"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/cat_image"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/emoji_01" />
+    </FrameLayout>
 
 </RelativeLayout>

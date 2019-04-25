@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.AUtils.utils.phone;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.*;
@@ -13,6 +14,8 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
@@ -42,6 +45,75 @@ import java.util.Map;
  * 主要功能:手机管理工具类
  */
 public class APhoneUtils {
+
+    /**
+     * 获取手机状态信息
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
+     *
+     * @param context 上下文
+     * @return DeviceId(IMEI) = 99000311726612<br>
+     * DeviceSoftwareVersion = 00<br>
+     * Line1Number =<br>
+     * NetworkCountryIso = cn<br>
+     * NetworkOperator = 46003<br>
+     * NetworkOperatorName = 中国电信<br>
+     * NetworkType = 6<br>
+     * honeType = 2<br>
+     * SimCountryIso = cn<br>
+     * SimOperator = 46003<br>
+     * SimOperatorName = 中国电信<br>
+     * SimSerialNumber = 89860315045710604022<br>
+     * SimState = 5<br>
+     * SubscriberId(IMSI) = 460030419724900<br>
+     * VoiceMailNumber = *86<br>
+     */
+    public static String getPhoneStatus(Context context) {
+        TelephonyManager tm = (TelephonyManager) context
+            .getSystemService(Context.TELEPHONY_SERVICE);
+        String str = "";
+        str += "DeviceId(IMEI) = " + tm.getDeviceId() + "\n";
+        str += "DeviceSoftwareVersion= " + tm.getDeviceSoftwareVersion() + "\n";
+        str += "Line1Number = " + tm.getLine1Number() + "\n";
+        str += "NetworkCountryIso = " + tm.getNetworkCountryIso() + "\n";
+        str += "NetworkOperator = " + tm.getNetworkOperator() + "\n";
+        str += "NetworkOperatorName = " + tm.getNetworkOperatorName() + "\n";
+        str += "NetworkType = " + tm.getNetworkType() + "\n";
+        str += "honeType = " + tm.getPhoneType() + "\n";
+        str += "SimCountryIso = " + tm.getSimCountryIso() + "\n";
+        str += "SimOperator = " + tm.getSimOperator() + "\n";
+        str += "SimOperatorName = " + tm.getSimOperatorName() + "\n";
+        str += "SimSerialNumber = " + tm.getSimSerialNumber() + "\n";
+        str += "SimState = " + tm.getSimState() + "\n";
+        str += "SubscriberId(IMSI) = " + tm.getSubscriberId() + "\n";
+        str += "VoiceMailNumber = " + tm.getVoiceMailNumber() + "\n";
+        str += "Proxy = ="+ getProxy(context) + "\n";
+        return str;
+    }
+
+
+    public static String getPhoneMeesager(Context context){
+        TelephonyManager tm = (TelephonyManager) context
+            .getSystemService(Context.TELEPHONY_SERVICE);
+        StringBuffer sb = new StringBuffer();
+        sb.append("手机系统版本号:").append(getSDKVersionNumber()).append("\n")
+            .append("手机型号:").append(getPhoneModel()).append("\n")
+            .append("手机宽度：").append(getPhoneWidth(context)).append("\n")
+            .append("手机高度：").append(getPhoneHeight(context)).append("\n")
+            .append("手机IMEI串号：").append(getPhoneImei(context)).append("\n")
+            .append("手机sim卡号：").append(getPhoneSim(context)).append("\n")
+            .append("手机号：").append(getPhoneNum(context)).append("\n")
+            .append("sd卡是否挂载：").append(isSDCardMount()).append("\n")
+            .append("获取sd卡剩余空间的大小：").append(getSDFreeSize()).append("MB").append("\n")
+            .append("sd卡空间的总大小：").append(getSDAllSize()).append("MB").append("\n")
+            .append("是否是平板：").append(isTablet(context)).append("\n")
+            .append("获取移动终端类型：").append(getPhoneType(context)).append("\n")
+            .append("sim卡是否准备好：").append(isSimCardReady(context)).append("\n")
+            .append("Gps是否打开：").append(isGpsEnabled(context)).append("\n")
+            .append("手机厂商：").append(getDeviceBrand()).append("\n");
+
+        return sb.toString();
+    }
+
     private static APhoneUtils phoneUtil;
 
     public static APhoneUtils getInstance() {
@@ -60,7 +132,7 @@ public class APhoneUtils {
      *
      * @return
      */
-    public int getSDKVersionNumber() {
+    public static int getSDKVersionNumber() {
         int sdkVersion;
         try {
             sdkVersion = Integer.valueOf(android.os.Build.VERSION.SDK_INT);
@@ -74,7 +146,7 @@ public class APhoneUtils {
     /**
      * 获取手机型号
      */
-    public String getPhoneModel() {
+    public static String getPhoneModel() {
         return android.os.Build.MODEL;
     }
 
@@ -82,7 +154,7 @@ public class APhoneUtils {
      * 获取手机宽度
      */
     @SuppressWarnings("deprecation")
-    public int getPhoneWidth(Context context) {
+    public static int getPhoneWidth(Context context) {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         return wm.getDefaultDisplay().getWidth();
@@ -94,7 +166,7 @@ public class APhoneUtils {
      * @param context
      */
     @SuppressWarnings("deprecation")
-    public int getPhoneHeight(Context context) {
+    public static int getPhoneHeight(Context context) {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         return wm.getDefaultDisplay().getHeight();
@@ -105,7 +177,7 @@ public class APhoneUtils {
      *
      * @param context
      */
-    public String getPhoneImei(Context context) {
+    public static String getPhoneImei(Context context) {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         if (tm == null)
@@ -118,7 +190,7 @@ public class APhoneUtils {
      *
      * @param context
      */
-    public String getPhoneSim(Context context) {
+    public static String getPhoneSim(Context context) {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         if (tm == null)
@@ -131,7 +203,7 @@ public class APhoneUtils {
      *
      * @param context
      */
-    public String getPhoneNum(Context context) {
+    public static String getPhoneNum(Context context) {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         if (tm == null)
@@ -142,7 +214,7 @@ public class APhoneUtils {
     /**
      * 判断sd卡是否挂载
      */
-    public boolean isSDCardMount() {
+    public static boolean isSDCardMount() {
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
             return true;
@@ -155,7 +227,7 @@ public class APhoneUtils {
      * 获取sd卡剩余空间的大小
      */
     @SuppressWarnings("deprecation")
-    public long getSDFreeSize() {
+    public static long getSDFreeSize() {
         File path = Environment.getExternalStorageDirectory(); // 取得SD卡文件路径
         StatFs sf = new StatFs(path.getPath());
         long blockSize = sf.getBlockSize(); // 获取单个数据块的大小(Byte)
@@ -168,7 +240,7 @@ public class APhoneUtils {
      * 获取sd卡空间的总大小
      */
     @SuppressWarnings("deprecation")
-    public long getSDAllSize() {
+    public static long getSDAllSize() {
         File path = Environment.getExternalStorageDirectory(); // 取得SD卡文件路径
         StatFs sf = new StatFs(path.getPath());
         long blockSize = sf.getBlockSize(); // 获取单个数据块的大小(Byte)
@@ -180,7 +252,7 @@ public class APhoneUtils {
     /**
      * 判断是否是平板
      */
-    public boolean isTablet(Context context) {
+    public static boolean isTablet(Context context) {
         return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
@@ -270,8 +342,8 @@ public class APhoneUtils {
     /**
      * 获取安装应用的信息
      */
-    public Map<String, Object> getInstalledAppInfo(Context context,
-                                                   PackageInfo info) {
+    public static Map<String, Object> getInstalledAppInfo(Context context,
+                                                          PackageInfo info) {
         Map<String, Object> appInfos = new HashMap<String, Object>();
         PackageManager pm = context.getPackageManager();
         ApplicationInfo aif = info.applicationInfo;
@@ -786,48 +858,7 @@ public class APhoneUtils {
         return tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY;
     }
 
-    /**
-     * 获取手机状态信息
-     * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_PHONE_STATE"/>}</p>
-     *
-     * @param context 上下文
-     * @return DeviceId(IMEI) = 99000311726612<br>
-     * DeviceSoftwareVersion = 00<br>
-     * Line1Number =<br>
-     * NetworkCountryIso = cn<br>
-     * NetworkOperator = 46003<br>
-     * NetworkOperatorName = 中国电信<br>
-     * NetworkType = 6<br>
-     * honeType = 2<br>
-     * SimCountryIso = cn<br>
-     * SimOperator = 46003<br>
-     * SimOperatorName = 中国电信<br>
-     * SimSerialNumber = 89860315045710604022<br>
-     * SimState = 5<br>
-     * SubscriberId(IMSI) = 460030419724900<br>
-     * VoiceMailNumber = *86<br>
-     */
-    public static String getPhoneStatus(Context context) {
-        TelephonyManager tm = (TelephonyManager) context
-            .getSystemService(Context.TELEPHONY_SERVICE);
-        String str = "";
-        str += "DeviceId(IMEI) = " + tm.getDeviceId() + "\n";
-        str += "DeviceSoftwareVersion = " + tm.getDeviceSoftwareVersion() + "\n";
-        str += "Line1Number = " + tm.getLine1Number() + "\n";
-        str += "NetworkCountryIso = " + tm.getNetworkCountryIso() + "\n";
-        str += "NetworkOperator = " + tm.getNetworkOperator() + "\n";
-        str += "NetworkOperatorName = " + tm.getNetworkOperatorName() + "\n";
-        str += "NetworkType = " + tm.getNetworkType() + "\n";
-        str += "honeType = " + tm.getPhoneType() + "\n";
-        str += "SimCountryIso = " + tm.getSimCountryIso() + "\n";
-        str += "SimOperator = " + tm.getSimOperator() + "\n";
-        str += "SimOperatorName = " + tm.getSimOperatorName() + "\n";
-        str += "SimSerialNumber = " + tm.getSimSerialNumber() + "\n";
-        str += "SimState = " + tm.getSimState() + "\n";
-        str += "SubscriberId(IMSI) = " + tm.getSubscriberId() + "\n";
-        str += "VoiceMailNumber = " + tm.getVoiceMailNumber() + "\n";
-        return str;
-    }
+
 
     /**
      * 获取手机短信并保存到xml中
@@ -910,6 +941,39 @@ public class APhoneUtils {
             .getSystemService(Context.LOCATION_SERVICE));
         List<String> accessibleProviders = locationManager.getProviders(true);
         return accessibleProviders != null && accessibleProviders.size() > 0;
+    }
+
+    /**
+     * 获得Proxy地址
+     *
+     * @param context 上下文
+     * @return Proxy地址
+     */
+    public static String getProxy(Context context) {
+        String proxy = null;
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo networkinfo = connectivityManager.getActiveNetworkInfo();
+            if (networkinfo != null && networkinfo.isAvailable()) {
+                String stringExtraInfo = networkinfo.getExtraInfo();
+                if (stringExtraInfo != null && ("cmwap".equals(stringExtraInfo) || "uniwap".equals(stringExtraInfo))) {
+                    proxy = "10.0.0.172:80";
+                } else if (stringExtraInfo != null && "ctwap".equals(stringExtraInfo)) {
+                    proxy = "10.0.0.200:80";
+                }
+            }
+        }
+
+        return proxy;
+    }
+
+    /**
+     * 获取手机厂商
+     *
+     * @return  手机厂商
+     */
+    public static String getDeviceBrand() {
+        return android.os.Build.BRAND;
     }
 
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject;
  *
  * @author aserbao
  * @date : On 2019/3/19 11:08 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2
  */

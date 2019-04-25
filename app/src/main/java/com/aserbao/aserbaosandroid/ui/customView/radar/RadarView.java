@@ -111,13 +111,10 @@ public class RadarView extends View {
     }
 
     public void setGradient(int[] gradientColor){
-
-
 //        gradientColor = new int[]{Color.parseColor("#FFFFFF"),Color.parseColor("#000000")};
         scanShader = new SweepGradient(mWidth / 2, mHeight / 2,
             new int[]{Color.TRANSPARENT, Color.parseColor("#000000")}, null);
 //        scanShader = new SweepGradient(mWidth / 2, mHeight / 2,gradientColor , null);
-
         mPaintScan.setShader(null);
         mPaintScan.setShader(scanShader);
         post(run);

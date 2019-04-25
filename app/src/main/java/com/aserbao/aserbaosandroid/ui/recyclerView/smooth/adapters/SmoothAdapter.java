@@ -28,7 +28,7 @@ import butterknife.OnClick;
  *
  * @author aserbao
  * @date : On 2019/1/28 11:51 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.ui.recyclerView.smooth.adapters
  */

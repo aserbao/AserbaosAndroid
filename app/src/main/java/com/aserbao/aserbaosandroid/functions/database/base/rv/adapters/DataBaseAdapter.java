@@ -27,7 +27,7 @@ import static com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseAc
  * 主要功能:
  * author aserbao
  * date : On 2018/9/26
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class DataBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

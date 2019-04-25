@@ -12,11 +12,10 @@ import org.greenrobot.greendao.annotation.Transient;
  * 主要功能:
  * author aserbao
  * date : On 2018/9/26
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 @Entity
 public class Thing {
-    @Id(autoincrement = true)
     Long id;
     public Long getId() {
         return id;

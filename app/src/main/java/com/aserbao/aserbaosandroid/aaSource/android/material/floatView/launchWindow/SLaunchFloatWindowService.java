@@ -23,7 +23,7 @@ import com.aserbao.aserbaosandroid.R;
  *
  * @author aserbao
  * @date : On 2019/4/2 5:18 PM
- * @email: 1142803753@qq.com
+ * @email:
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.material.floatView.launchWindow
  */

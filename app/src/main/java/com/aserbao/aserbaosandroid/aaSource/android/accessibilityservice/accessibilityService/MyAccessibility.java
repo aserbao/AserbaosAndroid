@@ -8,7 +8,7 @@ import android.view.accessibility.AccessibilityEvent;
  *
  * @author aserbao
  * @date : On 2019/3/28 5:59 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService
  */

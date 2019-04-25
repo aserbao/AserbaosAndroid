@@ -15,7 +15,7 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
 /** 
  * DAO for table "THING".
 */
-public class ThingDao extends AbstractDao<Thing, Long> {
+public class ThingDao extends AbstractDao<Thing, Void> {
 
     public static final String TABLENAME = "THING";
 
@@ -24,7 +24,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", false, "ID");
         public final static Property Message = new Property(1, String.class, "message", false, "message");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
     }
@@ -42,7 +42,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"THING\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"ID\" INTEGER," + // 0: id
                 "\"message\" TEXT," + // 1: message
                 "\"NAME\" TEXT);"); // 2: name
         // Add Indexes
@@ -97,8 +97,8 @@ public class ThingDao extends AbstractDao<Thing, Long> {
     }
 
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+    public Void readKey(Cursor cursor, int offset) {
+        return null;
     }    
 
     @Override
@@ -119,23 +119,20 @@ public class ThingDao extends AbstractDao<Thing, Long> {
      }
     
     @Override
-    protected final Long updateKeyAfterInsert(Thing entity, long rowId) {
-        entity.setId(rowId);
-        return rowId;
+    protected final Void updateKeyAfterInsert(Thing entity, long rowId) {
+        // Unsupported or missing PK type
+        return null;
     }
     
     @Override
-    public Long getKey(Thing entity) {
-        if(entity != null) {
-            return entity.getId();
-        } else {
-            return null;
-        }
+    public Void getKey(Thing entity) {
+        return null;
     }
 
     @Override
     public boolean hasKey(Thing entity) {
-        return entity.getId() != null;
+        // TODO
+        return false;
     }
 
     @Override

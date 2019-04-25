@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
+import android.util.Log;
+
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
@@ -79,7 +81,10 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
 
     @Override
     public void deleteAll() {
-        daoSession.deleteAll(Thing.class);
+//        daoSession.deleteAll(Thing.class);
+        daoSession.delete(null);
+        ThingDao thingDao1 = daoSession.getThingDao();
+        Log.e(TAG, "deleteAll: " + thingDao1.loadAll().size() );
         refreshAdapter(GREEN_DAO);
     }
 

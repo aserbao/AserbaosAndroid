@@ -8,7 +8,7 @@ import com.aserbao.aserbaosandroid.system.handlers.HandlerActivity;
  * 功能:
  * author aserbao
  * date : On 2018/12/20
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class SystemActivity extends BaseActivity {
     @Override

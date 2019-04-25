@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.aserbao.aserbaosandroid.functions.database.greenDao.MigrationHelper;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster.OpenHelper;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -14,9 +12,9 @@ import org.greenrobot.greendao.database.Database;
  * 功能:
  * author aserbao
  * date : On 2018/10/15
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
-public class MyDaoMaster extends OpenHelper {
+public class MyDaoMaster extends DaoMaster.OpenHelper {
     private static final String TAG = "MyDaoMaster";
     public MyDaoMaster(Context context, String name) {
         super(context, name);

@@ -5,7 +5,7 @@ package com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids;
  *
  * @author aserbao
  * @date : On 2019/1/10 7:33 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids
  * @Copyright: 个人版权所有

@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
  * 主要功能:
  * author aserbao
  * date : On 2018/9/12
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class CustomRelativeLayout extends RelativeLayout {
     public CustomRelativeLayout(Context context) {

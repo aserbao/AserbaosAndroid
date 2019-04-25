@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
@@ -48,7 +48,7 @@ public class LifeCycle3Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() called");
-        ALogUtils.logErrorTime(TAG, "onViewClicked: " ,1);
+        L.logErrorTime(TAG, "onViewClicked: " , L.INT_NUM_END_TIME);
     }
 
     @Override

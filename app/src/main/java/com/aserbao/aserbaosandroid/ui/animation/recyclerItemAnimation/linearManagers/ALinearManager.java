@@ -11,7 +11,7 @@ import android.util.DisplayMetrics;
  * 功能:
  * author aserbao
  * date : On 2018/10/13
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class ALinearManager extends LinearLayoutManager {
     public ALinearManager(Context context) {

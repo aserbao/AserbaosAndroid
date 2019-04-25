@@ -7,7 +7,7 @@ import java.util.Vector;
  *
  * @author aserbao
  * @date : On 2019/1/22 7:22 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.functions.how_create_so.create_spot
  */

@@ -10,12 +10,12 @@ import java.util.ArrayList;
  * 功能:日志输出工具类
  * @author aserbao
  * @date : On 2019/1/3 11:25 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.AUtils.utils
  * @Copyright: 个人版权所有
  */
-public class ALogUtils {
+public class L {
     private static long mStartTime = 0;
     public static boolean mLogEnable = true;
     public static final String PREFIX = "LogUtils--";
@@ -24,15 +24,18 @@ public class ALogUtils {
     private static ArrayList<String> mMethods;
 
     static {
-        mClassname = ALogUtils.class.getName();
+        mClassname = L.class.getName();
         mMethods = new ArrayList<>();
 
-        Method[] ms = ALogUtils.class.getDeclaredMethods();
+        Method[] ms = L.class.getDeclaredMethods();
         for (Method m : ms) {
             mMethods.add(m.getName());
         }
     }
 
+    public static final int INT_NUM_START_TIME =1;
+    public static final int INT_NUM_END_TIME =2;
+    public static final int INT_NUM_NO_DETAIL_TIME =0;
     /**
      * @param tag
      * @param msg
@@ -42,11 +45,11 @@ public class ALogUtils {
             if(TextUtils.isEmpty(msg)){
                 return;
             }
-            if(initTimeState == 1) {
+            if(initTimeState == INT_NUM_END_TIME) {
                 long l = System.currentTimeMillis() - mStartTime;
                 Log.e(tag + "时间测试", msg + " 耗时 = " + String.valueOf(l) + "ms");
             }else{
-                if(initTimeState == 0){
+                if(initTimeState == INT_NUM_START_TIME){
                     mStartTime = System.currentTimeMillis();
                 }
                 Log.e(tag, msg);

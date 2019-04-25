@@ -35,7 +35,7 @@ import java.util.Date;
  * 主要功能:有关Android屏幕的工具类
  * author aserbao
  * date : On 2018/9/11
- * email:1142803753@qq.com
+ * email:this is empty email
  * 参考：CommonUtilLibrary
  */
 

@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * 主要功能:
  * author aserbao
  * date : On 2018/9/28
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public abstract class DataBaseBaseActivity extends AppCompatActivity {
     public static final int SQL_LITE = 0;

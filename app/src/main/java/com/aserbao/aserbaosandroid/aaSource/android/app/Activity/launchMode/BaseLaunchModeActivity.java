@@ -31,7 +31,7 @@ import static android.content.Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
  *
  * @author aserbao
  * @date : On 2019/2/13 11:39 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode
  */

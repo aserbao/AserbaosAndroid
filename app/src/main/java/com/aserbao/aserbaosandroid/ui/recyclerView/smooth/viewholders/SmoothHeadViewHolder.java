@@ -9,7 +9,7 @@ import android.view.View;
  *
  * @author aserbao
  * @date : On 2019/1/28 11:55 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.ui.recyclerView.smooth.viewholders
  */

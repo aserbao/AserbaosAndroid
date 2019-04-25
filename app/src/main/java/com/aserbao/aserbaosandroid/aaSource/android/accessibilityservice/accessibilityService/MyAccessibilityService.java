@@ -53,7 +53,7 @@ import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CH
  *
  * @author aserbao
  * @date : On 2019/3/22 5:33 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService
  */

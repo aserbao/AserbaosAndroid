@@ -9,7 +9,7 @@ import android.util.AttributeSet;
  * 功能:
  * author aserbao
  * date : On 2018/12/25
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class SpeedRecyclerView extends RecyclerView {
     private static final float FLING_SCALE_DOWN_FACTOR = 0.5f; // 减速因子

@@ -7,7 +7,7 @@ import com.aserbao.aserbaosandroid.base.beans.ClassBean;
  * 功能:
  * author aserbao
  * date : On 2018/11/27
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class MqttActivity extends BaseActivity {
     @Override

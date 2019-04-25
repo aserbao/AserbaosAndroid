@@ -13,7 +13,7 @@ import com.aserbao.aserbaosandroid.R;
  * 功能:
  * author aserbao
  * date : On 2018/10/11
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class RecyclerEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context mContext;

@@ -101,4 +101,6 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
 
+    implementation 'com.danikula:videocache:2.7.0'
+
 }

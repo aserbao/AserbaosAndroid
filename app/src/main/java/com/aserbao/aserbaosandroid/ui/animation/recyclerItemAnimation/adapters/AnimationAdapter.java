@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * 功能:
  * author aserbao
  * date : On 2018/10/9
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class AnimationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

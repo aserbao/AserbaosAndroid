@@ -8,7 +8,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * 功能:
  * author aserbao
  * date : On 2018/10/22
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 @Entity
 public class StudentAndTeacherBean {

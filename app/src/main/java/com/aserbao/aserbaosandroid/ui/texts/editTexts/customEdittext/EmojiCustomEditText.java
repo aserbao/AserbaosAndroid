@@ -30,7 +30,7 @@ import com.bumptech.glide.request.transition.Transition;
  * getContexts();获取除表情之外的内容
  * author aserbao
  * date : On 2018/11/20
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class EmojiCustomEditText extends EditText {
     private Context mContext;

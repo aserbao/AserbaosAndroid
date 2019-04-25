@@ -11,7 +11,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
  * 功能:
  * author aserbao
  * date : On 2018/12/25
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class CardAdapterHelper {
     private static final String TAG = "CardAdapterHelper";

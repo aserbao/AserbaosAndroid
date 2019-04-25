@@ -7,7 +7,7 @@ import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans.SimpleBean;
  *
  * @author aserbao
  * @date : On 2019/1/28 12:08 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.ui.recyclerView.smooth.interfaces
  */

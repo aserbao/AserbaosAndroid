@@ -26,7 +26,7 @@ import static java.lang.Math.PI;
  * 功能:
  * author aserbao
  * date : On 2018/12/11
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class MoveView extends View {
 

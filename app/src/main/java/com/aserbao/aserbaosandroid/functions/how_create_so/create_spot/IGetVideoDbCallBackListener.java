@@ -5,7 +5,7 @@ package com.aserbao.aserbaosandroid.functions.how_create_so.create_spot;
  *
  * @author aserbao
  * @date : On 2019/1/8 4:22 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  *
    */
 public interface IGetVideoDbCallBackListener {

@@ -14,7 +14,7 @@ import android.widget.EditText;
  * 功能:
  * author aserbao
  * date : On 2018/11/14
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 @SuppressLint("AppCompatCustomView")
 public class EditTestMultiLine extends EditText {

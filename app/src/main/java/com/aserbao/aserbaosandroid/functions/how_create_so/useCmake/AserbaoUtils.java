@@ -4,7 +4,7 @@ package com.aserbao.aserbaosandroid.functions.how_create_so.useCmake;
  * 功能:
  * author aserbao
  * date : On 2018/10/31
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class AserbaoUtils {
     static {

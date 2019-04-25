@@ -6,7 +6,7 @@ import com.aserbao.aserbaosandroid.functions.hobbies_and_interests.douyinUrl.bea
  * 功能:
  * author aserbao
  * date : On 2018/12/29
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public interface IAnalyzeTaskCallBack {
     void onAnalzed(Video video);

@@ -10,7 +10,7 @@ import dagger.Provides;
  *
  * @author aserbao
  * @date : On 2019/3/20 2:26 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules
  */

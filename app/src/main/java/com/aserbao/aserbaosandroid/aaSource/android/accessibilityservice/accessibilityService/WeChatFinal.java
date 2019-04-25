@@ -5,7 +5,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.access
  *
  * @author aserbao
  * @date : On 2019/4/1 7:45 PM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService
  */

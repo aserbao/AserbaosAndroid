@@ -22,7 +22,7 @@ import static java.lang.Math.PI;
  *
  * @author aserbao
  * @date : On 2019/1/9 11:13 AM
- * @email: 1142803753@qq.com
+ * @email: this is empty email
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.functions.randomAndNoOverLay
  * @Copyright: 个人版权所有

@@ -15,7 +15,7 @@ import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smoo
  * 功能:
  * author aserbao
  * date : On 2018/12/25
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class SmoothTwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;

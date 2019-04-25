@@ -42,7 +42,7 @@ import static java.net.Proxy.Type.HTTP;
  * 功能:
  * author aserbao
  * date : On 2018/12/26
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class JieXiConstant {
     private static String URL_HEAD;

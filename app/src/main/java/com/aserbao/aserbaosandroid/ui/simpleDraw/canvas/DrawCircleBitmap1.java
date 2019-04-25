@@ -24,7 +24,7 @@ import static android.graphics.PorterDuff.Mode.SRC_IN;
  * 主要功能:
  * author aserbao
  * date : On 2018/9/14
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 
 public class DrawCircleBitmap1 extends View{

@@ -24,7 +24,7 @@ import java.util.List;
  * 主要功能:
  * author aserbao
  * date : On 2018/9/12
- * email: 1142803753@qq.com
+ * email: this is empty email
  */
 public class CustomActivity extends AppCompatActivity {
     private static final String TAG = "CustomActivity";
