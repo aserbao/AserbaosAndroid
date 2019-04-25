@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/black30"
+    android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/toast_item_iv"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <TextView
-        android:id="@+id/toast_item_tv"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:background="@color/black"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/white"
-        android:text="我只是一个Toast,\n 不要动我！"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@color/black30"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/toast_item_iv"
+            android:src="@drawable/mm_1"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp" />
+        <TextView
+            android:id="@+id/toast_item_tv"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@color/black"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:text="我只是一个Toast,\n 不要动我！"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+</FrameLayout>

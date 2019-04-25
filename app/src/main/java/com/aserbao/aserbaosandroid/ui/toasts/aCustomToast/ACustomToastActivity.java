@@ -3,30 +3,32 @@ package com.aserbao.aserbaosandroid.ui.toasts.aCustomToast;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ClickToast.ClickToast;
 import com.bumptech.glide.Glide;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ACustomToastActivity extends AppCompatActivity {
-    private Context mContext;
+public class ACustomToastActivity extends BaseRecyclerViewActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acustom_toast);
-        ButterKnife.bind(this);
-        mContext = this;
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("简单的Toast"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("带点击的Toast"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("自定义Toast"));
     }
 
 
-    @OnClick({R.id.iamge_btn, R.id.second_btn})
+    /*@OnClick({R.id.iamge_btn, R.id.second_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iamge_btn:
@@ -39,23 +41,48 @@ public class ACustomToastActivity extends AppCompatActivity {
                     }
                 });
                 ClickToast toast = new ClickToast();
-                /*toast.setView(rootView);
-                toast.setDuration(Toast.LENGTH_LONG);*/
+                *//*toast.setView(rootView);
+                toast.setDuration(Toast.LENGTH_LONG);*//*
 //                toast.show(toast);
                 View toastv = toast.show(mContext, Toast.LENGTH_LONG, R.layout.toast_item_1);
 
 
-                /*ImageView imageView = new ImageView(this);
+                *//*ImageView imageView = new ImageView(this);
                 Glide.with(this).load(StaticFinalValues.IMAGE_URL).into(imageView);
-                Toast.makeText(this, "show", Toast.LENGTH_SHORT).show();*/
+                Toast.makeText(this, "show", Toast.LENGTH_SHORT).show();*//*
 
                 break;
-            case R.id.second_btn:
 
+        }
+    }*/
+
+
+    @Override
+    public void itemClickBack(View view, int position) {
+        switch (position){
+            case 0:
                 Toast.makeText(mContext, "This is What?", 10 * 1000).show();
+                break;
+            case 1:
+                // TODO: 2019/4/25 点击多次就蹦了
+                ClickToast clickToast = new ClickToast();
+                final View toastClickView = clickToast.show(mContext, Toast.LENGTH_LONG, R.layout.toast_item_1);
+                toastClickView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "动动我试试", Toast.LENGTH_SHORT).show();
+                        toastClickView.findViewById(R.id.toast_item_iv).setVisibility(View.GONE);
+                    }
+                });
+                break;
+            case 2:
+                View rootView = LayoutInflater.from(this).inflate(R.layout.toast_item_1, null);
+                Toast toast2 = new Toast(getApplicationContext());
+                toast2.setGravity(Gravity.CENTER, 12, 20);//setGravity用来设置Toast显示的位置，相当于xml中的android:gravity或android:layout_gravity
+                toast2.setDuration(Toast.LENGTH_LONG);//setDuration方法：设置持续时间，以毫秒为单位。该方法是设置补间动画时间长度的主要方法
+                toast2.setView(rootView); //添加视图文件
+                toast2.show();
                 break;
         }
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,7 +44,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public int mOrientation = LinearLayoutManager.VERTICAL;
 
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
-
+    protected Context mContext;
 
 
     @Override
@@ -52,6 +53,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         setTranslations();
         setContentView(R.layout.base_activity);
         ButterKnife.bind(this);
+        mContext = this;
         initGetData();
         initView();
     }
