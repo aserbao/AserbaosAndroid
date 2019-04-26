@@ -57,13 +57,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".functions.launch.demo.LaunchDemoActivity">
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".functions.launch.LaunchActivity" />
         <activity android:name=".aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity" />

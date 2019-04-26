@@ -16,12 +16,12 @@
         android:maxLines="1"
         android:text="123asdffasdhjfkhasdfkdfks123asdffasdhjfkhasdfkdfks123asdffasdhjfkhasdfkdfks"
         app:layout_constrainedWidth="true"
-        app:layout_constraintRight_toLeftOf="@+id/cat_image"
+        app:layout_constraintRight_toLeftOf="@+id/a_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/cat_image"
+        android:id="@+id/a_tv"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:src="@drawable/emoji_01"
@@ -29,7 +29,6 @@
         app:layout_constraintLeft_toRightOf="@+id/constraint_tv"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <ImageView

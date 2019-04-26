@@ -1,33 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
-        android:background="@drawable/test_bg"
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+
     <TextView
         android:id="@+id/constraint_tv"
         android:layout_width="wrap_content"
         android:layout_height="53dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="224dp"
         android:ellipsize="end"
         android:gravity="center|left"
         android:maxLines="1"
-        android:layout_toLeftOf="@+id/test_fl"
-        android:text="kdfks123asdffasdhjfkhasdfkdfks"
-        />
-    <FrameLayout
-        android:id="@+id/test_fl"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/cat_image"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/emoji_01" />
-    </FrameLayout>
+        android:text="我是小朱,咱们一起学Android"
+        app:layout_constraintBottom_toTopOf="@+id/a_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/a_tv"
+        android:text="A"
+        style="@style/test_text_view_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/b_tv"
+        android:text="B"
+        style="@style/test_text_view_style"
+        app:layout_constraintBottom_toTopOf="@+id/a_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/c_tv"
+        android:text="C"
+        style="@style/test_text_view_style"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/a_tv" />
+    <TextView
+        android:id="@+id/d_tv"
+        android:text="D"
+        style="@style/test_text_view_style"
+        app:layout_constraintTop_toBottomOf="@+id/a_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/e_tv"
+        android:text="E"
+        style="@style/test_text_view_style"
+        app:layout_constraintLeft_toRightOf="@+id/a_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/a_bottom_tv"
+        android:text="ABottom"
+        style="@style/test_text_view_style"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/b_bottom_tv"
+        style="@style/test_text_view_style"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:text="BBottom"
+        app:layout_constraintBottom_toTopOf="@+id/a_bottom_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
