@@ -41,7 +41,7 @@ public class JCPlayerActivity extends AppCompatActivity {
     private void init() {
 //        String s = "http://tv.cctv.com/live/cctv1/?date=2019-02-28&index=0";
         String stringExtra = getIntent().getStringExtra(StaticFinalValues.VIDEO_URL);
-        mJzVideoPlayer.setUp(stringExtra, JZVideoPlayer.SCREEN_WINDOW_NORMAL,"");
+        mJzVideoPlayer.setUp("https://vdse.bdstatic.com//0afe2d814075c5bd2d54bea1c5b6731a?authorization=bce-auth-v1%2F40f207e648424f47b2e3dfbb1014b1a5%2F2017-05-11T09%3A02%3A31Z%2F-1%2F%2F040e567458cb59443b7405bfbbdd79982bc20bca590c3445b74a0dca940d4e64", JZVideoPlayer.SCREEN_WINDOW_NORMAL,"");
         mJzVideoPlayer.startVideo();
     }
 }

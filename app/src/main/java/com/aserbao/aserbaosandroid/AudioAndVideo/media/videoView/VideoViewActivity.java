@@ -1,9 +1,7 @@
 package com.aserbao.aserbaosandroid.AudioAndVideo.media.videoView;
 
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.MediaController;
@@ -14,6 +12,7 @@ import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class VideoViewActivity extends AppCompatActivity {
     private static final String TAG = "VideoViewActivity";
@@ -23,34 +22,38 @@ public class VideoViewActivity extends AppCompatActivity {
     SeekBar mVideoSeekBar;
     private String videoUrl = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     private String videoUrl1 = "/storage/emulated/0/DCIM/Camera/VID20180319111516.mp4";
+    private String videoUrl2 = "/storage/emulated/0/DCIM/Camera/VID_20190421_154730.mp4";
+    private String videoUrl3 = "/storage/emulated/0/DCIM/Camera/VID_20190421_154730.mp4";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_view);
         ButterKnife.bind(this);
-//        String uriString = "android.resource://" + getPackageName() + "/" + R.raw.black;
-//        Uri mUri = Uri.parse(uriString);
-//        mVideoView.setVideoURI(Uri.parse(videoUrl1));
-        mVideoView.setVideoPath("http://npic.getremark.com/7e7aafb9292ac82b6e2c70eea4c4d36a-bdfb8cd2de3f77178f354c1cbb28bc7e");
+    }
+
+    @OnClick(R.id.btn_play)
+    public void onViewClicked() {
+        mVideoView.setVideoPath(videoUrl3);
         mVideoView.setMediaController(new MediaController(this));
         mVideoView.start();
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                Log.e(TAG, "onPrepared: " );
+                Log.e(TAG, "onPrepared: ");
             }
         });
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Log.e(TAG, "onCompletion: " );
+                Log.e(TAG, "onCompletion: ");
             }
         });
         mVideoSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int progress1 = seekBar.getProgress();
-                mVideoView.seekTo(mVideoView.getDuration() * progress /100);
+                mVideoView.seekTo(mVideoView.getDuration() * progress / 100);
             }
 
             @Override

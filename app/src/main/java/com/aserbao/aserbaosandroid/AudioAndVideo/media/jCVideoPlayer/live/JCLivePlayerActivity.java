@@ -22,7 +22,7 @@ public class JCLivePlayerActivity extends BaseRecyclerViewActivity {
         switch (position){
             case 0:
 //                JCPlayerActivity.lanuch(this,"http://tv.cctv.com/live/cctv1/?date=2019-02-28&index=0");
-                JCPlayerActivity.lanuch(this,"http://ivi.bupt.edu.cn/hls/cctv1.m3u8");
+                JCPlayerActivity.lanuch(this,"http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4");
                 break;
         }
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aserbao.aserbaosandroid">
+    <!--com.example.aserbao.aserbaosandroid/com.aserbao.aserbaosandroid.HomeActivity-->
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -19,7 +20,6 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
@@ -27,6 +27,8 @@
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -44,7 +46,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.fragmentation.Fragmentation"></activity>
+        <activity android:name=".aaThird.videocache.VideoCacheActivity"></activity>
+        <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />
         <activity android:name=".aaSource.android.support.SupportActivity" />
         <activity android:name=".ui.customView.CustomViewActivity" />
@@ -57,12 +60,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".functions.launch.demo.LaunchDemoActivity">
-           <!-- <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".functions.launch.LaunchActivity" />
         <activity android:name=".aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity" />

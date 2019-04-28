@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.R;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
@@ -49,8 +51,6 @@ public class PlayListActivity extends AppCompatActivity {
                     "http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4"
             };
     public static String[] videoUrlList0 = {
-            "https://s.sc-cdn.net/1d/cZWfwwS0cns89PxIyIv0UeA1YPA5mW7OXjBRLrI2UIc=/default/embedded.mp4",
-            "https://s.sc-cdn.net/1d/zb8OiN6q_xbblEu8Fquyt1JaEXKTwC7veN7tMI8GmYU=/default/embedded.mp4",
             "https://s.sc-cdn.net/2cxxyodwA1VBvqsfQ4P9WTLtBQYjcxctTZBXo3_4Rt8=/default/embedded.mp4",
             "https://s.sc-cdn.net/3Rkyjb15qI7K7BoY2-TiHC5nzeIZU602ZAGsXvSpnYk=/default/embedded.mp4",
             "https://s.sc-cdn.net/3btq0j2eW5qGkOnMMvkxdL76_vQFtqv0-W7njZOtQuI=/default/embedded.mp4",
@@ -126,9 +126,15 @@ public class PlayListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Uri mUri = Uri.parse("android.resource://" + getPackageName() + "/"+ R.raw.black);
+
+        String videoUrl = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/VID_20190421_154730.mp4";
+        Uri parse = Uri.parse(videoUrl);
+
         for (int i = 0; i < videoUrlList0.length; i++) {
 //            mediaSources[i] = factory.createMediaSource(Uri.parse(videoUrlList0[i]));
-            mediaSources[i] = factory.createMediaSource(mUri);
+//            mediaSources[i] = factory.createMediaSource(mUri);
+            mediaSources[i] = factory.createMediaSource(parse);
+//            mediaSources[i] = buildMediaSource(parse);
         }
 
 
@@ -138,6 +144,12 @@ public class PlayListActivity extends AppCompatActivity {
         mPlayer.prepare(new ConcatenatingMediaSource(mediaSources));
 
         mPlayer.setPlayWhenReady(true);
+    }
+
+    private MediaSource buildMediaSource(Uri uri) {
+        return new ExtractorMediaSource(uri,
+            new DefaultDataSourceFactory(this,"ua"),
+            new DefaultExtractorsFactory(), null, null);
     }
 
     private static final String TAG = "PlayListActivity";

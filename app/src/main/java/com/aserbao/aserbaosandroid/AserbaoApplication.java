@@ -7,6 +7,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;
+import com.danikula.videocache.HttpProxyCacheServer;
 
 /**
  * Created by aserbao on 2018 2018/1/15.23:27
@@ -32,6 +33,18 @@ public class AserbaoApplication extends Application {
         screenHeight = DisplayUtil.getScreenHeight(this);
         initGreenDao();
         instance = this;
+    }
+
+    //========================== 缓存区
+    private HttpProxyCacheServer proxy;
+
+    public static HttpProxyCacheServer getProxy() {
+        AserbaoApplication app = instance;
+        return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
+    }
+
+    private HttpProxyCacheServer newProxy() {
+        return new HttpProxyCacheServer(this);
     }
 
     /**

@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -55,7 +56,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
 //        mMediaSurfaceView = new SurfaceView(this);
         mMediaPlayer = new MediaPlayer();
         try {
-            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
+//            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -98,6 +99,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
                         String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.TITLE));
                         // 视频路径：MediaStore.Audio.Media.DATA
                         mVideoPath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
+                        Log.e(TAG, "onActivityResult: " + mVideoPath );
                         // 视频时长：MediaStore.Audio.Media.DURATION
                         int duration = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));
                         // 视频大小：MediaStore.Audio.Media.SIZE
