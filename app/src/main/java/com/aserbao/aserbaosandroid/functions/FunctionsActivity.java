@@ -11,6 +11,7 @@ import com.aserbao.aserbaosandroid.functions.jump2OtherApp.Jump2OtherActivity;
 import com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSettingActivity;
 import com.aserbao.aserbaosandroid.functions.launch.LaunchActivity;
 import com.aserbao.aserbaosandroid.functions.listener.ListenerActivity;
+import com.aserbao.aserbaosandroid.functions.notifacations.networks.NetWorkNotification;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
@@ -28,6 +29,7 @@ public class FunctionsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("小兴趣", HobbiesAndInterestsActivity.class));
         mClassBeen.add(new ClassBean("常用系统监听", ListenerActivity.class));
         mClassBeen.add(new ClassBean("Launch", LaunchActivity.class));
+        mClassBeen.add(new ClassBean("网络状态监听", NetWorkNotification.class));
 
     }
 

@@ -1,0 +1,66 @@
+package com.aserbao.aserbaosandroid.functions.notifacations.networks;
+
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+
+public class NetWorkNotification extends BaseRecyclerViewActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("开启网络监听"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("取消网络监听"));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position) {
+        switch (position){
+            case 0:
+                register();
+                break;
+            case 1:
+                unregister();
+                break;
+        }
+    }
+    NetWorkStateReceiver netWorkStateReceiver;
+    //在onResume()方法注册
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+    }
+
+    public void register(){
+        if (netWorkStateReceiver == null) {
+            netWorkStateReceiver = new NetWorkStateReceiver();
+        }
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(netWorkStateReceiver, filter);
+        System.out.println("注册");
+    }
+
+    public void unregister(){
+        unregisterReceiver(netWorkStateReceiver);
+    }
+
+    //onPause()方法注销
+    @Override
+    protected void onPause() {
+        unregisterReceiver(netWorkStateReceiver);
+        System.out.println("注销");
+        super.onPause();
+    }
+
+}

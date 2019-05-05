@@ -13,8 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/btn_get_phone_info"
-                android:text="获取当前手机信息"
+            android:id="@+id/btn_get_phone_info"
+            android:text="获取当前手机信息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_get_phone_info2"
+                android:text="网络状态"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>

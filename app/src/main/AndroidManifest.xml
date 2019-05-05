@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aserbao.aserbaosandroid">
-    <!--com.example.aserbao.aserbaosandroid/com.aserbao.aserbaosandroid.HomeActivity-->
+    <!-- com.example.aserbao.aserbaosandroid/com.aserbao.aserbaosandroid.HomeActivity -->
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -46,7 +46,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.videocache.VideoCacheActivity"></activity>
+        <activity android:name=".functions.notifacations.networks.NetWorkNotification"></activity>
+        <activity android:name=".aaThird.videocache.VideoCacheActivity" />
         <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />
         <activity android:name=".aaSource.android.support.SupportActivity" />
