@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <FrameLayout
+        android:layout_marginTop="50dp"
         android:id="@+id/base_recycler_empty_container"
-        android:layout_below="@+id/opengl_recycler_view"
         android:background="@color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

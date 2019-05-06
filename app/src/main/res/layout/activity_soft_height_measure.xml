@@ -80,22 +80,18 @@
             style="@style/global_btn_style"
             />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
-    <LinearLayout
-        android:gravity="bottom"
+
+    <EditText
+        android:hint="点击我来测量软件盘高度的"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/soft_et"
+        android:background="@color/black40"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <EditText
-            android:hint="点击我来测量软件盘高度的"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/soft_et"
-            android:background="@color/black40"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-    </LinearLayout>
+        android:layout_height="80dp" />
     <TextView
         android:background="@color/white"
         android:text="我是尾布局"

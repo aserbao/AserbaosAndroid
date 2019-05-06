@@ -39,7 +39,7 @@ public class AddRecyclerViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
         init();
-        initListener();
+//        initListener();
     }
 
 
@@ -47,7 +47,7 @@ public class AddRecyclerViewActivity extends AppCompatActivity {
     private int mLastPosition;
 
     private void initData() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
             mResult.add("第" + i + " 条数据");
             mLastPosition = i;
         }
@@ -110,7 +110,7 @@ public class AddRecyclerViewActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_btn:
-                changEmptyItemHeight();
+//                changEmptyItemHeight();
                 mLastPosition++;
                 addAdapters.addItem("第" + mLastPosition + " 条数据");
                 linearLayoutManager.scrollToPosition(0);
