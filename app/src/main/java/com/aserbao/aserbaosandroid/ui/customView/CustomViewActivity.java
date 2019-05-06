@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.ui.customView;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
@@ -10,10 +11,11 @@ import com.aserbao.aserbaosandroid.ui.canvas.path.PathView;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier2;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier3;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier4;
-import com.aserbao.aserbaosandroid.ui.customView.bezier.BezierCustomLike;
+import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
 import com.aserbao.aserbaosandroid.ui.customView.radar.RadarView;
 
 public class CustomViewActivity extends BaseRecyclerViewActivity {
+
 
     @Override
     public void initGetData() {
@@ -50,13 +52,8 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 break;
             case 5:
                 BezierCustomLike bezierCustomLike = new BezierCustomLike(this);
+                bezierCustomLike.setClickable(true);
                 mBaseRecyclerEmptyContainer.addView(bezierCustomLike, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                bezierCustomLike.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        bezierCustomLike.addLikeIcon(R.drawable.emoji_00);
-                    }
-                });
                 break;
             case 6:
                 PathView pathView = new PathView(this);
