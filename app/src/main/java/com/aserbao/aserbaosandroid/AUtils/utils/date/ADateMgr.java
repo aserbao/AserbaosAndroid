@@ -10,9 +10,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AppDateMgr {
+/**
+ * 日期管理器
+ */
+public class ADateMgr {
 
-    public AppDateMgr() {
+    public ADateMgr() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
@@ -58,7 +61,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = YYYYMMDDHHMMSS_FORMAT.parse(dateTime);
             e.setTime(date);
-            return e.get(1);
+            return e.get(Calendar.YEAR);
         } catch (ParseException var3) {
             var3.printStackTrace();
             return 0;
@@ -76,7 +79,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = simpleDateFormat.parse(dateTime);
             e.setTime(date);
-            return e.get(1);
+            return e.get(Calendar.YEAR);
         } catch (ParseException var4) {
             var4.printStackTrace();
             return 0;
@@ -91,7 +94,7 @@ public class AppDateMgr {
     public static int parseYyyy(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(1);
+        return cal.get(Calendar.YEAR);
     }
 
     /**
@@ -104,7 +107,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = YYYYMMDDHHMMSS_FORMAT.parse(dateTime);
             e.setTime(date);
-            return e.get(2);
+            return e.get(Calendar.MONTH);
         } catch (ParseException var3) {
             var3.printStackTrace();
             return 0;
@@ -122,7 +125,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = simpleDateFormat.parse(dateTime);
             e.setTime(date);
-            return e.get(2);
+            return e.get(Calendar.MONTH);
         } catch (ParseException var4) {
             var4.printStackTrace();
             return 0;
@@ -137,7 +140,7 @@ public class AppDateMgr {
     public static int parseMm(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(2);
+        return cal.get(Calendar.MONTH);
     }
 
     /**
@@ -150,7 +153,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = YYYYMMDDHHMMSS_FORMAT.parse(dateTime);
             e.setTime(date);
-            return e.get(5);
+            return e.get(Calendar.DATE);
         } catch (ParseException var3) {
             var3.printStackTrace();
             return 0;
@@ -168,7 +171,7 @@ public class AppDateMgr {
             Calendar e = Calendar.getInstance();
             Date date = simpleDateFormat.parse(dateTime);
             e.setTime(date);
-            return e.get(5);
+            return e.get(Calendar.DATE);
         } catch (ParseException var4) {
             var4.printStackTrace();
             return 0;
@@ -183,7 +186,7 @@ public class AppDateMgr {
     public static int parseDd(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(5);
+        return cal.get(Calendar.DATE);
     }
 
     /**
@@ -299,7 +302,7 @@ public class AppDateMgr {
     public static int getWeekNumber(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(7);
+        return cal.get(Calendar.DAY_OF_WEEK);
     }
 
     /**
@@ -329,7 +332,7 @@ public class AppDateMgr {
     public static int getWeekOfMonth(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(4);
+        return cal.get(Calendar.WEEK_OF_MONTH);
     }
 
     /**
@@ -359,7 +362,7 @@ public class AppDateMgr {
     public static int getWeekOfYear(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(3);
+        return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
     /**
@@ -756,7 +759,7 @@ public class AppDateMgr {
     private final static long YEAR = 12 * MONTH;// 年
 
     /** Log输出标识 **/
-    private static final String TAG = AppDateMgr.class.getSimpleName();
+    private static final String TAG = ADateMgr.class.getSimpleName();
 
     /**
      * 将日期格式化成友好的字符串：几分钟前、几小时前、几天前、几月前、几年前、刚刚
@@ -898,9 +901,9 @@ public class AppDateMgr {
     public static boolean compareDate(Date target1, Date target2) {
         boolean flag = false;
         try {
-            String target1DateTime = AppDateMgr.formatDateTime(target1,
+            String target1DateTime = ADateMgr.formatDateTime(target1,
                 DF_YYYY_MM_DD_HH_MM_SS);
-            String target2DateTime = AppDateMgr.formatDateTime(target2,
+            String target2DateTime = ADateMgr.formatDateTime(target2,
                 DF_YYYY_MM_DD_HH_MM_SS);
             if (target1DateTime.compareTo(target2DateTime) <= 0) {
                 flag = true;

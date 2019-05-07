@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-import com.aserbao.aserbaosandroid.AUtils.utils.date.AppDateMgr;
+import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
 
 import java.lang.ref.WeakReference;
 
@@ -159,7 +159,7 @@ public class CountDownView extends View {
         public void handleMessage(Message msg) {
             CountDownView countDownView = mCountDownViewWeakReference.get();
             if (countDownView != null && !TextUtils.isEmpty(countDownView.mStartTime)) {
-                String[] timeDifference = AppDateMgr.getTimeDifference(AppDateMgr.todayYyyyMmDdHhMmSs(), countDownView.mStartTime);
+                String[] timeDifference = ADateMgr.getTimeDifference(ADateMgr.todayYyyyMmDdHhMmSs(), countDownView.mStartTime);
                 if (timeDifference != null) {
                     countDownView.sTime = timeDifference;
                     sendEmptyMessageDelayed(EMPTY,1000);
