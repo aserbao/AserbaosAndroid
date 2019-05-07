@@ -46,7 +46,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.notifacations.networks.NetWorkNotification"></activity>
+        <activity android:name=".algorithm.list.AboutListSortActivty"></activity>
+        <activity android:name=".algorithm.AlgorithmActivity" />
+        <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
         <activity android:name=".aaThird.videocache.VideoCacheActivity" />
         <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />

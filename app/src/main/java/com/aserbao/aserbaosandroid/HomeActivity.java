@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
+import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -58,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("系统类", SystemActivity.class));
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
+        mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
     }
 
     private void initView() {

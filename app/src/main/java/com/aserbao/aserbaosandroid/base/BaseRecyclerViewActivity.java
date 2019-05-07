@@ -33,6 +33,8 @@ import butterknife.ButterKnife;
 public abstract class BaseRecyclerViewActivity extends AppCompatActivity implements IBaseRecyclerItemClickListener {
     @BindView(R.id.base_recycler_tv)
     public TextView mBaseRecyclerTv;
+    @BindView(R.id.show_data_content_rv)
+    public RecyclerView mShowDataContentRv;
     @BindView(R.id.opengl_recycler_view)
     public RecyclerView mOpenglRecyclerView;
     @BindView(R.id.base_recycler_view_fl)
