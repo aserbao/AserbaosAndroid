@@ -10,6 +10,11 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.util.Log;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
 import com.aserbao.aserbaosandroid.R;
@@ -42,6 +47,7 @@ public class TreeLine {
     Path mPath;
     private PointF mPointF1,mPointF2,mPointStart,mPointEnd,mPointF;
     private IFinishedListener mIFinishedListener;
+    private Interpolator[] interpolators;
 
     public TreeLine(int height , int width, Bitmap bitmap, IFinishedListener iFinishedListener) {
         random = new Random();
@@ -64,8 +70,16 @@ public class TreeLine {
         mMatrix = new Matrix();
         mIFinishedListener = iFinishedListener;
 
+        interpolators = new Interpolator[]{
+            new LinearInterpolator(),
+            new AccelerateDecelerateInterpolator(),
+            new AccelerateInterpolator(),
+            new DecelerateInterpolator(),
+        };
+
         startAnimator();
     }
+
 
     public void startAnimator(){
         //曲线的两个顶点
@@ -80,8 +94,8 @@ public class TreeLine {
         int startY = mHeight - mIconHeight;
         mPointStart = new PointF(startX, startY);
 
-        Path path = new Path();
-        path.moveTo(startX,startY);
+//        Path path = new Path();
+        mPath.moveTo(startX,startY);
         mPointEnd = new PointF(random.nextInt(mWidth), 0);
 
         //贝塞尔估值器
@@ -90,10 +104,11 @@ public class TreeLine {
         animator.setDuration(INT_ANIMATION_TIME);
         animator.addUpdateListener(new UpdateListener(new WeakReference<>(this)));
         animator.addListener(new TreeLineAnimationListener(new WeakReference<>(this),new WeakReference<>(mIFinishedListener)));
-        animator.setInterpolator(new LinearInterpolator());
+        animator.setInterpolator(interpolators[random.nextInt(4)]);
         animator.start();
     }
 
+    private static final String TAG = "TreeLine";
     public void draw(Canvas canvas){
         if (mPath != null) {
             canvas.drawPath(mPath,mPaint);
@@ -159,6 +174,7 @@ public class TreeLine {
 
     private void update(PointF pointF) {
         mPath.lineTo(pointF.x,pointF.y);
+        Log.e(TAG, "update: " + pointF.x + " y = " + pointF.y);
     }
 
 

@@ -100,7 +100,9 @@ public class BezierCustomLike extends View implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        addLike();
+        for (int i = 0; i < 10; i++) {
+            addLike();
+        }
     }
 
     public static class CustomHandler extends Handler{
