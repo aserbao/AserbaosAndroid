@@ -39,7 +39,6 @@ import butterknife.OnClick;
 public class PlayListActivity extends AppCompatActivity {
     public static String[] videoUrlList =
             {
-                    "http://npic.getremark.com/7e7aafb9292ac82b6e2c70eea4c4d36a-bdfb8cd2de3f77178f354c1cbb28bc7e",
                     "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4"
             };
     public static String[] videoUrlLiswt =
@@ -51,36 +50,7 @@ public class PlayListActivity extends AppCompatActivity {
                     "http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4"
             };
     public static String[] videoUrlList0 = {
-            "https://s.sc-cdn.net/2cxxyodwA1VBvqsfQ4P9WTLtBQYjcxctTZBXo3_4Rt8=/default/embedded.mp4",
-            "https://s.sc-cdn.net/3Rkyjb15qI7K7BoY2-TiHC5nzeIZU602ZAGsXvSpnYk=/default/embedded.mp4",
-            "https://s.sc-cdn.net/3btq0j2eW5qGkOnMMvkxdL76_vQFtqv0-W7njZOtQuI=/default/embedded.mp4",
-            "https://s.sc-cdn.net/4ZDsSf2stQBdPIuOnvaWzsyhzju7z-r7liIb2Wc9dak=/default/embedded.mp4",
-            "https://s.sc-cdn.net/54T8Kh4Y2gVQZqMf0GpJyNJeu1DZvWX3HKp84zpzb3I=/default/embedded.mp4",
-            "https://s.sc-cdn.net/5MYiJi2qQBfF2tjBH2pQm3kBhsgvWZXMhrMchQa41DQ=/default/embedded.mp4",
-            "https://s.sc-cdn.net/6xbLT9Le5ZvFOY3x3ckA5LXUIM0pP_lejLnw0LHi35U=/default/embedded.mp4",
-            "https://s.sc-cdn.net/ChmLqyOyoyeLgeavk75l1seQPH9i8U0QInoj43u2quk=/default/embedded.mp4",
-            "https://s.sc-cdn.net/FxEjQ2YRccA9CdKEZuAPbwebNEjG_Aqj2pqC3F3csGA=/default/embedded.mp4",
-            "https://s.sc-cdn.net/IU5aV2ddmOORo33oickrd72BSirwEERSpuIs8TqDUDc=/default/embedded.mp4",
-            "https://s.sc-cdn.net/P1SGGpH1G4eqVxlU1cLGnMGsDy0rBD7Q7aKlDZ4pXRo=/default/embedded.mp4",
-            "https://s.sc-cdn.net/PMgkBXoPZENmdCgNlkQ6ZKBeOTPYwQpbetHPmX_L6o8=/default/embedded.mp4",
-            "https://s.sc-cdn.net/RSkmiMzCTGu4L3ixL5Cg5sJBwWI7rI2kh85cEa31qMo=/default/embedded.mp4",
-            "https://s.sc-cdn.net/S2tr0HlhyvNlMjHyvELPe9-d_rbJp4QkU4GpaiFVjb0=/default/embedded.mp4",
-            "https://s.sc-cdn.net/TAnhisjWSHAN6RwjMgvLA-utmjf7mWpvMy7731TP-6g=/default/embedded.mp4",
-            "https://s.sc-cdn.net/X4FP93vQ3GK9Q_JZ-KNm0z-exjuas5u79Pw7neUBg8U=/default/embedded.mp4",
-            "https://s.sc-cdn.net/XZLHjX7i5Fmbs22IJdJRW54nus69JOdz-zea_bsU4Kg=/default/embedded.mp4",
-            "https://s.sc-cdn.net/brvfysM9hh2UF6igXkyMW_EGOIbqSKy-j03-f0AsCnM=/default/embedded.mp4",
-            "https://s.sc-cdn.net/cz6vExbiUih4-pFi0JamzZ4jjRyMhkzjRI7uPeMYpuM=/default/embedded.mp4",
-            "https://s.sc-cdn.net/iYcuW9fH-O86K7m5sWDBSRklKqr9yreus1Y3dqu3ZVg=/default/embedded.mp4",
-            "https://s.sc-cdn.net/m6HeShLuqyo16IaWkLcI-cUb3ReZWvSEN5jbswlh-S0=/default/embedded.mp4",
-            "https://s.sc-cdn.net/nUqhukymPuMgto1rVoFraC7Feruv8eRaDnjNhL7iBHo=/default/embedded.mp4",
-            "https://s.sc-cdn.net/pqNNwpose7Pnwae9U3ytAb1Mxhj3j-B9iY7s3laaa60=/default/embedded.mp4",
-            "https://s.sc-cdn.net/qCuIFs3DAkS3or-u_9z_rYvxrB3EAJFgl22fKIGuXlM=/default/embedded.mp4",
-            "https://s.sc-cdn.net/qTraLgHoD0kVmBJFd0mD2TIR9H-8vWc3RpiignY6tNM=/default/embedded.mp4",
-            "https://s.sc-cdn.net/rJvHaUYhqu3VJPUl9pCIsBehTxNSnhBqrX00HNgx7Pw=/default/embedded.mp4",
-            "https://s.sc-cdn.net/uoiIYVo952KFX5YnvvE7-EoeYhUQ1Su_W0s8oyRUyRA=/default/embedded.mp4",
-            "https://s.sc-cdn.net/vDn9vU-u9ZfQOh-FqkUIoV5Zo3-eT-GEIpSyj-ii1M8=/default/embedded.mp4",
-            "https://s.sc-cdn.net/xU2hCWj8iYhLZ0XjpRFNzXENvptozUKeJz8J5uqEVQM=/default/embedded.mp4",
-            "https://s.sc-cdn.net/ySaMjExKgJBVugvyHnlXPC_wlLD595G3lbGNvicBY7I=/default/embedded.mp4"
+            "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300f970000bj8n2sds3mesa72u8tv0&line=0",
     };
     
 

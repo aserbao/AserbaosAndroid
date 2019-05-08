@@ -50,6 +50,12 @@ public class StudentAdapters extends RecyclerView.Adapter<RecyclerView.ViewHolde
         notifyDataSetChanged();
     }
 
+    public void addStudentList(List<Student> studentList){
+        mStudent.clear();
+        mStudent = studentList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
