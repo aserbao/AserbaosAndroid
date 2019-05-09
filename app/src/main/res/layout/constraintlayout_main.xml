@@ -4,39 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     tools:context="com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity">
 
 
     <TextView
         android:id="@+id/constraint_tv"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="53dp"
         android:ellipsize="end"
         android:gravity="center|left"
         android:maxLines="1"
-        android:text="123asdffasdhjfkhasdfkdfks123asdffasdhjfkhasdfkdfks123asdffasdhjfkhasdfkdfks"
-        app:layout_constrainedWidth="true"
+        android:text="123asdffasdhjfkhasdffal"
         app:layout_constraintRight_toLeftOf="@+id/a_tv"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/a_tv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/a_tv"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/emoji_01"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintLeft_toRightOf="@+id/constraint_tv"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <android.support.constraint.Group
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="a_tv,constraint_tv"
+        app:layout_constrainedWidth="true" />
+
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="312dp" />
+
 
 </android.support.constraint.ConstraintLayout>
