@@ -47,7 +47,7 @@ public class AddRecyclerViewActivity extends AppCompatActivity {
     private int mLastPosition;
 
     private void initData() {
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 200; i++) {
             mResult.add("第" + i + " 条数据");
             mLastPosition = i;
         }

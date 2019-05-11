@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/black50"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/nest_rv_item"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_above="@+id/nest_rv_item_tv"
+        android:id="@+id/nest_rv_item_swipe_refresh_layout"
+        android:layout_width="240dp"
+        android:layout_height="240dp">
+        <com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest.CustomItemRecyclerView
+            android:background="@color/white"
+            android:id="@+id/nest_rv_item_rv"
+            android:layout_width="240dp"
+            android:layout_height="240dp"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/nest_rv_item_tv"
+        android:text="哈哈哈"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:id="@+id/nest_rv_item_top_tv"
+        android:text="来呀，点我呀"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp" />
+</RelativeLayout>

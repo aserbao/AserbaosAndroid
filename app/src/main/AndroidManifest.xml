@@ -46,7 +46,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".algorithm.list.AboutListSortActivty"></activity>
+        <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity"></activity>
+        <activity android:name=".algorithm.list.AboutListSortActivty" />
         <activity android:name=".algorithm.AlgorithmActivity" />
         <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
         <activity android:name=".aaThird.videocache.VideoCacheActivity" />

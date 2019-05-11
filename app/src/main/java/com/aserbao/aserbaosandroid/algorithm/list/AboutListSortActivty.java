@@ -26,6 +26,7 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
         initViews();
         mBaseRecyclerBeen.add(new BaseRecyclerBean("随机添加一名学生"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("List中两个相邻数据互换位置"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("List中set和remove方法"));
     }
 
     private void initViews() {
@@ -53,6 +54,16 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
                 }
                 Collections.swap(mStudentList,0,6);
                 studentAdapters.addStudentList(mStudentList);
+                break;
+            case 2:
+                List<Student> studentList = new ArrayList<>();
+                for (int i = 0; i < 10; i++) {
+                    Student students = new Student(RandomValue.getChineseName(), random.nextInt(5) + 15, i+ 80);
+                    studentList.add(students);
+                }
+                studentList.set(1,new Student(RandomValue.getChineseName(), random.nextInt(5) + 15, 100));
+                studentList.remove(studentList.size()-1);
+                studentAdapters.addStudentList(studentList);
                 break;
         }
     }
