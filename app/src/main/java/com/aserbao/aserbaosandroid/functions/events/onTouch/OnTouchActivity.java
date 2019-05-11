@@ -5,42 +5,49 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class OnTouchActivity extends AppCompatActivity implements View.OnTouchListener{
+public class OnTouchActivity extends AppCompatActivity {
 
-    @BindView(R.id.touch_iv)
-    ImageView mTouchIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_touch);
         ButterKnife.bind(this);
-        mTouchIv.setOnTouchListener(this);
     }
 
     private static final String TAG = "OnTouchActivity";
+
+
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        boolean b = super.dispatchTouchEvent(ev);
+        Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = " + b);
+        return b;
+    }
 
-                break;
-            case MotionEvent.ACTION_MOVE:
 
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean b = super.onTouchEvent(event);
+        Log.e(TAG, "\tonTouchEvent         : \t" + event.getAction() + "\treturn = " + b);
+        return b;
+    }
 
+    @OnClick({R.id.touch_civ, R.id.touch_cbtn,R.id.touch_custom_view_group})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.touch_custom_view_group:
+            case R.id.touch_civ:
+            case R.id.touch_cbtn:
+                Toast.makeText(this, "被点击", Toast.LENGTH_SHORT).show();
                 break;
         }
-        Log.e(TAG, "onTouch: " + event.getAction() );
-        return true;
     }
 }

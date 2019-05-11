@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="480dp"
+    android:background="@color/white50"
+    android:id="@+id/touch_custom_view_group"
     tools:context="com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity">
-    <ImageView
-        android:id="@+id/touch_iv"
-        android:src="@color/gray"
+
+    <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomImageView
+        android:id="@+id/touch_civ"
+        android:background="@color/black30"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-</FrameLayout>
+        android:src="@drawable/emoji_01" />
+    <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomButton
+        android:id="@+id/touch_cbtn"
+        android:text="button"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="150dp"
+        android:layout_height="100dp" />
+
+    <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomTextView
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="TextView"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="@color/black30"
+        android:layout_width="150dp"
+        android:layout_height="100dp" />
+
+</com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomViewGroup>

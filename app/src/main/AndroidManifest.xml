@@ -98,7 +98,8 @@
         <activity android:name=".aaThird.dagger2.DaggerActivity" />
         <activity android:name=".aaThird.ThirdActivity" />
         <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity" />
-        <activity android:name=".functions.events.onTouch.OnTouchActivity" />
+        <activity android:name=".functions.events.onTouch.OnTouchActivity"
+            android:theme="@style/windowIsTranslucent"/>
         <activity android:name=".ui.animation.reside.ResideActivity" />
         <activity
             android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
