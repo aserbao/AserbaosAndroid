@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
 import com.aserbao.aserbaosandroid.R;
 
@@ -28,7 +29,7 @@ public class AUtilsRealizeActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btn_get_phone_info, R.id.btn_get_phone_info2})
+    @OnClick({R.id.btn_get_phone_info, R.id.btn_get_phone_info2,R.id.btn_get_phone_media_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_get_phone_info:
@@ -46,6 +47,10 @@ public class AUtilsRealizeActivity extends AppCompatActivity {
                 int networkState = ANetworkUtils.getNetworkState(this);
                 String valueOf = String.valueOf(networkState);
                 mUtilsResultTv.setText(valueOf);
+                break;
+            case R.id.btn_get_phone_media_info:
+                String phoneMediaInfo = APhoneMediaUtils.getPhoneMediaInfo(this);
+                mUtilsResultTv.setText(phoneMediaInfo);
                 break;
         }
     }

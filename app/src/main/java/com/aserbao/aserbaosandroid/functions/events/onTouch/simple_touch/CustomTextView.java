@@ -30,9 +30,9 @@ public class CustomTextView extends TextView {
 
     private static final String TAG = "CustomTextView";
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
         boolean b = super.dispatchTouchEvent(ev);
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = "+b );
         return b;
@@ -42,9 +42,9 @@ public class CustomTextView extends TextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "\tonTouchEvent         : \t" + event.getAction() +"\t被调用了");
         boolean b = super.onTouchEvent(event);
         Log.e(TAG, "\tonTouchEvent         : \t" + event.getAction() +"\treturn = "+b );
         return b;
     }
-
 }
