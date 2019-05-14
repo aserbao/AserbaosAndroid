@@ -33,6 +33,7 @@ public class CustomTextView extends TextView {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
+//        return true;
         boolean b = super.dispatchTouchEvent(ev);
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = "+b );
         return b;
