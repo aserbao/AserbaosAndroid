@@ -1,85 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/constraint_tv"
+
+    <FrameLayout
+        android:id="@+id/test_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+    <Button
+        android:id="@+id/test_btn"
         android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="224dp"
-        android:ellipsize="end"
-        android:gravity="center|left"
-        android:maxLines="1"
-        android:text="我是小朱,咱们一起学Android"
-        app:layout_constraintBottom_toTopOf="@+id/a_tv"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/test_btn2"
+        android:text="添加"
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/a_tv"
-        android:text="A"
-        style="@style/test_text_view_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/b_tv"
-        android:text="B"
-        style="@style/test_text_view_style"
-        app:layout_constraintBottom_toTopOf="@+id/a_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/c_tv"
-        android:text="C"
-        style="@style/test_text_view_style"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/a_tv" />
-    <TextView
-        android:id="@+id/d_tv"
-        android:text="D"
-        style="@style/test_text_view_style"
-        app:layout_constraintTop_toBottomOf="@+id/a_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <TextView
-        android:id="@+id/e_tv"
-        android:text="E"
-        style="@style/test_text_view_style"
-        app:layout_constraintLeft_toRightOf="@+id/a_tv"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/a_bottom_tv"
-        android:text="ABottom"
-        style="@style/test_text_view_style"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/b_bottom_tv"
-        style="@style/test_text_view_style"
-        android:layout_width="138dp"
-        android:layout_height="0dp"
-        android:text="BBottom"
-        app:layout_constraintBottom_toTopOf="@+id/a_bottom_tv"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

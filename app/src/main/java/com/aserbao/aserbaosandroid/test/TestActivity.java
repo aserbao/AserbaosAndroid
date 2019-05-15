@@ -3,10 +3,13 @@ package com.aserbao.aserbaosandroid.test;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.SeekBar;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixView;
+import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,12 @@ import butterknife.OnClick;
  * email: this is empty email
  */
 public class TestActivity extends AppCompatActivity {
+    @BindView(R.id.test_btn)
+    Button mTestBtn;
+    @BindView(R.id.test_fragment)
+    FrameLayout mTestContainter;
     private List l = new ArrayList();
+    private long mStartTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,47 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "TestActivity";
-    String s = " 哈哈哈 hhhhh aserbao 这是个问题";
 
+    @OnClick({R.id.test_btn, R.id.test_btn2})
+    public void onViewClicked() {
 
+    }
+
+    public void addView() {
+        mTestContainter.removeAllViews();
+        BezierCustomLike bezierCustomLike = new BezierCustomLike(this);
+        bezierCustomLike.setClickable(true);
+        mTestContainter.addView(bezierCustomLike, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    }
+    public int count = 10 * 10000;
+    public int num = 0;
+    @OnClick({R.id.test_btn, R.id.test_btn2})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.test_btn:
+                mStartTime = System.currentTimeMillis();
+                num = 0;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < count; i++) {
+                            num++;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (count - 1 == num){
+                                        Log.e(TAG, "运行"+count + "条数据 一共耗时：" + (System.currentTimeMillis() - mStartTime)/1000 + "s" );
+                                    }
+                                    Log.e(TAG, "run: " + String.valueOf(num));
+                                }
+                            });
+                        }
+                    }
+                }).start();
+                break;
+            case R.id.test_btn2:
+                addView();
+                break;
+        }
+    }
 }

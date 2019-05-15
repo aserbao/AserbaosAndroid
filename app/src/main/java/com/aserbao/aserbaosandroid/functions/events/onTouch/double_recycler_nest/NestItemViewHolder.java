@@ -48,7 +48,7 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
 
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
 
-    public void setDataSource(Context context){
+    public void setDataSource(Context context,IItemOnLongClickListener iItemOnLongClickListener){
         mContext = context;
         mNestRvItem.setImageResource(ImageSource.getRandomImageId());
         for (int i = 0; i < 30; i++) {
@@ -61,6 +61,13 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
         mNestRvItemRv.setBackgroundResource(ImageSource.getRandomImageId());
         mNestRvItemSwipeRefreshLayout.setOnRefreshListener(this);
 
+        mNestRvItem.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                iItemOnLongClickListener.onLongclick(v);
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.nest_rv_item_tv, R.id.nest_rv_item_top_tv})

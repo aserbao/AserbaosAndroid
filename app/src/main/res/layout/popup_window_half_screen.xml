@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+    <TextView
+        android:text="我只是个PopupWindow的TextView"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:background="@color/black50"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+</FrameLayout>
