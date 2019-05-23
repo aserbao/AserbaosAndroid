@@ -1,6 +1,5 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules;
 
-import com.aserbao.aserbaosandroid.aaThird.dagger2.simple.Student;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,9 +15,6 @@ import dagger.Provides;
  */
 @Module
 public class ActivityModule {
-   /* @Provides
-    public Student providesStudent(){
-        return new Student("123",18);
-    }*/
+
 
 }

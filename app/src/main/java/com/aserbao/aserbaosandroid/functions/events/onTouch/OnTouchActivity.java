@@ -48,8 +48,10 @@ public class OnTouchActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.touch_custom_view_group:
+                Toast.makeText(this, "viewGroup被点击", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.touch_cbtn:
-                Toast.makeText(this, "被点击", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "按钮被点击", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

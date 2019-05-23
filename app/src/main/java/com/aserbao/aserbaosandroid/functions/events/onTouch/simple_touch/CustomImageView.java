@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 
 /**
@@ -15,17 +16,18 @@ import android.widget.ImageView;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch
  */
-public class CustomImageView extends ImageView {
+public class CustomImageView extends ImageView implements View.OnTouchListener {
     public CustomImageView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public CustomImageView(Context context,  @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public CustomImageView(Context context,  @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setOnTouchListener(this);
     }
 
     private static final String TAG = "CustomImageView";
@@ -48,4 +50,9 @@ public class CustomImageView extends ImageView {
         return b;
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+        return false;
+    }
 }

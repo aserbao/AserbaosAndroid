@@ -46,7 +46,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.AdapterView.AdapterViewActivity"></activity>
+        <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity" />
         <activity android:name=".algorithm.list.AboutListSortActivty" />
         <activity android:name=".algorithm.AlgorithmActivity" />
         <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
@@ -98,8 +99,9 @@
         <activity android:name=".aaThird.dagger2.DaggerActivity" />
         <activity android:name=".aaThird.ThirdActivity" />
         <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity" />
-        <activity android:name=".functions.events.onTouch.OnTouchActivity"
-            android:theme="@style/windowIsTranslucent"/>
+        <activity
+            android:name=".functions.events.onTouch.OnTouchActivity"
+            android:theme="@style/windowIsTranslucent" />
         <activity android:name=".ui.animation.reside.ResideActivity" />
         <activity
             android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
