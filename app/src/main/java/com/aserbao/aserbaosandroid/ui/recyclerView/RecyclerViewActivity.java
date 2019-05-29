@@ -18,5 +18,4 @@ public class RecyclerViewActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("空白的RecyclerView", AddRecyclerViewActivity.class));
         mClassBeen.add(new ClassBean("滑动的RecyclerView", SmoothActivitiy.class));
     }
-
 }
