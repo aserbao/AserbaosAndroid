@@ -23,8 +23,10 @@ public class DoubleAdapter extends RecyclerView.Adapter<NestItemViewHolder> {
 
     private Context mContext;
 
-    public DoubleAdapter(Context mContext) {
+    IItemOnLongClickListener mIItemOnLongClickListener;
+    public DoubleAdapter(Context mContext,IItemOnLongClickListener iItemOnLongClickListener) {
         this.mContext = mContext;
+        mIItemOnLongClickListener = iItemOnLongClickListener;
     }
 
     @NonNull
@@ -36,7 +38,7 @@ public class DoubleAdapter extends RecyclerView.Adapter<NestItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NestItemViewHolder nestItemViewHolder, int i) {
-        nestItemViewHolder.setDataSource(mContext);
+        nestItemViewHolder.setDataSource(mContext,mIItemOnLongClickListener);
     }
 
     @Override

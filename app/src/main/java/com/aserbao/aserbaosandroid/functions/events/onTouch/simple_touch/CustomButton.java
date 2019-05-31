@@ -32,6 +32,17 @@ public class CustomButton extends Button {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+        }
+//        return true;
         boolean b = super.dispatchTouchEvent(ev);
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = "+b );
         return b;
@@ -39,8 +50,11 @@ public class CustomButton extends Button {
 
 
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "\tonTouchEvent         : \t" + event.getAction() +"\t被调用了");
+//        return true;
         boolean b = super.onTouchEvent(event);
         Log.e(TAG, "\tonTouchEvent         : \t" + event.getAction() +"\treturn = "+b );
         return b;

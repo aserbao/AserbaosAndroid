@@ -77,7 +77,6 @@ public class PlayListActivity extends AppCompatActivity {
         DefaultTrackSelector trackSelector =
                 new DefaultTrackSelector(videoTrackSelectionFactory);
         DefaultTrackSelector.ParametersBuilder parametersBuilder = trackSelector.buildUponParameters();
-
         // 2. Create the player
         mPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
         mPlayerListPlayerView.setPlayer(mPlayer);

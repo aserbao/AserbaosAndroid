@@ -6,6 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
@@ -14,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DoubleRecyclerNestActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class DoubleRecyclerNestActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,IItemOnLongClickListener{
 
     @BindView(R.id.double_recycler_view)
     RecyclerView mDoubleRecyclerView;
@@ -29,8 +36,9 @@ public class DoubleRecyclerNestActivity extends AppCompatActivity implements Swi
         initView();
     }
 
+    private static final String TAG = "DoubleRecyclerNestActiv";
     private void initView() {
-        DoubleAdapter doubleAdapter = new DoubleAdapter(this);
+        DoubleAdapter doubleAdapter = new DoubleAdapter(this,this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mDoubleRecyclerView.setLayoutManager(linearLayoutManager);
         mDoubleRecyclerView.setAdapter(doubleAdapter);
@@ -46,5 +54,17 @@ public class DoubleRecyclerNestActivity extends AppCompatActivity implements Swi
     @Override
     public void onRefresh() {
         mDoubleRecylerSrl.setRefreshing(false);
+    }
+
+    @Override
+    public void onLongclick(View view) {
+        createPopupWindow();
+    }
+
+    private void createPopupWindow() {
+        View rootView = LayoutInflater.from(this).inflate(R.layout.popup_window_half_screen, null);
+        PopupWindow popupWindow = new PopupWindow(rootView.getRootView(), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(rootView.getRootView(), Gravity.BOTTOM,0,0);
     }
 }

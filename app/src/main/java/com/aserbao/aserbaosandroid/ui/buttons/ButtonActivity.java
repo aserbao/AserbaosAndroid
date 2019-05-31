@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.simple.Student;
 
 import javax.inject.Inject;
 
@@ -29,15 +28,13 @@ public class ButtonActivity extends AppCompatActivity {
         Intent intent = new Intent(activity,ButtonActivity.class);
         activity.startActivity(intent);
     }
-    @Inject
-    Student mStudent;
+
 
     private static final String TAG = "ButtonActivity";
     @OnClick({R.id.one_btn, R.id.two_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.one_btn:
-                Log.e(TAG, "onViewClicked: " + mStudent.getName() );
                 break;
             case R.id.two_btn:
 

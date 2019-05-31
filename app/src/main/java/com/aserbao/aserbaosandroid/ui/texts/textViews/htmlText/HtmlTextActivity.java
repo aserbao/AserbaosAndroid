@@ -49,7 +49,8 @@ public class HtmlTextActivity extends AppCompatActivity {
 
     private void initView() {
         mContext = this;
-        new ArtUpdater("demo/demo.html","demo/imgs/").execute();
+//        new ArtUpdater("demo/demo.html","demo/imgs/").execute();
+        new ArtUpdater("demo/notice.html","demo/imgs/").execute();
 
     }
 
@@ -89,8 +90,9 @@ public class HtmlTextActivity extends AppCompatActivity {
                 }
             }
             try{
+                mHtmlTv.setText(Html.fromHtml(htmlContent));
 //                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this), new MTagHandler()));
-                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this),null));
+//                mHtmlTv.setText(Html.fromHtml(htmlContent, new MImageGetter(mHtmlTv,HtmlTextActivity.this),null));
                 Handler handler = new Handler() {
                     public void handleMessage(Message msg) {
                         int what = msg.what;

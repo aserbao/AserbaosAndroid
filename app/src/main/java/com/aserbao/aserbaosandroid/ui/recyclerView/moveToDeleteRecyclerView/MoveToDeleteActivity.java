@@ -16,6 +16,7 @@ import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adap
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MoveToDeleteActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class MoveToDeleteActivity extends AppCompatActivity {
     RecyclerView mMoveToDeleteRv;
     @BindView(R.id.move_to_btn)
     Button moveToBtn;
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +32,35 @@ public class MoveToDeleteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_move_to_delete);
         ButterKnife.bind(this);
         initRecyclerView(mMoveToDeleteRv);
-        moveToBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initPop();
-            }
-        });
     }
 
     private void initPop() {
         View rootView = LayoutInflater.from(this).inflate(R.layout.activity_move_to_delete, null);
         PopupWindow popupWindow = new PopupWindow(rootView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        popupWindow.showAsDropDown(moveToBtn,0,0, Gravity.RIGHT);
+        popupWindow.showAsDropDown(moveToBtn, 0, 0, Gravity.RIGHT);
         initRecyclerView(((RecyclerView) rootView.findViewById(R.id.move_to_delete_rv)));
     }
 
     private void initRecyclerView(RecyclerView moveToDeleteRv) {
         MoveToDeleteAda moveToDeleteAda = new MoveToDeleteAda(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         moveToDeleteRv.setLayoutManager(linearLayoutManager);
         moveToDeleteRv.setAdapter(moveToDeleteAda);
     }
 
 
+    @OnClick({R.id.move_to_btn, R.id.scroll_btn,R.id.move_to_delete_view})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.move_to_btn:
+                initPop();
+                break;
+            case R.id.scroll_btn:
+                mMoveToDeleteRv.scrollToPosition(0);
+                break;
+            case R.id.move_to_delete_view:
+                linearLayoutManager.scrollToPositionWithOffset(15,1);
+                break;
+        }
+    }
 }

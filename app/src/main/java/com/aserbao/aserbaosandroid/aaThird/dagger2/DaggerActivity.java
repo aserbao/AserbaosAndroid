@@ -2,10 +2,15 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.LazyMan;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Restaurant;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SendFoodMan;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.simple.Student;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Cylinder;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerCarComponent;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
@@ -13,13 +18,6 @@ import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
 import javax.inject.Inject;
 
 public class DaggerActivity extends BaseRecyclerViewActivity {
-
-    @Inject
-    Restaurant restaurant1;
-    @Inject
-    SendFoodMan sendFoodMan1;
-    @Inject
-    LazyMan lazyMan1;
 
 
 
@@ -35,29 +33,32 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
     public void itemClickBack(View view , int position) {
         switch (position){
             case 0:
-                Restaurant restaurant = new Restaurant();
-                restaurant.cooking();
-                SendFoodMan sendFoodMan = new SendFoodMan();
-                sendFoodMan.getFood();
-                sendFoodMan.sendFood();
-                sendFoodMan.finishSendFood();
-                LazyMan lazyMan = new LazyMan();
-                lazyMan.receiveFood();
+                normal();
                 break;
             case 1:
-                DaggerActivity_MembersInjector.injectRestaurant1(this,new Restaurant());
-                DaggerActivity_MembersInjector.injectSendFoodMan1(this,new SendFoodMan());
-                DaggerActivity_MembersInjector.injectLazyMan1(this,new LazyMan());
-                restaurant1.cooking();
-                sendFoodMan1.getFood();
-                sendFoodMan1.sendFood();
-                sendFoodMan1.finishSendFood();
-                lazyMan1.receiveFood();
+                useDagger2();
                 break;
             case 2:
                 ButtonActivity.launch(this);
                 break;
         }
+    }
 
+    public void normal(){
+        Block block = new Block();
+        Cylinder cylinder = new Cylinder();
+        SparkPlug sparkPlug = new SparkPlug();
+        Tire tire = new Tire();
+        Rim rim = new Rim();
+        Engine engine = new Engine(block,cylinder,sparkPlug);
+        Wheel wheel = new Wheel(rim,tire);
+        Car car = new Car(wheel,engine);
+        car.drive();
+    }
+
+    @Inject Car mCar;
+    public void useDagger2(){
+        DaggerCarComponent.create().inject(this);
+        mCar.drive();
     }
 }

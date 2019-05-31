@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="480dp"
-    android:background="@color/white50"
+    android:background="@color/black50"
     android:id="@+id/touch_custom_view_group"
     tools:context="com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity">
 
+
+
     <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomImageView
+        android:foreground="?attr/selectableItemBackground"
         android:id="@+id/touch_civ"
         android:background="@color/black30"
         android:layout_width="150dp"
@@ -16,6 +20,7 @@
         android:layout_gravity="center"
         android:src="@drawable/emoji_01" />
     <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomButton
+        android:foreground="?attr/selectableItemBackground"
         android:id="@+id/touch_cbtn"
         android:text="button"
         android:textStyle="bold"
@@ -24,6 +29,7 @@
         android:layout_height="100dp" />
 
     <com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch.CustomTextView
+        android:foreground="?attr/selectableItemBackground"
         android:layout_gravity="bottom|center_horizontal"
         android:text="TextView"
         android:gravity="center"

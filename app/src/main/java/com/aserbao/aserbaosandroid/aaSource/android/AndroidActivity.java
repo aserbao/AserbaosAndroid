@@ -4,6 +4,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.Accessi
 import com.aserbao.aserbaosandroid.aaSource.android.app.AppActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.MaterialActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.SupportActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.AndroidWidgetClasses;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
@@ -15,5 +16,6 @@ public class AndroidActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("Material", MaterialActivity.class));
         mClassBeen.add(new ClassBean("Support", SupportActivity.class));
         mClassBeen.add(new ClassBean("AccessibilityService", AccessibilityServiceActivity.class));
+        mClassBeen.add(new ClassBean("widget.Classes", AndroidWidgetClasses.class));
     }
 }
