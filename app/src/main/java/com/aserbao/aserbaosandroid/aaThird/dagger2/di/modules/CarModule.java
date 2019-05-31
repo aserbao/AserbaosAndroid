@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules;
 
+import android.util.Log;
+
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Cylinder;
@@ -22,9 +24,11 @@ import dagger.Provides;
  */
 @Module
 public class CarModule {
+    private static final String TAG = "CarModule";
 
     @Provides
-    public Car providerCar(Wheel wheel, Engine engine){
+    public Car provide_Car(Wheel wheel, Engine engine){
+        Log.e(TAG, " 我被调用罗 provide_Car: " );
         return new Car(wheel,engine);
     }
 

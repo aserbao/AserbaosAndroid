@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 /**
