@@ -2,6 +2,8 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
 import android.util.Log;
 
+import com.aserbao.aserbaosandroid.algorithm.list.Student;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -18,17 +20,20 @@ import dagger.Reusable;
 public class Car{
     @Inject
     Wheel wheel;
+
     @Inject
     Engine engine;
-    public static final String DAGGER_2_MAKE_A_CAR = "dagger2 make a car";
+    public static final String TAG = "dagger2 make a car";
 
     @Inject
     public Car(Wheel wheel, Engine engine) {
         this.wheel = wheel;
         this.engine = engine;
+        Log.e(TAG, "Car: " );
     }
 
+
     public void drive(){
-        Log.e(DAGGER_2_MAKE_A_CAR, "drive: " );
+        Log.e(TAG, "drive: " );
     }
 }
