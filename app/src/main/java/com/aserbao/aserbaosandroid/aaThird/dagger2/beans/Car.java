@@ -3,6 +3,9 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 import android.util.Log;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.Reusable;
 
 /**
  * 功能: 车
