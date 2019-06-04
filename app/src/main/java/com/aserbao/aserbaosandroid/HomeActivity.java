@@ -23,6 +23,7 @@ import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
 import com.aserbao.aserbaosandroid.ui.constantUtilsShow.ConstantsUtilsShowActivity;
+import com.aserbao.aserbaosandroid.ui.texts.TextsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", DaggerActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", TextsActivity.class));
     }
 
     private void initView() {
