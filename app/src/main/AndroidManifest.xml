@@ -46,7 +46,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.widget.Classes.AdapterView.AdapterViewActivity"></activity>
+        <activity android:name=".functions.aboutBitmap.AboutBitmapActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.AdapterView.AdapterViewActivity" />
         <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity" />
         <activity android:name=".algorithm.list.AboutListSortActivty" />
         <activity android:name=".algorithm.AlgorithmActivity" />
