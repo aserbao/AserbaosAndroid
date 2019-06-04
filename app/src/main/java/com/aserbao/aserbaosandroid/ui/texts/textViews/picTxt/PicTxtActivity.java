@@ -137,7 +137,7 @@ public class PicTxtActivity extends AppCompatActivity {
             }
         };
 
-        SpannableString dynamicDrawableSpan = new SpannableString("DynamicDrawableSpan");
+        SpannableString dynamicDrawableSpan = new SpannableString("DynamicDrawableSpan第二个图片可以点击");
         DynamicDrawableSpan drawableSpan =
             new DynamicDrawableSpan(DynamicDrawableSpan.ALIGN_BASELINE) {
                 @Override

@@ -90,4 +90,13 @@
         <attr name="civ_circle_background_color" format="color" />
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
+
+    //============RoundImageView
+    <declare-styleable name="RoundImageView">
+        <attr name="type" format="enum">
+            <enum name="circle" value="1"/>
+            <enum name="round" value="2"/>
+        </attr>
+        <attr name="radius" format="dimension"/>ssss
+    </declare-styleable>
 </resources>
