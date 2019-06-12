@@ -5,6 +5,8 @@ import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
 
@@ -22,6 +24,10 @@ public class ConstraintLayoutActvity extends AppCompatActivity {
     Group mGroup;
     @BindView(R.id.btn_3)
     Button mBtn3;
+    @BindView(R.id.share_map_layout_iv)
+    ImageView mShareMapLayoutIv;
+    @BindView(R.id.share_map_layout_shop_info_fl_container)
+    FrameLayout mShareMapLayoutShopInfoFlContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +40,18 @@ public class ConstraintLayoutActvity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_group_1:
-                mGroup.setVisibility(View.GONE);
+                addView();
+//                mGroup.setVisibility(View.GONE);
                 break;
             case R.id.btn_3:
                 mGroup.setVisibility(View.VISIBLE);
                 break;
         }
+    }
+
+    public void addView(){
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.emoji_00);
+        mShareMapLayoutShopInfoFlContainer.addView(imageView);
     }
 }

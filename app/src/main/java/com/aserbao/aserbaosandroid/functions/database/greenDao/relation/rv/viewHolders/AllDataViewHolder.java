@@ -89,7 +89,7 @@ public class AllDataViewHolder extends RecyclerView.ViewHolder {
 
             mGreenDaoAllDataCreditCardLl.removeAllViews();
             QueryBuilder<CreditCard> creditCardQueryBuilder = daoSession.queryBuilder(CreditCard.class);
-            List<CreditCard> creditCardList = creditCardQueryBuilder.where(CreditCardDao.Properties.UserId.eq(student.getId())).list();
+            List<CreditCard> creditCardList = creditCardQueryBuilder.where(CreditCardDao.Properties.StudentId.eq(student.getId())).list();
             for (int i = 0; i < creditCardList.size(); i++) {
                 CreditCard creditCard = creditCardList.get(i);
                 View view = LayoutInflater.from(context).inflate(R.layout.green_dao_all_data_credit_card_item, null);

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,15 +11,12 @@ import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.TeacherDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.StudentAndTeacherBean;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Teacher;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.adapters.RelationAdapter;
-
-import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,6 +25,8 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.aserbao.aserbaosandroid.AserbaoApplication.DB_NAME;
 
 public class GreenDaoRelationActivity extends AppCompatActivity {
 
@@ -57,7 +55,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
         mToOneOneReyclerView.setAdapter(mRelationAdapter);
     }
 
-    @OnClick({R.id.to_one_add_data_btn, R.id.to_one_add_teacher_btn,R.id.show_student_btn,R.id.show_credit_card_btn,R.id.show_id_card_btn,R.id.show_teacher_btn,R.id.show_all_data_btn})
+    @OnClick({R.id.to_one_add_data_btn, R.id.to_one_add_teacher_btn,R.id.show_student_btn,R.id.show_credit_card_btn,R.id.show_id_card_btn,R.id.show_teacher_btn,R.id.show_all_data_btn,R.id.delete_all_data_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.to_one_add_data_btn:
@@ -87,7 +85,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                         student.setSchoolName(RandomValue.getSchoolName());
                         daoSession.insert(student);
 
-                        addOtherData(mRandom, daoSession, chineseName, student.getId());
+                        addOtherData(mRandom, daoSession, chineseName, student.getId(),true);
 
                         Collections.shuffle(teacherList);
                         for (int j = 0; j < mRandom.nextInt(8) + 1; j++) {
@@ -124,7 +122,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                         teacher.setTelPhone(RandomValue.getTel());
                         teacher.setSubject(RandomValue.getRandomSubject());
                         daoSession.insert(teacher);
-                        addOtherData(mRandom, daoSession, chineseName, teacher.getId());
+                        addOtherData(mRandom, daoSession, chineseName, teacher.getId(),false);
                     }
                 mRelationAdapter.refreshAllData(RelationAdapter.TEACHER);
                 break;
@@ -144,18 +142,26 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
             case R.id.show_all_data_btn:
                 mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
                 break;
+            case R.id.delete_all_data_btn:
+                deleteDatabase(DB_NAME);
+                mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
+                break;
         }
     }
 
 
-    public void addOtherData(Random random, DaoSession daoSession,String userName,Long id){
+    public void addOtherData(Random random, DaoSession daoSession,String userName,Long id,boolean isStudent){
         IdCard idCard = new IdCard();
         idCard.setUserName(userName);
         idCard.setIdNo(RandomValue.getRandomID());
         daoSession.insert(idCard);
         for (int j = 0; j < random.nextInt(5) + 1 ; j++) {
             CreditCard creditCard = new CreditCard();
-            creditCard.setUserId(id);
+            if (isStudent) {
+                creditCard.setStudentId(id);
+            }else{
+                creditCard.setTeacherId(id);
+            }
             creditCard.setUserName(userName);
             creditCard.setCardNum(String.valueOf(random.nextInt(899999999) + 100000000) + String.valueOf(random.nextInt(899999999) + 100000000));
             creditCard.setWhichBank(RandomValue.getBankName());

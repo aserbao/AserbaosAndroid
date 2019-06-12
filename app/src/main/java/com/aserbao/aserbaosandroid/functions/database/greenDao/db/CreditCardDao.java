@@ -28,11 +28,12 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property UserId = new Property(1, Long.class, "userId", false, "USER_ID");
-        public final static Property UserName = new Property(2, String.class, "userName", false, "USER_NAME");
-        public final static Property CardNum = new Property(3, String.class, "cardNum", false, "CARD_NUM");
-        public final static Property WhichBank = new Property(4, String.class, "whichBank", false, "WHICH_BANK");
-        public final static Property CardType = new Property(5, int.class, "cardType", false, "CARD_TYPE");
+        public final static Property StudentId = new Property(1, Long.class, "studentId", false, "STUDENT_ID");
+        public final static Property TeacherId = new Property(2, Long.class, "teacherId", false, "TEACHER_ID");
+        public final static Property UserName = new Property(3, String.class, "userName", false, "USER_NAME");
+        public final static Property CardNum = new Property(4, String.class, "cardNum", false, "CARD_NUM");
+        public final static Property WhichBank = new Property(5, String.class, "whichBank", false, "WHICH_BANK");
+        public final static Property CardType = new Property(6, int.class, "cardType", false, "CARD_TYPE");
     }
 
     private Query<CreditCard> student_CreditCardsListQuery;
@@ -51,11 +52,12 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CREDIT_CARD\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"USER_ID\" INTEGER," + // 1: userId
-                "\"USER_NAME\" TEXT," + // 2: userName
-                "\"CARD_NUM\" TEXT," + // 3: cardNum
-                "\"WHICH_BANK\" TEXT," + // 4: whichBank
-                "\"CARD_TYPE\" INTEGER NOT NULL );"); // 5: cardType
+                "\"STUDENT_ID\" INTEGER," + // 1: studentId
+                "\"TEACHER_ID\" INTEGER," + // 2: teacherId
+                "\"USER_NAME\" TEXT," + // 3: userName
+                "\"CARD_NUM\" TEXT," + // 4: cardNum
+                "\"WHICH_BANK\" TEXT," + // 5: whichBank
+                "\"CARD_TYPE\" INTEGER NOT NULL );"); // 6: cardType
     }
 
     /** Drops the underlying database table. */
@@ -73,26 +75,31 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
             stmt.bindLong(1, id);
         }
  
-        Long userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindLong(2, userId);
+        Long studentId = entity.getStudentId();
+        if (studentId != null) {
+            stmt.bindLong(2, studentId);
+        }
+ 
+        Long teacherId = entity.getTeacherId();
+        if (teacherId != null) {
+            stmt.bindLong(3, teacherId);
         }
  
         String userName = entity.getUserName();
         if (userName != null) {
-            stmt.bindString(3, userName);
+            stmt.bindString(4, userName);
         }
  
         String cardNum = entity.getCardNum();
         if (cardNum != null) {
-            stmt.bindString(4, cardNum);
+            stmt.bindString(5, cardNum);
         }
  
         String whichBank = entity.getWhichBank();
         if (whichBank != null) {
-            stmt.bindString(5, whichBank);
+            stmt.bindString(6, whichBank);
         }
-        stmt.bindLong(6, entity.getCardType());
+        stmt.bindLong(7, entity.getCardType());
     }
 
     @Override
@@ -104,26 +111,31 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
             stmt.bindLong(1, id);
         }
  
-        Long userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindLong(2, userId);
+        Long studentId = entity.getStudentId();
+        if (studentId != null) {
+            stmt.bindLong(2, studentId);
+        }
+ 
+        Long teacherId = entity.getTeacherId();
+        if (teacherId != null) {
+            stmt.bindLong(3, teacherId);
         }
  
         String userName = entity.getUserName();
         if (userName != null) {
-            stmt.bindString(3, userName);
+            stmt.bindString(4, userName);
         }
  
         String cardNum = entity.getCardNum();
         if (cardNum != null) {
-            stmt.bindString(4, cardNum);
+            stmt.bindString(5, cardNum);
         }
  
         String whichBank = entity.getWhichBank();
         if (whichBank != null) {
-            stmt.bindString(5, whichBank);
+            stmt.bindString(6, whichBank);
         }
-        stmt.bindLong(6, entity.getCardType());
+        stmt.bindLong(7, entity.getCardType());
     }
 
     @Override
@@ -135,11 +147,12 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     public CreditCard readEntity(Cursor cursor, int offset) {
         CreditCard entity = new CreditCard( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // userId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // userName
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // cardNum
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // whichBank
-            cursor.getInt(offset + 5) // cardType
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // studentId
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // teacherId
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // userName
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // cardNum
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // whichBank
+            cursor.getInt(offset + 6) // cardType
         );
         return entity;
     }
@@ -147,11 +160,12 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     @Override
     public void readEntity(Cursor cursor, CreditCard entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setUserId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
-        entity.setUserName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setCardNum(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setWhichBank(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setCardType(cursor.getInt(offset + 5));
+        entity.setStudentId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setTeacherId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
+        entity.setUserName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setCardNum(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setWhichBank(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setCardType(cursor.getInt(offset + 6));
      }
     
     @Override
@@ -180,16 +194,16 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     }
     
     /** Internal query to resolve the "creditCardsList" to-many relationship of Student. */
-    public List<CreditCard> _queryStudent_CreditCardsList(Long id) {
+    public List<CreditCard> _queryStudent_CreditCardsList(Long studentId) {
         synchronized (this) {
             if (student_CreditCardsListQuery == null) {
                 QueryBuilder<CreditCard> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.Id.eq(null));
+                queryBuilder.where(Properties.StudentId.eq(null));
                 student_CreditCardsListQuery = queryBuilder.build();
             }
         }
         Query<CreditCard> query = student_CreditCardsListQuery.forCurrentThread();
-        query.setParameter(0, id);
+        query.setParameter(0, studentId);
         return query.list();
     }
 

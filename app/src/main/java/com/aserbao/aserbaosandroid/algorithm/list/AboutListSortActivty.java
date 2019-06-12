@@ -44,7 +44,7 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
         switch (position){
             case 0:
                 Student student = new Student(RandomValue.getChineseName(), random.nextInt(5) + 15, random.nextInt(5) + 80);
-                studentAdapters.addStudent(student);
+//                studentAdapters.addStudent(student);
                 break;
             case 1:
                 List<Student> mStudentList = new ArrayList<>();

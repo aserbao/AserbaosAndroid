@@ -35,7 +35,7 @@ public class StudentAdapters extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.mContext = mContext;
     }
 
-    public void addStudent(Student student){
+    public void SimpleViewGroup(Student student){
         mStudent.add(student);
         Collections.sort(mStudent, new Comparator<Student>() {
             @Override

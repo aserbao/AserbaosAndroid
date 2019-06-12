@@ -47,6 +47,7 @@ public class AserbaoApplication extends Application {
         return new HttpProxyCacheServer(this);
     }
 
+    public static final String DB_NAME ="aserbaos.db";
     /**
      * 初始化GreenDao,直接在Application中进行初始化操作
      */
@@ -57,7 +58,7 @@ public class AserbaoApplication extends Application {
         File file = new File(databasePath.getParentFile(), "aserbaos.db");
         databasePath.renameTo(file);
         Log.e("test", "initGreenDao: " + databasePath.getAbsolutePath());*/
-        MyDaoMaster helper = new MyDaoMaster(this, "aserbaos.db");
+        MyDaoMaster helper = new MyDaoMaster(this, DB_NAME);
 //        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "aserbao.db");
         SQLiteDatabase db = helper.getWritableDatabase();
 //        Database db = helper.getEncryptedWritableDb("aserbao");

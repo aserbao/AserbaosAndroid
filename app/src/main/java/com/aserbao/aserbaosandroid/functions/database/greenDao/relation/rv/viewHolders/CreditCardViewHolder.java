@@ -8,9 +8,6 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,7 +31,7 @@ public class CreditCardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setDataSource(CreditCard mCreditCardList) {
-        mGreenDaoCreditCardNameTv.setText("名字：" + mCreditCardList.getUserName() + " 用户ID: " + mCreditCardList.getUserId());
+        mGreenDaoCreditCardNameTv.setText("名字：" + mCreditCardList.getUserName() + " 用户ID: " + mCreditCardList.getStudentId());
         mGreenDaoCreditCardIdTv.setText("卡Id：" + mCreditCardList.getId());
         mGreenDaoCreditCardWhichBankTv.setText("银行：" + mCreditCardList.getWhichBank() + " 卡号： "+ mCreditCardList.getCardNum());
     }
