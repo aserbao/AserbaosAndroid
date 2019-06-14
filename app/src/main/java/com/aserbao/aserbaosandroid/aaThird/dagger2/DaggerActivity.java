@@ -11,11 +11,14 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerCarComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerDepenComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DepenComponent;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class DaggerActivity extends BaseRecyclerViewActivity {
 
@@ -56,9 +59,13 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
         car.drive();
     }
 
-    @Inject Car mCar;
+    @Named("CarB")
+    @Inject
+    public Car mCar;
     public void useDagger2(){
-        DaggerCarComponent.create().inject(this);
+//        DaggerCarComponent.create().inject(this);
+        DepenComponent depenComponent = DaggerDepenComponent.create();
+        DaggerCarComponent.builder().depenComponent(depenComponent).build().inject(this);
         mCar.drive();
     }
 }

@@ -11,8 +11,12 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 /**
  * 功能:
@@ -24,11 +28,11 @@ import dagger.Provides;
  */
 @Module
 public class CarModule {
-    private static final String TAG = "CarModule";
 
+    @Named("CarB")
     @Provides
     public Car provide_Car(Wheel wheel, Engine engine){
-        Log.e(TAG, " 我被调用罗 provide_Car: " );
+        Log.e(TAG, " CarModule中的 provide_Car方法被调用了 " );
         return new Car(wheel,engine);
     }
 

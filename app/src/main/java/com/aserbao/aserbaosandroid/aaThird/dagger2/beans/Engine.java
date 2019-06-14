@@ -1,6 +1,10 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
+import android.util.Log;
+
 import javax.inject.Inject;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 /**
  * 功能:
@@ -11,11 +15,8 @@ import javax.inject.Inject;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Engine {
-    @Inject
     Block block;
-    @Inject
     Cylinder cylinder;
-    @Inject
     SparkPlug sparkPlugs;
 
     @Inject
@@ -23,6 +24,7 @@ public class Engine {
         this.block = block;
         this.cylinder = cylinder;
         this.sparkPlugs = sparkPlugs;
+        Log.e(TAG, "Engine: 的构造方法" );
     }
 
 }

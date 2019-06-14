@@ -1,6 +1,10 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
+import android.util.Log;
+
 import javax.inject.Inject;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 /**
  * 功能: 活塞
@@ -13,5 +17,6 @@ import javax.inject.Inject;
 public class Block {
     @Inject
     public Block() {
+        Log.e(TAG, "Block:的构造方法 " );
     }
 }

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
+
 /**
  * 功能: 车轮
  *
@@ -13,14 +15,13 @@ import javax.inject.Inject;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Wheel {
-    @Inject
     Rim rim;
-    @Inject
     Tire tire;
 
     @Inject
     public Wheel(Rim rim, Tire tire) {
         this.rim = rim;
         this.tire = tire;
+        Log.e(TAG, "Wheel: 的构造方法");
     }
 }

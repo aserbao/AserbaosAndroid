@@ -1,6 +1,10 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
+import android.util.Log;
+
 import javax.inject.Inject;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 /**
  * 功能:气缸
@@ -13,5 +17,6 @@ import javax.inject.Inject;
 public class Cylinder {
     @Inject
     public Cylinder() {
+        Log.e(TAG, "Cylinder: 的构造方法" );
     }
 }

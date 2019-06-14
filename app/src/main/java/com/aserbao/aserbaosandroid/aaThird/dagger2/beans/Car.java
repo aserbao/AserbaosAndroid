@@ -5,6 +5,7 @@ import android.util.Log;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * 功能: 车
@@ -15,22 +16,25 @@ import javax.inject.Inject;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Car{
-    @Inject
     Wheel wheel;
-
-    @Inject
     Engine engine;
     public static final String TAG = "dagger2 make a car";
+
 
     @Inject
     public Car(Wheel wheel, Engine engine) {
         this.wheel = wheel;
         this.engine = engine;
-        Log.e(TAG, "Car: " );
+        Log.e(TAG, "Car: 的构造方法" );
     }
 
 
+    @Inject
+    public void startCar(){
+        Log.e(TAG, "startCar: 汽车启动 " );
+    }
+
     public void drive(){
-        Log.e(TAG, "drive: " );
+        Log.e(TAG, "drive: 开车，嘟嘟嘟……" );
     }
 }
