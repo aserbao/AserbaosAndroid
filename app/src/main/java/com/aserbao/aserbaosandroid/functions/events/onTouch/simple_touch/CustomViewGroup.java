@@ -40,19 +40,19 @@ public class CustomViewGroup extends FrameLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.e(TAG, "\tonInterceptTouchEvent: \t" + ev.getAction()+ "\t被调用了"  );
-        return true;
-        /*boolean b = super.onInterceptTouchEvent(ev);
+//        return true;
+        boolean b = super.onInterceptTouchEvent(ev);
         Log.e(TAG, "\tonInterceptTouchEvent: \t" + ev.getAction()+ "\treturn = "+b );
-        return b;*/
+        return b;
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
-//      -
-        boolean b = super.dispatchTouchEvent(ev);
+        return false;
+       /* boolean b = super.dispatchTouchEvent(ev);
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = "+b );
-        return b;
+        return b;*/
     }
 
 

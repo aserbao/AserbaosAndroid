@@ -101,7 +101,8 @@
         <activity android:name=".functions.jump2OtherApp.Jump2OtherActivity" />
         <activity
             android:name=".functions.events.onTouch.OnTouchActivity"
-            android:theme="@style/windowIsTranslucent" />
+            android:launchMode="singleTop"
+            android:theme="@style/Guide_Theme" />
         <activity android:name=".ui.animation.reside.ResideActivity" />
         <activity
             android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"

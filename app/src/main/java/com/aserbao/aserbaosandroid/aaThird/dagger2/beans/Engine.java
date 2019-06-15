@@ -11,11 +11,8 @@ import javax.inject.Inject;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Engine {
-    @Inject
     Block block;
-    @Inject
     Cylinder cylinder;
-    @Inject
     SparkPlug sparkPlugs;
 
     @Inject

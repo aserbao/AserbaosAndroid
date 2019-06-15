@@ -26,11 +26,11 @@ import dagger.Provides;
 public class CarModule {
     private static final String TAG = "CarModule";
 
-    @Provides
+    /*@Provides
     public Car provide_Car(Wheel wheel, Engine engine){
         Log.e(TAG, " 我被调用罗 provide_Car: " );
         return new Car(wheel,engine);
-    }
+    }*/
 
     @Provides
     public Wheel provide_wheel(Rim rim, Tire tire){

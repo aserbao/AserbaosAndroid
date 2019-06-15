@@ -13,14 +13,13 @@ import javax.inject.Inject;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Wheel {
-    @Inject
     Rim rim;
-    @Inject
     Tire tire;
-
+    private static final String TAG = "Wheel";
     @Inject
     public Wheel(Rim rim, Tire tire) {
         this.rim = rim;
         this.tire = tire;
+        Log.e(TAG, "Wheel: " );
     }
 }

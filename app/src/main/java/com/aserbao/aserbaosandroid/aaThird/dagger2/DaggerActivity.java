@@ -52,8 +52,8 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
         Rim rim = new Rim();
         Engine engine = new Engine(block,cylinder,sparkPlug);
         Wheel wheel = new Wheel(rim,tire);
-        Car car = new Car(wheel,engine);
-        car.drive();
+//        Car car = new Car(wheel,engine);
+//        car.drive();
     }
 
     @Inject Car mCar;

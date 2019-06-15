@@ -18,20 +18,20 @@ import dagger.Reusable;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.beans
  */
 public class Car{
-    @Inject
     Wheel wheel;
-
-    @Inject
-    Engine engine;
+    @Inject Engine engine;
     public static final String TAG = "dagger2 make a car";
 
     @Inject
-    public Car(Wheel wheel, Engine engine) {
+    public Car(Wheel wheel) {
         this.wheel = wheel;
-        this.engine = engine;
         Log.e(TAG, "Car: " );
     }
 
+    @Inject
+    public void open_door(){
+        Log.e(TAG, "open_door: " );
+    }
 
     public void drive(){
         Log.e(TAG, "drive: " );
