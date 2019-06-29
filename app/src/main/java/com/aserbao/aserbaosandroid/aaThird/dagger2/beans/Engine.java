@@ -1,6 +1,10 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
+import android.util.Log;
+
 import javax.inject.Inject;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 /**
  * 功能:
@@ -20,6 +24,11 @@ public class Engine {
         this.block = block;
         this.cylinder = cylinder;
         this.sparkPlugs = sparkPlugs;
+        Log.e(TAG, "Engine: 的构造方法" );
+    }
+
+    public void make(){
+        Log.e(TAG, "make: 引擎制作" );
     }
 
 }

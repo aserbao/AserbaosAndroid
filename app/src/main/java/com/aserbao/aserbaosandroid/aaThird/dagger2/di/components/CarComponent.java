@@ -1,13 +1,15 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2.di.components;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.CarModule;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.TestModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
-import dagger.Reusable;
 
 /**
  * 功能:
@@ -17,7 +19,16 @@ import dagger.Reusable;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.components
  */
-@Component()
-public  interface CarComponent {
-     void inject(DaggerActivity daggerActivity);
+@Singleton
+@Component(modules = CarModule.class)
+public interface CarComponent {
+     Car provide_car();
+     SubWheelComponent.Builder requestSubWheelComponent();
+     SubEngineComponent.Builder requestSubEngineComponent();
+//     void inject(DaggerActivity daggerActivity);
+//    SubWheelComponent addCarModule(SubWheelModule subModule);
+//    SubWheelComponent getSubComponent(SubWheelModule subModule);
+
+//        Wheel provider_wheel();
+//        Engine provider_enginer();
 }

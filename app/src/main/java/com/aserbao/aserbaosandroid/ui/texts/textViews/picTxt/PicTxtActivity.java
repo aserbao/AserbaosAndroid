@@ -130,6 +130,39 @@ public class PicTxtActivity extends AppCompatActivity {
         int end = myString.length();
         int spanFlag = Spannable.SPAN_INCLUSIVE_INCLUSIVE; // this is what is changing
 
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Toast.makeText(PicTxtActivity.this, "我被点击了怎么办？", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        SpannableString dynamicDrawableSpan = new SpannableString("DynamicDrawableSpan第二个图片可以点击");
+        DynamicDrawableSpan drawableSpan =
+            new DynamicDrawableSpan(DynamicDrawableSpan.ALIGN_BASELINE) {
+                @Override
+                public Drawable getDrawable() {
+                    Drawable d = getResources().getDrawable(R.drawable.emoji_00);
+                    d.setBounds(0, 0, 150, 150);
+                    return d;
+                }
+            };
+        DynamicDrawableSpan drawableSpan2 = new DynamicDrawableSpan(
+            DynamicDrawableSpan.ALIGN_BOTTOM) {
+            @Override
+            public Drawable getDrawable() {
+                Drawable d = getResources().getDrawable(R.drawable.emoji_01);
+                d.setBounds(0, 0, 150, 150);
+                return d;
+            }
+        };
+        dynamicDrawableSpan.setSpan(drawableSpan, 3, 4, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        dynamicDrawableSpan.setSpan(drawableSpan2, 7, 8, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        dynamicDrawableSpan.setSpan(clickableSpan, 7, 8, spanFlag);
+        mDynamicDrawableSpanTv.setText(dynamicDrawableSpan);
+        mDynamicDrawableSpanTv.setMovementMethod(LinkMovementMethod.getInstance());
+
+
         SpannableString spannableString = new SpannableString(myString);
         ForegroundColorSpan foregroundSpan = new ForegroundColorSpan(Color.RED);
         spannableString.setSpan(foregroundSpan, 2, 7, spanFlag);
@@ -141,12 +174,7 @@ public class PicTxtActivity extends AppCompatActivity {
         mBackgroundSpanTv.setText(spannableString);
 
         SpannableString spannableString1 = new SpannableString("ClickableSpan,点击我");
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Toast.makeText(PicTxtActivity.this, "我被点击了怎么办？", Toast.LENGTH_SHORT).show();
-            }
-        };
+
         spannableString1.setSpan(clickableSpan, 0, spannableString1.length(), spanFlag);
         mClickableSpanTv.setText(spannableString1);
         mClickableSpanTv.setMovementMethod(LinkMovementMethod.getInstance());
@@ -214,28 +242,7 @@ public class PicTxtActivity extends AppCompatActivity {
         absoluteSizeSpan.setSpan(new AbsoluteSizeSpan(DisplayUtil.sp2px(this,25)),0,absoluteSizeSpan.length(),spanFlag);
         mAbsoluteSpanTv.setText(absoluteSizeSpan);
 
-        SpannableString dynamicDrawableSpan = new SpannableString("DynamicDrawableSpan");
-        DynamicDrawableSpan drawableSpan =
-                new DynamicDrawableSpan(DynamicDrawableSpan.ALIGN_BASELINE) {
-                    @Override
-                    public Drawable getDrawable() {
-                        Drawable d = getResources().getDrawable(R.drawable.emoji_00);
-                        d.setBounds(0, 0, 150, 150);
-                        return d;
-                    }
-                };
-        DynamicDrawableSpan drawableSpan2 = new DynamicDrawableSpan(
-                DynamicDrawableSpan.ALIGN_BOTTOM) {
-            @Override
-            public Drawable getDrawable() {
-                Drawable d = getResources().getDrawable(R.drawable.emoji_01);
-                d.setBounds(0, 0, 150, 150);
-                return d;
-            }
-        };
-        dynamicDrawableSpan.setSpan(drawableSpan, 3, 4, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-        dynamicDrawableSpan.setSpan(drawableSpan2, 7, 8, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-        mDynamicDrawableSpanTv.setText(dynamicDrawableSpan);
+
 
 
 

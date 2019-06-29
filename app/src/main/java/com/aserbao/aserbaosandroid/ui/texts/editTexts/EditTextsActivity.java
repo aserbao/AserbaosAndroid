@@ -19,6 +19,4 @@ public class EditTextsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("自定义EditText", CustomEditTextActivity.class));
         mClassBeen.add(new ClassBean("其他属性", OthersActivity.class));
     }
-
-
 }

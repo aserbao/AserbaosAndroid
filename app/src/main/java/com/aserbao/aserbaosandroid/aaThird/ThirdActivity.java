@@ -7,6 +7,7 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
 import com.aserbao.aserbaosandroid.aaThird.videocache.VideoCacheActivity;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity;
 
 public class ThirdActivity extends BaseActivity {
 
@@ -15,5 +16,6 @@ public class ThirdActivity extends BaseActivity {
     public void initGetData() {
         mClassBeen.add(new ClassBean("Dagger2", DaggerActivity.class));
         mClassBeen.add(new ClassBean("VideoCache", VideoCacheActivity.class));
+        mClassBeen.add(new ClassBean("GreenDao的使用", GreenDaoActivity.class));
     }
 }

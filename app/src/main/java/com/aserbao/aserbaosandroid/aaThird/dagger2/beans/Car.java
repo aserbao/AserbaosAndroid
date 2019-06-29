@@ -2,9 +2,14 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.beans;
 
 import android.util.Log;
 
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubEngineComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubWheelComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import dagger.Reusable;
@@ -19,14 +24,23 @@ import dagger.Reusable;
  */
 public class Car{
     Wheel wheel;
-    @Inject Engine engine;
+    Engine engine;
     public static final String TAG = "dagger2 make a car";
 
-    @Inject
-    public Car(Wheel wheel) {
+    /*@Inject
+    public Car(Wheel wheel,Engine engine) {
         this.wheel = wheel;
+        this.engine = engine;
+        Log.e(TAG, "Car: " );
+    }*/
+
+    @Inject
+    public Car(Provider<SubWheelComponent.Builder> subWheel, Provider<SubEngineComponent.Builder> subEngine){
+        wheel = subWheel.get().requestModule(new SubWheelModule()).build().requestWheel();
+        engine = subEngine.get().requestModule(new SubEngineModule()).build().provideEngine();
         Log.e(TAG, "Car: " );
     }
+
 
     @Inject
     public void open_door(){

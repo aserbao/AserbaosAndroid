@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/black40">
+
+    <ImageView
+        android:id="@+id/about_bitmap_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="14dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
+
+    <TextView
+        android:id="@+id/about_bitmap_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/about_bitmap_iv"
+        app:layout_constraintTop_toTopOf="@+id/about_bitmap_iv"
+        app:layout_constraintRight_toLeftOf="@+id/about_bitmap_state_iv"
+        android:singleLine="true"
+        tools:text="this is a title"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="6dp" />
+
+    <TextView
+        android:id="@+id/about_bitmap_content_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/about_bitmap_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/about_bitmap_title_tv"
+        app:layout_constraintRight_toLeftOf="@+id/about_bitmap_state_iv"
+        tools:text="this is a content"
+        android:textSize="12sp"
+        android:textColor="@color/black40"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/about_bitmap_state_iv"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/about_bitmap_iv"
+        app:layout_constraintBottom_toBottomOf="@+id/about_bitmap_iv"
+        android:layout_marginRight="18dp"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

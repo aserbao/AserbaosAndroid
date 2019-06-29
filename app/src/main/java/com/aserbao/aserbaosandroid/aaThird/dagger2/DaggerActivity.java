@@ -10,7 +10,13 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.CarComponent;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerCarComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubEngineComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubWheelComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.CarModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
@@ -56,9 +62,33 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
 //        car.drive();
     }
 
-    @Inject Car mCar;
+    @Inject Engine mEngine;
+    @Inject Wheel mWheel;
+    @Inject
+    Car mCar;
     public void useDagger2(){
-        DaggerCarComponent.create().inject(this);
-        mCar.drive();
+        CarComponent build = DaggerCarComponent.builder().build();
+//        mEngine = build.requestSubEngineComponent().requestModule(new SubEngineModule()).build().provideEngine();
+//        mWheel = build.requestSubWheelComponent().requestModule(new SubWheelModule()).build().requestWheel();
+//        build.requestSubComponent().requestModule(new SubWheelModule()).build().requestCar();
+        mCar = build.provide_car();
+//        build.inject(this);
+//        mEngine = build.provider_enginer();
+//        mWheel = build.provider_wheel();
+        if (mEngine != null) {
+            mEngine.make();
+        }
+        if (mWheel != null) {
+            mWheel.make();
+        }
+        if (mCar != null) {
+            mCar.drive();
+        }
+        /*CarModule carModule = new CarModule();
+        SubWheelModule subModule = new SubWheelModule();
+        CarComponent build = DaggerCarComponent.builder().carModule(carModule).build();
+        build.getSubComponent(subModule).inject(this);
+        mEngine.make();
+        mWheel.make();*/
     }
 }

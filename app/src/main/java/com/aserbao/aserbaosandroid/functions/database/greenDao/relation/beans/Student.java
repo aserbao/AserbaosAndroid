@@ -43,7 +43,7 @@ public class Student {
     @ToOne(joinProperty = "name")
     IdCard student;
 
-    @ToMany(referencedJoinProperty = "id")
+    @ToMany(referencedJoinProperty = "studentId")
     List<CreditCard> creditCardsList;
 
     @ToMany
