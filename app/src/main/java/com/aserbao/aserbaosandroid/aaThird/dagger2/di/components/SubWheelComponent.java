@@ -2,7 +2,9 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.di.components;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.scopes.PerActivity;
 
@@ -16,14 +18,15 @@ import dagger.Subcomponent;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.components
  */
-@Subcomponent(modules = SubWheelModule.class)
+@Subcomponent(modules = {SubWheelModule.class, SubEngineModule.class})
 public  interface SubWheelComponent {
-    @PerActivity
     Wheel requestWheel();
+    Engine requestEngine();
 
     @Subcomponent.Builder
     interface Builder{
-        Builder requestModule(SubWheelModule subModule);
+        Builder requestSubWheelModule(SubWheelModule subModule);
+        Builder requestSubEngineModule(SubEngineModule subModule);
         SubWheelComponent build();
     }
 }

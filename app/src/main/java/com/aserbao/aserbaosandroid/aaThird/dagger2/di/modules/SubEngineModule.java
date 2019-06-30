@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Cylinder;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
@@ -25,20 +26,9 @@ public class SubEngineModule {
     private static final String TAG = "SubEngineModule";
 
     @Provides
-    public Block provide_block(){
-        Log.e(TAG, "provide_block: "  );
-        return new Block();
+    Engine provide_engine(Block block, Cylinder cylinder, SparkPlug sparkPlugs){
+        Log.e(TAG, "provide_engine: " );
+        return new Engine(block,cylinder,sparkPlugs);
     }
 
-    @Provides
-    public Cylinder provide_cyclinder(){
-        Log.e(TAG, "provide_cyclinder: " );
-        return new Cylinder();
-    }
-
-    @Provides
-    public SparkPlug provide_sparkPlug(){
-        Log.e(TAG, "provide_sparkPlug: " );
-        return new SparkPlug();
-    }
 }

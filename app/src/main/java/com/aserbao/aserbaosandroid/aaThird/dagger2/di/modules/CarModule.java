@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules;
 import android.util.Log;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Cylinder;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
@@ -25,29 +26,20 @@ import dagger.Provides;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules
  */
-@Module(/*subcomponents = {SubWheelComponent.class, SubEngineComponent.class}*/)
+@Module(subcomponents = SubWheelComponent.class)
 public class CarModule {
     private static final String TAG = "CarModule";
 
-
-    /*
     @Singleton
     @Provides
-    Wheel provide_wheel(Provider< SubWheelComponent.Builder> subWheelBuilder){
-        return subWheelBuilder.get()
-            .requestModule(new SubWheelModule())
-            .build()
-            .requestWheel();
+    Car provide_car(SubWheelComponent.Builder subWheelBuilder){
+        SubWheelComponent build = subWheelBuilder
+            .requestSubWheelModule(new SubWheelModule())
+            .requestSubEngineModule(new SubEngineModule())
+            .build();
+        Log.e(TAG, "provide_car: " );
+        return new Car(build.requestWheel(),build.requestEngine());
     }
-
-    @Singleton
-    @Provides
-    Engine provide_engine(Provider< SubEngineComponent.Builder> subEngineBuilder){
-        return subEngineBuilder.get()
-            .requestModule(new SubEngineModule())
-            .build()
-            .provideEngine();
-    }*/
 
 
     /*@Provides

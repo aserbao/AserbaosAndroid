@@ -28,6 +28,12 @@ public class SubWheelModule {
     private static final String TAG = "SubWheelModule";
 
     @Provides
+    Wheel provide_wheel(Rim rim ,Tire tire){
+        Log.e(TAG, "provide_wheel: " );
+        return new Wheel(rim,tire);
+    }
+
+    @Provides
     public Rim provide_rim(){
         Log.e(TAG, "provide_rim: " );
         return new Rim();

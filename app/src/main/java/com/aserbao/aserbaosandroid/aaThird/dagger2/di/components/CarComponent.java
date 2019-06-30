@@ -22,13 +22,5 @@ import dagger.Component;
 @Singleton
 @Component(modules = CarModule.class)
 public interface CarComponent {
-     Car provide_car();
-     SubWheelComponent.Builder requestSubWheelComponent();
-     SubEngineComponent.Builder requestSubEngineComponent();
-//     void inject(DaggerActivity daggerActivity);
-//    SubWheelComponent addCarModule(SubWheelModule subModule);
-//    SubWheelComponent getSubComponent(SubWheelModule subModule);
-
-//        Wheel provider_wheel();
-//        Engine provider_enginer();
+     void inject(DaggerActivity daggerActivity);
 }

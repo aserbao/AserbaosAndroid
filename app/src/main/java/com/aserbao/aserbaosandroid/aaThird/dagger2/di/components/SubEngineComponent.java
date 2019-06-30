@@ -17,7 +17,8 @@ import dagger.Subcomponent;
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.components
  */
 @Subcomponent(modules = SubEngineModule.class)
-public  interface SubEngineComponent {
+public  interface  SubEngineComponent {
+
     @PerActivity
     Engine provideEngine();
 

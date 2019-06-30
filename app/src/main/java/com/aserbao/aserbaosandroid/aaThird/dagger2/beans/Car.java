@@ -27,19 +27,19 @@ public class Car{
     Engine engine;
     public static final String TAG = "dagger2 make a car";
 
-    /*@Inject
+    @Inject
     public Car(Wheel wheel,Engine engine) {
         this.wheel = wheel;
         this.engine = engine;
         Log.e(TAG, "Car: " );
-    }*/
+    }
 
-    @Inject
+    /*@Inject
     public Car(Provider<SubWheelComponent.Builder> subWheel, Provider<SubEngineComponent.Builder> subEngine){
         wheel = subWheel.get().requestModule(new SubWheelModule()).build().requestWheel();
         engine = subEngine.get().requestModule(new SubEngineModule()).build().provideEngine();
         Log.e(TAG, "Car: " );
-    }
+    }*/
 
 
     @Inject
