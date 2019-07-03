@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @package:com.aserbao.aserbaosandroid.AUtils.utils
  * @Copyright: 个人版权所有
  */
-public class L {
+public class ALogUtils {
     private static long mStartTime = 0;
     public static boolean mLogEnable = true;
     public static final String PREFIX = "LogUtils--";
@@ -24,10 +24,10 @@ public class L {
     private static ArrayList<String> mMethods;
 
     static {
-        mClassname = L.class.getName();
+        mClassname = ALogUtils.class.getName();
         mMethods = new ArrayList<>();
 
-        Method[] ms = L.class.getDeclaredMethods();
+        Method[] ms = ALogUtils.class.getDeclaredMethods();
         for (Method m : ms) {
             mMethods.add(m.getName());
         }
@@ -37,22 +37,16 @@ public class L {
     public static final int INT_NUM_END_TIME =2;
     public static final int INT_NUM_NO_DETAIL_TIME =0;
     /**
-     * @param tag
-     * @param msg
-     * @param initTimeState 0表示开始时间，1表示结算时间，2表示不处理时间
+     * @param initTimeState 0表示不处理时间,1表示开始时间，2表示结算时间
      */
-    public static void logErrorTime(String tag, String msg, int initTimeState){
-            if(TextUtils.isEmpty(msg)){
-                return;
-            }
+    public static void logErrorTime( int initTimeState){
             if(initTimeState == INT_NUM_END_TIME) {
                 long l = System.currentTimeMillis() - mStartTime;
-                Log.e(tag + "时间测试", msg + " 耗时 = " + String.valueOf(l) + "ms");
+                Log.e(mClassname + "时间测试", mMethods + " 耗时 = " + String.valueOf(l) + "ms");
             }else{
                 if(initTimeState == INT_NUM_START_TIME){
                     mStartTime = System.currentTimeMillis();
                 }
-                Log.e(tag, msg);
             }
     };
 

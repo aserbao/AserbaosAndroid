@@ -108,7 +108,7 @@ public abstract class DataBaseBaseActivity extends AppCompatActivity {
         }
     }
 
-    private int mCuurType = 0;
+    private int mCuurType = GREEN_DAO;
 
     public void refreshAdapter(int type) {
         mCuurType = type;

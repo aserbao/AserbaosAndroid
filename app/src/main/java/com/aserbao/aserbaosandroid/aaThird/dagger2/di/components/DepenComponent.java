@@ -15,5 +15,5 @@ import dagger.Component;
  */
 @Component(modules = DepenModule.class)
 public interface DepenComponent {
-    Car getDependencyCar();
+//    Car getDependencyCar();
 }

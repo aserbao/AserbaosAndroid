@@ -21,7 +21,6 @@ public class Car{
     public static final String TAG = "dagger2 make a car";
 
 
-    @Inject
     public Car(Wheel wheel, Engine engine) {
         this.wheel = wheel;
         this.engine = engine;

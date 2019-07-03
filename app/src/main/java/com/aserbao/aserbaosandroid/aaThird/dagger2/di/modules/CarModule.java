@@ -10,11 +10,13 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubComponent;
 
 import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import dagger.Subcomponent;
 
 import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
@@ -26,21 +28,16 @@ import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules
  */
-@Module
+@Module(subcomponents = SubComponent.class)
 public class CarModule {
 
-    @Named("CarB")
-    @Provides
+    /*@Provides
     public Car provide_Car(Wheel wheel, Engine engine){
         Log.e(TAG, " CarModule中的 provide_Car方法被调用了 " );
         return new Car(wheel,engine);
-    }
+    }*/
 
-    @Provides
-    public Wheel provide_wheel(Rim rim, Tire tire){
-        return new Wheel(rim,tire);
-    }
-
+   /*
     @Provides
     public Rim provide_rim(){
         return new Rim();
@@ -49,14 +46,14 @@ public class CarModule {
     @Provides
     public Tire provide_tire(){
         return new Tire();
-    }
+    }*/
 
-    @Provides
+   /* @Provides
     public Engine provide_engine(Block block, Cylinder cylinder, SparkPlug sparkPlug){
         return new Engine(block,cylinder,sparkPlug);
     }
-
-    @Provides
+*/
+     /*@Provides
     public Block provide_block(){
         return new Block();
     }
@@ -69,5 +66,5 @@ public class CarModule {
     @Provides
     public SparkPlug provide_sparkPlug(){
         return new SparkPlug();
-    }
+    }*/
 }

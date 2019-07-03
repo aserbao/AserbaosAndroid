@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.aaThird.dagger2;
 
+import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
@@ -11,18 +12,24 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerCarComponent;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerDepenComponent;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DepenComponent;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.data.Database;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubModule;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
+
+import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
+import dagger.Subcomponent;
+
+import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 
 public class DaggerActivity extends BaseRecyclerViewActivity {
-
-
 
     @Override
     public void initGetData() {
@@ -59,13 +66,34 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
         car.drive();
     }
 
-    @Named("CarB")
-    @Inject
-    public Car mCar;
+   /* @Inject
+    Database database;*/
+
+ /*  @Inject
+   Wheel mWheel;
+
+   @Inject
+   Engine mEngine;
+*/
+
     public void useDagger2(){
+       /* ApplicationComponent applicationComponent = DaggerApplicationComponent.create();
+        applicationComponent.database();
+        applicationComponent.inject(this);
+        database.name();*/
 //        DaggerCarComponent.create().inject(this);
-        DepenComponent depenComponent = DaggerDepenComponent.create();
-        DaggerCarComponent.builder().depenComponent(depenComponent).build().inject(this);
-        mCar.drive();
+//        DepenComponent depenComponent = DaggerDepenComponent.create();
+//            SubModule subModule = new SubModule();
+//            DaggerCarComponent.builder().build().provideWheel();
+//        DaggerCarComponent.builder().build().getSubComponent(subModule).inject(this);
+//        DaggerDaggerActivity_ApplicationComponent.create().inject(this);
+//        mCar.drive();
     }
+
+
+    /*@Component(modules = DatabaseModule.class)
+    interface ApplicationComponent {
+        void inject(DaggerActivity daggerActivity);
+    }*/
+
 }

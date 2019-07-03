@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.StatFs;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -52,9 +52,9 @@ public class AppFileMgr {
             		deleteFilesByDirectory(file);
             		file.delete();
             }
-            L.i("AppFileMgr-->>deleteFilesByDirectory", "This directory is not file, execute delete");
+            ALogUtils.i("AppFileMgr-->>deleteFilesByDirectory", "This directory is not file, execute delete");
         }else{
-        	L.i("AppFileMgr-->>deleteFilesByDirectory", "This directory is file, not execute delete");
+        	ALogUtils.i("AppFileMgr-->>deleteFilesByDirectory", "This directory is file, not execute delete");
         }
     }
 	
@@ -76,7 +76,7 @@ public class AppFileMgr {
  	            }
  	        }
     	}
-    	L.i("AppFileMgr-->>getFileSize", "This file size: " + size);
+    	ALogUtils.i("AppFileMgr-->>getFileSize", "This file size: " + size);
         return size;
     }
     
@@ -107,15 +107,15 @@ public class AppFileMgr {
 				outputStream.write(array);
 				outputStream.flush();
 				outputStream.close();
-				L.i("AppFileMgr-->>saveFileToSdcard-->>bitmap:", bitmap.toString());
-				L.i("AppFileMgr-->>saveFileToSdcard-->>path:", path);
-				L.i("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下成功！");
+				ALogUtils.i("AppFileMgr-->>saveFileToSdcard-->>bitmap:", bitmap.toString());
+				ALogUtils.i("AppFileMgr-->>saveFileToSdcard-->>path:", path);
+				ALogUtils.i("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下成功！");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
-				L.e("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下失败！" + e.getMessage());
+				ALogUtils.e("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下失败！" + e.getMessage());
 			} catch (IOException e1) {
 				e1.printStackTrace();
-				L.e("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下失败！" + e1.getMessage());
+				ALogUtils.e("AppFileMgr-->>saveFileToSdcard:", "将File写入到指定路径下失败！" + e1.getMessage());
 			}
 		}
 	}
@@ -167,10 +167,10 @@ public class AppFileMgr {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>getCacheFile:","获取Sdcard指定目录下缓存文件失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>getCacheFile:","获取Sdcard指定目录下缓存文件失败！" + e.getMessage());
 		}
-			L.i("AppFileMgr-->>getCacheFile-->>imageUri:", imageUri);
-			L.i("AppFileMgr-->>getCacheFile:", "获取Sdcard指定目录下缓存文件成功！");
+			ALogUtils.i("AppFileMgr-->>getCacheFile-->>imageUri:", imageUri);
+			ALogUtils.i("AppFileMgr-->>getCacheFile:", "获取Sdcard指定目录下缓存文件成功！");
 			return cacheFile;
 	}
 	 
@@ -183,7 +183,7 @@ public class AppFileMgr {
 	 */
 	public static String getFileName(String path) {
 		int index = path.lastIndexOf("/");
-		L.i("AppFileMgr-->>getFileName-->>path:", path);
+		ALogUtils.i("AppFileMgr-->>getFileName-->>path:", path);
 		return path.substring(index + 1);
 	}
 
@@ -198,8 +198,8 @@ public class AppFileMgr {
 		//判断SDCard是否存在并且可以读写
 		String sdCardFlag = Environment.getExternalStorageState();
 		if (sdCardFlag != null && sdCardFlag.equals(Environment.MEDIA_MOUNTED)) {
-			L.i("AppFileMgr-->>writeFileToSdCard-->>fileContent:",fileContent);
-			L.i("AppFileMgr-->>writeFileToSdCard-->>fileName:",fileName);
+			ALogUtils.i("AppFileMgr-->>writeFileToSdCard-->>fileContent:",fileContent);
+			ALogUtils.i("AppFileMgr-->>writeFileToSdCard-->>fileName:",fileName);
 			File file = new File(CACHE_DIRECTORY + fileName);
 			if (!file.getParentFile().exists()) {
 				file.getParentFile().mkdirs();
@@ -225,10 +225,10 @@ public class AppFileMgr {
 				input.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-				L.e("AppFileMgr-->>writeFileToSdCard:","把内容写在SdCard卡上指定目录失败！" + e.getMessage());
+				ALogUtils.e("AppFileMgr-->>writeFileToSdCard:","把内容写在SdCard卡上指定目录失败！" + e.getMessage());
 			}
 		} else {
-				L.e("AppFileMgr-->>writeFileToSdCard:","该SdCard不存在或不永许读写操作,写入失败！");
+				ALogUtils.e("AppFileMgr-->>writeFileToSdCard:","该SdCard不存在或不永许读写操作,写入失败！");
 		}
 	}
 	    
@@ -244,9 +244,9 @@ public class AppFileMgr {
 		File file = null;
 		OutputStream output = null;
 		try {
-			L.i("AppFileMgr-->>writeInputStreamToSdCard-->>path:",path);
-			L.i("AppFileMgr-->>writeInputStreamToSdCard-->>fileName:",fileName);
-			L.i("AppFileMgr-->>writeInputStreamToSdCard-->>inputStream:",inputStream + "");
+			ALogUtils.i("AppFileMgr-->>writeInputStreamToSdCard-->>path:",path);
+			ALogUtils.i("AppFileMgr-->>writeInputStreamToSdCard-->>fileName:",fileName);
+			ALogUtils.i("AppFileMgr-->>writeInputStreamToSdCard-->>inputStream:",inputStream + "");
 			//创建目录和文件
 			file = createSDFile( path + fileName);
 			//创建输出流 
@@ -259,16 +259,16 @@ public class AppFileMgr {
 			output.flush();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
 		}finally{
 			try {
 				output.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-				L.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
+				ALogUtils.e("AppFileMgr-->>writeInputStreamToSdCard:","将InputStream写入SdCard指定目录下失败！" + e.getMessage());
 			}
 		}
 		return file;
@@ -294,10 +294,10 @@ public class AppFileMgr {
 			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>readFileFromSdCard:","从SdCard中读取文件内容失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>readFileFromSdCard:","从SdCard中读取文件内容失败！" + e.getMessage());
 		}
-			L.i("AppFileMgr-->>readFileFromSdCard-->>cacheFileName:",cacheFileName);
-			L.i("AppFileMgr-->>readFileFromSdCard:","从SdCard中读取文件内容成功！");
+			ALogUtils.i("AppFileMgr-->>readFileFromSdCard-->>cacheFileName:",cacheFileName);
+			ALogUtils.i("AppFileMgr-->>readFileFromSdCard:","从SdCard中读取文件内容成功！");
 			return fileContentStr;
 	}
 
@@ -314,8 +314,8 @@ public class AppFileMgr {
 		//SdCard已存在
 		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 			file = Environment.getExternalStorageDirectory().getPath() + path;
-			L.i("AppFileMgr-->>getRootFilePath","SdCard已存在, 在SdCard中创建文件夹！");
-			L.i("AppFileMgr-->>getRootFilePath-->>file", "创建文件夹路径为" + file);
+			ALogUtils.i("AppFileMgr-->>getRootFilePath","SdCard已存在, 在SdCard中创建文件夹！");
+			ALogUtils.i("AppFileMgr-->>getRootFilePath-->>file", "创建文件夹路径为" + file);
 			File files = new File(file);
 			if (files == null || !files.exists()) {
 				files.mkdir();
@@ -325,8 +325,8 @@ public class AppFileMgr {
 		//SdCard卡不存在
 		else {
 			file = Environment.getRootDirectory().getPath() + path;
-			L.i("AppFileMgr-->>getRootFilePath","SdCard卡不存在, 在手机中创建文件夹！");
-			L.i("AppFileMgr-->>getRootFilePath-->>file:","创建文件夹的路径为" + file);
+			ALogUtils.i("AppFileMgr-->>getRootFilePath","SdCard卡不存在, 在手机中创建文件夹！");
+			ALogUtils.i("AppFileMgr-->>getRootFilePath-->>file:","创建文件夹的路径为" + file);
 			File files = new File(file);
 			if (files == null || !files.exists()) {
 				files.mkdir();
@@ -492,7 +492,7 @@ public class AppFileMgr {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-				L.e("AppFileMgr-->>createSDFile:","创建文件失败！" + e.getMessage());
+				ALogUtils.e("AppFileMgr-->>createSDFile:","创建文件失败！" + e.getMessage());
 			}
 				return file;
 	}
@@ -612,10 +612,10 @@ public class AppFileMgr {
 			inputStream = urlConnection.getInputStream();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>getInputStreamByStringURL:","根据地址获取InputStream失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>getInputStreamByStringURL:","根据地址获取InputStream失败！" + e.getMessage());
 		} catch (IOException e){
 			e.printStackTrace();
-			L.e("AppFileMgr-->>getInputStreamByStringURL:","根据地址获取InputStream失败！" + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>getInputStreamByStringURL:","根据地址获取InputStream失败！" + e.getMessage());
 		}
 		 	return inputStream;
 	}
@@ -634,13 +634,13 @@ public class AppFileMgr {
 			byte[] buffer = new byte[(int)file.length()];
 		    inputFile.read(buffer);
 		    inputFile.close();
-		    L.i("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串成功！"  + strings);
+		    ALogUtils.i("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串成功！"  + strings);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			L.e("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串失败！"  + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串失败！"  + e.getMessage());
 		} catch(IOException e){
 			e.printStackTrace();
-			L.e("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串失败！"  + e.getMessage());
+			ALogUtils.e("AppFileMgr-->>getEncodeBase64File", "文件转换base64字符串失败！"  + e.getMessage());
 		}
 			return strings;
     }
@@ -698,7 +698,7 @@ public class AppFileMgr {
 		} catch (Exception e) {
 				CUT_FALG = false;
 				e.printStackTrace();
-				L.e("AppFileMgr-->>cutFile:","文件剪切操作出现异常！" + e.getMessage());
+				ALogUtils.e("AppFileMgr-->>cutFile:","文件剪切操作出现异常！" + e.getMessage());
 		}	
 				return CUT_FALG;
 	}
@@ -808,7 +808,7 @@ public class AppFileMgr {
 				} catch (Exception e) {
 					  COPY_FALG = false;
 					  e.printStackTrace();
-					  L.e("AppFileMgr-->>copyFile:","文件复制操作出现异常！" + e.getMessage());
+					  ALogUtils.e("AppFileMgr-->>copyFile:","文件复制操作出现异常！" + e.getMessage());
 				}finally{
 						try {
 							if(bis != null){ 	
@@ -820,7 +820,7 @@ public class AppFileMgr {
 						} catch (IOException e) {
 							COPY_FALG = false;
 							e.printStackTrace();
-							L.e("AppFileMgr-->>copyFile:", "文件复制操作，数据流关闭出现异常！" + e.getMessage());
+							ALogUtils.e("AppFileMgr-->>copyFile:", "文件复制操作，数据流关闭出现异常！" + e.getMessage());
 						}
 				}
 			}else if(src.isDirectory()){
@@ -849,7 +849,7 @@ public class AppFileMgr {
 		if(!path.endsWith(File.separator)){
 			path += File.separator;
 		}
-		L.i("AppFileMgr-->>renameFile:", "文件重命名操作成功！");
+		ALogUtils.i("AppFileMgr-->>renameFile:", "文件重命名操作成功！");
 		return file.renameTo(new File(path + name));
 	}
 	
@@ -880,7 +880,7 @@ public class AppFileMgr {
 		} catch (Exception e) {
 			DELETE_FALG = false;
 			e.printStackTrace();
-			L.i("AppFileMgr-->>deleteFile", "文件删除出现异常！" + e.getMessage());
+			ALogUtils.i("AppFileMgr-->>deleteFile", "文件删除出现异常！" + e.getMessage());
 		}
 			return DELETE_FALG;
 	}

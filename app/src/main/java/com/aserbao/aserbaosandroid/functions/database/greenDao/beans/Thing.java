@@ -16,6 +16,7 @@ import org.greenrobot.greendao.annotation.Transient;
  */
 @Entity
 public class Thing {
+    @Id(autoincrement = true)
     Long id;
     public Long getId() {
         return id;
