@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.functions.aboutBitmap;
 import com.aserbao.aserbaosandroid.base.BaseActivity;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createLong.CreateLongBitmapActivity;
+import com.aserbao.aserbaosandroid.functions.aboutBitmap.pineColor.PineColorBitmapActivity;
 
 /**
  * 功能:
@@ -16,5 +17,6 @@ public class AboutBitmapActivity extends BaseActivity {
     @Override
     public void initGetData() {
         mClassBeen.add(new ClassBean("生成长图", CreateLongBitmapActivity.class));
+        mClassBeen.add(new ClassBean("获取图片颜色", PineColorBitmapActivity.class));
     }
 }

@@ -6,20 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.base.BaseActivity">
-
-    <com.aserbao.aserbaosandroid.ui.customView.gradient.LinearGradientView
-        android:id="@+id/normal_lgradient_view"
+    <FrameLayout
+        android:id="@+id/pine_color_fl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <com.aserbao.aserbaosandroid.ui.customView.gradient.LinearGradientView
+            android:id="@+id/pine_color_lgradient_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <ImageView
-        android:id="@+id/normal_image_view"
-        android:layout_margin="50dp"
-        android:src="@drawable/mm_1"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        <ImageView
+            android:id="@+id/pine_color_image_view"
+            android:layout_margin="50dp"
+            android:src="@drawable/mm_1"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
     <TextView
         android:id="@+id/start_color_tv"
         android:text="Start"
@@ -28,9 +31,10 @@
         android:layout_height="50dp" />
     <TextView
         android:id="@+id/end_color_tv"
-        android:text="End"
+        android:text="En"
         android:gravity="center"
         android:layout_gravity="right"
         android:layout_width="50dp"
         android:layout_height="50dp" />
+
 </FrameLayout>

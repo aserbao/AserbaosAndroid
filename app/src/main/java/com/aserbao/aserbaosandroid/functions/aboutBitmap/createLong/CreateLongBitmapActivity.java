@@ -47,7 +47,7 @@ public class CreateLongBitmapActivity extends AppCompatActivity {
     TextView mAboutBitmapTv;
 
 
-    String path = Environment.getExternalStorageDirectory() + "/12.png";
+
     private long mStartTime;
     private int itemNum = 0;
 
@@ -77,7 +77,7 @@ public class CreateLongBitmapActivity extends AppCompatActivity {
         saveBitmap(picpath, bitmap);
         return bitmap;
     }
-
+    String path = Environment.getExternalStorageDirectory() + "/12.png";
     private static void saveBitmap(String picpath, Bitmap bitmap) {
         // 测试输出
         FileOutputStream out = null;
@@ -100,6 +100,7 @@ public class CreateLongBitmapActivity extends AppCompatActivity {
 
     /**
      * 保存图片
+     * @param picpath String path = Environment.getExternalStorageDirectory() + "/12.png";
      * @param bm
      * @throws IOException
      */
@@ -123,9 +124,6 @@ public class CreateLongBitmapActivity extends AppCompatActivity {
         for (int i = 0; i < scrollView.getChildCount(); i++) {
             h += scrollView.getChildAt(i).getHeight();
         }
-        Log.e(TAG, "getScrollViewBitmap: " + h);
-        // 创建相应大小的bitmap
-
         bitmap = Bitmap.createBitmap(AppScreenMgr.getScreenWidth(scrollView.getContext()), h,
             Bitmap.Config.ARGB_4444);
         final Canvas canvas = new Canvas(bitmap);
