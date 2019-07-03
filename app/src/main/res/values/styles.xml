@@ -141,6 +141,24 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+
+    <style name="Guide_Theme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimNull</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="AnimNull" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+    </style>
+
+
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>

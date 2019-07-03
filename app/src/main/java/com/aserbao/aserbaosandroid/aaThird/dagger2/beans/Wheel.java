@@ -17,11 +17,14 @@ import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 public class Wheel {
     Rim rim;
     Tire tire;
-
     @Inject
     public Wheel(Rim rim, Tire tire) {
         this.rim = rim;
         this.tire = tire;
-        Log.e(TAG, "Wheel: 的构造方法");
+        Log.e(TAG, "Wheel的构造方法 " );
+    }
+
+    public void make(){
+        Log.e(TAG, "make: 轮子制作" );
     }
 }

@@ -4,12 +4,11 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.CarModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.scopes.PerActivity;
 
-import javax.inject.Singleton;
-
-import dagger.Component;
+import dagger.Subcomponent;
 
 /**
  * 功能:
@@ -19,8 +18,15 @@ import dagger.Component;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.components
  */
-@Singleton
-@Component(modules = CarModule.class)
-public interface CarComponent {
-     void inject(DaggerActivity daggerActivity);
+@Subcomponent(modules = {SubWheelModule.class, SubEngineModule.class})
+public  interface SubWheelComponent {
+    Wheel requestWheel();
+    Engine requestEngine();
+
+    @Subcomponent.Builder
+    interface Builder{
+        Builder requestSubWheelModule(SubWheelModule subModule);
+        Builder requestSubEngineModule(SubEngineModule subModule);
+        SubWheelComponent build();
+    }
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.di.scopes.CustomScope;
 
 import javax.inject.Named;
 
@@ -12,6 +13,7 @@ import dagger.Module;
 import dagger.Provides;
 
 import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
+
 
 /**
  * 功能:
@@ -24,10 +26,9 @@ import static com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car.TAG;
 @Module
 public class DepenModule {
 
-    @Named("CarA")
-    @Provides
+    /*@Provides
     public Car provide_Car(Wheel wheel, Engine engine){
         Log.e(TAG, " DepenModule 中的 provide_Car方法被调用了 " );
         return new Car(wheel,engine);
-    }
+    }*/
 }

@@ -27,4 +27,8 @@ public class Engine {
         Log.e(TAG, "Engine: 的构造方法" );
     }
 
+    public void make(){
+        Log.e(TAG, "make: 引擎制作" );
+    }
+
 }
