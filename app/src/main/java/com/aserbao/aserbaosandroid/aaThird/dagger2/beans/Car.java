@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubWheelModule;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -33,6 +34,8 @@ public class Car{
         this.engine = engine;
         Log.e(TAG, "Car: " );
     }
+
+
 
     /*@Inject
     public Car(Provider<SubWheelComponent.Builder> subWheel, Provider<SubEngineComponent.Builder> subEngine){

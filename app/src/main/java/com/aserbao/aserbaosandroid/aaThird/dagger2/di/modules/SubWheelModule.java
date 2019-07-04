@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules;
 import android.util.Log;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Block;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Cylinder;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Engine;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
@@ -26,6 +27,8 @@ import dagger.Provides;
 @Module
 public class SubWheelModule {
     private static final String TAG = "SubWheelModule";
+
+
 
     @Provides
     Wheel provide_wheel(Rim rim ,Tire tire){

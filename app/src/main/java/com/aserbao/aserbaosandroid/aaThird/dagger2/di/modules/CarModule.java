@@ -12,6 +12,7 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubEngineCompon
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubWheelComponent;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.scopes.PerActivity;
 
+import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -26,11 +27,12 @@ import dagger.Provides;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules
  */
-@Module(subcomponents = SubWheelComponent.class)
+
+@Module
 public class CarModule {
     private static final String TAG = "CarModule";
 
-    @Singleton
+    /*@Singleton
     @Provides
     Car provide_car(SubWheelComponent.Builder subWheelBuilder){
         SubWheelComponent build = subWheelBuilder
@@ -39,15 +41,23 @@ public class CarModule {
             .build();
         Log.e(TAG, "provide_car: " );
         return new Car(build.requestWheel(),build.requestEngine());
-    }
+    }*/
 
-
-    /*@Provides
-    public Car provide_Car(Wheel wheel, Engine engine){
-        Log.e(TAG, " carModule中 provide_Car: " );
+    @Named("法拉利")
+    @Provides
+    Car provide_CarA(Wheel wheel, Engine engine){
+        Log.e(TAG, " ok， 你造了一辆法拉利" );
         return new Car(wheel,engine);
     }
+
+    @Named("兰博基尼")
     @Provides
+    Car provide_Car(Wheel wheel, Engine engine){
+        Log.e(TAG, " ok， 你造了一辆兰博基尼" );
+        return new Car(wheel,engine);
+    }
+
+    /*@Provides
     public Wheel provide_wheel(Rim rim, Tire tire){
         Log.e(TAG, "provide_wheel: " );
         return new Wheel(rim,tire);

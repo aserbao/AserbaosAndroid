@@ -19,6 +19,10 @@ import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
 
 import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Provider;
+
+import dagger.Lazy;
 
 public class DaggerActivity extends BaseRecyclerViewActivity {
 
@@ -42,7 +46,8 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
                 useDagger2();
                 break;
             case 2:
-                ButtonActivity.launch(this);
+//                ButtonActivity.launch(this);
+                userMethod();
                 break;
         }
     }
@@ -63,18 +68,18 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
     Engine mEngine;
     @Inject
     Wheel mWheel;*/
-    @Inject
-    Car mCar;
+
     public void useDagger2(){
         DaggerCarComponent.builder().build().inject(this);
-        /*if (mEngine != null) {
-            mEngine.make();
-        }
-        if (mWheel != null) {
-            mWheel.make();
-        }*/
+    }
+
+    @Inject
+    Lazy<Car> mCar;
+//        Provider<Car> mCar;
+    public void userMethod(){
         if (mCar != null) {
-            mCar.drive();
+            mCar.get().drive();
+            Log.e(TAG, "userMethod: " + mCar.toString() );
         }
     }
 
