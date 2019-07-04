@@ -20,6 +20,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,8 +55,9 @@ public class ImageBlurActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.starry_sky_1);
-
+//        mBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
+        int[] ints = {178,255,255,255};
+        mBitmap = Bitmap.createBitmap(ints, 1080, 1920, Bitmap.Config.RGB_565);
         mBlurIamgeView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {

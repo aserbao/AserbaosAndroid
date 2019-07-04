@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.textViews.simple.SimpleTextViewActivity">
     <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.RequestSoftInput
+        android:background="@color/black40"
         android:layout_width="match_parent"
         android:layout_height="100dp" />
     <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.EditTestMultiLine
@@ -15,6 +16,21 @@
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.StrokeTextView1
+        android:textSize="36sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="aserbao…"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.StrokeTextView2
+        android:textSize="36sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="aserbao…"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:visibility="gone"
         android:maxLines="2"
@@ -31,4 +47,4 @@
         android:shadowDy="4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</FrameLayout>
+</LinearLayout>

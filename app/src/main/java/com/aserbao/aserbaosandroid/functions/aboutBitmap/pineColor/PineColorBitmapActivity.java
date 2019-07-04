@@ -43,6 +43,7 @@ public class PineColorBitmapActivity extends AppCompatActivity {
     @BindView(R.id.pine_color_fl)
     FrameLayout mPineColorFl;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class PineColorBitmapActivity extends AppCompatActivity {
     Shader.TileMode[] sTileMode = {Shader.TileMode.CLAMP, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR};
     int mCuurPosition = 0;
 
-    @OnClick({R.id.pine_color_lgradient_view, R.id.pine_color_image_view,R.id.start_color_tv, R.id.end_color_tv})
+    @OnClick({R.id.pine_color_lgradient_view, R.id.pine_color_image_view, R.id.start_color_tv, R.id.end_color_tv})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -80,13 +81,15 @@ public class PineColorBitmapActivity extends AppCompatActivity {
                 layoutParams.height = HEIGHT;
                 layoutParams.width = WIDTH;
                 mPineColorFl.setLayoutParams(layoutParams);
-                Bitmap bitmap1 = Bitmap.createBitmap(WIDTH, HEIGHT,Bitmap.Config.ARGB_4444);
+                Bitmap bitmap1 = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_4444);
                 Canvas canvas = new Canvas(bitmap1);
                 mPineColorFl.draw(canvas);
+
                 mNormalImageView.setImageBitmap(bitmap1);
+
                 try {
-                    saveFile(path,bitmap1);
-                    Toast.makeText(this, "保存成功，路径为"+path, Toast.LENGTH_LONG).show();
+                    saveFile(path, bitmap1);
+                    Toast.makeText(this, "保存成功，路径为" + path, Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -97,7 +100,8 @@ public class PineColorBitmapActivity extends AppCompatActivity {
     }
 
     String path = Environment.getExternalStorageDirectory() + "/12.png";
-    public  void saveFile(String picpath,Bitmap bm ) throws IOException {
+
+    public void saveFile(String picpath, Bitmap bm) throws IOException {
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(picpath));
         bm.compress(Bitmap.CompressFormat.PNG, 100, bos);
         bos.flush();

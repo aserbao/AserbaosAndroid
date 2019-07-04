@@ -115,7 +115,6 @@ public class RequestSoftInput extends EditText {
         public boolean finishComposingText() {
             //结束组合文本输入的时候，这个方法基本上会出现在切换输入法类型，点击回车（完成、搜索、发送、下一步）点击输入法右上角隐藏按钮会触发。
             Log.d("tag", "finishComposingText");
-
             return true;
         }
     }
