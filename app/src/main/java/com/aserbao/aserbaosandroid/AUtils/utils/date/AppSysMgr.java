@@ -23,7 +23,7 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -115,7 +115,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysSdk() {
 	    String sdkVersion = android.os.Build.VERSION.SDK;
-	    L.i("AppSysMgr-->>getSysLanguage", sdkVersion);
+	    ALogUtils.i("AppSysMgr-->>getSysLanguage", sdkVersion);
 	    return sdkVersion;
 	}
 
@@ -125,7 +125,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysLanguage() {
 		String language = Locale.getDefault().getLanguage();
-		L.i("AppSysMgr-->>getSysLanguage",  language);
+		ALogUtils.i("AppSysMgr-->>getSysLanguage",  language);
 		return language;
 	}
 
@@ -145,7 +145,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysModel() {
 		String model = android.os.Build.MODEL;
-		L.i("AppSysMgr-->>getSysModel",  model);
+		ALogUtils.i("AppSysMgr-->>getSysModel",  model);
 		return model;
 	}
 
@@ -156,7 +156,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysRelease() {
 		String release = android.os.Build.VERSION.RELEASE;
-		L.i("AppSysMgr-->>getSysRelease",  release);
+		ALogUtils.i("AppSysMgr-->>getSysRelease",  release);
 		return release;
 	}
 
@@ -168,7 +168,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysSIMSerialNum(Context content) {
 		String simSerialNumber = getSysTelephonyManager(content).getSimSerialNumber();
-		L.i("AppSysMgr-->>getSysSIMSerialNum",  simSerialNumber);
+		ALogUtils.i("AppSysMgr-->>getSysSIMSerialNum",  simSerialNumber);
 		return simSerialNumber;
 	}
 
@@ -203,7 +203,7 @@ public class AppSysMgr {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            L.e("AppSysMgr-->>getSysCPUSerialNum",  e.getMessage().toString());
+            ALogUtils.e("AppSysMgr-->>getSysCPUSerialNum",  e.getMessage().toString());
         }
         	return cpuSerialNum;
     }
@@ -217,7 +217,7 @@ public class AppSysMgr {
 	private static TelephonyManager getSysTelephonyManager(Context content) {
 		TelephonyManager telephonyManager = null;
 		telephonyManager = (TelephonyManager) content.getSystemService(Context.TELEPHONY_SERVICE);
-		L.i("AppSysMgr-->>getSysTelephonyManager",  telephonyManager + "");
+		ALogUtils.i("AppSysMgr-->>getSysTelephonyManager",  telephonyManager + "");
 		return telephonyManager;
 	}
 
@@ -230,7 +230,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysTelephoneSerialNum(Context content) {
 		String deviceId = getSysTelephonyManager(content).getDeviceId();
-		L.i("AppSysMgr-->>getSysTelephoneSerialNum",  deviceId + "");
+		ALogUtils.i("AppSysMgr-->>getSysTelephoneSerialNum",  deviceId + "");
 		return deviceId;
 	}
 
@@ -258,7 +258,7 @@ public class AppSysMgr {
 				moblieType = "China Telecom 中国电信";
 			}
 		}
-		L.i("AppSysMgr-->>getSysCarrier",  moblieType);
+		ALogUtils.i("AppSysMgr-->>getSysCarrier",  moblieType);
 		return moblieType;
 	}
 
@@ -270,7 +270,7 @@ public class AppSysMgr {
 	 */
 	public static Integer getSysPhoneState(Context context) {
 		Integer callState = getSysTelephonyManager(context).getCallState();
-		L.i("AppSysMgr-->>getSysPhoneState",  callState + "");
+		ALogUtils.i("AppSysMgr-->>getSysPhoneState",  callState + "");
 		return callState;
 	}
 
@@ -282,7 +282,7 @@ public class AppSysMgr {
 	 */
 	public static CellLocation getSysPhoneLoaction(Context context) {
 		CellLocation cellLocation = getSysTelephonyManager(context).getCellLocation();
-		L.i("AppSysMgr-->>getSysPhoneLoaction",  cellLocation + "");
+		ALogUtils.i("AppSysMgr-->>getSysPhoneLoaction",  cellLocation + "");
 		return cellLocation;
 	}
 
@@ -294,7 +294,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysDeviceSoftVersion(Context context) {
 		String deviceSoftwareVersion = getSysTelephonyManager(context).getDeviceSoftwareVersion();
-		L.i("AppSysMgr-->>getSysDeviceSoftVersion",  deviceSoftwareVersion + "");
+		ALogUtils.i("AppSysMgr-->>getSysDeviceSoftVersion",  deviceSoftwareVersion + "");
 		return deviceSoftwareVersion;
 	}
 
@@ -306,7 +306,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysPhoneNumber(Context context) {
 		String phoneNumber = getSysTelephonyManager(context).getLine1Number();
-		L.i("AppSysMgr-->>getSysPhoneNumber",  phoneNumber + "");
+		ALogUtils.i("AppSysMgr-->>getSysPhoneNumber",  phoneNumber + "");
 		return phoneNumber;
 	}
 
@@ -321,7 +321,7 @@ public class AppSysMgr {
 		if (getSysTelephonyManager(context).getSimState() == 5) {
 			code = getSysTelephonyManager(context).getSimOperator();
 		}
-		L.i("AppSysMgr-->>getSysSimCode",  code + "");
+		ALogUtils.i("AppSysMgr-->>getSysSimCode",  code + "");
 		return code;
 	}
 
@@ -336,7 +336,7 @@ public class AppSysMgr {
 		if (getSysTelephonyManager(context).getSimState() == 5) {
 			simOperatorName = getSysTelephonyManager(context).getSimOperatorName();
 		}
-		L.i("AppSysMgr-->>getSysSimPrivatorName",  simOperatorName);
+		ALogUtils.i("AppSysMgr-->>getSysSimPrivatorName",  simOperatorName);
 		return simOperatorName;
 	}
 
@@ -349,7 +349,7 @@ public class AppSysMgr {
 	 */
 	public static String getSysUserPhoneId(Context context) {
 		String subscriberId = getSysTelephonyManager(context).getSubscriberId();
-		L.i("AppSysMgr-->>getSysUserPhoneId",  subscriberId);
+		ALogUtils.i("AppSysMgr-->>getSysUserPhoneId",  subscriberId);
 		return subscriberId;
 	}
 
@@ -375,7 +375,7 @@ public class AppSysMgr {
 			displayMetrics = new DisplayMetrics();
 		}
 		activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		L.i("AppSysMgr-->>getSysDisplayMetrics",  "获取屏幕管理对象为：" + displayMetrics);
+		ALogUtils.i("AppSysMgr-->>getSysDisplayMetrics",  "获取屏幕管理对象为：" + displayMetrics);
 		return displayMetrics;
 	}
 
@@ -391,8 +391,8 @@ public class AppSysMgr {
 		int width = wm.getDefaultDisplay().getWidth();
 		//手机屏幕的高度
 		int height = wm.getDefaultDisplay().getHeight();
-		L.i("AppSysMgr-->>getScreenDispaly-->>width",  "获取屏幕宽度为：" + width);
-		L.i("AppSysMgr-->>getScreenDispaly-->>height",  "获取屏幕高度为：" + height);
+		ALogUtils.i("AppSysMgr-->>getScreenDispaly-->>width",  "获取屏幕宽度为：" + width);
+		ALogUtils.i("AppSysMgr-->>getScreenDispaly-->>height",  "获取屏幕高度为：" + height);
 		int result[] = { width, height };
 		return result;
 	}
@@ -410,8 +410,8 @@ public class AppSysMgr {
 		int width = wm.getDefaultDisplay().getWidth() /10 * 8;
 		//手机屏幕的高度
 		int height = wm.getDefaultDisplay().getHeight() /10 * 8;
-		L.i("AppSysMgr-->>getScreenDispaly-->>width",  "获取屏幕宽度为：" + width);
-		L.i("AppSysMgr-->>getScreenDispaly-->>height",  "获取屏幕高度为：" + height);
+		ALogUtils.i("AppSysMgr-->>getScreenDispaly-->>width",  "获取屏幕宽度为：" + width);
+		ALogUtils.i("AppSysMgr-->>getScreenDispaly-->>height",  "获取屏幕高度为：" + height);
 		int result[] = { width, height };
 		return result;
 	}
@@ -426,7 +426,7 @@ public class AppSysMgr {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(displayMetrics);
-        L.i("AppSysMgr-->>getSysScreenWidth",  "获取屏幕宽度为：" + displayMetrics.widthPixels);
+        ALogUtils.i("AppSysMgr-->>getSysScreenWidth",  "获取屏幕宽度为：" + displayMetrics.widthPixels);
         return displayMetrics.widthPixels;
     }
 
@@ -440,7 +440,7 @@ public class AppSysMgr {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(displayMetrics);
-        L.i("AppSysMgr-->>getSysScreenHeight",  "获取屏幕高度为：" + displayMetrics.heightPixels);
+        ALogUtils.i("AppSysMgr-->>getSysScreenHeight",  "获取屏幕高度为：" + displayMetrics.heightPixels);
         return displayMetrics.heightPixels;
     }
 
@@ -458,10 +458,10 @@ public class AppSysMgr {
             Object object = clazz.newInstance();
             int height = Integer.parseInt(clazz.getField("status_bar_height").get(object).toString());
             statusHeight = context.getResources().getDimensionPixelSize(height);
-            L.i("AppSysMgr-->>getSysScreenStatusHeight",  "获取屏幕状态栏高度为：" + statusHeight);
+            ALogUtils.i("AppSysMgr-->>getSysScreenStatusHeight",  "获取屏幕状态栏高度为：" + statusHeight);
         } catch (Exception e) {
             e.printStackTrace();
-            L.e("AppSysMgr-->>getSysScreenStatusHeight",  "获取屏幕状态栏高度失败！" + e.getMessage());
+            ALogUtils.e("AppSysMgr-->>getSysScreenStatusHeight",  "获取屏幕状态栏高度失败！" + e.getMessage());
         }
         	return statusHeight;
     }
@@ -474,7 +474,7 @@ public class AppSysMgr {
 	public static Integer getSysDefaultThreadPoolSize() {
 		Integer availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
 		availableProcessors = availableProcessors > 8 ? 8 : availableProcessors;
-		L.i("AppSysMgr-->>getSysDefaultThreadPoolSize",  availableProcessors + "");
+		ALogUtils.i("AppSysMgr-->>getSysDefaultThreadPoolSize",  availableProcessors + "");
 		return availableProcessors;
 	}
 
@@ -500,7 +500,7 @@ public class AppSysMgr {
         }else{
         		roundedSize = (initialSize + 7) / 8 * 8;
         }
-        L.i("AppSysMgr-->>getSysSampleSize",  roundedSize + "");
+        ALogUtils.i("AppSysMgr-->>getSysSampleSize",  roundedSize + "");
         return roundedSize;
     }
 
@@ -558,9 +558,9 @@ public class AppSysMgr {
             }
         } catch (SocketException e) {
         	e.printStackTrace();
-        	L.e("AppSysMgr-->>getSysLocalIpAddress",  e.getMessage().toString());
+        	ALogUtils.e("AppSysMgr-->>getSysLocalIpAddress",  e.getMessage().toString());
         }
-        	L.i("AppSysMgr-->>getSysLocalIpAddress",  hostAddress);
+        	ALogUtils.i("AppSysMgr-->>getSysLocalIpAddress",  hostAddress);
         	return hostAddress;
     }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 
 /**
@@ -32,7 +32,7 @@ public class CardScaleHelper {
 
     public void attachToRecyclerView(final RecyclerView mRecyclerView) {
         // 开启log会影响滑动体验, 调试时才开启
-        L.mLogEnable = false;
+        ALogUtils.mLogEnable = false;
         this.mRecyclerView = mRecyclerView;
         mContext = mRecyclerView.getContext();
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -53,7 +53,7 @@ public class CardScaleHelper {
                 if(dx != 0){//去掉奇怪的内存疯涨问题
                     mCurrentItemOffset += dx;
                     computeCurrentItemPos();
-                    L.v(String.format("dx=%s, dy=%s, mScrolledX=%s", dx, dy, mCurrentItemOffset));
+                    ALogUtils.v(String.format("dx=%s, dy=%s, mScrolledX=%s", dx, dy, mCurrentItemOffset));
                     onScrolledChangedCallback();
                 }
             }
@@ -106,7 +106,7 @@ public class CardScaleHelper {
             int tempPos = mCurrentItemPos;
 
             mCurrentItemPos = mCurrentItemOffset / mOnePageWidth;
-            L.d(String.format("=======onCurrentItemPos Changed======= tempPos=%s, mCurrentItemPos=%s", tempPos, mCurrentItemPos));
+            ALogUtils.d(String.format("=======onCurrentItemPos Changed======= tempPos=%s, mCurrentItemPos=%s", tempPos, mCurrentItemPos));
         }
     }
 
@@ -117,7 +117,7 @@ public class CardScaleHelper {
         int offset = mCurrentItemOffset - mCurrentItemPos * mOnePageWidth;
         float percent = (float) Math.max(Math.abs(offset) * 1.0 / mOnePageWidth, 0.0001);
 
-        L.d(String.format("offset=%s, percent=%s", offset, percent));
+        ALogUtils.d(String.format("offset=%s, percent=%s", offset, percent));
         View leftView = null;
         View currentView;
         View rightView = null;

@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Car;
 import com.aserbao.aserbaosandroid.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.base.interfaces.IBaseRecyclerItemClickListener;
@@ -17,6 +18,8 @@ import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +34,8 @@ import butterknife.ButterKnife;
  * @package:com.aserbao.aserbaosandroid.base
  */
 public abstract class BaseRecyclerViewActivity extends AppCompatActivity implements IBaseRecyclerItemClickListener {
+
+
     @BindView(R.id.base_recycler_tv)
     public TextView mBaseRecyclerTv;
     @BindView(R.id.show_data_content_rv)

@@ -1,11 +1,11 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
-import android.util.Log;
+import android.text.TextUtils;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao;
 
@@ -14,6 +14,7 @@ import org.greenrobot.greendao.query.Query;
 import org.greenrobot.greendao.query.QueryBuilder;
 import org.greenrobot.greendao.query.WhereCondition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
@@ -31,16 +32,22 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
     @Override
     public void insertData(Thing s) {
         if(s == null ) {
-            for (int i = 0; i < 100; i++) {
+            ALogUtils.logErrorTime(ALogUtils.INT_NUM_START_TIME);
+            List<Thing> thingArrayList = new ArrayList<>();
+            for (int i = 0; i < 10000; i++) {
                 String content = "第" + i + "个数据";
                 String name = "第" + i + "个名字";
                 Thing thing = new Thing(content, System.currentTimeMillis() - 60 * 1000 * i);
-                daoSession.insert(thing);
+                thingArrayList.add(thing);
+//                daoSession.insertOrReplace(thing);
             }
+            insertListInTx(thingArrayList);
+            ALogUtils.logErrorTime(ALogUtils.INT_NUM_END_TIME);
         }else{
             daoSession.insertOrReplace(s);
         }
         refreshAdapter(GREEN_DAO);
+
     }
 
     public void add(){
@@ -81,17 +88,21 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
 
     @Override
     public void deleteAll() {
-//        daoSession.deleteAll(Thing.class);
-        daoSession.delete(null);
+        daoSession.deleteAll(Thing.class);
+        /*daoSession.delete(null);
         ThingDao thingDao1 = daoSession.getThingDao();
-        Log.e(TAG, "deleteAll: " + thingDao1.loadAll().size() );
+        Log.e(TAG, "deleteAll: " + thingDao1.loadAll().size() );*/
         refreshAdapter(GREEN_DAO);
     }
 
     @Override
     public void queryData(String s) {
-        List<Thing> things = daoSession.queryRaw(Thing.class, " where id = ?", s);
-        mDataBaseAdapter.addNewThingData(things);
+        if (TextUtils.isEmpty(s)){
+            updateListInTx();
+        }else {
+            List<Thing> things = daoSession.queryRaw(Thing.class, " where id = ?", s);
+            mDataBaseAdapter.addNewThingData(things);
+        }
 //        mDataBaseAdapter.addNewThingData(queryListByOther());
 //        mDataBaseAdapter.addNewThingData(queryListByMoreTime());
 //        mDataBaseAdapter.addNewThingData(queryListBySqL());
@@ -179,6 +190,31 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
         deleteQuery.executeDeleteWithoutDetachingEntities();
         return false;
     }
+
+
+    /**
+     * 批量更新
+     */
+    public void updateListInTx(){
+        List<Thing> things = daoSession.getThingDao().loadAll();
+        for (Thing thing : things) {
+            thing.setMessage(thing.getMessage() + " GoodBye 你了");
+        }
+        daoSession.getThingDao().updateInTx(things);
+        refreshAdapter(GREEN_DAO);
+    }
+
+    public void insertListInTx(List<Thing> thingList){
+        daoSession.getThingDao().insertInTx(thingList);
+        refreshAdapter(GREEN_DAO);
+    }
+
+    public void deleteListInTx(List<Thing> thingList){
+        daoSession.getThingDao().deleteInTx(thingList);
+        refreshAdapter(GREEN_DAO);
+    }
+
+
 
 
 

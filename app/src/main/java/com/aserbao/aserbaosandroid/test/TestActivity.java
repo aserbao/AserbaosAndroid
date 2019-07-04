@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
@@ -27,6 +28,8 @@ import butterknife.OnClick;
 public class TestActivity extends AppCompatActivity {
     @BindView(R.id.test_btn)
     Button mTestBtn;
+    @BindView(R.id.test_btn2)
+    Button mTestBtn2;
     @BindView(R.id.test_fragment)
     FrameLayout mTestContainter;
     private List l = new ArrayList();
@@ -37,13 +40,14 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
         ButterKnife.bind(this);
+        mTestBtn2.setVisibility(View.INVISIBLE);
     }
 
     private static final String TAG = "TestActivity";
 
     @OnClick({R.id.test_btn, R.id.test_btn2})
     public void onViewClicked() {
-
+        Toast.makeText(this, "被点击了", Toast.LENGTH_SHORT).show();
     }
 
     public void addView() {

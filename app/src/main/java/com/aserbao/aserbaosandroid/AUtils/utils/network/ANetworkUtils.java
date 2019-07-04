@@ -15,7 +15,7 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -95,45 +95,45 @@ public class ANetworkUtils {
             if (currentNetWork == ConnectivityManager.TYPE_MOBILE) {
                 if(networkInfo.getExtraInfo() != null){
                     if (networkInfo.getExtraInfo().equals("cmnet")) {
-                        L.i("ANetworkUtils", "当前网络为中国移动CMNET网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国移动CMNET网络");
                         return TYPE_MOBILE_CMNET;
                     }
                     if (networkInfo.getExtraInfo().equals("cmwap")) {
-                        L.i("ANetworkUtils", "当前网络为中国移动CMWAP网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国移动CMWAP网络");
                         return TYPE_MOBILE_CMWAP;
                     }
                     if(networkInfo.getExtraInfo().equals("uniwap")) {
-                        L.i("ANetworkUtils", "当前网络为中国联通UNIWAP网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国联通UNIWAP网络");
                         return TYPE_MOBILE_UNIWAP;
                     }
                     if(networkInfo.getExtraInfo().equals("3gwap")) {
-                        L.i("ANetworkUtils", "当前网络为中国联通3GWAP网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国联通3GWAP网络");
                         return TYPE_MOBILE_3GWAP;
                     }
                     if(networkInfo.getExtraInfo().equals("3gnet")) {
-                        L.i("ANetworkUtils", "当前网络为中国联通3GNET网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国联通3GNET网络");
                         return TYPE_MOBLIE_3GNET;
                     }
                     if(networkInfo.getExtraInfo().equals("uninet")) {
-                        L.i("ANetworkUtils", "当前网络为中国联通UNINET网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国联通UNINET网络");
                         return TYPE_MOBILE_UNINET;
                     }
                     if(networkInfo.getExtraInfo().equals("ctwap")) {
-                        L.i("ANetworkUtils", "当前网络为中国电信CTWAP网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国电信CTWAP网络");
                         return TYPE_MOBILE_UNINET;
                     }
                     if(networkInfo.getExtraInfo().equals("ctnet")) {
-                        L.i("ANetworkUtils", "当前网络为中国电信CTNET网络");
+                        ALogUtils.i("ANetworkUtils", "当前网络为中国电信CTNET网络");
                         return TYPE_MOBILE_UNINET;
                     }
                 }
                 //WIFI网络类型
             }else if (currentNetWork == ConnectivityManager.TYPE_WIFI) {
-                L.i("ANetworkUtils", "当前网络为WIFI网络");
+                ALogUtils.i("ANetworkUtils", "当前网络为WIFI网络");
                 return TYPE_WIFI;
             }
         }
-        L.i("ANetworkUtils-->>NetworkUtils", "当前网络为不是我们考虑的网络");
+        ALogUtils.i("ANetworkUtils-->>NetworkUtils", "当前网络为不是我们考虑的网络");
         return TYPE_NO;
     }
 
@@ -151,21 +151,21 @@ public class ANetworkUtils {
             if (mNetworkInfo != null) {
                 //判断是TYPE_MOBILE网络
                 if(ConnectivityManager.TYPE_MOBILE == mNetworkInfo.getType()){
-                    L.i("ANetworkUtils", "网络连接类型为：TYPE_MOBILE");
+                    ALogUtils.i("ANetworkUtils", "网络连接类型为：TYPE_MOBILE");
                     //判断移动网络连接状态
                     State STATE_MOBILE = mConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState();
                     if (STATE_MOBILE == State.CONNECTED) {
-                        L.i("AppNetworkMgrd", "网络连接类型为：TYPE_MOBILE, 网络连接状态CONNECTED成功！");
+                        ALogUtils.i("AppNetworkMgrd", "网络连接类型为：TYPE_MOBILE, 网络连接状态CONNECTED成功！");
                         return mNetworkInfo.isAvailable();
                     }
                 }
                 //判断是TYPE_WIFI网络
                 if(ConnectivityManager.TYPE_WIFI == mNetworkInfo.getType()){
-                    L.i("ANetworkUtils", "网络连接类型为：TYPE_WIFI");
+                    ALogUtils.i("ANetworkUtils", "网络连接类型为：TYPE_WIFI");
                     //判断WIFI网络状态
                     State STATE_WIFI = mConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
                     if (STATE_WIFI == State.CONNECTED) {
-                        L.i("ANetworkUtils", "网络连接类型为：TYPE_WIFI, 网络连接状态CONNECTED成功！");
+                        ALogUtils.i("ANetworkUtils", "网络连接类型为：TYPE_WIFI, 网络连接状态CONNECTED成功！");
                         return mNetworkInfo.isAvailable();
                     }
                 }

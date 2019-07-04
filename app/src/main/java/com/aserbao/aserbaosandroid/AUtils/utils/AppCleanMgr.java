@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Environment;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.L;
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -22,7 +22,7 @@ public class AppCleanMgr {
 	 */
     public static void cleanInternalCache(Context context) {
     	AppFileMgr.deleteFilesByDirectory(context.getCacheDir());
-    	L.i("AppCleanMgr->>cleanInternalCache", "清除本应用内部缓存(/data/data/" + context.getPackageName() + "/cache)");
+    	ALogUtils.i("AppCleanMgr->>cleanInternalCache", "清除本应用内部缓存(/data/data/" + context.getPackageName() + "/cache)");
     }
     
     
@@ -35,7 +35,7 @@ public class AppCleanMgr {
     public static void cleanExternalCache(Context context) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
         	AppFileMgr.deleteFilesByDirectory(context.getExternalCacheDir());
-        	L.i("AppCleanMgr->>cleanExternalCache", "清除本应用外部缓存数据(/mnt/sdcard/android/data/" + context.getPackageName() + "/cache)");
+        	ALogUtils.i("AppCleanMgr->>cleanExternalCache", "清除本应用外部缓存数据(/mnt/sdcard/android/data/" + context.getPackageName() + "/cache)");
         }
     }
     
@@ -47,7 +47,7 @@ public class AppCleanMgr {
      */
     public static void cleanDatabases(Context context) {
     	AppFileMgr.deleteFilesByDirectory(new File("/data/data/" + context.getPackageName() + "/databases"));
-    	L.i("AppCleanMgr->>cleanDatabases", "清除本应用所有数据库");
+    	ALogUtils.i("AppCleanMgr->>cleanDatabases", "清除本应用所有数据库");
     }
     
     
@@ -58,7 +58,7 @@ public class AppCleanMgr {
      */
     public static void cleanSharedPreference(Context context) {
     	AppFileMgr.deleteFilesByDirectory(new File("/data/data/" + context.getPackageName() + "/shared_prefs"));
-    	L.i("AppCleanMgr->>cleanSharedPreference", "清除本应用cleanSharedPreference数据信息");
+    	ALogUtils.i("AppCleanMgr->>cleanSharedPreference", "清除本应用cleanSharedPreference数据信息");
     }
     
     
@@ -70,7 +70,7 @@ public class AppCleanMgr {
      */
     public static void cleanDatabaseByName(Context context, String dbName) {
     	context.deleteDatabase(dbName);
-    	L.i("AppCleanMgr->>cleanDatabaseByName", "根据名字清除本应用数据库");
+    	ALogUtils.i("AppCleanMgr->>cleanDatabaseByName", "根据名字清除本应用数据库");
     }
     
     
@@ -81,7 +81,7 @@ public class AppCleanMgr {
      */
     public static void cleanFiles(Context context) {
     	AppFileMgr.deleteFilesByDirectory(context.getFilesDir());
-    	L.i("AppCleanMgr->>cleanFiles", "清除data/data/" + context.getPackageName() + "/files下的内容信息");
+    	ALogUtils.i("AppCleanMgr->>cleanFiles", "清除data/data/" + context.getPackageName() + "/files下的内容信息");
     }
     
     
@@ -99,7 +99,7 @@ public class AppCleanMgr {
         cleanSharedPreference(context);
         //清除本应用files文件
         cleanFiles(context);
-        L.i("AppCleanMgr->>cleanApplicationData", "清除本应用所有的数据");
+        ALogUtils.i("AppCleanMgr->>cleanApplicationData", "清除本应用所有的数据");
         return 1;
     }
     
@@ -127,7 +127,7 @@ public class AppCleanMgr {
     		//转换缓存大小Byte为MB
     		fileSizeStr = df.format((double) clearSize / 1048576) + "MB";
     	}
-    	L.i("AppCleanMgr->>getAppClearSize", "获取App应用缓存的大小");
+    	ALogUtils.i("AppCleanMgr->>getAppClearSize", "获取App应用缓存的大小");
     	return fileSizeStr;
     }
     

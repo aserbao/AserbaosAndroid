@@ -45,6 +45,7 @@
         <activity android:name="com.aserbao.aserbaosandroid.opengl.OpenGlActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.ui.recyclerview.RecyclerViewActivity" />
         <activity android:name="com.aserbao.aserbaosandroid.HomeActivity" >
+            <meta-data android:name="android.notch_support" android:value="true"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

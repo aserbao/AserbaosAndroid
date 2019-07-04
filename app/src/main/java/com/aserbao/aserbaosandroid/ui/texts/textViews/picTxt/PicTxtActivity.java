@@ -225,7 +225,7 @@ public class PicTxtActivity extends AppCompatActivity {
         SuggestionSpan ss3 = new SuggestionSpan(this, new String[]{"希望能结识", "更多志同道合的伙伴"},SuggestionSpan.FLAG_AUTO_CORRECTION);
         ss3.setFlags(SuggestionSpan.FLAG_MISSPELLED);//无色
         SpannableString str = new SpannableString("SuggestionSpan 的使用 双击点击替换");
-        str.setSpan(ss1, 0, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE | Spanned.SPAN_COMPOSING);//只有最后一个生效
+        str.setSpan(ss1, 0, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE | Spanned.SPAN_COMPOSING);
         str.setSpan(ss2, 16, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE | Spanned.SPAN_COMPOSING);
         str.setSpan(ss3, 20, 25, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE | Spanned.SPAN_COMPOSING);
         EditorInfo editorInfo = new EditorInfo();

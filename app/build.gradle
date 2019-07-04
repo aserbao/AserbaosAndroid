@@ -4,7 +4,7 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.aserbao.aserbaosandroid"
+        applicationId "com.example.aserbao.aserbaosandroid2"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1

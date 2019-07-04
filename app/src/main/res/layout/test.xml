@@ -13,13 +13,21 @@
     </FrameLayout>
     <Button
         android:id="@+id/test_btn"
+        android:text="Test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/test_btn2"
-        android:text="添加"
-        android:layout_gravity="bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:background="@color/black30"
+        android:layout_gravity="right"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+        <Button
+            android:id="@+id/test_btn2"
+            android:text="添加"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+    </FrameLayout>
+
 
 </FrameLayout>
