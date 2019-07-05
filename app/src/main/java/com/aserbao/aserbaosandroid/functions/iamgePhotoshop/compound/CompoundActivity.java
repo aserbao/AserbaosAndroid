@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.EasyBlur;
+import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.easyblur.EasyBlur;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

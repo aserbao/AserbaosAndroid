@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur;
+package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.easyblur;
 
 import android.content.Context;
 import android.graphics.Bitmap;
