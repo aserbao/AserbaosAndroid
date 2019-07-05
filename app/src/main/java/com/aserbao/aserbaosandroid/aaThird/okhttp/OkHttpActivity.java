@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.security.auth.login.LoginException;
+
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -23,13 +25,22 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * 功能:
+ *
+ * @author aserbao
+ * @date : On 2019/7/5 11:29 AM
+ * @project:AserbaosAndroid
+ * @package:com.aserbao.aserbaosandroid.aaThird.okhttp
+ */
 public class OkhttpActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "OkhttpActivity";
     private OkHttpClient mHttpClient;
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get请求"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp简单的异步Get请求"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp简单的同步Get请求"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post请求"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("添加请求头的Get请求"));
         init();
@@ -62,34 +73,35 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     public void itemClickBack(View view, int position) {
         switch (position){
             case 0:
-                simpleOkhttpGet();
+                asynSimpleOkhttpGet();
                 break;
             case 1:
-                simpleOkhttpPost();
+                syncSimpleOkhttpGet();
                 break;
             case 2:
+                simpleOkhttpPost();
+                break;
+            case 3:
                 addHeadOkhttpGet();
                 break;
         }
     }
-
-//   public static final String sUrl = "https://cn.bing.com/";
-   public static final String sUrl = "http://gank.io/api/today ";
-
+       public static final String sUrl = "https://cn.bing.com/";
+//    public static final String sUrl = "http://gank.io/api/today ";
     /**
-     * 简单的Get请求
+     * 简单的异步Get请求
      * 步骤：
      * 1. 构造OkHttpClient客户端
      * 2. 构造Request
      * 3. 执行newCall，回调请求结果
      */
-    public void simpleOkhttpGet(){
+    public void asynSimpleOkhttpGet(){
         OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
         Request request = new Request.Builder().url(sUrl).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e(TAG, "onFailure: " + e.toString() );
             }
 
             @Override
@@ -98,6 +110,32 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             }
         });
     }
+
+    /**
+     * 简单的GET同步请求
+     */
+    public void syncSimpleOkhttpGet(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Request request = new Request.Builder().url(sUrl).build();
+                    Response response = okHttpClient.newCall(request).execute();
+                    if (response.isSuccessful()){
+                        Log.e(TAG, "successful: " + response.body().string() );
+                    }else{
+                        Log.e(TAG, "onFailure: " + response.body().string() );
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+
     /**
      * 简单的post请求
      * 步骤：
@@ -106,7 +144,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
      * 3. 构造Request
      * 4. 执行newCall，回调请求结果
      */
-    public void simpleOkhttpPost(){
+    public void asynSimpleOkhttpPost(){
         //1. 添加Post请求参数，构造 FormBody
         FormBody body = new FormBody.Builder()
             .add("url", "https://www.jianshu.com/p/53083f782ea2")
@@ -134,6 +172,29 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         });
     }
 
+    public void syncSimpleOkhttpPost(){
+        //1. 添加Post请求参数，构造 FormBody
+        FormBody body = new FormBody.Builder()
+            .add("url", "https://www.jianshu.com/p/53083f782ea2")
+            .add("desc", "一篇好文之Android数据库GreenDao的使用完全解析")
+            .add("who", "aserbao")
+            .add("type", "Android")
+            .add("debug", "false")
+            .build();
+        String postUrl = "https://gank.io/api/add2gank";
+        //2. 构造OkHttpClient客户端
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        //3. 构造Request
+        Request request = new Request.Builder().post(body).url(postUrl).build();
+        //4. 执行newCall，回调请求结果
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /*
      * 添加请求头的Get请求
      */
@@ -141,7 +202,6 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         Request request = new Request.Builder()
             .url(sUrl)
             .header("User-Agent", "OkHttp Headers.java")         // 设置头部代理
-            .addHeader("Client-Language", Locale.getDefault().getLanguage())
             .build();
 
         String header = request.header("User-Agent");
@@ -150,6 +210,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                Log.e(TAG, "onFailure: " );
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {

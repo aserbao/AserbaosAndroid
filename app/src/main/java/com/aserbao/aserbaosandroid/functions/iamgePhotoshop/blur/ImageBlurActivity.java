@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +16,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.easyblur.EasyBlur;
 
 import butterknife.BindView;
@@ -50,11 +52,11 @@ public class ImageBlurActivity extends AppCompatActivity {
     }
 
     private void initView() {
-//        mBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
-        mBitmap = Bitmap.createBitmap( 1080, 1920, Bitmap.Config.RGB_565);
+        mBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
+        /*mBitmap = Bitmap.createBitmap( 1080, 1920, Bitmap.Config.RGB_565);
         Canvas canvas=new Canvas (mBitmap);
         int HEX= 0x7FFFFFFF;
-        canvas.drawColor (Color.WHITE);
+        canvas.drawColor (Color.WHITE);*/
 
         mBlurIamgeView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -95,6 +97,9 @@ public class ImageBlurActivity extends AppCompatActivity {
                 mBlurRadiusTv.setText("radius = " + progress);
                 mRadius = progress;
                 mBlurIamgeView.setImageBitmap(getBlurBitmap());
+
+                float v = (float) progress / (float) 25;
+                mBlurIamgeView.setAlpha(v);
             }
 
             @Override
@@ -113,6 +118,7 @@ public class ImageBlurActivity extends AppCompatActivity {
                 mBlurScaleTv.setText("scale = " + progress);
                 mScale = progress;
                 mBlurIamgeView.setImageBitmap(getBlurBitmap());
+                mBlurIamgeView.setAlpha(1.0f);
             }
 
             @Override

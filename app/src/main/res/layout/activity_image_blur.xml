@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.ImageBlurActivity">
+    <View
+        android:background="@drawable/mm_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <ImageView
+        android:id="@+id/blur_iamge_view"
         android:src="@drawable/starry_sky_1"
         android:scaleType="fitXY"
-        android:id="@+id/blur_iamge_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <Button
@@ -16,6 +20,11 @@
         android:id="@+id/start_blur_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.mmin18.RealtimeBlurView
+        android:id="@+id/realtime_blur_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
     <LinearLayout
         android:layout_gravity="bottom"
         android:orientation="vertical"
@@ -50,5 +59,4 @@
             android:layout_width="match_parent"
             android:layout_height="60dp" />
     </LinearLayout>
-
 </FrameLayout>
