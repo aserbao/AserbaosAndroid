@@ -46,7 +46,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.okhttp.OkHttpActivity"></activity>
+        <activity android:name=".aaThird.okhttp.OkhttpActivity"></activity>
         <activity android:name=".functions.aboutBitmap.pineColor.PineColorBitmapActivity" />
         <activity android:name=".functions.aboutBitmap.createLong.CreateLongBitmapActivity" />
         <activity android:name=".functions.aboutBitmap.AboutBitmapActivity" />
