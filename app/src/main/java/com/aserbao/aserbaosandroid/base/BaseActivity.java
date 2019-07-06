@@ -35,9 +35,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initGetData();
         initView();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new  String[]{Manifest.permission.CHANGE_CONFIGURATION,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},0);
-        }
+        }*/
     }
 
 

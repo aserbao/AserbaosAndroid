@@ -7,6 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.opengl.OpenGlActivity">
+
+    <ScrollView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/base_recycler_tv"
+            android:background="@color/white50"
+            android:textSize="22sp"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/opengl_recycler_view"
         android:layout_width="match_parent"
@@ -17,15 +33,8 @@
         android:layout_below="@+id/opengl_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <TextView
-        android:layout_centerInParent="true"
-        android:id="@+id/base_recycler_tv"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
     <FrameLayout
         android:layout_marginTop="50dp"
         android:id="@+id/base_recycler_empty_container"

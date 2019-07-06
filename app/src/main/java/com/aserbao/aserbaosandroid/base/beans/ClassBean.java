@@ -1,6 +1,8 @@
 package com.aserbao.aserbaosandroid.base.beans;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * description:
@@ -9,9 +11,11 @@ import android.app.Activity;
 
 
 public class ClassBean {
+    @NonNull
     private String name;
     private Class<?> clazz;
     int flag;
+
 
     public ClassBean(String name, Class<?> clazz, int flag) {
         this.name = name;

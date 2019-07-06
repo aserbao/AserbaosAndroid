@@ -1,57 +1,60 @@
 package com.aserbao.aserbaosandroid.AUtils.utils_realize;
 
 import android.bluetooth.BluetoothAdapter;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class AUtilsRealizeActivity extends AppCompatActivity {
-
-    @BindView(R.id.utils_result_tv)
-    TextView mUtilsResultTv;
+public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_autils_realize);
-        ButterKnife.bind(this);
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取当前手机信息"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("网络状态"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("多媒体数据获取"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("屏幕常用参数获取"));
     }
 
 
-    @OnClick({R.id.btn_get_phone_info, R.id.btn_get_phone_info2,R.id.btn_get_phone_media_info})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_get_phone_info:
+    @Override
+    public void itemClickBack(View view, int position) {
+        switch (position){
+            case 0:
                 StringBuffer stringBuffer = new StringBuffer();
                 String phoneMeesager = APhoneUtils.getInstance().getPhoneMeesager(this);
                 String appSysMgrInfo = AppSysMgr.getAppSysMgrInfo(this);
                 stringBuffer.append(phoneMeesager).append(appSysMgrInfo);
 
                 BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
-                String deviceName = myDevice.getName();
+                if (myDevice != null) {
+                    String deviceName = myDevice.getName();
+                    mBaseRecyclerTv.setText(deviceName + stringBuffer.toString());
+                }else{
+                    mBaseRecyclerTv.setText(stringBuffer.toString());
+                }
 
-                mUtilsResultTv.setText(deviceName + stringBuffer.toString());
                 break;
-            case R.id.btn_get_phone_info2:
+            case 1:
                 int networkState = ANetworkUtils.getNetworkState(this);
                 String valueOf = String.valueOf(networkState);
-                mUtilsResultTv.setText(valueOf);
+                mBaseRecyclerTv.setText(valueOf);
                 break;
-            case R.id.btn_get_phone_media_info:
+            case 2:
                 String phoneMediaInfo = APhoneMediaUtils.getPhoneMediaInfo(this);
-                mUtilsResultTv.setText(phoneMediaInfo);
+                mBaseRecyclerTv.setText(phoneMediaInfo);
                 break;
+            case 3:
+                mBaseRecyclerTv.setText(AppScreenMgr.getScreenInfo(this));
+                break;
+
         }
     }
 }

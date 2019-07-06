@@ -95,21 +95,26 @@ public class APhoneUtils {
         TelephonyManager tm = (TelephonyManager) context
             .getSystemService(Context.TELEPHONY_SERVICE);
         StringBuffer sb = new StringBuffer();
-        sb.append("手机系统版本号:").append(getSDKVersionNumber()).append("\n")
-            .append("手机型号:").append(getPhoneModel()).append("\n")
-            .append("手机宽度：").append(getPhoneWidth(context)).append("\n")
-            .append("手机高度：").append(getPhoneHeight(context)).append("\n")
-            .append("手机IMEI串号：").append(getPhoneImei(context)).append("\n")
-            .append("手机sim卡号：").append(getPhoneSim(context)).append("\n")
-            .append("手机号：").append(getPhoneNum(context)).append("\n")
-            .append("sd卡是否挂载：").append(isSDCardMount()).append("\n")
-            .append("获取sd卡剩余空间的大小：").append(getSDFreeSize()).append("MB").append("\n")
-            .append("sd卡空间的总大小：").append(getSDAllSize()).append("MB").append("\n")
-            .append("是否是平板：").append(isTablet(context)).append("\n")
-            .append("获取移动终端类型：").append(getPhoneType(context)).append("\n")
-            .append("sim卡是否准备好：").append(isSimCardReady(context)).append("\n")
-            .append("Gps是否打开：").append(isGpsEnabled(context)).append("\n")
-            .append("手机厂商：").append(getDeviceBrand()).append("\n");
+        try {
+            sb.append("手机系统版本号:").append(getSDKVersionNumber()).append("\n")
+                .append("手机型号:").append(getPhoneModel()).append("\n")
+                .append("手机宽度：").append(getPhoneWidth(context)).append("\n")
+                .append("手机高度：").append(getPhoneHeight(context)).append("\n")
+                .append("手机IMEI串号：").append(getPhoneImei(context)).append("\n")
+                .append("手机sim卡号：").append(getPhoneSim(context)).append("\n")
+                .append("手机号：").append(getPhoneNum(context)).append("\n")
+                .append("sd卡是否挂载：").append(isSDCardMount()).append("\n")
+                .append("获取sd卡剩余空间的大小：").append(getSDFreeSize()).append("MB").append("\n")
+                .append("sd卡空间的总大小：").append(getSDAllSize()).append("MB").append("\n")
+                .append("是否是平板：").append(isTablet(context)).append("\n")
+                .append("获取移动终端类型：").append(getPhoneType(context)).append("\n")
+                .append("sim卡是否准备好：").append(isSimCardReady(context)).append("\n")
+                .append("Gps是否打开：").append(isGpsEnabled(context)).append("\n")
+                .append("手机厂商：").append(getDeviceBrand()).append("\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return sb.append("获取不到READ_PHONE_STATE权限，你是开的模拟器吧？").toString();
+        }
 
         return sb.toString();
     }
@@ -177,6 +182,7 @@ public class APhoneUtils {
      *
      * @param context
      */
+    @SuppressLint("MissingPermission")
     public static String getPhoneImei(Context context) {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);

@@ -11,7 +11,6 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.DaggerCarComponent;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubEngineComponent;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
@@ -70,7 +69,7 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
     Wheel mWheel;*/
 
     public void useDagger2(){
-        DaggerCarComponent.builder().build().inject(this);
+//        DaggerCarComponent.builder().build().inject(this);
     }
 
     @Inject
