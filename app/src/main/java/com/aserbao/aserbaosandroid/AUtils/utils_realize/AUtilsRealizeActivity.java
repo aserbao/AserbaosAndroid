@@ -21,6 +21,7 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("网络状态"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("多媒体数据获取"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("屏幕常用参数获取"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("ContextWrapper的常用方法调用"));
     }
 
 
@@ -54,7 +55,15 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
             case 3:
                 mBaseRecyclerTv.setText(AppScreenMgr.getScreenInfo(this));
                 break;
-
+            case 4:
+                mBaseRecyclerTv.setTextSize(16);
+                StringBuffer sb = new StringBuffer();
+                sb.append("getPackageName() = ").append(getPackageName()).append("\n")
+                  .append("getPackageResourcePath() =").append(getPackageResourcePath()).append("\n")
+                  .append("getPackageCodePath() =").append(getPackageCodePath()).append("\n")
+                  .append("getFilesDir() =").append(getFilesDir().toString()).append("\n");
+                mBaseRecyclerTv.setText(sb.toString());
+                break;
         }
     }
 }
