@@ -36,6 +36,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.Route;
 import okio.BufferedSink;
+import okio.GzipSink;
+import okio.Okio;
 
 /**
  * 功能:
@@ -51,22 +53,24 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求 0",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求 1",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求 2",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求 3",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求 4",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 5",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 6",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 7",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 8"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 9"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 10"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 11"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 12"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 13"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 14"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置简单的拦截 15"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求 ",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求 ",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求 ",2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求 ",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求 ",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 ",5));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 ",6));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 ",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置应用拦截 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置网络拦截 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp压缩请求主体 "));
         init();
     }
 
@@ -76,7 +80,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
                 Request request = original.newBuilder()
-                    .header("User-Agent", "aserbao/(study okhttp)")         // 设置头部代理
+                    .header("User-Agent", "aserbao/(study okhttp)")
                     .header("Client-Language", Locale.getDefault().getLanguage())
                     .method(original.method(), original.body())
                     .build();
@@ -94,15 +98,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position) {
-        int tempFlag = 0;
-        int tag = (int) view.getTag();
-        Log.e(TAG, "itemClickBack: " + tag );
-        if (tag >= 0){
-            tempFlag = tag;
-        }else{
-            tempFlag = position;
-        }
-        switch (tempFlag){
+        switch (position){
             case 0:
                 syncSimpleOkhttpGet();
                 break;
@@ -150,6 +146,12 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
                 break;
             case 15:
                 addApplicationInterceptor();
+                break;
+            case 16:
+                addNetworkInterceptor();
+                break;
+            case 17:
+                setGzipIntercrptor();
                 break;
         }
     }
@@ -696,6 +698,110 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             Log.e(TAG, String.format("Received response for %s in %.1fms%n%s",
                 response.request().url(), (t2 - t1) / 1e6d, response.headers()));
             return response;
+        }
+    }
+
+    /**
+     * okhttp设置网络拦截器
+     */
+    public void addNetworkInterceptor(){
+        Request request = new Request.Builder()
+            .url("http://www.publicobject.com/helloworld.txt")
+            .header("User-Agent", "OkHttp Example")
+            .build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new LoggingInterceptor())
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+
+    /**
+     * okhttp压缩请求主体
+     */
+    public void setGzipIntercrptor(){
+        OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(new GzipRequestInterceptor())
+            .build();
+        RequestBody requestBody = new RequestBody() {
+            @Override
+            public MediaType contentType() {
+                return MediaType.parse("text/x-markdown; charset=utf-8");
+            }
+
+            @Override
+            public void writeTo(BufferedSink sink) throws IOException {
+                sink.writeUtf8("Numbers\n");
+                sink.writeUtf8("-------\n");
+                for (int i = 1; i <= 100; i++) {
+                    sink.writeUtf8(String.format(" 上传第%d个数\n", i));
+                }
+            }
+        };
+        Request request = new Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(requestBody)
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+
+    /** This interceptor compresses the HTTP request body. Many webservers can't handle this! */
+    final class GzipRequestInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Interceptor.Chain chain) throws IOException {
+            Request originalRequest = chain.request();
+            if (originalRequest.body() == null || originalRequest.header("Content-Encoding") != null) {
+                return chain.proceed(originalRequest);
+            }
+
+            RequestBody requestBody = originalRequest.body();
+            RequestBody gzipBody = gzip(requestBody);
+            Log.e(TAG, "intercept: 原RequestBody = " + requestBody.toString() + " \n 压缩后的RequestBody = " + gzipBody.toString());
+            Request compressedRequest = originalRequest.newBuilder()
+                .header("Content-Encoding", "gzip")
+                .method(originalRequest.method(), gzipBody)
+                .build();
+
+            return chain.proceed(compressedRequest);
+        }
+
+        private RequestBody gzip(final RequestBody body) {
+            return new RequestBody() {
+                @Override
+                public MediaType contentType() {
+                    return body.contentType();
+                }
+
+                @Override
+                public long contentLength() {
+                    return -1; // We don't know the compressed length in advance!
+                }
+
+                @Override
+                public void writeTo(BufferedSink sink) throws IOException {
+                    BufferedSink gzipSink = Okio.buffer(new GzipSink(sink));
+                    body.writeTo(gzipSink);
+                    gzipSink.close();
+                }
+            };
         }
     }
 }

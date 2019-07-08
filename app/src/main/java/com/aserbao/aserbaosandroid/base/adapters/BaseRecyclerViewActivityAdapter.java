@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,15 +51,31 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<BaseRe
     @Override
     public void onBindViewHolder(OpenGlViewHolder holder, int position) {
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
-        holder.mBaseRecyclerViewItemTv.setText(classBean.getName());
         int tag = classBean.getTag();
+        String name = classBean.getName();
         if (tag > 0) {
+            name = name + String.valueOf(tag);
             holder.mBaseRecyclerViewItemTv.setTag(tag);
+        }else{
+            name = name + String.valueOf(position);
         }
+        holder.mBaseRecyclerViewItemTv.setText(name);
         holder.mBaseRecyclerViewItemTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIBaseRecyclerItemClickListener.itemClickBack(v,position);
+                int tempFlag = 0;
+                Object vTag = v.getTag();
+                if (vTag instanceof Integer){
+                    int tag = (int) vTag;
+                    if (tag >= 0){
+                        tempFlag = tag;
+                    }else{
+                        tempFlag = position;
+                    }
+                }else{
+                    tempFlag = position;
+                }
+                mIBaseRecyclerItemClickListener.itemClickBack(v,tempFlag);
             }
         });
     }
