@@ -1,24 +1,30 @@
 package com.aserbao.aserbaosandroid.aaThird.okhttp;
 
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.AppFileMgr;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.security.auth.login.LoginException;
-
+import okhttp3.Authenticator;
 import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Credentials;
 import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -28,6 +34,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okhttp3.Route;
 import okio.BufferedSink;
 
 /**
@@ -44,15 +51,22 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传"));
-
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求 0",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求 1",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求 2",2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求 3",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求 4",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 5",5));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 6",6));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 7",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 8"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 9"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 10"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 11"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 12"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 13"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 14"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置简单的拦截 15"));
         init();
     }
 
@@ -69,19 +83,26 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
                 return chain.proceed(request);
             }
         };
-
         mHttpClient = new OkHttpClient.Builder()
             .addInterceptor(interceptor)                  //设置拦截器
             .connectTimeout(10, TimeUnit.SECONDS) //设置建立连接最大可用时间，适用于网络状况正常的情况下，两端连接所用的最长时间。默认值为10s
             .writeTimeout(20, TimeUnit.SECONDS)   //设置单个IO写入超时时长，默认值10s
             .readTimeout(20, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
-            .cache(new Cache(new File(Environment.getExternalStorageDirectory(), "cache"), 10 * 1024 * 1024))//设置缓存区地址及大小
+            .cache(new Cache(getCacheDir(), 10 * 1024 * 1024))//设置缓存区地址及大小
             .build();
     }
 
     @Override
     public void itemClickBack(View view, int position) {
-        switch (position){
+        int tempFlag = 0;
+        int tag = (int) view.getTag();
+        Log.e(TAG, "itemClickBack: " + tag );
+        if (tag >= 0){
+            tempFlag = tag;
+        }else{
+            tempFlag = position;
+        }
+        switch (tempFlag){
             case 0:
                 syncSimpleOkhttpGet();
                 break;
@@ -106,9 +127,34 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             case 7:
                 postFile();
                 break;
+            case 8:
+                parseJsonByMoshi();
+                break;
+            case 9:
+                setCache();
+                break;
+            case 10:
+                useOfficalCache();
+                break;
+            case 11:
+                cancelCall();
+                break;
+            case 12:
+                configTimeouts();
+                break;
+            case 13:
+                changeTimeoutsConfig();
+                break;
+            case 14:
+                handlingAuthentication();
+                break;
+            case 15:
+                addApplicationInterceptor();
+                break;
         }
     }
-       public static final String sUrl = "https://cn.bing.com/";
+
+    public static final String sUrl = "https://cn.bing.com/";
 //    public static final String sUrl = "http://gank.io/api/today ";
     /**
      * 简单的异步Get请求
@@ -228,7 +274,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     }
 
     /*
-     * 添加请求头的Get请求
+     * 添加请求头
      */
     public void addHeadOkhttpGet(){
         Request request = new Request.Builder()
@@ -270,7 +316,6 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             }
         });
     }
-
 
     /**
      * 上传String到服务器
@@ -349,15 +394,13 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
      */
     public void postFile(){
         OkHttpClient client = new OkHttpClient();
-        String packageResourcePath = getPackageResourcePath();
-        Log.e(TAG, "postFile: " + getPackageResourcePath() );
-        File file = new File("test.txt");
+        File file = new File(AppFileMgr.getSdCardAbsolutePath() +"aserbao.txt");
         Request request = new Request.Builder()
             .url("https://api.github.com/markdown/raw")
             .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), file))
             .build();
 
-        /*client.newCall(request).enqueue(new Callback() {
+        client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "onFailure: " + e.toString());
@@ -371,10 +414,290 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
                     Log.e(TAG, "onFailure: " + response.body().string() );
                 }
             }
-        });*/
+        });
     }
 
 
+    /**
+     * 通过moshi解析response返回的json成对象
+     */
+    private void parseJsonByMoshi() {
+        final OkHttpClient client = new OkHttpClient();
+        final Moshi moshi = new Moshi.Builder().build();
+        final JsonAdapter<Gist> gistJsonAdapter = moshi.adapter(Gist.class);
+
+        Request request = new Request.Builder()
+            .url("https://api.github.com/gists/c2a7c39532239ff261be")
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: "  );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                Gist gist = gistJsonAdapter.fromJson(response.body().source());
+                for (Map.Entry<String, GistFile> entry : gist.files.entrySet()) {
+                    Log.e(TAG, "onResponse: key = " + entry.getKey()  + " value =  " + entry.getValue().content);
+                }
+            }
+        });
+    }
+
+    static class Gist {
+        Map<String, GistFile> files;
+    }
+
+    static class GistFile {
+        String content;
+    }
+
+
+    /**
+     * 服务器不支持缓存时的配置
+     */
+    private void setCache(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new CacheInterceptor())
+            .build();
+        Request request = new Request.Builder().url(sUrl).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+
+    public class CacheInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            Response response = chain.proceed(request);
+            Response response1 = response.newBuilder()
+                .removeHeader("Pragma")
+                .removeHeader("Cache-Control")
+                //配置缓存有效时长为3天
+                .header("Cache-Control", "max-age=" + 3600 * 24 * 3)
+                .build();
+            return response1;
+        }
+    }
+
+    /**
+     * okhttp官方推荐的缓存方式
+     */
+    public void useOfficalCache(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new CacheInterceptor())
+            .build();
+        CacheControl cacheControl = new CacheControl.Builder()
+//            .noCache()                           //不接受响应缓存
+//            .noStore()                          //不存储任何响应缓存
+//            .onlyIfCached()                     //只有缓存中存在这个响应时才返回，否则会返回504
+            .maxAge(3, TimeUnit.DAYS)  //配置缓存有效时长为3天，注意，maxAge最小精度单位为SECONDS，再小就会丢失。
+//            .maxStale(2,TimeUnit.DAYS)        //设置最大陈旧度值
+//            .minFresh(2,TimeUnit.DAYS)//
+            .build();
+        Request request = new Request.Builder()
+            .url(sUrl)
+            .cacheControl(cacheControl)
+            .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+
+
+    /**
+     * okhttp取消回调
+     */
+    public void cancelCall(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .build();
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/3")//这个接口会延时3s返回
+            .build();
+
+        final long startNanos = System.nanoTime();
+        final Call call = okHttpClient.newCall(request);
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.schedule(new Runnable() {
+            @Override public void run() {
+                String startTime = String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
+                Log.e(TAG, "run: startTime = " +startTime );
+                call.cancel();
+                String endTime = String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
+                Log.e(TAG, "run: endTime = " + endTime );
+            }
+        }, 1, TimeUnit.SECONDS);    //1s之后取消请求
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "run: onFailure = time =  " + String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f) );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string());
+                Log.e(TAG, "run: onResponse = time =  " + String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f) );
+            }
+        });
+    }
+
+
+    /**
+     * 配置超时时间
+     */
+    public void configTimeouts(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS) //设置建立连接最大可用时间，适用于网络状况正常的情况下，两端连接所用的最长时间。默认值为10s
+            .writeTimeout(10, TimeUnit.SECONDS)   //设置单个IO写入超时时长，默认值10s
+            .readTimeout(3, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build();
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/5")//这个接口会延时5s返回
+            .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }else{
+                    Log.e(TAG, "onFailure: " + response.body().string() );
+                }
+            }
+        });
+    }
+
+    /**
+     * 修改超时配置
+     */
+    public void changeTimeoutsConfig(){
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/2")//这个接口会延时2s返回
+            .build();
+
+        new OkHttpClient.Builder()
+            .readTimeout(1, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+        new OkHttpClient.Builder()
+            .readTimeout(3, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build().newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "onFailure: " + e.toString() );
+                }
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }
+            });
+    }
+
+
+    /**
+     * 认证处理
+     */
+    public void handlingAuthentication(){
+        Request request = new Request.Builder()
+            .url("http://publicobject.com/secrets/hellosecret.txt")
+            .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .authenticator(new Authenticator() {
+                @Override public Request authenticate(Route route, Response response) throws IOException {
+                    if (response.request().header("Authorization") != null) {
+                        return null; // 返回null，放弃重新认证。当然这里条件可以自己添加，比如允许验证三次，就添加一个变量，当大于3的时候返回null
+                    }
+                    Log.e(TAG, "Authenticating for response: " + response);
+                    Log.e(TAG, "Challenges: " + response.challenges());
+                    String credential = Credentials.basic("jesse", "password1");
+                    return response.request().newBuilder()
+                        .header("Authorization", credential)
+                        .build();
+                }
+            })
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+
+
+    /**
+     * 设置简单拦截
+     */
+    public void addApplicationInterceptor(){
+        Request request = new Request.Builder()
+            .url("http://www.publicobject.com/helloworld.txt")
+            .header("User-Agent", "OkHttp Example")
+            .build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addInterceptor(new LoggingInterceptor())
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+    class LoggingInterceptor implements Interceptor {
+        @Override public Response intercept(Interceptor.Chain chain) throws IOException {
+            Request request = chain.request();
+            long t1 = System.nanoTime();
+            Log.e(TAG, String.format("Sending request %s on %s%n%s",
+                request.url(), chain.connection(), request.headers()));
+            Response response = chain.proceed(request);
+            long t2 = System.nanoTime();
+            Log.e(TAG, String.format("Received response for %s in %.1fms%n%s",
+                response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+            return response;
+        }
+    }
 }
 
 

@@ -11,9 +11,19 @@ package com.aserbao.aserbaosandroid.base.beans;
  */
 public class BaseRecyclerBean {
     String name;
+    int tag;
+
+    public BaseRecyclerBean(String name, int tag) {
+        this.name = name;
+        this.tag = tag;
+    }
 
     public BaseRecyclerBean(String name) {
         this.name = name;
+    }
+
+    public int getTag() {
+        return tag;
     }
 
     public String getName() {

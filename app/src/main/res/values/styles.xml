@@ -194,7 +194,6 @@
         <!--<item name="android:background">@color/white</item>-->
         <!--<item name="android:background">@color/mtrls_btn_text_btn_ripple_color_bg</item>-->
         <!--<item name="rippleColor">@color/mtrls_btn_text_btn_ripple_color</item>-->
-
         <item name="android:textColor">@color/mtrl_text_btn_text_color_selector</item>
         <item name="android:paddingLeft">@dimen/mtrl_btn_text_btn_padding_left</item>
         <item name="android:paddingRight">@dimen/mtrl_btn_text_btn_padding_right</item>

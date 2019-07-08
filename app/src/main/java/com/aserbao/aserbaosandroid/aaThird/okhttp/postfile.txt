@@ -1,0 +1,2 @@
+这篇文章是数据库系列篇文章的第一篇，主要讲Android Sqlite数据库存储，后面陆续出GreenDao，LitePal，Realm，wcdb的文章，一如既往，如果遇到任何关于Android中SQLite的问题，都可以直接在我的文章底部留言，或者直接在我的公众号aserbao留言，文章会持续更新，希望这篇文章能为大家提供到帮助！如果觉得文章对你有用，就帮忙点个赞，若觉得文章写得不好之处望指出，必将加以修正！
+文章链接地址：https://www.jianshu.com/p/1dc029dacb64

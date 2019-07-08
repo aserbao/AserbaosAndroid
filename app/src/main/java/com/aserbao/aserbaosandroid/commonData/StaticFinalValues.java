@@ -11,6 +11,7 @@ public class StaticFinalValues {
 
 
     //=================================bundler
+    public static final int KEY = 1;
     public static final String TYPE = "type";
 
     // =================================direction
@@ -32,5 +33,6 @@ public class StaticFinalValues {
     public static final int CONTENT1 = 5;
     public static final int CONTENT2 = 6;
     public static final int FOOT = 8;
+
 
 }

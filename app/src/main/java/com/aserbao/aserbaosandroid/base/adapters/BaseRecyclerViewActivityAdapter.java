@@ -13,6 +13,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.base.interfaces.IBaseRecyclerItemClickListener;
+import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,10 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<BaseRe
     public void onBindViewHolder(OpenGlViewHolder holder, int position) {
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
         holder.mBaseRecyclerViewItemTv.setText(classBean.getName());
+        int tag = classBean.getTag();
+        if (tag > 0) {
+            holder.mBaseRecyclerViewItemTv.setTag(tag);
+        }
         holder.mBaseRecyclerViewItemTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
