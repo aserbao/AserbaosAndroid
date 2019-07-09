@@ -4,10 +4,10 @@ Mr. Zhu ，英文名aserbao! 从事Android开发多年，技术不高，用来�
 ![](https://github.com/aserbao/AserbaosAndroid/blob/master/app/src/main/assets/images/weixin.jpg)
 
 博客文章列表：
- 1. [一篇好文之Android文本软键盘全解](https://blog.csdn.net/qq_32175491/article/details/82763067)
- 2. [一篇好文之Android数据库 GreenDao的完全解析](https://blog.csdn.net/qq_32175491/article/details/82913904)
- 3. [一篇好文之Android数据库 SQLite全解析](https://blog.csdn.net/qq_32175491/article/details/82886652)
- 4. [一篇好文之Android 调用C代码及生成调试so库](https://blog.csdn.net/qq_32175491/article/details/83588167)
+ 1. [一篇技术好文之Android文本软键盘全解](https://blog.csdn.net/qq_32175491/article/details/82763067)
+ 2. [一篇技术好文之Android数据库 GreenDao的完全解析](https://blog.csdn.net/qq_32175491/article/details/82913904)
+ 3. [一篇技术好文之Android数据库 SQLite全解析](https://blog.csdn.net/qq_32175491/article/details/82886652)
+ 4. [一篇技术好文之Android 调用C代码及生成调试so库](https://blog.csdn.net/qq_32175491/article/details/83588167)
  5. [Android性能优化之APK瘦身详解(瘦身73%)](https://blog.csdn.net/qq_32175491/article/details/80071987)
  6. [Android性能优化之内存泄漏处理（图文）](https://blog.csdn.net/qq_32175491/article/details/79629900)
  7. [Android openGl开发详解(一)——绘制简单图形](https://blog.csdn.net/qq_32175491/article/details/79091647)
