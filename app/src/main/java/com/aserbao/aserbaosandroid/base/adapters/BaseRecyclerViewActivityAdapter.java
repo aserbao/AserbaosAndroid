@@ -50,15 +50,31 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<BaseRe
     @Override
     public void onBindViewHolder(OpenGlViewHolder holder, int position) {
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
-        holder.mBaseRecyclerViewItemTv.setText(classBean.getName());
         int tag = classBean.getTag();
+        String name = classBean.getName();
         if (tag > 0) {
             holder.mBaseRecyclerViewItemTv.setTag(tag);
+            name = name + String.valueOf(tag);
+        }else{
+            name = name + String.valueOf(position);
         }
+        holder.mBaseRecyclerViewItemTv.setText(name);
         holder.mBaseRecyclerViewItemTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIBaseRecyclerItemClickListener.itemClickBack(v,position);
+                int tempFlag = 0;
+                Object viewTag = v.getTag();
+                if (viewTag instanceof Integer){
+                    int tag = (int) viewTag;
+                    if (tag >= 0){
+                        tempFlag = tag;
+                    }else{
+                        tempFlag = position;
+                    }
+                }else{
+                    tempFlag = position;
+                }
+                mIBaseRecyclerItemClickListener.itemClickBack(v,tempFlag);
             }
         });
     }

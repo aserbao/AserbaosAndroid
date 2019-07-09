@@ -51,22 +51,22 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求 0",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求 1",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求 2",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求 3",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求 4",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 5",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 6",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 7",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 8"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 9"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 10"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 11"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 12"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 13"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 14"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置简单的拦截 15"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求",2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器",5));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传",6));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置简单的拦截"));
         init();
     }
 
@@ -94,15 +94,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position) {
-        int tempFlag = 0;
-        int tag = (int) view.getTag();
-        Log.e(TAG, "itemClickBack: " + tag );
-        if (tag >= 0){
-            tempFlag = tag;
-        }else{
-            tempFlag = position;
-        }
-        switch (tempFlag){
+        switch (position){
             case 0:
                 syncSimpleOkhttpGet();
                 break;
