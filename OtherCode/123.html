@@ -1,0 +1,4318 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="排序是一个非常经典的问题，它以一定的顺序对一个数组（或一个列表）中的项进行重新排序（可以进行比较，例如整数，浮点数，字符串等）（增加，非递减，递减， 增加，词典等）。有许多不同的排序算法，每个都有其自身的优点和局限性。排序通常被用作各种计算机科学课程中的介绍性问题，以展示一系列算法思想。在不失概性的情况下，我们假设在这个可视化中，我们将只按非递减顺序对整数进行排序，但不一定是明显的。 尝试单击Bubble Sort以查看上面排序5个混乱整数（带有重复项）列表的示例动画。点击&#39;下一步&#39;（在右上角）/按&#39;下翻页&#39;来推进这个电子讲座幻灯片，使用下拉列表/按&#39;空格&#39;跳转到特定幻灯片，或点击&#39;X&#39;（底部 右键）/按&#39;Esc&#39;进入探索模式。">
+<meta name="keywords" content="排序 冒泡排序 选择 选择排序 插入 插入排序 归并排序 快速排序 计数排序 基数排序">
+
+<meta name="csrf-token" content="GSkA5EnxYizNcEzwp1icxcvqDK6oe7owtXA1189E">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta property="og:image" content="https://visualgo.net/img/png/sorting.png">
+<title>VisuAlgo - 排序（冒泡排序, 选择排序, 插入排序, 归并排序, 快速排序, 计数排序, 基数排序）</title>
+<link rel="icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://visualgo.net/img/favicon.png">
+<link rel="stylesheet" type="text/css" href="https://visualgo.net/fonts/silkscreen/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="https://visualgo.net/css/common.css">
+<link rel="stylesheet" href="https://visualgo.net/css/viz-1.0.1.css">
+<link rel="stylesheet" href="https://visualgo.net/css/visual.css">
+<link rel="stylesheet" href="https://visualgo.net/css/drawgraph.css">
+<style>
+      #e-lecture {
+        top: 45px;
+        right: 130px;
+        width: 400px;
+        display: block;
+        background: none;
+        /*overflow: normal;*/
+        white-space: normal;
+        text-align: right;
+        color: black; font-weight: bold; font-size: 20px;
+      }
+      .electure-prev, .electure-next { /* force update, copied from viz.css */
+        position: absolute;
+        /* bottom: -12px; */
+        top: -20px;
+        /*bottom: '';*/
+        padding: 3px 8px;
+        background: #999;
+        color: white;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+      .electure-prev {
+        left: -10px;
+        /* right: 30px; */
+      }
+      .electure-next {
+        right: -10px;
+        color: white;
+      }
+    </style>
+<style>
+.execAction { padding: 5px 8px; }
+.err { padding: 5px 0px; }
+#actions-extras input {
+  width: 35px;
+  padding: 5px 8px 7px;
+}
+
+.create { bottom: 92px; }
+.sort { bottom: 65px; }
+
+#create-sorted-increasing { float: left; padding: none; }
+#create-sorted-decreasing { float: left; padding: none; }
+#create-nearly-sorted-increasing { float: left; padding: none; }
+#create-nearly-sorted-decreasing { float: left; padding: none; }
+#create-userdefined-input input { width: 300px; }
+
+text {
+  fill: black;
+  font: 20px sans-serif;
+  text-anchor: middle;
+}
+
+#viz-radix-sort-canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -500px;
+  height: 500px;
+  width: 1000px;
+}
+
+div .radix-sort-element {
+  position: absolute;
+  border: 1px solid black;
+  width: 55px;
+  font: 20px sans-serif;
+  color: black;
+}
+
+#radix-sort-bucket-labels-collection {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.radix-sort-bucket-label {
+  position: absolute;
+  border-top: 1px solid black;
+  width: 57px;
+  font: 20px sans-serif;
+  color: black;
+}
+
+#sort-viz {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 10px;
+}
+</style>
+<script>
+      function changeURL() {
+        var URL = window.location.href.split('/');
+        var val = document.getElementById("Language").value;
+        URL[3] = val;
+        window.location.assign(URL.join('/'));
+      }
+    </script>
+</head>
+<body>
+<div id="top-bar">
+<a href="http://www.comp.nus.edu.sg/~stevenha"><span class="colour" style="border: 1px solid green; border-radius: 25px;">7</span></a>&nbsp;&nbsp;&nbsp;
+<a id="home" href="/">Visu<span class="colour">Algo</span><span style="font-size: 40%">.net</span></a>
+/
+<select id="Language" onchange="changeURL()">
+<option value="en">en</option>
+<option value="zh" selected>zh</option>
+<option value="es">es</option>
+<option value="pt">pt</option>
+<option value="ru">ru</option>
+<option value="id">id</option>
+<option value="de">de</option>
+<option value="bn">bn</option>
+<option value="ja">ja</option>
+<option value="ko">ko</option>
+<option value="vi">vi</option>
+</select>
+/sorting
+<span class="right-links" id="useraccount">Login</span>
+<span id="title">
+<a id='title-Bubble' class='selected-viz'>冒泡</a>
+<a id='title-Selection'>选择</a>
+<a id='title-Insertion'>插入</a>
+<a id='title-Merge'>归并</a>
+<a id='title-Quick'>快速</a>
+<a id='title-RandomizedQuick'>随机快速</a>
+<a id='title-Counting'>计数</a>
+<a id='title-Radix'>基数</a>
+</span>
+<div id="mode-menu">
+<div id='mode-button' title='exploration'>示例模式 &#9663;</div>
+<div id='other-modes'>
+<a title='e-Lecture'>电子讲座模式</a>
+</div>
+</div>
+</div>
+<div id="dark-overlay"></div>
+<div id="status" class="panel"><p></p></div>
+<div id="status-hide" class="panel-hide"><img src="https://visualgo.net/img/arrow_white_right.png" alt=">" title="show/hide status panel" /></div>
+<div id="codetrace" class="panel">
+<p id="code1" style="padding-top: 10px;"></p>
+<p id="code2"></p>
+<p id="code3"></p>
+<p id="code4"></p>
+<p id="code5"></p>
+<p id="code6"></p>
+<p id="code7" style="padding-bottom: 10px;"></p>
+</div>
+<div id="codetrace-hide" class="panel-hide"><img src="https://visualgo.net/img/arrow_white_right.png" alt=">" title="show/hide codetrace panel" /></div>
+<div id="left-bar"></div>
+<div id="right-bar"></div>
+<div id="media-controls">
+<div id='speed-control'>减速<div id='speed-input'></div>加速</div>
+<span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick=goToBeginning()><img src="https://visualgo.net/img/goToBeginning.png" alt="go to beginning"></span>
+<span id="previous" class="media-control-button" title="step backward" onclick=stepBackward()><img src="https://visualgo.net/img/prevFrame.png" alt="previous frame"></span>
+<span id="pause" class="media-control-button" title="pause" onclick=pause()><img src="https://visualgo.net/img/pause.png" alt="pause"></span>
+<span id="play" class="media-control-button" title="play" onclick=play()><img src="https://visualgo.net/img/play.png" alt="play"></span>
+<span id="next" class="media-control-button" title="step forward" onclick=stepForward()><img src="https://visualgo.net/img/nextFrame.png" alt="next frame"></span>
+<span id="go-to-end" class="media-control-button" title="go to end" onclick=goToEnd()><img src="https://visualgo.net/img/goToEnd.png" alt="go to end"></span>
+<div id="progress-bar" class="media-control-button"></div>
+</div>
+<div id='e-lecture' class='panel'></div>
+<div id="overlay" hidden></div>
+<div id="dropdown-temp-holder" hidden></div>
+<div id="electure-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+排序是一个非常经典的问题，它以一定的顺序对一个数组（或一个列表）中的项进行重新排序（可以进行比较，例如整数，浮点数，字符串等）（增加，非递减，递减， 增加，词典等）。<br>有许多不同的排序算法，每个都有其自身的优点和局限性。<br>排序通常被用作各种计算机科学课程中的介绍性问题，以展示一系列算法思想。<br>在不失概性的情况下，我们假设在这个可视化中，我们将只按非递减顺序对整数进行排序，但不一定是明显的。 尝试单击<span class="slide-actions" onclick="doButtonAction11()">Bubble Sort</span>以查看上面排序5个混乱整数（带有重复项）列表的示例动画。<br>点击&#39;下一步&#39;（在右上角）/按&#39;下翻页&#39;来推进这个电子讲座幻灯片，使用下拉列表/按&#39;空格&#39;跳转到特定幻灯片，或点击&#39;X&#39;（底部 右键）/按&#39;Esc&#39;进入探索模式。
+<div id='electure-dropdown'>
+<select class="lecture-dropdown" style="width:100%">
+<option value="1">1. 排序算法</option>
+<option value="1-1">&nbsp;&nbsp;&nbsp;1-1. 动机 - 有趣的计算机科学想法</option>
+<option value="1-2">&nbsp;&nbsp;&nbsp;1-2. 动机 - 应用</option>
+<option value="2">2. 动作</option>
+<option value="2-1">&nbsp;&nbsp;&nbsp;2-1. 定义你自己的输入</option>
+<option value="2-2">&nbsp;&nbsp;&nbsp;2-2. 执行已选择的排序算法</option>
+<option value="3">3. 可视化</option>
+<option value="4">4. 常见的排序算法</option>
+<option value="4-1">&nbsp;&nbsp;&nbsp;4-1. 缩写</option>
+<option value="5">5. O(N<span style="white-space: normal;">^2</span>) 基于比较的排序算法</option>
+<option value="6">6. 冒泡排序</option>
+<option value="6-1">&nbsp;&nbsp;&nbsp;6-1. 冒泡排序：分析</option>
+<option value="6-2">&nbsp;&nbsp;&nbsp;6-2. 冒泡排序：提前终止</option>
+<option value="6-3">&nbsp;&nbsp;&nbsp;6-3. 答案</option>
+<option value="7">7. 选择排序</option>
+<option value="7-1">&nbsp;&nbsp;&nbsp;7-1. 选择排序：<span style="white-space: normal;">C++ 源代码 &amp;&nbsp;</span>分析</option>
+<option value="7-2">&nbsp;&nbsp;&nbsp;7-2. 小测验</option>
+<option value="8">8. 插入排序</option>
+<option value="8-1">&nbsp;&nbsp;&nbsp;8-1. 插入排序，C++ 代码和分析 1</option>
+<option value="8-2">&nbsp;&nbsp;&nbsp;8-2. 插入排序：分析 2</option>
+<option value="8-3">&nbsp;&nbsp;&nbsp;8-3. 小测验</option>
+<option value="9">9. 2.5 O（N log N）基于比较的排序<br><div><br></div></option>
+<option value="10">10. 归并排序</option>
+<option value="10-1">&nbsp;&nbsp;&nbsp;10-1. 重要的子程序，O（N）归并<br></option>
+<option value="10-2">&nbsp;&nbsp;&nbsp;10-2. 归并子程序C ++实现方法<br></option>
+<option value="10-3">&nbsp;&nbsp;&nbsp;10-3. 分而治之的范式</option>
+<option value="10-4">&nbsp;&nbsp;&nbsp;10-4. 归并排序是分而治之的算法</option>
+<option value="10-5">&nbsp;&nbsp;&nbsp;10-5. 归并排序的实现方法</option>
+<option value="10-6">&nbsp;&nbsp;&nbsp;10-6. 示范</option>
+<option value="10-7">&nbsp;&nbsp;&nbsp;10-7. 归并排序：第一部分 分析<br></option>
+<option value="10-8">&nbsp;&nbsp;&nbsp;10-8. 归并排序：第二部分 分析<br></option>
+<option value="10-9">&nbsp;&nbsp;&nbsp;10-9. 归并排序：第三部分 分析</option>
+<option value="10-10">&nbsp;&nbsp;&nbsp;10-10. 优缺点</option>
+<option value="11">11. 快速排序</option>
+<option value="11-1">&nbsp;&nbsp;&nbsp;11-1. 快速排序是分而治之的算法</option>
+<option value="11-2">&nbsp;&nbsp;&nbsp;11-2. 重要的子程序，O（N）分区<br></option>
+<option value="11-3">&nbsp;&nbsp;&nbsp;11-3. 答案</option>
+<option value="11-4">&nbsp;&nbsp;&nbsp;11-4. 分区排序 - 继续</option>
+<option value="11-5">&nbsp;&nbsp;&nbsp;11-5. 分区排序 - 当 <span style="white-space: normal;">&nbsp;</span><span style="white-space: normal;">a[k] &gt;= p</span><span style="white-space: normal;">&nbsp;的情况</span></option>
+<option value="11-6">&nbsp;&nbsp;&nbsp;11-6. 分区排序 - 当 <span style="white-space: normal;">&nbsp;a[k] &lt; p 的情况</span></option>
+<option value="11-7">&nbsp;&nbsp;&nbsp;11-7. 分区排序 C++ 实现方法</option>
+<option value="11-8">&nbsp;&nbsp;&nbsp;11-8. 快速排序 C++ 实现方法</option>
+<option value="11-9">&nbsp;&nbsp;&nbsp;11-9. 示范</option>
+<option value="11-10">&nbsp;&nbsp;&nbsp;11-10. 快速排序：第一部分 分析</option>
+<option value="11-11">&nbsp;&nbsp;&nbsp;11-11. 快速排序：第二部分 分析</option>
+<option value="11-12">&nbsp;&nbsp;&nbsp;11-12. 快速排序： 分析 第三部分</option>
+<option value="11-13">&nbsp;&nbsp;&nbsp;11-13. 快速排序：最好的情况（极少）</option>
+<option value="12">12. 随机快速排序</option>
+<option value="12-1">&nbsp;&nbsp;&nbsp;12-1. 魔法般的分析</option>
+<option value="13">13. O(N) 不基于比较的排序算法</option>
+<option value="13-1">&nbsp;&nbsp;&nbsp;13-1. 排序算法的下限</option>
+<option value="14">14. 计数排序</option>
+<option value="15">15. 基数排序</option>
+<option value="15-1">&nbsp;&nbsp;&nbsp;15-1. 最好的排序整数的算法？</option>
+<option value="16">16. 排序算法的附加属性</option>
+<option value="16-1">&nbsp;&nbsp;&nbsp;16-1. 就地排序</option>
+<option value="16-2">&nbsp;&nbsp;&nbsp;16-2. 稳定排序</option>
+<option value="16-3">&nbsp;&nbsp;&nbsp;16-3. 缓存性能</option>
+<option value="17">17. 小测验</option>
+<option value="17-1">&nbsp;&nbsp;&nbsp;17-1. 小测验 #3</option>
+<option value="17-2">&nbsp;&nbsp;&nbsp;17-2. 小测验 #2</option>
+<option value="18">18. 附加功能</option>
+<option value="18-1">&nbsp;&nbsp;&nbsp;18-1. 挑战</option>
+<option value="18-2">&nbsp;&nbsp;&nbsp;18-2. 反向指数/计数</option>
+<option value="18-3">&nbsp;&nbsp;&nbsp;18-3. 实现方法</option>
+<option value="18-4">&nbsp;&nbsp;&nbsp;18-4. 在线测试</option>
+<option value="18-5">&nbsp;&nbsp;&nbsp;18-5. 在线评估测试</option>
+<option value="99">99. 状态面板</option>
+<option value="99-1">&nbsp;&nbsp;&nbsp;99-1. 代码追踪面板</option>
+<option value="99-2">&nbsp;&nbsp;&nbsp;99-2. 媒体控制</option>
+<option value="99-3">&nbsp;&nbsp;&nbsp;99-3. 返回 ”探索模式“</option>
+</select>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-next' data-nextid="1-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-1-1" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+排序问题有许多有趣的算法解决方案，体现了许多计算机科学的想法：<br><ol><li><a href="?slide=5"><u>比较</u></a>与<a href="?slide=13"><u>非比较</u></a>策略，<br></li><li>迭代与递归实现，<br></li><li>分而治之范式（<a href="?slide=10-4"><u>这个</u></a>或<a href="?slide=11-1"><u>这个</u></a>），<br></li><li>最佳/最差/平均情况时间复杂性分析，<br></li><li><a href="?slide=12"><u>随机算法</u></a>等</li></ol>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="1-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-1-2" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+当（整数）数组 <b>A </b>排序时，涉及 <b>A </b>的许多问题变得简单（或更容易）：<br><ol><li> 在数组 <b>A </b>中搜索特定值 <b>v</b>，<br></li><li> 查找（静态）数组 <b>A</b> 中的最小/最大/第 <b>k </b>个最小/最大值，<br></li><li> 测试唯一性并删除数组 <b>A </b>中的重复项，<br></li><li> 计算特定值 <b>v</b> 在数组 <b>A</b> 中出现多少次，<br></li><li> 设置数组 <b>A</b> 和另一个排序数组 <b>B</b> 之间的交集/联合，<br></li><li> 寻找一个目标对 <b>x∈A</b> 和 <b>y∈A</b>，使得 <b>x + y </b>等于目标 <b>z </b>等。<br></li></ol>讨论：在现实生活中，指导员可以详细阐述这些应用。
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="1-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-2" class="electure-dialog" style="bottom:140px;left:60px;width:500px;">
+您可以在此可视化中执行两项操作。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="1-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="2-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-2-1" class="electure-dialog" style="bottom:140px;left:60px;width:500px;">
+第一步是关于定义你自己的输入，一个数组/一个列表是：<br><ol><li> 完全随机的</li><li> 随机排序（按升序/降序排列）， </li><li> 随机但几乎排序（按升序/降序排列）或<br></li><li> 完全由你自己定义。<br></li></ol><div>在探索模式下，您可以尝试使用此可视化中提供的各种排序算法来找出最佳和最差情况的输入。<br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="2-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-2-2" class="electure-dialog" style="bottom:140px;left:60px;width:500px;">
+<p>第二个操作是最重要的操作：通过单击“Sort”菜单然后单击“Go”执行主动排序算法。<br>请记住，您可以通过单击此可视化页面顶部的<a href="?slide=4-1"><u>相应缩写</u></a>来切换活动算法。<br>一些排序算法有一些额外的选项。 在点击“开始”之前，您可以根据需要切换选项。 例如，在冒泡排序（和归并排序）中，还可以选择计算输入数组的<b>反向指数</b>（这是一个<a href="?slide=16-4"><u>高级主题</u></a>）。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="2-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-3" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+在此处查看所选排序算法的可视化/动画
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="2-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="4">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-4" class="electure-dialog" style="top:60px;left:220px;width:500px;">
+在这里我们列出了常见的排序算法。选择相应的算法名称以在不同的算法之间切换。
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="4-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-4-1" class="electure-dialog" style="top:60px;left:220px;width:500px;">
+<p>为了节省屏幕空间，我们将算法名称缩写为三个字符:</p><ol><li>基于比较的排序算法:<ol><li>BUB - 冒泡排序,</li><li>SEL - 选择排序,</li><li>INS - 插入排序,</li><li>MER - 归并排序 (递归实现),</li><li>QUI - 快速排序 (递归实现),</li><li>R-Q - 随机快速排序 (递归实现).</li></ol></li><li>不基于比较的排序算法:<ol><li>COU - 计数排序,</li><li>RAD - 基数排序.</li></ol></li></ol>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="4">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="5">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-5" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>在接下来的幻灯片，我们将讨论三种基于比较的排序算法</p><div><ol><li><a href="?slide=6"><u>冒泡排序</u></a><br></li><li><a href="?slide=7"><u>选择排序</u></a><br></li><li><a href="?slide=8"><u>插入排序</u></a><br></li></ol></div><div>它们被称为基于比较的比较，因为它们比较数组的元素对并决定是否交换它们。<br>这三种排序算法最容易实现，但不是最有效的，因为它们的时间复杂度是O（N2)。</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="4-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="6">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-6" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+给定一个N个元素的数组，冒泡法排序将：<br><ol><li>如果元素大小关系不正确，交换这两个数（在本例中为a&gt; b），<br></li><li>比较一对相邻元素（a，b），<br></li><li>重复步骤1和2，直到我们到达数组的末尾（最后一对是第（N-2）和（N-1）项，因为我们的数组从零开始）<br></li><li>到目前为止，最大的元素将在最后的位置。 然后我们将N减少1，并重复步骤1，直到N = 1。<br></li></ol><div>不用多说，让我们在小例子阵列[29,10,14,37,14]上尝试<span class="slide-actions" onclick="doButtonAction11()">Bubble Sort</span>。<br>如果您想象较大的项目“起泡”（也就是“浮动到数组的右侧”），则应该能想象到一个“气泡式”动画。<br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="5">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="6-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-6-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>比较和交换需要一个以常量为界的时间，我们称之为c。<br>（标准）Bubble Sort中有两个嵌套循环。<br>外循环正好运行N次迭代。 但内部循环运行变得越来越短：<br></p><ol><li>当 i = 0，（N-1）次迭代（比较和可能交换）时。<br></li><li>当 i = 1，（N-2）次迭代时，...<br></li><li>当 i =（N-2）时，1次迭代,<br></li><li>当 i=（N-1），0迭代.</li></ol><div>因此，总迭代次数=（<b>N</b>-1）+（<b>N</b>-2）+ ... + 1 + 0 = <b>N</b> *（<b>N</b>-1）/ 2（<a href="https://en.wikipedia.org/wiki/Arithmetic_progression#Sum" target="_blank"><u>推导</u></a>）。<br>总时间= c * <b>N</b> *（<b>N</b>-1）/ 2 = O（<b>N</b> ^ 2）。</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="6">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="6-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-6-2" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+冒泡排序实际上是低效的，它的 <b style="white-space: normal;">O(N^2)&nbsp;</b>时间复杂度。 想象一下，我们有 <b>N</b> = 10<sup>6 </sup>个数字。 即使我们的计算机速度超快，并且可以在1秒内计算10<sup>8</sup>次操作，但冒泡排序仍需要大约100秒才能完成。<br>但是，它可以提前终止，例如， 尝试<span class="slide-actions" onclick="doButtonAction11()">Bubble Sort</span>上面显示的小型升序示例[3,6,11,25,39]，它在O(<b>N</b>)时间结束。<br>改进的思路很简单：如果我们通过内部循环完全不交换，这意味着数组已经排序，我们可以在这个点上停止冒泡排序。<br>讨论：虽然它使冒泡排序在一般情况下运行得更快，但这种改进的想法并没有改变冒泡排序的 <b style="white-space: normal;">O(N^2)&nbsp;</b>时间复杂性...为什么？
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="6-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="6-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-6-3" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="6-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="7">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-7" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+给定 <b>N</b> 个项目和 <b>L = 0</b> 的数组，选择排序将：<br><ol><li>在 <b>[L ... N-1] </b>范围内找出最小项目 <b>X </b>的位置，<br></li><li>用第 <b>L</b> 项交换X，<br></li><li>将下限 <b>L</b> 增加1并重复步骤1直到 <b>L = N-2</b>。<br></li></ol>别犹豫，让我们在上面的同一个小例子数组上尝试<span class="slide-actions" onclick="doButtonAction8()">Selection Sort</span>。<br>在不失普遍性的情况下，我们也可以实现反向的选择排序：找到最大项目 <b>Y </b>的位置并将其与最后一个项目交换。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="6-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="7-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-7-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>void selectionSort(int a[], int N) {<br>  for (int L = 0; L &lt;= N-2; L++) { // O(<b>N</b>)<br>    int X = min_element(a+L, a+N) - a; // O(<b style="white-space: pre-wrap; font-family: &quot;PT Sans&quot;;">N</b><span style="white-space: pre-wrap; font-family: &quot;PT Sans&quot;;">)</span>    swap(a[X], a[L]); // O(1), X 可能和 L 相等(就没有交换)<br>  }<br>}</pre><p>复杂度: O(<b>N</b><sup>2</sup>) — 实际上，这和<u>冒泡排序</u>很像。</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="7">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="7-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-7-2" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<span style="white-space: normal;"><input class="mcq-answer" id="mcq-answer-4" value="26" hidden><p>Quiz: <b>How many (real) swaps are required to sort [29, 10, 14, 37, 13] by Selection Sort?</b></p><form><input type="radio" name="mcq-4-choice" value="25"> 2<br><input type="radio" name="mcq-4-choice" value="27"> 4<br><input type="radio" name="mcq-4-choice" value="24"> 1<br><input type="radio" name="mcq-4-choice" value="26"> 3<br></form><button class="mcq-submit" id="submit-4">Submit</button> <span id="answer-status-4"></span></span>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="7-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="8">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-8" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>插入排序类似于大多数人安排扑克牌的方式。<img src="https://puu.sh/vfi6a/e532309371.png" alt="Poker hand"></p><p></p><ol><li>从你手中的一张牌开始，<br></li><li>选择下一张卡并将其插入到正确的排序顺序中，<br></li><li>对所有的卡重复上一步。<br></li></ol><p></p><p>不用多说，让我们在小例子阵列[40,13,20,8]上尝试<span class="slide-actions" onclick="doButtonAction10()">Insertion Sort</span>。</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="7-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="8-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-8-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>void insertionSort(int a[], int N) {<br>  for (int i = 1; i &lt; N; i++) { // O(N)<br>    X = a[i]; // X is the item to be inserted<br>    int j = i-1;<br>    for (; j &gt;= 0 &amp;&amp; a[j] &gt; X; j--) // can be fast or slow<br>      a[j+1] = a[j]; // make a place for X<br>    a[j+1] = X; // index j+1 is the insertion point<br>  }<br>}</pre>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="8">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="8-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-8-2" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+外循环执行N-1次，这很明显。<br>但内循环执行的次数取决于输入：<br><ol><li>在最好的情况下，数组已经排序并且（a [j]&gt; X）总是为假所以不需要移位数据，并且内部循环运行在O（1），<br></li><li>在最坏的情况下，数组被反向排序并且（a [j]&gt; X）始终为真插入始终发生在数组的前端，并且内部循环以O（<b>N</b>）运行。<br></li></ol><div>因此，最佳情况时间是<span style="white-space: normal;">O(</span><b style="white-space: normal;">N × 1</b><span style="white-space: normal;">) = O(</span><b style="white-space: normal;">N</b><span style="white-space: normal;">)&nbsp;</span>，最坏情况时间是<span style="white-space: normal;">O(</span><b style="white-space: normal;">N × N</b><span style="white-space: normal;">) = O(</span><b style="white-space: normal;">N</b><sup style="white-space: normal;">2</sup><span style="white-space: normal;">).</span><br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="8-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="8-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-8-3" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<input class="mcq-answer" id="mcq-answer-5" value="31" hidden><p>Quiz: <b>What is the complexity of Insertion Sort on any input array?</b></p><form><input type="radio" name="mcq-5-choice" value="29"> O(N)<br><input type="radio" name="mcq-5-choice" value="30"> O(N log N)<br><input type="radio" name="mcq-5-choice" value="31"> O(N^2)<br><input type="radio" name="mcq-5-choice" value="28"> O(1)<br></form><button class="mcq-submit" id="submit-5">Submit</button> <span id="answer-status-5"></span><br>如果你对这个还不是很清楚，请教你的指导员或者在<a href="?slide=10-10"><u>这个页面</u></a>阅读相关的评论。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="8-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="9">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-9" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>我们将在接下来的几张幻灯片中讨论两种（加一半）基于比较的排序算法：<br></p><ol><li><a href="?slide=10"><u>归并排序</u></a>，<br></li><li><a href="?slide=11"><u>快速排序</u></a>和它的<a href="?slide=12"><u>随机版本</u></a>（只有一个变化）。<br></li></ol><div>这些排序算法通常以递归方式实现，使用分而治之的问题解决范例，并且运行在合并排序和O（N log N）时间的<b>O（N log N）</b>时间中，以期望随机快速排序。<br>PS：尽管如此，快速排序（Quick Sort）的非随机版本在 <span style="white-space: normal;">O(</span><b style="white-space: normal;">N<sup>2</sup></b><span style="white-space: normal;">)&nbsp;</span>中运行。</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="8-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+给定一个N个项目的数组，归并排序将：<br><ol><li>将每对单个元素（默认情况下，已排序）归并为2个元素的有序数组，<br></li><li>将2个元素的每对有序数组归并成4个元素的有序数组，重复这个过程......，<br></li><li>最后一步：归并2个N / 2元素的排序数组（为了简化讨论，我们假设N是偶数）以获得完全排序的N个元素数组。</li></ol><div>这只是一般的想法，在我们可以讨论归并排序的真正形式之前，我们需要更多的细节。<br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="9">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+我们首先讨论归并排序算法的最重要的子程序：O( <b>N </b>)归并，然后解析这个归并排序算法。<br>给定两个大小为 <b>N<sub>1</sub></b> 和 <b>N<sub>2</sub></b> 的排序数组 <b>A </b>和 <b>B</b>，我们可以在O( <b>N </b>) 时间内将它们有效地归并成一个大小为 <b>N</b> = <b>N<sub>1</sub></b> + <b>N<sub>2</sub></b>的组合排序数组。<br>这是通过简单地比较两个阵列的前面并始终取两个中较小的一个来实现的。 但是，这个简单但快速的O( <b>N </b>)合并子例程将需要额外的数组来正确地进行合并。 请参阅下一张幻灯片。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-2" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>void merge(int a[], int low, int mid, int high) {<br>  // subarray1 = a[low..mid], subarray2 = a[mid+1..high], both sorted<br>  int N = high-low+1;<br>  int b[N]; // 讨论: 为什么我们需要一个临时的数组 b?<br>  int left = low, right = mid+1, bIdx = 0;<br>  while (left &lt;= mid &amp;&amp; right &lt;= high) // 归并<br>    b[bIdx++] = (a[left] &lt;= a[right]) ? a[left++] : a[right++];<br>  while (left &lt;= mid) b[bIdx++] = a[left++]; // leftover, if any<br>  while (right &lt;= high) b[bIdx++] = a[right++]; // leftover, if any<br>  for (int k = 0; k &lt; N; k++) a[low+k] = b[k]; // copy back<br>}<br></pre><p>在示例数组[1,5,19,20,2,11,15,17]上尝试<span class="slide-actions" onclick="doButtonAction12()">Merge Sort</span>，其前半部分已经排序[1,5,19,20]，其下半部分也已经排序[2 ，11,15,17]。 专注于合并排序算法的最后一次合并。</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-3" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+在我们继续之前，让我们先谈谈分而治之（Divide and Conquer，缩写为D＆C），这是一个强大的解决问题的范例。<br>分而治之算法通过以下步骤解决（某种类型的）问题 - 比如我们的排序问题：<br><ol><li>划分步骤：将大的原始问题划分成较小的子问题并递归地解决较小的子问题，<br></li><li>解决步骤：结合较小的子问题的结果来产生较大的原始问题的结果。<br></li></ol>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-4">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-4" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>归并并排序是分而治之的排序算法。<br>划分步骤很简单：将当前数组分成两半（如果N是偶数，则将其完全平等，或者如果N是奇数，则一边稍大于一个元素），然后递归地对这两半进行排序。<br>解决步骤是最有效的工作：使用 <a href="?slide=10-2"><u>前面讨论的</u></a></p>归并子例程合并两个（排序的）半部分以形成一个有序数组。<br><p></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-5">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-5" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>void mergeSort(int a[], int low, int high) {<br>  // 要排序的数组是 a[low..high]<br>  if (low &lt; high) { // base case: low &gt;= high (0 or 1 item)<br>    int mid = (low+high) / 2;	<br>    mergeSort(a, low  , mid ); // 分成一半<br>    mergeSort(a, mid+1, high); // 递归地将它们排序<br>    merge(a, low, mid, high); // 解决: 归并子程序<br>  }<br>}</pre>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-4">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-6">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-6" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+请在示例数组<span style="white-space: normal;">&nbsp;[7, 2, 6, 3, 8, 4, 5]&nbsp;</span>上尝试<span class="slide-actions" onclick="doButtonAction12()">Merge Sort</span>以查看更多详细信息。<br>与许多其他CS打印的教科书通常显示的一样（因为教科书是静态的），合并排序的实际执行不会一层一层地分成两个子数组，但是它会在处理正确的子数组之前递归地排序左边的子数组。<br>就是这样，在示例数组{7,2,6,3,8,4,5}上，它将缓存到{7,2,6,3}，然后是{7,2}，然后是{7}（单个 元素，默认排序），回溯，递归到{2}（排序），回溯，然后在继续处理{6,3}等等之前，最终将{7,2}合并到{2,7}中。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-5">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-7">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-7" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+在归并排序中，大部分工作是在解决/归并的步骤中完成的，因为分解步骤并没有真正执行任何操作（视为O（1））。<br>当我们称之为归并的（a，低，中，高）时候，我们处理<b>k =（高 - 低+ 1）</b>项。 最多会有 <b>k-1 </b>个比较。 从原始数组 <b>a </b>到临时数组 <b>b </b>有 <b>k </b>个移动，而另一个 <b>k</b> 移回。 总的来说，归并子例程内的操作次数 &lt;3<b>k</b>-1 = O（<b>k</b>）。<br>重要的问题是这个归并子程序被调用了多少次？<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-6">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-8">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-8" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<img src="https://visualgo.net/img/merge.png" width="500" alt="The Recursion Tree of Merge Sort">
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-7">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-9">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-9" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+级别1：2 ^ 0 = 1调用merge( ) 和 <b>N</b> / 2 ^ 1个项目，O（2 ^ 0 x 2 x <b>N</b> / 2 ^ 1）= O（<b>N</b>）级别2：2 ^ 1 = 2调用 merge( ) 与N / 2 ^ 2个项目，O（2 ^ 1 x 2 x <b>N</b> / 2 ^ 2）= O（<b>N</b>）级别3：2 ^ 2 = 4调用merge( ) 与N / 2 ^ O（2 ^ 2 x 2 x N / 2 ^ 3）= O（N）...级别（log <b>N</b>）：2 ^（log <b>N-1</b>）（或N / 2）调用merge( ) ），其中N / 2 ^ log N（或1）个项目，O（N）<div>有 log(<b>N) </b>个日志级别，每个级别都执行O（N）工作，因此总体时间复杂度为O（<b>N</b> log <b>N</b>）。 稍后我们会看到这是一种最佳（基于比较）的排序算法，即我们无法做得比这更好。<br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-8">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="10-10">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-10-10" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>无论输入的原始顺序如何，归并排序中最重要的部分是其O（<b>N</b> log <b>N</b>）性能保证。 就这样，没有任何敌手测试用例可以使归并排序对于任何N个元素数组运行比O（<b>N</b> log <b>N</b>）更长的时间。<br>因此，归并排序非常适合分类非常大量的输入，因为O（<b>N</b> log <b>N</b>）比<a href="?slide=5"><u>前面讨论的</u></a>O（<b>N<sup>2</sup></b>）排序算法增长得慢得多。<br>归并排序也是一个<a href="?slide=16-2"><u>稳定的排序</u></a>算法。 讨论：为什么？<br>然而，归并排序有几个不太好的部分。 首先，从零开始实施起来并不容易（<a href="?slide=18-2"><u>但我们不必这样做</u></a>）。 其次，它在<a href="?slide=10-2"><u>归并操作</u></a>期间需要额外的O（<b>N</b>）存储，因此不是真正的存储效率和<a href="?slide=16-1"><u>不到位</u></a>。顺便说一句，如果你有兴趣看看为解决这些（经典）归并排序不那么好的部分做了什么，你可以阅读<a href="https://en.wikipedia.org/wiki/Merge_sort#Variants" target="_blank"><u>这个</u></a>。</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-9">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>快速排序是另一个分而治之排序算法（另一个在这个可视化页面中讨论的是<a href="?slide=10"><u>归并排序</u></a>）。<br>我们将看到，这种确定性的，非随机化的快速排序的版本可能在对手输入中具有O（N2）的很差的时间复杂度，之后再继续<a href="?slide=12"><u>随机化的</u></a>和可用的版本。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="10-10">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>划分步骤：选择一个项目 <b>p</b>（称为枢轴点）然后将<b> a[i..j] </b>的项目分为三部分：<b>a [i..m-1]</b>，<b>a [m] </b>和 <b>a[m + 1..j]</b>。 <b>a [i..m-1]</b>（可能为空）包含小于<b> p </b>的项目。<b> a [m] </b>是枢轴点 <b>p</b>，例如：指数 <b>m</b> 是已排序数组 <b>a </b>的排序顺序中 p 的正确位置。 <b>a [m + 1..j]</b>（可能为空）包含大于或等于<b> p</b> 的项目。 然后，递归地对这两部分进行排序。<br>解决步骤：不要惊讶......我们什么都不做！<br>如果您将其与<a href="?slide=10-4"><u>归并排序</u></a>进行比较，您会发现快速排序的 D＆C 步骤与归并排序完全相反。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-2" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>We will dissect this Quick Sort algorithm by first discussing its most important sub-routine: The O(<b>N</b>) <samp>partition</samp> (classic version).</p><br><p>To partition <b>a[i..j]</b>, we first choose <b>a[i]</b> as the pivot <b>p</b>.<br></p><p>The remaining items (i.e. <b>a[i+1..j]</b>) are divided into 3 regions:</p><ol><li><b>S1</b> = <b>a[i+1..m]</b> where items are &lt; <b>p</b>,</li><li><b>S2</b> = <b>a[m+1..k-1]</b> where items are &ge; <b>p</b>, and</li><li>Unknown = <b>a[k..j]</b>, where items are yet to be assigned to either <b>S1</b> or <b>S2</b>.</li></ol><p>Discussion: Why do we choose <b>p</b> = <b>a[i]</b>? Are there other choices?</p><br><p>Harder Discussion: Is it good to always put item(s) that is/are == <b>p</b> on S2 at all times?</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-3" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-4">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-4" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+最初，<b>S1 </b>和 <b>S2 </b>区域都是空的，即除了指定的枢轴点 <b>p</b> 之外的所有项目都在未知区域中。<br>然后，对于未知区域中的每个项目 <b>a [k]</b>，我们将 <b>a[k] </b>与 <b>p </b>进行比较, 并决定两种情况中的一个：<div><ol><li>如果 <b>a [k]≥p</b>，则将 <b>a[k] </b>放入 <b>S2</b> 或<br></li><li>否则，将 <b>a[k] </b>放入 <b>S1</b> 中。</li></ol></div><div>接下来的两张幻灯片将会详细阐述了这两种情况。<br>最后，我们交换<b>a[i]</b>和 <b>a[m] </b>来将枢纽 <b>p </b>放在 <b>S1</b> 和 <b>S2</b> 的中间。</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-5">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-5" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<img src="https://visualgo.net/img/partition1.png" width="500" alt="Case when a[k] ≥ p, increment k, extend S2 by 1 item">
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-4">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-6">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-6" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<img src="https://visualgo.net/img/partition2.png" width="500" alt="Case when a[k] < p, increment m, swap a[k] with a[m], increment k, extend S1 by 1 item">
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-5">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-7">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-7" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>int partition(int a[], int i, int j) {<br>  int p = a[i]; // p 是枢纽<br>  int m = i; // S1 和 S2 一开始是空的<br>  for (int k = i+1; k &lt;= j; k++) { // 探索未知的区域<br>    if (a[k] &lt; p) { // case 2<br>      m++;<br>      swap(a[k], a[m]); // C++ STL algorithm std::swap<br>    } // 注意：在情况1的时候我们什么不做: a[k] &gt;= p<br>  }<br>  swap(a[i], a[m]); // 最后一步, 用a[m]交换枢纽<br>  return m; // 返回枢纽的指数, 用于快速排序（Quick Sort）<br>}</pre>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-6">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-8">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-8" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<pre>void quickSort(int a[], int low, int high) {<br>  if (low &lt; high) {<br>    int m = partition(a, low, high); // O(N)<br>    // a[low..high] ~&gt; a[low..m–1], pivot, a[m+1..high]<br>    quickSort(a, low, m-1); // 递归地将左子阵列排序<br>    // a[m] = pivot 在分区后就被排序好了<br>    quickSort(a, m+1, high); // 然后将右子阵列排序<br>  }<br>}</pre>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-7">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-9">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-9" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+在示例数组[27,38,12,39,27,16]上尝试<span class="slide-actions" onclick="doButtonAction13()">Quick Sort</span>。我们将详细说明第一个分区步骤如下：我们设置 <b>p = a [0] = 27</b>。我们设置 <b>a[1] = 38</b>作为 <b>S2</b>的一部分，因此<b>S1 = {} </b>和 <b>S2 = {38}</b>。 我们用 <b>a [2] = 12 </b>交换 <b>a[1] = 38</b>，所以 <b>S1 = {12} </b>和 <b>S2 = {38}</b>。 我们设置 <b>a[3] = 39</b>，然后 <b>a [4] = 27 </b>作为 <b>S2</b> 的一部分，因此 <b>S1 = {12} </b>和 <b>S2 = {38,39,27}</b>。 我们用 <b>a[5] = 16 </b>交换 <b>a[2] = 38</b>，所以<b>S1 = {12,16} </b>和 <b>S2 = {39,27,38}</b>。 我们用 <b>a [2] = 16 </b>交换 <b>p = a [0] = 27</b>，所以 <b>S1 = {16,12}</b>，<b>p = {27} </b>和 <b>S2 = {39,27,38}</b>。<br>在此之后，<b>a[2] = 27 </b>保证被排序，现在快速排序递归地将左侧排序为 <b>a[0..1]</b>，然后递归地将右侧排序为 <b>a[3..5]</b>。
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-8">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-10">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-10" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>首先，我们分析跑一次分区的成本。<br>在内部分区（a，i，j）中，只有一个for循环遍历（j-i）次。 由于j可以和 N-1一样大，i 可以低至0，所以分区的时间复杂度是O（N）。<br>类似于<a href="?slide=10-7"><u>归并排序分析</u></a>，快速排序的时间复杂度取决于分区（a，i，j）被调用的次数。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-9">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-11">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-11" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+当数组a已经按照上面的例子升序时，快速排序将设置<b>p = a [0] = 5</b>，并且将返回<b>m = 0</b>，从而使<b>S1</b>区域为空并且<b>S2</b>区域：除了枢轴之外的其他一切 （<b>N</b>-1项）。<br>在示例输入数组[5,18,23,39,44,50]上尝试<span class="slide-actions" onclick="doButtonAction13()">Quick Sort</span>。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-10">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-12">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-12" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>在这种最坏情况的输入场景中，会发生以下情况：<br></p><img src="https://visualgo.net/img/qsort_worstcase.png" width="250" alt="Worst Case analysis of Quick Sort">第一个分区需要O（<b>N</b>）时间，将a分成0,1，N-1个项目，然后向右递归。<br>第二个花费O（<b>N</b>-1）时间，将a分成0,1，N-2个项目，然后再次向右递归...<br>直到最后，第N个分区将a分成0,1,1项，并且Quick Sort递归停止。<br>这是经典的<b>N +（N-1）+（N-2）+ ... + 1</b>模式，它是O（<b>N<sup>2</sup></b>），类似于<a href="?slide=6-1"><u>本幻灯片</u></a>中的分析......<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-11">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="11-13">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-11-13" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>当分区总是将数组分成两个相等的一半时，就会发生快速排序的最佳情况，如<a href="?slide=10-8"><u>归并排序</u></a>。<br>当发生这种情况时，递归的深度只有O（log <b>N</b>）。<br>由于每个级别进行O（N）比较，时间复杂度为O（<b>N</b> log <b>N</b>）。<br>在这个手工制作的示例输入数组[4,1,3,2,6,5,7]上尝试<span class="slide-actions" onclick="doButtonAction13()">Quick Sort</span>。 在实践中，这很少见，因此我们需要设计一个更好的方法：<a href="?slide=12"><u>随机快速排序</u></a>。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-12">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="12">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-12" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>除了执行分区算法之外，它与快速排序相同，它随机选择 <b>a[i..j] </b>之间的枢轴，而不是始终选择 <b>a[i]</b>（或 <b>a[i..j]</b>之间的任何其他固定索引）。<br>尝试<span class="slide-actions" onclick="doButtonAction14()">Random Quick Sort</span>这个大，但也有点随机的示例数组。<br>小练习：将上面的想法贯彻到<a href="?slide=11-7"><u>本幻灯片</u></a>中的实现中！</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="11-13">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="12-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-12-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+这将需要花费大约1小时的时间来解释清楚为什么这种随机化版本的快速排序在任何N个元素的输入数组上预期的时间复杂度为<b>O（N log N）</b>。<br>在这个电子讲座中，我们将假设它是正确的。<br>如果你需要非正式的解释：想象一下在随机化版本的快速排序中，随机化数据透视选择，我们不会总是得到0（空），1（数据透视）和N-1个其他项目的非常差的分割。 幸运的（半枢轴半），有时幸运的，有时不幸的或者非常差的（空的，枢轴的，其余的）的这种组合产生的平均时间复杂度为<b>O（N log N）</b>。<div>讨论：实际上上面的“<b>任何输入数组</b>”这个短语并不完全正确。 实际上有一种方法可以使当前在此VisuAlgo页面中呈现的Quick Sort的随机版本仍在O（<b>N<sup>2</sup></b>）中运行。 怎么样？<br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="12">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="13">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-13" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>在接下来的幻灯片，我们将讨论两种不基于比较的排序算法:</p><ol><li><a href="?slide=14"><u>计数排序</u></a>,</li><li><a href="?slide=15"><u>基数排序</u></a>.</li></ol><p>这些排序算法可以通过不比较数组的项目来比时间复杂度为Ω（<b>N</b> log <b>N</b>）的基于比较的排序算法的下限更快。</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="12-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="13-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-13-1" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>我们都知道（在这个可视化中也没有证明，因为它需要花费一个小时的讲座来证明），所有基于比较的排序算法都具有Ω（N log N）的下限时间复杂度。<br>因此，任何具有最坏情况复杂度O（N log N）的基于比较的排序算法（如<a href="?slide=10-9"><u>归并排序</u></a>）都被认为是最优算法，即我们不能做得比这更好。<br>然而，如果存在输入数组的某些假设，我们可以避免比较这些项目来确定排序顺序， 然后实现更快的排序算法 - 比如在O（N）中<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="13">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="14">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-14" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+假设：如果要排序的项目是小范围的整数，我们可以计算每个整数（在这个小范围内）的出现频率，然后通过循环该小范围来按排序顺序输出项目。<br>在上面的示例数组中，对所有整数都在[1..9]内的示例数组尝试<span class="slide-actions" onclick="doButtonAction15()">Counting Sort</span>，因此我们只需要计算整数1出现的次数，出现整数2，...，出现整数9，然后遍历 如果频率 [<b>y</b>] = <b>x</b>，则 1至9 打印出整数 <b>y </b>的 <b>x</b> 个副本。<br>时间复杂度为O（<b>N</b>）来计算频率，O（<b>N + k</b>）以排序顺序输出结果，其中 <b>k </b>是输入的整数范围，在本例中为9-1 + 1 = 9。 计数排序（Counting Sort）的时间复杂度为O（<b>N + k</b>），如果 <b>k</b> 很小，那么它就是O（<b>N</b>）。<br>由于内存限制，当 <b>k</b> 相对较大时，我们将无法执行计数排序（Counting Sort）的计数部分，因为我们需要存储那些 <b>k </b>个整数出现的次数。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="13-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="15">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-15" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<p>假设：如果要排序的项目是大范围但小数位的整数，我们可以将计数排序（<a href="?slide=14"><u>Counting Sort</u></a>）思想与基数排序（Radix Sort）结合起来，以实现线性时间复杂度。<br>在基数排序中，我们将每个项目排序为一个 <b>w</b> 数字串（如果需要，我们填充小于w数字的前几个零的整数）。<br>对于最低有效位（最右边）到最高有效位（最左边），我们通过 <b>N</b> 个项目并将它们按照活动数字放到10个队列中（每个数字[0..9]一个），就好像 一个修改的计数排序，因为这保留了<a href="?slide=16-2"><u>稳定性</u></a>。 然后我们再次重新连接组，以便进行后续迭代。<br>请尝试上面示例数组的<span class="slide-actions" onclick="doButtonAction16()">Radix Sort</span>来了解更清晰的解释。<br>请注意，我们只执行O（<b>w×（N + k）</b>）次迭代。 在这个例子中，<b>w = 4</b>，<b>k = 10</b>。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="14">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="15-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-15-1" class="electure-dialog" style="top:310px;left:50%;margin-left:-250px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="15">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="16">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-16" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+除了比较还是非比较，递归或迭代之外，还有其他一些属性可用于区分排序算法。<br>在本节中，我们将讨论就地与非就地，稳定与不稳定以及高速缓存排序算法的性能。
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="15-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="16-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-16-1" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>如果排序算法在排序过程中仅需要恒定量（即，O（1））的额外空间，则称其为就地排序算法。就是这样，少量的额外变量的常量是可以的，但我们不允许具有可变长度的变量，这取决于输入大小N.<br><a href="?slide=10-2"> <u>归并排序</u></a>，由于其合并子例程需要额外的大小为N的临时数组，因此不在原位。<br>讨论：冒泡排序，选择排序，插入排序，快速排序（是否随机），计数排序和基数排序如何？哪些是就地？</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="16">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="16-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-16-2" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+如果在执行排序后算法保留具有相同键值的元素的相对顺序，则这个排序算法称为稳定的排序。<br>稳定排序的示例应用：假设我们有按字母顺序排序的学生姓名。 现在，如果此列表按教程组号重新排序（回想一个教程组通常有许多学生），稳定的排序算法会确保同一教程组中的所有学生仍按字母顺序显示其名称。<br>讨论：在这里讨论过的排序算法中哪些是稳定的？<br>尝试排序数组A = {3, 4a, 2, 4b, 1}进行排序，即有两个4（4a先，然后4b）的副本。<br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="16-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="16-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-16-3" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="16-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="17">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-17" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+小测验时间！
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="16-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="17-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-17-1" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<span style="white-space: normal;"><input class="mcq-answer" id="mcq-answer-1" value="5" hidden><p>Quiz: <b>Which of these algorithms run in O(N log N) on any input array of size N?</b></p><form><input type="radio" name="mcq-1-choice" value="3"> Insertion Sort<br><input type="radio" name="mcq-1-choice" value="2"> Bubble Sort<br><input type="radio" name="mcq-1-choice" value="5"> Merge Sort<br><input type="radio" name="mcq-1-choice" value="4"> Quick Sort (Deterministic)<br></form><button class="mcq-submit" id="submit-1">Submit</button> <span id="answer-status-1"></span></span>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="17">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="17-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-17-2" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<span style="white-space: normal;"><input class="msq-answer" id="msq-answer-3" value="13,15,16" hidden><p>Quiz: <b>Which of these algorithms has worst case time complexity of Θ(N^2) for sorting N integers?</b></p><input type="checkbox" class="msq-choice" id="msq-3-choice-15"> Insertion Sort<br><input type="checkbox" class="msq-choice" id="msq-3-choice-13"> Bubble Sort<br><input type="checkbox" class="msq-choice" id="msq-3-choice-16"> Selection Sort<br><input type="checkbox" class="msq-choice" id="msq-3-choice-23"> Radix Sort<br><input type="checkbox" class="msq-choice" id="msq-3-choice-14"> Merge Sort<br><button class="msq-submit" id="submit-3">Submit</button> <span id="answer-status-3"></span></span><div><span style="white-space: normal;">Θ是一个紧密的时间复杂度分析，其中最佳情况Ω和最坏情况的big-O 分析互相匹配。<br></span></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="17-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>我们已经到了最后的排序的电子讲座。<br>但是，VisuAlgo中还有另外两种嵌入在其他数据结构中的排序算法：<a href="./heap"><u>堆排序</u></a>和<a href="./bst"><u>平衡BST排序</u></a>。 我们将在这两个数据结构的电子讲座里面讨论它们。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="17-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18-1" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18-2" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18-3" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>实际上，许多这些基本排序算法的C ++源代码已经分散在这些电子讲座幻灯片中。对于其他编程语言，您可以将给定的C ++源代码翻译为其他编程语言。<br>通常，排序只是问题解决过程中的一小部分，而现在大多数编程语言都有自己的排序功能，所以除非绝对必要，否则我们不必重新编码它们。<br>在C ++中，您可以在STL算法中使用<a href="http://en.cppreference.com/w/cpp/algorithm/sort" target="_blank"><u>std::sort</u></a>，<a href="http://en.cppreference.com/w/cpp/algorithm/stable_sort" target="_blank"><u>std::stable_sort</u></a> 或 <a href="http://en.cppreference.com/w/cpp/algorithm/partial_sort" target="_blank"><u>std::partial_sort</u></a>。<br>在Python中，您可以使用<a href="https://docs.python.org/3/library/stdtypes.html#list.sort" target="_blank"><u>sort</u></a>。<br>在Java中，您可以使用<a href="https://docs.oracle.com/javase/9/docs/api/java/util/Collections.html#sort-java.util.List-" target="_blank"><u>Collections.sort</u></a>。<br>如果比较函数是针对特定问题的，我们可能需要为这些内置的排序例程提供额外的比较函数。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18-2">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18-4">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18-4" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+注意：请在训练之前尝试 <span class="slide-actions" onclick="doButtonAction19()">Sign up/Login</span>！<br><span style="white-space: normal;"><span class="slide-actions" onclick="doButtonAction17()">Test your understanding here!</span></span><br>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18-3">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="18-5">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-18-5" class="electure-dialog" style="top:60px;left:60px;width:500px;">
+<p>现在您已经到了电子讲座的最后部分，您认为排序问题与调用内置排序例程一样简单吗？<br>尝试这些在线评判问题以了解更多信息：<br><a href="https://open.kattis.com/problems/mjehuric" target="_blank"><u>Kattis - mjehuric</u></a><br><a href="https://open.kattis.com/problems/sortofsorting" target="_blank"><u>Kattis - sortofsorting</u></a>，或者<br><a href="https://open.kattis.com/problems/sidewayssorting" target="_blank"><u>Kattis - sidewayssorting</u></a><br>这不是排序算法的最后部分。 当您在VisuAlgo中探索其他主题时，您会意识到排序是许多其他高难度问题的高级算法的预处理步骤，例如， 作为克鲁斯卡尔算法（<a href="./mst"><u>Kruskal&#39;s algorithm</u></a>）的预处理步骤，创造性地用于后缀数组（<a href="./suffixarray"><u>Suffix Array</u></a> ）数据结构等。<br></p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18-4">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="99">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-99" class="electure-dialog" style="right:150px;bottom:335px;width:500px;">
+当操作进行时，状态面板将会有每个步骤的描述。
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="18-5">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="99-1">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-99-1" class="electure-dialog" style="right:170px;bottom:275px;width:180px;">
+<div style="background-color: white; color: black;">
+<p>e-Lecture: The content of this slide is hidden and only available for legitimate CS lecturer worldwide. Drop an email to visualgo.info at gmail dot com if you want to activate this CS lecturer-only feature <b>and you are really a CS lecturer (show your University staff profile)</b>.</p>
+</div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="99">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="99-2">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-99-2" class="electure-dialog" style="bottom:70px;left:50%;margin-left:-120px;width:260px;">
+使用用户控件控制动画！可用的快捷键有：<div>空格键：绘制／停止／重绘</div><div>左／右箭头：上一步／下一步</div><div>-／+：减缓／增加速度</div><div><br></div>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="99-1">上一个 <u>PgUp</u></div>
+<div class='electure-next' data-nextid="99-3">下一个 <u>PgDn</u></div>
+</div>
+<div id="electure-99-3" class="electure-dialog" style="top:70px;right:60px;width:300px;">
+<p>Return to &#39;Exploration Mode&#39; to start exploring!</p><br><p>Note that if you notice any bug in this visualization or if you want to request for a new visualization feature, do not hesitate to drop an email to the project leader: Dr Steven Halim via his email address: stevenhalim at gmail dot com.</p>
+<div class='electure-end'>X <u>Esc</u></div>
+<div class='electure-prev' data-nextid="99-2">上一个 <u>PgUp</u></div>
+</div>
+<div id="popup" hidden>
+<div id="popup-content"></div>
+<span id="hide-popup" hidden>X <u>关闭</u></span>
+</div>
+<div id="sort-viz">
+<svg id="viz-canvas"></svg><br>
+<svg id="viz-counting-sort-secondary-canvas"></svg>
+<div id="viz-radix-sort-canvas">
+<span id="radix-sort-bucket-labels-collection">
+<span class="radix-sort-bucket-label">0</span>
+<span class="radix-sort-bucket-label">1</span>
+<span class="radix-sort-bucket-label">2</span>
+<span class="radix-sort-bucket-label">3</span>
+<span class="radix-sort-bucket-label">4</span>
+<span class="radix-sort-bucket-label">5</span>
+<span class="radix-sort-bucket-label">6</span>
+<span class="radix-sort-bucket-label">7</span>
+<span class="radix-sort-bucket-label">8</span>
+<span class="radix-sort-bucket-label">9</span>
+</span>
+</div>
+</div>
+<div id="current-action" class="panel"><p></p></div>
+<div id="actions" class="panel">
+<p id="create">创建</p>
+<p id="sort">排序</p>
+</div>
+<div id="actions-hide" class="panel-hide"><img src="https://visualgo.net/img/arrow_white_right.png" alt=">" title="show/hide actions panel" /></div>
+<div id="actions-extras">
+<div class="create action-menu-pullout">
+<div id="create-random" class="execAction new-menu-option coloured-menu-option" onclick="createList('random')"><p>随机</p></div>
+<div id="create-sorted" class="execAction new-menu-option coloured-menu-option" onclick="triggerSubmenu('sorted')">
+<p>已完成排序的</p>
+<div id="create-sorted-increasing" class="execAction coloured-menu-option" onclick="createList('sorted-increasing')"><p>升序</p></div>
+<div id="create-sorted-decreasing" class="execAction new-menu-option coloured-menu-option" onclick="createList('sorted-decreasing')"><p>降序</p></div>
+</div>
+<div id="create-nearly-sorted" class="execAction new-menu-option coloured-menu-option" onclick="triggerSubmenu('nearly-sorted')">
+<p>接近完成排序的</p>
+<div id="create-nearly-sorted-increasing" class="execAction coloured-menu-option" onclick="createList('nearly-sorted-increasing')"><p>升序</p></div>
+<div id="create-nearly-sorted-decreasing" class="execAction new-menu-option coloured-menu-option" onclick="createList('nearly-sorted-decreasing')"><p>降序</p></div>
+</div>
+<div id="create-userdefined-input" class="new-menu-option"><input type="text" id="userdefined-input" title="Enter a list of numbers, separated by commas." autocomplete="off" value="3,44,38,5,47,15,36,26,27,2,46,4,19,50,48"></div>
+<div id="create-userdefined-go" class="execAction new-menu-option coloured-menu-option" onclick="createList('userdefined')"><p>执行</p></div>
+<div id="create-err" class="err"></div>
+</div>
+<div class="sort action-menu-pullout">
+<div id="sort-bubble-merge-inversion" class="execAction new-menu-option coloured-menu-option"><input type="checkbox" id="sort-bubble-merge-inversion-checkbox">计算倒置指数</div>
+<div id="sort-go" class="execAction new-menu-option coloured-menu-option" onclick="sort()"><p>执行</p></div>
+<div id="sort-err" class="err"></div>
+</div>
+</div>
+<div id="bottom-bar">
+<a id="trigger-about">关于</a>
+<a id="trigger-team">团队</a>
+<a id="trigger-terms">使用条款</a>
+</div>
+<div id="about" class="overlays">
+<h4>关于</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+VisuAlgo在2011年由Steven Halim博士概念化，作为一个工具，帮助他的学生更好地理解数据结构和算法，让他们自己和自己的步伐学习基础。<br>VisuAlgo包含许多高级算法，这些算法在Steven Halim博士的书（“竞争规划”，与他的兄弟Felix Halim博士合作）和其他书中讨论。今天，一些高级算法的可视化/动画只能在VisuAlgo中找到。<br>虽然专门为新加坡国立大学（NUS）学生采取各种数据结构和算法类（例如CS1010，CS1020，CS2010，CS2020，CS3230和CS3230），作为在线学习的倡导者，我们希望世界各地的好奇心发现这些可视化也很有用。<br>VisuAlgo不是从一开始就设计为在小触摸屏（例如智能手机）上工作良好，因为需要满足许多复杂的算法可视化，需要大量的像素和点击并拖动手势进行交互。一个令人尊敬的用户体验的最低屏幕分辨率为1024x768，并且只有着陆页相对适合移动设备。<br>VisuAlgo是一个正在进行的项目，更复杂的可视化仍在开发中。<br>最令人兴奋的发展是自动问题生成器和验证器（在线测验系统），允许学生测试他们的基本数据结构和算法的知识。这些问题是通过一些规则随机生成的，学生的答案会在提交给我们的评分服务器后立即自动分级。这个在线测验系统，当它被更多的世界各地的CS教师采用，应该技术上消除许多大学的典型计算机科学考试手动基本数据结构和算法问题。通过在通过在线测验时设置小（但非零）的重量，CS教练可以（显着地）增加他/她的学生掌握这些基本问题，因为学生具有几乎无限数量的可以立即被验证的训练问题他们参加在线测验。培训模式目前包含12个可视化模块的问题。我们将很快添加剩余的8个可视化模块，以便VisuAlgo中的每个可视化模块都有在线测验组件。<br>另一个积极的发展分支是VisuAlgo的国际化子项目。我们要为VisuAlgo系统中出现的所有英语文本准备一个CS术语的数据库。这是一个很大的任务，需要众包。一旦系统准备就绪，我们将邀请VisuAlgo游客贡献，特别是如果你不是英语母语者。目前，我们还以各种语言写了有关VisuAlgo的公共注释：<br>
+<a href="https://weibo.com/p/230418436e9ee80102v4rk" target='_blank'><u>zh</u></a>, <a href='https://www.facebook.com/notes/steven-halim/httpidvisualgonet-visualisasi-struktur-data-dan-algoritma-dengan-animasi/10153236934439689' target='_blank'><u>id</u></a>, <a href="https://blog.naver.com/visualgo_nus" target='_blank'><u>kr</u></a>, <a href='https://www.facebook.com/groups/163215593699283/permalink/824003417620494/' target='_blank'><u>vn</u></a>, <a href='http://pantip.com/topic/32736343' target='_blank'><u>th</u></a>.</p>
+</div>
+</div>
+<div id="team" class="overlays">
+<h4>团队</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+<p>
+<strong><span style='line-height: 150%;'>项目领导和顾问（2011年7月至今）</span></strong><br>
+<a href='http://www.comp.nus.edu.sg/~stevenha/' target='_blank'>Dr Steven Halim</a>, Senior Lecturer, School of Computing (SoC), National University of Singapore (NUS)<br>
+<a href='http://felix-halim.net/' target='_blank'>Dr Felix Halim</a>, Software Engineer, Google (Mountain View)
+</p>
+<p>
+<strong><span style='line-height: 150%;'>本科生研究人员 1 (Jul 2011-Apr 2012)</span></strong><br>
+Koh Zi Chun, <a href='http://roticv.rantx.com/' target='_blank'>Victor Loh Bo Huai</a>
+</p>
+<p>
+<strong><span style='line-height: 150%;'>最后一年项目/ UROP学生 1 (Jul 2012-Dec 2013)</span></strong><br>
+Phan Thi Quynh Trang, Peter Phandi, Albert Millardo Tjindradinata, Nguyen Hoang Duy
+</p>
+<p>
+<strong><span style='line-height: 150%;'>最后一年项目/ UROP学生 2 (Jun 2013-Apr 2014)</span></strong><br>
+<a href='http://www.rosemarietan.com/' target='_blank'>Rose Marie Tan Zhao Yun</a>, Ivan Reinaldo
+</p>
+<p>
+<strong><span style='line-height: 150%;'>本科生研究人员 2 (May 2014-Jul 2014)</span></strong><br>
+Jonathan Irvin Gunawan, Nathan Azaria, Ian Leow Tze Wei, Nguyen Viet Dung, Nguyen Khac Tung, Steven Kester Yuwono, Cao Shengze, Mohan Jishnu
+</p>
+<p>
+<strong><span style='line-height: 150%;'>最后一年项目/ UROP学生 3 (Jun 2014-Apr 2015)</span></strong><br>
+Erin Teo Yi Ling, Wang Zi
+</p>
+<p>
+<strong><span style='line-height: 150%;'>最后一年项目/ UROP学生 4 (Jun 2016-Dec 2017)</span></strong><br>
+Truong Ngoc Khanh, John Kevin Tjahjadi, Gabriella Michelle, Muhammad Rais Fathin Mudzakir
+</p>
+<p>
+List of translators who have contributed &ge;100 translations can be found at <a href="https://visualgo.net/statistics">statistics</a> page.
+</p>
+<p>
+<strong><span style='line-height: 150%;'>致谢</span></strong><br>
+这个项目是由来自NUS教学与学习发展中心（CDTL）的慷慨的教学增进赠款提供的。
+</p>
+</div>
+</div>
+<div id="termsofuse" class="overlays">
+<h4>使用条款</h4><span class='close-overlay'>&#x2715;</span>
+<div class='content'>
+VisuAlgo是地球上的计算机科学社区免费。如果你喜欢VisuAlgo，我们对你的唯一的要求就是通过你知道的方式，比如：Facebook、Twitter、课程网页、博客评论、电子邮件等<b>告诉其他计算机方面的学生/教师：VisuAlgo网站的神奇存在</b>。<br>如果您是数据结构和算法<b>学生/教师</b>，您可以直接将此网站用于您的课程。如果你从这个网站拍摄截图（视频），你可以使用屏幕截图（视频）在其他地方，只要你引用本网站的网址（http://visualgo.net）或出现在下面的出版物列表中作为参考。但是，您不能下载VisuAlgo（客户端）文件并将其托管在您自己的网站上，因为它是剽窃。到目前为止，我们不允许其他人分叉这个项目并创建VisuAlgo的<b>变体</b>。使用（客户端）的VisuAlgo的离线副本作为您的个人使用是很允许的。<br>请注意，VisuAlgo的在线测验组件本质上具有沉重的服务器端组件，并且没有简单的方法来在本地保存服务器端脚本和数据库。目前，公众只能使用“培训模式”来访问这些在线测验系统。目前，“测试模式”是一个更受控制的环境，用于使用这些随机生成的问题和自动验证在NUS的实际检查。其他感兴趣的CS教练应该联系史蒂文如果你想尝试这样的“测试模式”。<br><b>出版物名单</b><br>这项工作在2012年ACM ICPC世界总决赛（波兰，华沙）和IOI 2012年IOI大会（意大利Sirmione-Montichiari）的CLI讲习班上进行了简要介绍。您可以点击此链接阅读我们2012年关于这个系统的文章（它在2012年还没有被称为VisuAlgo）。<br>这项工作主要由我过去的学生完成。最近的最后报告是：Erin，Wang Zi，Rose，Ivan。<br><b>错误申报或请求添加新功能</b><br>VisuAlgo不是一个完成的项目。 Steven Halim博士仍在积极改进VisuAlgo。如果您在使用VisuAlgo并在我们的可视化页面/在线测验工具中发现错误，或者如果您想要求添加新功能，请联系Dr Steven Halim博士。他的联系邮箱是他的名字加谷歌邮箱后缀：StevenHalim@gmail.com。<br>
+</div>
+</div>
+
+<script src="https://visualgo.net/js/jquery-3.3.1.min.js"></script>
+<script>
+      var PHP_DOMAIN = "";
+
+      // surprise colour!
+      // Referenced to in  home.js and viz.js also
+      // var colourArray = ["#52bc69", "#d65775"/*"#ed5a7d"*/, "#2ebbd1", "#d9513c", "#fec515", "#4b65ba", "#ff8a27", "#a7d41e"]; // green, pink, blue, red, yellow, indigo, orange, lime
+      var colourArray = ["#fff757", "#d65775", "#34FF60", "#d9513c", "#fec515", "#4b65ba", "#ff8a27", "#a7d41e"];//
+      function disableScroll() { $('html').css('overflow', 'hidden'); }
+
+      function enableScroll() { $('html').css('overflow', 'visible'); }
+
+      function replaceAll(find, replace, str) { return str.replace(new RegExp(find, 'g'), replace); }
+
+      function getColours() {
+        var generatedColours = new Array();
+        while (generatedColours.length < 4) {
+          var n = (Math.floor(Math.random() * colourArray.length));
+          if ($.inArray(n, generatedColours) == -1)
+            generatedColours.push(n);
+        }
+        return generatedColours;
+      }
+
+      function isOn(value, position) {
+        return (value>>position) & 1 === 1;
+      }
+
+      function customAlert(msg) {
+        $('#custom-alert p').html(msg);
+        var m = -1 * ($('#custom-alert').outerHeight()/2);
+        $('#custom-alert').css('margin-top', m+'px');
+        $('#dark-overlay').fadeIn(function() {
+          $('#custom-alert').fadeIn(function() {
+            setTimeout(function() {
+              $('#custom-alert').fadeOut(function() {
+                $('#dark-overlay').fadeOut();
+              });
+            }, 1000);
+          });
+        });
+      }
+
+      function showLoadingScreen() {
+        $('#loading-overlay').show();
+        $('#loading-message').show();
+      }
+
+      function hideLoadingScreen() {
+        $('#loading-overlay').hide();
+      }
+
+      function commonAction(retval, msg) {
+        //setTimeout(function() {
+          if (retval) { // mode == "exploration" && // now not only for exploration mode, but check if this opens other problems
+            $('#current-action').show();
+            $('#current-action').html(mode == "exploration" ? msg : ("e-Lecture Example (auto play until done)<br>" + msg));
+            $('#progress-bar').slider("option", "max", gw.getTotalIteration()-1);
+            triggerRightPanels();
+            isPlaying = true;
+          }
+        //}, 500);
+      }
+
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable)
+            return decodeURIComponent(pair[1]);
+        }
+        return "";
+      }
+
+      var generatedColours = getColours();
+      var surpriseColour = colourArray[generatedColours[0]];
+      var colourTheSecond = colourArray[generatedColours[1]];
+      var colourTheThird = colourArray[generatedColours[2]];
+      var colourTheFourth = colourArray[generatedColours[3]];
+
+      $(function() {
+        $('.links').css('background', surpriseColour);
+        $('.right-links').css('background', surpriseColour);
+        $('#login-go').css('background', surpriseColour);
+
+        $('.colour').css("color", surpriseColour); // name
+        $('h4').css("background-color", surpriseColour); // about, contact us etc. button background
+
+        // title
+        $('#title a').click(function() {
+          $('#title a').removeClass('selected-viz');
+          $(this).addClass('selected-viz');
+          // temporary quick fix for Google Chrome Aug 2016 issue...
+          setTimeout(function(){ document.body.style.zoom = "100.1%"; }, 100); // force resize/redraw...
+          setTimeout(function(){ document.body.style.zoom = "100%"; }, 600);
+        });
+
+        // overlays stuffs
+        $('#trigger-about').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#about').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('#trigger-team').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#team').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('#trigger-terms').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#termsofuse').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('.close-overlay').click(function() {
+          $('.overlays').fadeOut(function() {
+            $('#dark-overlay').fadeOut();
+          });
+        });
+
+        $('#dark-overlay').click(function() {
+          $('.overlays').fadeOut();
+          $('#dark-overlay').fadeOut();
+        });
+
+        $.get('/isloggedin', function(data) {
+          var isLoggedIn = data['isloggedin'] == '1';
+          var element;
+          if (isLoggedIn) {
+            // element = '<a onclick="verifyLogout()">登出</a>';
+            element = '<a href="https://visualgo.net/profile">Profile</a>';
+          }
+          else {
+            element = '<a href="https://visualgo.net/login">登录<br></a>'
+          }
+          $('#useraccount').html(element);
+        });
+      });
+
+      function verifyLogout() {
+        // Steven's remarks: use a better 'confirm' than the default :(
+        var doesLogout = confirm('你确定要退出登录吗？');
+        if (doesLogout == true) {
+          window.location = "https://visualgo.net/logout";
+        }
+      }
+
+      function checkLogin() {
+        $.get('/checklogin', function(data) {
+          var url = data['url'];
+          window.location.href = '/' + url;
+        });
+      }
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1566631-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+<script src="https://visualgo.net/js/jquery-ui.min.js"></script>
+
+<script src="https://visualgo.net/js/d3.min.js"></script>
+<script src="https://visualgo.net/js/viz-1.0.3.js"></script>
+<script src="https://visualgo.net/js/visualgo_print.js"></script>
+<script src="/js/graph_library.js"></script>
+<script>
+      function runSlide(slide) {
+        if (slide == '1') {
+          $("#e-lecture").html("slide " + slide + " (" + 1 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.bubbleSort, "29,10,14,37,14");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '1-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 2 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '1-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 4 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '2') {
+          $("#e-lecture").html("slide " + slide + " (" + 5 + "%)");
+
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '2-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 7 + "%)");
+          $("#create").click().addClass("menu-highlighted");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '2-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 8 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '3') {
+          $("#e-lecture").html("slide " + slide + " (" + 9 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '4') {
+          $("#e-lecture").html("slide " + slide + " (" + 11 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '4-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 12 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '5') {
+          $("#e-lecture").html("slide " + slide + " (" + 14 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '6') {
+          $("#e-lecture").html("slide " + slide + " (" + 15 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.bubbleSort, "29,10,14,37,14");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '6-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 16 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.bubbleSort, "29,10,14,37,14");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '6-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 18 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.bubbleSort, "3,6,11,25,39");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '6-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 19 + "%)");
+          $('#title-Bubble').click();
+$("#sort").click().addClass("menu-highlighted");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '7') {
+          $("#e-lecture").html("slide " + slide + " (" + 21 + "%)");
+          $('#title-Selection').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.selectionSort, "29,10,14,37,13");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '7-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 22 + "%)");
+          $('#title-Selection').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.selectionSort, "29,10,14,37,13");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '7-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 23 + "%)");
+          $('#title-Selection').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.selectionSort, "29,10,14,37,13");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '8') {
+          $("#e-lecture").html("slide " + slide + " (" + 25 + "%)");
+          $('#title-Insertion').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.insertionSort, "40,13,20,8");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '8-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 26 + "%)");
+          $('#title-Insertion').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.insertionSort, "40,13,20,8");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '8-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 28 + "%)");
+          $('#title-Insertion').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.insertionSort, "40,13,20,8");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '8-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 29 + "%)");
+          $('#title-Insertion').click();
+$("#sort").click().addClass("menu-highlighted");
+changeSortType(gw.insertionSort, "40,13,20,8");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '9') {
+          $("#e-lecture").html("slide " + slide + " (" + 30 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10') {
+          $("#e-lecture").html("slide " + slide + " (" + 32 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 33 + "%)");
+          $('#title-Merge').click();
+changeSortType(gw.mergeSort, "1,5,19,20,2,11,15,17");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 35 + "%)");
+          $('#title-Merge').click();
+changeSortType(gw.mergeSort, "1,5,19,20,2,11,15,17");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 36 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-4') {
+          $("#e-lecture").html("slide " + slide + " (" + 38 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-5') {
+          $("#e-lecture").html("slide " + slide + " (" + 39 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-6') {
+          $("#e-lecture").html("slide " + slide + " (" + 40 + "%)");
+          $('#title-Merge').click();
+changeSortType(gw.mergeSort, "7,2,6,3,8,4,5");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-7') {
+          $("#e-lecture").html("slide " + slide + " (" + 42 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-8') {
+          $("#e-lecture").html("slide " + slide + " (" + 43 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-9') {
+          $("#e-lecture").html("slide " + slide + " (" + 45 + "%)");
+          $('#title-Merge').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '10-10') {
+          $("#e-lecture").html("slide " + slide + " (" + 46 + "%)");
+
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11') {
+          $("#e-lecture").html("slide " + slide + " (" + 47 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 49 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 50 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 52 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-4') {
+          $("#e-lecture").html("slide " + slide + " (" + 53 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-5') {
+          $("#e-lecture").html("slide " + slide + " (" + 54 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-6') {
+          $("#e-lecture").html("slide " + slide + " (" + 56 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-7') {
+          $("#e-lecture").html("slide " + slide + " (" + 57 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-8') {
+          $("#e-lecture").html("slide " + slide + " (" + 59 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-9') {
+          $("#e-lecture").html("slide " + slide + " (" + 60 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "27,38,12,39,27,16");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-10') {
+          $("#e-lecture").html("slide " + slide + " (" + 61 + "%)");
+          $('#title-Quick').click();
+
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-11') {
+          $("#e-lecture").html("slide " + slide + " (" + 63 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "5,18,23,39,44,50");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-12') {
+          $("#e-lecture").html("slide " + slide + " (" + 64 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "5,18,23,39,44,50");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '11-13') {
+          $("#e-lecture").html("slide " + slide + " (" + 66 + "%)");
+          $('#title-Quick').click();
+changeSortType(gw.quickSort, "4,1,3,2,6,5,7");
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '12') {
+          $("#e-lecture").html("slide " + slide + " (" + 67 + "%)");
+          $('#title-RandomizedQuick').click();
+changeSortType(gw.randomizedQuickSort, DEFAULT_DATA);
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '12-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 69 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '13') {
+          $("#e-lecture").html("slide " + slide + " (" + 70 + "%)");
+          $('#title-Counting').click();
+
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '13-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 71 + "%)");
+          $('#title-Counting').click();
+
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '14') {
+          $("#e-lecture").html("slide " + slide + " (" + 73 + "%)");
+          $('#title-Counting').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '15') {
+          $("#e-lecture").html("slide " + slide + " (" + 74 + "%)");
+          $('#title-Radix').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '15-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 76 + "%)");
+          $('#title-Radix').click();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '16') {
+          $("#e-lecture").html("slide " + slide + " (" + 77 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '16-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 78 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '16-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 80 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '16-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 81 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '17') {
+          $("#e-lecture").html("slide " + slide + " (" + 83 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '17-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 84 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '17-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 85 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18') {
+          $("#e-lecture").html("slide " + slide + " (" + 87 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 88 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 90 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 91 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18-4') {
+          $("#e-lecture").html("slide " + slide + " (" + 92 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '18-5') {
+          $("#e-lecture").html("slide " + slide + " (" + 94 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '99') {
+          $("#e-lecture").html("slide " + slide + " (" + 95 + "%)");
+
+          hideEntireActionsPanel();
+
+          showStatusPanel();
+          showCodetracePanel();
+
+        }
+        if (slide == '99-1') {
+          $("#e-lecture").html("slide " + slide + " (" + 97 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '99-2') {
+          $("#e-lecture").html("slide " + slide + " (" + 98 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+        if (slide == '99-3') {
+          $("#e-lecture").html("slide " + slide + " (" + 100 + "%)");
+
+          hideEntireActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+
+        }
+      }
+
+      window.onpopstate = function(event) {
+        var slide = event.state['slide'];
+        openSlide(slide, function() {
+          runSlide(slide);
+        });
+      };
+
+      function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'), sParameterName, i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] === sParam) return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+      };
+
+      function pushState(slideValue) {
+        var url = '/zh/sorting';
+        if (typeof slideValue != 'undefined' && slideValue != null) url += '?slide=' + slideValue;
+        window.history.pushState({slide: slideValue}, "slide " + slideValue, url);
+      }
+
+      function showPopup(callback) {
+        $('#popup').fadeIn(100, callback);
+      }
+
+      function hidePopup(callback) {
+        $('#popup').fadeOut(100, callback);
+      }
+
+      function showOverlay() {
+        $('#overlay').css('opacity', 0.5);
+        $('#overlay').show();
+      }
+
+      function hideOverlay() {
+        $('#overlay').hide();
+        $("#e-lecture").html("");
+      }
+
+      function makeOverlayTransparent() {
+        $('#overlay').css('opacity', 0);
+      }
+
+      function hideSlide(callback) {
+        isPlaying = true;
+        closeSlide(cur_slide, function() {
+          makeOverlayTransparent();
+          setTimeout(callback, 700); // don't immediately run the animation, wait for 500ms+ first
+        });
+      }
+
+      function showSlide() {
+        isPlaying = false;
+        openSlide(cur_slide);
+        showOverlay();
+      }
+
+      $(function() {
+        var slide = getUrlParameter('slide');
+
+        $.get('/hasvisited' + '/sorting', function(data) {
+          var hasVisited = data['hasvisited'] == '1';
+          if (!hasVisited) {
+            var postData = {
+              '_token': 'GSkA5EnxYizNcEzwp1icxcvqDK6oe7owtXA1189E',
+              'page': '/sorting'.substring(1),
+            };
+
+            $.post("/visitpage", postData, function(data) {
+              // non critical request...
+            });
+
+            if (typeof slide != undefined && slide != null) {
+              cur_slide = slide;
+            }
+
+            $("#mode-menu a").trigger("click");
+          }
+          else {
+            if (typeof slide != undefined && slide != null) {
+              cur_slide = slide;
+              $('#mode-menu a').click();
+            }
+          }
+        }).fail(function() {
+          if (typeof slide != undefined && slide != null) {
+            cur_slide = slide;
+            $('#mode-menu a').click();
+          }
+        });
+
+        $('.mcq-submit').click(function() {
+          var questionId = parseInt($(this).attr('id').split('-')[1]);
+          var answer = $('#mcq-answer-' + questionId).val();
+          var userAnswer = $('input[type=radio][name=mcq-'+questionId+'-choice]:checked').val();
+
+          if (answer === userAnswer) {
+            $('#answer-status-' + questionId).html('<font color="green"><b>Correct!</b></font>');
+          }
+          else {
+            $('#answer-status-' + questionId).html('<font color="red"><b>Wrong Answer! Try again...</b></font>');
+          }
+          $('#answer-status-' + questionId).show();
+          setTimeout(function() {
+            $('#answer-status-' + questionId).fadeOut(1000);
+          }, 1000);
+        });
+
+        $('.msq-submit').click(function() {
+          var questionId = parseInt($(this).attr('id').split('-')[1]);
+          var answer = $('#msq-answer-' + questionId).val();
+
+          var answers = [];
+          $('input[type=checkbox][class=msq-choice]:checked').each(function() {
+            answers.push($(this).attr('id').split('-')[3]);
+          });
+          answers.sort();
+          var userAnswer = answers.join(',');
+
+          if (answer === userAnswer) {
+            $('#answer-status-' + questionId).html('<font color="green">Correct!</font>');
+          }
+          else {
+            $('#answer-status-' + questionId).html('<font color="red">Wrong Answer! Try again...</font>');
+          }
+          $('#answer-status-' + questionId).show();
+          setTimeout(function() {
+            $('#answer-status-' + questionId).fadeOut(1000);
+          }, 1000);
+        });
+
+        $('select.lecture-dropdown').change(function() {
+          var nextSlide = $(this).val();
+          openSlide(nextSlide, function() {
+            runSlide(nextSlide);
+            pushState(nextSlide);
+          });
+        });
+
+        $('#hide-popup').click(function() {
+          hidePopup();
+        });
+
+        $('#popup').hover(function() {
+          $('#hide-popup').show();
+        }, function() {
+          $('#hide-popup').hide();
+        });
+
+        $('#electure-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('1-1');
+          pushState('1-1');
+        });
+
+        $('#electure-1-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('1-2');
+          pushState('1-2');
+        });
+        $('#electure-1-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('1');
+          pushState('1');
+        });
+
+        $('#electure-1-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('2');
+          pushState('2');
+        });
+        $('#electure-1-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('1-1');
+          pushState('1-1');
+        });
+
+        $('#electure-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('2-1');
+          pushState('2-1');
+        });
+        $('#electure-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('1-2');
+          pushState('1-2');
+        });
+
+        $('#electure-2-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('2-2');
+          pushState('2-2');
+        });
+        $('#electure-2-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('2');
+          pushState('2');
+        });
+
+        $('#electure-2-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('3');
+          pushState('3');
+        });
+        $('#electure-2-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('2-1');
+          pushState('2-1');
+        });
+
+        $('#electure-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('4');
+          pushState('4');
+        });
+        $('#electure-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('2-2');
+          pushState('2-2');
+        });
+
+        $('#electure-4 .electure-next').click(function() {
+          hidePopup();
+          runSlide('4-1');
+          pushState('4-1');
+        });
+        $('#electure-4 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('3');
+          pushState('3');
+        });
+
+        $('#electure-4-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('5');
+          pushState('5');
+        });
+        $('#electure-4-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('4');
+          pushState('4');
+        });
+
+        $('#electure-5 .electure-next').click(function() {
+          hidePopup();
+          runSlide('6');
+          pushState('6');
+        });
+        $('#electure-5 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('4-1');
+          pushState('4-1');
+        });
+
+        $('#electure-6 .electure-next').click(function() {
+          hidePopup();
+          runSlide('6-1');
+          pushState('6-1');
+        });
+        $('#electure-6 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('5');
+          pushState('5');
+        });
+
+        $('#electure-6-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('6-2');
+          pushState('6-2');
+        });
+        $('#electure-6-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('6');
+          pushState('6');
+        });
+
+        $('#electure-6-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('6-3');
+          pushState('6-3');
+        });
+        $('#electure-6-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('6-1');
+          pushState('6-1');
+        });
+
+        $('#electure-6-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('7');
+          pushState('7');
+        });
+        $('#electure-6-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('6-2');
+          pushState('6-2');
+        });
+
+        $('#electure-7 .electure-next').click(function() {
+          hidePopup();
+          runSlide('7-1');
+          pushState('7-1');
+        });
+        $('#electure-7 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('6-3');
+          pushState('6-3');
+        });
+
+        $('#electure-7-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('7-2');
+          pushState('7-2');
+        });
+        $('#electure-7-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('7');
+          pushState('7');
+        });
+
+        $('#electure-7-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('8');
+          pushState('8');
+        });
+        $('#electure-7-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('7-1');
+          pushState('7-1');
+        });
+
+        $('#electure-8 .electure-next').click(function() {
+          hidePopup();
+          runSlide('8-1');
+          pushState('8-1');
+        });
+        $('#electure-8 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('7-2');
+          pushState('7-2');
+        });
+
+        $('#electure-8-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('8-2');
+          pushState('8-2');
+        });
+        $('#electure-8-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('8');
+          pushState('8');
+        });
+
+        $('#electure-8-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('8-3');
+          pushState('8-3');
+        });
+        $('#electure-8-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('8-1');
+          pushState('8-1');
+        });
+
+        $('#electure-8-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('9');
+          pushState('9');
+        });
+        $('#electure-8-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('8-2');
+          pushState('8-2');
+        });
+
+        $('#electure-9 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10');
+          pushState('10');
+        });
+        $('#electure-9 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('8-3');
+          pushState('8-3');
+        });
+
+        $('#electure-10 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-1');
+          pushState('10-1');
+        });
+        $('#electure-10 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('9');
+          pushState('9');
+        });
+
+        $('#electure-10-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-2');
+          pushState('10-2');
+        });
+        $('#electure-10-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10');
+          pushState('10');
+        });
+
+        $('#electure-10-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-3');
+          pushState('10-3');
+        });
+        $('#electure-10-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-1');
+          pushState('10-1');
+        });
+
+        $('#electure-10-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-4');
+          pushState('10-4');
+        });
+        $('#electure-10-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-2');
+          pushState('10-2');
+        });
+
+        $('#electure-10-4 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-5');
+          pushState('10-5');
+        });
+        $('#electure-10-4 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-3');
+          pushState('10-3');
+        });
+
+        $('#electure-10-5 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-6');
+          pushState('10-6');
+        });
+        $('#electure-10-5 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-4');
+          pushState('10-4');
+        });
+
+        $('#electure-10-6 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-7');
+          pushState('10-7');
+        });
+        $('#electure-10-6 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-5');
+          pushState('10-5');
+        });
+
+        $('#electure-10-7 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-8');
+          pushState('10-8');
+        });
+        $('#electure-10-7 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-6');
+          pushState('10-6');
+        });
+
+        $('#electure-10-8 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-9');
+          pushState('10-9');
+        });
+        $('#electure-10-8 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-7');
+          pushState('10-7');
+        });
+
+        $('#electure-10-9 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10-10');
+          pushState('10-10');
+        });
+        $('#electure-10-9 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-8');
+          pushState('10-8');
+        });
+
+        $('#electure-10-10 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11');
+          pushState('11');
+        });
+        $('#electure-10-10 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-9');
+          pushState('10-9');
+        });
+
+        $('#electure-11 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-1');
+          pushState('11-1');
+        });
+        $('#electure-11 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10-10');
+          pushState('10-10');
+        });
+
+        $('#electure-11-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-2');
+          pushState('11-2');
+        });
+        $('#electure-11-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11');
+          pushState('11');
+        });
+
+        $('#electure-11-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-3');
+          pushState('11-3');
+        });
+        $('#electure-11-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-1');
+          pushState('11-1');
+        });
+
+        $('#electure-11-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-4');
+          pushState('11-4');
+        });
+        $('#electure-11-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-2');
+          pushState('11-2');
+        });
+
+        $('#electure-11-4 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-5');
+          pushState('11-5');
+        });
+        $('#electure-11-4 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-3');
+          pushState('11-3');
+        });
+
+        $('#electure-11-5 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-6');
+          pushState('11-6');
+        });
+        $('#electure-11-5 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-4');
+          pushState('11-4');
+        });
+
+        $('#electure-11-6 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-7');
+          pushState('11-7');
+        });
+        $('#electure-11-6 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-5');
+          pushState('11-5');
+        });
+
+        $('#electure-11-7 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-8');
+          pushState('11-8');
+        });
+        $('#electure-11-7 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-6');
+          pushState('11-6');
+        });
+
+        $('#electure-11-8 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-9');
+          pushState('11-9');
+        });
+        $('#electure-11-8 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-7');
+          pushState('11-7');
+        });
+
+        $('#electure-11-9 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-10');
+          pushState('11-10');
+        });
+        $('#electure-11-9 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-8');
+          pushState('11-8');
+        });
+
+        $('#electure-11-10 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-11');
+          pushState('11-11');
+        });
+        $('#electure-11-10 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-9');
+          pushState('11-9');
+        });
+
+        $('#electure-11-11 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-12');
+          pushState('11-12');
+        });
+        $('#electure-11-11 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-10');
+          pushState('11-10');
+        });
+
+        $('#electure-11-12 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11-13');
+          pushState('11-13');
+        });
+        $('#electure-11-12 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-11');
+          pushState('11-11');
+        });
+
+        $('#electure-11-13 .electure-next').click(function() {
+          hidePopup();
+          runSlide('12');
+          pushState('12');
+        });
+        $('#electure-11-13 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-12');
+          pushState('11-12');
+        });
+
+        $('#electure-12 .electure-next').click(function() {
+          hidePopup();
+          runSlide('12-1');
+          pushState('12-1');
+        });
+        $('#electure-12 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11-13');
+          pushState('11-13');
+        });
+
+        $('#electure-12-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('13');
+          pushState('13');
+        });
+        $('#electure-12-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('12');
+          pushState('12');
+        });
+
+        $('#electure-13 .electure-next').click(function() {
+          hidePopup();
+          runSlide('13-1');
+          pushState('13-1');
+        });
+        $('#electure-13 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('12-1');
+          pushState('12-1');
+        });
+
+        $('#electure-13-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('14');
+          pushState('14');
+        });
+        $('#electure-13-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('13');
+          pushState('13');
+        });
+
+        $('#electure-14 .electure-next').click(function() {
+          hidePopup();
+          runSlide('15');
+          pushState('15');
+        });
+        $('#electure-14 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('13-1');
+          pushState('13-1');
+        });
+
+        $('#electure-15 .electure-next').click(function() {
+          hidePopup();
+          runSlide('15-1');
+          pushState('15-1');
+        });
+        $('#electure-15 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('14');
+          pushState('14');
+        });
+
+        $('#electure-15-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('16');
+          pushState('16');
+        });
+        $('#electure-15-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('15');
+          pushState('15');
+        });
+
+        $('#electure-16 .electure-next').click(function() {
+          hidePopup();
+          runSlide('16-1');
+          pushState('16-1');
+        });
+        $('#electure-16 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('15-1');
+          pushState('15-1');
+        });
+
+        $('#electure-16-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('16-2');
+          pushState('16-2');
+        });
+        $('#electure-16-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('16');
+          pushState('16');
+        });
+
+        $('#electure-16-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('16-3');
+          pushState('16-3');
+        });
+        $('#electure-16-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('16-1');
+          pushState('16-1');
+        });
+
+        $('#electure-16-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('17');
+          pushState('17');
+        });
+        $('#electure-16-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('16-2');
+          pushState('16-2');
+        });
+
+        $('#electure-17 .electure-next').click(function() {
+          hidePopup();
+          runSlide('17-1');
+          pushState('17-1');
+        });
+        $('#electure-17 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('16-3');
+          pushState('16-3');
+        });
+
+        $('#electure-17-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('17-2');
+          pushState('17-2');
+        });
+        $('#electure-17-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('17');
+          pushState('17');
+        });
+
+        $('#electure-17-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18');
+          pushState('18');
+        });
+        $('#electure-17-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('17-1');
+          pushState('17-1');
+        });
+
+        $('#electure-18 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18-1');
+          pushState('18-1');
+        });
+        $('#electure-18 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('17-2');
+          pushState('17-2');
+        });
+
+        $('#electure-18-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18-2');
+          pushState('18-2');
+        });
+        $('#electure-18-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18');
+          pushState('18');
+        });
+
+        $('#electure-18-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18-3');
+          pushState('18-3');
+        });
+        $('#electure-18-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18-1');
+          pushState('18-1');
+        });
+
+        $('#electure-18-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18-4');
+          pushState('18-4');
+        });
+        $('#electure-18-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18-2');
+          pushState('18-2');
+        });
+
+        $('#electure-18-4 .electure-next').click(function() {
+          hidePopup();
+          runSlide('18-5');
+          pushState('18-5');
+        });
+        $('#electure-18-4 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18-3');
+          pushState('18-3');
+        });
+
+        $('#electure-18-5 .electure-next').click(function() {
+          hidePopup();
+          runSlide('99');
+          pushState('99');
+        });
+        $('#electure-18-5 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18-4');
+          pushState('18-4');
+        });
+
+        $('#electure-99 .electure-next').click(function() {
+          hidePopup();
+          runSlide('99-1');
+          pushState('99-1');
+        });
+        $('#electure-99 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('18-5');
+          pushState('18-5');
+        });
+
+        $('#electure-99-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('99-2');
+          pushState('99-2');
+        });
+        $('#electure-99-1 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('99');
+          pushState('99');
+        });
+
+        $('#electure-99-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('99-3');
+          pushState('99-3');
+        });
+        $('#electure-99-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('99-1');
+          pushState('99-1');
+        });
+
+        $('#electure-99-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('99-2');
+          pushState('99-2');
+        });
+
+
+
+        // temporary quick fix for Google Chrome Aug 2016 issue..., put at last part so that everything else has been loaded
+        // setTimeout(function(){ document.body.style.zoom = "100.1%"; }, 500);
+        // setTimeout(function(){ document.body.style.zoom = "100%"; }, 600);
+        // I turn it off on 14 June 2018, seems 'ok'?
+      });
+
+      function doButtonAction7() {
+        POPUP_IMAGE('https://open.kattis.com/images/site-logo');
+      }
+      function doButtonAction8() {
+        SORT();
+      }
+      function doButtonAction10() {
+        SORT();
+      }
+      function doButtonAction11() {
+        SORT();
+      }
+      function doButtonAction12() {
+        SORT();
+      }
+      function doButtonAction13() {
+        SORT();
+      }
+      function doButtonAction14() {
+        SORT();
+      }
+      function doButtonAction15() {
+        SORT();
+      }
+      function doButtonAction16() {
+        SORT();
+      }
+      function doButtonAction17() {
+        URL('../training?diff=Hard&n=10&tl=5&module=sorting');
+      }
+      function doButtonAction18() {
+        POPUP_IMAGE('https://pbs.twimg.com/profile_images/2618373647/image.jpg');
+      }
+      function doButtonAction19() {
+        URL('../login');
+      }
+      function doButtonAction20() {
+        POPUP_IMAGE('https://puu.sh/vfi6a/e532309371.png');
+      }
+      function doButtonAction33() {
+        changeSortType(gw.bubbleSort, "7,6,5,4,3,2,1");
+SORT();
+      }
+      function doButtonAction95() {
+        // add your code here
+      }
+
+      function adjustPopupToImageSize() {
+        var width = $('#popup-image').prop('width');
+        var height = $('#popup-image').prop('height');
+        $('#popup').width(width + 20);
+        $('#popup').height(height + 20);
+        if (width == 0 && height == 0) {
+          setTimeout(adjustPopupToImageSize, 200);
+        } else {
+          showPopup();
+        }
+      }
+
+      function POPUP_IMAGE(url) {
+        $('#popup-content').html('<img id="popup-image" src="' + url + '">');
+        adjustPopupToImageSize();
+      }
+
+      function URL(url) {
+        window.open(url, '_blank');
+      }
+
+      // Implement these functions in each visualisation
+      // This function will be called before entering e-Lecture Mode
+      function ENTER_LECTURE_MODE() {}
+
+      // This function will be called before returning to Explore Mode
+      function ENTER_EXPLORE_MODE() {}
+
+      // Lecture action functions
+      function CUSTOM_ACTION(action, data, mode) {}
+    </script>
+<script type="text/javascript">
+// Sorting Widget
+// original author: Ian Leow Tze Wei
+
+var Sorting = function() {
+  // constants
+  var HIGHLIGHT_NONE = "lightblue";
+  var HIGHLIGHT_STANDARD = "green";
+  var HIGHLIGHT_SPECIAL = "#DC143C";
+  var HIGHLIGHT_SORTED = "orange";
+
+  var HIGHLIGHT_LEFT = "#3CB371";
+  var HIGHLIGHT_RIGHT = "#9932CC";
+  var HIGHLIGHT_PIVOT = "yellow";
+
+  var HIGHLIGHT_GRAY = "#CCCCCC";
+
+  var HIGHLIGHT_RAINBOW = [
+    "#FF0000",
+    "#FF4000",
+    "#FF8000",
+    "#FFBF00",
+    "#FFFF00",
+    "#BFFF00",
+    "#80FF00",
+    "#40FF00",
+    //"#00FF00",
+    "#00FF40",
+    "#00FF80",
+    "#00FFBF",
+    "#00FFFF",
+    "#00BFFF",
+    "#0080FF",
+    "#0040FF",
+    "#0000FF",
+    "#4000FF",
+    "#8000FF",
+    "#BF00FF",
+    "#FF00FF"
+  ];
+
+  var HIGHLIGHT_BLUESHADES = [
+    HIGHLIGHT_GRAY,
+    HIGHLIGHT_NONE,
+    "#9DC4E8",
+    "#8EB1EB",
+    "#7E9DED",
+    "#6E89EF",
+    "#5E76F1",
+    "#4F62F4",
+    "#3F4FF6",
+    "#2F3BF8",
+    "#1F27FA",
+    "#1014FD",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF",
+    "#0000FF"
+  ];
+
+  var POSITION_USE_PRIMARY = "a";
+  var POSITION_USE_SECONDARY_IN_DEFAULT_POSITION = "b";
+
+  // Objects definition
+  var Entry = function(value, highlight, position, secondaryPositionStatus) {
+    this.value = value; // number
+    this.highlight = highlight; // string, use HIGHLIGHT_ constants
+    this.position = position; // number
+    this.secondaryPositionStatus = secondaryPositionStatus; // integer, +ve for position overwrite, -ve for absolute postion (-1 for 0th absolution position)
+  }
+
+  var Backlink = function(value, highlight, entryPosition, secondaryPositionStatus) {
+    this.value = value; // number
+    this.highlight = highlight; // string, use HIGHLIGHT_ constants
+    this.entryPosition = entryPosition; // number
+    this.secondaryPositionStatus = secondaryPositionStatus; // integer, +ve for position overwrite
+  }
+
+  var State = function(entries, backlinks, barsCountOffset, status, lineNo) {
+    this.entries = entries; // array of Entry's
+    this.backlinks = backlinks; // array of Backlink's
+    this.barsCountOffset = barsCountOffset; // how many bars to "disregard" (+ve) or to "imagine" (-ve) w.r.t. state.entries.length when calculating the centre position
+    this.status = status;
+    this.lineNo = lineNo; //integer or array, line of the code to highlight
+  }
+
+  //Helpers
+  var EntryBacklinkHelper = new Object();
+  EntryBacklinkHelper.appendList = function(entries, backlinks, numArray) {
+    for (var i = 0; i < numArray.length; i++) {
+      EntryBacklinkHelper.append(entries, backlinks, numArray[i]);
+    }
+  }
+
+  EntryBacklinkHelper.append = function(entries, backlinks, newNumber) {
+    entries.push(new Entry(newNumber, HIGHLIGHT_NONE, entries.length, POSITION_USE_PRIMARY));
+    backlinks.push(new Backlink(newNumber, HIGHLIGHT_NONE, backlinks.length, POSITION_USE_PRIMARY));
+  }
+
+  EntryBacklinkHelper.update = function(entries, backlinks) {
+    for (var i = 0; i < backlinks.length; i++) {
+      entries[backlinks[i].entryPosition].highlight = backlinks[i].highlight;
+      entries[backlinks[i].entryPosition].position = i;
+      entries[backlinks[i].entryPosition].secondaryPositionStatus = backlinks[i].secondaryPositionStatus;
+    }
+  }
+
+  EntryBacklinkHelper.copyEntry = function(oldEntry) {
+    return new Entry(oldEntry.value, oldEntry.highlight, oldEntry.position, oldEntry.secondaryPositionStatus);
+  }
+
+  EntryBacklinkHelper.copyBacklink = function(oldBacklink) {
+    return new Backlink(oldBacklink.value, oldBacklink.highlight, oldBacklink.entryPosition, oldBacklink.secondaryPositionStatus);
+  }
+
+  EntryBacklinkHelper.swapBacklinks = function(backlinks, i, j) {
+    var swaptemp = backlinks[i];
+    backlinks[i] = backlinks[j];
+    backlinks[j] = swaptemp;
+  }
+
+  var StateHelper = new Object();
+  StateHelper.createNewState = function(numArray) {
+    var entries = new Array();
+    var backlinks = new Array();
+    EntryBacklinkHelper.appendList(entries, backlinks, numArray);
+    return new State(entries, backlinks, 0, "", 0);
+  }
+
+  StateHelper.copyState = function(oldState) {
+    var newEntries = new Array();
+    var newBacklinks = new Array();
+    for (var i = 0; i < oldState.backlinks.length; i++) {
+      newEntries.push(EntryBacklinkHelper.copyEntry(oldState.entries[i]));
+      newBacklinks.push(EntryBacklinkHelper.copyBacklink(oldState.backlinks[i]));
+    }
+
+    var newLineNo = oldState.lineNo;
+    if (newLineNo instanceof Array)
+      newLineNo = oldState.lineNo.slice();
+
+    return new State(newEntries, newBacklinks, oldState.barsCountOffset, oldState.status, newLineNo);
+  }
+
+  StateHelper.updateCopyPush = function(list, stateToPush) {
+    EntryBacklinkHelper.update(stateToPush.entries, stateToPush.backlinks);
+    list.push(StateHelper.copyState(stateToPush));
+  }
+
+  var FunctionList = new Object();
+  FunctionList.text_y = function(d) {
+    var barHeight = scaler(d.value);
+    if (barHeight < 32) return -15;
+    return barHeight-15;
+  }
+
+  FunctionList.g_transform = function(d) {
+    if (d.secondaryPositionStatus == POSITION_USE_PRIMARY)
+      return 'translate(' + (centreBarsOffset + d.position * barWidth) + ", " + (maxHeight - scaler(d.value)) + ')';
+    else if (d.secondaryPositionStatus == POSITION_USE_SECONDARY_IN_DEFAULT_POSITION)
+      return 'translate(' + (centreBarsOffset + d.position * barWidth) + ", " + (maxHeight * 2 + gapBetweenPrimaryAndSecondaryRows - scaler(d.value)) + ')';
+    else if (d.secondaryPositionStatus >= 0)
+      return 'translate(' + (centreBarsOffset + d.secondaryPositionStatus * barWidth) + ", " + (maxHeight * 2 + gapBetweenPrimaryAndSecondaryRows - scaler(d.value)) + ')';
+    else if (d.secondaryPositionStatus < 0)
+      return 'translate(' + ((d.secondaryPositionStatus * -1 - 1) * barWidth) + ", " + (maxHeight * 2 + gapBetweenPrimaryAndSecondaryRows - scaler(d.value)) + ')';
+    else
+      return 'translation(0, 0)'; // error
+  }
+
+  FunctionList.radixElement_left = function(d) {
+    if (d.secondaryPositionStatus == POSITION_USE_PRIMARY)
+      return d.position * 65 + centreBarsOffset + "px";
+    return d.secondaryPositionStatus * 65 + 17.5 + "px";
+  }
+
+  FunctionList.radixElement_bottom = function(d, i) {
+    if (d.secondaryPositionStatus == POSITION_USE_PRIMARY)
+      return 500 - 24 + "px";
+    //console.log(i + " " + radixSortBucketOrdering[i]);
+    return radixSortBucketOrdering[i] * 30 + 5 + "px";
+  }
+
+  FunctionList.radixElement_html = function(d) {
+    if (d.highlight == HIGHLIGHT_NONE)
+      return d.value;
+
+    var text = "" + d.value;
+    while (text.length != 4)
+      text = " " + text;
+
+    var positionToHighlight = 0; //positionToHighlight = log_to_base_10(d.highlight), assumes d.highlight is power of 10
+    var positionCounter = d.highlight;
+    while (positionCounter != 1) {
+      positionToHighlight++;
+      positionCounter /= 10;
+    }
+
+    positionToHighlight = 3-positionToHighlight;
+
+    if (text.charAt(positionToHighlight) != " ") {
+      text = text.slice(0, positionToHighlight) +
+             "<span style='color: #B40404;'>" +
+             text.charAt(positionToHighlight) +
+             "</span>" +
+             text.slice(positionToHighlight+1);
+    }
+
+    text = text.trim();
+    return text;
+  }
+
+  var makePaler = function(hexColor) {
+    var red = Math.floor(parseInt(hexColor.slice(1, 3), 16) + 150);
+    var green = Math.floor(parseInt(hexColor.slice(3, 5), 16) + 150);
+    var blue = Math.floor(parseInt(hexColor.slice(5, 7), 16) + 150);
+
+    if (red > 255) red = 255;
+    if (green > 255) green = 255;
+    if (blue > 255) blue = 255;
+
+    red = red.toString(16);
+    green = green.toString(16);
+    blue = blue.toString(16);
+
+    if (red.length == 1) red = "0" + red;
+    if (green.length == 1) green = "0" + green;
+    if (blue.length == 1) blue = "0" + blue;
+    return "#" + red + green + blue;
+  }
+
+  // Variables/Settings
+  this.currentNumList = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]; // the default
+
+  var barWidth = 50;
+  var maxHeight = 230;
+  var gapBetweenBars = 5;
+  var maxNumOfElements = 20; //max 20 elements currently
+  var gapBetweenPrimaryAndSecondaryRows = 30; // of the bars
+
+  var maxCountingSortElementValue = 9; // Note that this isn't really customizable, as the code for counting sort is written with this value = 9 in mind.
+  var maxRadixSortElementValue = 9999; // Note that this isn't really customizable, as the code for radix sort is written with this value = 9999 in mind.
+  var maxElementValue = 50; // for all other sorts - this is fully customizable (seriously)
+
+  var graphElementSize = 10; // The width of the square in the side-graph representing 1 element
+  var graphElementGap = 2; // The width of the gap between each element in the side-graph
+  var graphRowGap = 10; // The height of the gap between each row in the side graph
+
+  //Code body
+  var statelist = new Array();
+  var secondaryStatelist = new Array();
+  var transitionTime = 500;
+  var currentStep = 0;
+  var animInterval;
+  var issPlaying; //so named so as not to mess with the isPlaying in viz.js
+
+  var quickSortUseRandomizedPivot; //true-false flag
+  var mergeSortInversionIndexCounter; //used by merge sort to count the inversion inde
+  var centreBarsOffset; // x offset to centre the bars in the canvas
+  var radixSortBucketOrdering; // used to order the elements inside each bucket (for radix sort). for formatting purposes.
+
+  var isRadixSort = false;
+  var isCountingSort = false;
+
+  this.selectedSortFunction;
+  // this.useEnhancedBubbleSort = false;
+  this.computeInversionIndex = false;
+
+  var canvas = d3.select("#viz-canvas")
+                 .attr("height", maxHeight * 2 + gapBetweenPrimaryAndSecondaryRows)
+                 .attr("width", barWidth * maxNumOfElements);
+
+  var countingSortSecondaryCanvas = d3.select("#viz-counting-sort-secondary-canvas")
+                                      .attr("height", 60)
+                                      .attr("width", barWidth * maxNumOfElements);
+
+  var radixSortCanvas = d3.select("#viz-radix-sort-canvas");
+
+  var scaler = d3.scale
+                 .linear()
+                 .range([0, maxHeight]);
+
+  var drawState = function(stateIndex) {
+    if (isRadixSort)
+      drawRadixSortCanvas(statelist[stateIndex], secondaryStatelist[stateIndex]);
+    else
+      drawBars(statelist[stateIndex]);
+
+    $('#status p').html(statelist[stateIndex].status);
+    highlightLine(statelist[stateIndex].lineNo);
+
+    if (isCountingSort)
+      drawCountingSortCounters(secondaryStatelist[stateIndex]);
+  };
+
+  var drawBars = function(state) {
+    scaler.domain([0, d3.max(state.entries, function(d) {
+      return d.value;
+    })]);
+
+    centreBarsOffset = (maxNumOfElements - (state.entries.length - state.barsCountOffset)) * barWidth / 2;
+
+    var canvasData = canvas.selectAll("g").data(state.entries);
+
+    // Exit ==============================
+    var exitData = canvasData.exit()
+                             .remove();
+
+    // Entry ==============================
+    var newData = canvasData.enter()
+                            .append("g")
+                            .attr("transform", FunctionList.g_transform);
+
+    newData.append("rect")
+           .attr("height", 0)
+           .attr("width", 0);
+
+    newData.append("text")
+           .attr("dy", ".35em")
+           .attr("x", (barWidth - gapBetweenBars) / 2)
+           .attr("y", FunctionList.text_y)
+           .text(function(d) {
+             return d.value;
+           });
+
+    // Update ==============================
+    canvasData.select("text")
+              .transition()
+              .attr("y", FunctionList.text_y)
+              .text(function(d) {
+                return d.value;
+              });
+
+    canvasData.select("rect")
+              .transition()
+              .attr("height", function(d) {
+                return scaler(d.value);
+              })
+              .attr("width", barWidth - gapBetweenBars)
+              .style("fill", function(d) {
+                return d.highlight;
+              });
+
+    canvasData.transition()
+              .attr("transform", FunctionList.g_transform)
+  };
+
+  var drawCountingSortCounters = function(state) {
+    var canvasData;
+    if (state == null)
+      canvasData = countingSortSecondaryCanvas.selectAll("text").data([]);
+    else
+      canvasData = countingSortSecondaryCanvas.selectAll("text").data(state);
+
+    // Exit ==============================
+    var exitData = canvasData
+            .exit()
+            .remove();
+
+    // Entry ==============================
+
+    var newData = canvasData
+            .enter()
+            .append("text")
+            .attr("dy", ".35em")
+            .attr("x", function(d, i) {
+              return (i + 5) * barWidth + (barWidth - gapBetweenBars) / 2;
+            })
+            .attr("y", 20)
+            .text(function(d) {
+              return d;
+            });
+
+    // Update ==============================
+
+    canvasData
+            .transition()
+            .text(function(d) {
+              return d;
+            });
+  };
+
+  var drawRadixSortCanvas = function(state, secondaryState) {
+    centreBarsOffset = (1000 - (state.entries.length * 65 - 10)) / 2; //uh, it's not really bars now, but just reusing the variable - same concept still
+
+    var canvasData = radixSortCanvas.selectAll("div").data(state.entries);
+    var radixSortBucketCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    radixSortBucketOrdering = new Array(state.backlinks.length);
+
+    for (var i = 0; i < state.backlinks.length; i++) {
+      if (state.backlinks.secondaryPositionStatus != POSITION_USE_PRIMARY)
+        radixSortBucketOrdering[state.backlinks[i].entryPosition] = radixSortBucketCount[state.backlinks[i].secondaryPositionStatus]++;
+    }
+
+    // Handle the buckets' DIV's
+    if (secondaryState)
+      $("#radix-sort-bucket-labels-collection").show();
+    else
+      $("#radix-sort-bucket-labels-collection").hide();
+
+    // Exit ==============================
+    var exitData = canvasData.exit()
+                             .remove();
+
+    // Entry ==============================
+    var newData = canvasData.enter()
+                            .append("div")
+                            .classed({"radix-sort-element": true})
+                            .style({
+                              "left": FunctionList.radixElement_left,
+                              "bottom": FunctionList.radixElement_bottom
+                            })
+                            .html(FunctionList.radixElement_html);
+
+    // Update ==============================
+    canvasData.html(FunctionList.radixElement_html)
+              .transition()
+              .style({
+                "left": FunctionList.radixElement_left,
+                "bottom": FunctionList.radixElement_bottom
+              });
+  };
+
+  var generateRandomNumberArray = function(size, limit) {
+    var numArray = new Array();
+    for (var i = 0; i < size; i++) {
+      numArray.push(generateRandomNumber(1, limit));
+    }
+    return numArray;
+  };
+
+  var generateRandomNumber = function(min, max) { //generates a random integer between min and max (both inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  var convertToNumber = function(num) {
+    return +num;
+  };
+
+  this.createList = function(type) {
+    var numArrayMaxListSize = 20;
+    var numArrayMaxElementValue = maxElementValue;
+    if (this.selectedSortFunction == this.radixSort) {
+      numArrayMaxListSize = 15;
+      numArrayMaxElementValue = maxRadixSortElementValue;
+    }
+    else if (this.selectedSortFunction == this.countingSort) {
+      numArrayMaxElementValue = maxCountingSortElementValue;
+    }
+
+    var numArray = generateRandomNumberArray(generateRandomNumber(10, numArrayMaxListSize), numArrayMaxElementValue);
+
+    switch (type) {
+      case 'userdefined':
+        numArray = $('#userdefined-input').val().split(",");
+
+        if (numArray.length > numArrayMaxListSize) {
+          $("#create-err").html('<span style="white-space: normal;">&nbsp;你不能够有多于{maxSize} 个元素！&nbsp;</span>'.replace("{maxSize}", numArrayMaxListSize));
+          return false;
+        }
+
+        for (var i = 0; i < numArray.length; i++) {
+          var temp = convertToNumber(numArray[i]);
+
+          if (numArray[i].trim() == "") {
+            $("#create-err").html('似乎缺少了一个元素（也许某个地方有重复的逗号？）');
+            return false;
+          }
+          if (isNaN(temp)) {
+            $("#create-err").html('<span style="white-space: normal;">&nbsp;似乎有一个无效的元素（非数字）{num}</span>'.replace("{num}", numArray[i]));
+            return false;
+          }
+          if (temp < 1 || temp > numArrayMaxElementValue) {
+            $("#create-err").html('抱歉，值域限制在1和<span style="white-space: normal;">&nbsp;{maxValue} 之间（包括两界）。（超出值域的值: {num} ）</span>'.replace("{maxValue}", numArrayMaxElementValue).replace("{num}", numArray[i]));
+            return false;
+          }
+
+          numArray[i] = convertToNumber(numArray[i]);
+        }
+        break;
+      case 'random':
+        break;
+      case 'sorted-increasing':
+      case 'nearly-sorted-increasing':
+        numArray.sort(d3.ascending);
+        break;
+      case 'sorted-decreasing':
+      case 'nearly-sorted-decreasing':
+        numArray.sort(d3.descending);
+        break;
+    }
+
+    if (type.indexOf("nearly") != -1) {
+      // To make the list nearly sorted, we take the already sorted list and make swaps
+      // such that the list becomes not sorted. The number of such swaps varies from 1 to 2 (customizable).
+      // The idea is that the more swaps we make, the less "sorted" the list is.
+      //
+      // Another limitation is that each swap occurs between elements that are at most 3 positions away.
+      while (true) {
+        var newNumArray = numArray.slice();
+
+        var numOfSwaps = generateRandomNumber(1, 2);
+        for (var i = 0; i < numOfSwaps; i++) {
+          var firstSwappingIndex = generateRandomNumber(0, newNumArray.length - 4);
+          var secondSwappingIndex = generateRandomNumber(1, 3) + firstSwappingIndex;
+
+          var temp = numArray[firstSwappingIndex];
+          newNumArray[firstSwappingIndex] = numArray[secondSwappingIndex];
+          newNumArray[secondSwappingIndex] = temp;
+        }
+
+        // We compare the numArray with newNumArray, if they're are the same,
+        // we try again, else we reassign numArray to newNumArray and break.
+        var isEquals = true;
+        for (var i = 0; i < numArray.length; i++) {
+          if (numArray[i] != newNumArray[i]) {
+            isEquals = false;
+            break;
+          }
+        }
+
+        if (!isEquals) {
+          numArray = newNumArray;
+          break;
+        }
+      }
+    }
+
+    this.loadNumberList(numArray);
+  }
+
+  this.loadNumberList = function(numArray) {
+    $("#create-err").html("");
+
+    issPlaying = false;
+    currentStep = 0;
+    this.currentNumList = numArray;
+
+    //console.log("numArray: " + numArray);
+
+    statelist = [StateHelper.createNewState(numArray)];
+    secondaryStatelist = [null]; // the initial secondary state will be an empty state
+    drawState(0);
+  }
+
+  this.setSelectedSortFunction = function(f) {
+    this.selectedSortFunction = f;
+    isRadixSort = (this.selectedSortFunction == this.radixSort);
+    isCountingSort = (this.selectedSortFunction == this.countingSort);
+  }
+
+  this.sort = function(callback) {
+    return this.selectedSortFunction(callback);
+  }
+
+  this.radixSort = function(callback) {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+
+    populatePseudocode([
+      '创建10个桶（队列<span style="font-size: 13px;">）分别给每个数位（0到9）</span>',
+      '遍历每个数位',
+      '遍历数列中的每个元素',
+      '将元素移至相应的桶中',
+      '在每个桶中，从最小的数位开始',
+      '当桶不是空的',
+      '将元素恢复至数列中'
+    ]);
+
+    secondaryStatelist = [false]; // showBucket flag - if true, shows the DIV's representing the bucketss
+    var currentPlacing = 1;
+    var targetPlacing = 1;
+    var backlinkBuckets = [[], [], [], [], [], [], [], [], [], []];
+
+    var maxValue = d3.max(state.backlinks, function(d) {
+      return d.value;
+    });
+    while (maxValue >= 10) {
+      targetPlacing *= 10;
+      maxValue = Math.floor(maxValue / 10);
+    }
+
+    for (; currentPlacing <= targetPlacing; currentPlacing *= 10) {
+      for (var i = 0; i < numElements; i++)
+        state.backlinks[i].highlight = currentPlacing;
+
+      StateHelper.updateCopyPush(statelist, state);
+      secondaryStatelist.push(true);
+
+      for (var i = 0; i < numElements; i++) {
+        var currentDigit = Math.floor(state.backlinks[i].value / currentPlacing) % 10;
+        state.backlinks[i].secondaryPositionStatus = currentDigit;
+        backlinkBuckets[currentDigit].push(state.backlinks[i]);
+        StateHelper.updateCopyPush(statelist, state);
+        secondaryStatelist.push(true);
+      }
+
+      for (var i = 0, j = 0; i <= 9; ) {
+        if (backlinkBuckets[i].length == 0) {
+          i++;
+          continue;
+        }
+
+        state.backlinks[j++] = backlinkBuckets[i].shift();
+      }
+
+      for (var i = 0; i < numElements; i++) {
+        state.backlinks[i].secondaryPositionStatus = POSITION_USE_PRIMARY;
+        StateHelper.updateCopyPush(statelist, state);
+        secondaryStatelist.push(true);
+      }
+    }
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE;
+    StateHelper.updateCopyPush(statelist, state);
+    secondaryStatelist.push(false);
+
+    this.play(callback);
+    return true;
+  }
+
+  this.countingSort = function(callback) {
+    // Note that while we have the maxCountingSortElementValue variable, it isn't really customizable.
+    // The code here written is really just for the range 1 to 9.
+
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+
+    populatePseudocode([
+      '创建关键值（计数）数组',
+      '遍历数列中的每个元素',
+      '相应的计数器增加1',
+      '每轮计数，都从最小的值开始',
+      '当计数为非零数时循环',
+      '重新将元素存储于列表',
+      '将计数减1'
+    ]);
+
+    var secondaryState = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var backlinkBuckets = [[], [], [], [], [], [], [], [], []];
+
+    state.barsCountOffset = maxCountingSortElementValue;
+
+    for (var i = 1; i <= maxCountingSortElementValue; i++) {
+      EntryBacklinkHelper.append(state.entries, state.backlinks, i);
+      state.backlinks[numElements + i - 1].highlight = HIGHLIGHT_GRAY;
+      state.backlinks[numElements + i - 1].secondaryPositionStatus = i * -1 - 5;
+    }
+
+    state.lineNo = 1;
+    state.status = '创建一个关键值（计数）数组（从1到9）.';
+
+    StateHelper.updateCopyPush(statelist, state);
+    secondaryStatelist.push(secondaryState.slice()); // copy the array and push it into the secondary statelist
+
+    for (var i = 0; i < numElements; i++) {
+      var currentValue = state.backlinks[i].value;
+
+      backlinkBuckets[currentValue-1].push(state.backlinks[i]);
+
+      state.backlinks[i].secondaryPositionStatus = currentValue * -1 - 5;
+
+      secondaryState[currentValue-1]++;
+
+      state.backlinks[currentValue + numElements - 1].highlight = HIGHLIGHT_BLUESHADES[secondaryState[currentValue - 1]];
+
+      state.lineNo = [2, 3];
+      state.status = '将'.replace("{curVal}", currentValue);
+
+      StateHelper.updateCopyPush(statelist, state);
+      secondaryStatelist.push(secondaryState.slice()); // copy the array and push it into the secondary statelist
+    }
+
+    for (var i = 0, j = 0; i < maxCountingSortElementValue; ) {
+      if (backlinkBuckets[i].length == 0) {
+        i++;
+        continue;
+      }
+
+      state.backlinks[j++] = backlinkBuckets[i].shift();
+    }
+
+    for (var i = 0; i < numElements; i++) {
+      var currentValue = state.backlinks[i].value;
+
+      state.backlinks[i].secondaryPositionStatus = POSITION_USE_PRIMARY;
+
+      secondaryState[currentValue - 1]--;
+
+      state.backlinks[currentValue + numElements - 1].highlight = HIGHLIGHT_BLUESHADES[secondaryState[currentValue - 1]];
+
+      state.lineNo = [4, 5, 6, 7];
+      state.status = '重新存储元素&nbsp;{curVal}, 并且将值为 {curVal} 的计数减&nbsp;1.'.replace("{curVal}", currentValue);
+
+      StateHelper.updateCopyPush(statelist, state);
+      secondaryStatelist.push(secondaryState.slice()); //copy the array and push it into the secondary statelist
+    }
+
+    state.barsCountOffset = 0;
+
+    for (var i = 1; i <= maxCountingSortElementValue; i++) {
+      state.entries.pop();
+      state.backlinks.pop();
+    }
+
+    state.lineNo = 0;
+    state.status = '排序完成!';
+    StateHelper.updateCopyPush(statelist, state);
+    secondaryStatelist.push(null); //copy the array and push it into the secondary statelist
+
+    this.play(callback);
+    return true;
+  }
+
+  this.randomizedQuickSort = function(callback) {
+    quickSortUseRandomizedPivot = true;
+    quickSortStart();
+
+    this.play(callback);
+    return true;
+  }
+
+  this.quickSort = function(callback) {
+    quickSortUseRandomizedPivot = false;
+    quickSortStart();
+
+    this.play(callback);
+    return true;
+  }
+
+  var quickSortStart = function() {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[statelist.length - 1]);
+
+    populatePseudocode([
+      '每个（未排序）的部分',
+      (quickSortUseRandomizedPivot) ? '随机选取轴心点，和第一个元素交换' : '将第一个元素设为轴心点',
+      '  存储指数 = 轴心点指数 +1',
+      '  从 i=轴心点指数 +1 到 最右指数 的遍历',
+      '    如果 元素[i] &lt; 元素[轴心点]',
+      '      交换(i, 存储指数); 存储指数++',
+      '  交换(轴心点, 存储指数&nbsp;- 1)'
+    ]);
+
+    quickSortSplit(state, 0, numElements - 1);
+
+    state.lineNo = 0;
+    state.status = '排序完成!';
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; //unhighlight everything
+    StateHelper.updateCopyPush(statelist, state);
+  }
+
+  var quickSortSplit = function(state, startIndex, endIndex) { //startIndex & endIndex inclusive
+    state.status = '进行拆分&nbsp;[{partition}] (指数从&nbsp;{startIndex} 到 {endIndex} ，两边皆包括).'
+                  .replace("{partition}", state.backlinks.slice(startIndex, endIndex + 1).map(function(d) {
+                     return d.value;
+                  }))
+                  .replace("{startIndex}", startIndex).replace("{endIndex}", endIndex);
+    state.lineNo = 1;
+
+    if (startIndex > endIndex)
+      return;
+
+    if (startIndex == endIndex) {
+      state.status += ' 因为拆分大小 == 1，在拆分项中的元素一定会在排序过后的位置。';
+      state.backlinks[startIndex].highlight = HIGHLIGHT_SORTED;
+      StateHelper.updateCopyPush(statelist, state);
+      return;
+    }
+
+    var middleIndex = quickSortPartition(state, startIndex, endIndex);
+    quickSortSplit(state, startIndex, middleIndex - 1);
+    quickSortSplit(state, middleIndex + 1, endIndex);
+  }
+
+  var quickSortPartition = function(state, startIndex, endIndex) {
+
+    var pivotIndex;
+    if (quickSortUseRandomizedPivot) {
+
+      pivotIndex = generateRandomNumber(startIndex, endIndex);
+
+      state.status += ' 随机选取&nbsp;{pivot} (指数为&nbsp;{index}) 作为轴心点'.replace("{pivot}", state.backlinks[pivotIndex].value).replace("{index}", pivotIndex);
+      state.lineNo = [1, 2];
+
+      state.backlinks[pivotIndex].highlight = HIGHLIGHT_PIVOT;
+      StateHelper.updateCopyPush(statelist, state);
+
+      if (pivotIndex != startIndex) {
+        state.status = '交换轴心点&nbsp;({pivot}}, 指数为&nbsp;{index}) 和第一个元素&nbsp;({first}, 指数 {firstIndex}). (存储指数= {storeIndex}.)'.replace("{pivot}", state.backlinks[pivotIndex].value).replace("{index}", pivotIndex)
+              .replace("{first}", state.backlinks[startIndex].value).replace("{firstIndex}", startIndex).replace("{storeIndex}", (startIndex + 1));
+
+        state.lineNo = [2, 3];
+
+        EntryBacklinkHelper.swapBacklinks(state.backlinks, pivotIndex, startIndex);
+        pivotIndex = startIndex;
+        StateHelper.updateCopyPush(statelist, state);
+      }
+    }
+    else {
+      pivotIndex = startIndex;
+
+      state.status += ' 选择 {pivot} 作为轴心点. (存储指数&nbsp;= {storeIndex}.)'.replace("{pivot}", state.backlinks[pivotIndex].value).replace("{storeIndex}", (startIndex + 1));
+      state.lineNo = [1, 2, 3];
+
+      state.backlinks[pivotIndex].highlight = HIGHLIGHT_PIVOT;
+      StateHelper.updateCopyPush(statelist, state);
+    }
+
+    var storeIndex = pivotIndex + 1;
+    var pivotValue = state.backlinks[pivotIndex].value;
+
+    for (var i = storeIndex; i <= endIndex; i++) {
+      state.status = '检查是否&nbsp;{val} &lt; {pivot} (轴心点).'.replace("{val}", state.backlinks[i].value).replace("{pivot}", pivotValue);
+      state.lineNo = [4, 5];
+
+      state.backlinks[i].highlight = HIGHLIGHT_SPECIAL;
+      StateHelper.updateCopyPush(statelist, state);
+      if (state.backlinks[i].value < pivotValue) {
+        state.status = '{val} &lt; {pivot} (轴心点) 是真（True）. 将指数为&nbsp;{idx} (值&nbsp;= {val}) 和在存储指数的元素&nbsp;(指数&nbsp;= {storeIdx}, 值 = {storeVal}) 进行交换. (交换过后在存储指数上的值&nbsp;= {newStoreIdx}).'.replace("{val}", state.backlinks[i].value).replace("{pivot}", pivotValue)
+              .replace("{idx}", i).replace("{storeIdx}", storeIndex).replace("{storeVal}", state.backlinks[storeIndex].value).replace("newStoreIdx", (storeIndex + 1));
+        state.lineNo = [4, 6];
+
+        if (i != storeIndex) {
+          EntryBacklinkHelper.swapBacklinks(state.backlinks, storeIndex, i);
+          StateHelper.updateCopyPush(statelist, state);
+        }
+
+        state.backlinks[storeIndex].highlight = HIGHLIGHT_LEFT;
+        storeIndex++;
+      }
+      else {
+        state.backlinks[i].highlight = HIGHLIGHT_RIGHT;
+      }
+    }
+    state.status = '遍历完成。<br>';
+    state.lineNo = 4;
+    StateHelper.updateCopyPush(statelist, state);
+    if (storeIndex - 1 != pivotIndex) {
+      state.status = '将轴心点（指数= {pivotIdx}, 值 = {pivot}) 和在存储指数-1 的元素 (指数 = {newIdx}, 值 = {newVal}) 进行交换）<br>'.replace("{pivotIdx}", pivotIndex).replace("{pivot}", pivotValue)
+            .replace("{newIdx}", (storeIndex - 1)).replace("{newVal}", state.backlinks[storeIndex - 1].value);
+      state.lineNo = 7;
+      EntryBacklinkHelper.swapBacklinks(state.backlinks, storeIndex - 1, pivotIndex);
+      StateHelper.updateCopyPush(statelist, state);
+    }
+
+    state.status = '现在轴心点已经在排序过后的位置<br>';
+    state.lineNo = 7;
+
+    for (var i = startIndex; i <= endIndex; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; //unhighlight everything
+    state.backlinks[storeIndex - 1].highlight = HIGHLIGHT_SORTED;
+    StateHelper.updateCopyPush(statelist, state);
+
+    return storeIndex - 1;
+  }
+
+  this.mergeSort = function(callback) {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+
+    populatePseudocode([
+      '将每个元素拆分成大小为1的部分',
+      '递归的合并相邻的拆分项',
+      '  i = 左侧开始项指数 到 右侧最后项指数 的遍历（两端包括）',
+      '    如果左侧首值 &lt;= 右侧首值',
+      '      拷贝左侧首项的值<br>',
+      '    否则： 拷贝右侧部分首值' + ((this.computeInversionIndex) ? '；增加倒置指数' : ""),
+      '将元素拷贝进原来的数组中'
+    ]);
+
+    mergeSortInversionIndexCounter = 0;
+
+    for (var i = 0; i < numElements; i++) {
+      state.backlinks[i].highlight = HIGHLIGHT_RAINBOW[i];
+    }
+
+    state.status = '我们将数组拆分成每项只有一个元素（每个拆分项有一个独特的颜色）';
+    status.lineNo = 1;
+    StateHelper.updateCopyPush(statelist, state);
+
+    this.mergeSortSplitMerge(state, 0, numElements);
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; //unhighlight everything
+
+    state.status = '排序完成!';
+    if (this.computeInversionIndex) {
+      state.status += ' （倒置指数 = {idx}）<br>'.replace("{idx}", mergeSortInversionIndexCounter);
+    }
+
+    state.lineNo = 0;
+    StateHelper.updateCopyPush(statelist, state);
+
+    this.play(callback);
+    return true;
+  }
+
+  this.mergeSortSplitMerge = function(state, startIndex, endIndex) { //startIndex inclusive, endIndex exclusive
+    if (endIndex - startIndex <= 1)
+      return;
+
+    var middleIndex = Math.ceil((startIndex + endIndex) / 2);
+    this.mergeSortSplitMerge(state, startIndex, middleIndex);
+    this.mergeSortSplitMerge(state, middleIndex, endIndex);
+    this.mergeSortMerge(state, startIndex, middleIndex, endIndex)
+
+    // Copy array back
+    state.status = '我们将新数组中的元素拷贝回原来的数组中。<br>';
+    state.lineNo = 7;
+
+    var duplicateBacklinks = new Array();
+    for (var i = startIndex; i < endIndex; i++) {
+      var newPosition = state.backlinks[i].secondaryPositionStatus;
+      duplicateBacklinks[newPosition] = state.backlinks[i];
+    }
+
+    for (var i = startIndex; i < endIndex; i++) {
+      state.backlinks[i] = duplicateBacklinks[i];
+    }
+
+    for (var i = startIndex; i < endIndex; i++) {
+      state.backlinks[i].secondaryPositionStatus = POSITION_USE_PRIMARY;
+      StateHelper.updateCopyPush(statelist, state);
+    }
+  }
+
+  this.mergeSortMerge = function(state, startIndex, middleIndex, endIndex) {
+    var leftIndex = startIndex;
+    var rightIndex = middleIndex;
+
+    var newHighlightColor = state.backlinks[startIndex].highlight;
+
+    state.status = '现在我们将拆分项 [{partition1}] (指数从 {startIdx1} 到 {endIdx1}，两边都包括) 和 [{partition2}] 指数从 {startIdx2} 到 {endIdx2} ，两边都包括) 归并在一起。<br>'
+        .replace('{partition1}', state.backlinks.slice(startIndex, middleIndex).map(function(d) {
+          return d.value;
+        }))
+        .replace("{startIdx1}", startIndex).replace("{endIdx1}", (middleIndex - 1))
+        .replace("{partition2}", state.backlinks.slice(middleIndex, endIndex).map(function(d) {
+          return d.value;
+        }))
+        .replace("{startIdx2}", middleIndex).replace("{endIdx2}", (endIndex - 1));
+    state.lineNo = 2;
+
+    state.backlinks[leftIndex].highlight = makePaler(state.backlinks[leftIndex].highlight);
+    state.backlinks[rightIndex].highlight = makePaler(state.backlinks[rightIndex].highlight);
+    StateHelper.updateCopyPush(statelist, state);
+
+    for (var i = startIndex; i < endIndex; i++) {
+      // Note here we don't actually copy the elements into a new array, like in a usual mergesort.
+      // This is left instead to the mergeSortSplitMerge to handle as it's easier there.
+      // (We use the useSecondaryPostion property to overcome this lack-of-copying.)
+      if (leftIndex < middleIndex && (rightIndex >= endIndex || state.backlinks[leftIndex].value <= state.backlinks[rightIndex].value)) {
+        state.backlinks[leftIndex].highlight = newHighlightColor;
+        state.backlinks[leftIndex].secondaryPositionStatus = i;
+
+        if (rightIndex < endIndex) {
+          state.status = '因为 {leftPart} (左拆分) &lt;= {rightPart} (右拆分), 我们将&nbsp;{rightPart} 拷进新的数组。<br>'
+            .replace("{leftPart}", state.backlinks[leftIndex].value).replace("{rightPart}", state.backlinks[rightIndex].value);
+        }
+        else {
+          state.status = '因为右拆分是空的，我们将{leftPart} (左拆分) 拷贝进新的数组。'.replace("{leftPart}", state.backlinks[leftIndex].value);
+        }
+        state.lineNo = [3, 4, 5];
+
+        leftIndex++;
+        if (leftIndex != middleIndex)
+          state.backlinks[leftIndex].highlight = makePaler(state.backlinks[leftIndex].highlight);
+
+        StateHelper.updateCopyPush(statelist, state);
+      }
+      else {
+        state.backlinks[rightIndex].highlight = newHighlightColor;
+        state.backlinks[rightIndex].secondaryPositionStatus = i;
+
+        if (leftIndex < middleIndex) {
+          state.status = '<span style="font-size: 13px;">因为 {leftPart} (左拆分) &gt; {rightPart} (右拆分), 我们将&nbsp;{rightPart} 拷进新的数组。</span><br>'
+            .replace("{leftPart}", state.backlinks[leftIndex].value).replace("{rightPart}", state.backlinks[rightIndex].value);
+        }
+        else {
+          state.status = '因为左拆分是空的，我们将&nbsp;{rightPart}&nbsp; （右拆分）拷进新的数组。'.replace("{rightPart}", state.backlinks[rightIndex].value);
+        }
+
+        if (this.computeInversionIndex) {
+          mergeSortInversionIndexCounter += middleIndex - leftIndex;
+          state.status += '(我们将左拆分的大小 (= {sizeofleft}) 加至倒置指数 ({inversionidxcounter}).)<br>'
+            .replace("{sizeofleft}", (middleIndex - leftIndex)).replace("{inversionidxcounter}", mergeSortInversionIndexCounter);
+        }
+        else {
+          state.status += '奇怪的';
+        }
+        state.lineNo = [3, 6];
+
+        rightIndex++;
+        if (rightIndex != endIndex)
+          state.backlinks[rightIndex].highlight = makePaler(state.backlinks[rightIndex].highlight);
+
+        StateHelper.updateCopyPush(statelist, state);
+      }
+    }
+  }
+
+  this.insertionSort = function(callback) {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+
+    populatePseudocode([
+      '将第一个元素标记为已排序',
+      '遍历每个没有排序过的元素',
+      '  “提取” 元素 X',
+      '  i = 最后排序过元素的指数 到 0 的遍历',
+      '    如果现在排序过的元素 &gt; 提取的元素',
+      '      将排序过的元素向右移一格',
+      '    否则：插入提取的元素'
+    ]);
+
+    // First element always sorted
+    state.lineNo = 1;
+    // Mark the first element ({firstVal}) as sorted.
+    state.status = '将第一个元素&nbsp;({firstVal}) 标记为已经排序过。'.replace("{firstVal}", state.backlinks[0].value);
+    state.backlinks[0].highlight = HIGHLIGHT_SORTED;
+    StateHelper.updateCopyPush(statelist, state);
+
+    for (var i = 1; i < numElements; i++) {
+      // Highlight first unsorted element
+      state.lineNo = [2, 3];
+      // Extract the first unsorted element ({val}).
+      state.status = '提取第一个没有排序过的元素&nbsp;({val})。'.replace("{val}", state.backlinks[i].value);
+      state.backlinks[i].highlight = HIGHLIGHT_SPECIAL;
+      state.backlinks[i].secondaryPositionStatus = POSITION_USE_SECONDARY_IN_DEFAULT_POSITION;
+      StateHelper.updateCopyPush(statelist, state);
+
+      for (var j = i-1; j >= 0; j--) {
+        state.lineNo = 4;
+        // Figure where to insert extracted element.
+        // Comparing with sorted element {val}.
+        state.status = '找出插入提取元素的地方；和已经排序过的元素 {val} 比较。'.replace("{val}", state.backlinks[j].value);;
+        state.backlinks[j].highlight = HIGHLIGHT_STANDARD;
+        StateHelper.updateCopyPush(statelist, state);
+
+        if (state.backlinks[j].value > state.backlinks[j+1].value) {
+          state.lineNo = [5, 6];
+          // {val1} > {val2} is true.
+          // Hence move current sorted element ({val1}) to the right by 1.
+          state.status = '{val1} &gt; {val2} 成立（True）, &nbsp;则将现在已经排序过的元素</span><span style="white-space: normal;">({val1}) 向右移动1格。'.replace("{val1}", state.backlinks[j].value).replace("{val2}", state.backlinks[j+1].value);
+          EntryBacklinkHelper.swapBacklinks(state.backlinks, j, j+1);
+          StateHelper.updateCopyPush(statelist, state);
+          state.backlinks[j+1].highlight = HIGHLIGHT_SORTED;
+        }
+        else {
+          state.lineNo = 7;
+          // {val1} > {val2} is false.
+          // Insert extracted element at current position.
+          state.status = '{val1} &gt; {val2} 不成立（False）, 在现有位置上插入一个元素。'.replace("{val1}", state.backlinks[j].value).replace("{val2}", state.backlinks[j+1].value);
+          state.backlinks[j].highlight = HIGHLIGHT_SORTED;
+          state.backlinks[j+1].secondaryPositionStatus = POSITION_USE_PRIMARY;
+          state.backlinks[j+1].highlight = HIGHLIGHT_SORTED;
+          StateHelper.updateCopyPush(statelist, state);
+          break;
+        }
+      }
+
+      if (state.backlinks[0].secondaryPositionStatus == POSITION_USE_SECONDARY_IN_DEFAULT_POSITION) {
+        state.lineNo = 4;
+        // At beginning of array (nothing to compare).
+        // Hence insert extracted element at current position.
+        state.status = '在数组的最开始（没有东西可以比较），则在现有位置上插入元素。';
+        state.backlinks[0].secondaryPositionStatus = POSITION_USE_PRIMARY;
+        state.backlinks[0].highlight = HIGHLIGHT_SORTED;
+        StateHelper.updateCopyPush(statelist, state);
+      }
+    }
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; //unhighlight everything
+    state.lineNo = 0;
+    // The array/list is now sorted.
+    state.status = '排序完成!';
+    StateHelper.updateCopyPush(statelist, state);
+
+    this.play(callback);
+    return true;
+  }
+
+  this.selectionSort = function(callback) {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+
+    populatePseudocode([
+      '重复（元素个数-1）次',
+      '  把第一个没有排序过的元素设置为最小值',
+      '  遍历每个没有排序过的元素',
+      '    如果元素 &lt; 现在的最小值',
+      '      将此元素设置成为新的最小值',
+      '  将最小值和第一个没有排序过的位置交换'
+    ]);
+
+    for (var i = 0; i < numElements-1; i++) {
+      var minPosition = i;
+
+      // Iteration {iteration}: Set {val} as the current minimum.
+      // Then iterate through the rest to find the true minimum.
+      state.status = '循环 {iteration}: 把现在的最小值设置成为&nbsp;{val} , 然后通过遍历剩下的没有排序过的元素来找到真正的最小值。'.replace("{iteration}", (i+1)).replace("{val}", state.backlinks[i].value);
+      state.lineNo = [1, 2, 3];
+      state.backlinks[minPosition].highlight = HIGHLIGHT_SPECIAL;
+
+      StateHelper.updateCopyPush(statelist, state);
+
+      for (var j = i+1; j < numElements; j++) {
+        // Check if {val} is smaller than the current minimum ({minVal}).
+        state.status = '检查是否&nbsp;{val} 小于现在的最小值&nbsp;({minVal})。'.replace("{val}", state.backlinks[j].value).replace("{minVal}", state.backlinks[minPosition].value);
+        state.lineNo = 4;
+        state.backlinks[j].highlight = HIGHLIGHT_STANDARD;
+        StateHelper.updateCopyPush(statelist, state);
+
+        state.backlinks[j].highlight = HIGHLIGHT_NONE;
+
+        if (state.backlinks[j].value < state.backlinks[minPosition].value) {
+          state.status = '将 {val} 设为新的最小值。'.replace("{val}", state.backlinks[j].value);
+          state.lineNo = 5;
+          state.backlinks[minPosition].highlight = HIGHLIGHT_NONE;
+          state.backlinks[j].highlight = HIGHLIGHT_SPECIAL;
+
+          minPosition = j;
+          StateHelper.updateCopyPush(statelist, state);
+        }
+      }
+
+      if (minPosition != i) { // Highlight the first-most unswapped position, if it isn't the minimum
+        // Set {val} as the new minimum.
+        state.status = '交换最小的元素&nbsp;({minVal}) 和第一个没有排序过的元素&nbsp;({element})。'.replace("{minVal}", state.backlinks[minPosition].value).replace("{element}", state.backlinks[i].value);
+        state.lineNo = 6;
+        state.backlinks[i].highlight = HIGHLIGHT_SPECIAL;
+        StateHelper.updateCopyPush(statelist, state);
+
+        EntryBacklinkHelper.swapBacklinks(state.backlinks, minPosition, i);
+        StateHelper.updateCopyPush(statelist, state);
+      }
+      else {
+        // As the minimum is the first unsorted element, no swap is necessary.
+        state.status = '因为最小值是第一个非排序过的元素，没有必要进行交换。';
+        state.lineNo = 6;
+        StateHelper.updateCopyPush(statelist, state);
+      }
+
+      // {val} is now considered sorted.
+      state.status = '现在 {val} 被认为是排序过的了。'.replace("{val}", state.backlinks[i].value);
+      state.backlinks[minPosition].highlight = HIGHLIGHT_NONE;
+      state.backlinks[i].highlight = HIGHLIGHT_SORTED;
+      StateHelper.updateCopyPush(statelist, state);
+    }
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; // un-highlight everything
+    // The array/list is now sorted.
+    // (After all iterations, the last element will naturally be sorted.)
+    state.status = '排序完成!' + '<br>' + '（所有循环过后，最后一个元素自然就被排序过了）';
+    status.lineNo = 0;
+    StateHelper.updateCopyPush(statelist, state);
+
+    this.play(callback);
+    return true;
+  }
+
+  this.bubbleSort = function(callback) {
+    var numElements = statelist[0].backlinks.length;
+    var state = StateHelper.copyState(statelist[0]);
+    var swapCounter = 0;
+
+    populatePseudocode([
+      '做',
+      '  交换旗帜变量 = 假 （False）',
+      '  从 i = 1 到 最后一个没有排序过元素的指数',
+      '    如果 左边元素 &gt; 右边元素',
+      '      交换（左边元素，右边元素）',
+      '      交换旗帜变量 = 真（True）' + ((this.computeInversionIndex) ? '; 交换计数器++' : ""),
+      'while 交换旗帜变量'
+    ]);
+
+    var swapped;
+    var indexOfLastUnsortedElement = numElements;
+    do {
+      swapped = false;
+
+      // Set the swapped flag to false.
+      // Then iterate from 1 to {endIdx} inclusive.
+      state.status = '将已交换旗帜变量设置为假（False），然后从1到{endIdx} 循环（包括起始）。'.replace("{endIdx}", indexOfLastUnsortedElement-1);
+      state.lineNo = [2, 3];
+      StateHelper.updateCopyPush(statelist, state);
+
+      for (var i = 1; i < indexOfLastUnsortedElement; i++) {
+        state.backlinks[i-1].highlight = HIGHLIGHT_STANDARD;
+        state.backlinks[i].highlight = HIGHLIGHT_STANDARD;
+
+        // Checking if {val1} > {val2} and swap them if that is true.
+        // The current value of swapped = {swapped}.
+        state.status = '检查是否 {val1} &gt; {val2}; 如果是则交换元素。 (现在交换过后的值&nbsp;= {swapped})。'.replace("{val1}", state.backlinks[i-1].value).replace("{val2}", state.backlinks[i].value).replace("{swapped}", swapped);
+        state.lineNo = 4;
+        StateHelper.updateCopyPush(statelist, state);
+
+        if (state.backlinks[i-1].value > state.backlinks[i].value) {
+          swapped = true;
+
+          // Swapping the positions of {val1} and {val2}.
+          // Set swapped = true.
+          state.status = '交换 {val1} 和 {val2} 的位置。将已交换旗帜变量设置为真（True）'.replace("{val1}", state.backlinks[i-1].value).replace("{val2}", state.backlinks[i].value);
+          if (this.computeInversionIndex) {
+            swapCounter++;
+            // For inversion index computation: Add 1 to swapCounter.
+            // The current value of swapCounter = {swapCounter}.
+            state.status += ' (倒置指数: 交换计数器加1. 现在交换计数器的值&nbsp;= {swapCounter}.)'.replace("{swapCounter}", swapCounter);
+          }
+
+          state.lineNo = [5, 6];
+
+          EntryBacklinkHelper.swapBacklinks(state.backlinks, i, i-1);
+          StateHelper.updateCopyPush(statelist, state);
+        }
+
+        state.backlinks[i-1].highlight = HIGHLIGHT_NONE;
+        state.backlinks[i].highlight = HIGHLIGHT_NONE;
+      }
+
+      indexOfLastUnsortedElement--;
+      state.backlinks[indexOfLastUnsortedElement].highlight = HIGHLIGHT_SORTED;
+      if (swapped == false)
+        // No swap is done in this pass.
+        // We can terminate Bubble Sort now.
+        state.status = '在这趟扫描过程中没有任何交换发生，我们现在可以终止冒泡排序。';
+      else
+        // Mark last unsorted element as sorted now.
+        // As at least one swap is done in this pass, we continue.
+        state.status = '将最后一个没有排序过的元素标记为已排序。因为在最近的一次扫描过程中至少有一次交换发生过，我们可以进行另一轮扫描。';
+
+      state.lineNo = 7;
+      StateHelper.updateCopyPush(statelist, state);
+    }
+    while (swapped);
+
+    for (var i = 0; i < numElements; i++)
+      state.backlinks[i].highlight = HIGHLIGHT_NONE; //un-highlight everything
+
+    // The array/list is now sorted.
+    state.status = '排序完成!';
+    if (this.computeInversionIndex)
+      // Inversion Index = {swapCounter}.
+      state.status += ' (倒置指数&nbsp;= {swapCounter}.)'.replace("swapCounter", swapCounter);
+
+    state.lineNo = 0;
+    StateHelper.updateCopyPush(statelist, state);
+
+    this.play(callback);
+    return true;
+  }
+
+  this.clearPseudocode = function() { populatePseudocode([]); }
+
+  var populatePseudocode = function(code) {
+    var i = 1;
+    for (; i <= 7 && i <= code.length; i++) {
+      $("#code" + i).html(
+        code[i - 1].replace(
+        /^\s+/,
+        function(m) { return m.replace(/\s/g, "&nbsp;"); }
+        )
+      );
+    }
+    for (; i <= 7; i++) {
+      $("#code" + i).html("");
+    }
+  }
+
+  //animation functions
+  var drawCurrentState = function() {
+    $('#progress-bar').slider("value", currentStep);
+    drawState(currentStep);
+    if (currentStep == (statelist.length-1)) {
+      pause(); //in html file
+      $('#play img').attr('src', 'https://visualgo.net/img/replay.png').attr('alt', 'replay').attr('title', 'replay');
+    }
+    else
+      $('#play img').attr('src', 'https://visualgo.net/img/play.png').attr('alt', 'play').attr('title', 'play');
+  }
+
+  this.getAnimationDuration = function() { return transitionTime; }
+
+  this.setAnimationDuration = function(x) {
+    transitionTime = x;
+    if (issPlaying) {
+      clearInterval(animInterval);
+      animInterval = setInterval(function() {
+        drawCurrentState();
+        if (currentStep < (statelist.length-1))
+          currentStep++;
+        else
+          clearInterval(animInterval);
+      }, transitionTime);
+    }
+  }
+
+  this.getCurrentIteration = function() { return currentStep; }
+
+  this.getTotalIteration = function() { return statelist.length; }
+
+  this.forceNext = function() {
+    if ((currentStep + 1) < statelist.length)
+      currentStep++;
+    drawCurrentState();
+  }
+
+  this.forcePrevious = function() {
+    if ((currentStep-1) >= 0)
+      currentStep--;
+    drawCurrentState();
+  }
+
+  this.jumpToIteration = function(n) {
+    currentStep = n;
+    drawCurrentState();
+  }
+
+  this.play = function(callback) {
+    issPlaying = true;
+    drawCurrentState();
+    animInterval = setInterval(function() {
+      drawCurrentState();
+      if (currentStep < (statelist.length-1))
+        currentStep++;
+      else {
+        clearInterval(animInterval);
+        if (typeof callback == 'function') callback();
+      }
+    }, transitionTime);
+  }
+
+  this.pause = function() {
+    issPlaying = false;
+    clearInterval(animInterval);
+  }
+
+  this.replay = function() {
+    issPlaying = true;
+    currentStep = 0;
+    drawCurrentState();
+    animInterval = setInterval(function() {
+      drawCurrentState();
+      if (currentStep < (statelist.length-1))
+        currentStep++;
+      else
+        clearInterval(animInterval);
+    }, transitionTime);
+  }
+
+  this.stop = function() {
+    issPlaying = false;
+    statelist = [statelist[0]]; //clear statelist to original state, instead of new Array();
+    secondaryStatelist = [null];
+    currentStep = 0;
+    drawState(0);
+  }
+}
+
+// sorting action
+var actionsWidth = 150;
+var statusCodetraceWidth = 420;
+
+var isCreateOpen = false;
+var isInsertOpen = false;
+var isRemoveOpen = false;
+var isSortOpen = false;
+
+function openCreate() {
+  if (!isCreateOpen) {
+    $('.create').fadeIn('fast');
+    isCreateOpen = true;
+  }
+}
+
+function closeCreate() {
+  if (isCreateOpen) {
+    $('.create').fadeOut('fast');
+    $('#create-err').html("");
+    isCreateOpen = false;
+  }
+}
+
+function openInsert() {
+  if (!isInsertOpen) {
+    $('.insert').fadeIn('fast');
+    isInsertOpen = true;
+  }
+}
+
+function closeInsert() {
+  if (isInsertOpen) {
+    $('.insert').fadeOut('fast');
+    $('#insert-err').html("");
+    isInsertOpen = false;
+  }
+}
+
+function openRemove() {
+  if (!isRemoveOpen) {
+    $('.remove').fadeIn('fast');
+    isRemoveOpen = true;
+  }
+}
+
+function closeRemove() {
+  if (isRemoveOpen) {
+    $('.remove').fadeOut('fast');
+    $('#remove-err').html("");
+    isRemoveOpen = false;
+  }
+}
+
+function openSort() {
+  if (!isSortOpen) {
+    $('.sort').fadeIn('fast');
+    isSortOpen = true;
+  }
+}
+
+function closeSort() {
+  if (isSortOpen) {
+    $('.sort').fadeOut('fast');
+    $('#sort-err').html("");
+    isSortOpen = false;
+  }
+}
+
+function hideEntireActionsPanel() {
+  closeCreate();
+  closeInsert();
+  closeRemove();
+  closeSort();
+  hideActionsPanel();
+}
+
+
+
+// local
+$(function() {
+  AbbreviateTitle();
+  hideAllSubmenus();
+  var eight_modes = ["Bubble", "Selection", "Insertion", "Merge", "Quick", "RandomizedQuick", "Counting", "Radix"];
+  $('#title-'+eight_modes[Math.floor(Math.random()*8)]).click(); // randomly open one of the eight sorting algorithm mode every time
+  $('#play').hide();
+
+  d3.selectAll("#radix-sort-bucket-labels-collection span")
+    .style({"left": function(d, i) {
+                  return 17.5 + i * 65 + "px";
+          }});
+  var sortMode = getQueryVariable("mode");
+  if (sortMode.length > 0) {
+     $('#title-' + sortMode).click();
+  }
+  var createArray = getQueryVariable("create");
+  if (createArray.length > 0) {
+    $('#userdefined-input').val(createArray);
+    createList("userdefined");
+  }
+
+  $('#create').click(function() {
+    closeInsert();
+    closeRemove();
+    closeSort();
+    openCreate();
+  });
+
+  $('#insert').click(function() {
+    closeCreate();
+    closeRemove();
+    closeSort();
+    openInsert();
+  });
+
+  $('#remove').click(function() {
+    closeCreate();
+    closeInsert();
+    closeSort();
+    openRemove();
+  });
+
+  $('#sort').click(function() {
+    closeCreate();
+    closeInsert();
+    closeRemove();
+    openSort();
+  });
+});
+
+//this viz-specific code
+var gw = new Sorting();
+
+const DEFAULT_DATA       = "33,24,3,10,45,25,50,6,15,35";
+const DEFAULT_COUNT_DATA = "2, 3, 8, 7, 1, 2, 2, 2, 7, 3, 9, 8, 2, 1, 4, 2, 4, 6, 9, 2";
+const DEFAULT_RADIX_DATA = "3221, 1, 10, 9680, 577, 9420, 7, 5622, 4793, 2030, 3138, 82, 2599, 743, 4127";
+
+// title changing
+function AbbreviateTitle() {
+  $('#title-Bubble').text("BUB").attr('title', '冒泡排序');
+  $('#title-Selection').text("SEL").attr('title', '选择排序');
+  $('#title-Insertion').text("INS").attr('title', '插入排序');
+  $('#title-Merge').text("MER").attr('title', '归并排序');
+  $('#title-Quick').text("QUI").attr('title', '快速排序');
+  $('#title-RandomizedQuick').text("R-Q").attr('title', '随机快速排序');
+  $('#title-Counting').text("COU").attr('title', '计数排序');
+  $('#title-Radix').text("RAD").attr('title', '基数排序');
+}
+$('#title-Bubble').click(function() {
+  showStandardCanvas();
+  $("#sort-bubble-merge-inversion").css("display", "");
+  $('#current-action p').html('冒泡排序');
+  changeSortType(gw.bubbleSort);
+  AbbreviateTitle();
+  $('#title-Bubble').text('冒泡排序');
+});
+$('#title-Selection').click(function() {
+  showStandardCanvas();
+  hideAllSortingOptions();
+  $('#current-action p').html('选择排序');
+  changeSortType(gw.selectionSort);
+  AbbreviateTitle();
+  $('#title-Selection').text('选择排序');
+});
+$('#title-Insertion').click(function() {
+  showStandardCanvas();
+  hideAllSortingOptions();
+  $('#current-action p').html('插入排序');
+  changeSortType(gw.insertionSort);
+  AbbreviateTitle();
+  $('#title-Insertion').text('插入排序');
+});
+$('#title-Merge').click(function() {
+  showStandardCanvas();
+  hideAllSortingOptions();
+  $("#sort-bubble-merge-inversion").css("display", "");
+  $('#current-action p').html('归并排序');
+  AbbreviateTitle();
+  changeSortType(gw.mergeSort);
+  $('#title-Merge').text('归并排序');
+});
+$('#title-Quick').click(function() {
+  showStandardCanvas();
+  hideAllSortingOptions();
+  $('#current-action p').html('快速排序');
+  changeSortType(gw.quickSort);
+  AbbreviateTitle();
+  $('#title-Quick').text('快速排序');
+});
+$('#title-RandomizedQuick').click(function() {
+  showStandardCanvas();
+  hideAllSortingOptions();
+  $('#current-action p').html('随机快速排序');
+  changeSortType(gw.randomizedQuickSort);
+  AbbreviateTitle();
+  $('#title-RandomizedQuick').text('随机快速排序');
+});
+$('#title-Counting').click(function() {
+  showStandardCanvas();
+  $("#viz-counting-sort-secondary-canvas").show();
+  hideAllSortingOptions();
+  $('#current-action p').html('计数排序');
+  changeSortType(gw.countingSort, DEFAULT_COUNT_DATA);
+  AbbreviateTitle();
+  $('#title-Counting').text('计数排序');
+});
+$('#title-Radix').click(function() {
+  hideAllCanvases();
+  $("#viz-radix-sort-canvas").show();
+  hideAllSortingOptions();
+  $('#current-action p').html('基数排序');
+  changeSortType(gw.radixSort, DEFAULT_RADIX_DATA);
+  AbbreviateTitle();
+  $('#title-Radix').text('基数排序');
+});
+
+function changeSortType(newSortingFunction, customNumberList) {
+  if (!customNumberList)
+    $('#userdefined-input').val(DEFAULT_DATA);
+  else
+    $('#userdefined-input').val(customNumberList);
+  createList('userdefined');
+
+  if (isPlaying) stop();
+  showActionsPanel();
+  hideStatusPanel();
+  hideCodetracePanel();
+  gw.clearPseudocode();
+  gw.setSelectedSortFunction(newSortingFunction);
+}
+
+function createList(type) {
+  if (isPlaying) stop();
+  setTimeout(function() {
+    if (gw.createList(type)) {
+      $('#progress-bar').slider("option", "max", 0);
+      closeCreate();
+      isPlaying = false;
+    }
+  }, 500);
+}
+
+function sort(callback) {
+  gw.computeInversionIndex = $('#sort-bubble-merge-inversion-checkbox').prop('checked');
+  if (isPlaying) stop();
+  setTimeout(function() {
+    if (gw.sort(callback)) {
+      $('#current-action').show();
+      $('#progress-bar').slider("option", "max", gw.getTotalIteration()-1);
+      triggerRightPanels();
+      isPlaying = true;
+    }
+  }, 500);
+}
+
+// submenu stuff
+var lastSubmenuShown = null;
+
+function triggerSubmenu(which) {
+  hideAllSubmenus();
+  if (lastSubmenuShown == which) {
+    lastSubmenuShown = null;
+    return;
+  }
+
+  lastSubmenuShown = which;
+
+  $(".create").css("bottom", "60px");
+  if (which == "sorted") {
+    $("#create-sorted-increasing").show();
+    $("#create-sorted-decreasing").show();
+  }
+  else if (which == "nearly-sorted") {
+    $("#create-nearly-sorted-increasing").show();
+    $("#create-nearly-sorted-decreasing").show();
+  }
+}
+
+function hideAllSubmenus() {
+  $(".create").css("bottom", "92px");
+  $("#create-sorted-increasing").hide();
+  $("#create-sorted-decreasing").hide();
+  $("#create-nearly-sorted-increasing").hide();
+  $("#create-nearly-sorted-decreasing").hide();
+}
+
+// sort options
+function hideAllSortingOptions() {
+  $("#sort-bubble-merge-inversion").css("display", "none");
+}
+
+// canvas
+function hideAllCanvases() {
+  $("#viz-canvas").hide();
+  $("#viz-counting-sort-secondary-canvas").hide();
+  $("#viz-radix-sort-canvas").hide();
+}
+
+function showStandardCanvas() {
+  $("#viz-canvas").show();
+  $("#viz-counting-sort-secondary-canvas").hide();
+  $("#viz-radix-sort-canvas").hide();
+}
+
+var exploreModeData = [];
+
+// This function will be called before entering E-Lecture Mode
+function ENTER_LECTURE_MODE() {
+  exploreModeData = gw.currentNumList;
+}
+
+// This function will be called before returning to Explore Mode
+function ENTER_EXPLORE_MODE() {
+  gw.loadNumberList(exploreModeData);
+}
+
+// Lecture action functions
+function SORT(mode) {
+  hideSlide(function() {
+    sort(showSlide);
+  });
+}
+function CUSTOM_ACTION(action, data, mode) {}
+</script>
+</body>
+</html>
