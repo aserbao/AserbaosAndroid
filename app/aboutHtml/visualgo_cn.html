@@ -29,7 +29,7 @@
         background: none;
         /*overflow: normal;*/
         white-space: normal;
-        text-align: right;
+        text-align: center;
         color: black; font-weight: bold; font-size: 20px;
       }
       .electure-prev, .electure-next { /* force update, copied from viz.css */
@@ -124,6 +124,8 @@ div .radix-sort-element {
     </script>
 </head>
 <body>
+
+
 <div id="top-bar">
 <a href="http://www.comp.nus.edu.sg/~stevenha"><span class="colour" style="border: 1px solid green; border-radius: 25px;">7</span></a>&nbsp;&nbsp;&nbsp;
 <a id="home" href="/">Visu<span class="colour">Algo</span><span style="font-size: 40%">.net</span></a>
@@ -2867,8 +2869,8 @@ var Sorting = function() {
   this.currentNumList = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]; // the default
 
   var barWidth = 50;
-  var maxHeight = 230;
-  var gapBetweenBars = 5;
+  var maxHeight = 330;
+  var gapBetweenBars = 10;
   var maxNumOfElements = 20; //max 20 elements currently
   var gapBetweenPrimaryAndSecondaryRows = 30; // of the bars
 
@@ -2914,7 +2916,7 @@ var Sorting = function() {
                  .linear()
                  .range([0, maxHeight]);
 
-  var drawState = function(stateIndex) {
+  var drawState = function(stateIndex) {//这里循环调用
     if (isRadixSort)
       drawRadixSortCanvas(statelist[stateIndex], secondaryStatelist[stateIndex]);
     else
@@ -2954,7 +2956,7 @@ var Sorting = function() {
            .attr("x", (barWidth - gapBetweenBars) / 2)
            .attr("y", FunctionList.text_y)
            .text(function(d) {
-             return d.value;
+             return 10 ;
            });
 
     // Update ==============================
@@ -2972,11 +2974,11 @@ var Sorting = function() {
               })
               .attr("width", barWidth - gapBetweenBars)
               .style("fill", function(d) {
-                return d.highlight;
+                return d.highlight ;
               });
 
     canvasData.transition()
-              .attr("transform", FunctionList.g_transform)
+              .attr("transform", FunctionList.g_transform )
   };
 
   var drawCountingSortCounters = function(state) {
@@ -3010,7 +3012,7 @@ var Sorting = function() {
     canvasData
             .transition()
             .text(function(d) {
-              return d;
+              return 10;
             });
   };
 
@@ -4321,5 +4323,23 @@ function SORT(mode) {
 }
 function CUSTOM_ACTION(action, data, mode) {}
 </script>
+
+<canvas id="myCanvas" width="800" height="500" style="border:1px solid #d3d3d3; z-index:2; left:10px; top:10px">
+    您的浏览器不支持 HTML5 canvas 标签。</canvas>
+
+<script>
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.font="30px Arial";
+ctx.fillText("Hello World",10,50);
+
+</script>
+
+<a href="#" style="position:absolute; left:20px; top:500px;">blog</a>
+
+
+<marquee hspace=20 vspace=20 width=150 bgcolor=ffaaaa align=middle>12我会移动耶！,只在一部分屏幕移动</marquee>
+
 </body>
 </html>

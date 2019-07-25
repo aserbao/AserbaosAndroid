@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>会移动的文字</title>
+</head>
+<body>
+<br><br><br>
+<marquee> 移动的文字</marquee>
+<marquee direction=left>1我从右向左移！</marquee>
+<marquee direction=right>2我从左向右移！</marquee>
+<marquee behavior=scroll>3我一圈一圈绕着走！</marquee>
+<marquee behavior=slide>4我只走一次就歇了！</marquee>
+<marquee behavior=alternate>5我来回走耶！</marquee>
+<!--循环 <loop=#> #=次数；若未指定则循环不止(infinite)-->
+<marquee loop=3 width=50% behavior=scroll>6我只走 3 趟哟！</marquee>
+<!--速度 <scrollamount=#>-->
+<marquee scrollamount=20>7我走得好快哟！</marquee>
+<!--延时 <scrolldelay=#>-->
+<marquee scrolldelay=500 scrollamount=100>8啦啦啦，我走一步，停一停！</marquee>
+<!--对齐方式(Align) <align=#> #=top, middle, bottom-->
+<font size=6>
+<marquee align="top" width=400>9我会移动耶！</marquee><br>
+</font>
+<marquee height=40 width=50% bgcolor=yellow>10我会移动耶！</marquee>
+<marquee bgcolor="red">11我会移动耶！底色为红色</marquee>
+<!--空白-->
+<marquee hspace=20 vspace=20 width=150 bgcolor=ffaaaa align=middle>12我会移动耶！,只在一部分屏幕移动</marquee>
+<marquee> 13移动的图片:<img src="wml.jpg" width="100px" height="120px"></img></marquee>
+</body>
+</html>
