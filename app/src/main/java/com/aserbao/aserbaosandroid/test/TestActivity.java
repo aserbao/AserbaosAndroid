@@ -30,8 +30,6 @@ public class TestActivity extends AppCompatActivity {
     Button mTestBtn;
     @BindView(R.id.test_btn2)
     Button mTestBtn2;
-    @BindView(R.id.test_fragment)
-    FrameLayout mTestContainter;
     private List l = new ArrayList();
     private long mStartTime;
 
@@ -51,10 +49,6 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public void addView() {
-        mTestContainter.removeAllViews();
-        BezierCustomLike bezierCustomLike = new BezierCustomLike(this);
-        bezierCustomLike.setClickable(true);
-        mTestContainter.addView(bezierCustomLike, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     }
     public int count = 10 * 10000;
     public int num = 0;
