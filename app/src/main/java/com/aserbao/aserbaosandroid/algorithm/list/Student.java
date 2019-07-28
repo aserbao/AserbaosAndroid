@@ -42,4 +42,13 @@ public class Student {
     public void setScore(int score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+            "user_name='" + user_name + '\'' +
+            ", age=" + age +
+            ", score=" + score +
+            '}';
+    }
 }
