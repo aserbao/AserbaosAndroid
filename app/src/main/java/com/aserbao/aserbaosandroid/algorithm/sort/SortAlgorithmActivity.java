@@ -148,7 +148,6 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     public void directInsertionSort(){
         int calcTime = 0;
         int[] source_data = {35,45,25,15,5,10,30,50,40,20};
-//        int[] source_data = {50,45,40,35,30,25,20,15,10,5};
         int count = source_data.length;
         int i,j,k;
         for (i = 1; i < count; i++) {
@@ -161,12 +160,12 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
             if (j != i - 1){
                 int temp = source_data[i];
                 for (k = i - 1; k > j; k--) {
-                    calcTime++;
+                    calcTime ++;
                     source_data[k + 1] = source_data[k];
-                    Log.e(TAG, "directInsertionSort: 第" +calcTime+"次计算，数据为"+ Arrays.toString(source_data)  );
                 }
                 source_data[k + 1] = temp;
             }
+            Log.e(TAG, "directInsertionSort: 插入第" +i+"个数后，数据为"+ Arrays.toString(source_data) + " 进行了"+ calcTime +"次计算");
         }
     }
 
@@ -180,8 +179,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
             int temp = source_data[i];
             int low = 0, high = i - 1, mid = -1;
             while (low <= high) {
-                calcTime ++;
                 mid = low + (high - low) / 2;
+                calcTime ++;
                 if (source_data[mid] > temp) {
                     high = mid - 1;
                 } else { // 元素相同时，也插入在后面的位置
@@ -191,11 +190,10 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
             for(int j = i - 1; j >= low; j--) {
                 calcTime ++;
                 source_data[j + 1] = source_data[j];
-                Log.e(TAG, "binaryInsertSort:第"+i+"次循环 第"+calcTime+"次计算 其中 low =" + low + " mid = " + mid + " high = " + high + " 数据为： " +Arrays.toString(source_data) );
             }
             source_data[low] = temp;
+            Log.e(TAG, "binaryInsertSort: 插入第" +i+"个数后，其中 low =" + low + " mid = " + mid + " high = " + high + "数据为"+ Arrays.toString(source_data) + " 一共进行了"+ calcTime +"次计算" );
         }
-        Log.e(TAG, "binaryInsertSort: " + Arrays.toString(source_data) );
     }
 
 
