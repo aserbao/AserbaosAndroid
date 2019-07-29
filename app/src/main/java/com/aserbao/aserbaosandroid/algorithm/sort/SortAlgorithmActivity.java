@@ -23,6 +23,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("选择排序升级版",3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("直接插入排序",40));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("二分插入排序",41));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
     }
 
 
@@ -48,6 +49,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
                 break;
             case 41:
                 binaryInsertSort();
+                break;
+            case 5:
+                useMergeSortData();
                 break;
         }
     }
@@ -197,6 +201,34 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
+
+    public void useMergeSortData(){
+        int[] source_data = {35,15,25,5,10,45,40,20};
+        source_data = mergeSort(source_data,0,source_data.length -1);
+        Log.e(TAG, "useMergeSortData: " + Arrays.toString(source_data) );
+    }
+
+    public int[] mergeSort(int[] nums, int low, int high) {
+        if (low == high)
+            return new int[] { nums[low] };
+
+        int mid = low + (high - low) / 2;
+        int[] leftArr = mergeSort(nums, low, mid); //左有序数组
+        int[] rightArr = mergeSort(nums, mid + 1, high); //右有序数组
+        int[] newNum = new int[leftArr.length + rightArr.length]; //新有序数组
+
+        int m = 0, i = 0, j = 0;
+        while (i < leftArr.length && j < rightArr.length) {
+            newNum[m++] = leftArr[i] < rightArr[j] ? leftArr[i++] : rightArr[j++];
+        }
+        while (i < leftArr.length)
+            newNum[m++] = leftArr[i++];
+        while (j < rightArr.length)
+            newNum[m++] = rightArr[j++];
+
+        Log.e(TAG, "mergeSort: leftArr = " + Arrays.toString(leftArr)  + " rightArr = "+Arrays.toString(rightArr) +" newNum = "+ Arrays.toString(newNum));
+        return newNum;
+    }
 
 
 }
