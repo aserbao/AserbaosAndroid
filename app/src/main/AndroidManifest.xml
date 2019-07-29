@@ -47,7 +47,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.iamgePhotoshop.blur.BlurImageActivity"></activity>
+        <activity android:name=".algorithm.sort.SortAlgorithmActivity"></activity>
+        <activity android:name=".functions.iamgePhotoshop.blur.BlurImageActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.mmin18.MMin18Activity" />
         <activity android:name=".aaThird.okhttp.OkhttpActivity" />
         <activity android:name=".functions.aboutBitmap.pineColor.PineColorBitmapActivity" />
