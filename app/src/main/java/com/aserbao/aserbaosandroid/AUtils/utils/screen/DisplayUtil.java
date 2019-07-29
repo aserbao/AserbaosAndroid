@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.AUtils.utils;
+package com.aserbao.aserbaosandroid.AUtils.utils.screen;
 
 import android.content.Context;
 import android.content.res.Resources;

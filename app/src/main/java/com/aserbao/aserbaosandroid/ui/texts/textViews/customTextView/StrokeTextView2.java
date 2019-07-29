@@ -7,11 +7,8 @@ import android.graphics.Paint;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 
 /**
  * 文字描边的textView

@@ -8,13 +8,10 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.adapters.SmoothAdapter;
@@ -29,7 +26,6 @@ import butterknife.ButterKnife;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING;
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_SETTLING;
 
 public class SmoothActivitiy extends AppCompatActivity {
 

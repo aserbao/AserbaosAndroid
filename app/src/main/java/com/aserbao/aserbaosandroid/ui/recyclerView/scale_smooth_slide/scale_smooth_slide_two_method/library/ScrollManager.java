@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 
 public class ScrollManager {
     private static final String TAG = "ScrollManager";

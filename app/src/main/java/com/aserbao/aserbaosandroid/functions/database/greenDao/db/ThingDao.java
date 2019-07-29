@@ -24,7 +24,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, long.class, "id", true, "_id");
         public final static Property Message = new Property(1, String.class, "message", false, "message");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
     }
@@ -42,7 +42,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"THING\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
                 "\"message\" TEXT," + // 1: message
                 "\"NAME\" TEXT);"); // 2: name
         // Add Indexes
@@ -59,11 +59,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, Thing entity) {
         stmt.clearBindings();
- 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
+        stmt.bindLong(1, entity.getId());
  
         String message = entity.getMessage();
         if (message != null) {
@@ -79,11 +75,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, Thing entity) {
         stmt.clearBindings();
- 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
+        stmt.bindLong(1, entity.getId());
  
         String message = entity.getMessage();
         if (message != null) {
@@ -98,13 +90,13 @@ public class ThingDao extends AbstractDao<Thing, Long> {
 
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+        return cursor.getLong(offset + 0);
     }    
 
     @Override
     public Thing readEntity(Cursor cursor, int offset) {
         Thing entity = new Thing( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // message
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // name
         );
@@ -113,7 +105,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
      
     @Override
     public void readEntity(Cursor cursor, Thing entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setId(cursor.getLong(offset + 0));
         entity.setMessage(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
@@ -135,7 +127,7 @@ public class ThingDao extends AbstractDao<Thing, Long> {
 
     @Override
     public boolean hasKey(Thing entity) {
-        return entity.getId() != null;
+        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
     }
 
     @Override

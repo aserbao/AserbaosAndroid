@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.MyDaoMaster;

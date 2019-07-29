@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 
 /**
  * 功能:

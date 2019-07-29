@@ -1,26 +1,12 @@
 package com.aserbao.aserbaosandroid.ui.animation.moveAnimation.angleShot;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Math.PI;
 
 /**
  * 功能:

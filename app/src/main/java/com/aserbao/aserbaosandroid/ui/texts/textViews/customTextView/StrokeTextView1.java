@@ -9,8 +9,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
-import com.aserbao.aserbaosandroid.MyApplication;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 
 /**

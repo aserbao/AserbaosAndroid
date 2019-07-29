@@ -6,11 +6,7 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.accessibilityservice.FingerprintGestureController;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
-import android.graphics.Rect;
-import android.media.AudioManager;
 import android.os.Build;
-import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,34 +14,13 @@ import android.view.KeyEvent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import com.airbnb.lottie.L;
-import com.aserbao.aserbaosandroid.AUtils.utils.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService.utils.MyAccessibilityUtils;
 
 import java.util.List;
 
 import static android.accessibilityservice.GestureDescription.getMaxGestureDuration;
-import static android.media.AudioManager.ADJUST_RAISE;
-import static android.view.accessibility.AccessibilityEvent.TYPE_ANNOUNCEMENT;
-import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_END;
-import static android.view.accessibility.AccessibilityEvent.TYPE_GESTURE_DETECTION_START;
-import static android.view.accessibility.AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_TOUCH_EXPLORATION_GESTURE_END;
-import static android.view.accessibility.AccessibilityEvent.TYPE_TOUCH_EXPLORATION_GESTURE_START;
-import static android.view.accessibility.AccessibilityEvent.TYPE_TOUCH_INTERACTION_END;
-import static android.view.accessibility.AccessibilityEvent.TYPE_TOUCH_INTERACTION_START;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_CLICKED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_FOCUSED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_HOVER_ENTER;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_HOVER_EXIT;
 import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_SCROLLED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_SELECTED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_TEXT_SELECTION_CHANGED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY;
-import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOWS_CHANGED;
-import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED;
 import static android.view.accessibility.AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED;
 
 /**
