@@ -201,7 +201,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
-
+    /**
+     * 使用归并排序
+     */
     public void useMergeSortData(){
         int[] source_data = {35,15,25,5,10,45,40,20};
         source_data = mergeSort(source_data,0,source_data.length -1);
