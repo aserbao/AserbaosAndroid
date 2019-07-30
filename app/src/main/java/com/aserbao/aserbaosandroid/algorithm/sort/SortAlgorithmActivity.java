@@ -24,8 +24,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("选择排序升级版",3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("直接插入排序",40));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("二分插入排序",41));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("希尔排序",42));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
     }
 
 
@@ -216,14 +216,14 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         int d = source_data.length;
         while (true) {
             d = d / 2;
-            for (int x = 0; x < d; x++) {
-                for (int i = x + d; i < source_data.length; i = i + d) {
+            for (int i = 0; i < d; i++) {
+                for (int j = i + d; j < source_data.length; j = j + d) {
                     int temp = source_data[i];
-                    int j;
-                    for (j = i - d; j >= 0 && source_data[j] > temp; j = j - d) {
-                        source_data[j + d] = source_data[j];
+                    int k;
+                    for (k = j - d; k >= 0 && source_data[k] > temp; k = k - d) {
+                        source_data[k + d] = source_data[k];
                     }
-                    source_data[j + d] = temp;
+                    source_data[k + d] = temp;
                     Log.e(TAG, "shellSort: " + String.valueOf(d) + " 值 = " + Arrays.toString(source_data));
                 }
             }
@@ -261,6 +261,11 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
 
         Log.e(TAG, "mergeSort: leftArr = " + Arrays.toString(leftArr)  + " rightArr = "+Arrays.toString(rightArr) +" newNum = "+ Arrays.toString(newNum));
         return newNum;
+    }
+
+
+    public void fastSort(){
+
     }
 
 
