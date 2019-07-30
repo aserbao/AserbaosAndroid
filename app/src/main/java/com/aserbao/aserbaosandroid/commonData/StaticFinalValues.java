@@ -1,10 +1,15 @@
 package com.aserbao.aserbaosandroid.commonData;
 
+import android.os.Environment;
+
 public class StaticFinalValues {
 
 
     public static final String IMAGE_URL = "https://avatars1.githubusercontent.com/u/21996952?s=460&v=4";
     public static final String VIDEO_URL = "video_url";
+    public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
+    public static final String STORAGE_TEMP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao";
+    public static final String STORAGE_TEMP_APK_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.apk";
 
     //=================================Handler
     public static final int EMPTY = 0;
@@ -12,6 +17,7 @@ public class StaticFinalValues {
 
     //=================================bundler
     public static final int KEY = 1;
+    public static final int INDEX_TAG =100;
     public static final String TYPE = "type";
 
     // =================================direction

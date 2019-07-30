@@ -53,7 +53,7 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<BaseRe
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
         int tag = classBean.getTag();
         String name = classBean.getName();
-        if (tag > 0) {
+        if (tag >= 0) {
             holder.mBaseRecyclerViewItemTv.setTag(tag);
             name = name + String.valueOf(tag);
         }else{

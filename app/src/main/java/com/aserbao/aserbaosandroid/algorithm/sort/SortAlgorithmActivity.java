@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.algorithm.list.Student;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
@@ -23,6 +24,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("选择排序升级版",3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("直接插入排序",40));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("二分插入排序",41));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("希尔排序",42));
     }
 
 
@@ -49,6 +51,10 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
             case 41:
                 binaryInsertSort();
                 break;
+            case 42:
+                shellSort();
+                break;
+
         }
     }
 
@@ -172,7 +178,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 二分插入排序
      */
-    public static void binaryInsertSort() {
+    public void binaryInsertSort() {
         int calcTime = 0;
         int[] source_data = {35,45,25,15,5,10,30,50,40,20};
         for (int i = 1; i < source_data.length; i++) {
@@ -197,6 +203,36 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
+    /**
+     * 希尔排序
+     */
+    public void  shellSort(){
+            int[]source_data={5,45,10,25,35,15};
+            //希尔排序
+            int d = source_data.length;
+            while(true)
+            {
+                d = d/2;
+                for(int x= 0;x < d; x++)
+                {
+                    for(int i= x + d; i<source_data.length; i =  i + d)
+                    {
+                        int temp=source_data[i];
+                        int j;
+                        for(j = i-d; j >= 0 && source_data[j] > temp; j = j-d)
+                        {
+                            source_data[j+d]=source_data[j];
+                        }
+                        source_data[j+d]=temp;
+                        Log.e(TAG, "shellSort: " + String.valueOf(d) + " 值 = " + Arrays.toString(source_data) );
+                    }
+                }
+                if(d == 1)
+                {
+                    break;
+                }
+            }
 
-
+         Log.e(TAG, "sheelSort: " + Arrays.toString(source_data));
+    }
 }

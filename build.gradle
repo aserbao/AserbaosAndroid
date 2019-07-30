@@ -10,6 +10,7 @@ buildscript {
             name 'Google'
         }
         maven { url 'https://jitpack.io' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
@@ -27,6 +28,7 @@ allprojects {
             name 'Google'
         }
         maven { url 'https://jitpack.io' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
