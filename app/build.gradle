@@ -102,4 +102,6 @@ dependencies {
     //============下载库
     implementation 'com.liulishuo.okdownload:okdownload:1.0.5'
     implementation 'com.liulishuo.okdownload:sqlite:1.0.5'
+
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
 }

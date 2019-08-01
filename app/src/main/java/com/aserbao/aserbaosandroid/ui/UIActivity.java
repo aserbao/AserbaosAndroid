@@ -7,6 +7,7 @@ import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.ui.customView.countdownView.CountDownViewActivity;
+import com.aserbao.aserbaosandroid.ui.imageviews.ImageViewsActivity;
 import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.RandomAndNoOverLayActivity;
 import com.aserbao.aserbaosandroid.ui.texts.TextsActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
@@ -27,6 +28,7 @@ public class UIActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("文本视图的使用", TextsActivity.class));
         mClassBeen.add(new ClassBean("ColorPicker取色器的使用", ColorPickerActivity.class));
         mClassBeen.add(new ClassBean("Toast的使用", ToastActivity.class));
+        mClassBeen.add(new ClassBean("ImageView的使用", ImageViewsActivity.class));
     }
 
 }

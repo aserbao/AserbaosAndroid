@@ -31,6 +31,7 @@
             <TextView
                 android:id="@+id/dynamicDrawable_span_tv"
                 style="@style/picTxt_tv_style"
+                android:textStyle="normal"
                 />
             <TextView
                 android:id="@+id/iamge_span_tv"

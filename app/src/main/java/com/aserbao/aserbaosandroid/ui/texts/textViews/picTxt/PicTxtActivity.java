@@ -156,9 +156,10 @@ public class PicTxtActivity extends AppCompatActivity {
                 return d;
             }
         };
+        dynamicDrawableSpan.setSpan(new StyleSpan(Typeface.BOLD),1,8,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         dynamicDrawableSpan.setSpan(drawableSpan, 3, 4, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         dynamicDrawableSpan.setSpan(drawableSpan2, 7, 8, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-        dynamicDrawableSpan.setSpan(clickableSpan, 7, 8, spanFlag);
+        dynamicDrawableSpan.setSpan(clickableSpan, 8, 10, spanFlag);
         mDynamicDrawableSpanTv.setText(dynamicDrawableSpan);
         mDynamicDrawableSpanTv.setMovementMethod(LinkMovementMethod.getInstance());
 

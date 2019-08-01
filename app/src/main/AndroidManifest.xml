@@ -47,7 +47,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.okdownload.OkDownLoadActivity"></activity>
+        <activity android:name=".ui.imageviews.ImageViewsActivity"></activity>
+        <activity android:name=".aaThird.okdownload.OkDownLoadActivity" />
         <activity android:name=".algorithm.sort.SortAlgorithmActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.BlurImageActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.mmin18.MMin18Activity" />
