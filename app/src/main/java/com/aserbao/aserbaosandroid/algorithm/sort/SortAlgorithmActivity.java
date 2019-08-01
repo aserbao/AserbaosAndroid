@@ -26,6 +26,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("二分插入排序",41));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("希尔排序",42));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",6));
     }
 
 
@@ -55,9 +56,11 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
             case 42:
                 shellSort();
                 break;
-
             case 5:
                 useMergeSortData();
+                break;
+            case 6:
+                useFastSortData();
                 break;
         }
     }
@@ -240,7 +243,6 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         source_data = mergeSort(source_data,0,source_data.length -1);
         Log.e(TAG, "useMergeSortData: " + Arrays.toString(source_data) );
     }
-
     public int[] mergeSort(int[] nums, int low, int high) {
         if (low == high)
             return new int[] { nums[low] };
@@ -264,9 +266,56 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
-    public void fastSort(){
-
+    /**
+     * 快速排序
+     */
+    public void useFastSortData(){
+        int[] source_data = {35,15,25,5,10,45,40,20};
+        int start = 0,end = source_data.length -1;
+        source_data = fastSort(source_data,start,end);
+        Log.e(TAG, "useFaseSortData: "  + Arrays.toString(source_data) );
     }
 
 
+    public int[] fastSort(int[] source_data,int start,int end){
+        int pivot = source_data[start];
+        int i = start;
+        int j = end;
+        while (i<j) {
+            while ((i<j)&&(source_data[j]>pivot)) {
+                j--;
+            }
+            while ((i<j)&&(source_data[i]<pivot)) {
+                i++;
+            }
+            if ((source_data[i]==source_data[j])&&(i<j)) {
+                i++;
+            } else {
+                int temp = source_data[i];
+                source_data[i] = source_data[j];
+                source_data[j] = temp;
+                Log.e(TAG, "fastSort:pivot="+ pivot + " i =" + i + " j = " + j + " 数据为 = " + Arrays.toString(source_data));
+            }
+        }
+        if (i-1>start) {
+            source_data = fastSort(source_data, start, i - 1);
+        }
+        if (j+1<end) {
+            source_data = fastSort(source_data, j + 1, end);
+        }
+        return (source_data);
+    }
+
+
+   /* public int[] fast(int[] source_data,int start ,int end){
+        int redPoint = source_data[start];
+        int i = start, j = end;
+        while(i< j){
+            while(source_data[j] > redPoint){
+                j--;
+            }
+        }
+    }*/
 }
+
+
