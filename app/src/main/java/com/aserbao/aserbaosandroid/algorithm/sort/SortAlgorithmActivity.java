@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.algorithm.sort;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -9,7 +7,6 @@ import com.aserbao.aserbaosandroid.algorithm.list.Student;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
@@ -28,6 +25,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",6));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",61));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("计数排序",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("基数排序",8));
     }
 
 
@@ -65,8 +64,18 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
                 break;
             case 61:
                 int[] source_data = {35,15,25,5,10,45,40,20};
-                qSort(source_data,0,source_data.length-1);
+                inPlaceSort(source_data,0,source_data.length-1);
                 Log.e(TAG, "itemClickBack: "+Arrays.toString(source_data) );
+                break;
+            case 7:
+                int[] source_data1 = {35,15,25,5,10,45,40,20};
+                source_data1 = countSort(source_data1);
+                Log.e(TAG, "itemClickBack: countSort = "+Arrays.toString(source_data1) );
+                break;
+            case 8:
+                int[] radix_data = {1571,232,33,786,9987,668,99,6666,3321,7542};
+                radixSort(radix_data,4);
+                Log.e(TAG, "itemClickBack: radixSort = " + Arrays.toString(radix_data) );
                 break;
         }
     }
@@ -313,8 +322,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         return (source_data);
     }
 
-
-    public void qSort(int[] source_data, int head, int tail) {
+    public void inPlaceSort(int[] source_data, int head, int tail) {
         if (head >= tail || source_data == null || source_data.length <= 1) {
             return;
         }
@@ -332,16 +340,80 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
                 source_data[j] = t;
                 ++i;
                 --j;
-                Log.e(TAG, "qSort: i = "+ i + " j = " + j  + " source_data =  " + Arrays.toString(source_data));
+                Log.e(TAG, "inPlaceSort: i = "+ i + " j = " + j  + " source_data =  " + Arrays.toString(source_data));
             } else if (i == j) {
                 ++i;
             }
         }
-        qSort(source_data, head, j);
-        qSort(source_data, i, tail);
-        Log.e(TAG, "qSort: " + Arrays.toString(source_data) );
+        inPlaceSort(source_data, head, j);
+        inPlaceSort(source_data, i, tail);
+        Log.e(TAG, "inPlaceSort: " + Arrays.toString(source_data) );
     }
 
+
+    /**
+     * 计数排序
+     */
+    public int[] countSort(int[] source_data){
+        int temp[] = new int[source_data.length];
+        int max = source_data[0], min = source_data[0];
+        for(int i : source_data){
+            if(i > max){
+                max = i;
+            }
+            if(i < min){
+                min = i;
+            }
+        }
+        //这里k的大小是要排序的数组中，元素大小的极值差+1
+        int k = max - min + 1;
+        int c[] = new int[k];
+        for(int i = 0; i < source_data.length; ++i){
+            c[source_data[i]-min] += 1;//优化过的地方，减小了数组c的大小
+        }
+        for(int i = 1; i < c.length; ++i){
+            c[i] = c[i] + c[i-1];
+        }
+        for(int i = source_data.length-1; i >= 0; --i){
+            temp[--c[source_data[i]-min]] = source_data[i];//按存取的方式取出c的元素
+        }
+        return temp;
+    }
+
+
+    /**
+     * 基数排序
+     */
+    public void radixSort(int[] number, int d) //d表示最大的数有多少位
+    {
+        int k = 0;
+        int n = 1;
+        int m = 1; //控制键值排序依据在哪一位
+        int[][]temp = new int[10][number.length]; //数组的第一维表示可能的余数0-9
+        int[]order = new int[10]; //数组orderp[i]用来表示该位是i的数的个数
+        while(m <= d)
+        {
+            for(int i = 0; i < number.length; i++)
+            {
+                int lsd = ((number[i] / n) % 10);
+                temp[lsd][order[lsd]] = number[i];
+                order[lsd]++;
+            }
+            for(int i = 0; i < 10; i++)
+            {
+                if(order[i] != 0)
+                    for(int j = 0; j < order[i]; j++)
+                    {
+                        number[k] = temp[i][j];
+                        k++;
+                    }
+                order[i] = 0;
+            }
+            n *= 10;
+            k = 0;
+            m++;
+        }
+    }
 
 }
 
