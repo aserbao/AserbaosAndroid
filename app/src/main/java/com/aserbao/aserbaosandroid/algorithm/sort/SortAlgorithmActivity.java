@@ -27,6 +27,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("希尔排序",42));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",6));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",61));
     }
 
 
@@ -61,6 +62,11 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
                 break;
             case 6:
                 useFastSortData();
+                break;
+            case 61:
+                int[] source_data = {35,15,25,5,10,45,40,20};
+                qSort(source_data,0,source_data.length-1);
+                Log.e(TAG, "itemClickBack: "+Arrays.toString(source_data) );
                 break;
         }
     }
@@ -276,6 +282,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         Log.e(TAG, "useFaseSortData: "  + Arrays.toString(source_data) );
     }
 
+    // 快速排序
 
     public int[] fastSort(int[] source_data,int start,int end){
         int pivot = source_data[start];
@@ -307,15 +314,35 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
-   /* public int[] fast(int[] source_data,int start ,int end){
-        int redPoint = source_data[start];
-        int i = start, j = end;
-        while(i< j){
-            while(source_data[j] > redPoint){
-                j--;
+    public void qSort(int[] source_data, int head, int tail) {
+        if (head >= tail || source_data == null || source_data.length <= 1) {
+            return;
+        }
+        int i = head, j = tail, pivot = source_data[head];
+        while (i <= j) {
+            while (source_data[i] < pivot) {
+                ++i;
+            }
+            while (source_data[j] > pivot) {
+                --j;
+            }
+            if (i < j) {
+                int t = source_data[i];
+                source_data[i] = source_data[j];
+                source_data[j] = t;
+                ++i;
+                --j;
+                Log.e(TAG, "qSort: i = "+ i + " j = " + j  + " source_data =  " + Arrays.toString(source_data));
+            } else if (i == j) {
+                ++i;
             }
         }
-    }*/
+        qSort(source_data, head, j);
+        qSort(source_data, i, tail);
+        Log.e(TAG, "qSort: " + Arrays.toString(source_data) );
+    }
+
+
 }
 
 
