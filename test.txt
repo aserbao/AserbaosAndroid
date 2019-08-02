@@ -1,30 +1,7 @@
-def ShellInsetSort(array, len_array, dk):  # 直接插入排序
-    for i in range(dk, len_array):  # 从下标为dk的数进行插入排序
-        position = i
-        current_val = array[position]  # 要插入的数
-
-        index = i
-        j = int(index / dk)  # index与dk的商
-        index = index - j * dk
-
-        # while True:  # 找到第一个的下标，在增量为dk中，第一个的下标index必然 0<=index<dk
-        #     index = index - dk
-        #     if 0<=index and index <dk:
-        #         break
-
-
-        # position>index,要插入的数的下标必须得大于第一个下标
-        while position > index and current_val < array[position-dk]:
-            array[position] = array[position-dk]  # 往后移动
-            position = position-dk
-        else:
-            array[position] = current_val
-
-
-
-def ShellSort(array, len_array):  # 希尔排序
-    dk = int(len_array/2)  # 增量
-    while(dk >= 1):
-        ShellInsetSort(array, len_array, dk)
-        print(">>:",array)
-        dk = int(dk/2)
+qSort: i = 1 j = 6 source_data =  [20, 15, 25, 5, 10, 45, 40, 35]
+qSort: i = 1 j = 3 source_data =  [10, 15, 25, 5, 20, 45, 40, 35]
+qSort: i = 3 j = 2 source_data =  [10, 15, 5, 25, 20, 45, 40, 35]
+qSort: i = 1 j = 1 source_data =  [5, 15, 10, 25, 20, 45, 40, 35]
+qSort: i = 2 j = 1 source_data =  [5, 10, 15, 25, 20, 45, 40, 35]
+qSort: i = 4 j = 3 source_data =  [5, 10, 15, 20, 25, 45, 40, 35]
+qSort: i = 6 j = 6 source_data =  [5, 10, 15, 20, 25, 35, 40, 45]
