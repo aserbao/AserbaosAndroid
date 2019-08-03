@@ -43,6 +43,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position) {
+        ALogUtils.logErrorTime(ALogUtils.INT_NUM_START_TIME);
         switch (position){
             case 0:
                 changeInt();
@@ -94,6 +95,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
                 Log.e(TAG, "itemClickBack: heapSort = " + Arrays.toString(source_data) );
                 break;
         }
+        ALogUtils.logErrorTime(ALogUtils.INT_NUM_END_TIME);
     }
 
 
