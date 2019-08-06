@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adapters.MoveToDeleteAda;
+import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.adapters.MoveToDeleteAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,14 +42,14 @@ public class MoveToDeleteActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(RecyclerView moveToDeleteRv) {
-        MoveToDeleteAda moveToDeleteAda = new MoveToDeleteAda(this);
+        MoveToDeleteAdapter moveToDeleteAda = new MoveToDeleteAdapter(this);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         moveToDeleteRv.setLayoutManager(linearLayoutManager);
         moveToDeleteRv.setAdapter(moveToDeleteAda);
     }
 
 
-    @OnClick({R.id.move_to_btn, R.id.scroll_btn,R.id.move_to_delete_view})
+    @OnClick({R.id.move_to_btn, R.id.scroll_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.move_to_btn:
@@ -57,9 +57,6 @@ public class MoveToDeleteActivity extends AppCompatActivity {
                 break;
             case R.id.scroll_btn:
                 mMoveToDeleteRv.scrollToPosition(0);
-                break;
-            case R.id.move_to_delete_view:
-                linearLayoutManager.scrollToPositionWithOffset(15,1);
                 break;
         }
     }

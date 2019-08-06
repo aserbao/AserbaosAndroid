@@ -99,6 +99,13 @@
         </attr>
         <attr name="radius" format="dimension"/>ssss
     </declare-styleable>
+    <declare-styleable name="ShadowRoundImageView">
+        <attr name="image_radius" format="dimension" />//圆角大小
+        <attr name="image_shadow_radius" format="dimension" />//阴影大小
+        <attr name="image_circle" format="boolean" />//是否圆形
+        <attr name="image_shadow" format="boolean" />//是否阴影
+        <attr name="shadow_color" format="integer"/>//阴影颜色
+    </declare-styleable>
 
 
     <declare-styleable name="RealtimeBlurView">

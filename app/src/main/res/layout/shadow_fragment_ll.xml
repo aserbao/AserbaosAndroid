@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/shadow_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="50dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowFragment
+        android:background="@color/colorBluePrimaryDark"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="这里是ShadowFragment的处理方案\n 这里是第二行"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowFragment>
+
+</FrameLayout>
