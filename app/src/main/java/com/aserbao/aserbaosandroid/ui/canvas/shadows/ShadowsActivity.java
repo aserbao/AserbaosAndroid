@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
@@ -38,27 +39,16 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerEmptyContainer.setBackgroundColor(Color.WHITE);
         switch (position){
             case 1:
-                addShadowTextView();
-                break;
             case 2:
-                addShadowFragment();
+                addShadowTextView();
                 break;
         }
     }
 
     public void addShadowTextView(){
-        ShadowTextView shadowTextView = new ShadowTextView(this);
-        shadowTextView.setWidth(DisplayUtil.dip2px(50));
-        shadowTextView.setHeight(DisplayUtil.dip2px(50));
-        shadowTextView.setText("shadowTextView");
-        shadowTextView.setGravity(Gravity.CENTER);
-        shadowTextView.setTextColor(Color.BLACK);
-        shadowTextView.setTextSize(30);
-        mBaseRecyclerEmptyContainer.addView(shadowTextView);
-    }
-
-    public void addShadowFragment(){
         View inflate = LayoutInflater.from(this).inflate(R.layout.shadow_fragment_ll, null);
         mBaseRecyclerEmptyContainer.addView(inflate);
     }
+
+
 }
