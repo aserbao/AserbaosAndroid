@@ -28,6 +28,7 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        // TODO: 2019-08-06 写一个阴影库供大家使用
         mBaseRecyclerBeen.add(new BaseRecyclerBean("缩小", 3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("增大", 4));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的TextView", 1));
