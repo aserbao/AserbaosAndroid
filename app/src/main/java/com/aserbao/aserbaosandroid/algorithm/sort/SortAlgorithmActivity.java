@@ -3,15 +3,18 @@ package com.aserbao.aserbaosandroid.algorithm.sort;
 import android.util.Log;
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "SortAlgorithmActivity";
-
+    private int[] source_data ;
+    private Random mRandom;
 
     @Override
     public void initGetData() {
@@ -27,55 +30,72 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",61));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("计数排序",7));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("基数排序",8));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("堆排序",9));
+        int data_count = 10000;
+        mRandom = new Random();
+        source_data = new int[data_count];
+        for (int i = 0; i < data_count; i++) {
+            source_data[i] = mRandom.nextInt(data_count);
+        }
     }
+
+
 
     @Override
     public void itemClickBack(View view, int position) {
+        ALogUtils.logErrorTime(ALogUtils.INT_NUM_START_TIME);
         switch (position){
             case 0:
                 changeInt();
                 break;
             case 1:
-                bubbleSort();
+//                int[] bubble_data = {20,40,50,30,10,5,15,25,45,35};
+                bubbleSort(source_data);
                 break;
             case 2:
-                selectedSort();
+                selectedSort(source_data);
                 break;
             case 3:
-                selectedSort2();
+                selectedSort2(source_data);
                 break;
             case 40:
-                directInsertionSort();
+                directInsertionSort(source_data);
 //                insertSort();
                 break;
             case 41:
-                binaryInsertSort();
+                binaryInsertSort(source_data);
                 break;
             case 42:
-                shellSort();
+                shellSort(source_data);
                 break;
             case 5:
-                useMergeSortData();
+                useMergeSortData(source_data);
                 break;
             case 6:
-                useFastSortData();
+                useFastSortData(source_data);
                 break;
             case 61:
-                int[] source_data = {35,15,25,5,10,45,40,20};
+//                int[] source_data = {35,15,25,5,10,45,40,20};
                 inPlaceSort(source_data,0,source_data.length-1);
                 Log.e(TAG, "itemClickBack: "+Arrays.toString(source_data) );
                 break;
             case 7:
-                int[] source_data1 = {35,15,25,5,10,45,40,20};
-                source_data1 = countSort(source_data1);
-                Log.e(TAG, "itemClickBack: countSort = "+Arrays.toString(source_data1) );
+//                int[] source_data1 = {35,15,25,5,10,45,40,20};
+                source_data = countSort(source_data);
+                Log.e(TAG, "itemClickBack: countSort = "+Arrays.toString(source_data) );
                 break;
             case 8:
-                int[] radix_data = {1571,232,33,786,9987,668,99,6666,3321,7542};
-                radixSort(radix_data,4);
-                Log.e(TAG, "itemClickBack: radixSort = " + Arrays.toString(radix_data) );
+//                int[] radix_data = {1571,232,33,786,9987,668,99,6666,3321,7542};
+                radixSort(source_data,5);
+                Log.e(TAG, "itemClickBack: radixSort = " + Arrays.toString(source_data) );
+                break;
+            case 9:
+//                int[] heap_data = {35,15,25,5,10,45,40,20};
+                heapSort(source_data);
+                Log.e(TAG, "itemClickBack: heapSort = " + Arrays.toString(source_data) );
                 break;
         }
+        ALogUtils.logErrorTime(ALogUtils.INT_NUM_END_TIME);
     }
 
 
@@ -96,9 +116,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 冒泡排序
      */
-    public void bubbleSort(){
+    public void bubbleSort(int[] source_data){
         int calcTime = 0;
-        int[] source_data = {20,40,50,30,10,5,15,25,45,35};
         for (int i = 1; i < source_data.length; i++) {
             for (int j = 0; j < source_data.length - i; j++) {
                 if (source_data[j] > source_data[j+1]){
@@ -116,9 +135,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 选择排序
      */
-    public void selectedSort(){
+    public void selectedSort(int[] source_data){
         int calcTime = 0;
-        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
+//        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
         int minIndex = 0;
         for (int i = 0; i < source_data.length; i++) {
             for (int j = i+1 ; j < source_data.length; j++) {
@@ -137,9 +156,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
         System.out.println(Arrays.toString(source_data));
     }
 
-    public void selectedSort2(){
+    public void selectedSort2(int[] source_data){
         int calcTime = 0;
-        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
+//        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
         int count = source_data.length;
         for (int i = 0; i < count /2 ; i++) {
             int minIndex = i, maxIndex = count - i -1;
@@ -171,9 +190,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 直接插入排序
      */
-    public void directInsertionSort(){
+    public void directInsertionSort(int[] source_data){
         int calcTime = 0;
-        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
+//        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
         int count = source_data.length;
         int i,j,k;
         for (i = 1; i < count; i++) {
@@ -198,9 +217,9 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 二分插入排序
      */
-    public void binaryInsertSort() {
+    public void binaryInsertSort(int[] source_data) {
         int calcTime = 0;
-        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
+//        int[] source_data = {35,45,25,15,5,10,30,50,40,20};
         for (int i = 1; i < source_data.length; i++) {
             int temp = source_data[i];
             int low = 0, high = i - 1, mid = -1;
@@ -226,8 +245,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 希尔排序
      */
-    public void  shellSort() {
-        int[] source_data = {5, 45, 10, 25, 35, 15};
+    public void  shellSort(int[] source_data) {
+//        int[] source_data = {5, 45, 10, 25, 35, 15};
         //希尔排序
         int d = source_data.length;
         while (true) {
@@ -251,8 +270,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 使用归并排序
      */
-    public void useMergeSortData(){
-        int[] source_data = {35,15,25,5,10,45,40,20};
+    public void useMergeSortData( int[] source_data){
+//        int[] source_data = {35,15,25,5,10,45,40,20};
         source_data = mergeSort(source_data,0,source_data.length -1);
         Log.e(TAG, "useMergeSortData: " + Arrays.toString(source_data) );
     }
@@ -282,8 +301,8 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     /**
      * 快速排序
      */
-    public void useFastSortData(){
-        int[] source_data = {35,15,25,5,10,45,40,20};
+    public void useFastSortData(int[] source_data){
+//        int[] source_data = {35,15,25,5,10,45,40,20};
         int start = 0,end = source_data.length -1;
         source_data = fastSort(source_data,start,end);
         Log.e(TAG, "useFaseSortData: "  + Arrays.toString(source_data) );
@@ -414,64 +433,36 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
     }
 
 
+
     /**
      * 堆排序
      */
-    public int[] heapSort(int[] array) {
-        //这里元素的索引是从0开始的,所以最后一个非叶子结点array.length/2 - 1
-        for (int i = array.length / 2 - 1; i >= 0; i--) {
-            adjustHeap(array, i, array.length);  //调整堆
-        }
-
-        // 上述逻辑，建堆结束
-        // 下面，开始排序逻辑
-        for (int j = array.length - 1; j > 0; j--) {
-            // 元素交换,作用是去掉大顶堆
-            // 把大顶堆的根元素，放到数组的最后；换句话说，就是每一次的堆调整之后，都会有一个元素到达自己的最终位置
-            swap(array, 0, j);
-            // 元素交换之后，毫无疑问，最后一个元素无需再考虑排序问题了。
-            // 接下来我们需要排序的，就是已经去掉了部分元素的堆了，这也是为什么此方法放在循环里的原因
-            // 而这里，实质上是自上而下，自左向右进行调整的
-            adjustHeap(array, 0, j);
-        }
-        return array;
-    }
-
-    /**
-     * 整个堆排序最关键的地方
-     * @param array 待组堆
-     * @param i 起始结点
-     * @param length 堆的长度
-     */
-    public void adjustHeap(int[] array, int i, int length) {
-        // 先把当前元素取出来，因为当前元素可能要一直移动
-        int temp = array[i];
-        for (int k = 2 * i + 1; k < length; k = 2 * k + 1) {  //2*i+1为左子树i的左子树(因为i是从0开始的),2*k+1为k的左子树
-            // 让k先指向子节点中最大的节点
-            if (k + 1 < length && array[k] < array[k + 1]) {  //如果有右子树,并且右子树大于左子树
-                k++;
-            }
-            //如果发现结点(左右子结点)大于根结点，则进行值的交换
-            if (array[k] > temp) {
-                swap(array, i, k);
-                // 如果子节点更换了，那么，以子节点为根的子树会受到影响,所以，循环对子节点所在的树继续进行判断
-                i = k;  //这一步决定了下一个步骤执行到的是左子树还是右子树
-            } else {  //不用交换，直接终止循环
-                break;
-            }
+    public void heapSort(int[] source_data) {
+        int len = source_data.length - 1;
+        int beginIndex = (source_data.length >> 1) - 1;
+        for (int i = beginIndex; i >= 0; i--)
+            maxHeapify(source_data,i, len);
+        for (int i = len; i > 0; i--) {
+            swap(source_data,0, i);
+            maxHeapify(source_data,0, i - 1);
         }
     }
-
-    /**
-     * 交换元素
-     * @param arr
-     * @param a 元素的下标
-     * @param b 元素的下标
-     */
-    public void swap(int[] arr, int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
+    private void maxHeapify(int[] source_data,int index, int len) {
+        int li = (index << 1) + 1;
+        int ri = li + 1;
+        int cMax = li;
+        if (li > len) return;
+        if (ri <= len && source_data[ri] > source_data[li])
+            cMax = ri;
+        if (source_data[cMax] > source_data[index]) {
+            swap(source_data,cMax, index);
+            maxHeapify(source_data, cMax, len);
+        }
+    }
+    private void swap(int[] source_data, int i, int j) {
+        int temp = source_data[i];
+        source_data[i] = source_data[j];
+        source_data[j] = temp;
     }
 
 }
