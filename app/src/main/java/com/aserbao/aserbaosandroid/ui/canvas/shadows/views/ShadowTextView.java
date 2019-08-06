@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.ui.canvas.shadows.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -58,17 +59,23 @@ public class ShadowTextView extends TextView {
         super.dispatchDraw(canvas);
     }
 
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
+    private Matrix matrix;
+    public void matrix(float fl){
+        matrix= new Matrix();
+        matrix.reset();
+        matrix.postScale(fl,fl);
+        invalidate();
     }
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {
-        RectF rectF = new RectF(0, 0, getWidth(), getHeight());
-        canvas.drawRoundRect(rectF, DisplayUtil.dip2px(15), DisplayUtil.dip2px(15), mPaint);
+//        RectF rectF = new RectF(0, 0, getWidth(), getHeight());
+//        canvas.drawRoundRect(rectF, DisplayUtil.dip2px(15), DisplayUtil.dip2px(15), mPaint);
+        if (matrix != null) {
+            canvas.setMatrix(matrix);
+        }
         super.onDraw(canvas);
     }
 }

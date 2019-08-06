@@ -22,8 +22,9 @@
     </com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowFragment>
 
     <com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowTextView
+        android:id="@+id/shadow_tv"
         android:layout_marginTop="20dp"
-        android:text="测试TextView的阴影"
+        android:text="测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
