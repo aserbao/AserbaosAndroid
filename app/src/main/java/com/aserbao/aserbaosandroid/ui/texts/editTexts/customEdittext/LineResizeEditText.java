@@ -142,8 +142,6 @@ public class LineResizeEditText extends AppCompatEditText {
             sp.setSpan(new AbsoluteSizeSpan(lineTextSize), lineStart, lineEnd, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         }
 
-
-
         setHint(sp);
 
     }
