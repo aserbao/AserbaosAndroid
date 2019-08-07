@@ -26,4 +26,9 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+
+    <dimen name="creator_edit_text_width">240dp</dimen>
+    <dimen name="creator_edit_text_min_textSize">20dp</dimen>
+    <dimen name="creator_edit_text_max_textSize">80dp</dimen>
 </resources>

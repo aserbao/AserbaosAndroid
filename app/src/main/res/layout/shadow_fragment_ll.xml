@@ -5,9 +5,10 @@
     android:layout_marginLeft="50dp"
     android:layout_marginTop="50dp"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="200dp"
+    android:layout_height="300dp">
     <com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowFragment
+        android:visibility="gone"
         android:background="@color/colorBluePrimaryDark"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
@@ -22,10 +23,16 @@
     </com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowFragment>
 
     <com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowTextView
+        android:background="@color/black30"
         android:id="@+id/shadow_tv"
-        android:layout_marginTop="20dp"
-        android:text="测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n"
+        android:text="测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影\n测试TextView的阴影
+        \n测试TextView的阴影\n测试TextView的阴影\n"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="300dp" />
 </LinearLayout>

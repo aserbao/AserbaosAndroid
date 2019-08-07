@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
@@ -19,7 +20,9 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
 
 
     ShadowTextView mShadowTv;
-
+    LinearLayout mShadowll;
+    private int  width = DisplayUtil.dip2px(100);
+    private int height = DisplayUtil.dip2px(200);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,11 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的TextView", 1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的Fragment", 2));
         mBaseRecyclerEmptyContainer.setVisibility(View.GONE);
+        for (int i = 0; i < 100; i++) {
+            result = result+ " 第几条数据 + " + String.valueOf(i) + " \n";
+        }
     }
+    String result ;
 
     @Override
     public void itemClickBack(View view, int position) {
@@ -51,15 +58,23 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
                 addShadowTextView();
                 break;
             case 3:
+                mShadowll.removeAllViews();
                 if (mShadowTv != null) {
-                    scale = scale - 0.02f;
+                    scale = scale - 0.005f;
                     mShadowTv.matrix(scale);
+                    mShadowTv.setText(result);
                 }
+                width = (int)(width  *  (1+scale));
+                height= (int)(height * (1+scale));
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
+                mShadowTv.setLayoutParams(layoutParams);
+                mShadowll.addView(mShadowTv);
                 break;
             case 4:
                 if (mShadowTv != null) {
                     scale = scale + 0.02f;
                     mShadowTv.matrix(scale);
+                    mShadowTv.setText(result);
                 }
                 break;
         }
@@ -68,6 +83,7 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
     public void addShadowTextView() {
         View inflate = LayoutInflater.from(this).inflate(R.layout.shadow_fragment_ll, null);
         mShadowTv = ((ShadowTextView) inflate.findViewById(R.id.shadow_tv));
+        mShadowll = ((LinearLayout) inflate.findViewById(R.id.shadow_fragment));
         mBaseRecyclerEmptyContainer.addView(inflate);
     }
 
