@@ -75,12 +75,10 @@ public class CustomEditTextActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_btn:
-
                 width = (int)(width  *  (1+0.05f));
                 this.height = (int)(this.height * (1+0.05f));
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, this.height);
                 mLrEditTv.setLayoutParams(layoutParams);
-
                 scale =  (float) DisplayUtil.dip2px(500)/(float)height;
 
                 Log.e(TAG, "onViewClicked: " +scale);
