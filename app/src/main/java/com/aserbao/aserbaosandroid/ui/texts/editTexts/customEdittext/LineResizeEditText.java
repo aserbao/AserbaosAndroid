@@ -116,12 +116,10 @@ public class LineResizeEditText extends AppCompatEditText {
                 lineTextSize = binarySearchSize(textPaint, i, subText, availableWidth, mMinTextSize, mMaxTextSize);
                 mCachedSizes.put(subText, lineTextSize);
             }
-
             text.setSpan(new AbsoluteSizeSpan(lineTextSize), lineStart, lineEnd, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         }
 
         mResizing = true;
-        setText(text);
         setSelection(selectionEnd);
     }
 
