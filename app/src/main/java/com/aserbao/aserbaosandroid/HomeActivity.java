@@ -10,6 +10,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
+import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.algorithm.sort.SortAlgorithmActivity;
@@ -67,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", CustomEditTextActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", OkDownLoadActivity.class));
     }
 
     private void initView() {

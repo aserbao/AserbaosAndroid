@@ -44,9 +44,20 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     private static final String TAG = "OkDownLoadActivity";
     private DownloadTask downloadTask;
     final String filename = "aserbao_test.apk";
-    final String url = "https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk";
+//    final String url = "https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk";
+//    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-5888a2b749d40ddb441af68db5a7f354";
+    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194";
 //    final String url = "https://cn.bing.com/th?id=OIP.xq1C2fmnSw5DEoRMC86vJwD6D6&pid=Api&rs=1";
     File parentFile = new File(STORAGE_TEMP_FILE);
+
+    //=======url list
+    private String[] urlList = {
+//        "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-5888a2b749d40ddb441af68db5a7f354",
+//        "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194",
+        "http://npic.getremark.com/0246eeaf9a9e3225373c66a059839fe5-3af72f6473790252e474c891c0d2676c",
+        "http://npic.getremark.com/2c16849fdbf2ccc229cea92f5f3b7f8d-ddc395724563289c8d4e104b3be164a1",
+//        "https://dldir1.qq.com/foxmail/work_weixin/wxwork_android_2.4.5.5571_100001.apk"
+    };
     @Override
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("其他测试",404));
@@ -107,43 +118,43 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             @Override
             public void infoReady(@NonNull DownloadTask task, @NonNull BreakpointInfo info, boolean fromBreakpoint, @NonNull Listener4SpeedAssistExtend.Listener4SpeedModel model) {
                 totalLength = info.getTotalLength();
-                Log.d(TAG, "infoReady() called with: task = [" + task + "], info = [" + info + "], fromBreakpoint = [" + fromBreakpoint + "], model = [" + model + "]");
+                Log.e(TAG, "infoReady() called with: task = [" + task + "], info = [" + info + "], fromBreakpoint = [" + fromBreakpoint + "], model = [" + model + "]");
             }
 
             @Override
             public void progressBlock(@NonNull DownloadTask task, int blockIndex, long currentBlockOffset, @NonNull SpeedCalculator blockSpeed) {
-                Log.d(TAG, "progressBlock() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], currentBlockOffset = [" + currentBlockOffset + "], blockSpeed = [" + blockSpeed + "]");
+                Log.e(TAG, "progressBlock() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], currentBlockOffset = [" + currentBlockOffset + "], blockSpeed = [" + blockSpeed + "]");
             }
 
             @Override
             public void progress(@NonNull DownloadTask task, long currentOffset, @NonNull SpeedCalculator taskSpeed) {
-                Log.d(TAG, "progress() called with: task = [" + task + "], currentOffset = [" + currentOffset + "], taskSpeed = [" + taskSpeed.speed() + "]" + " 目前进度为 = "+ (currentOffset*100)/totalLength + "%");
+                Log.e(TAG, "progress() called with: task = [" + task + "], currentOffset = [" + currentOffset + "], taskSpeed = [" + taskSpeed.speed() + "]" + " 目前进度为 = "+ (currentOffset*100)/totalLength + "%");
             }
 
             @Override
             public void blockEnd(@NonNull DownloadTask task, int blockIndex, BlockInfo info, @NonNull SpeedCalculator blockSpeed) {
-                Log.d(TAG, "blockEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], info = [" + info + "], blockSpeed = [" + blockSpeed + "]");
+                Log.e(TAG, "blockEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], info = [" + info + "], blockSpeed = [" + blockSpeed + "]");
             }
 
             @Override
             public void taskEnd(@NonNull DownloadTask task, @NonNull EndCause cause, @Nullable Exception realCause, @NonNull SpeedCalculator taskSpeed) {
-                Log.d(TAG, "taskEnd() called with: task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], taskSpeed = [" + taskSpeed + "]" + task.getFile().toString() + "  ===" + task.getParentFile().toString());
+                Log.e(TAG, "taskEnd() called with: task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], taskSpeed = [" + taskSpeed + "]" + task.getFile().toString() + "  ===" + task.getParentFile().toString());
                 Toast.makeText(mContext, "下载完成", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void taskStart(@NonNull DownloadTask task) {
-                Log.d(TAG, "taskStart() called with: task = [" + task + "]");
+                Log.e(TAG, "taskStart() called with: task = [" + task + "]");
             }
 
             @Override
             public void connectStart(@NonNull DownloadTask task, int blockIndex, @NonNull Map<String, List<String>> requestHeaderFields) {
-                Log.d(TAG, "connectStart() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], requestHeaderFields = [" + requestHeaderFields + "]");
+                Log.e(TAG, "connectStart() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], requestHeaderFields = [" + requestHeaderFields + "]");
             }
 
             @Override
             public void connectEnd(@NonNull DownloadTask task, int blockIndex, int responseCode, @NonNull Map<String, List<String>> responseHeaderFields) {
-                Log.d(TAG, "connectEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], responseCode = [" + responseCode + "], responseHeaderFields = [" + responseHeaderFields + "]");
+                Log.e(TAG, "connectEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], responseCode = [" + responseCode + "], responseHeaderFields = [" + responseHeaderFields + "]");
             }
         });
     }
@@ -163,7 +174,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
         DownloadContext build = builder.setListener(new DownloadContextListener() {
             @Override
             public void taskEnd(@NonNull DownloadContext context, @NonNull DownloadTask task, @NonNull EndCause cause, @Nullable Exception realCause, int remainCount) {
-                Log.d(TAG, "taskEnd() called with: context = [" + context + "], task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], remainCount = [" + remainCount + "]" + task.getFilename());
+                Log.e(TAG, "taskEnd() called with: context = [" + context + "], task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], remainCount = [" + remainCount + "]" + task.getFilename());
                 if (cause == EndCause.COMPLETED || cause == EndCause.FILE_BUSY || cause == EndCause.SAME_TASK_BUSY){
                         if (remainCount == 1) {
                             task.addTag(1, "remainCount == 1");
@@ -177,7 +188,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
 
             @Override
             public void queueEnd(@NonNull DownloadContext context) {
-                Log.d(TAG, "queueEnd() called with: context = [" + context + "]");
+                Log.e(TAG, "queueEnd() called with: context = [" + context + "]");
                 DownloadTask[] tasks = context.getTasks();
                 for (DownloadTask task : tasks) {
                     String tag = (String) task.getTag(1);
@@ -189,43 +200,43 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             @Override
             public void infoReady(@NonNull DownloadTask task, @NonNull BreakpointInfo info, boolean fromBreakpoint, @NonNull Listener4SpeedAssistExtend.Listener4SpeedModel model) {
                 totalLength = info.getTotalLength();
-                Log.d(TAG, "infoReady() called with: task = [" + task + "], info = [" + info + "], fromBreakpoint = [" + fromBreakpoint + "], model = [" + model + "]");
+                Log.e(TAG, "infoReady() called with: task = [" + task + "], info = [" + info + "], fromBreakpoint = [" + fromBreakpoint + "], model = [" + model + "]");
             }
 
             @Override
             public void progressBlock(@NonNull DownloadTask task, int blockIndex, long currentBlockOffset, @NonNull SpeedCalculator blockSpeed) {
-                Log.d(TAG, "progressBlock() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], currentBlockOffset = [" + currentBlockOffset + "], blockSpeed = [" + blockSpeed + "]");
+                Log.e(TAG, "progressBlock() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], currentBlockOffset = [" + currentBlockOffset + "], blockSpeed = [" + blockSpeed + "]");
             }
 
             @Override
             public void progress(@NonNull DownloadTask task, long currentOffset, @NonNull SpeedCalculator taskSpeed) {
-                Log.d(TAG, "progress() called with: task = [" + task + "], currentOffset = [" + currentOffset + "], taskSpeed = [" + taskSpeed.speed() + "]" + " 目前进度为 = "+ (currentOffset*100)/totalLength + "%");
+                Log.e(TAG, "progress() called with: task = [" + task + "], currentOffset = [" + currentOffset + "], taskSpeed = [" + taskSpeed.speed() + "]" + " 目前进度为 = "+ (currentOffset*100)/totalLength + "%");
             }
 
             @Override
             public void blockEnd(@NonNull DownloadTask task, int blockIndex, BlockInfo info, @NonNull SpeedCalculator blockSpeed) {
-                Log.d(TAG, "blockEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], info = [" + info + "], blockSpeed = [" + blockSpeed + "]");
+                Log.e(TAG, "blockEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], info = [" + info + "], blockSpeed = [" + blockSpeed + "]");
             }
 
             @Override
             public void taskEnd(@NonNull DownloadTask task, @NonNull EndCause cause, @Nullable Exception realCause, @NonNull SpeedCalculator taskSpeed) {
-                Log.d(TAG, "taskEnd() called with: task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], taskSpeed = [" + taskSpeed + "]" + task.getFile().toString() + "  ===" + task.getParentFile().toString());
+                Log.e(TAG, "taskEnd() called with: task = [" + task + "], cause = [" + cause + "], realCause = [" + realCause + "], taskSpeed = [" + taskSpeed + "]");
                 Toast.makeText(mContext, "下载完成", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void taskStart(@NonNull DownloadTask task) {
-                Log.d(TAG, "taskStart() called with: task = [" + task + "]");
+                Log.e(TAG, "taskStart() called with: task = [" + task + "]");
             }
 
             @Override
             public void connectStart(@NonNull DownloadTask task, int blockIndex, @NonNull Map<String, List<String>> requestHeaderFields) {
-                Log.d(TAG, "connectStart() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], requestHeaderFields = [" + requestHeaderFields + "]");
+                Log.e(TAG, "connectStart() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], requestHeaderFields = [" + requestHeaderFields + "]");
             }
 
             @Override
             public void connectEnd(@NonNull DownloadTask task, int blockIndex, int responseCode, @NonNull Map<String, List<String>> responseHeaderFields) {
-                Log.d(TAG, "connectEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], responseCode = [" + responseCode + "], responseHeaderFields = [" + responseHeaderFields + "]");
+                Log.e(TAG, "connectEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], responseCode = [" + responseCode + "], responseHeaderFields = [" + responseHeaderFields + "]");
             }
         }, true);
     }
@@ -233,11 +244,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
 
 
 
-    //=======url list
-    private String[] urlList = {
-        "https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk",
-        "https://dldir1.qq.com/foxmail/work_weixin/wxwork_android_2.4.5.5571_100001.apk",
-    };
+
 
 
     //=========
