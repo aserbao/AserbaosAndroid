@@ -10,7 +10,12 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/btn_start_link"
-            android:text="连接"
+            android:text="连接,失败不重连"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_start_auto"
+            android:text="开始链接，失败自动重连"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button

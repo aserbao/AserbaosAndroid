@@ -20,6 +20,7 @@ import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.BlurImageActivity;
+import com.aserbao.aserbaosandroid.functions.network.mqtt.simple.SimpleMqttActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
@@ -68,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", OkDownLoadActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", SimpleMqttActivity.class));
     }
 
     private void initView() {
