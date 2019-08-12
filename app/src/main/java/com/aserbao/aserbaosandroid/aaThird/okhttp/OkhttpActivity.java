@@ -12,7 +12,13 @@ import com.squareup.moshi.Moshi;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -21,11 +27,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.CertificatePinner;
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.Credentials;
@@ -40,6 +54,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.Route;
 import okhttp3.TlsVersion;
+import okio.Buffer;
 import okio.BufferedSink;
 import okio.GzipSink;
 import okio.Okio;
@@ -66,16 +81,19 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 ",5));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 ",6));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 ",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置应用拦截 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置网络拦截 "));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp压缩请求主体 "));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 ",8));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 ",9));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 ",10));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 ",11));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 ",12));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 ",13));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 ",14));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置应用拦截 ",15));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置网络拦截 ",16));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp压缩请求主体 ",17));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置证书锁 ",18));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp自定义认证证书 ",19));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp事件监听 ",20));
         init();
     }
 
@@ -158,8 +176,19 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             case 17:
                 setGzipIntercrptor();
                 break;
+            case 18:
+                certificatePin();
+                break;
+            case 19:
+                customCertificate();
+                break;
+            case 20:
+                useEvent();
+                break;
         }
     }
+
+
 
     public static final String sUrl = "https://cn.bing.com/";
 //    public static final String sUrl = "http://gank.io/api/today ";
@@ -828,6 +857,231 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
             .connectionSpecs(Collections.singletonList(spec))
             .build();
     }
+
+
+    /**
+     * 证书锁定
+     */
+    public void certificatePin(){
+        OkHttpClient client = new OkHttpClient.Builder()
+            .certificatePinner(new CertificatePinner.Builder()
+                .add("publicobject.com", "sha256/afwiKY3RxoMmLkuRW1l7QsPZTJPwDS2pdDROQjXw8ig=")
+                .build())
+            .build();
+
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/robots.txt")
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " +e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                for (Certificate certificate : response.handshake().peerCertificates()) {
+                    Log.e(TAG, "onResponse: " + CertificatePinner.pin(certificate) );
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 自定义认证证书
+     */
+    public void customCertificate(){
+        X509TrustManager trustManager;
+        SSLSocketFactory sslSocketFactory;
+        try {
+            trustManager = trustManagerForCertificates(trustedCertificatesInputStream());
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, new TrustManager[] { trustManager }, null);
+            sslSocketFactory = sslContext.getSocketFactory();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
+        }
+
+        OkHttpClient client = new OkHttpClient.Builder()
+            .sslSocketFactory(sslSocketFactory, trustManager)
+            .build();
+
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " +e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Headers responseHeaders = response.headers();
+                for (int i = 0; i < responseHeaders.size(); i++) {
+                    Log.e(TAG, "onResponse: " +  responseHeaders.name(i) + ": " + responseHeaders.value(i));
+                }
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+
+    /**
+     * Returns an input stream containing one or more certificate PEM files. This implementation just
+     * embeds the PEM files in Java strings; most applications will instead read this from a resource
+     * file that gets bundled with the application.
+     */
+    private InputStream trustedCertificatesInputStream() {
+        // PEM files for root certificates of Comodo and Entrust. These two CAs are sufficient to view
+        // https://publicobject.com (Comodo) and https://squareup.com (Entrust). But they aren't
+        // sufficient to connect to most HTTPS sites including https://godaddy.com and https://visa.com.
+        // Typically developers will need to get a PEM file from their organization's TLS administrator.
+        String comodoRsaCertificationAuthority = ""
+            + "-----BEGIN CERTIFICATE-----\n"
+            + "MIIF2DCCA8CgAwIBAgIQTKr5yttjb+Af907YWwOGnTANBgkqhkiG9w0BAQwFADCB\n"
+            + "hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G\n"
+            + "A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV\n"
+            + "BAMTIkNPTU9ETyBSU0EgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTAwMTE5\n"
+            + "MDAwMDAwWhcNMzgwMTE4MjM1OTU5WjCBhTELMAkGA1UEBhMCR0IxGzAZBgNVBAgT\n"
+            + "EkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMR\n"
+            + "Q09NT0RPIENBIExpbWl0ZWQxKzApBgNVBAMTIkNPTU9ETyBSU0EgQ2VydGlmaWNh\n"
+            + "dGlvbiBBdXRob3JpdHkwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCR\n"
+            + "6FSS0gpWsawNJN3Fz0RndJkrN6N9I3AAcbxT38T6KhKPS38QVr2fcHK3YX/JSw8X\n"
+            + "pz3jsARh7v8Rl8f0hj4K+j5c+ZPmNHrZFGvnnLOFoIJ6dq9xkNfs/Q36nGz637CC\n"
+            + "9BR++b7Epi9Pf5l/tfxnQ3K9DADWietrLNPtj5gcFKt+5eNu/Nio5JIk2kNrYrhV\n"
+            + "/erBvGy2i/MOjZrkm2xpmfh4SDBF1a3hDTxFYPwyllEnvGfDyi62a+pGx8cgoLEf\n"
+            + "Zd5ICLqkTqnyg0Y3hOvozIFIQ2dOciqbXL1MGyiKXCJ7tKuY2e7gUYPDCUZObT6Z\n"
+            + "+pUX2nwzV0E8jVHtC7ZcryxjGt9XyD+86V3Em69FmeKjWiS0uqlWPc9vqv9JWL7w\n"
+            + "qP/0uK3pN/u6uPQLOvnoQ0IeidiEyxPx2bvhiWC4jChWrBQdnArncevPDt09qZah\n"
+            + "SL0896+1DSJMwBGB7FY79tOi4lu3sgQiUpWAk2nojkxl8ZEDLXB0AuqLZxUpaVIC\n"
+            + "u9ffUGpVRr+goyhhf3DQw6KqLCGqR84onAZFdr+CGCe01a60y1Dma/RMhnEw6abf\n"
+            + "Fobg2P9A3fvQQoh/ozM6LlweQRGBY84YcWsr7KaKtzFcOmpH4MN5WdYgGq/yapiq\n"
+            + "crxXStJLnbsQ/LBMQeXtHT1eKJ2czL+zUdqnR+WEUwIDAQABo0IwQDAdBgNVHQ4E\n"
+            + "FgQUu69+Aj36pvE8hI6t7jiY7NkyMtQwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB\n"
+            + "/wQFMAMBAf8wDQYJKoZIhvcNAQEMBQADggIBAArx1UaEt65Ru2yyTUEUAJNMnMvl\n"
+            + "wFTPoCWOAvn9sKIN9SCYPBMtrFaisNZ+EZLpLrqeLppysb0ZRGxhNaKatBYSaVqM\n"
+            + "4dc+pBroLwP0rmEdEBsqpIt6xf4FpuHA1sj+nq6PK7o9mfjYcwlYRm6mnPTXJ9OV\n"
+            + "2jeDchzTc+CiR5kDOF3VSXkAKRzH7JsgHAckaVd4sjn8OoSgtZx8jb8uk2Intzna\n"
+            + "FxiuvTwJaP+EmzzV1gsD41eeFPfR60/IvYcjt7ZJQ3mFXLrrkguhxuhoqEwWsRqZ\n"
+            + "CuhTLJK7oQkYdQxlqHvLI7cawiiFwxv/0Cti76R7CZGYZ4wUAc1oBmpjIXUDgIiK\n"
+            + "boHGhfKppC3n9KUkEEeDys30jXlYsQab5xoq2Z0B15R97QNKyvDb6KkBPvVWmcke\n"
+            + "jkk9u+UJueBPSZI9FoJAzMxZxuY67RIuaTxslbH9qh17f4a+Hg4yRvv7E491f0yL\n"
+            + "S0Zj/gA0QHDBw7mh3aZw4gSzQbzpgJHqZJx64SIDqZxubw5lT2yHh17zbqD5daWb\n"
+            + "QOhTsiedSrnAdyGN/4fy3ryM7xfft0kL0fJuMAsaDk527RH89elWsn2/x20Kk4yl\n"
+            + "0MC2Hb46TpSi125sC8KKfPog88Tk5c0NqMuRkrF8hey1FGlmDoLnzc7ILaZRfyHB\n"
+            + "NVOFBkpdn627G190\n"
+            + "-----END CERTIFICATE-----\n";
+        String entrustRootCertificateAuthority = ""
+            + "-----BEGIN CERTIFICATE-----\n"
+            + "MIIEkTCCA3mgAwIBAgIERWtQVDANBgkqhkiG9w0BAQUFADCBsDELMAkGA1UEBhMC\n"
+            + "VVMxFjAUBgNVBAoTDUVudHJ1c3QsIEluYy4xOTA3BgNVBAsTMHd3dy5lbnRydXN0\n"
+            + "Lm5ldC9DUFMgaXMgaW5jb3Jwb3JhdGVkIGJ5IHJlZmVyZW5jZTEfMB0GA1UECxMW\n"
+            + "KGMpIDIwMDYgRW50cnVzdCwgSW5jLjEtMCsGA1UEAxMkRW50cnVzdCBSb290IENl\n"
+            + "cnRpZmljYXRpb24gQXV0aG9yaXR5MB4XDTA2MTEyNzIwMjM0MloXDTI2MTEyNzIw\n"
+            + "NTM0MlowgbAxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1FbnRydXN0LCBJbmMuMTkw\n"
+            + "NwYDVQQLEzB3d3cuZW50cnVzdC5uZXQvQ1BTIGlzIGluY29ycG9yYXRlZCBieSBy\n"
+            + "ZWZlcmVuY2UxHzAdBgNVBAsTFihjKSAyMDA2IEVudHJ1c3QsIEluYy4xLTArBgNV\n"
+            + "BAMTJEVudHJ1c3QgUm9vdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTCCASIwDQYJ\n"
+            + "KoZIhvcNAQEBBQADggEPADCCAQoCggEBALaVtkNC+sZtKm9I35RMOVcF7sN5EUFo\n"
+            + "Nu3s/poBj6E4KPz3EEZmLk0eGrEaTsbRwJWIsMn/MYszA9u3g3s+IIRe7bJWKKf4\n"
+            + "4LlAcTfFy0cOlypowCKVYhXbR9n10Cv/gkvJrT7eTNuQgFA/CYqEAOwwCj0Yzfv9\n"
+            + "KlmaI5UXLEWeH25DeW0MXJj+SKfFI0dcXv1u5x609mhF0YaDW6KKjbHjKYD+JXGI\n"
+            + "rb68j6xSlkuqUY3kEzEZ6E5Nn9uss2rVvDlUccp6en+Q3X0dgNmBu1kmwhH+5pPi\n"
+            + "94DkZfs0Nw4pgHBNrziGLp5/V6+eF67rHMsoIV+2HNjnogQi+dPa2MsCAwEAAaOB\n"
+            + "sDCBrTAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/BAUwAwEB/zArBgNVHRAEJDAi\n"
+            + "gA8yMDA2MTEyNzIwMjM0MlqBDzIwMjYxMTI3MjA1MzQyWjAfBgNVHSMEGDAWgBRo\n"
+            + "kORnpKZTgMeGZqTx90tD+4S9bTAdBgNVHQ4EFgQUaJDkZ6SmU4DHhmak8fdLQ/uE\n"
+            + "vW0wHQYJKoZIhvZ9B0EABBAwDhsIVjcuMTo0LjADAgSQMA0GCSqGSIb3DQEBBQUA\n"
+            + "A4IBAQCT1DCw1wMgKtD5Y+iRDAUgqV8ZyntyTtSx29CW+1RaGSwMCPeyvIWonX9t\n"
+            + "O1KzKtvn1ISMY/YPyyYBkVBs9F8U4pN0wBOeMDpQ47RgxRzwIkSNcUesyBrJ6Zua\n"
+            + "AGAT/3B+XxFNSRuzFVJ7yVTav52Vr2ua2J7p8eRDjeIRRDq/r72DQnNSi6q7pynP\n"
+            + "9WQcCk3RvKqsnyrQ/39/2n3qse0wJcGE2jTSW3iDVuycNsMm4hH2Z0kdkquM++v/\n"
+            + "eu6FSqdQgPCnXEqULl8FmTxSQeDNtGPPAUO6nIPcj2A781q0tHuu2guQOHXvgR1m\n"
+            + "0vdXcDazv/wor3ElhVsT/h5/WrQ8\n"
+            + "-----END CERTIFICATE-----\n";
+        return new Buffer()
+            .writeUtf8(comodoRsaCertificationAuthority)
+            .writeUtf8(entrustRootCertificateAuthority)
+            .inputStream();
+    }
+
+    /**
+     * Returns a trust manager that trusts {@code certificates} and none other. HTTPS services whose
+     * certificates have not been signed by these certificates will fail with a {@code
+     * SSLHandshakeException}.
+     *
+     * <p>This can be used to replace the host platform's built-in trusted certificates with a custom
+     * set. This is useful in development where certificate authority-trusted certificates aren't
+     * available. Or in production, to avoid reliance on third-party certificate authorities.
+     *
+     * <p>See also {@link CertificatePinner}, which can limit trusted certificates while still using
+     * the host platform's built-in trust store.
+     *
+     * <h3>Warning: Customizing Trusted Certificates is Dangerous!</h3>
+     *
+     * <p>Relying on your own trusted certificates limits your server team's ability to update their
+     * TLS certificates. By installing a specific set of trusted certificates, you take on additional
+     * operational complexity and limit your ability to migrate between certificate authorities. Do
+     * not use custom trusted certificates in production without the blessing of your server's TLS
+     * administrator.
+     */
+    private X509TrustManager trustManagerForCertificates(InputStream in)
+        throws GeneralSecurityException {
+        CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+        Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(in);
+        if (certificates.isEmpty()) {
+            throw new IllegalArgumentException("expected non-empty set of trusted certificates");
+        }
+
+        // Put the certificates a key store.
+        char[] password = "password".toCharArray(); // Any password will work.
+        KeyStore keyStore = newEmptyKeyStore(password);
+        int index = 0;
+        for (Certificate certificate : certificates) {
+            String certificateAlias = Integer.toString(index++);
+            keyStore.setCertificateEntry(certificateAlias, certificate);
+        }
+
+        // Use it to build an X509 trust manager.
+        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(
+            KeyManagerFactory.getDefaultAlgorithm());
+        keyManagerFactory.init(keyStore, password);
+        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
+            TrustManagerFactory.getDefaultAlgorithm());
+        trustManagerFactory.init(keyStore);
+        TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+        if (trustManagers.length != 1 || !(trustManagers[0] instanceof X509TrustManager)) {
+            throw new IllegalStateException("Unexpected default trust managers:"
+                + Arrays.toString(trustManagers));
+        }
+        return (X509TrustManager) trustManagers[0];
+    }
+
+    private KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
+        try {
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            InputStream in = null; // By convention, 'null' creates an empty key store.
+            keyStore.load(in, password);
+            return keyStore;
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    /**
+     * Evnet的使用
+     */
+    private void useEvent() {
+        /*OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient client = builder
+            .eventListener(new PrintingEventListener())
+            .build();*/
+
+    }
+
 }
 
 

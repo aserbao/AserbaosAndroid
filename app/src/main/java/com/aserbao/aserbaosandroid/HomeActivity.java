@@ -26,7 +26,6 @@ import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowsActivity;
 import com.aserbao.aserbaosandroid.ui.imageviews.ImageViewsActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextActivity;
