@@ -1,4 +1,0 @@
-#Mon Nov 26 18:01:44 CST 2018
-base.0=/Users/aserbao/aserbao/code/code/A_UI/AserbaosAndroid/AserbaosAndroid/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex

@@ -44,10 +44,13 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/like"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/aserbao_downloader_config"
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.imageviews.ImageViewsActivity"></activity>
+        <activity android:name=".designMode.singleMode.SingleModeActivity"></activity>
+        <activity android:name=".ui.canvas.shadows.ShadowsActivity" />
+        <activity android:name=".ui.imageviews.ImageViewsActivity" />
         <activity android:name=".aaThird.okdownload.OkDownLoadActivity" />
         <activity android:name=".algorithm.sort.SortAlgorithmActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.BlurImageActivity" />

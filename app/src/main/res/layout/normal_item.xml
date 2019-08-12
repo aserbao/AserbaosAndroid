@@ -11,6 +11,18 @@
         android:layout_width="match_parent"
         android:background="@color/black30"
         android:layout_height="60dp">
+        <TextView
+            android:background="@color/black"
+            android:id="@+id/normal_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:text="dasf "
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"/>
 
         <View
             android:layout_toRightOf="@+id/iv_head"
@@ -45,18 +57,6 @@
             android:layout_marginRight="16dp"
             android:orientation="vertical"
             android:layout_centerVertical="true">
-            <TextView
-                android:background="@color/black10"
-                android:id="@+id/normal_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:text="dasf "
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/tv_des"
                 android:layout_width="wrap_content"

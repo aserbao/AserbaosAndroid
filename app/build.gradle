@@ -104,4 +104,6 @@ dependencies {
     implementation 'com.liulishuo.okdownload:sqlite:1.0.5'
 
     implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+
+    compile group: 'net.sf.kxml', name: 'kxml2', version:'2.3.0'//用来解决不能在Google p3x上使用
 }

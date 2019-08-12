@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextActivity">
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <EditText
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_width="match_parent"
@@ -45,4 +47,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
+
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/add_btn"
+            android:text="增大"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/decrease_btn"
+            android:text="缩小"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_layout_first"
+        android:layout_width="300dp"
+        android:layout_height="500dp">
+        <FrameLayout
+            android:background="@color/white"
+            android:id="@+id/frame_layout_second"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.LineResizeEditText
+                android:id="@+id/lr_edit_tv"
+                android:background="@color/black30"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:text="1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20"
+                android:focusableInTouchMode="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:hint="How's your day?"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:textColor="@android:color/black"
+                android:layout_width="300dp"
+                android:layout_height="500dp" />
+        </FrameLayout>
+    </FrameLayout>
+
 </LinearLayout>
