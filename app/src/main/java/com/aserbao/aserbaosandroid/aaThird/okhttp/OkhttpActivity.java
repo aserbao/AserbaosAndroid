@@ -1112,10 +1112,13 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     }
 
 
+    /**
+     * EventFactory
+     */
     private void userEventFactory() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         OkHttpClient client = builder
-            .eventListenerFactory(PrintingEventListener.FACTORY)
+            .eventListenerFactory(PrintingEventListener.FACTORY)//重点就这一句
             .build();
         Request request = new Request.Builder()
             .url("https://publicobject.com/helloworld.txt")
@@ -1125,12 +1128,13 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                Log.e(TAG, "onFailure: "+e.toString() );
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                response.body().source().readByteString();
+                Log.e(TAG, "onResponse: new connection " + response.body().source().readByteString() );
+
             }
         });
 
@@ -1138,12 +1142,12 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                Log.e(TAG, "onFailure: "+e.toString() );
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                response.body().source().readByteString();
+                Log.e(TAG, "onResponse pool: " + response.body().source().readByteString() );
             }
         });
     }

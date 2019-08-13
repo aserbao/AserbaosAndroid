@@ -10,6 +10,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 import okhttp3.Call;
@@ -31,6 +32,11 @@ public class PrintingEventListener extends EventListener {
         @Override public EventListener create(Call call) {
             long callId = nextCallId.getAndIncrement();
             System.out.printf("%04d %s%n", callId, call.request().url());
+            boolean b = new Random().nextBoolean();
+            if (false){
+                Log.e(TAG, "create: 这一次不监听，咋的？"  );
+                return EventListener.NONE;//不监听回调
+            }
             return new PrintingEventListener(callId, System.nanoTime());
         }
     };

@@ -1,3 +1,1399 @@
+[Toc]
+## 前言
+开发这么久，大多数都是快速开发，像我现在也是，项目中网络请求基本上使用Retrfit,框架本身封装的非常好，使用也方便，大多数时候我们只要调用就可以了，但是开发久了总有那么一丝不甘，没留下写什么。痛定思痛，决定还是看一下源码，让自己对网络层的认识更深一点。
+
+原本这周计划写一篇关于Retrofit的全面讲解，后来想一下，因为Retrofit 是基于OkHttp的封装，不如就先计划写一篇关于OkHttp的文章，让自己更更了解OkHttp，为之后写关于Retrofit讲解补充能量。
+
+如果有想赞助本篇文章的，欢迎加我个人微信号「lezhu5201314」和我联系。
+
+## 读者
+这篇文章会从简入深去讲解关于OkHttp的各方面知识，既适合刚入行的初学者，也适合想深入了解网络层的资深开发人士，当然，个人能力有限，如果有疑问或者问题，欢迎联系我。
+
+ok，话不多数，接下里进入正题：
+
+## 什么是OkHttp?
+在了解OkHttp之前，我们需要先了解下什么是HTTP？
+。
+HTTP(HyperText Transfer Protocol,超文本传输协议)是一种简单的请求-响应的网络传输协议，它通常运行在TCP之上。
+
+那么什么是OkHttp呢？ok，一句话，OkHttp是一个开源第三方库，是一个高效的HTTP的客户端。
+
+## OkHttp有什么优缺点？
+优点：
+- 支持允许对同一主机的所有请求共享套接字
+- 减小了网络延迟
+- 采用GZIP缩小了下载大小
+- 响应缓存可以完全避免网络重复请求
+
+缺点：
+- 消息回调在子线程，如果需要更新UI需要切换到主线程
+
+## 使用OkHttp前做的准备工作
+
+在导包之前，我们可以到[OkHttp github地址](https://github.com/square/okhttp)去查看最新的版本号，目前是4.0.0。导包如下：
+
+
+```
+implementation("com.squareup.okhttp:okhttp:4.0.0")
+```
+如果使用了R8 / ProGuard的话，那么我们添加混淆配置，配置如下：
+
+```
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class OkHttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt dependency is available.
+-dontwarn OkHttp3.internal.platform.ConscryptPlatform
+```
+
+ok,做完准备工作，咱们开始干正事，学习如何使用OkHttp。
+
+## 如何使用OkHttp?
+OkHttp 分为GET和POST请求，当然，又分别有同步请求和异步请求，如何区分同步请求和异步请求呢？
+很简单，当call执行execute()方法即为同步请求，执行enqueue()方法回调即为异步请求，通常 情况下我们使用异步请求。好吧，话不多数，看使用：
+
+
+### 异步GET请求
+OkHttp的使用同样也非常简单，步骤如下：
+1. 构造OkHttpClient客户端
+2. 构造Request
+3. 执行newCall，回调请求结果
+
+比如我们Get请求一个链接，我们可以这样写：
+
+```
+    public static final String sUrl = "http://gank.io/api/today ";
+    /**
+     * 简单的Get请求
+     */
+    public void simpleOkHttpGet(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        Request request = new Request.Builder().url(sUrl).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {}
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+```
+
+返回结果：
+
+```
+{
+"category": [
+"iOS",
+"拓展资源",
+"瞎推荐",
+"Android",
+"App",
+"前端",
+"福利",
+"休息视频"
+]
+……
+}
+```
+
+### 同步GET请求
+```
+    public static final String sUrl = "http://gank.io/api/today";
+    /**
+     * 简单的GET同步请求
+     */
+    public void syncSimpleOkHttpGet(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Request request = new Request.Builder().url(sUrl).build();
+                    Response response = okHttpClient.newCall(request).execute();
+                    if (response.isSuccessful()){
+                        Log.e(TAG, "successful: " + response.body().string() );
+                    }else{
+                        Log.e(TAG, "onFailure: " + response.body().string() );
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+```
+运行结果：
+
+```
+{
+"category": [
+"iOS",
+"拓展资源",
+"瞎推荐",
+"Android",
+"App",
+"前端",
+"福利",
+"休息视频"
+]
+……
+}
+```
+
+### 异步Post请求
+Post请求同样很简单，我们只需要在上面代码的基础上添加一个Post方法即可，步骤如下：
+1. 添加Post请求参数，构造 FormBody
+2. 构造OkHttpClient客户端
+3. 构造Request
+4. 执行newCall，回调请求结果
+
+代码如下：
+```
+    /**
+     * 简单的post请求
+     */
+    public void simpleOkHttpPost(){
+        //1. 添加Post请求参数，构造 FormBody
+        FormBody body = new FormBody.Builder()
+            .add("url", "https://www.jianshu.com/p/53083f782ea2")
+            .add("desc", "一篇好文之Android数据库GreenDao的使用完全解析")
+            .add("who", "aserbao")
+            .add("type", "Android")
+            .add("debug", "true")
+            .build();
+        String postUrl = "https://gank.io/api/add2gank";
+        //2. 构造OkHttpClient客户端
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        //3. 构造Request
+        Request request = new Request.Builder().post(body).url(postUrl).build();
+        //4. 执行newCall，回调请求结果
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+```
+运行结果：
+
+```
+{
+    "error": false,
+    "msg": "老大, 所有提交数据一切正常!"
+}
+```
+### 同步Post请求
+
+```
+    /**
+     * Post同步请求
+     */
+    public void syncSimpleOkHttpPost(){
+        //1. 添加Post请求参数，构造 FormBody
+        FormBody body = new FormBody.Builder()
+            .add("url", "https://www.jianshu.com/p/53083f782ea2")
+            .add("desc", "一篇好文之Android数据库GreenDao的使用完全解析")
+            .add("who", "aserbao")
+            .add("type", "Android")
+            .add("debug", "true")
+            .build();
+        String postUrl = "https://gank.io/api/add2gank";
+        //2. 构造OkHttpClient客户端
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //3. 构造Request
+                    Request request = new Request.Builder().post(body).url(postUrl).build();
+                    //4. 执行newCall，回调请求结果
+                    Response response = okHttpClient.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        Log.e(TAG, "successful: " + response.body().string());
+                    } else {
+                        Log.e(TAG, "onFailure: " + response.body().string());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+```
+
+
+
+### OkHttp的请求配置
+我们在项目中使用OkHttp的时候，不仅仅是上面简单的请求就可以了，一般情况下，网络层我们都会做校验，做一些验证处理。那么如何做配置呢？接下来，咱们讲下如何给OkHttp添加请求头，校验认证等一系列配置。
+
+#### 添加Head请求头
+通常情况下，HTTP请求头的工作方式如下Map<String, String>：每个字段都有一个值或没有。但是一些标题允许多个值，例如Guava的Multimap。例如，HTTP响应提供多个Vary请求头是合法且常见的。
+
+给Http添加请求头我们有两个方法：
+- header(name,value): 设置唯一的name。如果当前name存在，那么会替换他的值。
+- addHeader(name,value): 头文件name可以赋多个值，不会替换之前的值。
+
+使用案例：
+```
+public void addHeadOkHttpGet(){
+    Request request = new Request.Builder()
+                .url(sUrl)
+                .header("Client-Language", Locale.getDefault().getLanguage())
+                .header("Client-Language", Locale.getDefault().getLanguage())
+                .addHeader("Cookie", "Cookie1")
+                .addHeader("Cookie", "Cookie2")
+                .build();
+    StringBuffer sb = new StringBuffer();
+    List<String> headers = request.headers("Cookie");
+    for (String header : headers) {
+        sb.append(header).append("  ");
+    }
+    String header1 = request.header("Client-Language");
+    Log.e(TAG, "Cookie = " + sb.toString()  + " \n Client-Language = " + header1);
+}
+```
+运行结果：
+
+```
+07-06 00:31:16.864 5885-5885/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Cookie = Cookie1  Cookie2   
+     Client-Language = en
+```
+ok,完美。
+
+#### 获取响应头
+获取响应头文件的方法非常简单，我们在获取Response的时候调用headers(),header("name"),headers("name")方法即可。
+
+实例如下：
+```
+public void obtainHeaderFromResponse(){
+    OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        Request request = new Request.Builder().url(sUrl).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {}
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try (ResponseBody responseBody = response.body()){
+                    if (!response.isSuccessful()) throw new IOException(" sorry， the get request is fail");
+                    Headers responseHeaders = response.headers();       //headers()方法
+                    for (int i = 0, size = responseHeaders.size(); i < size; i++) {
+                        Log.e(TAG, "\n onResponse: name = " + responseHeaders.name(i) + " values = " +  responseHeaders.value(i));
+                    }
+                    StringBuffer sb = new StringBuffer();
+                    List<String> headers = response.headers("set-cookie");  //Headers方法
+                    for (String header : headers) {
+                        sb.append("set-cookie的值为：").append(header).append("\n");
+                    }
+                    Log.e(TAG, "\nonResponse: set-cookie == " + sb.toString()  + "data == " +  response.header("date")); // header方法
+                }
+            }
+        });
+}
+
+```
+运行结果：
+
+```
+  onResponse: name = cache-control values = private, max-age=0
+  onResponse: name = content-type values = text/html; charset=utf-8
+  onResponse: name = vary values = Accept-Encoding
+  onResponse: name = p3p values = CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+  onResponse: name = set-cookie values = SRCHD=AF=NOFORM; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+  onResponse: name = set-cookie values = SRCHUID=V=2&GUID=683D318C818B41FF9F16C3574782AE9E&dmnchg=1; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+  onResponse: name = set-cookie values = SRCHUSR=DOB=20190706; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+  onResponse: name = set-cookie values = _SS=SID=02104A0B21386B6803E0479A20166A3A; domain=.bing.com; path=/
+  onResponse: name = strict-transport-security values = max-age=31536000; includeSubDomains; preload
+  onResponse: name = x-msedge-ref values = Ref A: 6E38F7D3E7EF4E03A1B15411BA27320E Ref B: BJ1EDGE0321 Ref C: 2019-07-06T07:10:43Z
+  onResponse: name = set-cookie values = _EDGE_S=F=1&SID=02104A0B21386B6803E0479A20166A3A; path=/; httponly; domain=bing.com
+  onResponse: name = set-cookie values = _EDGE_V=1; path=/; httponly; expires=Thu, 30-Jul-2020 07:10:43 GMT; domain=bing.com
+  onResponse: name = set-cookie values = MUID=2E6398D07C8C63D4033295417DA26250; path=/; expires=Thu, 30-Jul-2020 07:10:43 GMT; domain=bing.com
+  onResponse: name = set-cookie values = MUIDB=2E6398D07C8C63D4033295417DA26250; path=/; httponly; expires=Thu, 30-Jul-2020 07:10:43 GMT
+  onResponse: name = date values = Sat, 06 Jul 2019 07:10:42 GMT
+  onResponse: set-cookie == set-cookie的值为：SRCHD=AF=NOFORM; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+    set-cookie的值为：SRCHUID=V=2&GUID=683D318C818B41FF9F16C3574782AE9E&dmnchg=1; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+    set-cookie的值为：SRCHUSR=DOB=20190706; domain=.bing.com; expires=Tue, 06-Jul-2021 07:10:43 GMT; path=/
+    set-cookie的值为：_SS=SID=02104A0B21386B6803E0479A20166A3A; domain=.bing.com; path=/
+    set-cookie的值为：_EDGE_S=F=1&SID=02104A0B21386B6803E0479A20166A3A; path=/; httponly; domain=bing.com
+    set-cookie的值为：_EDGE_V=1; path=/; httponly; expires=Thu, 30-Jul-2020 07:10:43 GMT; domain=bing.com
+    set-cookie的值为：MUID=2E6398D07C8C63D4033295417DA26250; path=/; expires=Thu, 30-Jul-2020 07:10:43 GMT; domain=bing.com
+    set-cookie的值为：MUIDB=2E6398D07C8C63D4033295417DA26250; path=/; httponly; expires=Thu, 30-Jul-2020 07:10:43 GMT
+    data == Sat, 06 Jul 2019 07:10:42 GMT
+```
+
+
+### 上传String到服务器
+上传文件到服务器，我们将需要上传的内容放在RequestBody中构造，从而通过post方法上传至服务器。
+
+当上传文本大小大于1Mib的时候，我们建议使用流媒体上传方式上传。下面我们将一个markdown文件上传到指定服务器。
+
+示例代码：
+```
+/**
+     * 上传String到服务器
+     */
+    public void postAString(){
+        OkHttpClient client = new OkHttpClient();
+        String postBody = " this is a custom markdown porfile txt";
+
+        Request request = new Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), postBody))
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }else{
+                    Log.e(TAG, "onFailure: " + response.body().string() );
+                }
+            }
+        });
+    }
+```
+运行结果：
+
+```
+07-06 01:13:05.263 15223-15249/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: successful: <p>this is a custom markdown porfile txt</p>
+```
+上面我们上传的是小文档(小于1Mib)的方式，当我们需要上传流媒体文件或者大文件的时候我们应该怎么做呢？别急，马上就讲：
+
+### 流上传
+
+边编写边请求，我们通过
+
+示例代码：
+```
+ /**
+     * post 文件流
+     */
+    public void postStreaming(){
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = new RequestBody() {
+            @Override
+            public MediaType contentType() {
+                return MediaType.parse("text/x-markdown; charset=utf-8");
+            }
+
+            @Override
+            public void writeTo(BufferedSink sink) throws IOException {
+                sink.writeUtf8("Numbers\n");
+                sink.writeUtf8("-------\n");
+                for (int i = 1; i <= 1000; i++) {
+                    sink.writeUtf8(String.format(" 上传第%d个数\n", i));
+                }
+            }
+        };
+
+        Request request = new Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(requestBody)
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }else{
+                    Log.e(TAG, "onFailure: " + response.body().string() );
+                }
+            }
+        });
+    }
+```
+
+运行结果：
+
+```
+ <a id="user-content-numbers" class="anchor" href="#numbers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Numbers</h2>
+    <p>上传第1个数
+    上传第2个数
+    上传第3个数
+    上传第4个数
+    ……
+    上传第1000个数</p>
+```
+
+### 文件上传
+上传文件到服务器我们应该怎么做呢？同样很简单，所有的上传都是通过RequestBody来传递的，所以我们通过RequestBody.create()方法传递对应的文件路径名即可。
+
+示例代码：
+```
+ /**
+     * 文件上传
+     */
+    public void postFile(){
+        OkHttpClient client = new OkHttpClient();
+        File file = new File(AppFileMgr.getSdCardAbsolutePath() +"aserbao.txt");
+        Request request = new Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), file))
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }else{
+                    Log.e(TAG, "onFailure: " + response.body().string() );
+                }
+            }
+        });
+    }
+```
+
+### 通过moshi将reponse返回的json转成对象
+通常我会使用gson来解析，ok,这里简单了解下Android自带的moshiApi 来解析json吧。
+
+示例代码：
+
+```
+ /**
+     * 通过moshi解析response返回的json成对象
+     */
+    private void parseJsonByMoshi() {
+        final OkHttpClient client = new OkHttpClient();
+        final Moshi moshi = new Moshi.Builder().build();
+        final JsonAdapter<Gist> gistJsonAdapter = moshi.adapter(Gist.class);
+
+        Request request = new Request.Builder()
+            .url("https://api.github.com/gists/c2a7c39532239ff261be")
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: "  );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                Gist gist = gistJsonAdapter.fromJson(response.body().source());
+                for (Map.Entry<String, GistFile> entry : gist.files.entrySet()) {
+                    Log.e(TAG, "onResponse: key = " + entry.getKey()  + " value =  " + entry.getValue().content);
+                }
+            }
+        });
+    }
+
+    static class Gist {
+        Map<String, GistFile> files;
+    }
+
+    static class GistFile {
+        String content;
+    }
+```
+运行结果：
+```
+07-06 03:37:07.565 9002-9076/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: onResponse: key = OkHttp.txt value =  
+                             \\           //
+                              \\  .ooo.  //
+                               .@@@@@@@@@.
+                             :@@@@@@@@@@@@@:
+                            :@@. '@@@@@' .@@:
+                            @@@@@@@@@@@@@@@@@
+                            @@@@@@@@@@@@@@@@@
+    
+                       :@@ :@@@@@@@@@@@@@@@@@. @@:
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                       @@@ '@@@@@@@@@@@@@@@@@, @@@
+                            @@@@@@@@@@@@@@@@@
+                            '@@@@@@@@@@@@@@@'
+                               @@@@   @@@@
+                               @@@@   @@@@
+                               @@@@   @@@@
+                               '@@'   '@@'
+    
+         :@@@.
+       .@@@@@@@:   +@@       `@@      @@`   @@     @@
+      .@@@@'@@@@:  +@@       `@@      @@`   @@     @@
+      @@@     @@@  +@@       `@@      @@`   @@     @@
+     .@@       @@: +@@   @@@ `@@      @@` @@@@@@ @@@@@@  @@;@@@@@
+     @@@       @@@ +@@  @@@  `@@      @@` @@@@@@ @@@@@@  @@@@@@@@@
+     @@@       @@@ +@@ @@@   `@@@@@@@@@@`   @@     @@    @@@   :@@
+     @@@       @@@ +@@@@@    `@@@@@@@@@@`   @@     @@    @@#    @@+
+     @@@       @@@ +@@@@@+   `@@      @@`   @@     @@    @@:    @@#
+      @@:     .@@` +@@@+@@   `@@      @@`   @@     @@    @@#    @@+
+      @@@.   .@@@  +@@  @@@  `@@      @@`   @@     @@    @@@   ,@@
+       @@@@@@@@@   +@@   @@@ `@@      @@`   @@@@   @@@@  @@@@#@@@@
+        @@@@@@@    +@@   #@@ `@@      @@`   @@@@:  @@@@: @@'@@@@@
+                                                         @@:
+                                                         @@:
+                                                         @@:
+
+```
+
+别问为什么？好看就行了。
+
+### 给OkHttp配置响应缓存
+为什么要做响应缓存？使用缓存可以让我们的app不用长时间的显示加载圈，在无网络情况下依旧可以看到数据。提高用户体验。
+
+添加响应缓存实现后的效果：我们通过响应缓存的设置，可以设置本地缓存的大小以及每个接口的缓存请求时间。当有网的情况下，接口请求过了对应的时间会刷新数据，无网络情况下直接访问缓存区数据。当然，OkHttp已经内置了缓存，但默认是不使用的，如果想要使用，我们需要手动配置。
+
+#### 服务端支持缓存的缓存配置
+在配置缓存之前，我们需要知道服务器是否支持缓存，如果服务器支持缓存，那么respose会返回这种头标：Cache-Control, max-age=xxx。这种情况下我们只需要配置缓存目录和缓存大小，然后OkHttp就可以自动帮咱们缓存了。其中max-age的值代表了数据缓存在你本地存放的时间，我们可以根据实际需要来修改max-age的大小。ok，开始配置缓存。
+
+配置OkHttp中缓存的步骤：
+1. 提供一个可以读取和写入的私有缓存目录。处于安全性考虑，通常情况下，我们会使用Context.getCacheDir() 来作为缓存的存放路径。
+2. 设置缓存大小。
+3. 通过cache()方法进行配置。
+
+代码案例：
+
+```
+ mHttpClient = new OkHttpClient.Builder()
+            .addInterceptor(interceptor)                  //添加拦截器
+            .connectTimeout(10, TimeUnit.SECONDS) //设置建立连接最大可用时间，适用于网络状况正常的情况下，两端连接所用的最长时间。默认值为10s
+            .writeTimeout(20, TimeUnit.SECONDS)   //设置单个IO写入超时时长，默认值10s
+            .readTimeout(20, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .cache(new Cache(getCacheDir(), 10 * 1024 * 1024))//设置缓存区地址及大小
+            .build();
+```
+
+#### 服务端不支持缓存的缓存配置
+如果服务器不支持缓存，那么就可能没有这个头标，或者和这个头标的值为no-store等，这种情况下我们可以通过拦截器给OkHttp设置缓存，具体步骤如下：
+
+1. 创建一个CacheInterceptor类实现 Interceptor接口
+2. 修改拦截到的reponse中的头标记Cache-Control中的max-age的值
+3. 通过addNetworkInterceptor方法添加到OkHttp客户端中
+
+代码如下：
+```
+ /**
+     * 服务器不支持缓存时的配置
+     */
+    private void setCache(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new CacheInterceptor())
+            .build();
+        Request request = new Request.Builder().url(sUrl).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+
+    public class CacheInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            Response response = chain.proceed(request);
+            Response response1 = response.newBuilder()
+                .removeHeader("Pragma")
+                .removeHeader("Cache-Control")
+                //缓存3天
+                .header("Cache-Control", "max-age=" + 3600 * 24 * 3)
+                .build();
+            return response1;
+        }
+    }
+
+```
+
+#### OkHttp官方建议缓存方案
+官方建议使用CacheControl 这个类来进行缓存策略的制定，其中配置方法有如下几种：
+- noCache(): 不使用缓存
+- nnoStore(): 不存储缓存
+- onlyIfCached(): 只有缓存中存在这个响应时才返回，否则会返回504
+- maxAge(3, TimeUnit.DAYS) :缓存资源有效期的最大时长为3天
+- maxStale(2,TimeUnit.DAYS) :缓存过期后的2天时间内依然可用
+- minFresh(2,TimeUnit.DAYS) : 最小新鲜度时长为2天
+
+关于maxAge，maxStale，minFresh这三个方法，我搜了很多相关资料，主要参考如下两篇文章：
+链接如下：
+- [超文本传输协议 - HTTP / 1.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.3)
+- [缓存策略交互 - 最大年龄和最大过期时间](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/cache-policy-interaction-maximum-age-and-maximum-staleness)
+
+结论如下：
+- maxAge：资源有效的最大时长，如果请求在有效时长内，客户端则会请求缓存。如果超过最大有效时长,除非设置了maxStale，否则客户不愿意再接受缓存内的响应。
+- minFresh：最小需要保存的新鲜度。比如，maxAge(3, TimeUnit.DAYS) ，minFresh(2,TimeUnit.DAYS) ，则该缓存真正的有效期为3-2 =1，也就是1天，当时长超过一天就会重新进行网络请求。
+- maxStale：最大过期时间，指资源过期时间之后资源最长可使用时长。比如：maxAge(3, TimeUnit.DAYS) ，maxStale(2,TimeUnit.DAYS)，缓存时间为7号，那么到10号缓存过期，会重新进行网络请求，但是缓存会到12号才不可用。
+
+代码如下：
+
+```
+    /**
+     * okhtt官方推荐的缓存方式
+     */
+    public void useOfficalCache(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new CacheInterceptor())
+            .build();
+        CacheControl cacheControl = new CacheControl.Builder()
+            .maxAge(3, TimeUnit.HOURS)  //配置缓存有效时长为1小时
+            .build();
+        Request request = new Request.Builder()
+            .url(sUrl)
+            .cacheControl(cacheControl) 
+            .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+
+```
+
+### 取消调用
+有时候我们在调用接口的时候，在数据还没有回来之前，我们想取消该怎么做呢？ok,调用Call.cancel()即可，不区分同步异步，一调用此方法即取消。注意，异步请求会会回调onFailure方法。
+
+代码实例：
+
+```
+/**
+     * OkHttp取消回调
+     */
+    public void cancelCall(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .build();
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/2")//这个接口会延时2s返回
+            .build();
+
+        final long startNanos = System.nanoTime();
+        final Call call = okHttpClient.newCall(request);
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.schedule(new Runnable() {
+            @Override public void run() {
+                String startTime = String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
+                Log.e(TAG, "run: startTime = " +startTime );
+                call.cancel();
+                String endTime = String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
+                Log.e(TAG, "run: endTime = " + endTime );
+            }
+        }, 1, TimeUnit.SECONDS);    //1s之后取消请求
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "run: onFailure = time =  " + String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f) );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "onResponse: " + response.body().string());
+                Log.e(TAG, "run: onResponse = time =  " + String.format("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f) );
+            }
+        });
+
+    }
+```
+
+运行结果：
+
+```
+07-06 12:28:04.463 13971-14228/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: run: startTime = 1.00 Canceling call.
+07-06 12:28:04.463 13971-14228/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: run: endTime = 1.00 Canceling call.
+07-06 12:28:04.468 13971-14229/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: run: onFailure = time =  1.01 Canceling call.
+```
+
+### 配置超时时间
+OkHttp有三个时间配置方法，分别是：
+-  connectTimeout(long timeout, TimeUnit unit)：连接超时时长，默认值10s,取值1~ MAX_VALUE。
+-  readTimeout(long timeout, TimeUnit unit)：读取超时时长，默认值10s,取值1~ MAX_VALUE。
+-  writeTimeout(long timeout, TimeUnit unit)：写入超时时长，默认值10s,取值1~ MAX_VALUE。
+
+代码实例：
+
+```
+    /**
+     * 配置超时时间
+     */
+    public void configTimeouts(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS) //设置建立连接最大可用时间，适用于网络状况正常的情况下，两端连接所用的最长时间。默认值为10s
+            .writeTimeout(10, TimeUnit.SECONDS)   //设置单个IO写入超时时长，默认值10s
+            .readTimeout(3, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build();
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/5")//这个接口会延时5s返回
+            .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }else{
+                    Log.e(TAG, "onFailure: " + response.body().string() );
+                }
+            }
+        });
+    }
+```
+
+运行结果:
+
+```
+07-06 12:43:23.901 20192-20271/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: onFailure: java.net.SocketTimeoutException
+```
+
+当然，同一个request可以支持多个OkHttpClient发起请求，我们也可以通过通过此种方式修改OkHttpClient的配置，比如我们一个请求配置读取超时未1s,一个配置为3s,那么我们可以这样做：
+
+实例代码：
+```
+    /**
+     * 修改超时配置
+     */
+    public void changeTimeoutsConfig(){
+        Request request = new Request.Builder()
+            .url("http://httpbin.org/delay/2")//这个接口会延时2s返回
+            .build();
+
+        new OkHttpClient.Builder()
+            .readTimeout(1, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+        new OkHttpClient.Builder()
+            .readTimeout(3, TimeUnit.SECONDS)    //设置读取超时时间，默认值为10s。
+            .build().newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "onFailure: " + e.toString() );
+                }
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    Log.e(TAG, "successful: " + response.body().string() );
+                }
+            });
+    }
+```
+
+
+运行结果：
+```
+07-06 12:57:39.306 24530-24632/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: onFailure: java.net.SocketTimeoutException
+07-06 12:57:45.867 24530-24633/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: successful: {
+      "args": {}, 
+      "data": "", 
+      "files": {}, 
+      "form": {}, 
+      "headers": {
+        "Accept-Encoding": "gzip", 
+        "Host": "httpbin.org", 
+        "User-Agent": "OkHttp/3.5.0"
+      }, 
+      "origin": "116.24.82.113, 116.24.82.113", 
+      "url": "https://httpbin.org/delay/2"
+    }
+```
+
+### 认证处理
+
+OkHttp支持自动重试未经身份验证的请求，如果没有通过认证，则会响应时返回401 Not Authorized。
+
+代码实例：
+```
+     /**
+     * 认证处理
+     */
+    public void handlingAuthentication(){
+        Request request = new Request.Builder()
+            .url("http://publicobject.com/secrets/hellosecret.txt")
+            .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .authenticator(new Authenticator() {
+                @Override public Request authenticate(Route route, Response response) throws IOException {
+                    if (response.request().header("Authorization") != null) {
+                        return null; // 返回null，放弃重新认证。当然这里条件可以自己添加，比如允许验证三次，就添加一个变量，当大于3的时候返回null
+                    }
+                    Log.e(TAG, "Authenticating for response: " + response);
+                    Log.e(TAG, "Challenges: " + response.challenges());
+                    String credential = Credentials.basic("jesse", "password1");
+                    return response.request().newBuilder()
+                        .header("Authorization", credential)
+                        .build();
+                }
+            })
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+```
+
+
+运行结果：
+
+```
+07-06 13:06:49.200 27457-27565/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Authenticating for response: Response{protocol=http/1.1, code=401, message=Unauthorized, url=https://publicobject.com/secrets/hellosecret.txt}
+07-06 13:06:49.201 27457-27565/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Challenges: [Basic realm="OkHttp Secrets"]
+07-06 13:06:49.411 27457-27565/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: successful: 
+                          @@@@@\
+                         @@@@@@@@
+                        @@@@@@@@@@@@@@@@@@@.
+                        @/ \@@@@@@@@@@@@@@@@.
+                        @   @@@@@@@@@@@@@@@@+
+                        @\ /@@@@@@@@"*@@/^@/
+                        \@@@@@@@@@@/  "   "
+                         @@@@@@@@
+                          @@@@@/
+    
+         :@@@.
+       .@@@@@@@:   +@@       `@@      @@`   @@     @@
+      .@@@@'@@@@:  +@@       `@@      @@`   @@     @@
+      @@@     @@@  +@@       `@@      @@`   @@     @@
+     .@@       @@: +@@   @@@ `@@      @@` @@@@@@ @@@@@@  @@;@@@@@
+     @@@       @@@ +@@  @@@  `@@      @@` @@@@@@ @@@@@@  @@@@@@@@@
+     @@@       @@@ +@@ @@@   `@@@@@@@@@@`   @@     @@    @@@   :@@
+     @@@       @@@ +@@@@@    `@@@@@@@@@@`   @@     @@    @@#    @@+
+     @@@       @@@ +@@@@@+   `@@      @@`   @@     @@    @@:    @@#
+      @@:     .@@` +@@@+@@   `@@      @@`   @@     @@    @@#    @@+
+      @@@.   .@@@  +@@  @@@  `@@      @@`   @@     @@    @@@   ,@@
+       @@@@@@@@@   +@@   @@@ `@@      @@`   @@@@   @@@@  @@@@#@@@@
+        @@@@@@@    +@@   #@@ `@@      @@`   @@@@:  @@@@: @@'@@@@@
+                                                         @@:
+                                                         @@:
+                                                         @@:
+
+```
+
+
+### 拦截器的相关知识
+
+拦截器是一个非常强大的功能，可以用来监视网络请求，重写一些配置以及实现一些重试操作。OkHttp中的拦截器分为如下两种：
+- 应用拦截器(Application Interceptors),应用拦截器通过OkHttpClient的addInterceptor()方法添加。
+- 网络拦截器(Network Interceptors)，网络拦截器通过addNetworkInterceptor()方法添加。
+
+如何在两个拦截器之间做选择呢？且听我慢慢说来，嘻嘻，看下面他们之间的区别：
+
+应用拦截器：
+- 不需要担心重定向和重试之间的中间响应。
+- 通常只调用一次，即使HTTP响应是通过缓存提供的。
+- 遵从应用层的最初目的。与OkHttp的注入头部无关，如If-None-Match。
+- 允许短路而且不调用Chain.proceed()。
+- 允许重试并多次调用Chain.proceed()。
+
+网络拦截器:
+- 能够对重定向和重试等中间响应进行操作。
+- 网络发生短路时不调用缓存响应。
+- 在数据被传递到网络时观察数据。
+- 有权获得装载请求的连接。
+
+#### OkHttp拦截器拦截顺序：
+OkHttp使用列表来存储拦截器，并按顺序调用拦截器。
+![image](http://square.github.io/OkHttp/images/interceptors@2x.png)
+
+
+ok,基础知识暂时就这么多，接下来讲如何使用拦截器：
+
+#### 应用拦截器
+
+我们先通过一个简单的应用拦截器来拦截请求和响应的值。
+
+代码如下：
+
+```
+    /**
+     * 设置简单拦截
+     */
+    public void addSimpleInterceptor(){
+        Request request = new Request.Builder()
+            .url("http://www.publicobject.com/helloworld.txt")
+            .header("User-Agent", "OkHttp Example")
+            .build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addInterceptor(new LoggingInterceptor())
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+    class LoggingInterceptor implements Interceptor {
+        @Override public Response intercept(Interceptor.Chain chain) throws IOException {
+            Request request = chain.request();
+            long t1 = System.nanoTime();
+            Log.e(TAG, String.format("Sending request %s on %s%n%s",
+                request.url(), chain.connection(), request.headers()));
+            Response response = chain.proceed(request);
+            long t2 = System.nanoTime();
+            Log.e(TAG, String.format("Received response for %s in %.1fms%n%s",
+                response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
+            return response;
+        }
+    }
+```
+
+拦截结果：
+
+```
+07-06 15:19:01.551 10145-10447/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Sending request http://www.publicobject.com/helloworld.txt on null
+    User-Agent: OkHttp Example
+07-06 15:19:04.380 10145-10447/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Received response for https://publicobject.com/helloworld.txt in 2828.9ms
+    Server: nginx/1.10.0 (Ubuntu)
+    Date: Mon, 08 Jul 2019 00:16:10 GMT
+    Content-Type: text/plain
+    Content-Length: 1759
+    Last-Modified: Tue, 27 May 2014 02:35:47 GMT
+    Connection: keep-alive
+    ETag: "5383fa03-6df"
+    Accept-Ranges: bytes
+```
+
+可以看到，请求头，请求链接都被拦截到了，ok,完美，接下来我们来试一下网络拦截器：
+
+
+#### 网络拦截器
+
+上面我们说了网络拦截器和应用拦截器的区别，网络拦截器的添加时通过addNetworkInterceptor()方法来进行配置的，ok，现在我们来尝试使用一下网络拦截器：
+
+代码如下：
+
+```
+    /**
+     * OkHttp设置网络拦截器
+     */
+    public void addNetworkInterceptor(){
+        Request request = new Request.Builder()
+            .url("http://www.publicobject.com/helloworld.txt")
+            .header("User-Agent", "OkHttp Example")
+            .build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new LoggingInterceptor())
+            .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+```
+
+运行结果：
+
+```
+07-06 16:45:42.282 20832-20982/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Sending request http://www.publicobject.com/helloworld.txt on Connection{www.publicobject.com:80, proxy=DIRECT@ hostAddress=www.publicobject.com/54.187.32.157:80 cipherSuite=none protocol=http/1.1}
+    User-Agent: OkHttp Example
+    Host: www.publicobject.com
+    Connection: Keep-Alive
+    Accept-Encoding: gzip
+07-06 16:45:42.591 20832-20982/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Received response for http://www.publicobject.com/helloworld.txt in 309.3ms
+    Server: nginx/1.10.0 (Ubuntu)
+    Date: Mon, 08 Jul 2019 15:02:26 GMT
+    Content-Type: text/html
+    Content-Length: 194
+    Connection: keep-alive
+    Location: https://publicobject.com/helloworld.txt
+07-06 16:45:52.775 20832-20982/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Sending request https://publicobject.com/helloworld.txt on Connection{publicobject.com:443, proxy=DIRECT@ hostAddress=publicobject.com/54.187.32.157:443 cipherSuite=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 protocol=http/1.1}
+    User-Agent: OkHttp Example
+    Host: publicobject.com
+    Connection: Keep-Alive
+    Accept-Encoding: gzip
+07-06 16:45:53.757 20832-20982/com.example.aserbao.aserbaosandroid2 E/OkHttpActivity: Received response for https://publicobject.com/helloworld.txt in 982.1ms
+    Server: nginx/1.10.0 (Ubuntu)
+    Date: Mon, 08 Jul 2019 15:02:36 GMT
+    Content-Type: text/plain
+    Content-Length: 1759
+    Last-Modified: Tue, 27 May 2014 02:35:47 GMT
+    Connection: keep-alive
+    ETag: "5383fa03-6df"
+    Accept-Ranges: bytes
+```
+
+
+#### 通过拦截器压缩请求主体
+
+拦截器可以添加，删除或替换请求头。他们还可以转换那些拥有一个请求的主体。
+
+比如：我们可以通过如下代码来修改请求头:
+
+```
+Interceptor interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request original = chain.request();
+                Request request = original.newBuilder()
+                    .header("User-Agent", "aserbao/(study OkHttp)")         
+                    .header("Client-Language", Locale.getDefault().getLanguage())
+                    .method(original.method(), original.body())
+                    .build();
+                return chain.proceed(request);
+            }
+        };
+```
+
+如果服务器支持请求主体压缩的话，我们还可以配置请求主体压缩，代码实现如下：
+```
+    /**
+     * OkHttp压缩请求主体
+     */
+    public void setGzipIntercrptor(){
+        OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(new GzipRequestInterceptor())
+            .build();
+        RequestBody requestBody = new RequestBody() {
+            @Override
+            public MediaType contentType() {
+                return MediaType.parse("text/x-markdown; charset=utf-8");
+            }
+
+            @Override
+            public void writeTo(BufferedSink sink) throws IOException {
+                sink.writeUtf8("Numbers\n");
+                sink.writeUtf8("-------\n");
+                for (int i = 1; i <= 100; i++) {
+                    sink.writeUtf8(String.format(" 上传第%d个数\n", i));
+                }
+            }
+        };
+        Request request = new Request.Builder()
+            .url("https://api.github.com/markdown/raw")
+            .post(requestBody)
+            .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + e.toString() );
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG, "successful: " + response.body().string() );
+            }
+        });
+    }
+
+    /** This interceptor compresses the HTTP request body. Many webservers can't handle this! */
+    final class GzipRequestInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Interceptor.Chain chain) throws IOException {
+            Request originalRequest = chain.request();
+            if (originalRequest.body() == null || originalRequest.header("Content-Encoding") != null) {
+                return chain.proceed(originalRequest);
+            }
+
+            RequestBody requestBody = originalRequest.body();
+            RequestBody gzipBody = gzip(requestBody);
+            Log.e(TAG, "intercept: 原RequestBody = " + requestBody.toString() + " \n 压缩后的RequestBody = " + gzipBody.toString());
+            Request compressedRequest = originalRequest.newBuilder()
+                .header("Content-Encoding", "gzip")
+                .method(originalRequest.method(), gzipBody)
+                .build();
+
+            return chain.proceed(compressedRequest);
+        }
+
+        private RequestBody gzip(final RequestBody body) {
+            return new RequestBody() {
+                @Override
+                public MediaType contentType() {
+                    return body.contentType();
+                }
+
+                @Override
+                public long contentLength() {
+                    return -1; // We don't know the compressed length in advance!
+                }
+
+                @Override
+                public void writeTo(BufferedSink sink) throws IOException {
+                    BufferedSink gzipSink = Okio.buffer(new GzipSink(sink));
+                    body.writeTo(gzipSink);
+                    gzipSink.close();
+                }
+            };
+        }
+    }
+```
+
+### HTTPS
+
+首先第一点，我们需要了解什么是HTTPS？前面我们讲了HTTP是超文本传输协议(HyperText Transfer Protocol)，HTTPS其实就是超文本传输安全协议(HyperText Transfer Protocol Secure)，HTTPS是通过HTTP进行通信，但利用SSL/TLS来加密数据包。关于SSL/TLS的相关知识请参考该链接[传输层安全性协议](https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%94%E5%AE%9A)。
+
+#### SSL/TSL双重认证
+这里简单说一下SSL双向证书认证的握手过程，图解:
+![acd0538f04542e9dddb61ff226ddec50.png](evernotecid://589A91C5-AC39-408B-B242-D681ED174376/appyinxiangcom/18409591/ENResource/p66)
+
+第一阶段：
+- Client发起握手请求：客户端向服务器发送一条“ClientHello"消息，当然，消息中包含所支持的SSL/TLS版本，比如TLS 1.2,Cipher Suite加密算法列表（告知服务器自己支持哪些加密算法）、sessionID、随机数等内容。
+- 服务端收到请求后会向客户端发起一次握手请求：服务器发送”SeverHello"消息，其中包括客户端带过来的sessionID、随机数等内容.
+
+第二阶段：
+- 服务端确认TLS版本和加密算法后，就开始向客户端发送证书，证书中包含公钥、签名、证书机构等信息。
+- 服务端发送Server Key Exchange消息,消息中包含算法的相关参数
+- 服务端发送Server Hello Done消息，告诉客户端，服务端的握手消息发送完成了。
+
+第三阶段：
+- 客户端会接收到服务端发送的证书，当验证证书可靠之后，客户端会向服务器发送Client Key Exchange消息，消息中包含客户端这边算法的一些相关参数。然后客户端和服务端可以根据接收到的对方的参数和自身的参数计算出Premaster secret，为生成会话密钥做准备。Master Secret（加密传输所使用的对称加密秘钥）
+- ok,这时候客户端使用之前握手过程中获得的服务器随机数、客户端随机数、Premaster secret计算生成会话密钥master secret，然后使用该会话密钥加密之前所有收发握手消息的Hash和MAC值，发送给服务器，以验证加密通信是否可用。服务器将使用相同的方法生成相同的会话密钥以解密此消息，校验其中的Hash和MAC值。
+
+第四阶段：
+- 服务器发送Change Cipher Spec消息，通知客户端此消息以后服务器会以加密方式发送数据。
+- 服务端使用会话密钥加密之前所有收发握手消息的Hash和MAC值，发送给客户端去校验。若客户端服务器都校验成功，握手阶段完成，双方将按照SSL记录协议的规范使用协商生成的会话密钥加密发送数据。
+
+
+
+#### HTTPS的主要作用是什么？
+
+HTTPS的主要作用是什么？既然是安全传输协议，当然是为数据传输提供安全。wiki上的说法是：HTTPS主要作用是在不安全的网络上创建一个安全信道，并可在使用适当的加密包和服务器证书可被验证且可被信任时，对窃听和中间人攻击提供合理的防护。
+
+#### HTTPS在什么情况下才会被信任？
+- 浏览器正确地实现了HTTPS且操作系统中安装了正确且受信任的证书颁发机构
+- 证书颁发机构仅信任合法的网站
+- 被访问的网站提供了一个有效的证书，也就是说它是一个由操作系统信任的证书颁发机构签发的（大部分浏览器会对无效的证书发出警告）
+- 该证书正确地验证了被访问的网站
+- 此协议的加密层（SSL/TLS）能够有效地提供认证和高强度的加密
+
+
+#### HTTPS和HTTP的差异
+- 定义不同，HTTP是传输协议，HTTPS是传输安全协议。
+- HTTPS是安全的，HTTP是不安全的。
+- 默认端口不同：HTTP默认是80端口，HTTPS默认是443端口。
+
+
+好吧，关于HTTPS的概念就讲这么多吧。接下里咱们看下如何在OkHttp中使用HTTPS。
+
+
+#### OkHttp中使用HTTPS
+
+在与HTTPS服务器的连接时，OkHttp需要知道要提供哪些TLS版本和密码套件。OkHttp通过ConnectionSpec来实现特定的安全性与连接性决策。他有四个内置的连接规范：
+- RESTRICTED_TLS 是一种安全配置，旨在满足更严格的合规性要求。
+- MODERN_TLS 是一种连接到现代HTTPS服务器的安全配置。
+- COMPATIBLE_TLS 是一种安全配置，可连接到安全但非当前的HTTPS服务器。
+- CLEARTEXT是一种用于http://URL 的不安全配置。
+以上这些规范必须遵循（[Google Cloud Policies](https://cloud.google.com/load-balancing/docs/ssl-policies-concepts)）
+
+OkHttp在默认情况下采用MODERN_TLS连接,我们可以通过配置connectionSpecs来设置如果MODERN_TLS连接失败的情况下采用其他连接模式。代码如下：
+```
+OkHttpClient client = new OkHttpClient.Builder()
+    .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS)) // 如果MODERN_TLS连接失败则使用COMPATIBLE_TLS连接。
+    .build();
+```
+
+
+> 注意：每个TLS版本和密码套件都可以随每个版本而变化。例如，在OkHttp 2.2中，放弃了对SSL 3.0的支持以响应POODLE攻击。在OkHttp 2.3中，放弃了对RC4的支持。所以我们在使用OkHttp的时候通常去确认最新的OkHttp版本。
+
+当然，在Android 5.0之后，我们也可以自己配置TLS版本和密码套件。
+```
+ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+            .tlsVersions(TlsVersion.TLS_1_2)
+            .cipherSuites(
+           CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+           CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+           CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)// 这里对这些密码套件感兴趣的话可以访问：https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml链接进行了解。
+           .build();
+        OkHttpClient client1 = new OkHttpClient.Builder()
+            .connectionSpecs(Collections.singletonList(spec))
+            .build();
+
+```
+
+##### 证书锁
+默认情况下，OkHttp信任主流证书颁发机构的，这种策略可最大限度地提高OkHttp连接成功性，但是2011年荷兰的 CA 提供商 DigiNotar 服务器遭黑客渗透造成，导致了包括Google.com 在内的 531 个网站发行了伪造的 CA 证书。所以为了更安全我们可以配置证书锁。
+
+我么可以使用CertificatePinner来限制受信任的证书和证书颁发机构。证书锁定可提高安全性，但会限制服务器团队更新其TLS证书的能力。特别需要注意的是：如果没有TLS服务器管理员权限，请不要使用证书锁。
+
+配置代码：
+```
+   public void certificatePin(){
+        OkHttpClient client = new OkHttpClient.Builder()
+            .certificatePinner(new CertificatePinner.Builder()
+                .add("publicobject.com", "sha256/afwiKY3RxoMmLkuRW1l7QsPZTJPwDS2pdDROQjXw8ig=")
+                .build())
+            .build();
+
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/robots.txt")
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " +e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                for (Certificate certificate : response.handshake().peerCertificates()) {
+                    Log.e(TAG, "onResponse: " + CertificatePinner.pin(certificate) );
+                }
+            }
+        });
+    }
+```
+
+##### 自定义证书
+我们可以自己定义一套证书来替换主机平台颁发的证书，同上，必须要有TLS管理者操作，其他人不要轻易操作。
+
+实现代码：完整代码在[完整源码请查看AserbaoAndroid](https://github.com/aserbao/AserbaosAndroid/blob/657158f91c01aac83f13ce8e217e8a86c15e4222/app/src/main/java/com/aserbao/aserbaosandroid/aaThird/OkHttp/OkHttpActivity.java)
+```
+/**
+     * 自定义认证证书
+     */
+    public void customCertificate(){
+        X509TrustManager trustManager;
+        SSLSocketFactory sslSocketFactory;
+        try {
+            trustManager = trustManagerForCertificates(trustedCertificatesInputStream());
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, new TrustManager[] { trustManager }, null);
+            sslSocketFactory = sslContext.getSocketFactory();
+        } catch (GeneralSecurityException e) {
+            throw new RuntimeException(e);
+        }
+
+        OkHttpClient client = new OkHttpClient.Builder()
+            .sslSocketFactory(sslSocketFactory, trustManager)
+            .build();
+
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " +e.toString() );
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Headers responseHeaders = response.headers();
+                for (int i = 0; i < responseHeaders.size(); i++) {
+                    Log.e(TAG, "onResponse: " +  responseHeaders.name(i) + ": " + responseHeaders.value(i));
+                }
+                Log.e(TAG, "onResponse: " + response.body().string() );
+            }
+        });
+    }
+```
+
+
+### OkHttp事件
+OkHttp的请求事件监听可以为我们提供请求的时间长度以及请求频率次数。无论是网络请求过大还是在弱网情况下进行请求，我们都可以通过监听事件来分析其原因。当然，需要注意的是EvnetListener这个事件监听是在OkHttp 3.11中才作为公共API被提供，所以所有小于3.11的版本的OkHttp不支持这个功能。来了，咱们来学习下如何设置OkHttp的事件监听。
+
+#### 设置OkHttp事件步骤
+- 创建一个类继承自EventListener，重写自己需要的方法。
+- 通过OkHttpClient.Builder的eventListener方法添加我们创建的类。
+
+事件监听的生命周期如下图：
+![2220a2c66b7e84c47cfa7bd3ee8a4b3f.png](evernotecid://589A91C5-AC39-408B-B242-D681ED174376/appyinxiangcom/18409591/ENResource/p85)
+
+
+#### 代码实现
+添加Event回调事件代码，关于PrintingEventListener的代码位于请点击这里[PrintingEventListener](https://github.com/aserbao/AserbaosAndroid/blob/master/app/src/main/java/com/aserbao/aserbaosandroid/aaThird/OkHttp/Listeners/PrintingEventListener.java)
+```
+/**
+     * Event的使用
+     */
+    private void useEvent() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient client = builder
+            .eventListener(new PrintingEventListener())
+            .build();
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "REQUEST 1 (new connection)"  );
+                try (Response response = client.newCall(request).execute()) {
+                    // Consume and discard the response body.
+                    response.body().source().readByteString();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e(TAG, "REQUEST 2 (pooled connection)"  );
+                try (Response response = client.newCall(request).execute()) {
+                    // Consume and discard the response body.
+                    response.body().source().readByteString();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+```
+
+运行结果：
+```
 REQUEST 1 (new connection)
 callStart  				 printEvent:耗时： 		0.0
 dnsStart  				 printEvent:耗时： 		0.042560717
@@ -26,3 +1422,78 @@ responseBodyStart  		 printEvent:耗时： 		0.205868343
 responseBodyEnd  		 printEvent:耗时： 		0.205980369
 connectReleased  		 printEvent:耗时： 		0.206070883
 callEnd  				 printEvent:耗时： 		0.206086807
+
+```
+当然，上面我们是通过同步请求来做时间检测的，如果是异步多个请求，我们可以通过OkHttpClient.Builder的eventListenerFactory方法添加一个工厂对象来进行检测。好了，这个简单，结果和上面是一样的，这里就不多说了，[代码都在这里，点击查看](https://github.com/aserbao/AserbaosAndroid/blob/ecfb25ff12cbf8124e57d5b225aea1da17e32b27/app/src/main/java/com/aserbao/aserbaosandroid/aaThird/OkHttp/OkHttpActivity.java)。
+
+
+好吧，我还是把代码给带上吧,代码如下
+```
+ private void userEventFactory() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient client = builder
+            .eventListenerFactory(PrintingEventListener.FACTORY)//重点就这一句
+            .build();
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                response.body().source().readByteString();
+            }
+        });
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                response.body().source().readByteString();
+            }
+        });
+    }
+```
+
+当然，如果我们不想监听的话，我们可以配置EventListener.NONE，就不会有回调了。
+
+上面我们讲的是请求成功的情况，如果请求失败，OkHttp会运行自己的重试机制，通常在这种情况下，connectFailed()回调后，后面调的不是callFailed()。而且可能会出现多个相同是事件回调，当OkHttp回调失败的整体流程如下：
+![d3043baf6b825be52eb1b9a39774f279.png](evernotecid://589A91C5-AC39-408B-B242-D681ED174376/appyinxiangcom/18409591/ENResource/p86)
+
+
+
+### 搭配OkHttp的一些相关库
+- [Chuck](https://github.com/jgilfelt/chuck)：适用于Android OkHttp客户端的应用内HTTP检查器，好吧，这个我用的比较少，纯属看人家star多而已。
+- logging-interceptor：我自己常用的一个库，导入：
+```
+ 'com.squareup.OkHttp3:logging-interceptor:4.0.1'//版本和OkHttp一致即可。
+```
+
+通常情况下导入logging-interceptor就可以满足很多需求，所以在我的项目中就OkHttp，和logging-interceptor这两个，当然，retrofit,rxjava,Gson这些就先不说了，大家都懂就ok。
+
+## 注意知识点：
+- response.body().string()方法对于小文档来说是方便有效的。但是如果响应体很大（大于1 MiB），请避免string()因为它会将整个文档加载到内存中。
+
+## 总结
+这篇文章写到这里就结束了，对我个人而言，算是对OkHttp的一个重新认识，和我写的[依赖注入框架 Dagger2 的全面讲解](https://gitbook.cn/new/gitchat/activity/5d004cdfb8a55e06d5d2538c)以及[一篇技术好文之Android数据库 GreenDao的使用完全解析](https://blog.csdn.net/qq_32175491/article/details/82913904)的这两篇文章一样。这篇文章也属总结性的文章，目的在于整个系列有这一篇就够。写完了重新往回看一篇，算是基本达到了自己的要求。如果看了文章有不懂的或者有疑问的地方可以关注公众号「aserbaocool」一起交流讨论。
+
+当然，文中的大部分代码来自官方案例，下面也有给出参考链接，如果觉得我词不达意的的朋友也可以直接访问下面链接。
+
+好了，到这就结束了，感谢各位观看，See you next time。
+
+## 参考链接
+- [OkHttp github地址](https://github.com/square/okhttp)
+- [OkHttp 官方文档](http://square.github.io/okhttp/)
+- [OkHttp 官方api文档](http://square.github.io/OkHttp/3.x/okhttp/)
+- [OkHttp-- 缓存的加入方式](http://ngudream.com/2016/07/25/okhttp-cache/)
+- [使用Retrofit和OkHttp实现网络缓存。无网读缓存，有网根据过期时间重新请求](https://www.jianshu.com/p/9c3b4ea108a7)
+- [超文本传输协议 - HTTP / 1.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.3)
+- [缓存策略交互 - 最大年龄和最大过期时间](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/cache-policy-interaction-maximum-age-and-maximum-staleness)
+- [传输层安全性（TLS）参数](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml)
