@@ -4,11 +4,13 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.AppFileMgr;
+import com.aserbao.aserbaosandroid.aaThird.okhttp.Listeners.PrintingEventListener;
 import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -94,6 +96,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置证书锁 ",18));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp自定义认证证书 ",19));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp事件监听 ",20));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp事件工厂类 ",201));
         init();
     }
 
@@ -183,10 +186,14 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
                 customCertificate();
                 break;
             case 20:
-                useEvent();
+                useSimpleEvent();
+                break;
+            case 201:
+                userEventFactory();
                 break;
         }
     }
+
 
 
 
@@ -1072,17 +1079,75 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     }
 
     /**
-     * Evnet的使用
+     * Event的使用
      */
-    private void useEvent() {
-//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-//        OkHttpClient client = builder
-//            .eventListener(new PrintingEventListener())
-//            .build();
-//        Request request = new Request.Builder()
-//            .url("https://publicobject.com/helloworld.txt")
-//            .build();
+    private void useSimpleEvent() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient client = builder
+            .eventListener(new PrintingEventListener())
+            .build();
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "REQUEST 1 (new connection)"  );
+                try (Response response = client.newCall(request).execute()) {
+                    // Consume and discard the response body.
+                    response.body().source().readByteString();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e(TAG, "REQUEST 2 (pooled connection)"  );
+                try (Response response = client.newCall(request).execute()) {
+                    // Consume and discard the response body.
+                    response.body().source().readByteString();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
+
+
+    private void userEventFactory() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient client = builder
+            .eventListenerFactory(PrintingEventListener.FACTORY)
+            .build();
+        Request request = new Request.Builder()
+            .url("https://publicobject.com/helloworld.txt")
+            .build();
+
+        Log.e(TAG, "REQUEST 1 (new connection)"  );
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                response.body().source().readByteString();
+            }
+        });
+
+        Log.e(TAG, "REQUEST 2 (pooled connection)"  );
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                response.body().source().readByteString();
+            }
+        });
+    }
+
 
 }
 

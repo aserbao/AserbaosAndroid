@@ -1,0 +1,28 @@
+REQUEST 1 (new connection)
+callStart  				 printEvent:耗时： 		0.0
+dnsStart  				 printEvent:耗时： 		0.042560717
+dnsEnd  				 printEvent:耗时： 		0.068167882
+connectStart  			 printEvent:耗时： 		0.077480797
+secureConnectStart  	 printEvent:耗时： 		0.265172809
+secureConnectEnd  		 printEvent:耗时： 		0.649214914
+connectEnd  			 printEvent:耗时： 		0.649293975
+connectAcquired  		 printEvent:耗时： 		0.649580324
+requestHeadersStart  	 printEvent:耗时： 		0.650108324
+requestHeadersEnd  		 printEvent:耗时： 		0.650213365
+responseHeadersStart  	 printEvent:耗时： 		0.655854306
+responseHeadersEnd  	 printEvent:耗时： 		0.848777149
+responseBodyStart  		 printEvent:耗时： 		0.850173416
+responseBodyEnd  		 printEvent:耗时： 		0.862190307
+connectReleased  		 printEvent:耗时： 		0.864436961
+callEnd  				 printEvent:耗时： 		0.86481997
+REQUEST 2 (pooled connection)
+callStart  				 printEvent:耗时： 		0.0
+connectAcquired  		 printEvent:耗时： 		0.0039248
+requestHeadersStart  	 printEvent:耗时： 		0.006481271
+requestHeadersEnd  		 printEvent:耗时： 		0.013435227
+responseHeadersStart  	 printEvent:耗时： 		0.021808358
+responseHeadersEnd  	 printEvent:耗时： 		0.205747099
+responseBodyStart  		 printEvent:耗时： 		0.205868343
+responseBodyEnd  		 printEvent:耗时： 		0.205980369
+connectReleased  		 printEvent:耗时： 		0.206070883
+callEnd  				 printEvent:耗时： 		0.206086807
