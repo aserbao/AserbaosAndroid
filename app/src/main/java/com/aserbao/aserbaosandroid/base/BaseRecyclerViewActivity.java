@@ -93,9 +93,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             @Override
             public void run() {
                 int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
-                if (lastVisibleItemPosition <= 10){
+                if (lastVisibleItemPosition <= 8){
                     mBaseUpTv.setVisibility(View.GONE);
                     mBaseDownTv.setVisibility(View.GONE);
+                }else{
+                    mBaseUpTv.setVisibility(View.VISIBLE);
+                    mBaseDownTv.setVisibility(View.VISIBLE);
                 }
             }
         });

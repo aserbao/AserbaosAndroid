@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.multidex.MultiDexApplication;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;
@@ -15,7 +16,7 @@ import com.danikula.videocache.HttpProxyCacheServer;
  * weixin: aserbao
  */
 
-public class AserbaoApplication extends Application {
+public class AserbaoApplication extends MultiDexApplication {
     public static int screenWidth,screenHeight;
     public static AserbaoApplication instance;
     @Override

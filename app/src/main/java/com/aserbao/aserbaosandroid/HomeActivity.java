@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", OkDownLoadActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", OkhttpActivity.class));
     }
 
     private void initView() {
