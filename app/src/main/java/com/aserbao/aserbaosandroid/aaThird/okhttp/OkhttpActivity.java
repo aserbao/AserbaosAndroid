@@ -1075,11 +1075,13 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
      * Evnet的使用
      */
     private void useEvent() {
-        /*OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        OkHttpClient client = builder
-            .eventListener(new PrintingEventListener())
-            .build();*/
-
+//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//        OkHttpClient client = builder
+//            .eventListener(new PrintingEventListener())
+//            .build();
+//        Request request = new Request.Builder()
+//            .url("https://publicobject.com/helloworld.txt")
+//            .build();
     }
 
 }
