@@ -17,6 +17,15 @@ Mr. Zhu ，英文名aserbao! 从事Android开发多年，技术不高，用来�
  8. [Android openGl开发详解(二)——通过SurfaceView，TextureView，GlSurfaceView显示相机预览（附Demo）](https://blog.csdn.net/qq_32175491/article/details/79755424)
  9. [Android 自定义相机开发（三) —— EGL介绍](https://blog.csdn.net/qq_32175491/article/details/80271016)
 
+# GitChat文章
+- [Android 零基础开发相机](https://gitbook.cn/gitchat/activity/5aeb03e3af08a333483d71c1)
+- [HTTP 网络请求库 OkHttp的全面讲解](https://gitbook.cn/gitchat/activity/5d47e0e2272b381731256ba6)
+- [依赖注入框架 Dagger2 的全面讲解](https://gitbook.cn/gitchat/activity/5d004cdfb8a55e06d5d2538c)
+- [8 大经典排序算法使用详解（图解 + 实例）](https://gitbook.cn/gitchat/activity/5d3175895daf051f53e81525)
+- [零基础开发一款微信小程序商城](https://gitbook.cn/gitchat/activity/5b3999075db6f06811eb14f8)
+- [零基础建立自己的博客网站](https://gitbook.cn/gitchat/activity/5b4ac8325cbca1517850004b)
+
+
 # AserbaosAndroid项目介绍
 aserbao的个人Android学习总结项目，希望这个项目能成为最全面的Android开发学习项目，当然这是个美好的愿景，项目中还有很多未涉及到的地方，有很多没有讲到的点，希望看到这个项目的朋友，如果你在开发中遇到什么问题，在这个项目中没有找到对应的解决办法，希望你能够提出来，在我的微信公众号aserbao给我留言或者在项目github地址提issues,我有时间就会更新项目没有涉及到的部分！项目会一直维护下去。当然，我希望是Aserbao’sAndroid 能为所有Android开发者提供到帮助！也期望更多Android开发者能参与进来，只要你熟悉Android某一块，都可以将你的代码pull上分支供大家学习！
 
