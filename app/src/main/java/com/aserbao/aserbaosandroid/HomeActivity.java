@@ -18,6 +18,7 @@ import com.aserbao.aserbaosandroid.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
+import com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.BlurImageActivity;
 import com.aserbao.aserbaosandroid.functions.network.mqtt.simple.SimpleMqttActivity;
@@ -68,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", OkhttpActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", DoubleRecyclerNestActivity.class));
     }
 
     private void initView() {

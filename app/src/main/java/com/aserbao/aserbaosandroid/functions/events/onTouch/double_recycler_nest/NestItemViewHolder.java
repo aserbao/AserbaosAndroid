@@ -2,10 +2,12 @@ package com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nes
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -36,7 +38,7 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
     @BindView(R.id.nest_rv_item)
     ImageView mNestRvItem;
     @BindView(R.id.nest_rv_item_rv)
-    RecyclerView mNestRvItemRv;
+    CustomItemRecyclerView mNestRvItemRv;
     @BindView(R.id.nest_rv_item_swipe_refresh_layout)
     SwipeRefreshLayout mNestRvItemSwipeRefreshLayout;
 
@@ -55,12 +57,29 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
         }
         BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(context, (Activity) context, mBaseRecyclerBeen, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true);
         mNestRvItemRv.setLayoutManager(linearLayoutManager);
         mNestRvItemRv.setAdapter(mCommonAdapter);
         mNestRvItemRv.setBackgroundResource(ImageSource.getRandomImageId());
         mNestRvItemSwipeRefreshLayout.setOnRefreshListener(this);
 
+        mNestRvItemRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int firstVisibleItemPosition = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                if (mCommonAdapter.getItemCount() - 1 == firstVisibleItemPosition){
+                    mNestRvItemRv.setmIsTop(true);
+                }else{
+                    mNestRvItemRv.setmIsTop(false);
+                }
+            }
+        });
         mNestRvItem.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
