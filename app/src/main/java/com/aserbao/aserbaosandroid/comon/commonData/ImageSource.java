@@ -1,7 +1,10 @@
 package com.aserbao.aserbaosandroid.comon.commonData;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -11,8 +14,19 @@ import java.util.Random;
  * email: this is empty email
  */
 public class ImageSource {
+
     public static final int[] iamgeUrl = {R.drawable.starry_sky_1,R.drawable.starry_sky_2,R.drawable.starry_sky_3,R.drawable.starry_sky_4,R.drawable.starry_sky_5,R.drawable.starry_sky_6,R.drawable.starry_sky_7,R.drawable.starry_sky_8,R.drawable.starry_sky_9,R.drawable.starry_sky_10};
 
+
+    public static List<BaseRecyclerBean> getStaticRecyclerViewData(List<BaseRecyclerBean> mBaseRecyclerBeen) {
+        if (mBaseRecyclerBeen == null) {
+            new Exception("传个null进来开玩笑吧？,赶快给我修改了！墨迹个锤子🔨");
+        }
+        for (int i = 0; i < ImageSource.iamgeUrl.length; i++) {
+            mBaseRecyclerBeen.add(new BaseRecyclerBean(i,ImageSource.iamgeUrl[i]));
+        }
+        return mBaseRecyclerBeen;
+    }
 
     public static int getRandomImageId(){
 //        int[] iamgeUrl = {R.drawable.mm_1,R.drawable.mm_2,R.drawable.mm_3,R.drawable.mm_4,R.drawable.mm_5,R.drawable.mm_6,R.drawable.mm_7};

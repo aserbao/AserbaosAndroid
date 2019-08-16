@@ -2,6 +2,8 @@ package com.aserbao.aserbaosandroid.comon.base.beans;
 
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
+import java.io.Serializable;
+
 /**
  * 功能:
  *
@@ -11,7 +13,7 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.base.beans
  */
-public class BaseRecyclerBean {
+public class BaseRecyclerBean implements Serializable {
     String name;            //名字
     int tag;                //标记
     private Class<?> clazz; //跳转的类

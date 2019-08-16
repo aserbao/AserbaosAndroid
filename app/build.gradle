@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.aserbao.aserbaosandroid2"
-        minSdkVersion 16
+        minSdkVersion 21
         renderscriptTargetApi 19 //为了使用Renderscript
         renderscriptSupportModeEnabled true
         targetSdkVersion 28
