@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.base.BaseActivity">
+    tools:context="com.aserbao.aserbaosandroid.comon.base.BaseActivity">
     <FrameLayout
         android:id="@+id/pine_color_fl"
         android:layout_width="match_parent"

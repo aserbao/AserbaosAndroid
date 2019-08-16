@@ -19,7 +19,7 @@ import android.view.MotionEvent;
  */
 public class CustomItemRecyclerView extends RecyclerView {
     private static final String TAG = "CustomItemRecyclerView";
-    private float mStartRawY;
+
 
     public CustomItemRecyclerView(@NonNull Context context) {
         super(context);
@@ -52,7 +52,7 @@ public class CustomItemRecyclerView extends RecyclerView {
         return super.dispatchTouchEvent(ev);
     }
 
-
+    private float mStartRawY;
     private  boolean mIsTop = false;
 
     public void setmIsTop(boolean mIsTop) {
@@ -68,12 +68,10 @@ public class CustomItemRecyclerView extends RecyclerView {
                 Log.e(TAG, "onTouchEvent: ACTION_DOWN = " + mStartRawY);
                 break;
             case MotionEvent.ACTION_MOVE:
-//                return true;
                 if (mIsTop){
                     float chaY = e.getRawY() - mStartRawY;
                     if (chaY > 0){
                         Log.e(TAG, "onTouchEvent: ACTION_MOVE 向下滑 距离为 = "+ chaY + "\t"+ mIsTop + "\t"+ mStartRawY);
-
                         return true;
                     }
                     Log.e(TAG, "onTouchEvent: ACTION_MOVE "+ chaY + "\t"+ mIsTop + "\t"+ mStartRawY);
@@ -84,7 +82,6 @@ public class CustomItemRecyclerView extends RecyclerView {
                 getParent().requestDisallowInterceptTouchEvent(false);
                 break;
         }
-//        return true;
         return super.onTouchEvent(e);
     }
 }

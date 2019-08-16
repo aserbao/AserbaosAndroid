@@ -5,18 +5,16 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;

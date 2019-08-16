@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity">
     <Button
         android:id="@+id/iamge_detail_info_btn"
         android:layout_width="wrap_content"

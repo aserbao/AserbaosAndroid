@@ -43,9 +43,14 @@ public class MQTTManager {
     private MqttClient client;
     private MqttConnectOptions options;
 
+    private static final boolean TEST_ENVIRONMENT = true;
+
+    // 服务器地址
 
     public static final String MQTT_TEST_SERVER = "tcp://54.223.115.208:1883";
     public static final String MQTT_SERVER = "ssl://p.getremark.com:8883";
+    public static final String MQTT_URL = TEST_ENVIRONMENT ?  MQTT_TEST_SERVER : MQTT_SERVER;
+
     String userId = "7302";
     String password = "059072fe2b6d109e4f955bd525ee2c6ce8f8a2fd";
     String clientId = "2559eeb7c997263fb1299b3cb7e57ee2";
@@ -88,7 +93,7 @@ public class MQTTManager {
           try {
              // host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存
 //              client = new MqttClient(MQTT_TEST_SERVER, clientId, new MemoryPersistence());
-              client = new MqttClient(MQTT_SERVER, clientId, new MemoryPersistence());
+              client = new MqttClient(MQTT_URL, clientId, new MemoryPersistence());
               // MQTT的连接设置
               options = new MqttConnectOptions();
               // 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，这里设置为true表示每次连接到服务器都以新的身份连接

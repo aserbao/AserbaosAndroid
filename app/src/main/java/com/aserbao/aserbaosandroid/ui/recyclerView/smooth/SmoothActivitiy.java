@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.adapters.SmoothAdapter;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans.SimpleBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.interfaces.ISmoothCallBackListener;

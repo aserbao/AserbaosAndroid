@@ -2,11 +2,9 @@ package com.aserbao.aserbaosandroid.ui.customView;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.path.PathView;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier2;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier3;

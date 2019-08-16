@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity">
     <TextureView
         android:id="@+id/mc_record_texure_view"
         android:layout_width="368dp"

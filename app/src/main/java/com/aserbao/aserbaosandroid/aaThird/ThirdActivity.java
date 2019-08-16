@@ -1,13 +1,10 @@
 package com.aserbao.aserbaosandroid.aaThird;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.aaThird.videocache.VideoCacheActivity;
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity;
 
 public class ThirdActivity extends BaseActivity {

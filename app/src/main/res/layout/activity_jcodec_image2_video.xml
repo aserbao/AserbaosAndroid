@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

@@ -1,8 +1,8 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
-import com.aserbao.aserbaosandroid.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.GreenDaoRelationActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class GreenDaoActivity extends BaseActivity {
 

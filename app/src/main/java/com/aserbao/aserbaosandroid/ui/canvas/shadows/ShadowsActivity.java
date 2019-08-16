@@ -2,27 +2,23 @@ package com.aserbao.aserbaosandroid.ui.canvas.shadows;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.shadows.views.ShadowTextView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ShadowsActivity extends BaseRecyclerViewActivity {
 
 
     ShadowTextView mShadowTv;
     LinearLayout mShadowll;
-    private int  width = DisplayUtil.dip2px(100);
-    private int height = DisplayUtil.dip2px(200);
+    private int  width = DisplayUtil.dip2px(480),lastWidth = width;
+    private int height = DisplayUtil.dip2px(720),lastHeight = height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +34,8 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的Fragment", 2));
         mBaseRecyclerEmptyContainer.setVisibility(View.GONE);
         for (int i = 0; i < 100; i++) {
-            result = result+ " 第几条数据 + " + String.valueOf(i) + " \n";
+//            result = result+ " 第几条数据 + " + String.valueOf(i) + " \n";
+            result = result+ "/::>" + String.valueOf(i) + " \n";
         }
     }
     String result ;
@@ -59,18 +56,28 @@ public class ShadowsActivity extends BaseRecyclerViewActivity {
                 break;
             case 3:
                 mShadowll.removeAllViews();
+                width = (int)(width  *  (1 - 0.05f));
+                height= (int)(height *  (1 - 0.05f));
+
+                float v = lastHeight / (float) height;
                 if (mShadowTv != null) {
-                    scale = scale - 0.005f;
+                    scale = v;
                     mShadowTv.matrix(scale);
-                    mShadowTv.setText(result);
                 }
-                width = (int)(width  *  (1+scale));
-                height= (int)(height * (1+scale));
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
                 mShadowTv.setLayoutParams(layoutParams);
                 mShadowll.addView(mShadowTv);
                 break;
             case 4:
+                width = (int)(width  *  (1 + 0.05f));
+                height= (int)(height *  (1 + 0.05f));
+
+                float v1 = lastHeight / (float) height;
+                if (mShadowTv != null) {
+                    scale = v1;
+                    mShadowTv.matrix(scale);
+                    mShadowTv.setText(result);
+                }
                 if (mShadowTv != null) {
                     scale = scale + 0.02f;
                     mShadowTv.matrix(scale);

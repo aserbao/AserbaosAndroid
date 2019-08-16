@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.mediaMuxer.MediaMuxerActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.mediaMuxer.MediaMuxerActivity">
     <Button
         android:id="@+id/btn_media_muxer"
         android:text="开始混合"

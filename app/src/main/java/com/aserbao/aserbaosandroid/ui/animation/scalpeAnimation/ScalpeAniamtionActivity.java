@@ -10,10 +10,10 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 
 import java.util.ArrayList;
 import java.util.List;

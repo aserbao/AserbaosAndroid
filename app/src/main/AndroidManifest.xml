@@ -48,7 +48,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".designMode.singleMode.SingleModeActivity"></activity>
+        <activity android:name=".aaSource.android.app.Fragment.ShareElementFragment.ShareElementActivity"/>
+        <activity android:name=".aaSource.android.app.Fragment.FragmentActivity"/>
+        <activity android:name=".designMode.singleMode.SingleModeActivity" />
         <activity android:name=".ui.canvas.shadows.ShadowsActivity" />
         <activity android:name=".ui.imageviews.ImageViewsActivity" />
         <activity android:name=".aaThird.okdownload.OkDownLoadActivity" />
@@ -120,9 +122,9 @@
         <activity
             android:name=".ui.animation.scalpeAnimation.ScalpeAniamtionActivity"
             android:theme="@style/windowIsTranslucent" />
-        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity" />
-        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity" />
-        <activity android:name=".AudioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity" />
+        <activity android:name=".audioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity" />
+        <activity android:name=".audioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity" />
+        <activity android:name=".audioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity" />
         <activity android:name=".aaSource.android.material.button.MaterialButtonActivity" />
         <activity android:name=".aaSource.android.material.MaterialActivity" />
         <activity
@@ -213,7 +215,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".Cameratest.OneCameraActivity" />
+        <activity android:name=".cameraTest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />
@@ -225,22 +227,22 @@
         <activity android:name=".designMode.strategyMode.StrategyActivity" />
         <activity android:name=".designMode.DesignModeActivity" />
         <activity android:name=".designMode.observerMode.ObserverActivity" />
-        <activity android:name=".AudioAndVideo.media.MediaActivity" />
-        <activity android:name=".AudioAndVideo.media.videoView.VideoViewActivity" />
+        <activity android:name=".audioAndVideo.media.MediaActivity" />
+        <activity android:name=".audioAndVideo.media.videoView.VideoViewActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
         <activity android:name=".ui.customView.countdownView.CountDownViewActivity" />
-        <activity android:name=".AudioAndVideo.media.audio.AudioRecordActivity" />
+        <activity android:name=".audioAndVideo.media.audio.AudioRecordActivity" />
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
-        <activity android:name=".AudioAndVideo.media.mediaplayer.MediaPlayerActivity" />
+        <activity android:name=".audioAndVideo.media.mediaplayer.MediaPlayerActivity" />
         <activity
             android:name=".opengl.openGlCamera.recordCamera.RecordCameraActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".AudioAndVideo.media.mediaMuxer.MediaMuxerActivity" />
+        <activity android:name=".audioAndVideo.media.mediaMuxer.MediaMuxerActivity" />
         <activity android:name=".designMode.factoryMode.FactoryActivity" />
-        <activity android:name=".AudioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
-        <activity android:name=".AudioAndVideo.media.mediacodec.MediaCodecActivity" />
+        <activity android:name=".audioAndVideo.media.mediacodec.mcRecordVideo.MCRecordVideoActivity" />
+        <activity android:name=".audioAndVideo.media.mediacodec.MediaCodecActivity" />
         <activity android:name=".ui.UIActivity" />
         <activity android:name=".ui.colorPicker.ColorPickerActivity" />
         <activity android:name=".ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity" />
@@ -257,8 +259,8 @@
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name=".functions.events.EventDealActivity" />
         <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
-        <activity android:name=".AudioAndVideo.media.exoplayer.ExoPlayerPActivity" />
-        <activity android:name=".AudioAndVideo.media.exoplayer.playerlist.PlayListActivity" />
+        <activity android:name=".audioAndVideo.media.exoplayer.ExoPlayerPActivity" />
+        <activity android:name=".audioAndVideo.media.exoplayer.playerlist.PlayListActivity" />
         <activity android:name=".ui.texts.textViews.TextViewsActivity" />
         <activity android:name=".ui.texts.textViews.shadowText.TextShadowActivity" />
         <activity android:name=".functions.cache.CacheActivity" />
@@ -295,15 +297,15 @@
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
         <activity android:name=".ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
-        <activity android:name=".AudioAndVideo.AudioAndVideoActivity" />
-        <activity android:name=".AudioAndVideo.jnis.JnisActivity" />
-        <activity android:name=".AudioAndVideo.jnis.javaCallC.JavaCallCActivity" />
+        <activity android:name=".audioAndVideo.AudioAndVideoActivity" />
+        <activity android:name=".audioAndVideo.jnis.JnisActivity" />
+        <activity android:name=".audioAndVideo.jnis.javaCallC.JavaCallCActivity" />
         <activity android:name=".functions.database.greenDao.relation.GreenDaoRelationActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoActivity" />
         <activity android:name=".other.OthersActivity" />
         <activity android:name=".other.compare.CompareActivity" />
-        <activity android:name=".AudioAndVideo.media.image2video.Image2VideoActivity" />
-        <activity android:name=".AudioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
+        <activity android:name=".audioAndVideo.media.image2video.Image2VideoActivity" />
+        <activity android:name=".audioAndVideo.media.image2video.jcodec.JCodecImage2VideoActivity" />
         <activity android:name=".functions.how_create_so.HowCreateSoActivity" />
         <activity android:name=".functions.how_create_so.useCmake.UseCMakeBuildSoActivity" />
         <activity android:name=".functions.how_create_so.useNdkBuild.UseNdkBuildActivity" />
@@ -314,8 +316,8 @@
         <activity
             android:name=".functions.sensors.testSensorData.TestSensorDataActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AudioAndVideo.detail_Info.DetailInfoActivity" />
-        <activity android:name=".AudioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity" />
+        <activity android:name=".audioAndVideo.detail_Info.DetailInfoActivity" />
+        <activity android:name=".audioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity" />
         <activity android:name=".functions.network.NetWorkActivity" />
         <activity android:name=".functions.network.okhttp.OkhttpActivity" />
         <activity android:name=".ui.cardView.CardViewActivity" />
@@ -361,6 +363,7 @@
         </service>
         <service android:name=".functions.listener.constractListener.ContactIntentService" />
         <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService" />
+
     </application>
 
 </manifest>

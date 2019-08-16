@@ -4,8 +4,8 @@ import android.content.Intent;
 
 import com.aserbao.aserbaosandroid.aaSource.android.material.button.MaterialButtonActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.FloatWindowActivity;
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class MaterialActivity extends BaseActivity {
 
