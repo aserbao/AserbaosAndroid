@@ -49,4 +49,8 @@ public class StaticFinalValues {
     public static final int VIEW_HOLDER_CLASS = 102;
 
 
+    //--------------reqeestCode--------------
+    public static final int COME_FROM_A_SHARE_MODULE_ACTIVITY = 100;
+    public static final int COME_FROM_B_SHARE_MODULE_ACTIVITY = 101;
+
 }

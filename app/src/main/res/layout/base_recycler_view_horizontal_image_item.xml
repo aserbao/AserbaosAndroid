@@ -21,4 +21,5 @@
         android:src="@drawable/starry_sky_1"
         android:layout_width="90dp"
         android:layout_height="match_parent" />
+    <include layout="@layout/a_common_text_view"/>
 </android.support.v7.widget.CardView>

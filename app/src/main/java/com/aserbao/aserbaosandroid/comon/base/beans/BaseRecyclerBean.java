@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class BaseRecyclerBean implements Serializable {
     String name;            //名字
-    int tag;                //标记
+    int tag = -1;           //标记
     private Class<?> clazz; //跳转的类
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
@@ -28,6 +28,11 @@ public class BaseRecyclerBean implements Serializable {
 
     public BaseRecyclerBean(int tag, int imageSrc) {
         this.tag = tag;
+        this.imageSrc = imageSrc;
+        this.viewType = StaticFinalValues.VIEW_HOLDER_IMAGE_100H;
+    }
+
+    public BaseRecyclerBean(int imageSrc) {
         this.imageSrc = imageSrc;
         this.viewType = StaticFinalValues.VIEW_HOLDER_IMAGE_100H;
     }

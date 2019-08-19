@@ -44,6 +44,17 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mOrientation = orientation;
     }
 
+    public void removePositionItem(int startPosition,int endPosition){
+        for (int i = startPosition; i <= endPosition; i++) {
+            mBaseRecyclerBean.remove(startPosition);
+        }
+        /*int itemCount = endPosition - startPosition;
+//        notifyItemRangeChanged(startPosition, itemCount);
+        notifyItemRangeRemoved(startPosition,itemCount+1);
+        notifyDataSetChanged();*/
+    }
+
+
     @Override
     public int getItemViewType(int position) {
         if (mBaseRecyclerBean != null && position < mBaseRecyclerBean.size()){

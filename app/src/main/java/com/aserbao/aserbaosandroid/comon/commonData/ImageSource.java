@@ -23,7 +23,7 @@ public class ImageSource {
             new Exception("传个null进来开玩笑吧？,赶快给我修改了！墨迹个锤子🔨");
         }
         for (int i = 0; i < ImageSource.iamgeUrl.length; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean(i,ImageSource.iamgeUrl[i]));
+            mBaseRecyclerBeen.add(new BaseRecyclerBean(ImageSource.iamgeUrl[i]));
         }
         return mBaseRecyclerBeen;
     }

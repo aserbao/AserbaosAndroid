@@ -49,7 +49,7 @@ public class BShareModuleActivity extends AppCompatActivity {
         Intent intent = new Intent(activity, BShareModuleActivity.class);
         intent.putExtra(StaticFinalValues.TYPE, RECYCLER_ITEM);
         intent.putExtra(StaticFinalValues.POSITION,position);
-        activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity, sharedElements).toBundle());
+        activity.startActivityForResult(intent, StaticFinalValues.COME_FROM_A_SHARE_MODULE_ACTIVITY,ActivityOptions.makeSceneTransitionAnimation(activity, sharedElements).toBundle());
     }
 
 
@@ -65,7 +65,6 @@ public class BShareModuleActivity extends AppCompatActivity {
         Log.e(TAG, "onCreate: " + inputType);
         setImageRes();
         setTransitionName(COMING);
-
         mShowActivityNameTv.setText("BShareModuleActivity");
     }
 
@@ -92,12 +91,13 @@ public class BShareModuleActivity extends AppCompatActivity {
                 setImageRes();
                 break;
         }
-
     }
 
     @Override
     public void onBackPressed() {
         setTransitionName(BACK);
+        AShareModuleActivity.endPosition = position;
+        setResult(StaticFinalValues.COME_FROM_B_SHARE_MODULE_ACTIVITY);
         super.onBackPressed();
     }
 
