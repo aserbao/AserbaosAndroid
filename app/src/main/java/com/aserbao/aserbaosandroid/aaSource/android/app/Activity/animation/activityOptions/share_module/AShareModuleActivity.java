@@ -55,16 +55,13 @@ public class AShareModuleActivity extends AppCompatActivity {
             public void itemClickBack(View view, int position) {
                 int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
                 int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
-                Pair pair1 = Pair.create(mLinearLayoutManager.findViewByPosition(firstVisibleItemPosition),String.valueOf(ImageSource.iamgeUrl[firstVisibleItemPosition]));
-                firstVisibleItemPosition++;
-                Pair pair2 = Pair.create(mLinearLayoutManager.findViewByPosition(firstVisibleItemPosition),String.valueOf(ImageSource.iamgeUrl[firstVisibleItemPosition]));
-                firstVisibleItemPosition++;
-                Pair pair3 = Pair.create(mLinearLayoutManager.findViewByPosition(firstVisibleItemPosition),String.valueOf(ImageSource.iamgeUrl[firstVisibleItemPosition]));
-                firstVisibleItemPosition++;
-                Pair pair4 = Pair.create(mLinearLayoutManager.findViewByPosition(firstVisibleItemPosition),String.valueOf(ImageSource.iamgeUrl[firstVisibleItemPosition]));
-                firstVisibleItemPosition++;
-                Pair pair5 = Pair.create(mLinearLayoutManager.findViewByPosition(firstVisibleItemPosition),String.valueOf(ImageSource.iamgeUrl[firstVisibleItemPosition]));
-                BShareModuleActivity.launch(AShareModuleActivity.this, view,position,pair1,pair2,pair3,pair4,pair5);
+                int length = lastVisibleItemPosition - firstVisibleItemPosition ;
+                Pair<View, String>[] sharedElements = new Pair[length + 1];
+                for (int i = 0; i <= length; i++) {
+                    int absoultPosition = firstVisibleItemPosition + i;
+                    sharedElements[i] =  Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition),String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
+                }
+                BShareModuleActivity.launch(AShareModuleActivity.this, view,position,sharedElements);
             }
         });
         mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
