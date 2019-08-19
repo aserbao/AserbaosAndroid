@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 /*基类*/
 public abstract class BaseActivity extends AppCompatActivity {
-    @BindView(R.id.opengl_recycler_view)
+    @BindView(R.id.base_recycler_view)
     public RecyclerView mOpenglRecyclerView;
 
     public BaseActivityAdapter mCommonAdapter;

@@ -1,15 +1,11 @@
 package com.aserbao.aserbaosandroid.comon.commonView;
 
-import android.app.SharedElementCallback;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +21,6 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +38,7 @@ public class ImageViewFragment extends Fragment {
     public TextView mBaseRecyclerTv;
     @BindView(R.id.show_data_content_rv)
     public RecyclerView mShowDataContentRv;
-    @BindView(R.id.opengl_recycler_view)
+    @BindView(R.id.base_recycler_view)
     public RecyclerView mOpenglRecyclerView;
     @BindView(R.id.base_recycler_view_fl)
     public RelativeLayout mBaseRecyclerViewFl;

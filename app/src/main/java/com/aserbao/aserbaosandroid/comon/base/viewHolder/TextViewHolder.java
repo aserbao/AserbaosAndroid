@@ -24,7 +24,7 @@ public class TextViewHolder extends BaseClickViewHolder {
             int tag = classBean.getTag();
             String name = classBean.getName();
             if (tag >= 0) {
-                mBaseRecyclerViewItemTv.setTag(tag);
+                itemView.setTag(tag);
                 name = name + String.valueOf(tag);
             } else {
                 name = name + String.valueOf(position);

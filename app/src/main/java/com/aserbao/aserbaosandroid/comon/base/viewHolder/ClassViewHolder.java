@@ -24,7 +24,6 @@ public class ClassViewHolder extends RecyclerView.ViewHolder {
             ButterKnife.bind(this, itemView);
         }
 
-
         public void setDataSource(Activity mActivity, BaseRecyclerBean classBean){
             mItemCardView.setBackgroundResource(ConstantUtils.getDrawable());
             mItemTv.setText(classBean.getName());

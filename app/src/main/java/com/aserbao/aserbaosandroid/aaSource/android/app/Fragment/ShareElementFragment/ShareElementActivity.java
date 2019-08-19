@@ -26,22 +26,37 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
     public void initGetData() {
 //        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
-        ViewGroup.LayoutParams layoutParams = mBaseRecyclerEmptyContainer.getLayoutParams();
+        /*ViewGroup.LayoutParams layoutParams = mBaseRecyclerEmptyContainer.getLayoutParams();
         if (layoutParams instanceof ViewGroup.MarginLayoutParams){
             ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(0,0,0,0);
         }
-        mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams);
+        mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams);*/
 
-        getSupportFragmentManager()
-            .beginTransaction()
-//            .add(R.id.base_recycler_empty_container, new ShareElementFragment(), ShareElementFragment.class.getSimpleName())
-            .add(R.id.base_recycler_empty_container, new GridFragment(), GridFragment.class.getSimpleName())
-            .commit();
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("横向的",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("纵向的",2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("网格的",3));
+
 
     }
 
     @Override
     public void itemClickBack(View view, int position) {
+        switch (position){
+            case 1:
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.base_recycler_empty_container, new GridFragment(), GridFragment.class.getSimpleName())
+                    .commit();
+                break;
+            case 2:
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.base_recycler_empty_container, new ShareElementFragment(), ShareElementFragment.class.getSimpleName())
+                    .commit();
+                break;
+            case 3:
+                break;
+        }
     }
 
     public void initView() {

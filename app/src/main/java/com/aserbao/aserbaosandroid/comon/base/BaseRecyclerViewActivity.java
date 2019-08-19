@@ -37,7 +37,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public TextView mBaseRecyclerTv;
     @BindView(R.id.show_data_content_rv)
     public RecyclerView mShowDataContentRv;
-    @BindView(R.id.opengl_recycler_view)
+    @BindView(R.id.base_recycler_view)
     public RecyclerView mOpenglRecyclerView;
     @BindView(R.id.base_recycler_view_fl)
     public RelativeLayout mBaseRecyclerViewFl;

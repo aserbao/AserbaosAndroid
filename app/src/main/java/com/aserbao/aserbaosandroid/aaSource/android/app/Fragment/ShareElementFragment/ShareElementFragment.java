@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.GridAdapter;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.ShareElementFragmentAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
@@ -44,35 +45,25 @@ import butterknife.ButterKnife;
  */
 public class ShareElementFragment extends Fragment implements IBaseRecyclerItemClickListener {
 
-    public static ShareElementFragment newInstance(@DrawableRes int drawableRes) {
-        ShareElementFragment fragment = new ShareElementFragment();
-        Bundle argument = new Bundle();
-        argument.putInt(StaticFinalValues.DRAWABLE_RESID, drawableRes);
-        fragment.setArguments(argument);
-        return fragment;
-    }
+//    @BindView(R.id.opengl_recycler_view)
+    public RecyclerView  mBaseRecyclerView;
 
-
-    @BindView(R.id.base_recycler_tv)
-    public TextView mBaseRecyclerTv;
-    @BindView(R.id.show_data_content_rv)
-    public RecyclerView mShowDataContentRv;
-    @BindView(R.id.opengl_recycler_view)
-    public RecyclerView mBaseRecyclerView;
-    @BindView(R.id.base_recycler_view_fl)
-    public RelativeLayout mBaseRecyclerViewFl;
-    @BindView(R.id.base_recycler_empty_container)
-    public FrameLayout mBaseRecyclerEmptyContainer;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.base_recyclerview_activity, container, false);
+        /*View view = LayoutInflater.from(getContext()).inflate(R.layout.base_recyclerview_activity, container, false);
         ButterKnife.bind(this,view);
+        initView();*/
+        mBaseRecyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_grid, container, false);
+        mBaseRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+        mBaseRecyclerView.setAdapter(new GridAdapter(this));
+
+
         prepareTransitions();
         postponeEnterTransition();
-        return view;
+        return mBaseRecyclerView;
     }
 
     private void prepareTransitions() {
@@ -95,21 +86,17 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
                 }
             });
     }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView();
-    }
+
 
     public int mOrientation = LinearLayoutManager.VERTICAL;
     List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
     public void initView() {
         mBaseRecyclerBean = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBean);
-        ShareElementFragmentAdapter mCommonAdapter = new ShareElementFragmentAdapter(getContext(), getActivity(), mBaseRecyclerBean, this);
+//        ShareElementFragmentAdapter mCommonAdapter = new ShareElementFragmentAdapter(getContext(), getActivity(), mBaseRecyclerBean, this);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mBaseRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mBaseRecyclerView.setAdapter(mCommonAdapter);
+        mBaseRecyclerView.setAdapter(new GridAdapter(this));
 //        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
     }
 

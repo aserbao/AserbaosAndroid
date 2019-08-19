@@ -21,6 +21,13 @@ public class ImageViewHolder extends BaseClickViewHolder {
 
         public void setDataSource(BaseRecyclerBean classBean, int position, IBaseRecyclerItemClickListener mIBaseRecyclerItemClickListener){
             super.setDataSource(position,mIBaseRecyclerItemClickListener);
+
+            int tag = classBean.getTag();
+            String name = classBean.getName();
+            if (tag >= 0) {
+                itemView.setTag(tag);
+            }
+
             mImageViewItem.setImageResource(classBean.getImageSrc());
 
             int adapterPosition = getAdapterPosition();

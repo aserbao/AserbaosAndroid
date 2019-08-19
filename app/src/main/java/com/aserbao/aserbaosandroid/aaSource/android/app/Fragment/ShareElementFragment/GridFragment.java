@@ -61,7 +61,7 @@ public class GridFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    scrollToPosition();
+//    scrollToPosition();
   }
 
   /**
@@ -86,8 +86,7 @@ public class GridFragment extends Fragment {
         View viewAtPosition = layoutManager.findViewByPosition(currentPosition);
         // Scroll to position if the view for the current position is null (not currently part of
         // layout manager children), or it's not completely visible.
-        if (viewAtPosition == null || layoutManager
-            .isViewPartiallyVisible(viewAtPosition, false, true)) {
+        if (viewAtPosition == null || layoutManager.isViewPartiallyVisible(viewAtPosition, false, true)) {
 //          recyclerView.post(() -> layoutManager.scrollToPosition(MainActivity.currentPosition));
         }
       }
@@ -115,8 +114,7 @@ public class GridFragment extends Fragment {
             }
 
             // Map the first shared element name to the child ImageView.
-            sharedElements
-                .put(names.get(0), selectedViewHolder.itemView.findViewById(R.id.card_image));
+            sharedElements.put(names.get(0), selectedViewHolder.itemView.findViewById(R.id.card_image));
           }
         });
   }

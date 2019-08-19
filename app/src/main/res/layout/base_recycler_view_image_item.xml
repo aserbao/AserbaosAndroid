@@ -17,6 +17,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:scaleType="center"
         android:id="@+id/image_view_item"
+        android:contentDescription="Image"
         android:src="@drawable/starry_sky_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

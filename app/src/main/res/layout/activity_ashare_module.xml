@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/mm_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:background="@drawable/mm_1"
+        android:id="@+id/module_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
         android:layout_marginBottom="50dp"
         android:layout_gravity="bottom|center"
@@ -19,6 +25,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
 
     <include layout="@layout/common_show_activity_name_tv"/>
 </FrameLayout>
