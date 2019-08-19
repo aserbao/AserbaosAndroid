@@ -55,7 +55,7 @@ public class ShareElementFragmentAdapter extends RecyclerView.Adapter<RecyclerVi
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_text_item, parent, false);
                 return new TextViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_IMAGE_100H:
-                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_image_item, parent, false);
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_horizontal_image_item, parent, false);
                 return new ImageViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_CLASS:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);

@@ -41,11 +41,27 @@ public class AShareModuleActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mShowActivityNameTv.setText("AShareModuleActivity");
         initView();
+        initListener();
+    }
+
+    private void initListener() {
+        mAShareModuleBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mOrientation ==LinearLayoutManager.HORIZONTAL ){
+                    mOrientation = LinearLayoutManager.VERTICAL;
+                }else{
+                    mOrientation = LinearLayoutManager.HORIZONTAL;
+                }
+                initView();
+                return true;
+            }
+        });
     }
 
     private LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
-    public int mOrientation = LinearLayoutManager.VERTICAL;
+    public int mOrientation = LinearLayoutManager.HORIZONTAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
 
     private void initView() {
@@ -64,6 +80,7 @@ public class AShareModuleActivity extends AppCompatActivity {
                 BShareModuleActivity.launch(AShareModuleActivity.this, view,position,sharedElements);
             }
         });
+        mCommonAdapter.setmOrientation(mOrientation);
         mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         mModuleRecyclerView.setLayoutManager(mLinearLayoutManager);
         mModuleRecyclerView.setAdapter(mCommonAdapter);

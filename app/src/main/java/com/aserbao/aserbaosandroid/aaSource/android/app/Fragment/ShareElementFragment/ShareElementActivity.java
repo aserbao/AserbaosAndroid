@@ -35,8 +35,6 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("横向的",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("纵向的",2));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("网格的",3));
-
-
     }
 
     @Override

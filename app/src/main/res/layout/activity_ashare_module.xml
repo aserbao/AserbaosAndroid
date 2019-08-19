@@ -20,10 +20,10 @@
 
     <Button
         android:layout_marginTop="70dp"
-        android:text="点我一下试试？"
+        android:text="共享元素的按钮，常按切换方向"
         android:id="@+id/a_share_module_btn"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp" />
 
 

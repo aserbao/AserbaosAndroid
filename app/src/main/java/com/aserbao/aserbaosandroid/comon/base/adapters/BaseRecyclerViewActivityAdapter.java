@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.comon.base.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,10 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mIBaseRecyclerItemClickListener = listener;
     }
 
+    public int mOrientation = LinearLayoutManager.VERTICAL;
+    public void setmOrientation(int orientation){
+        mOrientation = orientation;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -55,7 +60,10 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_text_item, parent, false);
                 return new TextViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_IMAGE_100H:
-                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_image_item, parent, false);
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_vertical_image_item, parent, false);
+                if (mOrientation == LinearLayoutManager.HORIZONTAL){
+                    view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_horizontal_image_item, parent, false);
+                }
                 return new ImageViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_CLASS:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);

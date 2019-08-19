@@ -64,7 +64,7 @@ public class BShareModuleActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Log.e(TAG, "onCreate: " + inputType);
         setImageRes();
-        setTransitionName();
+        setTransitionName(COMING);
 
         mShowActivityNameTv.setText("BShareModuleActivity");
     }
@@ -97,11 +97,13 @@ public class BShareModuleActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        setTransitionName();
+        setTransitionName(BACK);
         super.onBackPressed();
     }
 
-    private void setTransitionName() {
+    public static final int COMING = 0;
+    public static final int BACK = 1;
+    private void setTransitionName(int comeFrom) {
         switch (inputType){
             case IMAGE_VIEW:
                 mBShareModuleCiv.setTransitionName("aserbao_share_name");
@@ -111,6 +113,11 @@ public class BShareModuleActivity extends AppCompatActivity {
                 break;
             case RECYCLER_ITEM:
                 mBShareModuleFl.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
+                if (comeFrom == COMING) {
+                    mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
+                }else{
+                    mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position + 1]));
+                }
                 break;
         }
     }
