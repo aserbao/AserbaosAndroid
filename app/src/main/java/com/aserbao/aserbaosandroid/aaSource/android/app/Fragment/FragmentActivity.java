@@ -13,6 +13,7 @@ import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
  * @package:com.aserbao.aserbaosandroid.aaSource.android.app.Fragment
  */
 public class FragmentActivity extends BaseActivity {
+    public static int currentPosition;
     @Override
     public void initGetData() {
         mClassBeen.add(new ClassBean("Fragment共享元素", ShareElementActivity.class));

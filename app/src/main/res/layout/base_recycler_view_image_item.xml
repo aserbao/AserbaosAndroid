@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rv_image_item_card_view"
     android:foreground="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:clickable="true"

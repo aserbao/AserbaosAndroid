@@ -2,9 +2,11 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFr
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.transition.TransitionSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,31 +24,24 @@ import com.aserbao.aserbaosandroid.comon.commonView.ImageViewFragment;
 public class ShareElementActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
+//        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
+        ViewGroup.LayoutParams layoutParams = mBaseRecyclerEmptyContainer.getLayoutParams();
+        if (layoutParams instanceof ViewGroup.MarginLayoutParams){
+            ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(0,0,0,0);
+        }
+        mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams);
+
+        getSupportFragmentManager()
+            .beginTransaction()
+//            .add(R.id.base_recycler_empty_container, new ShareElementFragment(), ShareElementFragment.class.getSimpleName())
+            .add(R.id.base_recycler_empty_container, new GridFragment(), GridFragment.class.getSimpleName())
+            .commit();
+
     }
 
     @Override
     public void itemClickBack(View view, int position) {
-        jumpToFragment(view,position);
-    }
-    Fragment fragment;
-    public void jumpToFragment(View view ,int position){
-
-        ((TransitionSet) fragment.getExitTransition()).excludeTarget(view, true);
-
-        ImageViewFragment fragment = new ImageViewFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(StaticFinalValues.POSITION,position);
-        fragment.setArguments(bundle);
-        getFragmentManager()
-            .beginTransaction()
-            .setReorderingAllowed(true) // Optimize for shared element transition
-            .addSharedElement(view, view.getTransitionName())
-            .replace(R.id.base_recycler_empty_container, fragment, ImageViewFragment.class
-                .getSimpleName())
-            .addToBackStack(null)
-            .commit();
     }
 
     public void initView() {
