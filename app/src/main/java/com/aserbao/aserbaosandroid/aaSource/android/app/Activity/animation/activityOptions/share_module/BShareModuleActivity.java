@@ -113,11 +113,8 @@ public class BShareModuleActivity extends AppCompatActivity {
                 break;
             case RECYCLER_ITEM:
                 mBShareModuleFl.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
-                if (comeFrom == COMING) {
-                    mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
-                }else{
-                    mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position + 1]));
-                }
+//                mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
+                
                 break;
         }
     }

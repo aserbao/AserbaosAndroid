@@ -4,20 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/animator_ll"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/animator_ll_container"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/module_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/module_recycler_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
 
 
     <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
@@ -30,7 +38,7 @@
 
     <Button
         android:layout_marginTop="70dp"
-        android:text="共享元素的按钮，常按切换方向"
+        android:text="点击跳转，常按切换方向"
         android:id="@+id/a_share_module_btn"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

@@ -26,9 +26,9 @@ import java.util.List;
 
 public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
-    private Activity mActivity;
-    private List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
-    private IBaseRecyclerItemClickListener mIBaseRecyclerItemClickListener;
+    protected Activity mActivity;
+    protected List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
+    protected IBaseRecyclerItemClickListener mIBaseRecyclerItemClickListener;
     private int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
 
 
@@ -44,15 +44,6 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mOrientation = orientation;
     }
 
-    public void removePositionItem(int startPosition,int endPosition){
-        for (int i = startPosition; i <= endPosition; i++) {
-            mBaseRecyclerBean.remove(startPosition);
-        }
-        /*int itemCount = endPosition - startPosition;
-//        notifyItemRangeChanged(startPosition, itemCount);
-        notifyItemRangeRemoved(startPosition,itemCount+1);
-        notifyDataSetChanged();*/
-    }
 
 
     @Override
