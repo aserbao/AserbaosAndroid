@@ -44,7 +44,9 @@ public class AShareModuleAdapter extends BaseRecyclerViewActivityAdapter {
 
     public void removePositionItem(int startPosition,int endPosition){
         for (int i = startPosition; i <= endPosition; i++) {
-            mBaseRecyclerBean.remove(startPosition);
+            if (mBaseRecyclerBean.size() > i) {
+                mBaseRecyclerBean.remove(i);
+            }
         }
         int itemCount = endPosition - startPosition + 1;
         notifyItemRangeRemoved(startPosition,itemCount);
