@@ -19,6 +19,9 @@ import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.recyclers.
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 可以直接参考MoveDragActivity的使用
+ */
 public class RecyclerViewEventActivity extends AppCompatActivity {
     private static final String TAG = "Activiy  **** ====  **** ====  **** ====  ";
     @BindView(R.id.recycler_event_rv)
