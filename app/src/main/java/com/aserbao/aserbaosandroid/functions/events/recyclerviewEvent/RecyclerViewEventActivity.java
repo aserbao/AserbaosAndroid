@@ -10,6 +10,7 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.adapters.RecyclerEventAdapter;
@@ -90,8 +91,25 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
                 Log.e(TAG, "dispatchTouchEvent: ACTION_MOVE ===== "   + b + "  chaX = " + chaX +  "  chaY = " + chaY);
                 break;
             case MotionEvent.ACTION_UP:
-                returnNormal();
                 Log.e(TAG, "dispatchTouchEvent: ACTION_UP ===== "   + b);
+                isLongClick = false;
+                float chafX = ev.getX() - mLastX;
+                float chafY = ev.getY() - mLastY;
+                if (System.currentTimeMillis() - mStartClickDownTime < 400 && !isDrag) {//判断是否是点击事件
+                    if (System.currentTimeMillis() - mLastClickDownTime > 100) {//防止快速点击
+                        if( Math.abs(chafX) < 20 &&Math.abs(chafY) < 20){
+                            Toast.makeText(this, "点击事件", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                } else if(isDrag){
+                    if(chafY > 500){
+                        onBackPressed();
+                    }else {
+                        returnNormal();
+                    }
+                }
+                mLastClickDownTime = System.currentTimeMillis();
                 break;
         }
         return b;

@@ -60,39 +60,37 @@ public abstract class MoveDragActivity extends AppCompatActivity {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         boolean onTouchEvent = true;
-
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            onUserInteraction();
-            downX = (int) ev.getX();
-            downY = (int) ev.getY();
-            // 如果点的地方是输入框位置，就不执行拖拽动画
-            if( downY >= mReplyViewTop ){
-                return super.dispatchTouchEvent(ev);
-            }else {
-            }
-            onTouchEvent = onTouchEvent(ev);
-        }
-
-        if (ev.getAction() == MotionEvent.ACTION_MOVE ) {
-
-            int deltaX = (int) (ev.getX() - downX);
-            int deltaY = (int) (ev.getY() - downY);
-            if (Math.abs(deltaY) > Math.abs(deltaX)) {
-                isDragDown = true;
-            }
-
-            if (isDragDown) {
-                // 判断滑动方向
-                // 竖直方向调用此方法， 横向不调用此方法来处理事件冲突。
+        switch (ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                onUserInteraction();
+                downX = (int) ev.getX();
+                downY = (int) ev.getY();
+                // 如果点的地方是输入框位置，就不执行拖拽动画
+                if( downY >= mReplyViewTop ){
+                    return super.dispatchTouchEvent(ev);
+                }else {
+                }
                 onTouchEvent = onTouchEvent(ev);
-            }
-        }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = (int) (ev.getX() - downX);
+                int deltaY = (int) (ev.getY() - downY);
+                if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                    isDragDown = true;
+                }
 
-        if (ev.getAction() == MotionEvent.ACTION_CANCEL || ev.getAction() == MotionEvent.ACTION_UP) {
-            onTouchEvent = onTouchEvent(ev);
-            isDragDown = false;
+                if (isDragDown) {
+                    // 判断滑动方向
+                    // 竖直方向调用此方法， 横向不调用此方法来处理事件冲突。
+                    onTouchEvent = onTouchEvent(ev);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                onTouchEvent = onTouchEvent(ev);
+                isDragDown = false;
+                break;
         }
-
         if (!isDragDown && getWindow().superDispatchTouchEvent(ev)) {
             return true;
         }
