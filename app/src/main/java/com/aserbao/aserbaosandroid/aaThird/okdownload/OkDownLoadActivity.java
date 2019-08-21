@@ -1,31 +1,23 @@
 package com.aserbao.aserbaosandroid.aaThird.okdownload;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.AppFileMgr;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.liulishuo.okdownload.DownloadContext;
 import com.liulishuo.okdownload.DownloadContextListener;
-import com.liulishuo.okdownload.DownloadListener;
 import com.liulishuo.okdownload.DownloadTask;
-import com.liulishuo.okdownload.OkDownload;
 import com.liulishuo.okdownload.SpeedCalculator;
 import com.liulishuo.okdownload.StatusUtil;
 import com.liulishuo.okdownload.core.breakpoint.BlockInfo;
 import com.liulishuo.okdownload.core.breakpoint.BreakpointInfo;
-import com.liulishuo.okdownload.core.breakpoint.BreakpointStore;
 import com.liulishuo.okdownload.core.cause.EndCause;
-import com.liulishuo.okdownload.core.cause.ResumeFailedCause;
 import com.liulishuo.okdownload.core.listener.DownloadListener4WithSpeed;
 import com.liulishuo.okdownload.core.listener.assist.Listener4SpeedAssistExtend;
 
@@ -36,9 +28,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
-import static com.aserbao.aserbaosandroid.commonData.StaticFinalValues.INDEX_TAG;
-import static com.aserbao.aserbaosandroid.commonData.StaticFinalValues.STORAGE_TEMP_APK_PATH;
-import static com.aserbao.aserbaosandroid.commonData.StaticFinalValues.STORAGE_TEMP_FILE;
+import static com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues.STORAGE_TEMP_FILE;
 
 public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     private static final String TAG = "OkDownLoadActivity";

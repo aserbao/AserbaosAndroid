@@ -2,20 +2,15 @@ package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.mmin18;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.easyblur.EasyBlur;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

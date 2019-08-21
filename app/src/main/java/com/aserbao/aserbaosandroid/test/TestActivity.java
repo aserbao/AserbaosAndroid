@@ -45,40 +45,10 @@ public class TestActivity extends AppCompatActivity {
 
     @OnClick({R.id.test_btn, R.id.test_btn2})
     public void onViewClicked() {
-        Toast.makeText(this, "被点击了", Toast.LENGTH_SHORT).show();
+        String result = "thisisan你到底要干啥";
+        int length = result.toCharArray().length;
+        Toast.makeText(this,String.valueOf(length), Toast.LENGTH_SHORT).show();
     }
 
-    public void addView() {
-    }
-    public int count = 10 * 10000;
-    public int num = 0;
-    @OnClick({R.id.test_btn, R.id.test_btn2})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.test_btn:
-                mStartTime = System.currentTimeMillis();
-                num = 0;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < count; i++) {
-                            num++;
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (count - 1 == num){
-                                        Log.e(TAG, "运行"+count + "条数据 一共耗时：" + (System.currentTimeMillis() - mStartTime)/1000 + "s" );
-                                    }
-                                    Log.e(TAG, "run: " + String.valueOf(num));
-                                }
-                            });
-                        }
-                    }
-                }).start();
-                break;
-            case R.id.test_btn2:
-                addView();
-                break;
-        }
-    }
+
 }

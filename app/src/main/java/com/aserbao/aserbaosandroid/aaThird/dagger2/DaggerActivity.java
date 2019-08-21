@@ -11,15 +11,10 @@ import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Rim;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.SparkPlug;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Tire;
 import com.aserbao.aserbaosandroid.aaThird.dagger2.beans.Wheel;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.components.SubEngineComponent;
-import com.aserbao.aserbaosandroid.aaThird.dagger2.di.modules.SubEngineModule;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.ui.buttons.ButtonActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Provider;
 
 import dagger.Lazy;
 

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 
 import java.lang.reflect.Method;
 

@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.ui.customView.gradient.LinearGradientView;
 
 import java.io.BufferedOutputStream;

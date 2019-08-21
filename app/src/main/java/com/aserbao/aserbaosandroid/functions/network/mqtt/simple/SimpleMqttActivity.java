@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.google.gson.Gson;
@@ -12,6 +13,8 @@ import com.google.gson.Gson;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,18 +38,37 @@ public class SimpleMqttActivity extends AppCompatActivity {
                 instance.setMessageHandlerCallBack(new MessageHandlerCallBack() {
                     @Override
                     public void messageSuccess(String topicName, String s) {
+                        Toast.makeText(mContext, "链接成功", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "messageSuccess: " + s + " topicName = "+ topicName );
                     }
                 });
-                instance.connect();
+                instance.connect(false,this);
+                break;
+            case R.id.btn_start_auto:
+                MQTTManager instance1 = MQTTManager.getInstance(mContext);
+                instance1.setMessageHandlerCallBack(new MessageHandlerCallBack() {
+                    @Override
+                    public void messageSuccess(String topicName, String s) {
+                        Toast.makeText(mContext, "链接成功", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "messageSuccess: " + s + " topicName = "+ topicName );
+                    }
+                });
+                instance1.connect(true,this);
                 break;
             case R.id.btn_unlink:
                 MQTTManager.getInstance(mContext).disconnect();
                 break;
             case R.id.btn_send_message:
-                for (int i = 0; i < 1; i++) {
+                /*for (int i = 0; i < 1; i++) {
                     MQTTManager instance1 = MQTTManager.getInstance(mContext);
                     sendMessage(instance1);
+                }*/
+
+                try {
+                    Logger.getGlobal().setLevel(Level.ALL);
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "onViewClicked: " );
                 }
                 break;
         }

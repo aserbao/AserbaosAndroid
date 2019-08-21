@@ -1,15 +1,10 @@
 package com.aserbao.aserbaosandroid.functions.aboutBitmap.createLong;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Looper;
-import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,7 +20,6 @@ import com.aserbao.aserbaosandroid.AUtils.utils.MainLooper;
 import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
 
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;

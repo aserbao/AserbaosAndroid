@@ -1,8 +1,10 @@
 
 package com.aserbao.aserbaosandroid.ui.recyclerView;
 
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity;
+import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerViewEventActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity;
@@ -17,5 +19,7 @@ public class RecyclerViewActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("左右滑动的RecyclerView", ScaleSmoothSlideActivity.class));
         mClassBeen.add(new ClassBean("空白的RecyclerView", AddRecyclerViewActivity.class));
         mClassBeen.add(new ClassBean("滑动的RecyclerView", SmoothActivitiy.class));
+        mClassBeen.add(new ClassBean("RecyclerView滚动冲突处理", RecyclerViewEventActivity.class));
+        mClassBeen.add(new ClassBean("RecyclerView嵌套冲突处理", DoubleRecyclerNestActivity.class));
     }
 }

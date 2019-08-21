@@ -7,27 +7,24 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo;
+import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ShareElementActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
-import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
-import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
-import com.aserbao.aserbaosandroid.algorithm.sort.SortAlgorithmActivity;
-import com.aserbao.aserbaosandroid.base.adapters.BaseActivityAdapter;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
-import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.BlurImageActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.aserbao.aserbaosandroid.ui.imageviews.ImageViewsActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
-import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextActivity;
+import com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", OkhttpActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", PopupWindowSimpleDemo.class));
     }
 
     private void initView() {

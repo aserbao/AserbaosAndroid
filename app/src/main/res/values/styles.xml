@@ -15,6 +15,12 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="CustomTransparentTheme" parent="AppTheme">
+        <!--设置背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="windowActionBar">false</item>-->
+    </style>
 
     <declare-styleable name="SlideLayout">
         <attr name="slideDirection">
@@ -134,6 +140,7 @@
 
 
     <style name="TransparentTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
         <item name="android:background">@color/transparent</item>
     </style>
     <style name="windowIsTranslucent"  parent="AppTheme">

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rv_image_item_card_view"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_width="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/white70"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="4dp"
+    app:cardMaxElevation="4dp"
+    android:layout_height="160dp">
+    <ImageView
+        android:foreground="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        android:id="@+id/image_view_item"
+        android:contentDescription="Image"
+        android:src="@drawable/starry_sky_1"
+        android:layout_width="90dp"
+        android:layout_height="match_parent" />
+    <include layout="@layout/a_common_text_view"/>
+</android.support.v7.widget.CardView>

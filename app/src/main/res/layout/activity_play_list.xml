@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/frame_layout"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.exoplayer.playerlist.PlayListActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.playerlist.PlayListActivity">
 
-    <com.aserbao.aserbaosandroid.AudioAndVideo.media.exoplayer.playerlist.MyPlayerView
+    <com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.playerlist.MyPlayerView
         app:resize_mode="fixed_width"
         android:id="@+id/player_list_player_view"
         android:layout_width="match_parent"

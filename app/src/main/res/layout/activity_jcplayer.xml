@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.jCVideoPlayer.play.JCPlayerActivity">
     <com.aserbao.aserbaosandroid.functions.events.scrollEvent.MyJZVideoPlayer
         android:id="@+id/jz_video_player"
         android:layout_width="match_parent"

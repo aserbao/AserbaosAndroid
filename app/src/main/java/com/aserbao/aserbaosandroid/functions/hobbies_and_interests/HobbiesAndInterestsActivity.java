@@ -1,9 +1,9 @@
 package com.aserbao.aserbaosandroid.functions.hobbies_and_interests;
 
-import com.aserbao.aserbaosandroid.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.hobbies_and_interests.douyinUrl.ADYUrlActivity;
 import com.aserbao.aserbaosandroid.functions.hobbies_and_interests.urlAnalyze.UrlAnalyzeActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class HobbiesAndInterestsActivity extends BaseActivity {
 

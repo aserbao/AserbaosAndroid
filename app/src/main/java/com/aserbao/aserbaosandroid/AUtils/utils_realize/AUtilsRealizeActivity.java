@@ -8,10 +8,8 @@ import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
-import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 

@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.algorithm;
 
 import com.aserbao.aserbaosandroid.algorithm.list.AboutListSortActivty;
 import com.aserbao.aserbaosandroid.algorithm.sort.SortAlgorithmActivity;
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class AlgorithmActivity extends BaseActivity {
 

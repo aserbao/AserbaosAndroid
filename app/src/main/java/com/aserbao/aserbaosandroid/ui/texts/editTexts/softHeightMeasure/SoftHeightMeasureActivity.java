@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
+import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

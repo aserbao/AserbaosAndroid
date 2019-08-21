@@ -5,8 +5,8 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.AppActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.MaterialActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.SupportActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.AndroidWidgetClasses;
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class AndroidActivity extends BaseActivity {
 

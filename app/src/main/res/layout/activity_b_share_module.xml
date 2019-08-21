@@ -7,6 +7,8 @@
     android:layout_height="match_parent">
     <include
         layout="@layout/common_show_activity_name_tv"/>
+
+
     <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
         android:id="@+id/b_share_module_civ"
         android:layout_marginTop="190dp"
@@ -14,4 +16,5 @@
         android:src="@drawable/mm_3"
         android:layout_width="150dp"
         android:layout_height="150dp" />
+
 </FrameLayout>

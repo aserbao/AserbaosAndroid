@@ -8,9 +8,9 @@ import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
 

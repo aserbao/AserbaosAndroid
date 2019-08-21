@@ -1,21 +1,13 @@
 package com.aserbao.aserbaosandroid.ui.toasts.aCustomToast;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.commonData.StaticFinalValues;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ClickToast.ClickToast;
-import com.bumptech.glide.Glide;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ACustomToastActivity extends BaseRecyclerViewActivity {
 

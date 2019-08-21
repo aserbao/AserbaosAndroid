@@ -50,7 +50,7 @@ public class CustomViewGroup extends FrameLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
         return false;
-       /* boolean b = super.dispatchTouchEvent(ev);
+        /*boolean b = super.dispatchTouchEvent(ev);
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\treturn = "+b );
         return b;*/
     }

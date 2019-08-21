@@ -18,7 +18,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
 
 import java.lang.ref.WeakReference;
 
-import static com.aserbao.aserbaosandroid.commonData.StaticFinalValues.EMPTY;
+import static com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues.EMPTY;
 
 
 /**

@@ -1,8 +1,8 @@
 package com.aserbao.aserbaosandroid.functions.network.mqtt;
 
-import com.aserbao.aserbaosandroid.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.network.mqtt.simple.SimpleMqttActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 /**
  * 功能:
  * author aserbao

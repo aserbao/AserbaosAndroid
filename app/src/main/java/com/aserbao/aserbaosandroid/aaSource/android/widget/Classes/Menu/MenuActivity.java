@@ -1,11 +1,8 @@
 package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity;
-import com.aserbao.aserbaosandroid.base.BaseActivity;
-import com.aserbao.aserbaosandroid.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
 public class MenuActivity extends BaseActivity {
 

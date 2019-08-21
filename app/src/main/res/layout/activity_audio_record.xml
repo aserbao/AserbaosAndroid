@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.AudioAndVideo.media.audio.AudioRecordActivity">
+    tools:context="com.aserbao.aserbaosandroid.audioAndVideo.media.audio.AudioRecordActivity">
     <Button
         android:id="@+id/btn_record"
         android:text="开始录音"
