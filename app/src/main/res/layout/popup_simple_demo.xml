@@ -2,12 +2,28 @@
 <android.support.v7.widget.CardView android:id="@+id/pop_simple_cv"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardCornerRadius="5dp"
-    app:cardBackgroundColor="@color/black20"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/pop_simple_rv"
+    <com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.BubbleRelativeLayout
+        android:background="@android:color/transparent"
+        app:cornerRadius="12dp"
+        app:halfBaseOfLeg="18dp"
+        app:padding="18dp"
+        app:strokeWidth="5dp"
+        android:id="@+id/bubble_relative_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/transparent"
+            android:id="@+id/pop_simple_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.BubbleRelativeLayout>
+
 </android.support.v7.widget.CardView>

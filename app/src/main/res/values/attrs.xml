@@ -121,4 +121,16 @@
         <attr name="sl_dy" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="bubble">
+            <attr name="shadowColor" format="color" />
+            <attr name="padding" format="dimension" />
+            <attr name="bub_strokeWidth" format="float" />
+            <attr name="bub_cornerRadius" format="float" />
+            <attr name="halfBaseOfLeg" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="CustomViewForBlendMode">
+        <attr name="src" format="reference"/>
+        <attr name="blend_mode" format="enum"/>
+    </declare-styleable>
+
 </resources>
