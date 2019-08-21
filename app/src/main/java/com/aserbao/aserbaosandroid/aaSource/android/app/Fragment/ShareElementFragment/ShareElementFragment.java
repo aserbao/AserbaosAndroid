@@ -55,7 +55,7 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         /*View view = LayoutInflater.from(getContext()).inflate(R.layout.base_recyclerview_activity, container, false);
         ButterKnife.bind(this,view);
-        initView();*/
+        initViewForLinear();*/
         mBaseRecyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_grid, container, false);
         mBaseRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         mBaseRecyclerView.setAdapter(new GridAdapter(this));

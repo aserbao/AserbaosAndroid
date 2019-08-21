@@ -57,7 +57,7 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
         }
     }
 
-    public void initView() {
+    public void initViewForLinear() {
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
