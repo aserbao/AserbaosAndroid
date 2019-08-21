@@ -62,7 +62,8 @@
         <activity android:name=".functions.aboutBitmap.createLong.CreateLongBitmapActivity" />
         <activity android:name=".functions.aboutBitmap.AboutBitmapActivity" />
         <activity android:name=".aaSource.android.widget.Classes.AdapterView.AdapterViewActivity" />
-        <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity" />
+        <activity android:name=".functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity"/>
+
         <activity android:name=".algorithm.list.AboutListSortActivty" />
         <activity android:name=".algorithm.AlgorithmActivity" />
         <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
@@ -258,7 +259,8 @@
         <activity android:name=".ui.toasts.ToastActivity" />
         <activity android:name=".ui.toasts.aCustomToast.ACustomToastActivity" />
         <activity android:name=".functions.events.EventDealActivity" />
-        <activity android:name=".functions.events.scrollEvent.ScrollEventActivity" />
+        <activity android:name=".functions.events.scrollEvent.ScrollEventActivity"
+            android:theme="@style/CustomTransparentTheme"/>
         <activity android:name=".audioAndVideo.media.exoplayer.ExoPlayerPActivity" />
         <activity android:name=".audioAndVideo.media.exoplayer.playerlist.PlayListActivity" />
         <activity android:name=".ui.texts.textViews.TextViewsActivity" />
@@ -291,7 +293,8 @@
         <activity android:name=".ui.animation.fragments3DAnimation.Fragment3DAnimationActivity" />
         <activity android:name=".ui.animation.recyclerItemAnimation.RecyclerViewItemAnimationActivity" />
         <activity android:name=".ui.animation.cubeAnimation.CubeAnimationActivity" />
-        <activity android:name=".functions.events.recyclerviewEvent.RecyclerViewEventActivity" />
+        <activity android:name=".functions.events.recyclerviewEvent.RecyclerViewEventActivity"
+            android:theme="@style/CustomTransparentTheme"/>
         <activity android:name=".functions.iamgePhotoshop.ImagePhotoShopActivity" />
         <activity android:name=".functions.iamgePhotoshop.blur.ImageBlurActivity" />
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />

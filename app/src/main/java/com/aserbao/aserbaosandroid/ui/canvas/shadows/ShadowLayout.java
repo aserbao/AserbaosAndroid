@@ -156,5 +156,4 @@ public class ShadowLayout extends FrameLayout {
 
         return output;
     }
-
 }
