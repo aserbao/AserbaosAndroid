@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     android:soundEffectsEnabled="false">
     <ImageView
-            android:src="@drawable/starry_sky_1"
+            android:src="@drawable/ic_next_shadow"
             android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_marginTop="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
     <Button
         android:id="@+id/test_btn"

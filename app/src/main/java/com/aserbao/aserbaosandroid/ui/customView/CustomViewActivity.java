@@ -8,7 +8,7 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.path.PathView;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier2;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier3;
-import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier4;
+import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.BezierCircle;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
 import com.aserbao.aserbaosandroid.ui.customView.radar.RadarView;
 
@@ -45,7 +45,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 mBaseRecyclerEmptyContainer.addView(bezier3, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
             case 4:
-                Bezier4 bezier4 = new Bezier4(this);
+                BezierCircle bezier4 = new BezierCircle(this);
                 mBaseRecyclerEmptyContainer.addView(bezier4, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
             case 5:

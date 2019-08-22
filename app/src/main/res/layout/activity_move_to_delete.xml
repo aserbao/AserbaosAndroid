@@ -9,17 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="500dp">
     </com.aserbao.aserbaosandroid.AUtils.AUI.rv.APullRecyclerViewGroup>-->
-    <android.support.v7.widget.CardView
-        android:elevation="1dp"
+    <com.scwang.smartrefresh.horizontal.SmartRefreshHorizontal
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp">
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <android.support.v7.widget.RecyclerView
             android:overScrollMode="never"
             android:id="@+id/move_to_delete_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </android.support.v7.widget.CardView>
+    </com.scwang.smartrefresh.horizontal.SmartRefreshHorizontal>
+
     <View
         android:elevation="2dp"
         android:id="@+id/move_to_delete_view"

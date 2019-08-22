@@ -53,6 +53,9 @@ public class AShareModuleActivity extends AppCompatActivity {
     @BindView(R.id.module_recycler_view2)
     RecyclerView mModuleRecyclerView2;
 
+    @BindView(R.id.a_share_module_view)
+    View mView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +100,11 @@ public class AShareModuleActivity extends AppCompatActivity {
                 for (int i = 0; i <= length; i++) {
                     int absoultPosition = firstVisibleItemPosition + i;
                     sharedElements[i] =  Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition),String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
+                }
+                if(mView.getVisibility() == View.VISIBLE) {
+                    mView.setVisibility(View.GONE);
+                }else{
+                    mView.setVisibility(View.VISIBLE);
                 }
                 BShareModuleActivity.launch(AShareModuleActivity.this, view,position,sharedElements);
             }

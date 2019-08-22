@@ -53,7 +53,7 @@ public class CustomViewForBlendMode extends View {
         //禁用硬件加速
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         //使用离屏绘制
-        int layerID = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint, Canvas.ALL_SAVE_FLAG);
+//        int layerID = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint, Canvas.ALL_SAVE_FLAG);
 
 
         mBottomPaint.reset();
