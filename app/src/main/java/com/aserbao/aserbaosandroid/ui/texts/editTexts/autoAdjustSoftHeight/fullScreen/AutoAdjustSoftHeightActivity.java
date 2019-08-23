@@ -148,7 +148,7 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                     Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", ((Class<?>) null));
                     method.setAccessible(true);
                     injectSoftHeight = (Integer) method.invoke(inputMethodManager, ((Class<?>) null));
-                    Log.e(TAG, "initView: " + mHeight);
+                    Log.e(TAG, "initViewForLinear: " + mHeight);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -211,7 +211,7 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                     Method method = inputMethodManager.getClass().getDeclaredMethod("getInputMethodWindowVisibleHeight", ((Class<?>) null));
                     method.setAccessible(true);
                     mHeight = (Integer) method.invoke(inputMethodManager, ((Class<?>) null));
-                    Log.e(TAG, "initView: " + mHeight);
+                    Log.e(TAG, "initViewForLinear: " + mHeight);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -235,7 +235,7 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
                 mBtnShow.setLayoutParams(layoutParams);
                 mBtnShow.postInvalidate();
 
-                Log.e(TAG, "initView: top:  " + top + " bottom = " + bottom + " mBtnShowHeight : " + mBtnShowHeight);
+                Log.e(TAG, "initViewForLinear: top:  " + top + " bottom = " + bottom + " mBtnShowHeight : " + mBtnShowHeight);
                 break;
             case R.id.btn_do_second:
                 View mChildOfContent = mAutoRl.getChildAt(0);

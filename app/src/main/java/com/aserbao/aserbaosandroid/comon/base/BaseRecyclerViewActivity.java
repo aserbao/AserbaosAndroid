@@ -3,10 +3,12 @@ package com.aserbao.aserbaosandroid.comon.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityA
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,21 +66,37 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         ButterKnife.bind(this);
         mContext = this;
         initGetData();
-        initView();
+        initViewForLinear();
+
     }
 
     public void setTranslations() {
     }
 
-    public abstract void initGetData();
-
-    public void setLinearLayoutOrientationHorizontal() {
-        mOrientation = LinearLayoutManager.HORIZONTAL;
+    private int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
+    public void setMode(int mode){
+        mMode = mode;
+        switch (mMode){
+            case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
+                mOrientation = LinearLayout.VERTICAL;
+                break;
+            case StaticFinalValues.LINEAR_LAYOUTMANAGER_HORIZONTAL:
+                mOrientation = LinearLayout.HORIZONTAL;
+                break;
+        }
+        initViewForLinear();
     }
 
-    public void initView() {
+    public abstract void initGetData();
+
+
+    public void initViewForLinear() {
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
-        mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
+        if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER){
+            mLinearLayoutManager = new GridLayoutManager(this, 3);
+        }else {
+            mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
+        }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
@@ -111,4 +130,6 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             }
         });
     }
+
+
 }

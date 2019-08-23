@@ -47,10 +47,17 @@ public class StaticFinalValues {
     public static final int VIEW_HOLDER_TEXT = 100;
     public static final int VIEW_HOLDER_IMAGE_100H = 101;
     public static final int VIEW_HOLDER_CLASS = 102;
+    public static final int VIEW_BLEND_MODE = 103;
 
 
     //--------------reqeestCode--------------
     public static final int COME_FROM_A_SHARE_MODULE_ACTIVITY = 100;
     public static final int COME_FROM_B_SHARE_MODULE_ACTIVITY = 101;
+
+
+    //--------------baseRecyclerView-----------
+    public static final int LINEAR_LAYOUTMANAGER_HORIZONTAL = 0;
+    public static final int LINEAR_LAYOUTMANAGER_VERTICAL = 1;
+    public static final int GRID_LAYOUTMANAGER = 2;
 
 }

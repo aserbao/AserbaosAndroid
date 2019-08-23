@@ -70,6 +70,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             case StaticFinalValues.VIEW_HOLDER_CLASS:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);
                 return new ClassViewHolder(view);
+            case StaticFinalValues.VIEW_BLEND_MODE:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);
+                return new ClassViewHolder(view);
         }
         return null;
     }

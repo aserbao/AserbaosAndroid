@@ -1,0 +1,48 @@
+- 什么是JNI/NDK？
+- Java中使用JNI/NDK有什么用？
+- 如何配置JNI/NDK环境？
+  - NDK的下载
+  - 如何通过*.java生成*.cpp？
+- JNI/NDK 的原理分析
+- HelloWorld一起进入C/C++的世界
+- 如何在Java中调用C/C++代码？
+- 如何在C/C++代码中调用Java代码？
+  - 如何在C/C++文件中构建Java类对象？
+  - 如何在C/C++中调用Java方法？
+  - 如何在C/C++中调用父类的方法？
+  - 如何在C/C++中修改Java变量？
+  - 如何在C/C++中操作Java字符串？
+  - 如何在C/C++中操作Java数组？
+  - 如何在C/C++中使用引用？
+  - JNI中API讲解
+- 关于so库的相关知识
+  - 通过ndk-build编译生成so库
+  - 通过CMake编译生成so库
+  - 如何查看so库中的方法？
+  - 如何使用其他项目中的so库？
+- 常见问题和功能
+  - 引用不恰当导致引用表溢出
+  - Crash错误如何进行准确定位？
+  - 如何在C/C++中打印日志？
+  - 如何在C/C++中处理异常？
+- JNI/NDK的使用场景
+- JNI/NDK使用的优缺点
+- 项目地址
+- 文章总结
+- 参考链接
+
+
+
+JNI/NDK开发指南（一）—— JNI/NDK开发流程及HelloWorld
+JNI/NDK开发指南（二）——JVM查找java native方法的规则
+JNI/NDK开发指南（三）——JNI数据类型及与Java数据类型的映射关系
+JNI/NDK开发指南（四）——字符串处理
+Android NDK开发Crash错误定位
+JNI/NDK开发指南（五）——访问数组（基本类型数组与对象数组）
+JNI/NDK开发指南（六）——C/C++访问Java实例方法和静态方法
+JNI/NDK开发指南（七）——C/C++访问Java实例变量和静态变量
+JNI/NDK开发指南（八）——调用构造方法和父类实例方法
+JNI/NDK开发指南（九）——JNI调用性能测试及优化
+JNI/NDK开发指南（十）——JNI局部引用、全局引用和弱全局引用
+Android JNI局部引用表溢出：local reference table overflow (max=512)
+JNI/NDK开发指南（十一）——JNI异常处理

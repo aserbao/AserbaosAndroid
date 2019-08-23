@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.canvas.canvas;
+package com.aserbao.aserbaosandroid.ui.canvas.blendmode;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
 
@@ -22,6 +24,7 @@ import com.aserbao.aserbaosandroid.R;
  * @package:com.aserbao.aserbaosandroid.ui.canvas.canvas
  */
 public class CustomViewForBlendMode extends View {
+
     public CustomViewForBlendMode(Context context) {
         this(context,null);
     }
@@ -33,6 +36,8 @@ public class CustomViewForBlendMode extends View {
     public CustomViewForBlendMode(Context context,  AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomViewForBlendMode);
+        final Drawable d = a.getDrawable(R.styleable.CustomViewForBlendMode_src);
+        int blend_mode = a.getInt(R.styleable.CustomViewForBlendMode_blend_mode,PorterDuff.Mode.SRC_IN);
         init();
     }
 
@@ -50,11 +55,6 @@ public class CustomViewForBlendMode extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //禁用硬件加速
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        //使用离屏绘制
-//        int layerID = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint, Canvas.ALL_SAVE_FLAG);
-
 
         mBottomPaint.reset();
     }
