@@ -7,10 +7,13 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -107,6 +110,7 @@ public class AShareModuleActivity extends AppCompatActivity {
                     mView.setVisibility(View.VISIBLE);
                 }
                 BShareModuleActivity.launch(AShareModuleActivity.this, view,position,sharedElements);
+                myHandler.sendEmptyMessageDelayed(0,1000);
             }
         },AShareModuleAdapter.BOTTOM);
         mCommonAdapter.setmOrientation(mOrientation);
@@ -120,6 +124,8 @@ public class AShareModuleActivity extends AppCompatActivity {
         mModuleRecyclerView2.setLayoutManager(linearLayoutManager);
         mModuleRecyclerView2.setAdapter(aShareModuleAdapter);*/
     }
+
+
 
     @OnClick({R.id.a_share_module_circle_iv, R.id.a_share_module_btn})
     public void onViewClicked(View view) {
@@ -219,5 +225,16 @@ public class AShareModuleActivity extends AppCompatActivity {
         });
         objectAnimator.setDuration(1000).start();
 
+    }
+
+    private static final String TAG = "AShareModuleActivity";
+    private MyHandler myHandler = new MyHandler();
+    class MyHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            mCommonAdapter.notifyDataSetChanged();
+            Log.e(TAG, "handleMessage: "  );
+        }
     }
 }

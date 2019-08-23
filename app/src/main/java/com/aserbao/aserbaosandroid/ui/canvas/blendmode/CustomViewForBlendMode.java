@@ -37,7 +37,7 @@ public class CustomViewForBlendMode extends View {
         super(context, attrs, defStyleAttr);
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomViewForBlendMode);
         final Drawable d = a.getDrawable(R.styleable.CustomViewForBlendMode_src);
-        int blend_mode = a.getInt(R.styleable.CustomViewForBlendMode_blend_mode,PorterDuff.Mode.SRC_IN);
+//        int blend_mode = a.getInt(R.styleable.CustomViewForBlendMode_blend_mode,PorterDuff.Mode.SRC_IN);
         init();
     }
 
