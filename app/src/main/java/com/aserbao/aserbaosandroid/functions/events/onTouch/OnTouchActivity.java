@@ -23,7 +23,6 @@ public class OnTouchActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "OnTouchActivity";
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.e(TAG, "\tdispatchTouchEvent   : \t" + ev.getAction() + "\t被调用了");
