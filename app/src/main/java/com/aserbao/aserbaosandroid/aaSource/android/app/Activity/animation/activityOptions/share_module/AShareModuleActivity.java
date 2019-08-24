@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -118,6 +119,11 @@ public class AShareModuleActivity extends AppCompatActivity {
         mModuleRecyclerView.setLayoutManager(mLinearLayoutManager);
         mModuleRecyclerView.setAdapter(mCommonAdapter);
 
+        DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
+//        defaultItemAnimator.setAddDuration(1000);
+//        defaultItemAnimator.setRemoveDuration(1000);
+        mModuleRecyclerView.setItemAnimator(defaultItemAnimator);
+
         /*AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, null, AShareModuleAdapter.TOP);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         aShareModuleAdapter.setmOrientation(mOrientation);
@@ -192,7 +198,7 @@ public class AShareModuleActivity extends AppCompatActivity {
                         super.onAnimationEnd(animation);
                         mModuleRecyclerView2.setVisibility(View.GONE);
                         mCommonAdapter.removePositionItem(startPosition,endPosition);
-                        mCommonAdapter.notifyDataSetChanged();
+//                        mCommonAdapter.notifyDataSetChanged();
                     }
                 });
                 objectAnimator.setDuration(2000).start();
