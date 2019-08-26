@@ -28,16 +28,14 @@ public class TransitionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transition);
         ButterKnife.bind(this);
-        android.transition.ChangeBounds changeBounds = new android.transition.ChangeBounds();
-        changeBounds.setDuration(1500);
     }
 
     int selected_position = 1;
 
-    @OnClick({R.id.transition_change_bound_btn, R.id.transition_slide_btn, R.id.transition_fade_btn, R.id.transition_explore_btn})
+    @OnClick({R.id.add_target_btn,R.id.transition_change_bound_btn, R.id.transition_slide_btn, R.id.transition_fade_btn, R.id.transition_explore_btn})
     public void onViewClicked(View view) {
         int start_layout = R.layout.start_layout1;
-        switch (selected_position%3){
+        switch (selected_position % 3) {
             case 0:
                 start_layout = R.layout.start_layout1;
                 break;
@@ -52,7 +50,9 @@ public class TransitionActivity extends AppCompatActivity {
         Scene sceneForLayout = Scene.getSceneForLayout(mTransitionFlContainer, start_layout, this);
         switch (view.getId()) {
             case R.id.transition_change_bound_btn:
-                TransitionManager.go(sceneForLayout, new ChangeBounds());
+                ChangeBounds transition = new ChangeBounds();
+                transition.setDuration(1000);
+                TransitionManager.go(sceneForLayout, transition);
                 break;
             case R.id.transition_slide_btn:
                 TransitionManager.go(sceneForLayout, new Slide());
@@ -62,6 +62,12 @@ public class TransitionActivity extends AppCompatActivity {
                 break;
             case R.id.transition_explore_btn:
                 TransitionManager.go(sceneForLayout, new Explode());
+                break;
+            case R.id.add_target_btn:
+                ChangeBounds changeBounds = new ChangeBounds();
+                changeBounds.addTarget(R.id.image1);
+                changeBounds.setDuration(1000);
+                TransitionManager.go(sceneForLayout, changeBounds);
                 break;
         }
     }
