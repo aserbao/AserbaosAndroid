@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.transition;
 
+import android.graphics.Path;
 import android.os.Bundle;
 import android.support.transition.ChangeBounds;
 import android.support.transition.Explode;
@@ -9,6 +10,7 @@ import android.support.transition.Slide;
 import android.support.transition.TransitionManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -52,6 +54,11 @@ public class TransitionActivity extends AppCompatActivity {
             case R.id.transition_change_bound_btn:
                 ChangeBounds transition = new ChangeBounds();
                 transition.setDuration(1000);
+                Path path = new Path();
+                path.lineTo(0.25f, 0.25f);
+                path.moveTo(0.25f, 0.5f);
+                path.lineTo(1f, 1f);
+                transition.setInterpolator(new PathInterpolator(path));
                 TransitionManager.go(sceneForLayout, transition);
                 break;
             case R.id.transition_slide_btn:

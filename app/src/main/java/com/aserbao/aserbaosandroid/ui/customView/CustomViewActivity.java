@@ -1,11 +1,20 @@
 package com.aserbao.aserbaosandroid.ui.customView;
 
+import android.animation.ObjectAnimator;
+import android.graphics.Path;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
+import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.path.PathView;
+import com.aserbao.aserbaosandroid.ui.canvas.path.PathView7;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier2;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier3;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.BezierCircle;
@@ -24,6 +33,8 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("通过贝塞尔曲线绘制一个圆"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("点赞动画"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用2",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("PathInterpator动画",8));
     }
 
     @Override
@@ -54,10 +65,38 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 mBaseRecyclerEmptyContainer.addView(bezierCustomLike, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
             case 6:
-                PathView pathView = new PathView(this);
+                PathView7 pathView = new PathView7(this);
                 mBaseRecyclerEmptyContainer.addView(pathView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
+            case 7:
+                PathView pathView1 = new PathView(this);
+                mBaseRecyclerEmptyContainer.addView(pathView1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                break;
+            case 8:
+                ImageView imageView = new ImageView(this);
+                imageView.setImageResource(R.drawable.emoji_00);
+                int dp24 = DisplayUtil.dip2px(24);
+                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(dp24, dp24);
+//                layoutParams.height = DisplayUtil.dip2px(24);
+//                layoutParams.width = DisplayUtil.dip2px(24);
+                imageView.setLayoutParams(layoutParams);
+                mBaseRecyclerEmptyContainer.addView(imageView);
 
+
+                Path path = new Path();
+                path.moveTo(0,0);
+                int screenWidth = AserbaoApplication.screenWidth/2;
+                int screenHeight = AserbaoApplication.screenHeight/2;
+                path.lineTo(screenWidth /2, screenHeight);
+                path.lineTo(screenWidth,screenHeight/2);
+//                path.arcTo(0f, 0f, 1000f, 1000f, 270f, -180f, true);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(imageView, View.X, View.Y, path);
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                animator.setDuration(2000);
+                animator.start();
+
+
+                break;
         }
     }
 }

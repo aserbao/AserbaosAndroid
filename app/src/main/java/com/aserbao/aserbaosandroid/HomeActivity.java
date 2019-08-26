@@ -25,7 +25,9 @@ import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.aserbao.aserbaosandroid.ui.animation.objectAnimator.ObjectAnimatorActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowsActivity;
+import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.AnimatorRecyclerViewActivity;
 
@@ -67,7 +69,9 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", TransitionActivity.class));
+//        mClassBeen.add(new ClassBean("当前调试的界面", TransitionActivity.class));
+//        mClassBeen.add(new ClassBean("当前调试的界面", ObjectAnimatorActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", CustomViewActivity.class));
     }
 
     private void initView() {
