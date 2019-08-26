@@ -9,5 +9,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.test;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.aaSource.android.app.Activity.test
  */
-public class test {
+public class testBean {
+
+
 }

@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.acti
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,8 @@ public class BShareModuleActivity extends AppCompatActivity {
     }
 
 
+
+
     private static final String TAG = "BShareModuleActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,8 @@ public class BShareModuleActivity extends AppCompatActivity {
         setImageRes();
         setTransitionName(COMING);
         mShowActivityNameTv.setText("BShareModuleActivity");
+        setEnterSharedElementCallback(new SharedElementCallback() {
+        });
     }
 
     private void setImageRes() {

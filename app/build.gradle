@@ -106,7 +106,7 @@ dependencies {
 
     implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     implementation 'com.android.support:multidex:1.0.3'
-    compile group: 'net.sf.kxml', name: 'kxml2', version:'2.3.0'//用来解决svg不能在Google p3x上使用
+    compile group: 'net.sf.kxml', name: 'kxml2', version: '2.3.0'//用来解决svg不能在Google p3x上使用
 
 
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'

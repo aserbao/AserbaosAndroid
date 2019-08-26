@@ -48,7 +48,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.canvas.blendmode.BlendModeActivity"></activity>
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.transition.TransitionActivity"></activity>
+        <activity android:name=".ui.recyclerView.animator.AnimatorRecyclerViewActivity" />
+        <activity android:name=".ui.canvas.blendmode.BlendModeActivity" />
         <activity android:name=".aaSource.android.app.Fragment.ShareElementFragment.ShareElementActivity" />
         <activity android:name=".aaSource.android.app.Fragment.FragmentActivity" />
         <activity android:name=".designMode.singleMode.SingleModeActivity" />

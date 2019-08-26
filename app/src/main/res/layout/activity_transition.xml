@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.transition.TransitionActivity">
+
+    <FrameLayout
+        android:id="@+id/transition_fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/start_layout1"/>
+    </FrameLayout>
+
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/transition_change_bound_btn"
+            android:text="ChangeBounds"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/transition_slide_btn"
+            android:text="slide"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/transition_fade_btn"
+            android:text="fade"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/transition_explore_btn"
+            android:text="explore"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+</FrameLayout>
