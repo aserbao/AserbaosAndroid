@@ -143,6 +143,11 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@color/transparent</item>
     </style>
+
+    <style name="CustomShareTheme" parent="TransparentTheme">
+        <item name="android:windowSharedElementExitTransition">@transition/image_shared_element_transition</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/image_shared_element_transition</item>
+    </style>
     <style name="windowIsTranslucent"  parent="AppTheme">
         <item name="android:background">@color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>

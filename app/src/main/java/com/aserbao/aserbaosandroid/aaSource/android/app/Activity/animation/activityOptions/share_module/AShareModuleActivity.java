@@ -2,7 +2,6 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.acti
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
@@ -20,11 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
@@ -32,7 +29,6 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,7 +49,7 @@ public class AShareModuleActivity extends AppCompatActivity {
     FrameLayout mAnimatorLl;
 
     @BindView(R.id.animator_ll_container)
-    LinearLayout  mAnimatorLlContainer;
+    LinearLayout mAnimatorLlContainer;
     @BindView(R.id.module_recycler_view2)
     RecyclerView mModuleRecyclerView2;
 
@@ -74,9 +70,9 @@ public class AShareModuleActivity extends AppCompatActivity {
         mAShareModuleBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (mOrientation ==LinearLayoutManager.HORIZONTAL ){
+                if (mOrientation == LinearLayoutManager.HORIZONTAL) {
                     mOrientation = LinearLayoutManager.VERTICAL;
-                }else{
+                } else {
                     mOrientation = LinearLayoutManager.HORIZONTAL;
                 }
                 mAnimatorLlContainer.setOrientation(mOrientation);
@@ -90,7 +86,8 @@ public class AShareModuleActivity extends AppCompatActivity {
     public AShareModuleAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.HORIZONTAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
-    public static int endPosition,startPosition = 0;
+    public static int endPosition, startPosition = 0;
+
     private void initView() {
         mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
@@ -99,21 +96,21 @@ public class AShareModuleActivity extends AppCompatActivity {
                 startPosition = position;
                 int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
                 int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
-                int length = lastVisibleItemPosition - firstVisibleItemPosition ;
+                int length = lastVisibleItemPosition - firstVisibleItemPosition;
                 Pair<View, String>[] sharedElements = new Pair[length + 1];
                 for (int i = 0; i <= length; i++) {
                     int absoultPosition = firstVisibleItemPosition + i;
-                    sharedElements[i] =  Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition),String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
+                    sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
                 }
-                if(mView.getVisibility() == View.VISIBLE) {
+                if (mView.getVisibility() == View.VISIBLE) {
                     mView.setVisibility(View.GONE);
-                }else{
+                } else {
                     mView.setVisibility(View.VISIBLE);
                 }
-                BShareModuleActivity.launch(AShareModuleActivity.this, view,position,sharedElements);
-                myHandler.sendEmptyMessageDelayed(0,1000);
+                BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
+                myHandler.sendEmptyMessageDelayed(0, 1000);
             }
-        },AShareModuleAdapter.BOTTOM);
+        }, AShareModuleAdapter.BOTTOM);
         mCommonAdapter.setmOrientation(mOrientation);
         mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         mModuleRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -131,34 +128,19 @@ public class AShareModuleActivity extends AppCompatActivity {
         mModuleRecyclerView2.setAdapter(aShareModuleAdapter);*/
     }
 
-
-
-    @OnClick({R.id.a_share_module_circle_iv, R.id.a_share_module_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.a_share_module_circle_iv:
-                BShareModuleActivity.launch(this, mAShareModuleCircleIv);
-                break;
-            case R.id.a_share_module_btn:
-                BShareModuleActivity.launch(this, mAShareModuleBtn);
-//                viewDisappearAnimator(0,1);
-                break;
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
+        switch (resultCode) {
             case StaticFinalValues.COME_FROM_B_SHARE_MODULE_ACTIVITY:
 //                viewDisappearAnimator(startPosition,endPosition);
-                viewDisappearWithRecyclerView(startPosition,endPosition);
+                viewDisappearWithRecyclerView(startPosition, endPosition);
                 break;
         }
     }
 
 
-    public void viewDisappearWithRecyclerView(int startPosition,int endPosition){
+    public void viewDisappearWithRecyclerView(int startPosition, int endPosition) {
 
         int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
         int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
@@ -189,15 +171,15 @@ public class AShareModuleActivity extends AppCompatActivity {
                     }
                 }
 
-                PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f,1.0f);
-                PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f,1.0f);
-                ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mModuleRecyclerView2,  valuesHolder1, valuesHolder2);
+                PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f, 1.0f);
+                PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f, 1.0f);
+                ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mModuleRecyclerView2, valuesHolder1, valuesHolder2);
                 objectAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         mModuleRecyclerView2.setVisibility(View.GONE);
-                        mCommonAdapter.removePositionItem(startPosition,endPosition);
+                        mCommonAdapter.removePositionItem(startPosition, endPosition);
 //                        mCommonAdapter.notifyDataSetChanged();
                     }
                 });
@@ -207,7 +189,7 @@ public class AShareModuleActivity extends AppCompatActivity {
     }
 
 
-    public void viewDisappearAnimator(int startPosition,int endPosition){
+    public void viewDisappearAnimator(int startPosition, int endPosition) {
         if (mLinearLayoutManager == null) return;
         for (int i = startPosition; i <= endPosition; i++) {
             View view = mLinearLayoutManager.findViewByPosition(i);
@@ -217,9 +199,9 @@ public class AShareModuleActivity extends AppCompatActivity {
             }
             mCommonAdapter.removePositionItem(i);
         }
-        PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f,1.0f);
-        PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f,1.0f);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mAnimatorLlContainer,  valuesHolder1, valuesHolder2);
+        PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f, 1.0f);
+        PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f, 1.0f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mAnimatorLlContainer, valuesHolder1, valuesHolder2);
         objectAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -235,12 +217,55 @@ public class AShareModuleActivity extends AppCompatActivity {
 
     private static final String TAG = "AShareModuleActivity";
     private MyHandler myHandler = new MyHandler();
-    class MyHandler extends Handler{
+    int whichnInterpolator = 0;
+    @OnClick({R.id.a_share_module_circle_iv, R.id.a_share_module_btn, R.id.AccelerateDecelerate_btn, R.id.Accelerate_btn, R.id.Anticipate_btn, R.id.AnticipateOvershoot_btn, R.id.Bounce_btn, R.id.Cycle_btn, R.id.Decelerate_btn, R.id.LinearInter_btn, R.id.Overshoot_btn, R.id.Path_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.a_share_module_circle_iv:
+                BShareModuleActivity.launch(this, mAShareModuleCircleIv,whichnInterpolator);
+                break;
+            case R.id.a_share_module_btn:
+                BShareModuleActivity.launch(this, mAShareModuleBtn,whichnInterpolator);
+                break;
+            case R.id.AccelerateDecelerate_btn:
+                whichnInterpolator = StaticFinalValues.AccelerateDecelerateInterpolator;
+                break;
+            case R.id.Accelerate_btn:
+                whichnInterpolator = StaticFinalValues.AccelerateInterpolator;
+                break;
+            case R.id.Anticipate_btn:
+                whichnInterpolator = StaticFinalValues.AnticipateInterpolator;
+                break;
+            case R.id.AnticipateOvershoot_btn:
+                whichnInterpolator = StaticFinalValues.AnticipateOvershootInterpolator;
+                break;
+            case R.id.Bounce_btn:
+                whichnInterpolator = StaticFinalValues.BounceInterpolator;
+                break;
+            case R.id.Cycle_btn:
+                whichnInterpolator = StaticFinalValues.CycleInterpolator;
+                break;
+            case R.id.Decelerate_btn:
+                whichnInterpolator = StaticFinalValues.DecelerateInterpolator;
+                break;
+            case R.id.LinearInter_btn:
+                whichnInterpolator = StaticFinalValues.LinearInterpolator;
+                break;
+            case R.id.Overshoot_btn:
+                whichnInterpolator = StaticFinalValues.OvershootInterpolator;
+                break;
+            case R.id.Path_btn:
+                whichnInterpolator = StaticFinalValues.PathInterpolator;
+                break;
+        }
+    }
+
+    class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             mCommonAdapter.notifyDataSetChanged();
-            Log.e(TAG, "handleMessage: "  );
+            Log.e(TAG, "handleMessage: ");
         }
     }
 }

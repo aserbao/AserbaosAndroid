@@ -19,6 +19,7 @@ public class StaticFinalValues {
     public static final int KEY = 1;
     public static final int INDEX_TAG =100;
     public static final String TYPE = "type";
+    public static final String WHICH_INTERPOLATOR = "which_interpolator";
     public static final String BUNDLE = "bundle";
     public static final String POSITION = "position";
     public static final String DRAWABLE_RESID = "drawable_resid";
@@ -59,5 +60,19 @@ public class StaticFinalValues {
     public static final int LINEAR_LAYOUTMANAGER_HORIZONTAL = 0;
     public static final int LINEAR_LAYOUTMANAGER_VERTICAL = 1;
     public static final int GRID_LAYOUTMANAGER = 2;
+
+
+    //---------------interpolator-------------
+    public static final int AccelerateDecelerateInterpolator = 0;
+    public static final int AccelerateInterpolator = 1;
+    public static final int AnticipateInterpolator = 2;
+    public static final int AnticipateOvershootInterpolator = 3;
+    public static final int BounceInterpolator = 4;
+    public static final int CycleInterpolator = 5;
+    public static final int DecelerateInterpolator = 6;
+    public static final int LinearInterpolator = 7;
+    public static final int OvershootInterpolator = 8;
+    public static final int PathInterpolator = 9;
+
 
 }

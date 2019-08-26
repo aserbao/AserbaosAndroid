@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation;
 
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.transition.TransitionActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.byTheme.AByThemeAnimationActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ShareElementActivity;
@@ -20,5 +21,6 @@ public class AnimationActivty extends BaseActivity {
         mClassBeen.add(new ClassBean("Fragment共享元素", ShareElementActivity.class));
         mClassBeen.add(new ClassBean("Activity共享元素", AShareModuleActivity.class));
         mClassBeen.add(new ClassBean("下滑退出", RecyclerViewEventActivity.class));
+        mClassBeen.add(new ClassBean("Transition的使用", TransitionActivity.class));
     }
 }

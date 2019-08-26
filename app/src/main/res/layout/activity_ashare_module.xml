@@ -46,13 +46,83 @@
         android:layout_width="100dp"
         android:layout_height="100dp" />
 
-    <Button
-        android:layout_marginTop="70dp"
-        android:text="点击跳转，常按切换方向"
-        android:id="@+id/a_share_module_btn"
+    <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content">
+        <Button
+            android:text="点击跳转，常按切换方向"
+            android:id="@+id/a_share_module_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/AccelerateDecelerate_btn"
+            android:text="AccelerateDecelerate"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/Accelerate_btn"
+            android:text="Accelerate"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Anticipate_btn"
+            android:text="Anticipate"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/AnticipateOvershoot_btn"
+            android:text="AnticipateOvershoot"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Bounce_btn"
+            android:text="Bounce"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/Cycle_btn"
+            android:text="Cycle"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Decelerate_btn"
+            android:text="Decelerate"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/LinearInter_btn"
+            android:text="LinearInter"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Overshoot_btn"
+            android:text="Overshoot"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/Path_btn"
+            android:text="PathInterpolator"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
+
 
 
     <include layout="@layout/common_show_activity_name_tv"/>

@@ -133,8 +133,9 @@
         <activity android:name=".aaSource.android.material.MaterialActivity" />
         <activity
             android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
-            android:theme="@style/TransparentTheme" />
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity" />
+            android:theme="@style/CustomShareTheme" />
+        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity"
+            android:theme="@style/CustomShareTheme"/>
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.BActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />
