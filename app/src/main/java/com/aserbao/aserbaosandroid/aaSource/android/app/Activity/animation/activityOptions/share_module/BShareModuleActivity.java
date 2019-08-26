@@ -27,6 +27,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
@@ -140,7 +141,7 @@ public class BShareModuleActivity extends AppCompatActivity {
                 path.moveTo(0,0);
                 path.lineTo(0.3f,1.0f);
                 path.lineTo(1,1);
-                changeBounds.setInterpolator(new PathInterpolator(path));
+                changeBounds.setInterpolator(new PathInterpolator(AserbaoApplication.screenWidth/2,AserbaoApplication.screenHeight));
                 break;
 
         }
