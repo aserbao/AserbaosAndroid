@@ -16,7 +16,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.canvas.canvas.CanvasPointView;
 
@@ -105,7 +105,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
-        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
+        mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
 
         mOpenglRecyclerView.post(new Runnable() {
             @Override

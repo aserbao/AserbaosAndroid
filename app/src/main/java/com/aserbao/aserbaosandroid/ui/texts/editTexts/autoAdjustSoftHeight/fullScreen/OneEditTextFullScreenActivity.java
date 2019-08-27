@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.utils.AndroidSoftBoardAdjustHeightUtil;
 
 import butterknife.BindView;
@@ -40,7 +40,7 @@ public class OneEditTextFullScreenActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mImageView.setImageResource(ImageSource.getRandomImageId());
+        mImageView.setImageResource(ASourceUtil.getRandomImageId());
     }
 
 

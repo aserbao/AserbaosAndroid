@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class ImageViewFragment extends Fragment {
         if (bundle != null) {
             entrancePosition = bundle.getInt(StaticFinalValues.POSITION,0);
         }
-        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
+        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
     }
 
     private LinearLayoutManager mLinearLayoutManager;
@@ -80,7 +80,7 @@ public class ImageViewFragment extends Fragment {
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mOpenglRecyclerView.scrollToPosition(entrancePosition);
-        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
+        mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
     }
 
 

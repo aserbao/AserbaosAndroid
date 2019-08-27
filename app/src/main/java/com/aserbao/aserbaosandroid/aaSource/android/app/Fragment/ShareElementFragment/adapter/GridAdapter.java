@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ImagePagerFragment;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.DataSource;
@@ -81,7 +81,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
 
   @Override
   public int getItemCount() {
-    return ImageSource.iamgeUrl.length;
+    return ASourceUtil.iamgeUrl.length;
   }
 
 
@@ -168,13 +168,13 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
       int adapterPosition = getAdapterPosition();
       setImage(adapterPosition);
       // Set the string value of the image resource as the unique transition name for the view.
-      image.setTransitionName(String.valueOf(ImageSource.iamgeUrl[adapterPosition]));
+      image.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[adapterPosition]));
     }
 
     void setImage(final int adapterPosition) {
       // Load the image with Glide to prevent OOM error when the image drawables are very large.
       requestManager
-          .load(ImageSource.iamgeUrl[adapterPosition])
+          .load(ASourceUtil.iamgeUrl[adapterPosition])
           .listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model,

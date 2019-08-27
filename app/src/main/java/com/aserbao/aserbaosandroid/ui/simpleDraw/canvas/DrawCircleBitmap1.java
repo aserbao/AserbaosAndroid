@@ -48,7 +48,7 @@ public class DrawCircleBitmap1 extends View{
         mTargetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTargetPaint.setXfermode(new PorterDuffXfermode(SRC_IN));
 
-//        mSourceBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
+//        mSourceBitmap = BitmapFactory.decodeResource(getResources(), ASourceUtil.getRandomImageId());
         mSourceBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.starry_sky_5);
         Glide.with(this).load("http://ppic.getremark.com/109c6a12d65f9296d0011e0e387a6b16-c899d76e-2ec6-44c5-a345-a19461b51c47-f1143f5fffdfc22d0179698d3365f513")
                 .into(new SimpleTarget<Drawable>() {

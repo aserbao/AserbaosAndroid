@@ -10,7 +10,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +41,7 @@ public class MMin18Activity extends AppCompatActivity {
     }
 
     private void initView() {
-        mBlurIamgeView.setImageResource(ImageSource.getRandomImageId());
+        mBlurIamgeView.setImageResource(ASourceUtil.getRandomImageId());
     }
 
 

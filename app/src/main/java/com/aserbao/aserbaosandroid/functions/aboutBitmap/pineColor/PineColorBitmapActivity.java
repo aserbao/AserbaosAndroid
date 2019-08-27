@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.ui.customView.gradient.LinearGradientView;
 
 import java.io.BufferedOutputStream;
@@ -67,7 +67,7 @@ public class PineColorBitmapActivity extends AppCompatActivity {
             case R.id.pine_color_image_view:
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inScaled = false;
-                int randomImageId = ImageSource.getRandomImageId();
+                int randomImageId = ASourceUtil.getRandomImageId();
                 mNormalImageView.setImageResource(randomImageId);
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(), randomImageId, options);
                 int startColor = calcBitmapAvgColorByAvgRGB(bitmap, 0.2f, 100, true);

@@ -1,22 +1,13 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment;
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
-import android.transition.TransitionSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
-import com.aserbao.aserbaosandroid.comon.commonView.ImageViewFragment;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 /**
  * https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+blogspot%2FhsDu+%28Android+Developers+Blog%29
@@ -24,7 +15,7 @@ import com.aserbao.aserbaosandroid.comon.commonView.ImageViewFragment;
 public class ShareElementActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-//        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
+//        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         /*ViewGroup.LayoutParams layoutParams = mBaseRecyclerEmptyContainer.getLayoutParams();
         if (layoutParams instanceof ViewGroup.MarginLayoutParams){
@@ -62,7 +53,7 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
-        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
+        mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
     }
 
 }

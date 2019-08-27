@@ -14,7 +14,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
 
     public void setDataSource(Context context,IItemOnLongClickListener iItemOnLongClickListener){
         mContext = context;
-        mNestRvItem.setImageResource(ImageSource.getRandomImageId());
+        mNestRvItem.setImageResource(ASourceUtil.getRandomImageId());
         for (int i = 0; i < 30; i++) {
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
         }
@@ -58,7 +58,7 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true);
         mNestRvItemRv.setLayoutManager(linearLayoutManager);
         mNestRvItemRv.setAdapter(mCommonAdapter);
-        mNestRvItemRv.setBackgroundResource(ImageSource.getRandomImageId());
+        mNestRvItemRv.setBackgroundResource(ASourceUtil.getRandomImageId());
         mNestRvItemSwipeRefreshLayout.setOnRefreshListener(this);
 
         mNestRvItemRv.addOnScrollListener(new RecyclerView.OnScrollListener() {

@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autoAdjustSoftHeight.CustomActivity;
 
 import java.lang.reflect.Method;
@@ -78,7 +78,7 @@ public class AutoAdjustSoftHeightActivity extends CustomActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mImageView.setImageResource(ImageSource.getRandomImageId());
+        mImageView.setImageResource(ASourceUtil.getRandomImageId());
     }
 
     @SuppressLint("ClickableViewAccessibility")

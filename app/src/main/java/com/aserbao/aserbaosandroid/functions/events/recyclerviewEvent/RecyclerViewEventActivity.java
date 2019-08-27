@@ -163,8 +163,8 @@ public class RecyclerViewEventActivity extends AppCompatActivity {
         PropertyValuesHolder rotationY = PropertyValuesHolder.ofFloat("rotationY", mLastRotateY, 0.0f);
         PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", Math.abs(mLastPercentAlpha), 1.0f);
         PropertyValuesHolder translationY = PropertyValuesHolder.ofFloat("Y", mLastPositionY, 0.0f);
-        PropertyValuesHolder translationX = PropertyValuesHolder.ofFloat("X", mLastPositionX, 0.0f);
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mTopVideoParentRl, scaleX, scaleY, translationY, rotationY,translationX);
+        PropertyValuesHolder mBottomPaint = PropertyValuesHolder.ofFloat("X", mLastPositionX, 0.0f);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mTopVideoParentRl, scaleX, scaleY, translationY, rotationY,mBottomPaint);
         animator.setDuration(300);
         animator.start();
     }

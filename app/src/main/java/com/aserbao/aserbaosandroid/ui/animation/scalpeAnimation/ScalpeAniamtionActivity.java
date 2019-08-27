@@ -13,7 +13,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class ScalpeAniamtionActivity extends AppCompatActivity implements IBaseR
         mScaleRecyclerView.setLayoutManager(linearLayoutManager);
         mScaleRecyclerView.setAdapter(mCommonAdapter);
         linearLayoutManager.scrollToPositionWithOffset(3,0);
-        mScaleRecyclerView.setBackgroundResource(ImageSource.getRandomImageId());
+        mScaleRecyclerView.setBackgroundResource(ASourceUtil.getRandomImageId());
     }
 
     @Override

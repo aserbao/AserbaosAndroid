@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import java.lang.reflect.Method;
 
@@ -68,7 +68,7 @@ public class FullDragDemoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mIamgeView.setImageResource(ImageSource.getRandomImageId());
+        mIamgeView.setImageResource(ASourceUtil.getRandomImageId());
     }
 
     private void initListener() {
@@ -102,9 +102,9 @@ public class FullDragDemoActivity extends AppCompatActivity {
                 int chaY = location[1] - location1[1];
 
                 Log.e(TAG, "onClick: chaX = " + chaX + " ChaY = " + chaY);
-                PropertyValuesHolder translationX = PropertyValuesHolder.ofFloat("X", 0.0f, chaX);
+                PropertyValuesHolder mBottomPaint = PropertyValuesHolder.ofFloat("X", 0.0f, chaX);
                 PropertyValuesHolder translationY = PropertyValuesHolder.ofFloat("Y", 0.0f, chaY);
-                ObjectAnimator.ofPropertyValuesHolder(mDragIv, translationX, translationY).setDuration(0).start();
+                ObjectAnimator.ofPropertyValuesHolder(mDragIv, mBottomPaint, translationY).setDuration(0).start();
             }
         });
         mDefaultRecordIv.setOnLongClickListener(new View.OnLongClickListener() {

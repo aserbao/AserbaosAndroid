@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 
@@ -89,7 +89,7 @@ public class AShareModuleActivity extends AppCompatActivity {
     public static int endPosition, startPosition = 0;
 
     private void initView() {
-        mBaseRecyclerBeen = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBeen);
+        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override
             public void itemClickBack(View view, int position) {
@@ -100,7 +100,7 @@ public class AShareModuleActivity extends AppCompatActivity {
                 Pair<View, String>[] sharedElements = new Pair[length + 1];
                 for (int i = 0; i <= length; i++) {
                     int absoultPosition = firstVisibleItemPosition + i;
-                    sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
+                    sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ASourceUtil.iamgeUrl[absoultPosition]));
                 }
                 /*if (mView.getVisibility() == View.VISIBLE) {
                     mView.setVisibility(View.GONE);

@@ -20,7 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ImageFragment;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 
 public class ImagePagerAdapter extends FragmentStatePagerAdapter {
@@ -32,11 +32,11 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
   @Override
   public int getCount() {
-    return ImageSource.iamgeUrl.length;
+    return ASourceUtil.iamgeUrl.length;
   }
 
   @Override
   public Fragment getItem(int position) {
-    return ImageFragment.newInstance(ImageSource.iamgeUrl[position]);
+    return ImageFragment.newInstance(ASourceUtil.iamgeUrl[position]);
   }
 }

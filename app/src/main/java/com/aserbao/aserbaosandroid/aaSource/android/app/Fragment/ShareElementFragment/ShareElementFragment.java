@@ -1,8 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,26 +12,18 @@ import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.GridAdapter;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.ShareElementFragmentAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
-import com.aserbao.aserbaosandroid.comon.commonView.ImageViewFragment;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 功能:
@@ -92,12 +82,12 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
     List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
     public void initView() {
-        mBaseRecyclerBean = ImageSource.getStaticRecyclerViewData(mBaseRecyclerBean);
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean);
 //        ShareElementFragmentAdapter mCommonAdapter = new ShareElementFragmentAdapter(getContext(), getActivity(), mBaseRecyclerBean, this);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mBaseRecyclerView.setLayoutManager(mLinearLayoutManager);
         mBaseRecyclerView.setAdapter(new GridAdapter(this));
-//        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
+//        mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
     }
 
 

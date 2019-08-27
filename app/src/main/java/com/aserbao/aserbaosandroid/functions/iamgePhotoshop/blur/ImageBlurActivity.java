@@ -15,7 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.easyblur.EasyBlur;
 
 import butterknife.BindView;
@@ -51,7 +51,7 @@ public class ImageBlurActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mBitmap = BitmapFactory.decodeResource(getResources(), ImageSource.getRandomImageId());
+        mBitmap = BitmapFactory.decodeResource(getResources(), ASourceUtil.getRandomImageId());
         /*mBitmap = Bitmap.createBitmap( 1080, 1920, Bitmap.Config.RGB_565);
         Canvas canvas=new Canvas (mBitmap);
         int HEX= 0x7FFFFFFF;

@@ -29,10 +29,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 
@@ -94,8 +93,8 @@ public class BShareModuleActivity extends AppCompatActivity {
     }
 
     private void setImageRes() {
-        if (position <ImageSource.iamgeUrl.length ) {
-            int resid = ImageSource.iamgeUrl[position];
+        if (position < ASourceUtil.iamgeUrl.length ) {
+            int resid = ASourceUtil.iamgeUrl[position];
             mBShareModuleFl.setBackgroundResource(resid);
             mBShareModuleCiv.setImageResource(resid);
         }else{
@@ -108,41 +107,8 @@ public class BShareModuleActivity extends AppCompatActivity {
         TransitionSet transition = new TransitionSet();
         ChangeBounds changeBounds = new ChangeBounds();
         changeBounds.setDuration(1000);
+        changeBounds.setInterpolator(ASourceUtil.getCuurSelectedInterpolator(interpolator));
         switch (interpolator){
-            case StaticFinalValues.AccelerateDecelerateInterpolator:
-                changeBounds.setInterpolator(new AccelerateDecelerateInterpolator());
-                break;
-            case StaticFinalValues.AccelerateInterpolator:
-                changeBounds.setInterpolator(new AccelerateInterpolator());
-                break;
-            case StaticFinalValues.AnticipateInterpolator:
-                changeBounds.setInterpolator(new AnticipateInterpolator());
-                break;
-            case StaticFinalValues.AnticipateOvershootInterpolator:
-                changeBounds.setInterpolator(new AnticipateOvershootInterpolator());
-                break;
-            case StaticFinalValues.BounceInterpolator:
-                changeBounds.setInterpolator(new BounceInterpolator());
-                break;
-            case StaticFinalValues.CycleInterpolator:
-                changeBounds.setInterpolator(new CycleInterpolator(2));
-                break;
-            case StaticFinalValues.DecelerateInterpolator:
-                changeBounds.setInterpolator(new DecelerateInterpolator());
-                break;
-            case StaticFinalValues.LinearInterpolator:
-                changeBounds.setInterpolator(new LinearInterpolator());
-                break;
-            case StaticFinalValues.OvershootInterpolator:
-                changeBounds.setInterpolator(new OvershootInterpolator());
-                break;
-            case StaticFinalValues.PathInterpolator:
-                Path path = new Path();
-                path.moveTo(0,0);
-                path.lineTo(0.3f,1.0f);
-                path.lineTo(1,1);
-                changeBounds.setInterpolator(new PathInterpolator(AserbaoApplication.screenWidth/2,AserbaoApplication.screenHeight));
-                break;
             case StaticFinalValues.PathMotion:
                 changeBounds.setPathMotion(new PathMotion() {
                     @Override
@@ -170,8 +136,6 @@ public class BShareModuleActivity extends AppCompatActivity {
                 changeBounds.setPathMotion(arcMotion);
                 break;
         }
-
-
         transition.addTransition(changeBounds);
         getWindow().setSharedElementEnterTransition(transition);
     }
@@ -210,8 +174,8 @@ public class BShareModuleActivity extends AppCompatActivity {
                 mBShareModuleFl.setTransitionName("aserbao_share_name");
                 break;
             case RECYCLER_ITEM:
-                mBShareModuleFl.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
-//                mBShareModuleCiv.setTransitionName(String.valueOf(ImageSource.iamgeUrl[position]));
+                mBShareModuleFl.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[position]));
+//                mBShareModuleCiv.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[position]));
                 
                 break;
         }

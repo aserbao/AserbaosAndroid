@@ -18,7 +18,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +84,7 @@ public abstract class BaseFragment extends Fragment implements IBaseRecyclerItem
         mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mBaseRecyclerView.setLayoutManager(mLinearLayoutManager);
         mBaseRecyclerView.setAdapter(mCommonAdapter);
-        mBaseRecyclerViewFl.setBackgroundResource(ImageSource.getRandomImageId());
+        mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
 
         mBaseRecyclerView.post(new Runnable() {
             @Override

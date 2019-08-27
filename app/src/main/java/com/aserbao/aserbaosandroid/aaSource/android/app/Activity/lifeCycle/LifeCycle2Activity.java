@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +28,7 @@ public class LifeCycle2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life_cycle);
         ButterKnife.bind(this);
-        mLifeCycleIv.setImageResource(ImageSource.getRandomImageId());
+        mLifeCycleIv.setImageResource(ASourceUtil.getRandomImageId());
         mLifeCycleTv.setText(TAG);
         Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
     }

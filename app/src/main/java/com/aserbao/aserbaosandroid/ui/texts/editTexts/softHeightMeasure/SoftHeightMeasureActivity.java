@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import butterknife.BindView;
@@ -58,7 +58,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mImageViewBg.setImageResource(ImageSource.getRandomImageId());
+        mImageViewBg.setImageResource(ASourceUtil.getRandomImageId());
     }
 
     private void initPop(int offy) {

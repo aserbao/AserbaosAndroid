@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 import butterknife.BindView;
 
@@ -39,7 +39,7 @@ public class ImageViewHolder extends BaseClickViewHolder {
             mImageViewItem.setImageResource(classBean.getImageSrc());
 
             int adapterPosition = getAdapterPosition();
-            mImageViewItem.setTransitionName(String.valueOf(ImageSource.iamgeUrl[adapterPosition]));
+            mImageViewItem.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[adapterPosition]));
 
 
         }

@@ -225,5 +225,13 @@
         <item name="android:textColor">@color/black50</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    //----------------pop的动画------------------
+    <style name="pop_bottom_to_center_anim_style">
+        <item name="android:windowEnterAnimation">@anim/activity_bottom_to_screen_anim</item>
+
+        <item name="android:windowExitAnimation">@anim/activity_screen_to_bottom_anim</item>
+    </style>
+
 </resources>
 

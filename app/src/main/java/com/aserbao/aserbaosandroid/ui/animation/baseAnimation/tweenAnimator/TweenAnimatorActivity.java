@@ -1,19 +1,21 @@
 package com.aserbao.aserbaosandroid.ui.animation.baseAnimation.tweenAnimator;
 
 import android.graphics.Point;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.aa.BaserRecyclerViewManager;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
@@ -26,6 +28,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("选择插值器",101));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Translate",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Scale",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Rotate",2));
@@ -42,17 +45,35 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerTv.setText("TweenAnimation");
     }
 
+
+    Interpolator interpolator;
     @Override
     public void itemClickBack(View view, int position) {
         switch (position){
+            case 101:
+                BaserRecyclerViewManager aPopupManager = new BaserRecyclerViewManager(this, this);
+                ASourceUtil.getAllInterpoator(aPopupManager.mBaseRecyclerBeen);
+                aPopupManager.showBottomRecyclerViewPop(new IBaseRecyclerItemClickListener() {
+                    @Override
+                    public void itemClickBack(View view, int position) {
+                        interpolator = ASourceUtil.getCuurSelectedInterpolator(position);
+                        if (aPopupManager != null) {
+                            aPopupManager.dismiss();
+                        }
+                    }
+                });
+                break;
             case 0:
                 userTranslateAnimation();
                 break;
             case 1:
+
                 break;
             case 2:
+
                 break;
             case 3:
+
                 break;
         }
     }
