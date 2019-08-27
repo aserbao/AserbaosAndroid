@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.ArcMotion;
 import android.transition.ChangeBounds;
+import android.transition.PathMotion;
 import android.transition.TransitionSet;
 import android.util.Log;
 import android.util.Pair;
@@ -27,6 +29,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
@@ -68,9 +71,6 @@ public class BShareModuleActivity extends AppCompatActivity {
         intent.putExtra(StaticFinalValues.WHICH_INTERPOLATOR, whichLinearInterpolator);
         activity.startActivityForResult(intent, StaticFinalValues.COME_FROM_A_SHARE_MODULE_ACTIVITY,ActivityOptions.makeSceneTransitionAnimation(activity, sharedElements).toBundle());
     }
-
-
-
 
     private static final String TAG = "BShareModuleActivity";
     @Override
@@ -143,7 +143,51 @@ public class BShareModuleActivity extends AppCompatActivity {
                 path.lineTo(1,1);
                 changeBounds.setInterpolator(new PathInterpolator(AserbaoApplication.screenWidth/2,AserbaoApplication.screenHeight));
                 break;
+            case StaticFinalValues.PathMotion:
+                changeBounds.setPathMotion(new PathMotion() {
+                    @Override
+                    public Path getPath(float startX, float startY, float endX, float endY) {
+                        Log.e(TAG, "getPath() called with: startX = [" + startX + "], startY = [" + startY + "], endX = [" + endX + "], endY = [" + endY + "]");
+                        Path p = new Path();
+                        p.moveTo(startX, startY);
+                      /*  p.lineTo(endX, startY);
+                        p.lineTo(startX, endY);
+                        p.lineTo(endX, endY);*/
 
+//                        p.quadTo(endX + (startX - endX)/2, endY + DisplayUtil.dp2px(200), endX, endY);
+//                        p.quadTo(startX, 2 * endY, endX, endY);
+                        p.quadTo(AserbaoApplication.screenWidth/2, AserbaoApplication.screenHeight, endX, endY);
+
+                        return p;
+                    }
+                });
+                changeBounds.setDuration(1000);
+                break;
+            case StaticFinalValues.AcrMotion:
+                changeBounds.setPathMotion(new PathMotion() {
+                    @Override
+                    public Path getPath(float startX, float startY, float endX, float endY) {
+                        Log.e(TAG, "getPath() called with: startX = [" + startX + "], startY = [" + startY + "], endX = [" + endX + "], endY = [" + endY + "]");
+                        Path p = new Path();
+                        p.moveTo(startX, startY);
+                        p.lineTo(AserbaoApplication.screenWidth/2, AserbaoApplication.screenHeight - DisplayUtil.dp2px(100));
+//                        p.lineTo(startX, endY);
+                        p.lineTo(endX, endY);
+
+//                        p.quadTo(endX + (startX - endX)/2, endY + DisplayUtil.dp2px(200), endX, endY);
+//                        p.quadTo(startX, 2 * endY, endX, endY);
+//                        p.quadTo(AserbaoApplication.screenWidth/2, AserbaoApplication.screenHeight, endX, endY);
+
+                        return p;
+                    }
+                });
+
+
+               /* ArcMotion arcMotion = new ArcMotion();
+                arcMotion.setMinimumHorizontalAngle(50f);
+                arcMotion.setMinimumVerticalAngle(50f);
+                changeBounds.setPathMotion(arcMotion);*/
+                break;
         }
 
 

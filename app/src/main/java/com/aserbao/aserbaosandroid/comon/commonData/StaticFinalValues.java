@@ -73,6 +73,8 @@ public class StaticFinalValues {
     public static final int LinearInterpolator = 7;
     public static final int OvershootInterpolator = 8;
     public static final int PathInterpolator = 9;
+    public static final int PathMotion = 10;
+    public static final int AcrMotion = 11;
 
 
 }

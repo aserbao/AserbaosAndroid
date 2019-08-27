@@ -10,6 +10,7 @@
         android:layout_height="wrap_content">
 
         <View
+            android:visibility="gone"
             android:id="@+id/a_share_module_view"
             android:background="@color/black"
             android:layout_width="match_parent"
@@ -40,7 +41,7 @@
 
     <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
         android:layout_marginBottom="50dp"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|left"
         android:id="@+id/a_share_module_circle_iv"
         android:src="@drawable/mm_3"
         android:layout_width="100dp"
@@ -116,6 +117,18 @@
         <Button
             android:id="@+id/Path_btn"
             android:text="PathInterpolator"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/Path_motion"
+            android:text="PathMotion"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/Arc_motion"
+            android:text="ArcMotion"
             android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

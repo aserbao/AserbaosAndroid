@@ -102,11 +102,11 @@ public class AShareModuleActivity extends AppCompatActivity {
                     int absoultPosition = firstVisibleItemPosition + i;
                     sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ImageSource.iamgeUrl[absoultPosition]));
                 }
-                if (mView.getVisibility() == View.VISIBLE) {
+                /*if (mView.getVisibility() == View.VISIBLE) {
                     mView.setVisibility(View.GONE);
                 } else {
                     mView.setVisibility(View.VISIBLE);
-                }
+                }*/
                 BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
                 myHandler.sendEmptyMessageDelayed(0, 1000);
             }
@@ -218,7 +218,9 @@ public class AShareModuleActivity extends AppCompatActivity {
     private static final String TAG = "AShareModuleActivity";
     private MyHandler myHandler = new MyHandler();
     int whichnInterpolator = 0;
-    @OnClick({R.id.a_share_module_circle_iv, R.id.a_share_module_btn, R.id.AccelerateDecelerate_btn, R.id.Accelerate_btn, R.id.Anticipate_btn, R.id.AnticipateOvershoot_btn, R.id.Bounce_btn, R.id.Cycle_btn, R.id.Decelerate_btn, R.id.LinearInter_btn, R.id.Overshoot_btn, R.id.Path_btn})
+    @OnClick({R.id.a_share_module_circle_iv, R.id.a_share_module_btn, R.id.AccelerateDecelerate_btn, R.id.Accelerate_btn, R.id.Anticipate_btn,
+        R.id.AnticipateOvershoot_btn, R.id.Bounce_btn, R.id.Cycle_btn, R.id.Decelerate_btn, R.id.LinearInter_btn, R.id.Overshoot_btn,
+        R.id.Path_btn,R.id.Path_motion,R.id.Arc_motion})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.a_share_module_circle_iv:
@@ -256,6 +258,12 @@ public class AShareModuleActivity extends AppCompatActivity {
                 break;
             case R.id.Path_btn:
                 whichnInterpolator = StaticFinalValues.PathInterpolator;
+                break;
+            case R.id.Path_motion:
+                whichnInterpolator = StaticFinalValues.PathMotion;
+                break;
+            case R.id.Arc_motion:
+                whichnInterpolator = StaticFinalValues.AcrMotion;
                 break;
         }
     }
