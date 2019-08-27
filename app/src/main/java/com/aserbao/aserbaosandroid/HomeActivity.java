@@ -7,12 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.activityOptions.transition.TransitionActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.PopupWindowSimpleDemo;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ShareElementActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
@@ -25,11 +21,8 @@ import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.aserbao.aserbaosandroid.ui.animation.objectAnimator.ObjectAnimatorActivity;
-import com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowsActivity;
-import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.animator.AnimatorRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.ui.animation.baseAnimation.objectAnimator.ObjectAnimatorActivity;
+import com.aserbao.aserbaosandroid.ui.animation.baseAnimation.tweenAnimator.TweenAnimatorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,8 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", CustomViewActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", AShareModuleActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", TweenAnimatorActivity.class));
     }
 
     private void initView() {

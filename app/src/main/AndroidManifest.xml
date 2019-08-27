@@ -48,7 +48,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.animation.objectAnimator.ObjectAnimatorActivity"></activity>
+        <activity android:name=".ui.animation.baseAnimation.tweenAnimator.TweenAnimatorActivity"></activity>
+        <activity android:name=".ui.animation.baseAnimation.BaseAnimation" />
+        <activity android:name=".ui.animation.baseAnimation.objectAnimator.ObjectAnimatorActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.transition.TransitionActivity" />
         <activity android:name=".ui.recyclerView.animator.AnimatorRecyclerViewActivity" />
         <activity android:name=".ui.canvas.blendmode.BlendModeActivity" />
@@ -134,8 +136,9 @@
         <activity
             android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.BShareModuleActivity"
             android:theme="@style/CustomShareTheme" />
-        <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity"
-            android:theme="@style/CustomShareTheme"/>
+        <activity
+            android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.AShareModuleActivity"
+            android:theme="@style/CustomShareTheme" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.AActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.officalTransition.BActivityOptionsActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.byOverridePendingTransition.AAnimationActivity" />

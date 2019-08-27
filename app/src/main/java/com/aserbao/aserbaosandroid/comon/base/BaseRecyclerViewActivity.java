@@ -18,6 +18,7 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.ImageSource;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.aserbao.aserbaosandroid.ui.canvas.canvas.CanvasPointView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ import butterknife.ButterKnife;
 
 /**
  * 功能:
+ *
  * @author aserbao
  * @date : On 2019/2/19 4:40 PM
  * @email: this is empty email
@@ -52,6 +54,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     TextView mBaseUpTv;
     @BindView(R.id.base_down_tv)
     TextView mBaseDownTv;
+
+    @BindView(R.id.canvas_point_view)
+    protected CanvasPointView mCanvasPointView;
     private LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.VERTICAL;
@@ -74,9 +79,10 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     }
 
     private int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
-    public void setMode(int mode){
+
+    public void setMode(int mode) {
         mMode = mode;
-        switch (mMode){
+        switch (mMode) {
             case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
                 mOrientation = LinearLayout.VERTICAL;
                 break;
@@ -92,9 +98,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void initViewForLinear() {
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
-        if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER){
+        if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
-        }else {
+        } else {
             mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -105,10 +111,10 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             @Override
             public void run() {
                 int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
-                if (lastVisibleItemPosition <= 8){
+                if (lastVisibleItemPosition <= 8) {
                     mBaseUpTv.setVisibility(View.GONE);
                     mBaseDownTv.setVisibility(View.GONE);
-                }else{
+                } else {
                     mBaseUpTv.setVisibility(View.VISIBLE);
                     mBaseDownTv.setVisibility(View.VISIBLE);
                 }
@@ -126,7 +132,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseDownTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mOpenglRecyclerView.smoothScrollToPosition(mCommonAdapter.getItemCount()-1);
+                mOpenglRecyclerView.smoothScrollToPosition(mCommonAdapter.getItemCount() - 1);
             }
         });
     }

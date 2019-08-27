@@ -164,29 +164,10 @@ public class BShareModuleActivity extends AppCompatActivity {
                 changeBounds.setDuration(1000);
                 break;
             case StaticFinalValues.AcrMotion:
-                changeBounds.setPathMotion(new PathMotion() {
-                    @Override
-                    public Path getPath(float startX, float startY, float endX, float endY) {
-                        Log.e(TAG, "getPath() called with: startX = [" + startX + "], startY = [" + startY + "], endX = [" + endX + "], endY = [" + endY + "]");
-                        Path p = new Path();
-                        p.moveTo(startX, startY);
-                        p.lineTo(AserbaoApplication.screenWidth/2, AserbaoApplication.screenHeight - DisplayUtil.dp2px(100));
-//                        p.lineTo(startX, endY);
-                        p.lineTo(endX, endY);
-
-//                        p.quadTo(endX + (startX - endX)/2, endY + DisplayUtil.dp2px(200), endX, endY);
-//                        p.quadTo(startX, 2 * endY, endX, endY);
-//                        p.quadTo(AserbaoApplication.screenWidth/2, AserbaoApplication.screenHeight, endX, endY);
-
-                        return p;
-                    }
-                });
-
-
-               /* ArcMotion arcMotion = new ArcMotion();
+                ArcMotion arcMotion = new ArcMotion();
                 arcMotion.setMinimumHorizontalAngle(50f);
                 arcMotion.setMinimumVerticalAngle(50f);
-                changeBounds.setPathMotion(arcMotion);*/
+                changeBounds.setPathMotion(arcMotion);
                 break;
         }
 
