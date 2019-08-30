@@ -7,13 +7,14 @@
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/white70"
+    android:background="@color/transparent"
     app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
     android:layout_height="60dp">
     <TextView
-        android:foreground="?attr/selectableItemBackground"
+        android:background="@color/transparent"
         android:id="@+id/base_recycler_view_item_tv"
         android:text="测试"
         android:textColor="@color/black"

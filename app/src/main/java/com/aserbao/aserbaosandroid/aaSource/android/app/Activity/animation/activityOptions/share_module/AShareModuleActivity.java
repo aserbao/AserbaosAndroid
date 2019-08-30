@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -102,13 +103,16 @@ public class AShareModuleActivity extends AppCompatActivity {
                     int absoultPosition = firstVisibleItemPosition + i;
                     sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ASourceUtil.iamgeUrl[absoultPosition]));
                 }
-                /*if (mView.getVisibility() == View.VISIBLE) {
-                    mView.setVisibility(View.GONE);
-                } else {
-                    mView.setVisibility(View.VISIBLE);
-                }*/
                 BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
                 myHandler.sendEmptyMessageDelayed(0, 1000);
+
+                int scrollOffset = mModuleRecyclerView.computeHorizontalScrollOffset();
+                int scrollOffset2 = mModuleRecyclerView2.computeHorizontalScrollOffset();
+                int chaScrollOffset = scrollOffset - scrollOffset2;
+
+                Log.e(TAG, "onScrolled: " + scrollOffset + " chaScrollOffset = "+ chaScrollOffset );
+
+                mModuleRecyclerView2.smoothScrollBy(chaScrollOffset,0);
             }
         }, AShareModuleAdapter.BOTTOM);
         mCommonAdapter.setmOrientation(mOrientation);
@@ -117,15 +121,28 @@ public class AShareModuleActivity extends AppCompatActivity {
         mModuleRecyclerView.setAdapter(mCommonAdapter);
 
         DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
-//        defaultItemAnimator.setAddDuration(1000);
-//        defaultItemAnimator.setRemoveDuration(1000);
         mModuleRecyclerView.setItemAnimator(defaultItemAnimator);
 
-        /*AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, null, AShareModuleAdapter.TOP);
+        mModuleRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int scrollOffset = mModuleRecyclerView.computeHorizontalScrollOffset();
+                int scrollOffset2 = mModuleRecyclerView2.computeHorizontalScrollOffset();
+                int chaScrollOffset = scrollOffset - scrollOffset2;
+
+                Log.e(TAG, "onScrolled: " + scrollOffset + " chaScrollOffset = "+ chaScrollOffset );
+
+                mModuleRecyclerView2.smoothScrollBy(chaScrollOffset,0);
+            }
+        });
+
+        AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, null, AShareModuleAdapter.TOP);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         aShareModuleAdapter.setmOrientation(mOrientation);
         mModuleRecyclerView2.setLayoutManager(linearLayoutManager);
-        mModuleRecyclerView2.setAdapter(aShareModuleAdapter);*/
+        mModuleRecyclerView2.setAdapter(aShareModuleAdapter);
+        mModuleRecyclerView2.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -145,7 +162,7 @@ public class AShareModuleActivity extends AppCompatActivity {
         int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
         int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();
 
-        List<BaseRecyclerBean> mTempBaseRecyclerBean = new ArrayList<>();
+        /*List<BaseRecyclerBean> mTempBaseRecyclerBean = new ArrayList<>();
         for (int i = 0; i <= lastVisibleItemPosition - firstVisibleItemPosition; i++) {
             BaseRecyclerBean baseRecyclerBean = mBaseRecyclerBeen.get(i);
             mTempBaseRecyclerBean.add(baseRecyclerBean);
@@ -155,7 +172,7 @@ public class AShareModuleActivity extends AppCompatActivity {
         aShareModuleAdapter.setmOrientation(mOrientation);
         mModuleRecyclerView2.setLayoutManager(linearLayoutManager);
         mModuleRecyclerView2.setAdapter(aShareModuleAdapter);
-        mModuleRecyclerView2.setVisibility(View.VISIBLE);
+        mModuleRecyclerView2.setVisibility(View.VISIBLE);*/
 
         mModuleRecyclerView2.post(new Runnable() {
             @Override
@@ -173,6 +190,16 @@ public class AShareModuleActivity extends AppCompatActivity {
 
                 PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f, 1.0f);
                 PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f, 1.0f);
+
+                int pivotX = mModuleRecyclerView2.getWidth() / 2;
+                mModuleRecyclerView2.setPivotX(pivotX);
+                int pivotY = mModuleRecyclerView2.getHeight() / 2;
+                mModuleRecyclerView2.setPivotY(pivotY);
+                //显示的调用invalidate
+                mModuleRecyclerView2.invalidate();
+
+                Log.e(TAG, "run: " + pivotX + " pivotY = " + pivotY );
+
                 ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mModuleRecyclerView2, valuesHolder1, valuesHolder2);
                 objectAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override

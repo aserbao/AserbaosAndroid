@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.EditTestMultiLine;
@@ -18,6 +19,12 @@ public class SimpleTextViewActivity extends AppCompatActivity {
     @BindView(R.id.multi_line_edit_text)
     EditTestMultiLine mMultiLineEditText;
 
+    @BindView(R.id.span_tv)
+    TextView mSpanTv;
+
+    private static final String HASHTAG_PATTERN = "(#[\\p{L}0-9-_]+)";
+    private static final String MENTION_PATTERN = "(@[\\p{L}0-9-_]+)";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +36,11 @@ public class SimpleTextViewActivity extends AppCompatActivity {
                 showInputMethod(mMultiLineEditText);
             }
         });
+
+
+        TextView textView = (TextView) findViewById(R.id.span_tv);
+        EditText editText = (EditText) findViewById(R.id.editText);
+
     }
 
     private void showInputMethod(EditText editTextMessage) {

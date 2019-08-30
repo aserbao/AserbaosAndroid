@@ -156,10 +156,9 @@ public class BShareModuleActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        /*setTransitionName(BACK);
+        setTransitionName(BACK);
         AShareModuleActivity.endPosition = position;
-        setResult(StaticFinalValues.COME_FROM_B_SHARE_MODULE_ACTIVITY);*/
-        finishAfterTransition();
+        setResult(StaticFinalValues.COME_FROM_B_SHARE_MODULE_ACTIVITY);
         super.onBackPressed();
     }
 
