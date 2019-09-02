@@ -8,11 +8,13 @@ import android.graphics.Path;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.PathInterpolator;
 
+import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
@@ -20,10 +22,6 @@ public class ObjectAnimatorActivity extends BaseRecyclerViewActivity {
 
     private ObjectAnimator objectAnimator;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void initGetData() {
@@ -32,6 +30,7 @@ public class ObjectAnimatorActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerTv.setText("动画");
         mBaseRecyclerTv.setTextColor(Color.WHITE);
         mBaseRecyclerTv.setBackgroundColor(Color.BLACK);
+
     }
 
     @Override

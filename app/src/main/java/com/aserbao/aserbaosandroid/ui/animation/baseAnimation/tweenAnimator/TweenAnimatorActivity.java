@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.ui.animation.baseAnimation.tweenAnimator;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -31,39 +32,21 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         super.onCreate(savedInstanceState);
     }
 
+    View mView;
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("选择插值器",101));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Translate",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Scale",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Rotate",2));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Alpha",3));
 
-        mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,FrameLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.LEFT;
-        imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.emoji_00);
-        imageView.setLayoutParams(layoutParams);
-        mBaseRecyclerEmptyContainer.addView(imageView);
 
-
-
-        FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(DisplayUtil.dp2px(100),DisplayUtil.dp2px(100));
-        layoutParams2.gravity = Gravity.CENTER;
-        imageView2 = new ImageView(this);
-        imageView2.setImageResource(ASourceUtil.getRandomImageId());
-        imageView2.setLayoutParams(layoutParams2);
-        mBaseRecyclerEmptyContainer.addView(imageView2);
-
-
-
-        mCanvasPointView.setVisibility(View.VISIBLE);
-        mBaseRecyclerTv.setText("TweenAnimation");
+        mView = LayoutInflater.from(mContext).inflate(R.layout.animator_layout, null);
+        addViewToFrameLayout(mView);
     }
 
 
-    Interpolator interpolator = new AccelerateInterpolator();
+
     @Override
     public void itemClickBack(View view, int position) {
         Animation animation = imageView.getAnimation();
@@ -72,7 +55,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         }
         switch (position){
             case 101:
-                BaserRecyclerViewManager aPopupManager = new BaserRecyclerViewManager(this, this);
+                /*BaserRecyclerViewManager aPopupManager = new BaserRecyclerViewManager(this, this);
                 ASourceUtil.getAllInterpoator(aPopupManager.mBaseRecyclerBeen);
                 aPopupManager.showBottomRecyclerViewPop(new IBaseRecyclerItemClickListener() {
                     @Override
@@ -82,7 +65,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
                             aPopupManager.dismiss();
                         }
                     }
-                });
+                });*/
                 break;
             case 0:
                 useTranslateAnimation();
@@ -111,7 +94,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         translateAnimation.setRepeatCount(-1);
         translateAnimation.setRepeatMode(Animation.REVERSE);
         translateAnimation.setDuration(500);
-        mBaseRecyclerTv.startAnimation(translateAnimation);
+        mView.startAnimation(translateAnimation);
     }
 
 
@@ -121,7 +104,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         scaleAnimation.setDuration(500);
         scaleAnimation.setRepeatCount(-1);
         scaleAnimation.setRepeatMode(Animation.REVERSE);
-        imageView.startAnimation(scaleAnimation);
+        mView.startAnimation(scaleAnimation);
     }
 
     public void useRotateAnimation(){
@@ -130,7 +113,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         rotateAnimation.setDuration(500);
         rotateAnimation.setRepeatCount(-1);
         rotateAnimation.setRepeatMode(Animation.REVERSE);
-        imageView2.startAnimation(rotateAnimation);
+        mView.startAnimation(rotateAnimation);
     }
 
 
@@ -140,7 +123,24 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         alphaAnimation.setDuration(500);
         alphaAnimation.setRepeatCount(-1);
         alphaAnimation.setRepeatMode(Animation.REVERSE);
-        imageView.startAnimation(alphaAnimation);
+        mView.startAnimation(alphaAnimation);
+    }
+
+    Interpolator interpolator = new AccelerateInterpolator();
+    int dutation = 300;
+    int repeatCount = -1;
+    int repeatMode = Animation.REVERSE;
+    boolean fillAfter = false; //默认为false,如果为True,动画结束前保持动画结束的transformation不变
+    boolean fillBefore = true; //默认为true,若为false。
+
+
+    public void configureAnimation(Animation animation){
+        animation.setInterpolator(interpolator);
+        animation.setDuration(dutation);
+        animation.setRepeatCount(repeatCount);
+        animation.setRepeatMode(repeatMode);
+        animation.setFillAfter(fillAfter);
+        animation.setFillBefore(fillBefore);
     }
 
 
