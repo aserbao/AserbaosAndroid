@@ -139,7 +139,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
 
     public void addViewToFrameLayout(View view){
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         view.setLayoutParams(layoutParams);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();

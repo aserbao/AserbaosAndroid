@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/base_recycler_tv"
             android:background="@color/white50"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:padding="5dp"
             android:gravity="center|left"
             android:textColor="@color/black"
