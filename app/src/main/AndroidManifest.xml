@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".other.valuePass.ValuePassActivity"></activity>
+        <activity android:name=".aaSource.android.support.design.widget.BottomNavigationView.BottomNavigationActivity"></activity>
+        <activity android:name=".other.valuePass.ValuePassActivity" />
         <activity android:name=".ui.animation.baseAnimation.tweenAnimator.TweenAnimatorActivity" />
         <activity android:name=".ui.animation.baseAnimation.BaseAnimation" />
         <activity android:name=".ui.animation.baseAnimation.objectAnimator.ObjectAnimatorActivity" />

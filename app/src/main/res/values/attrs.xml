@@ -134,4 +134,9 @@
         <attr name="blend_mode" format="enum"/>
     </declare-styleable>
 
+    <declare-styleable name="ABottomNavigationLinearLayout">
+        <attr name="item_layout"  format="reference"/>
+        <attr name="need_text"  format="boolean"/>
+    </declare-styleable>
+
 </resources>
