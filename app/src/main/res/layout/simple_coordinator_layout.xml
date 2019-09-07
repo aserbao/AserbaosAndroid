@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/dependency_btn"
+        android:layout_gravity="right|center_vertical"
+        android:text="Dependency"
+        app:layout_behavior="android.support.design.behavior.HideBottomViewOnScrollBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.aserbao.aserbaosandroid.ui.customView.smallView.OnTouchMoveView
+        android:id="@+id/child_btn"
+        android:background="@color/black"
+        android:text="child"
+        android:gravity="center"
+        android:layout_gravity="left|center_vertical"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+
+
+</android.support.design.widget.CoordinatorLayout>

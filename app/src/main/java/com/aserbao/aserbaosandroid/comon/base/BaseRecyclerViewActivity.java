@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -141,6 +142,17 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public void addViewToFrameLayout(View view){
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         view.setLayoutParams(layoutParams);
+        mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
+        mBaseRecyclerEmptyContainer.removeAllViews();
+        mBaseRecyclerEmptyContainer.addView(view);
+    }
+
+    public void addViewToFrameLayoutFullScreen(View view){
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        view.setLayoutParams(layoutParams);
+        ViewGroup.LayoutParams layoutParams1 = mBaseRecyclerEmptyContainer.getLayoutParams();
+        layoutParams.setMargins(0,0,0,0);
+        mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
