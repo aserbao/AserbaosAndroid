@@ -46,7 +46,7 @@ public class OnTouchMoveView extends Button {
             case MotionEvent.ACTION_MOVE:
                 setTranslationX(event.getRawX()-mRawX);
                 setTranslationY(event.getRawY()-mRawY);
-                Log.e(TAG, "onTouchEvent: \ngetX = " + getX() + " getY = "+ getY() + " getRawX = " + event.getRawX() + " getRawY= " + event.getRawY() + " \n mX =  " + mX + " mY = "+ mY + " mRawX =" + mRawX + " mRawY =" +mRawY);
+                Log.e(TAG, "onTouchEvent: \ngetX = " + getX() + " getY = "+ getY() + " getRawX = " + event.getRawX() + " getRawY= " + event.getRawY() + " \n  mRawX =" + mRawX + " mRawY =" +mRawY);
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:

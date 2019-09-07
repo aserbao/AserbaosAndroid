@@ -151,7 +151,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         view.setLayoutParams(layoutParams);
         ViewGroup.LayoutParams layoutParams1 = mBaseRecyclerEmptyContainer.getLayoutParams();
-        layoutParams.setMargins(0,0,0,0);
+        if (layoutParams1 instanceof ViewGroup.MarginLayoutParams){
+            ((ViewGroup.MarginLayoutParams) layoutParams1).setMargins(0,0,0,0);
+        }
         mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
