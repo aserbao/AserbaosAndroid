@@ -138,5 +138,11 @@
         <attr name="item_layout"  format="reference"/>
         <attr name="need_text"  format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="PointImageView">
+        <attr name="point_padding_right" format="dimension"/>
+        <attr name="point_padding_top" format="dimension"/>
+        <attr name="point_text_size" format="dimension"/>
+        <attr name="point_text_color" format="color"/>
+    </declare-styleable>
 
 </resources>

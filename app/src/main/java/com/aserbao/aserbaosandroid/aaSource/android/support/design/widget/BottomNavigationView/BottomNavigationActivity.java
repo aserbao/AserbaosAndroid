@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.Botto
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
@@ -52,6 +53,7 @@ public class BottomNavigationActivity extends BaseRecyclerViewActivity implement
     }
 
 
+    private static final String TAG = "BottomNavigationActivit";
 
     public void startAnimation(View view){
         float x = view.getX();
@@ -59,6 +61,9 @@ public class BottomNavigationActivity extends BaseRecyclerViewActivity implement
         float x1 = mIndicationIv.getX();
         int width1 = mIndicationIv.getWidth();
         float translationX = x+width/2-width1/2;
+
+        Log.e(TAG, "startAnimation: x = " +  x + " View.width = "+ width + " x1 = " + x1 + " width1 = " +width1 + " translationX = "+ translationX );
+
 
         PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofFloat("translationX", x1, translationX);
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mIndicationIv, valuesHolder);

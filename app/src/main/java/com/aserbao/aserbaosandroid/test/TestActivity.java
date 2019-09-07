@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
+import com.aserbao.aserbaosandroid.ui.customView.customImageView.PointImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,21 +34,26 @@ public class TestActivity extends AppCompatActivity {
     private List l = new ArrayList();
     private long mStartTime;
 
+    @BindView(R.id.test_point_iv)
+    PointImageView mTestPointIv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
         ButterKnife.bind(this);
-        mTestBtn2.setVisibility(View.INVISIBLE);
+        mTestPointIv.setPointMode(PointImageView.NUMBER_POINT);
+        mTestPointIv.setMessageNum(10);
+        mTestPointIv.setHaveMesage(true);
     }
 
     private static final String TAG = "TestActivity";
 
     @OnClick({R.id.test_btn, R.id.test_btn2})
     public void onViewClicked() {
-        String result = "thisisan你到底要干啥";
-        int length = result.toCharArray().length;
-        Toast.makeText(this,String.valueOf(length), Toast.LENGTH_SHORT).show();
+        mTestPointIv.setPointMode(PointImageView.NUMBER_POINT);
+        mTestPointIv.setMessageNum(100);
+        mTestPointIv.setHaveMesage(true);
     }
 
 

@@ -8,5 +8,4 @@ package com.example.aserbaoffmpeg;
  */
 public class SecondBranch {
     private String s = " 这是second Branch 的第一次提交";
-
 }

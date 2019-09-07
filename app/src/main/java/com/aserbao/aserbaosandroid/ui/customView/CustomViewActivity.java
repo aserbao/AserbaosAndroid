@@ -19,6 +19,7 @@ import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier2;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.Bezier3;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.canDrag.BezierCircle;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCustomLike;
+import com.aserbao.aserbaosandroid.ui.customView.customImageView.PointImageView;
 import com.aserbao.aserbaosandroid.ui.customView.radar.RadarView;
 
 public class CustomViewActivity extends BaseRecyclerViewActivity {
@@ -35,6 +36,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用2",7));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("PathInterpator动画",8));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("带红点的ImageView",9));
     }
 
     @Override
@@ -96,6 +98,14 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 animator.start();
 
 
+                break;
+            case 9:
+                PointImageView pointImageView = new PointImageView(this);
+                pointImageView.setImageResource(R.drawable.emoji_00);
+                pointImageView.setMessageNum(10);
+                pointImageView.setPointMode(PointImageView.NUMBER_POINT);
+                pointImageView.setHaveMesage(true);
+                mBaseRecyclerEmptyContainer.addView(pointImageView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 break;
         }
     }
