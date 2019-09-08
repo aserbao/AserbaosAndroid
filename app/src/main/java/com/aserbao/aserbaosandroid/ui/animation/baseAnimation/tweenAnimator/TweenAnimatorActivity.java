@@ -2,7 +2,6 @@ package com.aserbao.aserbaosandroid.ui.animation.baseAnimation.tweenAnimator;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -12,16 +11,11 @@ import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.aa.BaserRecyclerViewManager;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 
 public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
@@ -47,7 +41,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         Animation animation = mAnimationIv.getAnimation();
         if (animation != null) {
             animation.cancel();

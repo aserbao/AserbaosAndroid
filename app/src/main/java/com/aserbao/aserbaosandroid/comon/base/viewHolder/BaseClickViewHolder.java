@@ -27,23 +27,39 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int tempFlag = 0;
-                Object viewTag = v.getTag();
-                if (viewTag instanceof Integer) {
-                    int tag = (int) viewTag;
-                    if (tag >= 0) {
-                        tempFlag = tag;
-                    } else {
-                        tempFlag = position;
-                    }
-                } else {
-                    tempFlag = position;
-                }
+                int tempFlag = getTempFlag(v, position);
                 if (mIBaseRecyclerItemClickListener != null) {
-                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag);
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,false);
                 }
             }
         });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int tempFlag = getTempFlag(v, position);
+                if (mIBaseRecyclerItemClickListener != null) {
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true);
+                }
+                return false;
+            }
+        });
+    }
+
+    private int getTempFlag(View v, int position) {
+        int tempFlag = 0;
+        Object viewTag = v.getTag();
+        if (viewTag instanceof Integer) {
+            int tag = (int) viewTag;
+            if (tag >= 0) {
+                tempFlag = tag;
+            } else {
+                tempFlag = position;
+            }
+        } else {
+            tempFlag = position;
+        }
+        return tempFlag;
     }
 
 }

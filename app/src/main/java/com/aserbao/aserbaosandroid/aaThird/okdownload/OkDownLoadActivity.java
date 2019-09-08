@@ -58,7 +58,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 404:
                 String absolutePath = Environment.getDownloadCacheDirectory().getAbsolutePath();

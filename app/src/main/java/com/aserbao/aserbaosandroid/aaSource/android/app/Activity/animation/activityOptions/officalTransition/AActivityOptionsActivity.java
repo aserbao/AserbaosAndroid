@@ -68,7 +68,7 @@ public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view , int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         if (position == 4) {
             BActivityOptionsActivity.launch(this, position);
         }else{

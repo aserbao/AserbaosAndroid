@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CollapsingToolbarLayout.CollapsingToolbarLayoutActivity">
+    tools:context="com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/expandedTitleTextAppearance"
             app:collapsedTitleTextAppearance="@style/collapsedTitleTextAppearance"
@@ -49,28 +49,9 @@
                 app:layout_collapseMode="pin"
                 android:layout_height="wrap_content"/>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
 
-            </android.support.v7.widget.Toolbar>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                android:layout_marginStart="12dp">
-                <!--网络连接状态-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:text="Top FrameLayout"
-                    android:textColor="@color/black"
-                    android:textSize="28dp"
-                    app:layout_collapseMode="pin"
-                    android:layout_height="wrap_content"/>
-            </FrameLayout>
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -94,7 +75,7 @@
         <TextView
             android:paddingLeft="150dp"
             android:paddingRight="190dp"
-            android:text="发电量卡加斯发电机房老实交代雷锋精神了的解放路卡数据的风口浪尖萨拉打飞机啊离开上家东风路卡数据的芙拉数据的芙拉数据的发了塑料袋积分"
+            android:text="@string/nested_scroll_view_tv"
             android:layout_width="match_parent"
             android:layout_height="800dp" />
     </android.support.v4.widget.NestedScrollView>

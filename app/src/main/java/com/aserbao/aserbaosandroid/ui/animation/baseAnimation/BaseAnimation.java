@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.ui.animation.baseAnimation;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -17,7 +15,7 @@ public class BaseAnimation extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 0:
 

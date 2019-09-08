@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.other.valuePass;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
@@ -25,7 +23,7 @@ public class ValuePassActivity extends BaseRecyclerViewActivity {
     public ValuesBean mValuesBean2;
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 1:
                 ValuesBean mValuesBean = valuesBean;

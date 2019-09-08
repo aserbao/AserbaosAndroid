@@ -8,7 +8,7 @@
         android:id="@+id/dependency_btn"
         android:layout_gravity="right|center_vertical"
         android:text="Dependency"
-        app:layout_behavior="android.support.design.behavior.HideBottomViewOnScrollBehavior"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -22,7 +22,7 @@ public class Jump2OtherActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view , int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 0:
                 /*Intent intent1 = new Intent();

@@ -160,4 +160,15 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseRecyclerEmptyContainer.addView(view);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mBaseRecyclerEmptyContainer.getChildCount() > 0){
+            mBaseRecyclerEmptyContainer.removeAllViews();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+
+
 }

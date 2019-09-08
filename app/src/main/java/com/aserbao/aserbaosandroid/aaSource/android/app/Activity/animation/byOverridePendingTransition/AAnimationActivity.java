@@ -42,7 +42,7 @@ public class AAnimationActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view , int position){
+    public void itemClickBack(View view, int position, boolean isLongClick){
         AAnimationActivity.launch(this, position);
     }
 

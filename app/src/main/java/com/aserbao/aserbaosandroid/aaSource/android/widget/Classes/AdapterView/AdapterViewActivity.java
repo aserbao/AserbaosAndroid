@@ -13,7 +13,7 @@ public class AdapterViewActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
 
     }
 

@@ -48,7 +48,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.support.design.widget.CollapsingToolbarLayout.CollapsingToolbarLayoutActivity"></activity>
+        <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity"></activity>
         <activity android:name=".aaSource.android.support.design.widget.BottomNavigationView.BottomNavigationActivity" />
         <activity android:name=".other.valuePass.ValuePassActivity" />
         <activity android:name=".ui.animation.baseAnimation.tweenAnimator.TweenAnimatorActivity" />

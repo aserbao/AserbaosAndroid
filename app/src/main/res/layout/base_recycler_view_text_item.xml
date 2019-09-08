@@ -12,13 +12,15 @@
     app:cardUseCompatPadding="true"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
-    android:layout_height="60dp">
+    android:minHeight="60dp"
+    android:layout_height="wrap_content">
     <TextView
         android:background="@color/transparent"
         android:id="@+id/base_recycler_view_item_tv"
         android:text="测试"
         android:textColor="@color/black"
         android:textSize="18sp"
+        android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

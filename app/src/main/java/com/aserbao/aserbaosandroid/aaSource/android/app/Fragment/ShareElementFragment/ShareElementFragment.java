@@ -92,7 +92,7 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
 
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         ((TransitionSet) getExitTransition()).excludeTarget(view, true);
 
         ImageView transitioningView = view.findViewById(R.id.image_view_item);

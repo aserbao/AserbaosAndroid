@@ -42,7 +42,7 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         ALogUtils.logErrorTime(ALogUtils.INT_NUM_START_TIME);
         switch (position){
             case 0:

@@ -123,7 +123,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 0:
                 syncSimpleOkhttpGet();

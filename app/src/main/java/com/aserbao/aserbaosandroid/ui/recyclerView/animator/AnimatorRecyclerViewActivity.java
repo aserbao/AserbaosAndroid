@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.ui.recyclerView.animator;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -20,7 +18,7 @@ public class AnimatorRecyclerViewActivity extends BaseRecyclerViewActivity {
 
     private static final String TAG = "AnimatorRecyclerViewAct";
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         Log.e(TAG, "itemClickBack: " + position );
         switch (position){
             case 0:

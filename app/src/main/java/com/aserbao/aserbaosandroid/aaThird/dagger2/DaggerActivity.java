@@ -31,7 +31,7 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
 
     private static final String TAG = "DaggerActivity";
     @Override
-    public void itemClickBack(View view , int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 0:
                 normal();

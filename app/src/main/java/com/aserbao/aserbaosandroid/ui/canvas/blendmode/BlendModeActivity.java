@@ -1,6 +1,5 @@
 package com.aserbao.aserbaosandroid.ui.canvas.blendmode;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -38,7 +37,7 @@ public class BlendModeActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
 
     }
 }

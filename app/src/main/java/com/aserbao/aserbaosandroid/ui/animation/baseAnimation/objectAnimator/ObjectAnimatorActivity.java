@@ -4,17 +4,9 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.graphics.Path;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.PathInterpolator;
 
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
@@ -34,7 +26,7 @@ public class ObjectAnimatorActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position) {
+    public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 0:
                 userPathInterPolator();

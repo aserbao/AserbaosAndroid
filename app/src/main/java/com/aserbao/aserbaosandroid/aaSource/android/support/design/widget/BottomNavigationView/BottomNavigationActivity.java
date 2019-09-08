@@ -12,9 +12,7 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class BottomNavigationActivity extends BaseRecyclerViewActivity implements View.OnClickListener{
 
@@ -43,7 +41,7 @@ public class BottomNavigationActivity extends BaseRecyclerViewActivity implement
     }
 
     @Override
-    public void itemClickBack(View view, int position) {}
+    public void itemClickBack(View view, int position, boolean isLongClick) {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CollapsingToolbarLayout.behavior;
+package com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CoordinatorLayout.behavior;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
