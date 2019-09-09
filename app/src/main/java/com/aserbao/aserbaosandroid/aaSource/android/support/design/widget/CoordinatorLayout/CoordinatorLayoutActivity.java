@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.Coord
 
 import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingTextHelper;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,11 +111,6 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                 collapsingToolbarLayout.setTitle("Hello");//设置标题的名字
                 collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);//设置展开后标题的颜色
                 collapsingToolbarLayout.setCollapsedTitleTextColor(Color.TRANSPARENT);//设置收缩后标题的颜色
-
-                /*Class<? extends CollapsingToolbarLayout> aClass = collapsingToolbarLayout.getClass();
-                CollapsingToolbarLayout collapsingToolbarLayout1 = aClass.newInstance();*/
-
-
                 simpleAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                     @Override
                     public void onOffsetChanged(AppBarLayout appBarLayout, int i) {

@@ -240,7 +240,7 @@
 
     <style name="collapsedTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">36sp</item>
     </style>
 </resources>
 

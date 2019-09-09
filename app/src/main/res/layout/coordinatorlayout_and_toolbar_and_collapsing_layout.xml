@@ -11,13 +11,14 @@
         android:layout_height="300dp">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
-            app:title="CollapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/transparent"
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"
+            app:expandedTitleTextAppearance="@style/expandedTitleTextAppearance"
+            app:collapsedTitleTextAppearance="@style/collapsedTitleTextAppearance"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
