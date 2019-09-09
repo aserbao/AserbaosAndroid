@@ -5,6 +5,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,13 +101,25 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                 View simpleView = LayoutInflater.from(this).inflate(R.layout.coordinatorlayout_and_toolbar_and_collapsing_layout, null);
                 CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) simpleView.findViewById(R.id.collapsingToolbarLayout);
                 Toolbar tb = (Toolbar) simpleView.findViewById(R.id.toolbar);
+                AppBarLayout simpleAppBarLayout = (AppBarLayout) simpleView.findViewById(R.id.app_bar_layout);
 
                 setSupportActionBar(tb);//设置toolbar
                 collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.LEFT);//设置收缩后标题的位置
                 collapsingToolbarLayout.setExpandedTitleGravity(Gravity.LEFT);////设置展开后标题的位置
                 collapsingToolbarLayout.setTitle("Hello");//设置标题的名字
                 collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);//设置展开后标题的颜色
-                collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);//设置收缩后标题的颜色
+                collapsingToolbarLayout.setCollapsedTitleTextColor(Color.TRANSPARENT);//设置收缩后标题的颜色
+
+                /*Class<? extends CollapsingToolbarLayout> aClass = collapsingToolbarLayout.getClass();
+                CollapsingToolbarLayout collapsingToolbarLayout1 = aClass.newInstance();*/
+
+
+                simpleAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                    @Override
+                    public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                        Log.e(TAG, "onOffsetChanged: " + i );
+                    }
+                });
 
                 addViewToFrameLayout(simpleView);
                 break;
@@ -116,4 +129,8 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                 break;
         }
     }
+
+    private static final String TAG = "CoordinatorLayoutActivi";
+
+
 }
