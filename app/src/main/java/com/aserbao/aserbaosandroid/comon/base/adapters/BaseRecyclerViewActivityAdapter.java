@@ -39,6 +39,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mIBaseRecyclerItemClickListener = listener;
     }
 
+
+
+
     public int mOrientation = LinearLayoutManager.VERTICAL;
     public void setmOrientation(int orientation){
         mOrientation = orientation;

@@ -40,7 +40,6 @@
     <FrameLayout
         android:layout_marginTop="150dp"
         android:id="@+id/base_recycler_empty_container"
-        android:background="@color/black30"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

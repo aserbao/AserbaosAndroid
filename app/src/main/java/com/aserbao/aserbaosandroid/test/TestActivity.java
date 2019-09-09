@@ -27,34 +27,18 @@ import butterknife.OnClick;
  * email: this is empty email
  */
 public class TestActivity extends AppCompatActivity {
-    @BindView(R.id.test_btn)
-    Button mTestBtn;
-    @BindView(R.id.test_btn2)
-    Button mTestBtn2;
-    private List l = new ArrayList();
-    private long mStartTime;
 
-    @BindView(R.id.test_point_iv)
-    PointImageView mTestPointIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test);
+        setContentView(R.layout.coordinatorlayout_and_toolbar_and_collapsing_layout);
         ButterKnife.bind(this);
-        mTestPointIv.setPointMode(PointImageView.NUMBER_POINT);
-        mTestPointIv.setMessageNum(10);
-        mTestPointIv.setHaveMesage(true);
+
     }
 
     private static final String TAG = "TestActivity";
 
-    @OnClick({R.id.test_btn, R.id.test_btn2})
-    public void onViewClicked() {
-        mTestPointIv.setPointMode(PointImageView.NUMBER_POINT);
-        mTestPointIv.setMessageNum(100);
-        mTestPointIv.setHaveMesage(true);
-    }
 
 
 }
