@@ -11,14 +11,13 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.imageviews.custom.ShadowRoundImageView;
-import com.github.siyamed.shapeimageview.HeartImageView;
 
 public class ImageViewsActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("心形ImageView",520));
+//        mBaseRecyclerBeen.add(new BaseRecyclerBean("心形ImageView",520));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的ImageView",1));
     }
 
@@ -31,11 +30,11 @@ public class ImageViewsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerEmptyContainer.setBackgroundColor(Color.TRANSPARENT);
         switch (position){
             case 520:
-                HeartImageView heartImageView = new HeartImageView(this);
+               /* HeartImageView heartImageView = new HeartImageView(this);
                 Bitmap bitmap = createBitmap();
                 heartImageView.setImageBitmap(bitmap);
                 heartImageView.setLayoutParams(layoutParams);
-                mBaseRecyclerEmptyContainer.addView(heartImageView);
+                mBaseRecyclerEmptyContainer.addView(heartImageView);*/
                 break;
             case 1:
                 ShadowRoundImageView shadowRoundImageView = new ShadowRoundImageView(this);

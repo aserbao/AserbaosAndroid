@@ -23,6 +23,7 @@ public class StaticFinalValues {
     public static final String BUNDLE = "bundle";
     public static final String POSITION = "position";
     public static final String DRAWABLE_RESID = "drawable_resid";
+    public static final String FLAG = "flag";
 
     // =================================direction
     public static final int LEFT = 0;

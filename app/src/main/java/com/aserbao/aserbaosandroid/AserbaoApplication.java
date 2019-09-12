@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.multidex.MultiDexApplication;
 
@@ -19,6 +20,12 @@ import com.danikula.videocache.HttpProxyCacheServer;
 public class AserbaoApplication extends MultiDexApplication {
     public static int screenWidth,screenHeight;
     public static AserbaoApplication instance;
+
+    public static Context getInstance() {
+        return instance;
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();

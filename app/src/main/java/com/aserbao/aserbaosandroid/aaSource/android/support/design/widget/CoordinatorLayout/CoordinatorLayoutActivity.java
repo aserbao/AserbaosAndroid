@@ -109,7 +109,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                 collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.LEFT);//设置收缩后标题的位置
                 collapsingToolbarLayout.setExpandedTitleGravity(Gravity.LEFT);////设置展开后标题的位置
                 collapsingToolbarLayout.setTitle("Hello");//设置标题的名字
-                collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);//设置展开后标题的颜色
+                collapsingToolbarLayout.setExpandedTitleColor(Color.BLACK);//设置展开后标题的颜色
                 collapsingToolbarLayout.setCollapsedTitleTextColor(Color.TRANSPARENT);//设置收缩后标题的颜色
                 simpleAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                     @Override

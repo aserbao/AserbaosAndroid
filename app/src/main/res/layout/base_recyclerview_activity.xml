@@ -7,14 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.opengl.OpenGlActivity">
-
     <ScrollView
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:id="@+id/base_recycler_tv"
-            android:background="@color/white50"
+            android:background="@color/white"
             android:textSize="18sp"
             android:padding="5dp"
             android:gravity="center|left"
@@ -42,6 +41,8 @@
         android:id="@+id/base_recycler_empty_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
 
     <android.support.v7.widget.CardView
         android:layout_alignParentBottom="true"
@@ -81,6 +82,7 @@
                 android:layout_height="60dp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
 
 
     <com.aserbao.aserbaosandroid.ui.canvas.canvas.CanvasPointView

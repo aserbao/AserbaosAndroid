@@ -60,22 +60,7 @@
 
 
 
-    <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
-        android:layout_margin="12dp"
-        android:layout_gravity="center_horizontal"
-        app:sl_cornerRadius="15dp"
-        app:sl_shadowRadius="4dp"
-        app:sl_shadowColor="@color/black50"
-        app:sl_dx="0dp"
-        app:sl_dy="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <com.github.siyamed.shapeimageview.RoundedImageView
-            app:siRadius="12dp"
-            android:src="@drawable/mm_1"
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
-    </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
 
 
     <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout

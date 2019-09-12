@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
 import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.AScreenUtils;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
@@ -15,11 +16,12 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取当前手机信息"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("网络状态"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("多媒体数据获取"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("屏幕常用参数获取"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("ContextWrapper的常用方法调用"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取当前手机信息",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("网络状态",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("多媒体数据获取",2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("屏幕常用参数获取",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("ContextWrapper的常用方法调用",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("检测手机NavigationBar的高度",5));
     }
 
 
@@ -61,6 +63,15 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
                   .append("getPackageCodePath() =").append(getPackageCodePath()).append("\n")
                   .append("getFilesDir() =").append(getFilesDir().toString()).append("\n");
                 mBaseRecyclerTv.setText(sb.toString());
+                break;
+            case 5:
+                mBaseRecyclerTv.setTextSize(16);
+                StringBuffer result = new StringBuffer();
+                result.append("是否有NavigationBar =" + AScreenUtils.isNavigationBarShowing(mContext))
+                    .append("\n 检测到的高度为： "+ AScreenUtils.getNavigationBarHeight(mContext))
+                    .append("\n 检测StatusBar的高度为：" + AScreenUtils.getStatusBarHeight(mContext));
+
+                mBaseRecyclerTv.setText(result.toString());
                 break;
         }
     }

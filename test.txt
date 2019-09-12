@@ -1,20 +1,27 @@
-好久不见，周末快乐，各位。
+ private static void generateTempTables(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        for (int i = 0; i < daoClasses.length; i++) {
+            String tempTableName = null;
 
-都下午好几点了，原本计划看一波LCK总决赛的，看了一半，暂停半天，突然发现方舟编译器开源了，好了，不多说，写篇文章传递下这个消息。
+            DaoConfig daoConfig = new DaoConfig(db, daoClasses[i]);
+            String tableName = daoConfig.tablename;
+            if (!isTableExists(db, false, tableName)) {
+                printLog("【New Table】" + tableName);
+                continue;
+            }
+            try {
+                tempTableName = daoConfig.tablename.concat("_TEMP");
+                StringBuilder dropTableStringBuilder = new StringBuilder();
+                dropTableStringBuilder.append("DROP TABLE IF EXISTS ").append(tempTableName).append(";");
+                db.execSQL(dropTableStringBuilder.toString());
 
-话不多说，今天下午(8月31号)下午3点多开源的，之前也有看到github上多个说是鸿蒙开源代码的，当时还验证了一下，全是骗子，浪费我时间，欺骗我感情。
-
-好吧，验证过了，确定是方舟开源。因为是在华为开源平台上看到的。刚刚下载了一波源码查看运行了，感觉好像就是那么回事。
-
-
-ok,说了这么多，上地址，各位赶快去研究研究。
-
-方舟编译器官网：https://www.openarkcompiler.cn/home
-设计文档：https://www.openarkcompiler.cn/document/frameworkDesgin
-环境配置：https://www.openarkcompiler.cn/document/environment
-开发者指南：https://www.openarkcompiler.cn/document/developerGuide
-
-好了，消息传递结束，收没收到就是你们的事了，over。
-
-
-什么？字数不够？不能声明原创？好吧，添加一点，创建了个Android技术交流群，欢迎大家加入：
+                StringBuilder insertTableStringBuilder = new StringBuilder();
+                insertTableStringBuilder.append("CREATE TEMPORARY TABLE ").append(tempTableName);
+                insertTableStringBuilder.append(" AS SELECT * FROM ").append(tableName).append(";");
+                db.execSQL(insertTableStringBuilder.toString());
+                printLog("【Table】" + tableName +"\n ---Columns-->"+getColumnsStr(daoConfig));
+                printLog("【Generate temp table】" + tempTableName);
+            } catch (SQLException e) {
+                Log.e(TAG, "【Failed to generate temp table】" + tempTableName, e);
+            }
+        }
+    }
