@@ -69,7 +69,7 @@ public class CatchTouchFrameLayout extends FrameLayout {
             case MotionEvent.ACTION_CANCEL:
                 getParent().requestDisallowInterceptTouchEvent(false);
                 mIsScrolling = false;
-                if (Math.abs(difRawX) > AserbaoApplication.screenWidth / 3) {
+                if (difRawX > AserbaoApplication.screenWidth / 3) {
                     useAnimation(AserbaoApplication.screenWidth,event.getAction());
                 }else {
                     useAnimation(0,event.getAction());

@@ -4,15 +4,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
+import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +33,8 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
     TextView mSlideAnimationTv;
     @BindView(R.id.slide_animation_fl)
     CatchTouchFrameLayout mSlideAnimationFl;
+    @BindView(R.id.slide_animation_rv)
+    RecyclerView mSlideAnimationRv;
 
 
     @Override
@@ -39,9 +49,31 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initGetData();
+        initView();
+    }
+
+    private void initGetData() {
+        for (int i = 1; i < 21; i++) {
+            mBaseRecyclerBeen.add(new BaseRecyclerBean("第" + i + "个数据",i));
+        }
+    }
+
+    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    private void initView() {
         String string = getArguments().getString(StaticFinalValues.STRING);
         mSlideAnimationTv.setText(string);
         mSlideAnimationFl.setIItemOnTouchCallBackListener(this);
+
+        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
+            @Override
+            public void itemClickBack(View view, int position, boolean isLongClick) {
+                Toast.makeText(getContext(), "你点击了" + position + "个位置的View 常按 =" + isLongClick, Toast.LENGTH_SHORT).show();
+            }
+        });
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mSlideAnimationRv.setLayoutManager(mLinearLayoutManager);
+        mSlideAnimationRv.setAdapter(mCommonAdapter);
     }
 
     public SlideItemAnimationAdapter.IItemOnTouchCallBackListener mIItemOnTouchCallBackListener;
@@ -52,9 +84,11 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
 
 
     @Override
-    public void onScollView(View view, float scrollX, int action,int comeFrom) {
+    public void onScollView(View view, float scrollX, int action, int comeFrom) {
         if (mIItemOnTouchCallBackListener != null) {
-            mIItemOnTouchCallBackListener.onScollView(view,scrollX,action,comeFrom);
+            mIItemOnTouchCallBackListener.onScollView(view, scrollX, action, comeFrom);
         }
     }
+
+
 }
