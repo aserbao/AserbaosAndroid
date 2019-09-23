@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.SlideItemAnimationActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -16,7 +16,6 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.functions.cutout.CutOutActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
@@ -62,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", CutOutActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", SlideItemAnimationActivity.class));
     }
 
     private void initView() {
