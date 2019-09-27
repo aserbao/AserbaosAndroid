@@ -46,6 +46,27 @@ public class CatchTouchCardView  extends CardView {
     public boolean dispatchTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                mIsScrolling = false;
+                super.dispatchTouchEvent(event);
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                mIsScrolling = true;
+                getParent().requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                getParent().requestDisallowInterceptTouchEvent(false);
+
+                break;
+        }
+        Log.e(TAG, "dispatchTouchEvent: " + event.getAction() + " " +  getX() );
+        return super.dispatchTouchEvent(event);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
                 mStartRawX = event.getRawX();
                 mStartX = event.getX();
                 mIsScrolling = false;
@@ -73,8 +94,7 @@ public class CatchTouchCardView  extends CardView {
                 }
                 break;
         }
-        Log.e(TAG, "dispatchTouchEvent: " + event.getAction() + " " +  getX() );
-        return super.dispatchTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
     @Override

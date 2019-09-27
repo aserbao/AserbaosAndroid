@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.DisplayCutout;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 
@@ -29,18 +30,34 @@ public class CutOutActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("显示DisplayCutout的个数",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("进入全屏",1001));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("退出全屏",1002));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT",100));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES",101));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER",102));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN",1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LOW_PROFILE",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_STABLE",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_FULLSCREEN",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_STABLE",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",5));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN",6));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE",7));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE_STICKY",8));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_STATUS_BAR",9));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_VISIBLE",10));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR",11));
 
     }
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
+            case 1001:
+                setFullScreen();
+                break;
+            case 1002:
+                quitFullScreen();
+                break;
             case 0:
                /* DisplayCutout displayCutout = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
@@ -87,14 +104,53 @@ public class CutOutActivity extends BaseRecyclerViewActivity {
                 recreate();
                 break;
             case 1:
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
                 break;
             case 2:
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
                 break;
             case 3:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+                break;
+            case 4:
                 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
                 break;
+            case 5:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+                break;
+            case 6:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                break;
+            case 7:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
+                break;
+            case 8:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                break;
+            case 9:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR); // 设置状态栏黑色字体
+                break;
+            case 10:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE); // 状态栏白色字体
+                break;
+            case 11:
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                break;
         }
+    }
+
+    //全屏设置和退出全屏
+    private void setFullScreen(){
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+    private void quitFullScreen(){
+        final WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setAttributes(attrs);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
+//        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     }
 }
