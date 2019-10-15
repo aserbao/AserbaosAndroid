@@ -9,11 +9,14 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public class RxJavaActivity extends BaseRecyclerViewActivity {
 
@@ -23,12 +26,16 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Hello World",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable的使用讲解",100));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava使用三步骤",1));
     }
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
+            case 100:
+                testFlowable();
+                break;
             case 0:
                 testJust();
                 break;
@@ -50,7 +57,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
                     }
                 };
                 observable.subscribe(mObserver);
-                observable.subscribe(mSubscriber);
+//                observable.subscribe(mSubscriber);
 
                 break;
         }
@@ -66,6 +73,36 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
                     System.out.println(s);
                 }
             });*/
+    }
+
+    public void testFlowable(){
+        Disposable d = Flowable.just("Hello world!")
+            .delay(1, TimeUnit.SECONDS)
+            .subscribeWith(new DisposableSubscriber<String>() {
+                @Override public void onStart() {
+                    Log.d(TAG, "onStart() called" + Thread.currentThread());
+                    request(1);
+                }
+                @Override public void onNext(String t) {
+                    Log.d(TAG, "onNext() called with: t = [" + t + "]"+ Thread.currentThread());
+                    request(1);
+                }
+                @Override public void onError(Throwable t) {
+                    Log.d(TAG, "onError() called with: t = [" + t + "]"+ Thread.currentThread());
+                    t.printStackTrace();
+                }
+                @Override public void onComplete() {
+                    Log.d(TAG, "onComplete() called"+ Thread.currentThread());
+                }
+            });
+
+        /*try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // 调用dispose()方法可以取消当前序列
+        d.dispose();*/
     }
 
 
