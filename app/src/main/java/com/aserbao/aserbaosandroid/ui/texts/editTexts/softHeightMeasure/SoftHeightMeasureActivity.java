@@ -49,6 +49,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
         if (intExtra != -1) {
             getWindow().setSoftInputMode(intExtra);
         }
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_soft_height_measure);
         ButterKnife.bind(this);
         initListener();
