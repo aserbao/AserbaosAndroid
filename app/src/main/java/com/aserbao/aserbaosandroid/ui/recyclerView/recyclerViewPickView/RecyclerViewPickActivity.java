@@ -15,6 +15,7 @@ import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickView
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.CircularHorizontalMode;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.CircularViewMode;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.CircularViewRTLMode;
+import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.DefaultMode;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.ItemViewMode;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.PickerRecyclerView;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.RotateXScaleYViewMode;
@@ -32,12 +33,14 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("循环滑动",100));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("不循环滑动",101));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("Default",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularViewMode",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("ScaleXViewMode",2));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("ScaleYViewMode",3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RotateXScaleYViewMode",4));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RotateYScaleXViewMode",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularViewMode",6));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularHorizontalMode",7));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularViewRTLMode",8));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularHorizontalBTTMode",9));
@@ -47,6 +50,20 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
+            case 100:
+                mIsNotLoop = true;
+                if (mLayoutManager == null)
+                    Toast.makeText(mContext, "请先选择一个Mode", Toast.LENGTH_SHORT).show();
+                return;
+            case 101:
+                mIsNotLoop = false;
+                if (mLayoutManager == null)
+                    Toast.makeText(mContext, "请先选择一个Mode", Toast.LENGTH_SHORT).show();
+                return;
+            case 0:
+                mItemViewMode = new DefaultMode();
+                mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
+                break;
             case 1:
                 mItemViewMode = new CircularViewMode();
                 mLayoutManager = new LinearLayoutManager(this);
@@ -70,7 +87,6 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
             case 6:
                 mItemViewMode = new CircularViewMode();
                 mLayoutManager = new LinearLayoutManager(this);
-                mIsNotLoop = true;
                 break;
             case 7:
                 mItemViewMode = new CircularHorizontalMode();
