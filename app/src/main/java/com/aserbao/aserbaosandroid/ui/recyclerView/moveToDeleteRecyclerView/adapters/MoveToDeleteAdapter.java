@@ -47,7 +47,7 @@ public class MoveToDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-        return TEST_CLICK_SPAN;
+        return CONTETN;
     }
 
     @NonNull

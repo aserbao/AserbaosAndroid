@@ -24,6 +24,7 @@ public class StaticFinalValues {
     public static final String POSITION = "position";
     public static final String DRAWABLE_RESID = "drawable_resid";
     public static final String FLAG = "flag";
+    public static final String STRING = "string";
 
     // =================================direction
     public static final int LEFT = 0;

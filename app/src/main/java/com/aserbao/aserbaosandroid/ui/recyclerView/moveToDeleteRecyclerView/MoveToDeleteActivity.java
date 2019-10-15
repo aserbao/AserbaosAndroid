@@ -43,7 +43,7 @@ public class MoveToDeleteActivity extends AppCompatActivity {
 
     private void initRecyclerView(RecyclerView moveToDeleteRv) {
         MoveToDeleteAdapter moveToDeleteAda = new MoveToDeleteAdapter(this);
-        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         moveToDeleteRv.setLayoutManager(linearLayoutManager);
         moveToDeleteRv.setAdapter(moveToDeleteAda);
     }

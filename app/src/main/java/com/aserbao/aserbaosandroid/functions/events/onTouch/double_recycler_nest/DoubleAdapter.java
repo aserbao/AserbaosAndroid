@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nes
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import butterknife.OnClick;
  * @package:com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest
  */
 public class DoubleAdapter extends RecyclerView.Adapter<NestItemViewHolder> {
+    private static final String TAG = "DoubleAdapter";
 
     private Context mContext;
 
@@ -38,6 +40,7 @@ public class DoubleAdapter extends RecyclerView.Adapter<NestItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NestItemViewHolder nestItemViewHolder, int i) {
+        Log.e(TAG, "onBindViewHolder: position = " + i );
         nestItemViewHolder.setDataSource(mContext,mIItemOnLongClickListener);
     }
 
@@ -47,4 +50,15 @@ public class DoubleAdapter extends RecyclerView.Adapter<NestItemViewHolder> {
     }
 
 
+    @Override
+    public void onViewDetachedFromWindow(@NonNull NestItemViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        Log.e(TAG, "onViewDetachedFromWindow: " );
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull NestItemViewHolder holder) {
+        Log.e(TAG, "onViewAttachedToWindow: " );
+        super.onViewAttachedToWindow(holder);
+    }
 }

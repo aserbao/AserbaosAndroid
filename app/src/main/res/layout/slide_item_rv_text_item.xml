@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.CatchTouchCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/base_rv_text_item_cv"
@@ -10,10 +10,9 @@
     app:cardBackgroundColor="@color/white70"
     android:background="@color/transparent"
     app:cardCornerRadius="15dp"
-    app:cardUseCompatPadding="true"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
-    android:minHeight="60dp"
+    android:minHeight="80dp"
     android:layout_height="wrap_content">
     <TextView
         android:background="@color/transparent"
@@ -25,4 +24,4 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</android.support.v7.widget.CardView>
+</com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.CatchTouchCardView>

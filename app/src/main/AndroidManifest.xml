@@ -52,7 +52,7 @@
         <activity
             android:name=".functions.cutout.CutOutActivity"
             android:launchMode="singleTask"
-            android:theme="@style/CutoutTheme" />
+            android:theme="@style/CutoutTheme"/>
         <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity" />
         <activity android:name=".aaSource.android.support.design.widget.BottomNavigationView.BottomNavigationActivity" />
         <activity android:name=".other.valuePass.ValuePassActivity" />

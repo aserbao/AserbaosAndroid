@@ -83,6 +83,14 @@ public class LifeCycleActivity extends AppCompatActivity {
         Log.d(TAG, "finish() called");
     }
 
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Log.d(TAG, "onDetachedFromWindow: " );
+    }
+
+
+
     @OnClick({R.id.jump_life_cycle_activity, R.id.jump_life_cycle2_activity, R.id.jump_life_cycle3_activity})
     public void onViewClicked(View view) {
         Intent intent = null;

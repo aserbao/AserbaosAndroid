@@ -21,6 +21,5 @@ public class ConstantUtils {
         R.drawable.three,
         R.drawable.six,
         R.drawable.seven,
-        R.drawable.eight
     };
 }

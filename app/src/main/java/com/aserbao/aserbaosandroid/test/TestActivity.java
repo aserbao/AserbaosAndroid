@@ -40,5 +40,9 @@ public class TestActivity extends AppCompatActivity {
     private static final String TAG = "TestActivity";
 
 
-
+    @Override
+    public void onDetachedFromWindow() {
+        Log.e(TAG, "onDetachedFromWindow: " );
+        super.onDetachedFromWindow();
+    }
 }
