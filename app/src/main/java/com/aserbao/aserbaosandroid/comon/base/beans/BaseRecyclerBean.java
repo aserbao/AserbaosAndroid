@@ -34,6 +34,12 @@ public class BaseRecyclerBean implements Serializable {
         this.viewType = viewType;
     }
 
+    public BaseRecyclerBean(int imageSrc,int viewType,int tag) {
+        this.imageSrc = imageSrc;
+        this.viewType = viewType;
+        this.tag = tag;
+    }
+
     public BaseRecyclerBean(int viewType,String extra_info,int tag) {
         this.viewType = viewType;
         this.extra_info = extra_info;

@@ -81,11 +81,12 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
             .subscribeWith(new DisposableSubscriber<String>() {
                 @Override public void onStart() {
                     Log.d(TAG, "onStart() called" + Thread.currentThread());
-                    request(1);
+                    request(2);
                 }
                 @Override public void onNext(String t) {
                     Log.d(TAG, "onNext() called with: t = [" + t + "]"+ Thread.currentThread());
-                    request(1);
+//                    request(1);
+                    cancel();
                 }
                 @Override public void onError(Throwable t) {
                     Log.d(TAG, "onError() called with: t = [" + t + "]"+ Thread.currentThread());

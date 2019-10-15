@@ -49,6 +49,7 @@ public class StaticFinalValues {
     //-------------type---------------
     public static final int VIEW_HOLDER_TEXT = 100;
     public static final int VIEW_HOLDER_IMAGE_100H = 101;
+    public static final int VIEW_HOLDER_CIRCLE_IMAGE_ITEM = 1001;
     public static final int VIEW_HOLDER_CLASS = 102;
     public static final int VIEW_BLEND_MODE = 103;
 

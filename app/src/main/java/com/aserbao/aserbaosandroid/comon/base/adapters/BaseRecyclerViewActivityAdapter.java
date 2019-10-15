@@ -39,20 +39,15 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mIBaseRecyclerItemClickListener = listener;
     }
 
-
-
-
     public int mOrientation = LinearLayoutManager.VERTICAL;
     public void setmOrientation(int orientation){
         mOrientation = orientation;
     }
 
-
-
     @Override
     public int getItemViewType(int position) {
-        if (mBaseRecyclerBean != null && position < mBaseRecyclerBean.size()){
-            return mBaseRecyclerBean.get(position).getViewType();
+        if (mBaseRecyclerBean != null ){
+            return mBaseRecyclerBean.get(position % mBaseRecyclerBean.size()).getViewType();
         }
         return StaticFinalValues.VIEW_HOLDER_TEXT;
     }
@@ -70,6 +65,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
                     view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_horizontal_image_item, parent, false);
                 }
                 return new ImageViewHolder(view);
+            case StaticFinalValues.VIEW_HOLDER_CIRCLE_IMAGE_ITEM:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_circle_50_50_image_item, parent, false);
+                return new ImageViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_CLASS:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);
                 return new ClassViewHolder(view);
@@ -82,7 +80,7 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
+        final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position % mBaseRecyclerBean.size());
         if (holder instanceof TextViewHolder) {
             ((TextViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
         }else if (holder instanceof ImageViewHolder){
