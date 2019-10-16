@@ -9,6 +9,8 @@ public class StaticFinalValues {
     public static final String VIDEO_URL = "video_url";
     public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
     public static final String STORAGE_TEMP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao";
+    public static final String STORAGE_ZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/zip";
+    public static final String STORAGE_UNZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/unzip";
     public static final String STORAGE_TEMP_APK_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.apk";
 
     //=================================Handler
