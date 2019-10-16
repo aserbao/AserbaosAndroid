@@ -10,12 +10,15 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
-import com.leo618.zip.IZipCallback;
-import com.leo618.zip.ZipManager;
+//import com.leo618.zip.IZipCallback;
+//import com.leo618.zip.ZipManager;
 
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class AboutZipActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "AboutZipActivity";
 
@@ -29,7 +32,7 @@ public class AboutZipActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick) {
-        File file = new File(StaticFinalValues.STORAGE_UNZIP_FILE);
+        /*File file = new File(StaticFinalValues.STORAGE_UNZIP_FILE);
         File zipFile = new File(StaticFinalValues.STORAGE_ZIP_FILE);
         if (!file.exists()) file.mkdir();
         if (!zipFile.exists()) zipFile.mkdir();
@@ -76,6 +79,6 @@ public class AboutZipActivity extends BaseRecyclerViewActivity {
                     }
                 });
                 break;
-        }
+        }*/
     }
 }

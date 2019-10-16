@@ -14,6 +14,7 @@ import com.aserbao.aserbaosandroid.functions.jumpSystemSetting.JumpSystemSetting
 import com.aserbao.aserbaosandroid.functions.launch.LaunchActivity;
 import com.aserbao.aserbaosandroid.functions.listener.ListenerActivity;
 import com.aserbao.aserbaosandroid.functions.notifacations.networks.NetWorkNotification;
+import com.aserbao.aserbaosandroid.functions.regex.RegexActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 
@@ -34,6 +35,7 @@ public class FunctionsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("网络状态监听", NetWorkNotification.class));
         mClassBeen.add(new ClassBean("关于Bitmap", AboutBitmapActivity.class));
         mClassBeen.add(new ClassBean("压缩解压功能", CompressionActivity.class));
+        mClassBeen.add(new ClassBean("正则表达式", RegexActivity.class));
 
     }
 
