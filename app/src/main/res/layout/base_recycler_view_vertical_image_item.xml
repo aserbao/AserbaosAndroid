@@ -12,8 +12,8 @@
     android:layout_margin="8dp"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
-    android:layout_height="100dp">
-    <ImageView
+    android:layout_height="50dp">
+    <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
         android:foreground="?attr/selectableItemBackground"
         android:scaleType="centerCrop"
         android:id="@+id/image_view_item"

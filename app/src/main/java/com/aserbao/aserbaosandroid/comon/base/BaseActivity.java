@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.comon.base;
 
+import android.Manifest;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -32,11 +34,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initGetData();
         initView();
-        /*
         // 请求权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new  String[]{Manifest.permission.CHANGE_CONFIGURATION,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},0);
-        }*/
+        }
     }
 
 

@@ -9,6 +9,8 @@ public class StaticFinalValues {
     public static final String VIDEO_URL = "video_url";
     public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
     public static final String STORAGE_TEMP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao";
+    public static final String STORAGE_ZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/zip";
+    public static final String STORAGE_UNZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/unzip";
     public static final String STORAGE_TEMP_APK_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.apk";
 
     //=================================Handler
@@ -49,6 +51,7 @@ public class StaticFinalValues {
     //-------------type---------------
     public static final int VIEW_HOLDER_TEXT = 100;
     public static final int VIEW_HOLDER_IMAGE_100H = 101;
+    public static final int VIEW_HOLDER_CIRCLE_IMAGE_ITEM = 1001;
     public static final int VIEW_HOLDER_CLASS = 102;
     public static final int VIEW_BLEND_MODE = 103;
 

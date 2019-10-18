@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerVi
 import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.AnimatorRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.SmoothActivitiy;
 
@@ -25,6 +26,7 @@ public class RecyclerViewActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("RecyclerView滚动冲突处理", RecyclerViewEventActivity.class));
         mClassBeen.add(new ClassBean("RecyclerView嵌套冲突处理", DoubleRecyclerNestActivity.class));
         mClassBeen.add(new ClassBean("RecyclerView动画", AnimatorRecyclerViewActivity.class));
+        mClassBeen.add(new ClassBean("RecyclerView选择器", RecyclerViewPickActivity.class));
 
     }
 }

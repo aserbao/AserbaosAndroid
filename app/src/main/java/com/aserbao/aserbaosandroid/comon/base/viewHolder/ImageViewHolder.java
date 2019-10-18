@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.comon.base.viewHolder;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,16 +31,24 @@ public class ImageViewHolder extends BaseClickViewHolder {
             String name = classBean.getName();
             if (tag >= 0) {
                 itemView.setTag(tag);
-                name = name + " "+ tag;
+                if (TextUtils.isEmpty(name)){
+                    name = String.valueOf(tag);
+                }else {
+                    name = name + " " + tag;
+                }
             }else{
-                name = name + " "+ position;
+                if (TextUtils.isEmpty(name)){
+                    name = String.valueOf(tag);
+                }else {
+                    name = name + " " + position;
+                }
             }
             mCommonTextView.setText(name);
 
             mImageViewItem.setImageResource(classBean.getImageSrc());
 
             int adapterPosition = getAdapterPosition();
-            mImageViewItem.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[adapterPosition]));
+            mImageViewItem.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[adapterPosition % ASourceUtil.iamgeUrl.length ]));
 
 
         }

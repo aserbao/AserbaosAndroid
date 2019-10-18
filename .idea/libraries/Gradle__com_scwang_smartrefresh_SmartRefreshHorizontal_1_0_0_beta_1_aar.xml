@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smartrefresh:SmartRefreshHorizontal:1.0.0-beta-1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHorizontal-1.0.0-beta-1.aar/765833f03573bc657ec6f9de6c6af98e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHorizontal-1.0.0-beta-1.aar/765833f03573bc657ec6f9de6c6af98e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHorizontal-1.0.0-beta-1.aar/3c2fb3a2cb5090db3abf5d1e9d90afed/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHorizontal-1.0.0-beta-1.aar/3c2fb3a2cb5090db3abf5d1e9d90afed/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
