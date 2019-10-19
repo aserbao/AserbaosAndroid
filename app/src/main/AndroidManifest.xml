@@ -50,10 +50,12 @@
         android:theme="@style/AFullscreenTheme">
         <activity android:name=".functions.events.demo.rvAndButton.RVAndButtonEventActivity"></activity>
         <activity android:name=".functions.regex.RegexActivity" />
+        <activity android:name=".aaSource.android.os.handler.HandlerActivity"></activity>
+        <activity android:name=".aaSource.android.os.AndroidOSActivity" />
+        <activity android:name=".aaThird.rxJava3.RxJavaActivity" />
         <activity android:name=".functions.aboutCompression.CompressionActivity" />
         <activity android:name=".functions.aboutCompression.AboutZipActivity" />
         <activity android:name=".ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity" />
-        <activity android:name=".aaThird.rxJava3.RxJavaActivity" />
         <activity
             android:name=".functions.cutout.CutOutActivity"
             android:launchMode="singleTask"
