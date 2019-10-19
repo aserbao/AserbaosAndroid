@@ -1,8 +1,9 @@
-package com.aserbao.aserbaosandroid.comon.base;
+package com.aserbao.aserbaosandroid.comon.base.extend;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
@@ -20,7 +21,7 @@ import java.util.List;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.comon.base
  */
-public abstract class BaseAddFrameLayoutActivity extends BaseRecyclerViewActivity{
+public abstract class BaseAddFrameLayoutActivity extends BaseRecyclerViewActivity {
 
     private LinearLayoutManager linearLayoutManager;
     private BaseRecyclerViewActivityAdapter baseRecyclerViewActivityAdapter;

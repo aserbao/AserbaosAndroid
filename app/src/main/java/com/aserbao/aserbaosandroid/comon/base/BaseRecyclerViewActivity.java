@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -146,6 +147,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
+    }
+
+    public View addLayoutToFrameLayout(int resLayout){
+        View view = LayoutInflater.from(mContext).inflate(resLayout, null);
+        addViewToFrameLayoutFullScreen(view);
+        return view;
     }
 
     public void addViewToFrameLayoutFullScreen(View view){

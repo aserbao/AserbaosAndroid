@@ -1,10 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.events.demo.rvAndButton;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -12,20 +9,10 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseAddFrameLayoutActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.extend.BaseAddFrameLayoutActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.PickerRecyclerView;
-
-import org.jcodec.common.model.Frame;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Button覆盖在RecyclerView上面，当在Button上执行点击常按操作时，事件交给Button处理，当Button滑动的时候，事件交给RecyclerView处理，当Button常按再滑动时，事件交给Button自己处理。
