@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseAddFrameLayoutActivity;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -53,8 +54,9 @@ public class RVAndButtonEventActivity extends BaseAddFrameLayoutActivity {
                 mEventRvPickerRv = ((PickerRecyclerView) addRootView.findViewById(R.id.event_rv_picker_rv));
                 mEventRvCrFrameLayout = ((FrameLayout) addRootView.findViewById(R.id.event_rv_cr_frame_layout));
                 mEventRvDispatchTeFrameLayout = ((ADispatchTouchEventFragment) addRootView.findViewById(R.id.event_rv_dispatch_te_fragment));
+                mEventRvPickerRv.setPadding(AserbaoApplication.screenWidth / 2, 0, AserbaoApplication.screenWidth / 2, 0);
                 mEventRvPickerRv.setNeedLoop(false);
-                mEventRvPickerRv.setNeedCenterForce(true);
+//                mEventRvPickerRv.setNeedCenterForce(true);
                 initRecyclerView(mEventRvPickerRv,StaticFinalValues.VIEW_HOLDER_CIRCLE_IMAGE_ITEM,null);
                 init();
                 break;

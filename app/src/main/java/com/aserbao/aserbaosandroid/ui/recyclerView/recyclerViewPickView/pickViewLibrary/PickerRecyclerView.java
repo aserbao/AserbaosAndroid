@@ -90,7 +90,7 @@ public class PickerRecyclerView extends RecyclerView implements View.OnClickList
             if (mCurrentCenterChildView == null) return;
             smoothScrollToView(mCurrentCenterChildView);
         } else if (!mNeedLoop && mNeedCenterForce) {
-            LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
+            /*LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
             if (layoutManager.canScrollHorizontally())
                 setPadding(getWidth() / 2, 0, getWidth() / 2, 0);
             else if (layoutManager.canScrollVertically())
@@ -99,7 +99,7 @@ public class PickerRecyclerView extends RecyclerView implements View.OnClickList
             setClipChildren(false);
             mCurrentCenterChildView = findViewAtCenter();
             if (mCurrentCenterChildView == null) return;
-            smoothScrollToView(mCurrentCenterChildView);
+            smoothScrollToView(mCurrentCenterChildView);*/
         } else {
             setClipToPadding(false);
             setClipChildren(false);
