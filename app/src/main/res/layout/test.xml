@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:soundEffectsEnabled="false">
     <ImageView
-            android:src="@drawable/ic_next_shadow"
+            android:src="@drawable/mm_1"
             android:scaleType="centerCrop"
             android:layout_marginTop="100dp"
             android:layout_width="50dp"

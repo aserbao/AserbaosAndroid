@@ -59,7 +59,21 @@ public class PickerRecyclerView extends RecyclerView implements View.OnClickList
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
+    boolean mIsScrollable = true;
 
+    public void setmIsScrollable(boolean mIsScrollable) {
+        this.mIsScrollable = mIsScrollable;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "dispatchTouchEvent: " );
+        if (mIsScrollable){
+            return super.dispatchTouchEvent(ev);
+        }else{
+            return false;
+        }
+    }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -111,7 +125,7 @@ public class PickerRecyclerView extends RecyclerView implements View.OnClickList
                     v.setTag(R.string.tag_is_center, true);
                 else
                     v.setTag(R.string.tag_is_center, false);
-
+                v.setOnClickListener(this);
                 mViewMode.applyToView(v, this);
             }
         }
@@ -219,6 +233,7 @@ public class PickerRecyclerView extends RecyclerView implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        smoothScrollToView(v);
         if (mCenterItemClickListener != null)
             mCenterItemClickListener.onCenterItemClick(v);
     }

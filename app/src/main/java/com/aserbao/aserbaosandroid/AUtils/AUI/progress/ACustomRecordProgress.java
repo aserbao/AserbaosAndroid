@@ -4,24 +4,23 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.functions.events.demo.rvAndButton.ADispatchTouchEventFragment;
 
 import java.lang.ref.WeakReference;
 
 /**
- * 主要功能:
+ * 主要功能: 简单录制功能
  * author aserbao
  * date : On 2018/9/13
  * email: this is empty email
@@ -37,6 +36,8 @@ public class ACustomRecordProgress extends View {
     private boolean mIsRecording = false;
     private long mStartTime = 0;
     private static final String TAG = "ACustomRecordProgress";
+    private float mDownX,mDownY;
+    private long mDownStartTime;
 
     public ACustomRecordProgress(Context context) {
         this(context,null);
@@ -49,6 +50,30 @@ public class ACustomRecordProgress extends View {
     public ACustomRecordProgress(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initData();
+    }
+
+    ADispatchTouchEventFragment mEventRvDispatchTeFrameLayout;
+
+    public void setmEventRvDispatchTeFrameLayout(ADispatchTouchEventFragment mEventRvDispatchTeFrameLayout) {
+        this.mEventRvDispatchTeFrameLayout = mEventRvDispatchTeFrameLayout;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.e(TAG, "dispatchTouchEvent: " + event.getAction());
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                if (mEventRvDispatchTeFrameLayout != null) {
+                    mEventRvDispatchTeFrameLayout.setmIsInsideView(true);
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                break;
+        }
+        return super.dispatchTouchEvent(event);
     }
 
     private void initData() {
@@ -65,7 +90,7 @@ public class ACustomRecordProgress extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Rect src = new Rect(0,0,mBitmap.getWidth(),mBitmap.getHeight());
-        int imagePadding = 0;
+        int imagePadding = 48;
         // 指定图片在屏幕上显示的区域
         if(mIsRecording){
             long timeInteral = System.currentTimeMillis() - mStartTime;

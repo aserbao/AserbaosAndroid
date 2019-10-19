@@ -5,6 +5,8 @@
     android:foreground="?attr/selectableItemBackground"
     android:background="@color/transparent"
     android:elevation="0dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:layout_width="50dp"
     android:layout_height="50dp">
     <com.aserbao.aserbaosandroid.ui.customView.CircleImageView

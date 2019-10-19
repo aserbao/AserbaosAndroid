@@ -51,12 +51,12 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
     public void itemClickBack(View view, int position, boolean isLongClick) {
         switch (position){
             case 100:
-                mIsNotLoop = true;
+                mIsNotLoop = false;
                 if (mLayoutManager == null)
                     Toast.makeText(mContext, "请先选择一个Mode", Toast.LENGTH_SHORT).show();
                 return;
             case 101:
-                mIsNotLoop = false;
+                mIsNotLoop = true;
                 if (mLayoutManager == null)
                     Toast.makeText(mContext, "请先选择一个Mode", Toast.LENGTH_SHORT).show();
                 return;
