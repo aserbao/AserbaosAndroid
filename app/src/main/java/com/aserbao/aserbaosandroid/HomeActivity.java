@@ -1,12 +1,14 @@
 package com.aserbao.aserbaosandroid;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.os.handler.download.HandlerCommunicationActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
@@ -22,7 +24,6 @@ import com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
-import com.aserbao.aserbaosandroid.system.SystemActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
@@ -62,11 +63,10 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("View", UIActivity.class));
         mClassBeen.add(new ClassBean("功能", FunctionsActivity.class));
         mClassBeen.add(new ClassBean("常用数据", AUtilsRealizeActivity.class));
-        mClassBeen.add(new ClassBean("系统类", SystemActivity.class));
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", RVAndButtonEventActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", HandlerCommunicationActivity.class));
     }
 
     private void initView() {

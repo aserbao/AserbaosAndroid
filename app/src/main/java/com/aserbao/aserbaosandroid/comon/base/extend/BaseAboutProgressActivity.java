@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 /**
  * 功能:
@@ -18,12 +17,15 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.comon.base.extend
  */
-public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity {
-    protected TextView mShowProgress;
-    protected ProgressBar mShowPb;
+public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity implements View.OnClickListener{
+    public static final int MAX_PROGRESS = 100;
+    protected int curProgress =0;
+    protected TextView mShowProgressTv;
+    protected ProgressBar mShowProgress;
     protected Button mProgressStartBtn;
     protected Button mProgressStopBtn;
     protected Button mProgressResetBtn;
+
 
     @CallSuper
     @Override
@@ -32,7 +34,19 @@ public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity
         mProgressStartBtn = rootView.findViewById(R.id.progress_start_btn);
         mProgressStopBtn = rootView.findViewById(R.id.progress_stop_btn);
         mProgressResetBtn = rootView.findViewById(R.id.progress_reset_btn);
-        mShowProgress = rootView.findViewById(R.id.show_progress);
-        mShowPb = rootView.findViewById(R.id.show_pb);
+        mShowProgressTv = rootView.findViewById(R.id.show_progress_tv);
+        mShowProgress = rootView.findViewById(R.id.show_pb);
+        mProgressStartBtn.setOnClickListener(this);
+        mProgressStopBtn.setOnClickListener(this);
+        mProgressResetBtn.setOnClickListener(this);
+    }
+
+    public void updateProgress(int progress){
+        mShowProgress.setProgress(progress);
+        String result = "下载进度: "+progress + "%";
+        if (progress == 100){
+            result = "下载完成";
+        }
+        mShowProgressTv.setText(result);
     }
 }

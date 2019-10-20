@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white50"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -32,8 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/show_progress"
-            android:text="20%"
+            android:id="@+id/show_progress_tv"
+            android:text="请点击开始下载"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:layout_gravity="center"
@@ -44,7 +45,6 @@
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_margin="22dp"
             android:max="100"
-            android:progress="50"
             android:progressDrawable="@drawable/progress_horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>

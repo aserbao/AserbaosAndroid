@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/handler_fl"
     android:orientation="vertical"
-    tools:context="com.aserbao.aserbaosandroid.system.handlers.principle_for_handler.PrincipleHanlderActivity">
+    tools:context="com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity">
     <!--<com.airbnb.lottie.LottieAnimationView-->
         <!--android:background="@color/black"-->
         <!--android:id="@+id/animation_view"-->
