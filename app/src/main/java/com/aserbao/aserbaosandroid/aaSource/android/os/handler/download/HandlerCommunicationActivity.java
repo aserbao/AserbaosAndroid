@@ -29,12 +29,13 @@ public class HandlerCommunicationActivity extends BaseAboutProgressActivity {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.progress_start_btn:
+                if (curProgress == MAX_PROGRESS) curProgress = 0;
                 mThread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         while (curProgress < MAX_PROGRESS && !mIsPause) {
                             try {
-                                Thread.sleep(100);
+                                Thread.sleep(15);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
