@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.os.handler.HandlerActivity"></activity>
+        <activity android:name=".aaThird.rxJava3.download.RxJavaDownLoadActivity"></activity>
+        <activity android:name=".aaSource.android.os.handler.HandlerActivity" />
         <activity android:name=".functions.events.demo.rvAndButton.RVAndButtonEventActivity" />
         <activity android:name=".functions.regex.RegexActivity" />
         <activity android:name=".aaSource.android.os.handler.download.HandlerCommunicationActivity" />

@@ -15,7 +15,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"/>
         <Button
-            android:id="@+id/progress_stop_btn"
+            android:id="@+id/progress_pause_btn"
             android:text="暂停下载"
             android:layout_weight="1"
             android:layout_width="100dp"

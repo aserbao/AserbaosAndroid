@@ -32,7 +32,7 @@ public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity
     public void initGetData() {
         View rootView = addLayoutToFrameLayout(R.layout.android_os_handler_progress);
         mProgressStartBtn = rootView.findViewById(R.id.progress_start_btn);
-        mProgressStopBtn = rootView.findViewById(R.id.progress_stop_btn);
+        mProgressStopBtn = rootView.findViewById(R.id.progress_pause_btn);
         mProgressResetBtn = rootView.findViewById(R.id.progress_reset_btn);
         mShowProgressTv = rootView.findViewById(R.id.show_progress_tv);
         mShowProgress = rootView.findViewById(R.id.show_pb);
@@ -40,6 +40,30 @@ public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity
         mProgressStopBtn.setOnClickListener(this);
         mProgressResetBtn.setOnClickListener(this);
     }
+
+    @CallSuper
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick) {}
+
+    @CallSuper
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.progress_start_btn:
+                if (curProgress == MAX_PROGRESS) curProgress = 0;
+                startDownload();
+                break;
+            case R.id.progress_pause_btn:
+                pauseDownload();
+                break;
+            case R.id.progress_reset_btn:
+                curProgress = 0;
+                break;
+        }
+    }
+
+    protected abstract void startDownload();
+    protected abstract void pauseDownload();
 
     public void updateProgress(int progress){
         mShowProgress.setProgress(progress);

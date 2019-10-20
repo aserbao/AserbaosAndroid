@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -152,6 +151,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public View addLayoutToFrameLayout(int resLayout){
         View view = LayoutInflater.from(mContext).inflate(resLayout, null);
         addViewToFrameLayoutFullScreen(view);
+        mNeedDirectBack = true;
         return view;
     }
 
@@ -171,9 +171,11 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseRecyclerEmptyContainer.addView(view);
     }
 
+
+    boolean mNeedDirectBack = false;
     @Override
     public void onBackPressed() {
-        if (mBaseRecyclerEmptyContainer.getChildCount() > 0){
+        if (mBaseRecyclerEmptyContainer.getChildCount() > 0 && !mNeedDirectBack){
             mBaseRecyclerEmptyContainer.removeAllViews();
             return;
         }

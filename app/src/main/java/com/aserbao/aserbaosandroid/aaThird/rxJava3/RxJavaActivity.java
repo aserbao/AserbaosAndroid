@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird.rxJava3;
 import android.util.Log;
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
@@ -25,6 +26,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava实现一个模拟下载功能", RxJavaDownLoadActivity.class,10));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Hello World",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable的使用讲解",100));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava使用三步骤",1));
