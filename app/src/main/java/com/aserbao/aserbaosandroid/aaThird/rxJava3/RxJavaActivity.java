@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird.rxJava3;
 import android.util.Log;
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.AndroidScheduler;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
@@ -14,9 +15,13 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
 
 public class RxJavaActivity extends BaseRecyclerViewActivity {
@@ -29,6 +34,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava实现一个模拟下载功能", RxJavaDownLoadActivity.class,10));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Hello World",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable的使用讲解",100));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("Observable的使用讲解",101));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava使用三步骤",1));
     }
 
@@ -37,6 +43,9 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
         switch (position){
             case 100:
                 testFlowable();
+                break;
+            case 101:
+                testObservable();
                 break;
             case 0:
                 testJust();
@@ -64,6 +73,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
                 break;
         }
     }
+
 
     public void testJust() {
         Flowable.just("Hello world").subscribe((Consumer<? super String>) System.out::println);
@@ -108,6 +118,89 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
         d.dispose();*/
     }
 
+    public void testObservable(){
+        Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                Log.d(TAG, "subscribe() called with: emitter = [" + emitter + "] ThreadName =" + Thread.currentThread());
+                emitter.onNext(10);
+            }
+        });
+        Observer<Integer> observer = new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "onSubscribe() called with: d = [" + d + "] ThreadName =" + Thread.currentThread());
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "onNext() called with: integer = [" + integer + "] ThreadName =" + Thread.currentThread());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError() called with: e = [" + e + "] ThreadName =" + Thread.currentThread());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete() called ThreadName =" + Thread.currentThread());
+            }
+        };
+
+        Subscriber<Integer> subscriber = new Subscriber<Integer>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+                Log.d(TAG, "onSubscribe() called with: s = [" + s + "]");
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "onNext() called with: integer = [" + integer + "]ThreadName =" + Thread.currentThread());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError() called with: e = [" + e + "]ThreadName =" + Thread.currentThread());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete() calledThreadName =" + Thread.currentThread());
+            }
+        };
+        Log.e(TAG, "testObservable: 开始建立订阅关系"  );
+        observable
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidScheduler.mainThread())
+            .subscribe(observer);
+
+        /*Observable.just(1,2,3,4,5)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidScheduler.mainThread())
+            .subscribe(new Observer<Integer>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+                    Log.d(TAG, "onSubscribe() called with: d = [" + d + "] ThreadName =" + Thread.currentThread());
+                }
+
+                @Override
+                public void onNext(Integer integer) {
+                    Log.d(TAG, "onNext() called with: integer = [" + integer + "]ThreadName =" + Thread.currentThread());
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.d(TAG, "onError() called with: e = [" + e + "]ThreadName =" + Thread.currentThread());
+                }
+
+                @Override
+                public void onComplete() {
+                    Log.d(TAG, "onComplete() calledThreadName =" + Thread.currentThread());
+                }
+            });*/
+
+    }
 
     Observer<String> mObserver = new Observer<String>() {
         @Override

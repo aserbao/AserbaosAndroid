@@ -7,6 +7,9 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
 import com.aserbao.aserbaosandroid.comon.base.extend.BaseAboutProgressActivity;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+
 public class RxJavaDownLoadActivity extends BaseAboutProgressActivity {
 
 
