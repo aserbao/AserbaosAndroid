@@ -14,7 +14,6 @@ import io.reactivex.functions.Supplier;
 
 public class RxJavaDownLoadActivity extends BaseAboutProgressActivity {
     private static final String TAG = "RxJavaDownLoadActivity";
-
     @Override
     protected void startDownload() {
         Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
