@@ -3,7 +3,6 @@ package com.aserbao.aserbaosandroid.functions;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.AboutBitmapActivity;
-import com.aserbao.aserbaosandroid.functions.aboutCompression.CompressionActivity;
 import com.aserbao.aserbaosandroid.functions.database.DataBaseActivity;
 import com.aserbao.aserbaosandroid.functions.events.EventDealActivity;
 import com.aserbao.aserbaosandroid.functions.hobbies_and_interests.HobbiesAndInterestsActivity;
@@ -34,7 +33,6 @@ public class FunctionsActivity extends BaseActivity {
         mClassBeen.add(new ClassBean("Launch", LaunchActivity.class));
         mClassBeen.add(new ClassBean("网络状态监听", NetWorkNotification.class));
         mClassBeen.add(new ClassBean("关于Bitmap", AboutBitmapActivity.class));
-        mClassBeen.add(new ClassBean("压缩解压功能", CompressionActivity.class));
         mClassBeen.add(new ClassBean("正则表达式", RegexActivity.class));
 
     }

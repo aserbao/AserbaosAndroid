@@ -11,6 +11,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.download.HandlerCommunicationActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
+import com.aserbao.aserbaosandroid.aaThird.zt_zip.ZtZipActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -19,7 +20,6 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.functions.aboutCompression.AboutZipActivity;
 import com.aserbao.aserbaosandroid.functions.events.demo.rvAndButton.RVAndButtonEventActivity;
 import com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", RxJavaActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", ZtZipActivity.class));
     }
 
     private void initView() {

@@ -8,8 +8,6 @@ import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivi
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +21,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
+import rx.Subscriber;
+import rx.Subscription;
 
 public class RxJavaActivity extends BaseRecyclerViewActivity {
 
@@ -76,7 +76,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
 
 
     public void testJust() {
-        Flowable.just("Hello world").subscribe((Consumer<? super String>) System.out::println);
+//        Flowable.just("Hello world").subscribe((Consumer<? super String>) System.out::println);
         //不支持lamdba
         /*Flowable.just("Hello world")
             .subscribe(new Consumer<String>() {
@@ -88,9 +88,9 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
     }
 
     public void testFlowable(){
-        Disposable d = Flowable.just("Hello world!")
-            .delay(1, TimeUnit.SECONDS)
-            .subscribeWith(new DisposableSubscriber<String>() {
+       /* Disposable d = Flowable.just("Hello world!")
+            .delay(1, TimeUnit.SECONDS);*/
+            /*.subscribeWith(new DisposableSubscriber<String>() {
                 @Override public void onStart() {
                     Log.d(TAG, "onStart() called" + Thread.currentThread());
                     request(2);
@@ -107,7 +107,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
                 @Override public void onComplete() {
                     Log.d(TAG, "onComplete() called"+ Thread.currentThread());
                 }
-            });
+            });*/
 
         /*try {
             Thread.sleep(500);
@@ -148,27 +148,6 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
             }
         };
 
-        Subscriber<Integer> subscriber = new Subscriber<Integer>() {
-            @Override
-            public void onSubscribe(Subscription s) {
-                Log.d(TAG, "onSubscribe() called with: s = [" + s + "]");
-            }
-
-            @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext() called with: integer = [" + integer + "]ThreadName =" + Thread.currentThread());
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.d(TAG, "onError() called with: e = [" + e + "]ThreadName =" + Thread.currentThread());
-            }
-
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete() calledThreadName =" + Thread.currentThread());
-            }
-        };
         Log.e(TAG, "testObservable: 开始建立订阅关系"  );
         observable
             .subscribeOn(Schedulers.io())
@@ -223,27 +202,7 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
             Log.d(TAG, "onComplete() called");
         }
     };
-    Subscriber<String> mSubscriber = new Subscriber<String>() {
-        @Override
-        public void onSubscribe(Subscription s) {
-            Log.d(TAG, "onSubscribe() called with: s = [" + s + "]");
-        }
 
-        @Override
-        public void onNext(String s) {
-            Log.d(TAG, "onNext() called with: s = [" + s + "]");
-        }
-
-        @Override
-        public void onError(Throwable t) {
-            Log.d(TAG, "onError() called with: t = [" + t + "]");
-        }
-
-        @Override
-        public void onComplete() {
-            Log.d(TAG, "onComplete() called");
-        }
-    };
 
 
 }

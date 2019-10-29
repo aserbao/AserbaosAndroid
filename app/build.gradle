@@ -115,7 +115,9 @@ dependencies {
 
     // 异步处理
     implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC0@jar"
-    implementation "org.reactivestreams:reactive-streams:1.0.2"
+    implementation "io.reactivex:rxandroid:1.0.1"
+    implementation 'org.zeroturnaround:zt-zip:1.13'
+//    implementation "org.reactivestreams:reactive-streams:1.0.2"
 
 
     // 压缩解压 https://github.com/Leo0618/AndroidZip
