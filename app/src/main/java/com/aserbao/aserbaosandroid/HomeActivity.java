@@ -9,7 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.download.HandlerCommunicationActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
+import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
 import com.aserbao.aserbaosandroid.aaThird.zt_zip.ZtZipActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
@@ -67,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", RxJavaDownLoadActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", RxJava3ApiActivity.class));
     }
 
     private void initView() {
