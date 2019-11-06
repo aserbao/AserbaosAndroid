@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
@@ -67,31 +70,89 @@ public class SlideItemAnimationActivity extends AppCompatActivity implements Sli
     private View mAnimationItemView;
 
     private static final String TAG = "SlideItemAnimationActiv";
+
+    @Override
+    public void onClickOrLongPress(boolean isLongPress, Bundle bundle) {
+
+    }
+    public static final int duration = 200;
+    private final int screenWidth = AserbaoApplication.screenWidth;
+    private final double limitWidth = AserbaoApplication.screenWidth/3;
+
     @Override
     public void onScollView(View view, float scrollX,int  action,int comeFrom) {
         switch (comeFrom){
-            case CatchTouchFrameLayout.CATCH_TOUCH_FRAME_LAYOUT:
-                int screenWidth = AserbaoApplication.screenWidth;
-                if (mAnimationItemView.getX() < - screenWidth && scrollX < 0){
-                    Log.e(TAG, "onScollView: 条件成立了" );
-                    return;
-                }
-                scrollX = scrollX - screenWidth;
-                break;
             case CatchTouchCardView.CATCH_TOUCH_CARF_VIEW:
-                if (MotionEvent.ACTION_DOWN == action) {
-                    replaceFragment();
-                    mAnimationItemView = view;
+                rvItemScroller(view, scrollX, action);
+                break;
+            case CatchTouchFrameLayout.CATCH_TOUCH_FRAME_LAYOUT:
+                if (scrollX < 0){
                     return;
                 }
-                if (mAnimationItemView.getX() > 0 && scrollX > 0) return;
+                switch (action){
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        if (scrollX > limitWidth) {//关闭
+                            ObjectAnimator translationX = ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", scrollX - screenWidth, 0);
+                            translationX.setInterpolator(new AccelerateDecelerateInterpolator());
+                            translationX.addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                }
+                            });
+                            translationX.setDuration(duration).start();
+                        }else{
+                            ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", scrollX- screenWidth,-screenWidth).setDuration(duration).start();
+                        }
+                        break;
+                    default:
+                        scrollX = scrollX - screenWidth;
+                        if (mAnimationItemView != null && mSideAnimationFl != null) {
+                            ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", 0, scrollX).setDuration(0).start();
+//                            ObjectAnimator.ofFloat(mAnimationItemView, "translationX", 0, scrollX).setDuration(0).start();
+                        }
+                }
                 break;
         }
-        ObjectAnimator.ofFloat(mSideAnimationFl,"translationX",0,scrollX).setDuration(0).start();
-        ObjectAnimator.ofFloat(mAnimationItemView,"translationX",0,scrollX).setDuration(0).start();
-        Log.d(TAG, "onScollView() called with: view = [" + view + "], scrollX = [" + scrollX + "], action = [" + action + "], comeFrom = [" + comeFrom + "]\n"
-            + mSideAnimationFl.getX() + " mAnimationItemView .x = " +  mAnimationItemView.getX());
+        Log.e(TAG, "onScollView: action = " + action + " scrollX = " + scrollX );
     }
+
+    private void rvItemScroller(View view, float scrollX, int action) {
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                slideAnimationFragment = null;
+                mAnimationItemView = view;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (slideAnimationFragment == null) {
+                    replaceFragment();
+                }
+                if (mAnimationItemView != null && slideAnimationFragment != null) {
+                    ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", 0, scrollX).setDuration(0).start();
+//                            ObjectAnimator.ofFloat(mAnimationItemView, "translationX", 0, scrollX).setDuration(0).start();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                if (Math.abs(scrollX) > limitWidth) { //打开
+                    ObjectAnimator translationX = ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", scrollX, -screenWidth);
+                    translationX.setInterpolator(new AccelerateDecelerateInterpolator());
+                    translationX.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                        }
+                    });
+                    translationX.setDuration(duration).start();
+                } else {
+                    ObjectAnimator.ofFloat(mSideAnimationFl, "translationX", scrollX, 0).setDuration(duration).start();
+                }
+                break;
+
+        }
+    }
+
 
 
     public void replaceFragment(){

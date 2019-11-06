@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.rxJava3.api.RxJava3ApiActivity"></activity>
+        <activity android:name=".ui.recyclerView.animator.changeItemAnimator.ChangeItemAnimatorActivity"></activity>
+        <activity android:name=".aaThird.rxJava3.api.RxJava3ApiActivity" />
         <activity android:name=".aaThird.zt_zip.ZtZipActivity" />
         <activity android:name=".aaThird.rxJava3.download.RxJavaDownLoadActivity" />
         <activity android:name=".aaSource.android.os.handler.HandlerActivity" />
@@ -134,7 +135,7 @@
             -->
         </activity>
         <activity android:name=".aaSource.android.accessibilityservice.AccessibilityServiceActivity" />
-        <activity android:name=".aaThird.dagger2.MainActivity" />
+        <activity android:name=".aaSource.android.app.Activity.animation.sideAnimation.SlideItemAnimationActivity" />
         <activity android:name=".ui.buttons.ButtonActivity" />
         <activity android:name=".aaThird.dagger2.DaggerActivity" />
         <activity android:name=".aaThird.ThirdActivity" />

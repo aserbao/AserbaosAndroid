@@ -84,6 +84,11 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
 
 
     @Override
+    public void onClickOrLongPress(boolean isLongPress, Bundle bundle) {
+
+    }
+
+    @Override
     public void onScollView(View view, float scrollX, int action, int comeFrom) {
         if (mIItemOnTouchCallBackListener != null) {
             mIItemOnTouchCallBackListener.onScollView(view, scrollX, action, comeFrom);

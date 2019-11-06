@@ -59,7 +59,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     @BindView(R.id.canvas_point_view)
     protected CanvasPointView mCanvasPointView;
-    private LinearLayoutManager mLinearLayoutManager;
+    protected LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.VERTICAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
@@ -80,7 +80,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public void setTranslations() {
     }
 
-    private int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
+    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
 
     public void setMode(int mode) {
         mMode = mode;

@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerViewEventActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.AnimatorRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.animator.changeItemAnimator.ChangeItemAnimatorActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity;
@@ -18,6 +19,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
     public void initGetData() {
         mClassBeen.add(new ClassBean("Item侧滑删除", MoveToDeleteActivity.class));
+        mClassBeen.add(new ClassBean("交换Item位置动画", ChangeItemAnimatorActivity.class));
         mClassBeen.add(new ClassBean("RecyclerView Item滑动动画处理", SlideItemAnimationActivity.class));
         mClassBeen.add(new ClassBean("打造公用的Adapter", MoveToDeleteActivity.class));
         mClassBeen.add(new ClassBean("左右滑动的RecyclerView", ScaleSmoothSlideActivity.class));
