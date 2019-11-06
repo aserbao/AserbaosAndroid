@@ -1,7 +1,5 @@
-package com.aserbao.aserbaosandroid.ui.recyclerView.animator.changeItemAnimator;
+package com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
@@ -23,7 +20,7 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
         }
     }

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.recyclerView.animator.changeItemAnimator;
+package com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator;
 
 import android.app.Activity;
 import android.content.Context;

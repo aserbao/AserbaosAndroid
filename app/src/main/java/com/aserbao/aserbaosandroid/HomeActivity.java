@@ -1,19 +1,12 @@
 package com.aserbao.aserbaosandroid;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.os.handler.download.HandlerCommunicationActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
-import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
-import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
-import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
-import com.aserbao.aserbaosandroid.aaThird.zt_zip.ZtZipActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -22,16 +15,12 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.functions.events.demo.rvAndButton.RVAndButtonEventActivity;
-import com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.animator.changeItemAnimator.ChangeItemAnimatorActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.PickerRecyclerView;
+import com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator.ChangeItemAnimatorActivity;
 
 import java.util.ArrayList;
 import java.util.List;

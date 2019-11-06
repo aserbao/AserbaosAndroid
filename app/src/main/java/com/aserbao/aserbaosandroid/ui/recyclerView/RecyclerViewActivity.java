@@ -8,7 +8,7 @@ import com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerViewEventActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.AnimatorRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.animator.changeItemAnimator.ChangeItemAnimatorActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator.ChangeItemAnimatorActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.ScaleSmoothSlideActivity;
