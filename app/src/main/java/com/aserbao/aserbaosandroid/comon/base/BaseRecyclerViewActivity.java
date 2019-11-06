@@ -6,16 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.aserbao.aserbaosandroid.comon.base.adapters.BaseSpinnerAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
@@ -51,6 +57,13 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     @BindView(R.id.base_recycler_empty_container)
     public FrameLayout mBaseRecyclerEmptyContainer;
 
+    @BindView(R.id.base_tool_bar)
+    Toolbar mBaseToolBar;
+    @BindView(R.id.base_top_tv)
+    TextView mBaseTopTv;
+    @BindView(R.id.base_spinner)
+    Spinner mBaseSpinner;
+
     protected Context mContext;
     @BindView(R.id.base_up_tv)
     TextView mBaseUpTv;
@@ -63,6 +76,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.VERTICAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
 
     @Override
@@ -74,11 +88,24 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mContext = this;
         initGetData();
         initViewForLinear();
-
+        initViewTopSpinner();
     }
 
-    public void setTranslations() {
+    protected  void initViewTopSpinner(){
+        if (mBaseSpinnerRecyclerBeen.size() != 0) {
+            mBaseToolBar.setVisibility(View.VISIBLE);
+            BaseSpinnerAdapter baseSpinnerAdapter = new BaseSpinnerAdapter(this, mBaseSpinnerRecyclerBeen);
+            mBaseSpinner.setAdapter(baseSpinnerAdapter);
+            mBaseSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                }
+            });
+        }
     }
+
+    public void setTranslations() { }
 
     public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
 

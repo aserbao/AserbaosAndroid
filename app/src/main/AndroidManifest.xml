@@ -48,7 +48,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.recyclerView.animator.itemARCMAnimation.ItemARCMAnimationActivity"></activity>
+        <activity android:name=".ui.recyclerView.animator.itemARCMAnimation.ItemARCMAnimationActivity"/>
         <activity android:name=".ui.recyclerView.animator.swapItemAnimator.ChangeItemAnimatorActivity" />
         <activity android:name=".aaThird.rxJava3.api.RxJava3ApiActivity" />
         <activity android:name=".aaThird.zt_zip.ZtZipActivity" />

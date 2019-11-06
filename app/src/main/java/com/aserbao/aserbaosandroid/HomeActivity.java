@@ -20,6 +20,7 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation.ItemARCMAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator.ChangeItemAnimatorActivity;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", ChangeItemAnimatorActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", ItemARCMAnimationActivity.class));
     }
 
     private void initView() {

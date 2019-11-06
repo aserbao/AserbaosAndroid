@@ -118,7 +118,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                     }
                 });
 
-                addViewToFrameLayout(simpleView);
+                 addViewToFrameLayout(simpleView);
                 break;
             case 10:
                 View view1 = LayoutInflater.from(this).inflate(R.layout.simple_coordinator_layout, null);
