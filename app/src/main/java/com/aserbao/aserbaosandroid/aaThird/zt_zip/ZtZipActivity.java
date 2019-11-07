@@ -1,13 +1,8 @@
 package com.aserbao.aserbaosandroid.aaThird.zt_zip;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -30,7 +25,7 @@ public class ZtZipActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 boolean exists = ZipUtil.containsEntry(new File(storageZipFile), "frx.js");

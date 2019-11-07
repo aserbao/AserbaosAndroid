@@ -93,7 +93,7 @@ public class AShareModuleActivity extends AppCompatActivity {
         mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
         mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override
-            public void itemClickBack(View view, int position, boolean isLongClick) {
+            public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 startPosition = position;
                 int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
                 int lastVisibleItemPosition = mLinearLayoutManager.findLastVisibleItemPosition();

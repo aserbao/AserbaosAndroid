@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.aaSource.android.os;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.download.HandlerCommunicationActivity;
@@ -18,5 +16,5 @@ public class AndroidOSActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {}
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

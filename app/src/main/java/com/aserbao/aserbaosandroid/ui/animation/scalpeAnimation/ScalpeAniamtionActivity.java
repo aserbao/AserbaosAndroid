@@ -77,7 +77,7 @@ public class ScalpeAniamtionActivity extends AppCompatActivity implements IBaseR
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Snackbar.make(mScaleRecyclerView,"点什么点？",Snackbar.LENGTH_SHORT);
     }
 }

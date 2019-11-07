@@ -38,7 +38,7 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 Student student = new Student(RandomValue.getChineseName(), random.nextInt(5) + 15, random.nextInt(5) + 80);

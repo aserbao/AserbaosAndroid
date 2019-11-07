@@ -101,7 +101,7 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Toast.makeText(mContext, String.valueOf(position)+" 被点击了", Toast.LENGTH_SHORT).show();
     }
 

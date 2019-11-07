@@ -40,7 +40,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         mBaseRecyclerEmptyContainer.removeAllViews();
         switch (position){
             case 1:

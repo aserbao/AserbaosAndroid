@@ -29,7 +29,7 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 int tempFlag = getTempFlag(v, position);
                 if (mIBaseRecyclerItemClickListener != null) {
-                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,false);
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,false, 1);
                 }
             }
         });
@@ -39,7 +39,7 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
             public boolean onLongClick(View v) {
                 int tempFlag = getTempFlag(v, position);
                 if (mIBaseRecyclerItemClickListener != null) {
-                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true);
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true, 1);
                 }
                 return false;
             }

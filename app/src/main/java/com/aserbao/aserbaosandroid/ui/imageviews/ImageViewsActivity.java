@@ -22,7 +22,7 @@ public class ImageViewsActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         mBaseRecyclerEmptyContainer.removeAllViews();
         int width = DisplayUtil.dp2px(62);
         int height = DisplayUtil.dp2px(58);

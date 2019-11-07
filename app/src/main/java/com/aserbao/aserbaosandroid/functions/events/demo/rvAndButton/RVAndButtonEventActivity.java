@@ -32,7 +32,7 @@ public class RVAndButtonEventActivity extends BaseAddFrameLayoutActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 View addRootView = LayoutInflater.from(mContext).inflate(R.layout.function_event_rv_activity, null);

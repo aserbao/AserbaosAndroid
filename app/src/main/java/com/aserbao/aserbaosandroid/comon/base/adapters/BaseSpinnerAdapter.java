@@ -82,7 +82,7 @@ public class BaseSpinnerAdapter implements SpinnerAdapter{
 
     @Override
     public int getViewTypeCount() {
-        return 0;
+        return 1;
     }
 
     @Override

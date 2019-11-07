@@ -1,13 +1,10 @@
 package com.aserbao.aserbaosandroid.functions.cutout;
 
-import android.content.Intent;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DisplayCutout;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 
@@ -50,7 +47,7 @@ public class CutOutActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 1001:
                 setFullScreen();

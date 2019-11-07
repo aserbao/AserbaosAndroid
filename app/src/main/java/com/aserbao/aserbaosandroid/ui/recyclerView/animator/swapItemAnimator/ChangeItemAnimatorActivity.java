@@ -26,7 +26,7 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         if (simpleItemTouchCallBack != null) {
             RecyclerView.ViewHolder viewHolderForAdapterPosition = mOpenglRecyclerView.findViewHolderForAdapterPosition(0);
             int itemCount = changeItemAdapter.getItemCount() - 1;

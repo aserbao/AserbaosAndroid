@@ -44,7 +44,7 @@ import butterknife.ButterKnife;
  * @package:com.aserbao.aserbaosandroid.base
  */
 public abstract class BaseRecyclerViewActivity extends AppCompatActivity implements IBaseRecyclerItemClickListener {
-
+    protected static final int COME_FROM_SPINNER = 1;
 
     @BindView(R.id.base_recycler_tv)
     public TextView mBaseRecyclerTv;
@@ -79,6 +79,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,10 +97,14 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             mBaseToolBar.setVisibility(View.VISIBLE);
             BaseSpinnerAdapter baseSpinnerAdapter = new BaseSpinnerAdapter(this, mBaseSpinnerRecyclerBeen);
             mBaseSpinner.setAdapter(baseSpinnerAdapter);
-            mBaseSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            mBaseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    itemClickBack(view,position,false, COME_FROM_SPINNER);
+                }
 
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
         }

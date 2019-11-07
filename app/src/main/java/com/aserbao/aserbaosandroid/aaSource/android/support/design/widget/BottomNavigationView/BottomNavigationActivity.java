@@ -41,7 +41,7 @@ public class BottomNavigationActivity extends BaseRecyclerViewActivity implement
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {}
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

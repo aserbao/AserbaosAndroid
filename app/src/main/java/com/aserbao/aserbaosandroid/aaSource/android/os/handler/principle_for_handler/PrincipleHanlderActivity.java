@@ -1,24 +1,14 @@
 package com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieComposition;
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 import java.lang.ref.WeakReference;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "PrincipleHanlderActivit";
@@ -51,7 +41,7 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Message message = new Message();
         switch (position){
             case 10:

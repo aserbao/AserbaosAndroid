@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.functions.regex;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -10,8 +8,6 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import kotlin.text.Regex;
 
 public class RegexActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "RegexActivity";
@@ -23,7 +19,7 @@ public class RegexActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 String test = "CartoonOctopus.zip ";

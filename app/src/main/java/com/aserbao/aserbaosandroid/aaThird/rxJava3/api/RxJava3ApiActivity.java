@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.aaThird.rxJava3.api;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -10,9 +8,7 @@ import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.AndroidScheduler;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
-import org.intellij.lang.annotations.Flow;
 import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +43,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 createFlowable();

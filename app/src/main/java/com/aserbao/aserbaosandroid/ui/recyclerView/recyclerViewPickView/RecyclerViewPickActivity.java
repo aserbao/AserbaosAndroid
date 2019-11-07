@@ -48,7 +48,7 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
     }
     private ItemViewMode mItemViewMode;
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 100:
                 mIsNotLoop = false;
@@ -126,7 +126,7 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
         }
         PickerAdapter pickerAdapter = new PickerAdapter(this, this, baseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override
-            public void itemClickBack(View view, int position, boolean isLongClick) {
+            public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 Toast.makeText(RecyclerViewPickActivity.this, position+"被点击了,常按？=" + isLongClick, Toast.LENGTH_SHORT).show();
             }
         });

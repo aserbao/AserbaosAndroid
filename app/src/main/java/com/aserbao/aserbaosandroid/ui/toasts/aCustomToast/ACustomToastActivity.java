@@ -50,7 +50,7 @@ public class ACustomToastActivity extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 Toast.makeText(mContext, "This is What?", 10 * 1000).show();
