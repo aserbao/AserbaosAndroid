@@ -44,6 +44,32 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         mOrientation = orientation;
     }
 
+    public void remove(int position){
+        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() > position){
+            mBaseRecyclerBean.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position,getItemCount());
+//            notifyDataSetChanged();
+        }
+    }
+
+    public void removeRange(int position,int count){
+        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() >= count + position){
+            for (int i = count-1; i >= position; i--) {
+                mBaseRecyclerBean.remove(i);
+            }
+            notifyItemRangeRemoved(position,count);
+        }
+    }
+
+    public void add(int position,BaseRecyclerBean baseRecyclerBean){
+        if (mBaseRecyclerBean != null) {
+            mBaseRecyclerBean.add(position,baseRecyclerBean);
+            notifyItemInserted(position);
+//            notifyDataSetChanged();
+        }
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (mBaseRecyclerBean != null ){
@@ -82,7 +108,7 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position % mBaseRecyclerBean.size());
         if (holder instanceof TextViewHolder) {
-            ((TextViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
+            ((TextViewHolder) holder).setDataSource(classBean,holder.getAdapterPosition(),mIBaseRecyclerItemClickListener);
         }else if (holder instanceof ImageViewHolder){
             ((ImageViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
         }else if (holder instanceof ClassViewHolder){

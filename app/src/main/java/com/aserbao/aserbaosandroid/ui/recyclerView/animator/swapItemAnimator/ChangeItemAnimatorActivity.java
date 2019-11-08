@@ -27,17 +27,17 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-        if (simpleItemTouchCallBack != null) {
-            RecyclerView.ViewHolder viewHolderForAdapterPosition = mOpenglRecyclerView.findViewHolderForAdapterPosition(0);
-            int itemCount = changeItemAdapter.getItemCount() - 1;
-            RecyclerView.ViewHolder lastHolderForAdapterPosition = mOpenglRecyclerView.findViewHolderForAdapterPosition(itemCount);
-            simpleItemTouchCallBack.onMove(mOpenglRecyclerView,viewHolderForAdapterPosition,lastHolderForAdapterPosition);
-        }
-        Log.d(TAG, "itemClickBack() called with: view = [" + view + "], position = [" + position + "], isLongClick = [" + isLongClick + "]");
+            if (simpleItemTouchCallBack != null) {
+                RecyclerView.ViewHolder viewHolderForAdapterPosition = mOpenglRecyclerView.findViewHolderForAdapterPosition(0);
+                int itemCount = changeItemAdapter.getItemCount() - 1;
+                RecyclerView.ViewHolder lastHolderForAdapterPosition = mOpenglRecyclerView.findViewHolderForAdapterPosition(itemCount);
+                simpleItemTouchCallBack.onMove(mOpenglRecyclerView, viewHolderForAdapterPosition, lastHolderForAdapterPosition);
+            }
+            Log.d(TAG, "itemClickBack() called with: view = [" + view + "], position = [" + position + "], isLongClick = [" + isLongClick + "]");
     }
 
 
-    @Override
+     @Override
     public void initViewForLinear() {
         changeItemAdapter = new ChangeItemAdapter(this, this, mBaseRecyclerBeen, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
@@ -49,8 +49,8 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
         mOpenglRecyclerView.setAdapter(changeItemAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
         // 拖拽移动和左滑删除
-        simpleItemTouchCallBack = new SimpleItemTouchCallBack(changeItemAdapter);
-// 要实现侧滑删除条目，把 false 改成 true 就可以了
+       simpleItemTouchCallBack = new SimpleItemTouchCallBack(changeItemAdapter);
+    // 要实现侧滑删除条目，把 false 改成 true 就可以了
         simpleItemTouchCallBack.setmSwipeEnable(false);
         ItemTouchHelper helper = new ItemTouchHelper(simpleItemTouchCallBack);
         helper.attachToRecyclerView(mOpenglRecyclerView);

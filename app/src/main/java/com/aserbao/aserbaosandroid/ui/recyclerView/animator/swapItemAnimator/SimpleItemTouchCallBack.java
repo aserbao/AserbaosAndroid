@@ -35,8 +35,12 @@ public class SimpleItemTouchCallBack extends ItemTouchHelper.Callback {
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
         //通知适配器,两个子条目位置发生改变
-        mCallBack.onItemMove(viewHolder.getAdapterPosition(),viewHolder1.getAdapterPosition());
-        return true;
+        if (viewHolder != null && viewHolder1 != null) {
+            mCallBack.onItemMove(viewHolder.getAdapterPosition(), viewHolder1.getAdapterPosition());
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
