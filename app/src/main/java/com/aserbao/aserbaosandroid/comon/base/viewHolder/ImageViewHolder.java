@@ -48,7 +48,7 @@ public class ImageViewHolder extends BaseClickViewHolder {
             mImageViewItem.setImageResource(classBean.getImageSrc());
 
             int adapterPosition = getAdapterPosition();
-            mImageViewItem.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[adapterPosition % ASourceUtil.iamgeUrl.length ]));
+            mImageViewItem.setTransitionName(String.valueOf(ASourceUtil.imageUrls[adapterPosition % ASourceUtil.imageUrls.length ]));
 
 
         }

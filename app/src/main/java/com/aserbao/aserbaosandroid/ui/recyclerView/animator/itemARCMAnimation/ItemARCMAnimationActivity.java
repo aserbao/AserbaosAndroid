@@ -1,12 +1,17 @@
 package com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation;
 
-import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation.itemAnimators.FadeInDownAnimator;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
 
@@ -14,9 +19,13 @@ public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
     public void initGetData() {
         mBaseSpinnerRecyclerBeen.add(new BaseRecyclerBean("add"));
         mBaseSpinnerRecyclerBeen.add(new BaseRecyclerBean("remove"));
-        for (int i = 0; i < 10; i++) {
+       /* for (int i = 0; i < 10; i++) {
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
-        }
+        }*/
+
+        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
+        mOrientation = LinearLayoutManager.HORIZONTAL;
+//        setMode(LinearLayoutManager.HORIZONTAL);
         mOpenglRecyclerView.setItemAnimator(new FadeInDownAnimator());
     }
 
@@ -24,7 +33,7 @@ public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (comeFrom){
             case COME_FROM_SPINNER:
-
+                mCommonAdapter.removeRange(0,2);
                 break;
             default:
                 if (mCommonAdapter != null) {
@@ -33,7 +42,13 @@ public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
                         BaseRecyclerBean baseRecyclerBean = new BaseRecyclerBean(String.valueOf(itemCount));
                         mCommonAdapter.add(0,baseRecyclerBean);
                     }else{
-                        mCommonAdapter.removeRange(0,5);
+                        mCommonAdapter.removeRange(0,2);
+                        List<BaseRecyclerBean> mBaseList = new ArrayList<>();
+                        int[] imageUrl = ASourceUtil.imageUrls;
+                        for (int i = 0; i < 2; i++) {
+                            mBaseList.add(new BaseRecyclerBean(imageUrl[new Random().nextInt(imageUrl.length)], StaticFinalValues.VIEW_HOLDER_IMAGE_100H));
+                        }
+                        mCommonAdapter.addRange(mCommonAdapter.getItemCount(),mBaseList);
 //                        mCommonAdapter.remove(position);
                     }
                 }

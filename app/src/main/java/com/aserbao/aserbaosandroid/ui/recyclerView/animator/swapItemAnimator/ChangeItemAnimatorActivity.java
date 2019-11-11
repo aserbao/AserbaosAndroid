@@ -20,9 +20,11 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        for (int i = 0; i < 10; i++) {
+        /*for (int i = 0; i < 10; i++) {
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
-        }
+        }*/
+        ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
+        mOrientation = LinearLayoutManager.HORIZONTAL;
     }
 
     @Override

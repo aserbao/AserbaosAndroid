@@ -29,7 +29,8 @@ public class FadeInDownAnimator extends BaseSimpleItemAnimator {
 //            .setDuration(getRemoveDuration())
             .setDuration(DURATION)
             .alpha(0)
-            .translationY(itemView.getHeight() * 2)
+//            .translationY(itemView.getHeight() * 2)
+            .translationX(itemView.getWidth() * 2)
             .setListener(new DefaultRemoveListener(holder))
             .setStartDelay(getRemoveDelay(holder))
             .start();

@@ -10,21 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.transition.ArcMotion;
 import android.transition.ChangeBounds;
 import android.transition.PathMotion;
-import android.transition.TransitionListenerAdapter;
 import android.transition.TransitionSet;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnticipateInterpolator;
-import android.view.animation.AnticipateOvershootInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.view.animation.PathInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -94,8 +83,8 @@ public class BShareModuleActivity extends AppCompatActivity {
     }
 
     private void setImageRes() {
-        if (position < ASourceUtil.iamgeUrl.length ) {
-            int resid = ASourceUtil.iamgeUrl[position];
+        if (position < ASourceUtil.imageUrls.length ) {
+            int resid = ASourceUtil.imageUrls[position];
             mBShareModuleFl.setBackgroundResource(resid);
             mBShareModuleCiv.setImageResource(resid);
         }else{
@@ -174,8 +163,8 @@ public class BShareModuleActivity extends AppCompatActivity {
                 mBShareModuleFl.setTransitionName("aserbao_share_name");
                 break;
             case RECYCLER_ITEM:
-                mBShareModuleFl.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[position]));
-//                mBShareModuleCiv.setTransitionName(String.valueOf(ASourceUtil.iamgeUrl[position]));
+                mBShareModuleFl.setTransitionName(String.valueOf(ASourceUtil.imageUrls[position]));
+//                mBShareModuleCiv.setTransitionName(String.valueOf(ASourceUtil.imageUrls[position]));
                 
                 break;
         }

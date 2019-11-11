@@ -70,6 +70,13 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         }
     }
 
+    public void addRange(int startPosition, List<BaseRecyclerBean> list) {
+        if (mBaseRecyclerBean != null) {
+            mBaseRecyclerBean.addAll(startPosition,list);
+            notifyItemRangeInserted(startPosition,list.size());
+        }
+    }
+
     @Override
     public int getItemViewType(int position) {
         if (mBaseRecyclerBean != null ){
@@ -124,7 +131,6 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         }
         return ret;
     }
-
 
 
 

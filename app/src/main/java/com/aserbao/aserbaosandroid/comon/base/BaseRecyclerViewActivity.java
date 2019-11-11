@@ -140,7 +140,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
-
+        mCommonAdapter.setmOrientation(mOrientation);
         mOpenglRecyclerView.post(new Runnable() {
             @Override
             public void run() {

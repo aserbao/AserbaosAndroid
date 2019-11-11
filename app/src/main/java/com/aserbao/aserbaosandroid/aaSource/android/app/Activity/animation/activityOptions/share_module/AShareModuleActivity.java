@@ -90,7 +90,7 @@ public class AShareModuleActivity extends AppCompatActivity {
     public static int endPosition, startPosition = 0;
 
     private void initView() {
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
+        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen,1);
         mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override
             public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
@@ -101,7 +101,7 @@ public class AShareModuleActivity extends AppCompatActivity {
                 Pair<View, String>[] sharedElements = new Pair[length + 1];
                 for (int i = 0; i <= length; i++) {
                     int absoultPosition = firstVisibleItemPosition + i;
-                    sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ASourceUtil.iamgeUrl[absoultPosition]));
+                    sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ASourceUtil.imageUrls[absoultPosition]));
                 }
                 BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
                 myHandler.sendEmptyMessageDelayed(0, 1000);

@@ -121,8 +121,8 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
             }
         });
         List<BaseRecyclerBean> baseRecyclerBeen = new ArrayList<>();
-        for (int i = 0; i < ASourceUtil.iamgeUrl.length; i++) {
-            baseRecyclerBeen.add(new BaseRecyclerBean(ASourceUtil.iamgeUrl[i], StaticFinalValues.VIEW_HOLDER_CIRCLE_IMAGE_ITEM,i));
+        for (int i = 0; i < ASourceUtil.imageUrls.length; i++) {
+            baseRecyclerBeen.add(new BaseRecyclerBean(ASourceUtil.imageUrls[i], StaticFinalValues.VIEW_HOLDER_CIRCLE_IMAGE_ITEM,i));
         }
         PickerAdapter pickerAdapter = new PickerAdapter(this, this, baseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override

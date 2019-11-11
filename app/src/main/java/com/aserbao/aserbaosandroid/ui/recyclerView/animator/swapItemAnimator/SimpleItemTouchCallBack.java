@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import java.util.List;
+
 /**
  * 功能:
  *
@@ -20,7 +22,10 @@ public class SimpleItemTouchCallBack extends ItemTouchHelper.Callback {
     public SimpleItemTouchCallBack(ITouchCallBack mCallBack) {
         this.mCallBack = mCallBack;
     }
-    
+
+
+    public void moveList(List<RecyclerView.ViewHolder> viewHolderList){
+    }
     
     @Override
     public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
