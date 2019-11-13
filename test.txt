@@ -1,8 +1,15 @@
-Observable.just(1)
-         .repeat(3)
-         .subscribe(new Consumer<Integer>() {
-             @Override
-             public void accept(Integer integer) throws Throwable {
-                 Log.e(TAG,  repeatTime + "just accept: " + integer );
-             }
-         });
+// 当使用switchMap进行装换时，有且只能有一个被转换的Observable存在，当有一个新的Observable存在时，前面所有的Observable都会被终止。
+Observable.just(1,100,1000)
+    .switchMap((new Function<Integer, ObservableSource<Long>>() {
+        @Override
+        public ObservableSource<Long> apply(Integer integer) throws Throwable {
+            Observable<Long> longObservable = Observable.intervalRange(integer, 2, 1,1, TimeUnit.SECONDS);
+            return longObservable;
+        }
+    }))
+    .subscribe(new Consumer<Long>() {
+    @Override
+    public void accept(Long s) throws Throwable {
+        Log.e(TAG, "accept: " + s );
+    }
+});

@@ -31,13 +31,8 @@ public class RxJavaBean {
                 }
             });
         }else{
-//            return Observable.just(values);
-            return Observable.create(new ObservableOnSubscribe<String>() {
-                @Override
-                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                    emitter.onNext(values);
-                }
-            });
+            return Observable.just(values);
         }
     }
+
 }

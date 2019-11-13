@@ -12,6 +12,7 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import org.reactivestreams.Publisher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,9 @@ import io.reactivex.SingleObserver;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.functions.Supplier;
+import io.reactivex.observables.GroupedObservable;
 import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -43,24 +46,33 @@ import static com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues.LOG
 public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "RxJava3ApiActivity";
 
-    public static final int USE_FLOWABLE = 100;
-    public static final int USE_OBSERVABLE = 101;
-    public static final int USE_SINGLE = 102;
-    public static final int USE_COMPLETABLE = 103;
-    public static final int USE_MAYBE = 104;
-    public static final int USE_CREATING_CREATE  = 0;
-    public static final int USE_CREATING_DEFER = 10;
-    public static final int USE_CREATING_DEFER_SAMPLE = 1001;
-    public static final int USE_CREATING_EMPTY = 12;
-    public static final int USE_CREATING_NEVER = 13;
+    public static final int USE_FLOWABLE = 0;
+    public static final int USE_OBSERVABLE = 1;
+    public static final int USE_SINGLE = 2;
+    public static final int USE_COMPLETABLE = 3;
+    public static final int USE_MAYBE = 4;
+    public static final int USE_CREATING_CREATE  = 10;
+    public static final int USE_CREATING_DEFER = 11;
+    public static final int USE_CREATING_DEFER_SAMPLE = 12;
+    public static final int USE_CREATING_EMPTY = 13;
+    public static final int USE_CREATING_NEVER = 14;
     public static final int USE_CREATING_FROM_ARRAY = 15;
-    public static final int USE_CREATING_FROM_ITERABLE = 150;
-    public static final int USE_CREATING_JUST = 16;
-    public static final int USE_CREATING_INTERVAL = 17;
-    public static final int USE_CREATING_RANGE = 18;
-    public static final int USE_CREATING_INTERVAL_RANGE = 19;
-    public static final int USE_CREATING_REPEAT = 20;
-    public static final int USE_CREATING_TIMER = 21;
+    public static final int USE_CREATING_FROM_ITERABLE = 16;
+    public static final int USE_CREATING_JUST = 17;
+    public static final int USE_CREATING_INTERVAL = 18;
+    public static final int USE_CREATING_RANGE = 19;
+    public static final int USE_CREATING_INTERVAL_RANGE = 120;
+    public static final int USE_CREATING_REPEAT = 21;
+    public static final int USE_CREATING_TIMER = 22;
+
+    public static final int USE_CREATING_BUFFER = 30;
+    public static final int USE_CREATING_MAP= 31;
+    public static final int USE_CREATING_FLATMAP= 32;
+    public static final int USE_CREATING_CONCATMAP= 33;
+    public static final int USE_CREATING_SWITCHMAP= 34;
+    public static final int USE_CREATING_GROUP_BY= 35;
+
+
 
 
     @Override
@@ -86,12 +98,12 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用repeat",USE_CREATING_REPEAT));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用timer",USE_CREATING_TIMER));
         mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"转换操作符的使用"));
-
-
-
-
-
-
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用buffer",USE_CREATING_BUFFER));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用map",USE_CREATING_MAP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用flatmap",USE_CREATING_FLATMAP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用concatmap",USE_CREATING_CONCATMAP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用switchmap",USE_CREATING_SWITCHMAP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用groupby",USE_CREATING_GROUP_BY));
 
     }
 
@@ -119,9 +131,19 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
             case USE_CREATING_TIMER:
                 createObservable(position);
                 break;
+            case USE_CREATING_BUFFER:
+            case USE_CREATING_MAP:
+            case USE_CREATING_FLATMAP:
+            case USE_CREATING_CONCATMAP:
+            case USE_CREATING_SWITCHMAP:
+            case USE_CREATING_GROUP_BY:
+                useTransforming(position);
+                break;
             case USE_CREATING_DEFER_SAMPLE:
                 useDeferSample(isLongClick);
                 break;
+
+
 
         }
     }
@@ -138,6 +160,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         observable.subscribe(new Consumer<String>() {
             @Override
             public void accept(String s) throws Throwable {
+                Log.e(TAG, "accept: " +s );
                 Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
             }
         });
@@ -268,21 +291,27 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     public void subscribe(ObservableEmitter<String> emitter) throws Exception {
                         Log.e(TAG, "get: 初始化 Observable");
                         emitter.onNext(LOGO_FROM_ASERBAO);
+                        emitter.onComplete();
+//                        emitter.onNext(LOGO_FROM_ASERBAO);
                     }
                 });
                 Log.e(TAG, "开始订阅第一个观察者 ");
-                observable.subscribe(new Consumer<String>() {
+                Disposable disposable = observable
+                    .delay(2,TimeUnit.SECONDS)
+                    .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
-                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
+                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s);
                     }
-                }).dispose();
+                });
+                disposable.dispose();
                 Log.e(TAG, "开始订阅第二个观察者 ");
-                observable.subscribe(new Consumer<String>() {
+                observable
+                    .delay(3,TimeUnit.SECONDS)
+                    .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
                         Log.e(TAG, "accept: 第二个观察者 收到的结果为：" + s );
-                        Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
@@ -301,17 +330,22 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     }
                 });
                 Log.e(TAG, "开始订阅第一个观察者 ");
-                defer.subscribe(new Consumer<String>() {
+                Disposable disposable1 = defer
+                    .delay(2,TimeUnit.SECONDS)
+                    .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
-                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
+                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s);
                     }
                 });
+                disposable1.dispose();
                 Log.e(TAG, "开始订阅第二个观察者 ");
-                defer.subscribe(new Consumer<String>() {
+                defer
+                    .delay(3,TimeUnit.SECONDS)
+                    .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
-                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
+                        Log.e(TAG, "accept: 第二个观察者 收到的结果为：" + s );
                     }
                 });
                 break;
@@ -501,5 +535,115 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     }
     int repeatTime = 1;
 
+
+    /**
+     * 使用转换操作符
+     * @param type
+     */
+    private void useTransforming(int type){
+        switch (type) {
+            case USE_CREATING_BUFFER:
+                Observable.intervalRange(1,6,1,1,TimeUnit.SECONDS)
+                        .buffer(3)
+                        .subscribe(new Consumer<List<Long>>() {
+                            @Override
+                            public void accept(List<Long> longs) throws Throwable {
+                                String string = Arrays.toString(longs.toArray());
+                                Log.e(TAG, "accept: " + string );
+                            }
+                        });
+                break;
+            case USE_CREATING_MAP:
+                Observable.just(0)
+                    .map(new Function<Integer, String>() {
+                        @Override
+                        public String apply(Integer integer) throws Throwable {
+                            return "map after " + integer;
+                        }
+                    })
+                    .subscribe(new Consumer<String>() {
+                        @Override
+                        public void accept(String s) throws Throwable {
+                            Log.e(TAG, "accept: "+ s );
+                        }
+                    });
+                break;
+            case USE_CREATING_FLATMAP:
+                Observable.just(1,100,1000)
+                    .flatMap((new Function<Integer, ObservableSource<Long>>() {
+                        @Override
+                        public ObservableSource<Long> apply(Integer integer) throws Throwable {
+//                            return Observable.just(100+integer,String.valueOf(integer));
+                            Observable<Long> longObservable = Observable.intervalRange(integer, 2, 1,1, TimeUnit.SECONDS);
+                            return longObservable;
+                        }
+                    }))
+                    .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long s) throws Throwable {
+                        Log.e(TAG, "accept: " + s );
+                    }
+                });
+                break;
+            case USE_CREATING_CONCATMAP:
+                Observable.just(1,100,1000)
+                    .concatMap((new Function<Integer, ObservableSource<Long>>() {
+                        @Override
+                        public ObservableSource<Long> apply(Integer integer) throws Throwable {
+//                            return Observable.just(100+integer,String.valueOf(integer));
+                            Observable<Long> longObservable = Observable.intervalRange(integer, 2, 1,1, TimeUnit.SECONDS);
+                            return longObservable;
+                        }
+                    }))
+                    .subscribe(new Consumer<Long>() {
+                        @Override
+                        public void accept(Long s) throws Throwable {
+                            Log.e(TAG, "concatMap accept: " + s );
+                        }
+                    });
+                break;
+            case USE_CREATING_SWITCHMAP:
+                // 当使用switchMap进行装换时，有且只能有一个被转换的Observable存在，当有一个新的Observable存在时，前面所有的Observable都会被终止。
+                Observable.just(1,100,1000)
+                    .switchMap((new Function<Integer, ObservableSource<Long>>() {
+                        @Override
+                        public ObservableSource<Long> apply(Integer integer) throws Throwable {
+                            Observable<Long> longObservable = Observable.intervalRange(integer, 2, 1,1, TimeUnit.SECONDS);
+                            return longObservable;
+                        }
+                    }))
+                    .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long s) throws Throwable {
+                        Log.e(TAG, "accept: " + s );
+                    }
+                });
+
+                break;
+            case USE_CREATING_GROUP_BY:
+                Observable.just(1,-1,100,-100,1000,-1000)
+                    .groupBy(new Function<Integer, String>() {
+                        @Override
+                        public String apply(Integer integer) throws Throwable {
+                            String result = "负数";
+                            if (integer > 0) result = "正数";
+                            return result;
+                        }
+                    })
+                    .subscribe(new Consumer<GroupedObservable<String, Integer>>() {
+                        @Override
+                        public void accept(GroupedObservable<String, Integer> stringIntegerGroupedObservable) throws Throwable {
+                            stringIntegerGroupedObservable.subscribe(new Consumer<Integer>() {
+                                @Override
+                                public void accept(Integer integer) throws Throwable {
+                                    String key = stringIntegerGroupedObservable.getKey();
+                                    Log.e(TAG, key + ":" + String.valueOf(integer));
+                                }
+                            });
+                        }
+                    });
+                break;
+        }
+    }
 
 }
