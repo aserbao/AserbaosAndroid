@@ -19,38 +19,31 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxJavaDownLoadActivity extends BaseAboutProgressActivity {
     private static final String TAG = "RxJavaDownLoadActivity";
+    private boolean mIsPause = false;
+
     @Override
     protected void startDownload() {
-        /*Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                Log.d(TAG, "subscribe() called with: emitter = [" + emitter + "] ThreadName =" + Thread.currentThread().getName());
-                int i = 0;
-                while(i <= 100){
-                    Thread.sleep(100);
-                    emitter.onNext(i);
-                    i++;
+                //模拟从后台获取数据
+                while (curProgress <= 100 && !mIsPause) {
+                    Thread.sleep(15);
+                    emitter.onNext(curProgress);
+                    curProgress++;
                 }
             }
         }).subscribeOn(Schedulers.newThread())
           .observeOn(AndroidScheduler.mainThread())
-          .subscribe(new Observer<Integer>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-            @Override
-            public void onNext(Integer integer) {
-                updateProgress(integer);
-            }
-            @Override
-            public void onError(Throwable e) {
-            }
-            @Override
-            public void onComplete() {
-            }
-        });*/
-
-        Observable.intervalRange(0,100,15,15, TimeUnit.MILLISECONDS)
+          .subscribe(new Consumer<Integer>() {
+              @Override
+              public void accept(Integer integer) throws Throwable {
+                  updateProgress(integer);
+              }
+          });
+        mIsPause = false;
+//        integerObservable.distinct();
+        /*Observable.intervalRange(0,101,15,15, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidScheduler.mainThread())
             .subscribe(new Consumer<Long>() {
@@ -58,11 +51,11 @@ public class RxJavaDownLoadActivity extends BaseAboutProgressActivity {
                 public void accept(Long aLong) throws Throwable {
                     updateProgress(aLong.intValue());
                 }
-            });
+            });*/
     }
 
     @Override
     protected void pauseDownload() {
-
+        mIsPause = true;
     }
 }

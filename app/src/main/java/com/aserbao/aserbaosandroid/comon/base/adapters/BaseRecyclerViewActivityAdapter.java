@@ -12,6 +12,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
+import com.aserbao.aserbaosandroid.comon.base.viewHolder.HeadViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.ImageViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
@@ -89,6 +90,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
+            case StaticFinalValues.VIEW_HOLDER_HEAD:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_holder_head, parent, false);
+                return new HeadViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_TEXT:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_text_item, parent, false);
                 return new TextViewHolder(view);
@@ -120,6 +124,8 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             ((ImageViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
         }else if (holder instanceof ClassViewHolder){
             ((ClassViewHolder) holder).setDataSource(mActivity,classBean);
+        }else if (holder instanceof HeadViewHolder){
+            ((HeadViewHolder) holder).setDataSource(classBean);
         }
     }
 

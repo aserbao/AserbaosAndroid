@@ -1,12 +1,8 @@
-view.setAlpha(1);
-            view.setAlpha(1);
-            view.setScaleY(1);
-            view.setScaleX(1);
-            view.setTranslationY(0);
-            view.setTranslationX(0);
-            view.setRotation(0);
-            view.setRotationY(0);
-            view.setRotationX(0);
-            view.setPivotY(view.getMeasuredHeight() / 2);
-            view.setPivotX(view.getMeasuredWidth() / 2);
-            view.animate(view).setInterpolator(null).setStartDelay(0);
+Observable.just(1)
+         .repeat(3)
+         .subscribe(new Consumer<Integer>() {
+             @Override
+             public void accept(Integer integer) throws Throwable {
+                 Log.e(TAG,  repeatTime + "just accept: " + integer );
+             }
+         });

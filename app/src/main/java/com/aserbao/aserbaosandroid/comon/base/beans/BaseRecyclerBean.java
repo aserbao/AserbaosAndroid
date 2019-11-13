@@ -21,6 +21,14 @@ public class BaseRecyclerBean implements Serializable {
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
 
+    public BaseRecyclerBean(int viewType,String name) {
+        this.name = name;
+        this.viewType = viewType;
+    }
+
+    public BaseRecyclerBean(String name) {
+        this.name = name;
+    }
 
 
     public BaseRecyclerBean(String name, int tag) {
@@ -76,10 +84,6 @@ public class BaseRecyclerBean implements Serializable {
 
     public void setViewType(int viewType) {
         this.viewType = viewType;
-    }
-
-    public BaseRecyclerBean(String name) {
-        this.name = name;
     }
 
     public int getTag() {

@@ -4,7 +4,9 @@ import android.os.Environment;
 
 public class StaticFinalValues {
 
-
+    //=============logo===============
+    public  static final String LOGO_FROM_ASERBAO = "learn android with aserbao";
+    //-====================path
     public static final String IMAGE_URL = "https://avatars1.githubusercontent.com/u/21996952?s=460&v=4";
     public static final String VIDEO_URL = "video_url";
     public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
@@ -49,6 +51,7 @@ public class StaticFinalValues {
     public static final int FOOT = 8;
 
     //-------------type---------------
+    public static final int VIEW_HOLDER_HEAD = 99;
     public static final int VIEW_HOLDER_TEXT = 100;
     public static final int VIEW_HOLDER_IMAGE_100H = 101;
     public static final int VIEW_HOLDER_CIRCLE_IMAGE_ITEM = 1001;
