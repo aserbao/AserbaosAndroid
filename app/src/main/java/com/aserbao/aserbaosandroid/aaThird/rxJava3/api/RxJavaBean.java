@@ -1,6 +1,8 @@
 package com.aserbao.aserbaosandroid.aaThird.rxJava3.api;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.functions.Supplier;
@@ -29,7 +31,13 @@ public class RxJavaBean {
                 }
             });
         }else{
-            return Observable.just(values);
+//            return Observable.just(values);
+            return Observable.create(new ObservableOnSubscribe<String>() {
+                @Override
+                public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                    emitter.onNext(values);
+                }
+            });
         }
     }
 }

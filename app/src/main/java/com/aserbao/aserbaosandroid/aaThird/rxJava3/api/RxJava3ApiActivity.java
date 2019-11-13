@@ -12,6 +12,7 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import org.reactivestreams.Publisher;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -49,15 +50,17 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_MAYBE = 104;
     public static final int USE_CREATING_CREATE  = 0;
     public static final int USE_CREATING_DEFER = 10;
+    public static final int USE_CREATING_DEFER_SAMPLE = 1001;
     public static final int USE_CREATING_EMPTY = 12;
     public static final int USE_CREATING_NEVER = 13;
     public static final int USE_CREATING_FROM_ARRAY = 15;
+    public static final int USE_CREATING_FROM_ITERABLE = 150;
     public static final int USE_CREATING_JUST = 16;
     public static final int USE_CREATING_INTERVAL = 17;
     public static final int USE_CREATING_RANGE = 18;
     public static final int USE_CREATING_INTERVAL_RANGE = 19;
     public static final int USE_CREATING_REPEAT = 20;
-    public static final int USE_CREATING_DEFER_SAMPLE = 1001;
+    public static final int USE_CREATING_TIMER = 21;
 
 
     @Override
@@ -71,24 +74,22 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"创建操作符的使用"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的create创建",USE_CREATING_CREATE));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的defer方法",USE_CREATING_DEFER));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用defer创建被观察者例子",USE_CREATING_DEFER_SAMPLE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用defer创建被观察者 注意常按和点击的输出",USE_CREATING_DEFER_SAMPLE));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用empty创建被观察者例子",USE_CREATING_EMPTY));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用never创建被观察者例子",USE_CREATING_NEVER));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用fromArray", USE_CREATING_FROM_ARRAY));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用fromIterable", USE_CREATING_FROM_ITERABLE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用just", USE_CREATING_JUST));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用interval",USE_CREATING_INTERVAL));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用range",USE_CREATING_RANGE));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用intervalRange",USE_CREATING_INTERVAL_RANGE));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用repeat",USE_CREATING_REPEAT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用timer",USE_CREATING_TIMER));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"转换操作符的使用"));
 
 
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用just", USE_CREATING_JUST));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的from创建",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的timer创建",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的intervalRange创建",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的iterable创建",7));
 
 
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable 的defer创建",51));
 
 
 
@@ -109,30 +110,26 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
             case USE_CREATING_EMPTY:
             case USE_CREATING_NEVER:
             case USE_CREATING_FROM_ARRAY:
+            case USE_CREATING_FROM_ITERABLE:
             case USE_CREATING_JUST:
             case USE_CREATING_INTERVAL:
             case USE_CREATING_RANGE:
             case USE_CREATING_INTERVAL_RANGE:
             case USE_CREATING_REPEAT:
+            case USE_CREATING_TIMER:
                 createObservable(position);
                 break;
             case USE_CREATING_DEFER_SAMPLE:
                 useDeferSample(isLongClick);
                 break;
-            case 3:
-                timerFlowable();
-                break;
-            case 7:
-                iterableFlowable();
-                break;
-
-            case 51:
-                deferFlowable();
-                break;
 
         }
     }
 
+    /**
+     * 测试defer的实例
+     * @param isUseDefer 是否使用defer
+     */
     private void useDeferSample(boolean isUseDefer) {
         RxJavaBean rxJavaBean = new RxJavaBean();
         rxJavaBean.mUseDef = isUseDefer;
@@ -269,12 +266,22 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
                     @Override
                     public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                        Log.e(TAG, "get: 初始化 Observable");
                         emitter.onNext(LOGO_FROM_ASERBAO);
                     }
                 });
+                Log.e(TAG, "开始订阅第一个观察者 ");
                 observable.subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
+                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
+                    }
+                }).dispose();
+                Log.e(TAG, "开始订阅第二个观察者 ");
+                observable.subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        Log.e(TAG, "accept: 第二个观察者 收到的结果为：" + s );
                         Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -293,11 +300,18 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                         });
                     }
                 });
-                Log.e(TAG, "开始订阅 ");
+                Log.e(TAG, "开始订阅第一个观察者 ");
                 defer.subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
-                        Log.e(TAG, "accept: 收到的结果为：" + s );
+                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
+                    }
+                });
+                Log.e(TAG, "开始订阅第二个观察者 ");
+                defer.subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        Log.e(TAG, "accept: 第一个观察者 收到的结果为：" + s );
                     }
                 });
                 break;
@@ -392,6 +406,19 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     });
 
                 break;
+
+            case USE_CREATING_FROM_ITERABLE:
+                List<String> list = new ArrayList<>();
+                for (int i = 1; i < 10; i++) {
+                    list.add( "第"+ String.valueOf(i) + "个");
+                }
+                Flowable.fromIterable(list).subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        Log.e(TAG, "iterableFlowable accept: " + s );
+                    }
+                });
+                break;
             case USE_CREATING_JUST:
                 // 创建被观察者，并发送just里面的每个参数。
                 Observable.just(1,2,3,4).subscribe(new Consumer<Integer>() {
@@ -460,45 +487,19 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     });
                 repeatTime ++;
                 break;
+            case USE_CREATING_TIMER:
+                Observable.timer(5, TimeUnit.SECONDS)
+                    .subscribe(new Consumer<Long>() {
+                        @Override
+                        public void accept(Long aLong) throws Throwable {
+                            Log.e(TAG, "timerFlowable accept: " + aLong );
+                        }
+                    });
+                break;
         }
 
     }
     int repeatTime = 1;
 
 
-    /**
-     * 间隔操作符，固定值返回0
-     */
-    private void timerFlowable(){
-        Flowable.timer(2, TimeUnit.SECONDS)
-            .subscribe(new Consumer<Long>() {
-                @Override
-                public void accept(Long aLong) throws Throwable {
-                    Log.e(TAG, "timerFlowable accept: " + aLong );
-                }
-            });
-    }
-
-
-    private void iterableFlowable(){
-        List<String> arrayList = new ArrayList<>();
-        for (int i = 1; i < 10; i++) {
-            arrayList.add( "第"+ String.valueOf(i) + "个");
-        }
-        Flowable.fromIterable(arrayList).subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) throws Throwable {
-                Log.e(TAG, "iterableFlowable accept: " + s );
-            }
-        });
-    }
-
-    private void deferFlowable() {
-        Flowable.defer(new Supplier<Publisher<?>>() {
-            @Override
-            public Publisher<?> get() throws Throwable {
-                return null;
-            }
-        });
-    }
 }
