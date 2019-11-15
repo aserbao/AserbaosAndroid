@@ -34,6 +34,7 @@ import io.reactivex.SingleEmitter;
 import io.reactivex.SingleObserver;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Supplier;
@@ -66,11 +67,21 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_TIMER = 22;
 
     public static final int USE_CREATING_BUFFER = 30;
-    public static final int USE_CREATING_MAP= 31;
-    public static final int USE_CREATING_FLATMAP= 32;
-    public static final int USE_CREATING_CONCATMAP= 33;
-    public static final int USE_CREATING_SWITCHMAP= 34;
-    public static final int USE_CREATING_GROUP_BY= 35;
+    public static final int USE_CREATING_WINDOW = 31;
+    public static final int USE_CREATING_TOLIST= 32;
+    public static final int USE_CREATING_MAP= 33;
+    public static final int USE_CREATING_FLATMAP= 34;
+    public static final int USE_CREATING_CONCATMAP= 35;
+    public static final int USE_CREATING_SWITCHMAP= 36;
+    public static final int USE_CREATING_GROUP_BY= 37;
+    public static final int USE_CREATING_SCAN= 38;
+    public static final int USE_CREATING_CAST= 39;
+
+
+    public static final int USE_CREATING_DEBOUNCE= 50;
+    public static final int USE_CREATING_THROTTLEWITHTIMEOUT= 51;
+    public static final int USE_CREATING_THROTTLE_FIRST= 52;
+    public static final int USE_CREATING_THROTTLE_LAST= 53;
 
 
 
@@ -99,11 +110,20 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用timer",USE_CREATING_TIMER));
         mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"转换操作符的使用"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用buffer",USE_CREATING_BUFFER));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用window",USE_CREATING_WINDOW));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用toList",USE_CREATING_TOLIST));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用map",USE_CREATING_MAP));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用flatmap",USE_CREATING_FLATMAP));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用concatmap",USE_CREATING_CONCATMAP));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用switchmap",USE_CREATING_SWITCHMAP));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用groupby",USE_CREATING_GROUP_BY));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用scan",USE_CREATING_SCAN));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用cast",USE_CREATING_CAST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"过滤操作符的使用"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用debounce",USE_CREATING_DEBOUNCE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlewithtimeout",USE_CREATING_THROTTLEWITHTIMEOUT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlefirst",USE_CREATING_THROTTLE_FIRST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlelast",USE_CREATING_THROTTLE_LAST));
 
     }
 
@@ -132,12 +152,22 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 createObservable(position);
                 break;
             case USE_CREATING_BUFFER:
+            case USE_CREATING_WINDOW:
             case USE_CREATING_MAP:
             case USE_CREATING_FLATMAP:
             case USE_CREATING_CONCATMAP:
             case USE_CREATING_SWITCHMAP:
             case USE_CREATING_GROUP_BY:
+            case USE_CREATING_SCAN:
+            case USE_CREATING_CAST:
+            case USE_CREATING_TOLIST:
                 useTransforming(position);
+                break;
+            case USE_CREATING_DEBOUNCE:
+            case USE_CREATING_THROTTLEWITHTIMEOUT:
+            case USE_CREATING_THROTTLE_FIRST:
+            case USE_CREATING_THROTTLE_LAST:
+                useFiltering(position);
                 break;
             case USE_CREATING_DEFER_SAMPLE:
                 useDeferSample(isLongClick);
@@ -543,15 +573,59 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     private void useTransforming(int type){
         switch (type) {
             case USE_CREATING_BUFFER:
-                Observable.intervalRange(1,6,1,1,TimeUnit.SECONDS)
-                        .buffer(3)
-                        .subscribe(new Consumer<List<Long>>() {
-                            @Override
-                            public void accept(List<Long> longs) throws Throwable {
-                                String string = Arrays.toString(longs.toArray());
-                                Log.e(TAG, "accept: " + string );
-                            }
-                        });
+                Disposable subscribe = Observable.intervalRange(1, 6, 1, 1, TimeUnit.SECONDS)
+                    .buffer(3)
+                    .subscribe(new Consumer<List<Long>>() {
+                        @Override
+                        public void accept(List<Long> longs) throws Throwable {
+                            String string = Arrays.toString(longs.toArray());
+                            Log.e(TAG, "accept: " + string);
+                        }
+                    });
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                subscribe.dispose();
+                break;
+            case USE_CREATING_WINDOW:
+                Disposable subscribe1 = Observable.intervalRange(1, 6, 1, 1, TimeUnit.SECONDS)
+                    .window(3)
+                    .subscribe(new Consumer<Observable<Long>>() {
+                        @Override
+                        public void accept(Observable<Long> longObservable) throws Throwable {
+                            longObservable.subscribe(new Consumer<Long>() {
+                                @Override
+                                public void accept(Long aLong) throws Throwable {
+                                    Log.e(TAG, "window accept: " + aLong);
+                                }
+                            });
+                        }
+                    });
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                subscribe1.dispose();
+                break;
+            case USE_CREATING_TOLIST:
+                Disposable toList = Observable.intervalRange(1, 6, 1, 1, TimeUnit.SECONDS)
+                    .toList()
+                    .subscribe(new Consumer<List<Long>>() {
+                        @Override
+                        public void accept(List<Long> integers) throws Throwable {
+                            String s = Arrays.toString(integers.toArray());
+                            Log.e(TAG, "accept: " + s );
+                        }
+                    });
+                /*try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                toList.dispose();*/
                 break;
             case USE_CREATING_MAP:
                 Observable.just(0)
@@ -643,7 +717,108 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                         }
                     });
                 break;
+            case USE_CREATING_SCAN:
+                Observable.just(1,2,3,4,5)
+                    .scan(new BiFunction<Integer, Integer, Integer>() {
+                        @Override
+                        public Integer apply(Integer integer, Integer integer2) throws Throwable {
+                            int item = integer + integer2;
+                            return item;
+                        }
+                    }).subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Throwable {
+                        Log.e(TAG, "accept: " + integer );
+                    }
+                });
+                break;
+            case USE_CREATING_CAST:
+                Observable.just(1,2,3,4,5)
+                    .cast(Number.class)
+                    .subscribe(result -> Log.e(TAG, "useTransforming: " + result ));
+                break;
+
         }
     }
 
+
+    /**
+     * 过滤操作符
+     * @param position
+     */
+    private void useFiltering(int position) {
+        switch (position){
+            case USE_CREATING_THROTTLEWITHTIMEOUT:
+            case USE_CREATING_DEBOUNCE:
+                Observable.create(new ObservableOnSubscribe<Long>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Long> emitter) throws Exception {
+                        emitter.onNext(1L);
+                        Thread.sleep(100);
+                        emitter.onNext(2L);
+                        Thread.sleep(201);
+                        emitter.onNext(3L);
+                        Thread.sleep(150);
+                        emitter.onNext(4L);
+                        Thread.sleep(200);
+                        emitter.onNext(5L);
+                        Thread.sleep(100);
+                        emitter.onNext(6L);
+                        emitter.onComplete();
+                    }
+                })
+//                    .throttleWithTimeout(200,TimeUnit.MILLISECONDS)
+                    .debounce(200,TimeUnit.MILLISECONDS)
+                    .subscribe(new Consumer<Long>() {
+                        @Override
+                        public void accept(Long aLong) throws Throwable {
+                            Log.e(TAG, "accept: " + aLong );
+                        }
+                    });
+                break;
+            case USE_CREATING_THROTTLE_FIRST:
+                Observable.create(new ObservableOnSubscribe<Long>() {
+                @Override
+                public void subscribe(ObservableEmitter<Long> emitter) throws Exception {
+                    emitter.onNext(1L);
+                    Thread.sleep(300);
+                    emitter.onNext(2L);
+                    Thread.sleep(700);
+                    emitter.onNext(3L);
+                    Thread.sleep(500);
+                    emitter.onNext(4L);
+                    Thread.sleep(800);
+                    emitter.onNext(5L);
+                    Thread.sleep(200);
+                    emitter.onNext(6L);
+                    emitter.onComplete();
+                }
+            })
+                    .throttleFirst(1,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "useFiltering: " + result ));
+                break;
+            case USE_CREATING_THROTTLE_LAST:
+                Observable.create(new ObservableOnSubscribe<Long>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Long> emitter) throws Exception {
+                        emitter.onNext(1L);
+                        Thread.sleep(300);
+                        emitter.onNext(2L);
+                        Thread.sleep(700);
+                        emitter.onNext(3L);
+                        Thread.sleep(500);
+                        emitter.onNext(4L);
+                        Thread.sleep(800);
+                        emitter.onNext(5L);
+                        Thread.sleep(200);
+                        emitter.onNext(6L);
+                        emitter.onComplete();
+                    }
+                    })
+                    .throttleLast(1,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "useFiltering: " + result));
+                break;
+
+        }
+    }
 }
