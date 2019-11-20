@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.netflix.rxjava:rxjava-joins:0.20.7@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.rxjava/rxjava-joins/0.20.7/507d12aee55f333c0265c77a531459aa7948991a/rxjava-joins-0.20.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.rxjava/rxjava-joins/0.20.7/b93fb46fa87701e9d3073b8740d4f2940d2e059e/rxjava-joins-0.20.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

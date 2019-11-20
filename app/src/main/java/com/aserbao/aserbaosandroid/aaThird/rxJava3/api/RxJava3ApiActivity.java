@@ -9,16 +9,14 @@ import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
-import org.reactivestreams.Publisher;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableEmitter;
+import io.reactivex.CompletableObserver;
 import io.reactivex.CompletableOnSubscribe;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
@@ -37,6 +35,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.functions.Supplier;
 import io.reactivex.observables.GroupedObservable;
 import io.reactivex.observers.DisposableMaybeObserver;
@@ -82,7 +81,21 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_THROTTLEWITHTIMEOUT= 51;
     public static final int USE_CREATING_THROTTLE_FIRST= 52;
     public static final int USE_CREATING_THROTTLE_LAST= 53;
+    public static final int USE_CREATING_SAMPLE= 54;
+    public static final int USE_CREATING_DISTINCT= 55;
+    public static final int USE_CREATING_ELEMENT_AT= 56;
+    public static final int USE_CREATING_FILTER= 57;
+    public static final int USE_CREATING_FIRST= 58;
+    public static final int USE_CREATING_LAST= 59;
+    public static final int USE_CREATING_IGNORE_ELEMENTS= 60;
+    public static final int USE_CREATING_SKIP= 61;
+    public static final int USE_CREATING_SKIP_LAST = 62;
+    public static final int USE_CREATING_TAKE= 63;
+    public static final int USE_CREATING_TAKE_LAST = 64;
+    public static final int USE_CREATING_OF_TYPE = 65;
+    public static final int USE_CREATING_TIMEOUT = 66;
 
+    public static final int USE_CREATING_START_WITH = 80;
 
 
 
@@ -124,6 +137,21 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlewithtimeout",USE_CREATING_THROTTLEWITHTIMEOUT));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlefirst",USE_CREATING_THROTTLE_FIRST));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用throttlelast",USE_CREATING_THROTTLE_LAST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用sample",USE_CREATING_SAMPLE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用distinct",USE_CREATING_DISTINCT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用elementAt",USE_CREATING_ELEMENT_AT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用filter",USE_CREATING_FILTER));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用first",USE_CREATING_FIRST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用last",USE_CREATING_LAST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用ingoreElements",USE_CREATING_IGNORE_ELEMENTS));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用skip",USE_CREATING_SKIP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用skipLast", USE_CREATING_SKIP_LAST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用take",USE_CREATING_TAKE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用takeLast", USE_CREATING_TAKE_LAST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用ofType", USE_CREATING_OF_TYPE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用timeout", USE_CREATING_TIMEOUT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"组合操作符的使用"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用startWith", USE_CREATING_START_WITH));
 
     }
 
@@ -167,7 +195,23 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
             case USE_CREATING_THROTTLEWITHTIMEOUT:
             case USE_CREATING_THROTTLE_FIRST:
             case USE_CREATING_THROTTLE_LAST:
-                useFiltering(position);
+            case USE_CREATING_SAMPLE:
+            case USE_CREATING_DISTINCT:
+            case USE_CREATING_ELEMENT_AT:
+            case USE_CREATING_FILTER:
+            case USE_CREATING_FIRST:
+            case USE_CREATING_LAST:
+            case USE_CREATING_IGNORE_ELEMENTS:
+            case USE_CREATING_SKIP:
+            case USE_CREATING_SKIP_LAST:
+            case USE_CREATING_TAKE:
+            case USE_CREATING_TAKE_LAST:
+            case USE_CREATING_OF_TYPE:
+            case USE_CREATING_TIMEOUT:
+                useFiltering(position,isLongClick);
+                break;
+            case USE_CREATING_START_WITH:
+                useCombining(position,isLongClick);
                 break;
             case USE_CREATING_DEFER_SAMPLE:
                 useDeferSample(isLongClick);
@@ -745,8 +789,9 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     /**
      * 过滤操作符
      * @param position
+     * @param isLongClick
      */
-    private void useFiltering(int position) {
+    private void useFiltering(int position, boolean isLongClick) {
         switch (position){
             case USE_CREATING_THROTTLEWITHTIMEOUT:
             case USE_CREATING_DEBOUNCE:
@@ -814,11 +859,185 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                         emitter.onNext(6L);
                         emitter.onComplete();
                     }
-                    })
+                })
                     .throttleLast(1,TimeUnit.SECONDS)
                     .subscribe(result -> Log.e(TAG, "useFiltering: " + result));
                 break;
+            case USE_CREATING_SAMPLE:
+                Observable.create(new ObservableOnSubscribe<Long>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Long> emitter) throws Exception {
+                        emitter.onNext(1L);
+                        Thread.sleep(300);
+                        emitter.onNext(2L);
+                        Thread.sleep(700);
+                        emitter.onNext(3L);
+                        Thread.sleep(500);
+                        emitter.onNext(4L);
+                        Thread.sleep(800);
+                        emitter.onNext(5L);
+                        Thread.sleep(200);
+                        emitter.onNext(6L);
+                        emitter.onComplete();
+                    }
+                })
+                    .sample(1,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "sample useFiltering: " + result));
+                break;
 
+            case USE_CREATING_DISTINCT:
+                Observable.just(1,1,2,2,3,4,5,5,2)
+                    .distinct()
+                    .subscribe(result -> Log.e(TAG, "useFiltering: " + result));
+                break;
+            case USE_CREATING_ELEMENT_AT:
+                Observable.range(1,10)
+                    .elementAt(3)
+                    .subscribe(result -> Log.e(TAG, "useFiltering: " + result ));
+                break;
+            case USE_CREATING_FILTER:
+                Observable.range(1,10)
+                    .filter(new Predicate<Integer>() {
+                        @Override
+                        public boolean test(Integer integer) throws Throwable {
+                            if (integer > 5){// 大于5的数据才发出。
+                                return true;
+                            }
+                            return false;
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "useFiltering: " + result));
+                break;
+            case USE_CREATING_FIRST:
+                if(isLongClick){
+                    Observable.empty()
+                        .first(5)
+                        .subscribe(resutl -> Log.e(TAG, "useFiltering: " + resutl));
+                }else {
+                    Observable.just(1, 2)
+                        .first(5)
+                        .subscribe(resutl -> Log.e(TAG, "useFiltering: " + resutl));
+                }
+                break;
+            case USE_CREATING_LAST:
+                if(isLongClick){
+                    Observable.empty()
+                        .last(5)
+                        .subscribe(resutl -> Log.e(TAG, "useFiltering: " + resutl));
+                }else {
+                    Observable.just(1, 2)
+                        .last(5)
+                        .subscribe(resutl -> Log.e(TAG, "useFiltering: " + resutl));
+                }
+                break;
+            case USE_CREATING_IGNORE_ELEMENTS:
+                Observable.range(1,10)
+                    .ignoreElements()
+                    .subscribe(new CompletableObserver() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            Log.e(TAG, "onComplete: " );
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
+                break;
+            case USE_CREATING_SKIP:
+                Observable.range(1,5)
+                    .skip(2)
+                    .subscribe(result -> Log.e(TAG, "skip useFiltering: " + result ));
+
+                Observable.intervalRange(1,5,2,1,TimeUnit.SECONDS)
+                    .skip(3,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "skip Time useFiltering: " + result ));
+                break;
+            case USE_CREATING_SKIP_LAST:
+                Observable.range(1,5)
+                    .skipLast(2)
+                    .subscribe(result -> Log.e(TAG, "skipLast useFiltering: " + result ));
+
+                Observable.intervalRange(1,5,2,1,TimeUnit.SECONDS)
+                    .skipLast(3,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "skipLast Time useFiltering: " + result ));
+
+                break;
+            case USE_CREATING_TAKE:
+                Observable.range(1,5)
+                    .take(2)
+                    .subscribe(result -> Log.e(TAG, "take useFiltering: " + result ));
+
+                Observable.intervalRange(1,5,2,1,TimeUnit.SECONDS)
+                    .take(3,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "take Time useFiltering: " + result ));
+                break;
+            case USE_CREATING_TAKE_LAST:
+                Observable.range(1,5)
+                    .takeLast(2)
+                    .subscribe(result -> Log.e(TAG, "takeLast useFiltering: " + result ));
+
+                Observable.intervalRange(1,5,2,1,TimeUnit.SECONDS)
+                    .takeLast(3,TimeUnit.SECONDS)
+                    .subscribe(result -> Log.e(TAG, "takeLast Time useFiltering: " + result ));
+                break;
+            case USE_CREATING_OF_TYPE:
+                Observable.just(false,"a",1,2,"b",4,"c",true)
+                    .ofType(String.class)
+                    .subscribe(result -> Log.e(TAG, "ofType useFiltering: " + result));
+                break;
+            case USE_CREATING_TIMEOUT:
+                Observable.create(new ObservableOnSubscribe<Integer>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                        emitter.onNext(1);
+                        Thread.sleep(800);
+                        emitter.onNext(2);
+                        Thread.sleep(1000);
+                        emitter.onNext(3);
+                        Thread.sleep(1200);
+                        emitter.onNext(4);
+                        emitter.onComplete();
+                    }
+                })
+                    .timeout(1,TimeUnit.SECONDS,Observable.just(100))
+                    .subscribe(result -> Log.e(TAG, "timeout useFiltering: " + result ));
+
+                break;
+        }
+    }
+
+
+    /**
+     * 组合操作符
+     * @param posiiton
+     * @param isLongClick
+     */
+    private void useCombining(int posiiton,boolean isLongClick){
+        switch (posiiton){
+            case USE_CREATING_START_WITH:
+                Observable<Integer> range12 = Observable.range(1, 2);
+                Observable<Integer> range68 = Observable.range(6, 2);
+                Observable<String>  stringABC= Observable.just("a","b","c");
+                range12
+                    .startWith(range68)
+                    .startWithItem(100)
+                    .subscribe(result -> Log.e(TAG, "startWith: useCombining" + result ));
+
+                range12.combineLatest(range12, stringABC, new BiFunction<Integer, String, String>() {
+                    @Override
+                    public String apply(Integer integer, String s) throws Throwable {
+                        return String.valueOf(integer) + s;
+                    }
+                })
+                    .subscribe(result -> Log.e(TAG, "combineLatest useCombining: " + result ));
+                break;
         }
     }
 }

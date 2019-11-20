@@ -1,19 +1,15 @@
-Observable.create(new ObservableOnSubscribe<Long>() {
+Observable.create(new ObservableOnSubscribe<Integer>() {
     @Override
-    public void subscribe(ObservableEmitter<Long> emitter) throws Exception {
-        emitter.onNext(1L);
-        Thread.sleep(300);
-        emitter.onNext(2L);
-        Thread.sleep(700);
-        emitter.onNext(3L);
-        Thread.sleep(500);
-        emitter.onNext(4L);
+    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+        emitter.onNext(1);
         Thread.sleep(800);
-        emitter.onNext(5L);
-        Thread.sleep(200);
-        emitter.onNext(6L);
+        emitter.onNext(2);
+        Thread.sleep(1000);
+        emitter.onNext(3);
+        Thread.sleep(1200);
+        emitter.onNext(4);
         emitter.onComplete();
     }
-    })
-    .throttleLast(1,TimeUnit.SECONDS)
-    .subscribe(result -> Log.e(TAG, "useFiltering: " + result));
+})
+    .timeout(1,TimeUnit.SECONDS,Observable.just(100))
+    .subscribe(result -> Log.e(TAG, "timeout useFiltering: " + result ));

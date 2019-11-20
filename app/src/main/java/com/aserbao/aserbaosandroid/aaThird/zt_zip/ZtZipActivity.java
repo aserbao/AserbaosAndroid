@@ -15,7 +15,8 @@ import java.io.File;
 
 public class ZtZipActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "ZtZipActivity";
-    public static final String storageZipFile = StaticFinalValues.STORAGE_ZIP_FILE + "/123.zip";
+//    public static final String storageZipFile = StaticFinalValues.STORAGE_ZIP_FILE + "/123.zip";
+    public static final String storageZipFile = "/storage/emulated/0/spot/.zipFilter/NeanderthalAlt-05.01-1.005.073-eead04ef.zip";
     public static final String storageUnZipFile = StaticFinalValues.STORAGE_UNZIP_FILE + "/456";
     @Override
     public void initGetData() {
@@ -42,14 +43,14 @@ public class ZtZipActivity extends BaseRecyclerViewActivity {
             case 20:
                 ZipUtil.unpack(new File(storageZipFile), new File(storageUnZipFile));
 
-                String dzp = Environment.getExternalStorageDirectory().getAbsolutePath()  + "/spot/unzipFilter" + "/" + String.valueOf(1) + "/";
+                /*String dzp = Environment.getExternalStorageDirectory().getAbsolutePath()  + "/spot/unzipFilter" + "/" + String.valueOf(1) + "/";
                 File file1 = new File(dzp);
                 if (!file1.exists()) file1.mkdirs();
                 String[] list = file1.list();
                 for (int i = 0; i < list.length; i++) {
                     String s = list[i];
                     Log.e(TAG, "itemClickBack: " + s );
-                }
+                }*/
                 break;
         }
     }

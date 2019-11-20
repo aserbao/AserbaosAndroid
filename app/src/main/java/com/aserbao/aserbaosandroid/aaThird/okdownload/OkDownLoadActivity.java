@@ -63,8 +63,6 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             case 404:
                 String absolutePath = Environment.getDownloadCacheDirectory().getAbsolutePath();
                 Log.e(TAG, "itemClickBack: " + absolutePath );
-
-
                 break;
             case 100:
                 boolean completed = StatusUtil.isCompleted(url, parentFile.getPath(), null);
