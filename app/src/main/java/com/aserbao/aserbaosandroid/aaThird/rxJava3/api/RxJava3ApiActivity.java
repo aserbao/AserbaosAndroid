@@ -96,6 +96,8 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_TIMEOUT = 66;
 
     public static final int USE_CREATING_START_WITH = 80;
+    public static final int USE_CREATING_COMBINELATEST = 81;
+    public static final int USE_CREATING_JOIN = 82;
 
 
 
@@ -152,6 +154,8 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用timeout", USE_CREATING_TIMEOUT));
         mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"组合操作符的使用"));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用startWith", USE_CREATING_START_WITH));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用combineLatest", USE_CREATING_COMBINELATEST));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用join", USE_CREATING_JOIN));
 
     }
 
@@ -211,6 +215,8 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 useFiltering(position,isLongClick);
                 break;
             case USE_CREATING_START_WITH:
+            case USE_CREATING_COMBINELATEST:
+            case USE_CREATING_JOIN:
                 useCombining(position,isLongClick);
                 break;
             case USE_CREATING_DEFER_SAMPLE:
@@ -1020,24 +1026,43 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
      * @param isLongClick
      */
     private void useCombining(int posiiton,boolean isLongClick){
+
+
         switch (posiiton){
             case USE_CREATING_START_WITH:
                 Observable<Integer> range12 = Observable.range(1, 2);
                 Observable<Integer> range68 = Observable.range(6, 2);
-                Observable<String>  stringABC= Observable.just("a","b","c");
                 range12
                     .startWith(range68)
                     .startWithItem(100)
                     .subscribe(result -> Log.e(TAG, "startWith: useCombining" + result ));
-
-                range12.combineLatest(range12, stringABC, new BiFunction<Integer, String, String>() {
+                break;
+            case USE_CREATING_COMBINELATEST:
+                Observable<Integer> rangeCom = Observable.range(1, 2);
+                Observable<String>  stringABC= Observable.just("a","b","c");
+                rangeCom.combineLatest(rangeCom, stringABC, new BiFunction<Integer, String, String>() {
                     @Override
-                    public String apply(Integer integer, String s) throws Throwable {
-                        return String.valueOf(integer) + s;
+                    public String apply(Integer integer, String coms) throws Throwable {
+                        return String.valueOf(integer) + coms;
                     }
                 })
                     .subscribe(result -> Log.e(TAG, "combineLatest useCombining: " + result ));
                 break;
+            case USE_CREATING_JOIN:
+                Observable<Long> intervalRange = Observable.intervalRange(1, 10,2,1,TimeUnit.SECONDS);
+                    Observable.intervalRange(1000, 10,2,1,TimeUnit.SECONDS)
+                    .join(intervalRange, s -> {
+                            //使Observable延迟3000毫秒执行
+                            return Observable.timer(3, TimeUnit.SECONDS);
+                        }, integer -> {
+                            //使Observable延迟2000毫秒执行
+                            return Observable.timer(2, TimeUnit.SECONDS);
+                        },
+                        //结合上面发射的数据
+                        (s, integer) -> s+integer)
+                    .subscribe(o -> Log.e(TAG, "join useCombining: "  + o));
+                break;
+
         }
     }
 }
