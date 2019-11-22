@@ -261,7 +261,7 @@
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraTextureViewShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraShowActivity" />
         <activity android:name=".opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraGlSurfaceShowActivity" />
-        <activity android:name=".ui.customView.countdownView.CountDownViewActivity" />
+        <activity android:name=".ui.customView.countdownView.AboutTimeViewActivity" />
         <activity android:name=".audioAndVideo.media.audio.AudioRecordActivity" />
         <activity android:name=".designMode.decoratorPattern.DecoratorActivity" />
         <activity android:name=".audioAndVideo.media.mediaplayer.MediaPlayerActivity" />

@@ -32,6 +32,7 @@ import io.reactivex.SingleEmitter;
 import io.reactivex.SingleObserver;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -98,6 +99,13 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_START_WITH = 80;
     public static final int USE_CREATING_COMBINELATEST = 81;
     public static final int USE_CREATING_JOIN = 82;
+    public static final int USE_CREATING_MERGE = 83;
+    public static final int USE_CREATING_ZIP = 84;
+    public static final int USE_CREATING_SWITCH_MAP = 85;
+    public static final int USE_CREATING_REDUCE = 86;
+    public static final int USE_CREATING_COUNT = 87;
+    public static final int USE_CREATING_COLLECT = 88;
+    public static final int USE_CREATING_CONCAT = 89;
 
 
 
@@ -156,6 +164,13 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用startWith", USE_CREATING_START_WITH));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用combineLatest", USE_CREATING_COMBINELATEST));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("使用join", USE_CREATING_JOIN));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用merge", USE_CREATING_MERGE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用zip", USE_CREATING_ZIP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用switchMap", USE_CREATING_SWITCH_MAP));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用reduce", USE_CREATING_REDUCE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用count", USE_CREATING_COUNT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用collect", USE_CREATING_COLLECT));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用concat", USE_CREATING_CONCAT));
 
     }
 
@@ -217,6 +232,13 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
             case USE_CREATING_START_WITH:
             case USE_CREATING_COMBINELATEST:
             case USE_CREATING_JOIN:
+            case USE_CREATING_MERGE:
+            case USE_CREATING_ZIP:
+            case USE_CREATING_SWITCH_MAP:
+            case USE_CREATING_REDUCE:
+            case USE_CREATING_COUNT:
+            case USE_CREATING_COLLECT:
+            case USE_CREATING_CONCAT:
                 useCombining(position,isLongClick);
                 break;
             case USE_CREATING_DEFER_SAMPLE:
@@ -602,11 +624,27 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 repeatTime ++;
                 break;
             case USE_CREATING_TIMER:
-                Observable.timer(5, TimeUnit.SECONDS)
-                    .subscribe(new Consumer<Long>() {
+                Observable
+                    .timer(5, TimeUnit.SECONDS)
+                    .subscribe(new Observer<Long>() {
                         @Override
-                        public void accept(Long aLong) throws Throwable {
-                            Log.e(TAG, "timerFlowable accept: " + aLong );
+                        public void onSubscribe(Disposable d) {
+                            Log.e(TAG, "timer onSubscribe: " +d );
+                        }
+
+                        @Override
+                        public void onNext(Long aLong) {
+                            Log.e(TAG, "timer onNext: " + aLong );
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e(TAG, "timer onError: " + e );
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            Log.e(TAG, "timer onComplete: " );
                         }
                     });
                 break;
@@ -1050,19 +1088,105 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 break;
             case USE_CREATING_JOIN:
                 Observable<Long> intervalRange = Observable.intervalRange(1, 10,2,1,TimeUnit.SECONDS);
-                    Observable.intervalRange(1000, 10,2,1,TimeUnit.SECONDS)
-                    .join(intervalRange, s -> {
+
+                Observable<String> just = Observable.just("one", "two", "three", "four");
+               /* Observable<Integer> range = Observable.range(1, 5);
+                    range
+                    .join(just, s -> {
                             //使Observable延迟3000毫秒执行
-                            return Observable.timer(3, TimeUnit.SECONDS);
+                            return Observable.timer(2, TimeUnit.SECONDS);
                         }, integer -> {
                             //使Observable延迟2000毫秒执行
                             return Observable.timer(2, TimeUnit.SECONDS);
                         },
                         //结合上面发射的数据
                         (s, integer) -> s+integer)
-                    .subscribe(o -> Log.e(TAG, "join useCombining: "  + o));
-                break;
+                    .subscribe(o -> Log.e(TAG, "join useCombining: "  + o));*/
 
+
+                Observable.intervalRange(1,5,0,1,TimeUnit.SECONDS)
+                        .join(Observable.just("a","b","c","d")
+                            ,integer -> {
+                                //源Observable只执行3s
+                                return Observable.timer(3, TimeUnit.SECONDS);
+                            },
+                            string -> {
+                                ////Observable只执行2s
+                                return Observable.timer(2, TimeUnit.SECONDS);
+                            },
+                            (integer,string) -> String.valueOf(integer) + string)
+                .subscribe(result -> Log.e(TAG, "join useCombining: " + result ));
+                break;
+            case USE_CREATING_MERGE:
+                //mergeWith可以接受2~9个Observable。若某个Observable出错，则会停止数据发射。
+                Observable.intervalRange(1, 5,0,1,TimeUnit.SECONDS)
+                    .mergeWith(Observable.intervalRange(101, 3,0,1,TimeUnit.SECONDS))
+                    .subscribe(result -> Log.e(TAG, "mergeWith useCombining: " +result));
+                break;
+            case USE_CREATING_ZIP:
+                //zipWith如果观察者数量不同，则已少的为标准。
+                Observable.intervalRange(1, 5,0,1,TimeUnit.SECONDS)
+                    .zipWith(Observable.intervalRange(101, 3, 0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, Long>() {
+                        @Override
+                        public Long apply(Long aLong, Long aLong2) throws Throwable {
+                            return aLong + aLong2;
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "zipWith useCombining: " +result));
+                break;
+            case USE_CREATING_SWITCH_MAP:
+                Observable.range(1,5)
+                    .switchMap(new Function<Integer, ObservableSource<?>>() {
+                        @Override
+                        public ObservableSource<?> apply(Integer integer) throws Throwable {
+                            return Observable.just("switchMap" + integer);
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "switchMap useCombining: " + result ));
+                break;
+            case USE_CREATING_REDUCE:
+                Observable.range(1,5)
+                    .reduce(new BiFunction<Integer, Integer, Integer>() {
+                        @Override
+                        public Integer apply(Integer integer, Integer integer2) throws Throwable {
+                            Log.e(TAG, "apply: 执行过程  第一个数= " + integer + " 第二个数= "+ integer2  );
+                            return integer + integer2;
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "reduce useCombining: " + result));
+                break;
+            case USE_CREATING_COUNT:
+                Observable.range(1,5)
+                    .count()
+                    .subscribe(result -> Log.e(TAG, "count useCombining:一共发送了" + result + "次数据"));
+                break;
+            case USE_CREATING_COLLECT:
+                Observable.range(1,5)
+                    .collect(new Supplier<ArrayList<Integer>>() {
+                        @Override
+                        public ArrayList<Integer> get() throws Throwable {
+                            return new ArrayList<>();
+                        }
+                    }, new BiConsumer<ArrayList<Integer>, Integer>() {
+                        @Override
+                        public void accept(ArrayList<Integer> integers, Integer integer) throws Throwable {
+                            integers.add(integer);
+                        }
+                    })
+                    .subscribe(reslut -> Log.e(TAG, "collect useCombining: " +reslut ));
+                break;
+            case USE_CREATING_CONCAT:
+                Observable.just("one",5)
+                    .concatWith(new ObservableSource<String>() {
+                        @Override
+                        public void subscribe(Observer<? super String> observer) {
+                            observer.onNext("a");
+                            observer.onNext("b");
+                            observer.onComplete();
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "concatWith useCombining: " + result ));
+                 break;
         }
     }
 }
