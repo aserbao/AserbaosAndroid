@@ -1145,7 +1145,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                                 return Observable.timer(5, TimeUnit.SECONDS);
                             },
                             string -> {
-                                return Observable.timer(1, TimeUnit.SECONDS);
+                                return Observable.timer(2, TimeUnit.SECONDS);
                             },
                             (integer,string) -> "LeftO = "+integer + "RightO="+ string)
                 .subscribe(result -> Log.e(TAG, "join useCombining: " + result ));
