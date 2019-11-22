@@ -1,15 +1,8 @@
-Observable.create(new ObservableOnSubscribe<Integer>() {
-    @Override
-    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-        emitter.onNext(1);
-        Thread.sleep(800);
-        emitter.onNext(2);
-        Thread.sleep(1000);
-        emitter.onNext(3);
-        Thread.sleep(1200);
-        emitter.onNext(4);
-        emitter.onComplete();
-    }
-})
-    .timeout(1,TimeUnit.SECONDS,Observable.just(100))
-    .subscribe(result -> Log.e(TAG, "timeout useFiltering: " + result ));
+Observable.intervalRange(1, 3,0,1,TimeUnit.SECONDS)
+          .zipWith(Observable.intervalRange(101, 2, 0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, Long>() {
+              @Override
+              public Long apply(Long aLong, Long aLong2) throws Throwable {
+                  return aLong + aLong2;
+              }
+          })
+          .subscribe(result -> Log.e(TAG, "zipWith useCombining: " +result));

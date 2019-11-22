@@ -11,6 +11,7 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.functions.Supplier;
+import io.reactivex.internal.util.SorterFunction;
 import io.reactivex.observables.GroupedObservable;
 import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -97,6 +99,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_TIMEOUT = 66;
 
     public static final int USE_CREATING_START_WITH = 80;
+    public static final int USE_CREATING_CONCAT = 89;
     public static final int USE_CREATING_COMBINELATEST = 81;
     public static final int USE_CREATING_JOIN = 82;
     public static final int USE_CREATING_MERGE = 83;
@@ -105,7 +108,6 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_CREATING_REDUCE = 86;
     public static final int USE_CREATING_COUNT = 87;
     public static final int USE_CREATING_COLLECT = 88;
-    public static final int USE_CREATING_CONCAT = 89;
 
 
 
@@ -1075,6 +1077,28 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     .startWithItem(100)
                     .subscribe(result -> Log.e(TAG, "startWith: useCombining" + result ));
                 break;
+            case USE_CREATING_CONCAT:
+                Observable.intervalRange(1, 3,0,1,TimeUnit.SECONDS)
+                    .concatWith(Observable.intervalRange(101, 2,0,1,TimeUnit.SECONDS))
+                    .subscribe(result -> Log.e(TAG, "concatWith useCombining: " + result ));
+                break;
+            case USE_CREATING_MERGE:
+                //mergeWith可以接受2~9个Observable。若某个Observable出错，则会停止数据发射。
+                Observable.intervalRange(1, 3,0,1,TimeUnit.SECONDS)
+                    .mergeWith(Observable.intervalRange(101, 2,0,1,TimeUnit.SECONDS))
+                    .subscribe(result -> Log.e(TAG, "mergeWith useCombining: " +result));
+                break;
+            case USE_CREATING_ZIP:
+                //zipWith如果观察者数量不同，则已少的为标准。
+                Observable.intervalRange(1, 3,0,1,TimeUnit.SECONDS)
+                    .zipWith(Observable.intervalRange(101, 2, 0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, Long>() {
+                        @Override
+                        public Long apply(Long aLong, Long aLong2) throws Throwable {
+                            return aLong + aLong2;
+                        }
+                    })
+                    .subscribe(result -> Log.e(TAG, "zipWith useCombining: " +result));
+                break;
             case USE_CREATING_COMBINELATEST:
                 Observable<Integer> rangeCom = Observable.range(1, 2);
                 Observable<String>  stringABC= Observable.just("a","b","c");
@@ -1084,13 +1108,24 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                         return String.valueOf(integer) + coms;
                     }
                 })
-                    .subscribe(result -> Log.e(TAG, "combineLatest useCombining: " + result ));
+                    .subscribe(result -> Log.e(TAG, "1 combineLatest useCombining: " + result ));
+
+                Observable.combineLatest(Observable.just("a","b","c"),
+                    Observable.intervalRange(101, 2,0,1,TimeUnit.SECONDS),
+                    new BiFunction<String, Long, String>() {
+                            @Override
+                            public String apply(String string, Long integer2) throws Throwable {
+                                return string + String.valueOf(integer2);
+                            }
+                        })
+                    .subscribe(result -> Log.e(TAG, "2 combineLatest useCombining: " + result ));
+
                 break;
             case USE_CREATING_JOIN:
-                Observable<Long> intervalRange = Observable.intervalRange(1, 10,2,1,TimeUnit.SECONDS);
+                /*Observable<Long> intervalRange = Observable.intervalRange(1, 10,2,1,TimeUnit.SECONDS);
 
                 Observable<String> just = Observable.just("one", "two", "three", "four");
-               /* Observable<Integer> range = Observable.range(1, 5);
+                Observable<Integer> range = Observable.range(1, 5);
                     range
                     .join(just, s -> {
                             //使Observable延迟3000毫秒执行
@@ -1105,34 +1140,18 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
 
 
                 Observable.intervalRange(1,5,0,1,TimeUnit.SECONDS)
-                        .join(Observable.just("a","b","c","d")
+                        .join(Observable.intervalRange(101,3,0,1,TimeUnit.SECONDS)
                             ,integer -> {
-                                //源Observable只执行3s
-                                return Observable.timer(3, TimeUnit.SECONDS);
+                                return Observable.timer(5, TimeUnit.SECONDS);
                             },
                             string -> {
-                                ////Observable只执行2s
-                                return Observable.timer(2, TimeUnit.SECONDS);
+                                return Observable.timer(1, TimeUnit.SECONDS);
                             },
-                            (integer,string) -> String.valueOf(integer) + string)
+                            (integer,string) -> "LeftO = "+integer + "RightO="+ string)
                 .subscribe(result -> Log.e(TAG, "join useCombining: " + result ));
-                break;
-            case USE_CREATING_MERGE:
-                //mergeWith可以接受2~9个Observable。若某个Observable出错，则会停止数据发射。
-                Observable.intervalRange(1, 5,0,1,TimeUnit.SECONDS)
-                    .mergeWith(Observable.intervalRange(101, 3,0,1,TimeUnit.SECONDS))
-                    .subscribe(result -> Log.e(TAG, "mergeWith useCombining: " +result));
-                break;
-            case USE_CREATING_ZIP:
-                //zipWith如果观察者数量不同，则已少的为标准。
-                Observable.intervalRange(1, 5,0,1,TimeUnit.SECONDS)
-                    .zipWith(Observable.intervalRange(101, 3, 0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, Long>() {
-                        @Override
-                        public Long apply(Long aLong, Long aLong2) throws Throwable {
-                            return aLong + aLong2;
-                        }
-                    })
-                    .subscribe(result -> Log.e(TAG, "zipWith useCombining: " +result));
+
+
+
                 break;
             case USE_CREATING_SWITCH_MAP:
                 Observable.range(1,5)
@@ -1175,18 +1194,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     })
                     .subscribe(reslut -> Log.e(TAG, "collect useCombining: " +reslut ));
                 break;
-            case USE_CREATING_CONCAT:
-                Observable.just("one",5)
-                    .concatWith(new ObservableSource<String>() {
-                        @Override
-                        public void subscribe(Observer<? super String> observer) {
-                            observer.onNext("a");
-                            observer.onNext("b");
-                            observer.onComplete();
-                        }
-                    })
-                    .subscribe(result -> Log.e(TAG, "concatWith useCombining: " + result ));
-                 break;
+
         }
     }
 }
