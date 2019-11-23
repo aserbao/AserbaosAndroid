@@ -26,7 +26,7 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
                 StringBuffer stringBuffer = new StringBuffer();

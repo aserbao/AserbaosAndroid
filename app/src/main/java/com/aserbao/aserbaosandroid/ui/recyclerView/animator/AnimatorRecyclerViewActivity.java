@@ -18,7 +18,7 @@ public class AnimatorRecyclerViewActivity extends BaseRecyclerViewActivity {
 
     private static final String TAG = "AnimatorRecyclerViewAct";
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Log.e(TAG, "itemClickBack: " + position );
         switch (position){
             case 0:

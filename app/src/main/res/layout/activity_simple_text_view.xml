@@ -31,6 +31,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.NoPaddingTextView
+        android:textSize="48sp"
+        android:text="这是没有默认边距的textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textSize="48sp"
+        android:text="这是没有默认边距的textView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"/>
+
     <TextView
         android:id="@+id/span_tv"
         android:layout_width="match_parent"

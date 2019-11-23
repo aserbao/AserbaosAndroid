@@ -23,7 +23,7 @@ public class ValuePassActivity extends BaseRecyclerViewActivity {
     public ValuesBean mValuesBean2;
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 1:
                 ValuesBean mValuesBean = valuesBean;

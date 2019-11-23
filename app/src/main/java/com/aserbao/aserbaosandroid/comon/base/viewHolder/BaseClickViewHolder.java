@@ -18,6 +18,8 @@ import butterknife.ButterKnife;
  */
 public class BaseClickViewHolder extends RecyclerView.ViewHolder {
 
+    public static final int COME_FROM_RV_ITEM = 0;
+
     public BaseClickViewHolder(@NonNull View itemView) {
         super(itemView);
         ButterKnife.bind(this,itemView);
@@ -29,7 +31,7 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 int tempFlag = getTempFlag(v, position);
                 if (mIBaseRecyclerItemClickListener != null) {
-                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,false);
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,false, COME_FROM_RV_ITEM);
                 }
             }
         });
@@ -39,7 +41,7 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
             public boolean onLongClick(View v) {
                 int tempFlag = getTempFlag(v, position);
                 if (mIBaseRecyclerItemClickListener != null) {
-                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true);
+                    mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true, COME_FROM_RV_ITEM);
                 }
                 return false;
             }

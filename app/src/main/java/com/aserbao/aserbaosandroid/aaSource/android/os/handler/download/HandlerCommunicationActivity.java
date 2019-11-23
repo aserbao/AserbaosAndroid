@@ -18,6 +18,7 @@ public class HandlerCommunicationActivity extends BaseAboutProgressActivity {
 
     @Override
     protected void startDownload() {
+        //模拟从后台获取数据
         mThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -61,12 +62,7 @@ public class HandlerCommunicationActivity extends BaseAboutProgressActivity {
                 MainLooper.getInstance().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        MainLooper.getInstance().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                handlerActivity.updateProgress(msg.arg1);
-                            }
-                        });
+                        handlerActivity.updateProgress(msg.arg1); // 更新UI界面
                     }
                 });
             }

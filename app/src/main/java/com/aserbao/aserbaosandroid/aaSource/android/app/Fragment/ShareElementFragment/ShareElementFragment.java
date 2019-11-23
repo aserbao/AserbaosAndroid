@@ -82,7 +82,7 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
     List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
     public void initView() {
-        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean);
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
 //        ShareElementFragmentAdapter mCommonAdapter = new ShareElementFragmentAdapter(getContext(), getActivity(), mBaseRecyclerBean, this);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mBaseRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -92,7 +92,7 @@ public class ShareElementFragment extends Fragment implements IBaseRecyclerItemC
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         ((TransitionSet) getExitTransition()).excludeTarget(view, true);
 
         ImageView transitioningView = view.findViewById(R.id.image_view_item);

@@ -32,11 +32,11 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
   @Override
   public int getCount() {
-    return ASourceUtil.iamgeUrl.length;
+    return ASourceUtil.imageUrls.length;
   }
 
   @Override
   public Fragment getItem(int position) {
-    return ImageFragment.newInstance(ASourceUtil.iamgeUrl[position]);
+    return ImageFragment.newInstance(ASourceUtil.imageUrls[position]);
   }
 }

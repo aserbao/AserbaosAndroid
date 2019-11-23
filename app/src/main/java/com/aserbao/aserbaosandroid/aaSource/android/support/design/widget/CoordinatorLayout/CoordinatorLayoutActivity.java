@@ -2,7 +2,6 @@ package com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.Coord
 
 import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingTextHelper;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +18,6 @@ import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +40,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View v, int position, boolean isLongClick) {
+    public void itemClickBack(View v, int position, boolean isLongClick, int comeFrom) {
         View addView;
         switch (position){
             case 0:
@@ -70,7 +68,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                     PopupManager popupManager = new PopupManager(this);
                     popupManager.showSelectedPop(this, mPopBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
                         @Override
-                        public void itemClickBack(View view, int position, boolean isLongClick) {
+                        public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                             popupManager.dismiss();
                             AppBarLayout.LayoutParams appbarScrollIvLayoutParams = (AppBarLayout.LayoutParams) appbarScrollIv.getLayoutParams();
                             switch (position){
@@ -118,7 +116,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                     }
                 });
 
-                addViewToFrameLayout(simpleView);
+                 addViewToFrameLayout(simpleView);
                 break;
             case 10:
                 View view1 = LayoutInflater.from(this).inflate(R.layout.simple_coordinator_layout, null);

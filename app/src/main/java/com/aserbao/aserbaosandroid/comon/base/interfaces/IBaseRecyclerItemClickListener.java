@@ -12,6 +12,6 @@ import android.view.View;
  * @package:com.aserbao.aserbaosandroid.base.interfaces
  */
 public interface IBaseRecyclerItemClickListener {
-   void itemClickBack(View view, int position, boolean isLongClick);
+   void itemClickBack(View view, int position, boolean isLongClick, int comeFrom);
 
 }

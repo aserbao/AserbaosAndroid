@@ -67,7 +67,7 @@ public class ImageViewFragment extends Fragment {
         if (bundle != null) {
             entrancePosition = bundle.getInt(StaticFinalValues.POSITION,0);
         }
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
+        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
     }
 
     private LinearLayoutManager mLinearLayoutManager;

@@ -29,7 +29,7 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 1:
                 getSupportFragmentManager()

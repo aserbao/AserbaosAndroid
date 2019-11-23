@@ -67,7 +67,7 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
 
         BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
             @Override
-            public void itemClickBack(View view, int position, boolean isLongClick) {
+            public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 Toast.makeText(getContext(), "你点击了" + position + "个位置的View 常按 =" + isLongClick, Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,6 +82,11 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
         mIItemOnTouchCallBackListener = itemOnTouchCallBackListener;
     }
 
+
+    @Override
+    public void onClickOrLongPress(boolean isLongPress, Bundle bundle) {
+
+    }
 
     @Override
     public void onScollView(View view, float scrollX, int action, int comeFrom) {

@@ -41,7 +41,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Animation animation = mAnimationIv.getAnimation();
         if (animation != null) {
             animation.cancel();

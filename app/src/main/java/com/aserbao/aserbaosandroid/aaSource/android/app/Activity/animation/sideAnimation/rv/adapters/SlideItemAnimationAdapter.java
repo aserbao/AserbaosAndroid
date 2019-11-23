@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.side
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -87,6 +88,7 @@ public class SlideItemAnimationAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public interface IItemOnTouchCallBackListener{
+        void onClickOrLongPress(boolean isLongPress,Bundle bundle);
         void onScollView(View view,float scrollX,int action,int comeFrom);
     }
 

@@ -1,9 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.events.demo;
 
-import android.view.LayoutInflater;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
@@ -22,7 +20,7 @@ public class EventDemoActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 
     }
 }

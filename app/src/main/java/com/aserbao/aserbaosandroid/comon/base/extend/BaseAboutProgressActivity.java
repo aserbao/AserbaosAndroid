@@ -43,7 +43,7 @@ public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity
 
     @CallSuper
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {}
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 
     @CallSuper
     @Override

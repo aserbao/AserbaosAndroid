@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.viewHolders;
 
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -37,6 +38,11 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder {
             }
             mBaseRecyclerViewItemTv.setText(name);
             mBaseRvTextItemCv.setIItemOnTouchCallBackListener(new SlideItemAnimationAdapter.IItemOnTouchCallBackListener() {
+                @Override
+                public void onClickOrLongPress(boolean isLongPress, Bundle bundle) {
+
+                }
+
                 @Override
                 public void onScollView(View view, float scrollX, int action, int comeFrom) {
                     if (mIBaseRecyclerItemClickListener != null) {

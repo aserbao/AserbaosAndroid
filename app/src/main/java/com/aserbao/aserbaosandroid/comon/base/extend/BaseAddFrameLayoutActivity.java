@@ -8,7 +8,6 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityA
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +31,8 @@ public abstract class BaseAddFrameLayoutActivity extends BaseRecyclerViewActivit
      */
     public void initRecyclerView(RecyclerView recyclerView, int viewType, IBaseRecyclerItemClickListener iBaseRecyclerItemClickListener){
         List<BaseRecyclerBean> baseRecyclerBeen = new ArrayList<>();
-        for (int i = 0; i < ASourceUtil.iamgeUrl.length; i++) {
-            baseRecyclerBeen.add(new BaseRecyclerBean(ASourceUtil.iamgeUrl[i], viewType,i));
+        for (int i = 0; i < ASourceUtil.imageUrls.length; i++) {
+            baseRecyclerBeen.add(new BaseRecyclerBean(ASourceUtil.imageUrls[i], viewType,i));
         }
         linearLayoutManager = new LinearLayoutManager(this, orientaion, false);
         baseRecyclerViewActivityAdapter = new BaseRecyclerViewActivityAdapter(this, this, baseRecyclerBeen, iBaseRecyclerItemClickListener);

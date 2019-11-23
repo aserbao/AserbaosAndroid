@@ -15,7 +15,7 @@ public class JCLivePlayerActivity extends BaseRecyclerViewActivity {
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
             case 0:
 //                JCPlayerActivity.lanuch(this,"http://tv.cctv.com/live/cctv1/?date=2019-02-28&index=0");

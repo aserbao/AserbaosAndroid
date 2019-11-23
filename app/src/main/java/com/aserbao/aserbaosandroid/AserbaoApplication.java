@@ -25,7 +25,6 @@ public class AserbaoApplication extends MultiDexApplication {
         return instance;
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();

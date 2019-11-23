@@ -7,6 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.opengl.OpenGlActivity">
+
+
     <ScrollView
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
@@ -23,8 +25,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </ScrollView>
+    <android.support.v7.widget.Toolbar
+        android:visibility="gone"
+        android:id="@+id/base_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/base_top_tv"
+                android:text="aserbao"
+                android:textSize="28sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_gravity="right"
+                android:id="@+id/base_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
 
+        </FrameLayout>
+
+
+    </android.support.v7.widget.Toolbar>
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/base_tool_bar"
         android:id="@+id/base_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -41,8 +68,6 @@
         android:id="@+id/base_recycler_empty_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-
 
     <android.support.v7.widget.CardView
         android:layout_alignParentBottom="true"

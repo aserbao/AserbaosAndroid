@@ -568,7 +568,7 @@ public class ADateMgr {
      * @param offset 表示偏移天数
      * @return
      */
-    public String getNowDayOffset(int offset) {
+    public static String getNowDayOffset(int offset) {
         Calendar m_Calendar = Calendar.getInstance();
         long time = (long) m_Calendar.getTimeInMillis();
         time = time + offset * 24 * 3600 * 1000;

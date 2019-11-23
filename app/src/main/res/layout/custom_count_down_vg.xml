@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/monthDayTv"
+            android:text="---- 11/12 ----"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.aserbao.aserbaosandroid.ui.texts.textViews.customTextView.NoPaddingTextView
+            android:layout_gravity="center"
+            android:id="@+id/hourMinTv"
+            android:text="23:34:01"
+            android:textSize="46sp"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="你妈妈叫你回家吃饭了"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -40,46 +40,65 @@ public class CatchTouchFrameLayout extends FrameLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private float mStartRawX;
-    private float mStartX;
-    private boolean mIsScrolling = false;
-    private float difRawX;
+    private float mStartRawX,mStartRawY,difRawX,difRawY;
+    private boolean mIsScrolling = false,mIsCallLongClick = false;// 是否返回过常按事件？
+    private long mStartClickTime;
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                mStartClickTime = System.currentTimeMillis();
                 mStartRawX = event.getRawX();
-                mStartX = event.getX();
+                mStartRawY = event.getRawY();
                 mIsScrolling = false;
-                if (mIItemOnTouchCallBackListener != null) {
-                    mIItemOnTouchCallBackListener.onScollView(this,0,event.getAction(), CATCH_TOUCH_FRAME_LAYOUT);
-                }
+                mIsCallLongClick = false;
+                useAnimation(0,event.getAction());
                 super.dispatchTouchEvent(event);
                 return true;
             case MotionEvent.ACTION_MOVE:
-                mIsScrolling = true;
                 getParent().requestDisallowInterceptTouchEvent(true);
                 difRawX = event.getRawX() - mStartRawX;
-                float difX = event.getX() - mStartX;
-                useAnimation(difRawX,event.getAction());
-                Log.e(TAG, "dispatchTouchEvent: " +  getX() + " \n difRawX = " + difRawX + " difX = " + difX);
+                difRawY = event.getRawY() - mStartRawY;
+                float absX = Math.abs(difRawX);
+                float absY = Math.abs(difRawY);
+                if (absX > absY && absX + absY > 20){
+                    mIsScrolling = true;
+                }
+
+                if (!mIsScrolling && !mIsCallLongClick && System.currentTimeMillis() - mStartClickTime > 150 && mIItemOnTouchCallBackListener != null ){
+                    mIItemOnTouchCallBackListener.onClickOrLongPress(true,null);
+                    mIsCallLongClick = true;
+                }
+
+                if (mIsScrolling) useAnimation(difRawX,event.getAction());
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 getParent().requestDisallowInterceptTouchEvent(false);
-                mIsScrolling = false;
-                if (difRawX > AserbaoApplication.screenWidth / 3) {
-                    useAnimation(AserbaoApplication.screenWidth,event.getAction());
-                }else {
-                    useAnimation(0,event.getAction());
+                float chaX = event.getRawX() - mStartRawX;
+                float chaY = event.getRawY() - mStartRawY;
+                long chaTime = System.currentTimeMillis() - mStartClickTime;
+                if (!mIsScrolling){
+                    if (chaTime < 150){
+                        if (mIItemOnTouchCallBackListener != null) {
+                            mIItemOnTouchCallBackListener.onClickOrLongPress(false,null);
+                        }
+                    }else{
+                        if (mIItemOnTouchCallBackListener != null && !mIsCallLongClick ) {
+                            mIItemOnTouchCallBackListener.onClickOrLongPress(true,null);
+                        }
+                    }
+                }else{
+                    useAnimation(difRawX,event.getAction());
+                    mIsScrolling = false;
                 }
                 break;
         }
-        Log.e(TAG, "dispatchTouchEvent: " + event.getAction() + " " +  getX() );
+        Log.e(TAG, "dispatchTouchEvent: " + event.getAction() + " difRawX = " + difRawX );
         return super.dispatchTouchEvent(event);
     }
-
 
     public SlideItemAnimationAdapter.IItemOnTouchCallBackListener mIItemOnTouchCallBackListener;
     public void setIItemOnTouchCallBackListener(SlideItemAnimationAdapter.IItemOnTouchCallBackListener itemOnTouchCallBackListener){
@@ -87,9 +106,6 @@ public class CatchTouchFrameLayout extends FrameLayout {
     }
 
     public void useAnimation(float finalX,int action) {
-        /*PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofFloat("translationX", 0.0f, finalX);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(this, valuesHolder);
-        objectAnimator.setDuration(0).start();*/
         if (mIItemOnTouchCallBackListener != null) {
             mIItemOnTouchCallBackListener.onScollView(this,finalX,action,CATCH_TOUCH_FRAME_LAYOUT);
         }
