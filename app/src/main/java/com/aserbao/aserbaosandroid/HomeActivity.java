@@ -16,6 +16,7 @@ import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
+import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;

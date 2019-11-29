@@ -30,7 +30,7 @@ public abstract class BaseAboutProgressActivity extends BaseRecyclerViewActivity
     @CallSuper
     @Override
     public void initGetData() {
-        View rootView = addLayoutToFrameLayout(R.layout.android_os_handler_progress);
+        View rootView = addLayoutToFrameLayout(R.layout.android_os_handler_progress,true);
         mProgressStartBtn = rootView.findViewById(R.id.progress_start_btn);
         mProgressStopBtn = rootView.findViewById(R.id.progress_pause_btn);
         mProgressResetBtn = rootView.findViewById(R.id.progress_reset_btn);

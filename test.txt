@@ -1,8 +1,3 @@
-Observable.intervalRange(1, 3,0,1,TimeUnit.SECONDS)
-          .zipWith(Observable.intervalRange(101, 2, 0, 1, TimeUnit.SECONDS), new BiFunction<Long, Long, Long>() {
-              @Override
-              public Long apply(Long aLong, Long aLong2) throws Throwable {
-                  return aLong + aLong2;
-              }
-          })
-          .subscribe(result -> Log.e(TAG, "zipWith useCombining: " +result));
+timestamp useUtility: Timed[time=1574855802918, unit=MILLISECONDS, value=1]
+timestamp useUtility: Timed[time=1574855803918, unit=MILLISECONDS, value=2]
+timestamp useUtility: Timed[time=1574855804917, unit=MILLISECONDS, value=3]

@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.functions.aboutBitmap;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createLong.CreateLongBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.pineColor.PineColorBitmapActivity;
 
@@ -16,6 +17,7 @@ import com.aserbao.aserbaosandroid.functions.aboutBitmap.pineColor.PineColorBitm
 public class AboutBitmapActivity extends BaseActivity {
     @Override
     public void initGetData() {
+        mClassBeen.add(new ClassBean("Bitmap生成", CreateBitmapActivity.class));
         mClassBeen.add(new ClassBean("生成长图", CreateLongBitmapActivity.class));
         mClassBeen.add(new ClassBean("获取图片颜色", PineColorBitmapActivity.class));
     }

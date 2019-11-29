@@ -11,13 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
@@ -178,12 +176,16 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
+        mNeedDirectBack = true;
     }
 
-    public View addLayoutToFrameLayout(int resLayout){
+    public View addLayoutToFrameLayout(int resLayout, boolean needFullScreen){
         View view = LayoutInflater.from(mContext).inflate(resLayout, null);
-        addViewToFrameLayoutFullScreen(view);
-        mNeedDirectBack = true;
+        if(needFullScreen) {
+            addViewToFrameLayoutFullScreen(view);
+        }else{
+            addViewToFrameLayout(view);
+        }
         return view;
     }
 
@@ -201,6 +203,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         ViewGroup parent = (ViewGroup)view.getParent();
         if (parent != null) parent.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
+        mNeedDirectBack = false;
     }
 
 
