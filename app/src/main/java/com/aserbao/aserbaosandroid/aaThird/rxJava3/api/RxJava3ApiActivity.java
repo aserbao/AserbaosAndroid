@@ -379,12 +379,15 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                 });
                 break;
             case USE_OBSERVABLE:
-                Observable.just("Hello world").subscribe(new Consumer<String>() {
+                Observable<String> hello_world = Observable.just("Hello world");
+                Consumer<String> consumer = new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Throwable {
-                        Log.e(TAG, "accept: "+ s + " ThreadName = " + Thread.currentThread());
+                        Log.e(TAG, "accept: " + s + " ThreadName = " + Thread.currentThread());
                     }
-                });
+                };
+                hello_world
+                    .subscribe(consumer);
                 break;
             case USE_SINGLE:
                 Single.create(new SingleOnSubscribe<Integer>() {
@@ -906,7 +909,8 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     });
                 break;
             case USE_TRANSFORMING_SCAN:
-                Observable.just(1,2,3,4,5)
+//                Observable.just(1,2,3,4,5)
+                Observable.range(1,100)
                     .scan(new BiFunction<Integer, Integer, Integer>() {
                         @Override
                         public Integer apply(Integer integer, Integer integer2) throws Throwable {
@@ -1568,7 +1572,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     private void useMathematical(int position,boolean isLongClick){
         switch (position){
             case USE_MATHEMATICAL_REDUCE:
-                Observable.range(1,5)
+                Observable.range(1,100)
                     .reduce(new BiFunction<Integer, Integer, Integer>() {
                         @Override
                         public Integer apply(Integer integer, Integer integer2) throws Throwable {
