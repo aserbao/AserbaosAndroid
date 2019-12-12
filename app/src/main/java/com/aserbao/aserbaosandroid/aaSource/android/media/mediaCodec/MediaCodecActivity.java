@@ -15,7 +15,7 @@ public class MediaCodecActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("MediaCodec解码本地视频到SurfaceView上显示", DecodeShowVideoActivity.class,INT_ENCODE));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("显示MediaCodec解码的本地视频", DecodeShowVideoActivity.class,INT_ENCODE));
     }
 
     @Override

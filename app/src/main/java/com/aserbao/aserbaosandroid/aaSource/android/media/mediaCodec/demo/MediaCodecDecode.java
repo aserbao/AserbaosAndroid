@@ -6,6 +6,8 @@ import android.media.MediaFormat;
 import android.os.SystemClock;
 import android.view.Surface;
 
+import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -44,8 +46,10 @@ public class MediaCodecDecode {
             int trackCount = mMediaExtractor.getTrackCount();
             for (int i = 0; i < trackCount; i++) {
                 MediaFormat trackFormat = mMediaExtractor.getTrackFormat(i);
-                trackFormat.setInteger(MediaFormat.KEY_WIDTH,720);
-                trackFormat.setInteger(MediaFormat.KEY_HEIGHT,400);
+                int width = DisplayUtil.dip2px(300);
+                int height = DisplayUtil.dip2px(400);
+                trackFormat.setInteger(MediaFormat.KEY_WIDTH,width);
+                trackFormat.setInteger(MediaFormat.KEY_HEIGHT,height);
                 String mime = trackFormat.getString(MediaFormat.KEY_MIME);
                 if (mime.startsWith("video/")){
                     mMediaExtractor.selectTrack(i);
