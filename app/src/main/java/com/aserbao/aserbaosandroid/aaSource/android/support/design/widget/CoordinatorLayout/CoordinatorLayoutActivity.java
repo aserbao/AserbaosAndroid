@@ -52,7 +52,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                         Snackbar.make(coorfinator_anchor_fl, "显示", Snackbar.LENGTH_SHORT).show();
                     }
                 });
-                addViewToFrameLayoutFullScreen(addView);
+                addViewToFrameLayout(addView, true,true);
                 break;
             case 1:
                 addView = LayoutInflater.from(this).inflate(R.layout.coordinator_and_appbar_layout, null);
@@ -90,15 +90,15 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                                     break;
                             }
                             appbarScrollIv.setLayoutParams(appbarScrollIvLayoutParams);
-                            addViewToFrameLayoutFullScreen(addView);
+                            addViewToFrameLayout(addView, true,true);
                         }
                     });
                 }else {
-                    addViewToFrameLayoutFullScreen(addView);
+                    addViewToFrameLayout(addView, true,true);
                 }
                 break;
             case 2:
-                View simpleView = LayoutInflater.from(this).inflate(R.layout.coordinatorlayout_and_toolbar_and_collapsing_layout, null);
+                View simpleView = LayoutInflater.from(this).inflate(R.layout.coordinatorlayout_and_toolbar_and_collapsing_layout, null);;
                 CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) simpleView.findViewById(R.id.collapsingToolbarLayout);
                 Toolbar tb = (Toolbar) simpleView.findViewById(R.id.toolbar);
                 AppBarLayout simpleAppBarLayout = (AppBarLayout) simpleView.findViewById(R.id.app_bar_layout);
@@ -116,11 +116,11 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                     }
                 });
 
-                 addViewToFrameLayout(simpleView);
+
                 break;
             case 10:
                 View view1 = LayoutInflater.from(this).inflate(R.layout.simple_coordinator_layout, null);
-                addViewToFrameLayoutFullScreen(view1);
+                addViewToFrameLayout(view1, true,true);
                 break;
         }
     }

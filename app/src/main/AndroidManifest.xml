@@ -48,7 +48,11 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.aboutBitmap.createBitmap.CreateBitmapActivity"></activity>
+        <activity android:name=".aaThird.pickvideo.VideoPickActivity"/>
+        <activity android:name=".aaSource.android.media.mediaCodec.demo.DecodeShowVideoActivity"></activity>
+        <activity android:name=".aaSource.android.media.mediaCodec.MediaCodecActivity" />
+        <activity android:name=".aaSource.android.media.MediaActivity" />
+        <activity android:name=".functions.aboutBitmap.createBitmap.CreateBitmapActivity" />
         <activity android:name=".ui.recyclerView.animator.itemARCMAnimation.ItemARCMAnimationActivity" />
         <activity android:name=".ui.recyclerView.animator.swapItemAnimator.ChangeItemAnimatorActivity" />
         <activity android:name=".aaThird.rxJava3.api.RxJava3ApiActivity" />

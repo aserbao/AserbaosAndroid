@@ -10,10 +10,6 @@ import android.widget.FrameLayout;
 import com.aserbao.aserbaosandroid.R;
 
 /**
- * Created by Vincent Woo
- * Date: 2018/2/26
- * Time: 17:52
- *
  * 先判断是否设定了mMaxHeight，如果设定了mMaxHeight，则直接使用mMaxHeight的值，
  * 如果没有设定mMaxHeight，则判断是否设定了mMaxRatio，如果设定了mMaxRatio的值
  * 则使用此值与屏幕高度的乘积作为最高高度

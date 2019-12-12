@@ -3,7 +3,6 @@ package com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
         frameLayout = ((FrameLayout) view.findViewById(R.id.frame_layout_container));
         imageView = ((ImageView) view.findViewById(R.id.imageView));
         button = ((Button) view.findViewById(R.id.frame_layout_btn));
-        addViewToFrameLayout(view);
+        addViewToFrameLayout(view, true,false);
     }
 
     @Override

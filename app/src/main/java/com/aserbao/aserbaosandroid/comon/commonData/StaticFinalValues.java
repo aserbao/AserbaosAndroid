@@ -62,6 +62,7 @@ public class StaticFinalValues {
     //--------------reqeestCode--------------
     public static final int COME_FROM_A_SHARE_MODULE_ACTIVITY = 100;
     public static final int COME_FROM_B_SHARE_MODULE_ACTIVITY = 101;
+    public static final int COME_FROM_REQUEST_CODE_TAKE_VIDEO = 102;
 
 
     //--------------baseRecyclerView-----------
@@ -83,6 +84,10 @@ public class StaticFinalValues {
     public static final int PathInterpolator = 9;
     public static final int PathMotion = 10;
     public static final int AcrMotion = 11;
+
+
+    public static final String MAX_NUMBER = "max_number";
+    public static final String RESULT_PICK_VIDEO = "result_pick_video";
 
 
 }

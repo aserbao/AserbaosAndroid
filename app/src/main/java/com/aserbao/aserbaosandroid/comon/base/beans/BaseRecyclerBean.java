@@ -21,6 +21,11 @@ public class BaseRecyclerBean implements Serializable {
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
 
+    /**
+     * 顶部文字提示
+     * @param viewType
+     * @param name
+     */
     public BaseRecyclerBean(int viewType,String name) {
         this.name = name;
         this.viewType = viewType;

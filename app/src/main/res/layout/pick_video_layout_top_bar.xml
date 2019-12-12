@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/vw_ic_arrow_down" />
+            android:src="@drawable/ic_arrow_down" />
 
     </LinearLayout>
 
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/vw_ic_record_audio" />
+            android:src="@drawable/ic_record_audio" />
     </RelativeLayout>
 
 </RelativeLayout>

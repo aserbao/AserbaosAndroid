@@ -57,6 +57,6 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
 
     private void showFloatView() {
         FloatView floatView = new FloatView(this);
-        addViewToFrameLayoutFullScreen(floatView,false);
+        addViewToFrameLayout(floatView,false,true);
     }
 }

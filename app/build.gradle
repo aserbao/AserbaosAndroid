@@ -122,6 +122,8 @@ dependencies {
     implementation 'org.zeroturnaround:zt-zip:1.13'
 
 
+    implementation 'pub.devrel:easypermissions:2.0.1'
+
     // 压缩解压 https://github.com/Leo0618/AndroidZip
 //    implementation 'com.leo618:zip:0.0.1' // 用的26.+,在高版本AS使用报错。
 }

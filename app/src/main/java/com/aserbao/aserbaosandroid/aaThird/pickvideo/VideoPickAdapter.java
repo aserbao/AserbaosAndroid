@@ -20,8 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.androidcustomcamera.base.utils.StaticFinalValues;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -58,7 +58,7 @@ public class VideoPickAdapter extends BaseAdapter<VideoFile, VideoPickAdapter.Vi
 
     @Override
     public VideoPickAdapter.VideoPickViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.vw_layout_item_video_pick, parent, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.pick_video_layout_item_video_pick, parent, false);
         ViewGroup.LayoutParams params = itemView.getLayoutParams();
         if (params != null) {
             WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
@@ -92,7 +92,7 @@ public class VideoPickAdapter extends BaseAdapter<VideoFile, VideoPickAdapter.Vi
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                     intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
                     if (Util.detectIntent(mContext, intent)) {
-                        ((Activity) mContext).startActivityForResult(intent, StaticFinalValues.REQUEST_CODE_TAKE_VIDEO);
+                        ((Activity) mContext).startActivityForResult(intent, StaticFinalValues.COME_FROM_REQUEST_CODE_TAKE_VIDEO);
                     } else {
                         Toast.makeText(mContext, "没有可用的视频录制应用", Toast.LENGTH_SHORT).show();
                     }

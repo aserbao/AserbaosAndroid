@@ -22,7 +22,7 @@ public class BottomNavigationActivity extends BaseRecyclerViewActivity implement
     @Override
     public void initGetData() {
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.aserbao_bottom_navigation_icon, null);
-        addViewToFrameLayout(rootView);
+        addViewToFrameLayout(rootView, true,false);
 
         mBottomIvOne = ((ImageView) rootView.findViewById(R.id.bottom_iv_one));
         mBottomIvTwo = ((ImageView) rootView.findViewById(R.id.bottom_iv_two));
