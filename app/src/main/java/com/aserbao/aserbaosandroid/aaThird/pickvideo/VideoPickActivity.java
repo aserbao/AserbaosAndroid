@@ -16,12 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.androidcustomcamera.base.utils.StaticFinalValues;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.Directory;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.callback.FilterResultCallback;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.callback.OnSelectStateListener;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.itemDecoration.DividerGridItemDecoration;
+import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -155,7 +155,7 @@ public class VideoPickActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case StaticFinalValues.REQUEST_CODE_TAKE_VIDEO:
+            case StaticFinalValues.COME_FROM_REQUEST_CODE_TAKE_VIDEO:
                 if (resultCode == RESULT_OK) {
                     Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                     File file = new File(mAdapter.mVideoPath);
