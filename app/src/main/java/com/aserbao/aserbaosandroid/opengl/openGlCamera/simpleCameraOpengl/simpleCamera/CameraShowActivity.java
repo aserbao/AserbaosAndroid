@@ -6,22 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
-public class CameraShowActivity extends AppCompatActivity {
+public class CameraShowActivity extends BaseRecyclerViewActivity {
+    @Override
+    public void initGetData() {
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("SurfaceView显示Camera数据",CameraSurfaceViewShowActivity.class,0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("TextureView显示Camera数据",CameraTextureViewShowActivity.class,1));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("GlSurfaceView显示Camera数据",CameraGlSurfaceShowActivity.class,2));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("SurfaceTexture显示Camera数据",CameraSurfaceTextureShowActivity.class,3));
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera_show);
-    }
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 
-    public void btn_camera_surface_view(View view) {
-        startActivity(new Intent(this,CameraSurfaceViewShowActivity.class));
-    }
-    public void btn_camera_texture_view(View view) {
-        startActivity(new Intent(this,CameraTextureViewShowActivity.class));
-    }
-    public void btn_camera_glsurface_view(View view) {
-        startActivity(new Intent(this,CameraGlSurfaceShowActivity.class));
     }
 }

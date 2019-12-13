@@ -40,6 +40,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用SurfaceView显示解码视频",1));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用TexureView显示解码视频",2));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用AspectTextureView显示解码视频",3));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("用TextureView + SurfaceTexture显示解码视频",4));
 
     }
 
@@ -61,6 +62,9 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
                 break;
             case 3:
                 useAspectTextureView(isLongClick);
+                break;
+            case 4:
+                useSurfaceTexture();
                 break;
         }
     }
@@ -84,6 +88,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                mMediaCodecDecode.release();
                 Log.d(TAG, "surfaceChanged() called with: holder = [" + holder + "], format = [" + format + "], width = [" + width + "], height = [" + height + "]");
             }
 
@@ -113,6 +118,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 
             @Override
             public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+                mMediaCodecDecode.release();
                 return false;
             }
 
@@ -128,7 +134,11 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         View root = addViewWHToFL(null,R.layout.aspect_texture_view, false, true,width,height,false);
         AspectTextureView aspectTextureView = (AspectTextureView) root.findViewById(R.id.aspect_texture_view);
         double aspectRatio = (double) 720 / (double) 1280;
-        aspectTextureView.setAspectRatio(AspectTextureView.MODE_INSIDE, aspectRatio);
+        if (isLongClick) {
+            aspectTextureView.setAspectRatio(AspectTextureView.MODE_INSIDE, aspectRatio);
+        }else{
+            aspectTextureView.setAspectRatio(AspectTextureView.MODE_OUTSIDE, aspectRatio);
+        }
         aspectTextureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -144,6 +154,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 
             @Override
             public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+                mMediaCodecDecode.release();
                 return false;
             }
 
@@ -154,6 +165,16 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         });
     }
 
+    private void useSurfaceTexture(){
+        int width = DisplayUtil.dip2px(300);
+        int height = DisplayUtil.dip2px(400);
+        View root = addViewWHToFL(null,R.layout.texture_view_layout, false, true,width,height,false);
+        TextureView textureView = (TextureView) root.findViewById(R.id.texture_view);
+        SurfaceTexture surfaceTexture = new SurfaceTexture(false);
+        textureView.setSurfaceTexture(surfaceTexture);
+        mMediaCodecDecode = new MediaCodecDecode(videoFileName,new Surface(surfaceTexture));
+        mMediaCodecDecode.start();
+    }
     @Override
     protected void onPause() {
         if (mMediaCodecDecode != null) {
