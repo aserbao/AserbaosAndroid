@@ -1,7 +1,8 @@
-package com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo;
+package com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo.decode;
 
 import android.content.Intent;
 import android.graphics.SurfaceTexture;
+import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -41,6 +42,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用TexureView显示解码视频",2));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用AspectTextureView显示解码视频",3));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("用TextureView + SurfaceTexture显示解码视频",4));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("用GlSurfaceView显示解码视频",5));
 
     }
 
@@ -65,6 +67,9 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
                 break;
             case 4:
                 useSurfaceTexture();
+                break;
+            case 5:
+                userGlSurfaceView();
                 break;
         }
     }
@@ -106,8 +111,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-                mMediaCodecDecode = new MediaCodecDecode(videoFileName, new Surface(surface));
-                mMediaCodecDecode.start();
+                newMediaCodec(surface);
                 Log.d(TAG, "onSurfaceTextureAvailable() called with: surface = [" + surface + "], width = [" + width + "], height = [" + height + "]");
             }
 
@@ -142,8 +146,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         aspectTextureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-                mMediaCodecDecode = new MediaCodecDecode(videoFileName, new Surface(surface));
-                mMediaCodecDecode.start();
+                newMediaCodec(surface);
                 Log.d(TAG, "onSurfaceTextureAvailable() called with: surface = [" + surface + "], width = [" + width + "], height = [" + height + "]");
             }
 
@@ -172,15 +175,39 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         TextureView textureView = (TextureView) root.findViewById(R.id.texture_view);
         SurfaceTexture surfaceTexture = new SurfaceTexture(false);
         textureView.setSurfaceTexture(surfaceTexture);
-        mMediaCodecDecode = new MediaCodecDecode(videoFileName,new Surface(surfaceTexture));
-        mMediaCodecDecode.start();
+        newMediaCodec(surfaceTexture);
     }
+
+
+
+    private void userGlSurfaceView(){
+        int width = DisplayUtil.dip2px(300);
+        int height = DisplayUtil.dip2px(400);
+        View root = addLayoutToFrameLayout(R.layout.gl_surface_view_layout,true);
+//        View root = addViewWHToFL(null,R.layout.gl_surface_view_layout, false, true,width,height,false);
+        GLSurfaceView glSurfaceView = (GLSurfaceView) root.findViewById(R.id.gl_surface_view);
+        glSurfaceView.setEGLContextClientVersion(2);
+        glSurfaceView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                glSurfaceView.requestRender();
+                newMediaCodec(showDecodeVideoFrame.mSurfaceTexture);
+            }
+        },1000);
+
+    }
+
     @Override
     protected void onPause() {
         if (mMediaCodecDecode != null) {
             mMediaCodecDecode.release();
         }
         super.onPause();
+    }
+
+    private void newMediaCodec(SurfaceTexture surfaceTexture) {
+        mMediaCodecDecode = new MediaCodecDecode(videoFileName, new Surface(surfaceTexture));
+        mMediaCodecDecode.start();
     }
 
     String videoFileName = "/storage/emulated/0/720aserbao5.mp4";

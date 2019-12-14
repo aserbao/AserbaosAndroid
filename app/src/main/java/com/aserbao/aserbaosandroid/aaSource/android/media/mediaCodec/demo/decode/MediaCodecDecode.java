@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo;
+package com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo.decode;
 
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
