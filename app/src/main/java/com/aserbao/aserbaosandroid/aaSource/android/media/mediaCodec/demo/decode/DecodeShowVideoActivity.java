@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo.decode.glSurfaceView.CameraRenderer;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.VideoPickActivity;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -22,6 +23,7 @@ import com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.ui.AspectTex
 
 import java.util.ArrayList;
 
+import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
 import static com.aserbao.aserbaosandroid.aaThird.pickvideo.BaseActivity.IS_NEED_FOLDER_LIST;
 import static com.aserbao.aserbaosandroid.aaThird.pickvideo.VideoPickActivity.IS_NEED_CAMERA;
 import static com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues.MAX_NUMBER;
@@ -93,7 +95,6 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-                mMediaCodecDecode.release();
                 Log.d(TAG, "surfaceChanged() called with: holder = [" + holder + "], format = [" + format + "], width = [" + width + "], height = [" + height + "]");
             }
 
@@ -178,8 +179,6 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         newMediaCodec(surfaceTexture);
     }
 
-
-
     private void userGlSurfaceView(){
         int width = DisplayUtil.dip2px(300);
         int height = DisplayUtil.dip2px(400);
@@ -187,14 +186,14 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 //        View root = addViewWHToFL(null,R.layout.gl_surface_view_layout, false, true,width,height,false);
         GLSurfaceView glSurfaceView = (GLSurfaceView) root.findViewById(R.id.gl_surface_view);
         glSurfaceView.setEGLContextClientVersion(2);
-        glSurfaceView.postDelayed(new Runnable() {
+        CameraRenderer cameraRenderer = new CameraRenderer(mContext, new SurfaceTexture.OnFrameAvailableListener() {
             @Override
-            public void run() {
+            public void onFrameAvailable(SurfaceTexture surfaceTexture) {
                 glSurfaceView.requestRender();
-                newMediaCodec(showDecodeVideoFrame.mSurfaceTexture);
             }
-        },1000);
-
+        });
+        glSurfaceView.setRenderer(cameraRenderer);
+        glSurfaceView.setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
     @Override
