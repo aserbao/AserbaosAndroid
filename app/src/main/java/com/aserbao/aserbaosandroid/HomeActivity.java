@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.FloatWindowActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.MediaCodecActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder.MediaRecorderActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
@@ -64,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", MediaCodecActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", MediaRecorderActivity.class));
     }
 
     private void initView() {
