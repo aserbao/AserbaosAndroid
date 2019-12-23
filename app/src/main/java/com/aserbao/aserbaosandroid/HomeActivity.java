@@ -10,6 +10,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.FloatWindowActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.MediaCodecActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder.MediaRecorderActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;

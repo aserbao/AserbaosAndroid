@@ -48,7 +48,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderActivity"></activity>
+        <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity"></activity>
+        <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderAudioActivity" />
+        <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderActivity" />
         <activity android:name=".aaSource.android.media.mediaCodec.demo.decode.DecodeVideoShowGlSurfaceViewActivity" />
         <activity android:name=".aaThird.pickvideo.VideoPickActivity" />
         <activity android:name=".aaSource.android.media.mediaCodec.demo.decode.DecodeShowVideoActivity" />

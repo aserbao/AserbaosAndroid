@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
@@ -24,7 +23,7 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
             mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
         }*/
         ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
-        mOrientation = LinearLayoutManager.HORIZONTAL;
+        mRvOrientation = LinearLayoutManager.HORIZONTAL;
     }
 
     @Override
@@ -45,7 +44,7 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
         } else {
-            mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
+            mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(changeItemAdapter);

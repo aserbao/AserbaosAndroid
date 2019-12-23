@@ -21,7 +21,7 @@ import static com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo
 public class CameraRenderer implements GLSurfaceView.Renderer {
 
         public SurfaceTexture mSurfaceTexture;
-        private float[] mPosCoordinate = {
+       /* private float[] mPosCoordinate = {
             -1, -1,
             -1, 1,
             1, -1,
@@ -30,7 +30,13 @@ public class CameraRenderer implements GLSurfaceView.Renderer {
             0, 1,
             1, 1,
             0, 0,
-            1, 0};
+            1, 0};*/
+
+//        private float[] mPosCoordinate = {-1, -1, -1, 1, 1, -1, 1, 1}; //后置数据
+//        private float[] mTexCoordinate = {1, 1, 0, 1, 1, 0, 0, 0};
+        float value = 0.5f;
+        private float[] mPosCoordinate = {-value, -value, -value, value, value, -value, value, value}; //后置数据
+        private float[] mTexCoordinate = {1, 1, 0, 1, 1, 0, 0, 0};
 
         private int uPosHandle;
         private int aTexHandle;
@@ -45,6 +51,15 @@ public class CameraRenderer implements GLSurfaceView.Renderer {
         private FloatBuffer mPosBuffer;
         private FloatBuffer mTexBuffer;
         private static final String TAG = "ShowDecodeVideoFrame";
+
+        public void setIsLandscape(boolean isLandscape){
+            if (isLandscape) {
+                value = 0.5f;
+            }
+        }
+        public void setRotate(int rotation){
+            mTexCoordinate = RotationUtils.setRotation(rotation);
+        }
 
         private Context mContext;
          SurfaceTexture.OnFrameAvailableListener mOnFrameAvailableListener;

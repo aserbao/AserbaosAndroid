@@ -72,7 +72,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     protected CanvasPointView mCanvasPointView;
     protected LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
-    public int mOrientation = LinearLayoutManager.VERTICAL;
+    public int mRvOrientation = LinearLayoutManager.VERTICAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
@@ -116,10 +116,10 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mMode = mode;
         switch (mMode) {
             case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
-                mOrientation = LinearLayout.VERTICAL;
+                mRvOrientation = LinearLayout.VERTICAL;
                 break;
             case StaticFinalValues.LINEAR_LAYOUTMANAGER_HORIZONTAL:
-                mOrientation = LinearLayout.HORIZONTAL;
+                mRvOrientation = LinearLayout.HORIZONTAL;
                 break;
         }
         initViewForLinear();
@@ -133,12 +133,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
         } else {
-            mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
+            mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
-        mCommonAdapter.setmOrientation(mOrientation);
+        mCommonAdapter.setmOrientation(mRvOrientation);
         mOpenglRecyclerView.post(new Runnable() {
             @Override
             public void run() {

@@ -219,6 +219,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
                     ArrayList<VideoFile> list = data.getParcelableArrayListExtra(StaticFinalValues.RESULT_PICK_VIDEO);
                     for (VideoFile file : list) {
                         videoFileName = file.getPath();
+                        DecodeVideoShowGlSurfaceViewActivity.mInputVideoFileName = videoFileName;
                     }
                     Toast.makeText(this, "视频已选择成功\n" + videoFileName, Toast.LENGTH_SHORT).show();
                     break;
