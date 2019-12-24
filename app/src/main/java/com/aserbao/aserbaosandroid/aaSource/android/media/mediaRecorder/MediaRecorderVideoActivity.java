@@ -32,7 +32,6 @@ public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
         mBaseRecyclerViewFl.bringChildToFront(mOpenglRecyclerView);
         mBaseRecyclerBeen.add(new BaseRecyclerBean("开始录制",0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("停止录制",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("停止录制",2));
         initCamera();
     }
 
@@ -40,15 +39,10 @@ public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position) {
             case 0:
-//                mCamera.unlock();
                 mMediaRecorder = startRecord(StaticFinalValues.STORAGE_TEMP_VIDEO_PATH);
                 break;
             case 1:
                 stopRecord(mMediaRecorder);
-                mMediaRecorder1 = startRecord(StaticFinalValues.STORAGE_TEMP_VIDEO_PATH2);
-                break;
-            case 2:
-                stopRecord(mMediaRecorder1);
                 break;
         }
 
@@ -113,7 +107,6 @@ public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
     }
 
     MediaRecorder mMediaRecorder;
-    MediaRecorder mMediaRecorder1;
     private static int mOrientation = 0;
     public MediaRecorder startRecord(String outputPath){
         //创建MediaRecorder

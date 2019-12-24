@@ -28,7 +28,6 @@ public class MediaRecorderActivity extends BaseRecyclerViewActivity {
     public void initGetData() {
         mBaseRecyclerBeen.add(new BaseRecyclerBean("MediaRecorder录制音频",MediaRecorderAudioActivity.class,0));
         mBaseRecyclerBeen.add(new BaseRecyclerBean("MediaRecorder录制视频",MediaRecorderVideoActivity.class,1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("MediaRecorder录制视频",Main20Activity.class,2));
         // 请求权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new  String[]{Manifest.permission.CHANGE_CONFIGURATION,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},0);
