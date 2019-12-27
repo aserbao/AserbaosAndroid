@@ -69,6 +69,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
      */
     public void openCamera() {
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+//        CameraCharacteristics cameraCharacteristics = manager.getCameraCharacteristics("0");
         //CameraManager cameraManager1 = getSystemService(CameraManager.class);
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
