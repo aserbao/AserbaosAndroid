@@ -4,7 +4,7 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.aserbao.aserbaosandroid2"
+        applicationId "com.example.aserbao.aserbaosandroid"
         minSdkVersion 21
         renderscriptTargetApi 19 //为了使用Renderscript
         renderscriptSupportModeEnabled true

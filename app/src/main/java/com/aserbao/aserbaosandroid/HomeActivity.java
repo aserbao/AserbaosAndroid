@@ -7,28 +7,21 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.ScalpelFrameLayout;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SurfaceViewActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.FloatWindowActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.MediaCodecActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder.MediaRecorderActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity;
-import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
-import com.aserbao.aserbaosandroid.audioAndVideo.media.audio.AudioRecordActivity;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
+import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.BlurImageActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.aserbao.aserbaosandroid.ui.customView.countdownView.AboutTimeViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         mClassBeen.add(new ClassBean("其他", OthersActivity.class));
         mClassBeen.add(new ClassBean("ffmpeg", FFmpegActivity.class));
         mClassBeen.add(new ClassBean("算法", AlgorithmActivity.class));
-        mClassBeen.add(new ClassBean("当前调试的界面", Camera2SurfaceViewActivity.class));
+        mClassBeen.add(new ClassBean("当前调试的界面", BlurImageActivity.class));
     }
 
     private void initView() {

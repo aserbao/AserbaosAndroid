@@ -84,7 +84,7 @@ public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
                         if (success) {
                             Camera.Parameters mParameters = mCamera.getParameters();
                             mParameters.setPictureFormat(PixelFormat.JPEG); //图片输出格式
-//                    mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//预览持续发光
+//                          mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//预览持续发光
                             mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);//持续对焦模式
                             mCamera.setParameters(mParameters);
                             mCamera.startPreview();
