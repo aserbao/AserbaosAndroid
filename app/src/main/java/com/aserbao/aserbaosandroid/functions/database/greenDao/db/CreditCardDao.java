@@ -28,7 +28,7 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property StudentId = new Property(1, Long.class, "studentId", false, "STUDENT_ID");
+        public final static Property StudentId = new Property(1, String.class, "studentId", false, "STUDENT_ID");
         public final static Property TeacherId = new Property(2, Long.class, "teacherId", false, "TEACHER_ID");
         public final static Property UserName = new Property(3, String.class, "userName", false, "USER_NAME");
         public final static Property CardNum = new Property(4, String.class, "cardNum", false, "CARD_NUM");
@@ -52,7 +52,7 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CREDIT_CARD\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"STUDENT_ID\" INTEGER," + // 1: studentId
+                "\"STUDENT_ID\" TEXT," + // 1: studentId
                 "\"TEACHER_ID\" INTEGER," + // 2: teacherId
                 "\"USER_NAME\" TEXT," + // 3: userName
                 "\"CARD_NUM\" TEXT," + // 4: cardNum
@@ -75,9 +75,9 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
             stmt.bindLong(1, id);
         }
  
-        Long studentId = entity.getStudentId();
+        String studentId = entity.getStudentId();
         if (studentId != null) {
-            stmt.bindLong(2, studentId);
+            stmt.bindString(2, studentId);
         }
  
         Long teacherId = entity.getTeacherId();
@@ -111,9 +111,9 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
             stmt.bindLong(1, id);
         }
  
-        Long studentId = entity.getStudentId();
+        String studentId = entity.getStudentId();
         if (studentId != null) {
-            stmt.bindLong(2, studentId);
+            stmt.bindString(2, studentId);
         }
  
         Long teacherId = entity.getTeacherId();
@@ -147,7 +147,7 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     public CreditCard readEntity(Cursor cursor, int offset) {
         CreditCard entity = new CreditCard( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // studentId
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // studentId
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // teacherId
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // userName
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // cardNum
@@ -160,7 +160,7 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     @Override
     public void readEntity(Cursor cursor, CreditCard entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setStudentId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setStudentId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTeacherId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
         entity.setUserName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setCardNum(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
@@ -194,7 +194,7 @@ public class CreditCardDao extends AbstractDao<CreditCard, Long> {
     }
     
     /** Internal query to resolve the "creditCardsList" to-many relationship of Student. */
-    public List<CreditCard> _queryStudent_CreditCardsList(Long studentId) {
+    public List<CreditCard> _queryStudent_CreditCardsList(String studentId) {
         synchronized (this) {
             if (student_CreditCardsListQuery == null) {
                 QueryBuilder<CreditCard> queryBuilder = queryBuilder();

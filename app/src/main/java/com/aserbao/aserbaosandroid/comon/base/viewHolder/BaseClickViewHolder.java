@@ -43,7 +43,7 @@ public class BaseClickViewHolder extends RecyclerView.ViewHolder {
                 if (mIBaseRecyclerItemClickListener != null) {
                     mIBaseRecyclerItemClickListener.itemClickBack(v, tempFlag,true, COME_FROM_RV_ITEM);
                 }
-                return false;
+                return true;
             }
         });
     }

@@ -35,7 +35,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.animator_layout, null);
         mAnimationIv = ((ImageView) rootView.findViewById(R.id.animator_iv));
-        addViewToFrameLayout(rootView);
+        addViewToFrameLayout(rootView, true,false);
     }
 
 

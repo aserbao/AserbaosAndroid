@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.JoinEntity;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.ToMany;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.annotation.Generated;
@@ -184,6 +185,7 @@ public class Student {
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
+    @Keep
     @Generated(hash = 1268960764)
     public List<CreditCard> getCreditCardsList() {
         if (creditCardsList == null) {
@@ -193,7 +195,7 @@ public class Student {
             }
             CreditCardDao targetDao = daoSession.getCreditCardDao();
             List<CreditCard> creditCardsListNew = targetDao
-                    ._queryStudent_CreditCardsList(id);
+                    ._queryStudent_CreditCardsList(String.valueOf(id));
             synchronized (this) {
                 if (creditCardsList == null) {
                     creditCardsList = creditCardsListNew;

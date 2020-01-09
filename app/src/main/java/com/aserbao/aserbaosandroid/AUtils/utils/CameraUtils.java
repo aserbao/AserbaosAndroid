@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.AUtils.utils;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.hardware.Camera;
 import android.util.Log;
 import android.view.Surface;
@@ -17,13 +18,63 @@ public class CameraUtils {
     private static final String TAG = "CameraUtils";
 
     /**
-     * Attempts to find a preview size that matches the provided width and height (which
-     * specify the dimensions of the encoded video).  If it fails to find a match it just
-     * uses the default preview size for video.
-     * <p>
-     * TODO: should do a best-fit match, e.g.
-     * https://github.com/commonsguy/cwac-camera/blob/master/camera/src/com/commonsware/cwac/camera/CameraUtils.java
+     * 获取最优的预览尺寸
+     * @param supportedVideoSizes 支持的视频大小格式
+     * @param previewSizes  支持预览的视频格式
+     * @param w
+     * @param h
+     * @return
      */
+    public static Camera.Size getOptimalVideoSize(List<Camera.Size> supportedVideoSizes,
+                                                  List<Camera.Size> previewSizes, int w, int h) {
+        // Use a very small tolerance because we want an exact match.
+        final double ASPECT_TOLERANCE = 0.1;
+        double targetRatio = (double) w / h;
+
+        // Supported video sizes list might be null, it means that we are allowed to use the preview
+        // sizes
+        List<Camera.Size> videoSizes;
+        if (supportedVideoSizes != null) {
+            videoSizes = supportedVideoSizes;
+        } else {
+            videoSizes = previewSizes;
+        }
+        Camera.Size optimalSize = null;
+
+        // Start with max value and refine as we iterate over available video sizes. This is the
+        // minimum difference between view and camera height.
+        double minDiff = Double.MAX_VALUE;
+
+        // Target view height
+        int targetHeight = h;
+
+        // Try to find a video size that matches aspect ratio and the target view size.
+        // Iterate over all available sizes and pick the largest size that can fit in the view and
+        // still maintain the aspect ratio.
+        for (Camera.Size size : videoSizes) {
+            double ratio = (double) size.width / size.height;
+            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
+                continue;
+            if (Math.abs(size.height - targetHeight) < minDiff && previewSizes.contains(size)) {
+                optimalSize = size;
+                minDiff = Math.abs(size.height - targetHeight);
+            }
+        }
+
+        // Cannot find video size that matches the aspect ratio, ignore the requirement
+        if (optimalSize == null) {
+            minDiff = Double.MAX_VALUE;
+            for (Camera.Size size : videoSizes) {
+                if (Math.abs(size.height - targetHeight) < minDiff && previewSizes.contains(size)) {
+                    optimalSize = size;
+                    minDiff = Math.abs(size.height - targetHeight);
+                }
+            }
+        }
+        return optimalSize;
+    }
+
+
     public static void choosePreviewSize(Camera.Parameters parms, int width, int height) {
         // We should make sure that the requested MPEG size is less than the preferred
         // size, and has the same aspect ratio.
@@ -32,11 +83,6 @@ public class CameraUtils {
             Log.d(TAG, "Camera preferred preview size for video is " +
                     ppsfv.width + "x" + ppsfv.height);
         }
-
-        //for (Camera.Size size : parms.getSupportedPreviewSizes()) {
-        //    Log.d(TAG, "supported: " + size.width + "x" + size.height);
-        //}
-
         for (Camera.Size size : parms.getSupportedPreviewSizes()) {
             if (size.width == width && size.height == height) {
                 parms.setPreviewSize(width, height);
@@ -51,15 +97,6 @@ public class CameraUtils {
         // else use whatever the default size is
     }
 
-    /**
-     * Attempts to find a fixed preview frame rate that matches the desired frame rate.
-     * <p>
-     * It doesn't seem like there's a great deal of flexibility here.
-     * <p>
-     * TODO: follow the recipe from http://stackoverflow.com/questions/22639336/#22645327
-     *
-     * @return The expected frame rate, in thousands of frames per second.
-     */
     public static int chooseFixedPreviewFps(Camera.Parameters parms, int desiredThousandFps) {
         List<int[]> supported = parms.getSupportedPreviewFpsRange();
 
@@ -84,9 +121,6 @@ public class CameraUtils {
         return guess;
     }
 
-    /**
-     * reference http://www.jianshu.com/p/1513134733d0
-     */
     public static void setCameraDisplayOrientation(Activity activity,
                                                    int cameraId, Camera camera) {
         Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
@@ -118,7 +152,6 @@ public class CameraUtils {
         camera.setDisplayOrientation(result);
     }
 
-    //TODO: follow the recipe from http://stackoverflow.com/questions/22639336/#22645327
     public static int[] closetFramerate(Camera.Parameters parameters, float frameRate) {
         int framerate = (int) (frameRate * 1000);
         List<int[]> rates = parameters.getSupportedPreviewFpsRange();

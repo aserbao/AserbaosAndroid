@@ -10,10 +10,13 @@ public class StaticFinalValues {
     public static final String IMAGE_URL = "https://avatars1.githubusercontent.com/u/21996952?s=460&v=4";
     public static final String VIDEO_URL = "video_url";
     public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
+    public static final String STORAGE_TEMP_VIDEO_PATH2 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao2.mp4";
     public static final String STORAGE_TEMP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao";
     public static final String STORAGE_ZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/zip";
     public static final String STORAGE_UNZIP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao/unzip";
     public static final String STORAGE_TEMP_APK_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.apk";
+    public static final String MUSIC_PATH_NAME = Environment.getExternalStorageDirectory().getAbsolutePath() + "/123.mp3";
+
 
     //=================================Handler
     public static final int EMPTY = 0;
@@ -62,6 +65,7 @@ public class StaticFinalValues {
     //--------------reqeestCode--------------
     public static final int COME_FROM_A_SHARE_MODULE_ACTIVITY = 100;
     public static final int COME_FROM_B_SHARE_MODULE_ACTIVITY = 101;
+    public static final int COME_FROM_REQUEST_CODE_TAKE_VIDEO = 102;
 
 
     //--------------baseRecyclerView-----------
@@ -83,6 +87,10 @@ public class StaticFinalValues {
     public static final int PathInterpolator = 9;
     public static final int PathMotion = 10;
     public static final int AcrMotion = 11;
+
+
+    public static final String MAX_NUMBER = "max_number";
+    public static final String RESULT_PICK_VIDEO = "result_pick_video";
 
 
 }

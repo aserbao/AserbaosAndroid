@@ -7,6 +7,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.BufferUtil;
 import com.aserbao.aserbaosandroid.AUtils.utils.ShaderUtils;
@@ -23,6 +24,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 
 public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFrameAvailableListener{
+    private static final String TAG = "CameraOneView";
     public CameraOneView(Context context) {
         this(context, null);
     }
@@ -78,9 +80,10 @@ public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFra
 
             mCameraManeger = new CameraManeger();
         }
-
+        
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+            Log.e(TAG, "onSurfaceCreated() called with: gl = [" + gl + "], config = [" + config + "]");
             GLES20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
             mProgram = ShaderUtils.createProgram(mContext, "vertex_texture.glsl", "fragment_texture.glsl");
             GLES20.glUseProgram(mProgram);//激活OpenGl程序
@@ -102,6 +105,7 @@ public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFra
 
         @Override
         public void onSurfaceChanged(GL10 gl, int width, int height) {
+            Log.e(TAG, "onSurfaceChanged() called with: gl = [" + gl + "], width = [" + width + "], height = [" + height + "]");
             GLES20.glViewport(0, 0, width, height);
             float ratio = (float)width/height;
             Matrix.orthoM(mProjectMatrix,0,-1,1,-ratio,ratio,1,7);// 3和7代表远近视点与眼睛的距离，非坐标点
@@ -111,6 +115,7 @@ public class CameraOneView extends GLSurfaceView implements SurfaceTexture.OnFra
 
         @Override
         public void onDrawFrame(GL10 gl) {
+            Log.e(TAG, "onDrawFrame() called with: gl = [" + gl + "]");
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
             mCameraTexture.updateTexImage();//通过此方法更新接收到的预览数据
 //            mCameraTexture.getTransformMatrix(mTempMatrix);//获取到图像数据流的坐标变换矩阵

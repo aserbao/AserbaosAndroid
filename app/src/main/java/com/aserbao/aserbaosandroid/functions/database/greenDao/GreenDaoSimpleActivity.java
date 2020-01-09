@@ -115,6 +115,8 @@ public class GreenDaoSimpleActivity extends DataBaseBaseActivity {
         return things;
     }
     public List quetyList(String message){
+
+        daoSession = ((AserbaoApplication) getApplication()).getDaoSession();
         QueryBuilder<Thing> qb = daoSession.queryBuilder(Thing.class);
         // 查出所有的数据
         List<Thing> list = qb.list();

@@ -64,13 +64,12 @@ public class CameraTextureViewShowActivity extends AppCompatActivity implements 
 
     @OnClick(R.id.btn_texture_anim)
     public void onViewClicked() {
-        PropertyValuesHolder valuesHolder = PropertyValuesHolder.ofFloat("mBottomPaint", 0.0f, 0.0f);
         PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 0.3f,1.0f);
         PropertyValuesHolder valuesHolder4 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 0.3f,1.0f);
         PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("rotationX", 0.0f, 2 * 360.0f, 0.0F);
         PropertyValuesHolder valuesHolder5 = PropertyValuesHolder.ofFloat("rotationY", 0.0f, 2 * 360.0f, 0.0F);
         PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.7f, 1.0F);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCameraTextureView, valuesHolder, valuesHolder1, valuesHolder2, valuesHolder3,valuesHolder4,valuesHolder5);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCameraTextureView, valuesHolder1, valuesHolder2, valuesHolder3,valuesHolder4,valuesHolder5);
         objectAnimator.setDuration(5000).start();
     }
 }

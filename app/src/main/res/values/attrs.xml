@@ -144,5 +144,9 @@
         <attr name="point_text_size" format="dimension"/>
         <attr name="point_text_color" format="color"/>
     </declare-styleable>
+    <declare-styleable name="MaxHeightLayout">
+        <attr name="mhl_HeightRatio" format="reference|float" />
+        <attr name="mhl_HeightDimen" format="reference|dimension" />
+    </declare-styleable>
 
 </resources>

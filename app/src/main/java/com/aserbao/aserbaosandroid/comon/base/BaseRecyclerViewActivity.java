@@ -11,13 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
@@ -74,7 +72,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     protected CanvasPointView mCanvasPointView;
     protected LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
-    public int mOrientation = LinearLayoutManager.VERTICAL;
+    public int mRvOrientation = LinearLayoutManager.VERTICAL;
     public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
@@ -118,10 +116,10 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mMode = mode;
         switch (mMode) {
             case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
-                mOrientation = LinearLayout.VERTICAL;
+                mRvOrientation = LinearLayout.VERTICAL;
                 break;
             case StaticFinalValues.LINEAR_LAYOUTMANAGER_HORIZONTAL:
-                mOrientation = LinearLayout.HORIZONTAL;
+                mRvOrientation = LinearLayout.HORIZONTAL;
                 break;
         }
         initViewForLinear();
@@ -135,12 +133,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
         } else {
-            mLinearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
+            mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
         mBaseRecyclerViewFl.setBackgroundResource(ASourceUtil.getRandomImageId());
-        mCommonAdapter.setmOrientation(mOrientation);
+        mCommonAdapter.setmOrientation(mRvOrientation);
         mOpenglRecyclerView.post(new Runnable() {
             @Override
             public void run() {
@@ -171,40 +169,80 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         });
     }
 
-
-    public void addViewToFrameLayout(View view){
+    public static final int NOT_FULL_SCREEN = 0;
+    public static final int FULL_SCREEN = 1;
+    public static final String IS_MATCH = "ismatch";
+    public static final String NEED_DIRECT_BACK = "need_direct_back";
+    public static final String NEED_WH = "need_wh";
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
+    private void addViewToFrameLayout(View view,int type,Bundle bundle){
+        mNeedDirectBack = false;
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        if (bundle != null){
+            if (!bundle.getBoolean(IS_MATCH)) {
+                layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            }
+            mNeedDirectBack = bundle.getBoolean(NEED_DIRECT_BACK);
+            if (bundle.getBoolean(NEED_WH)){
+                layoutParams.width = bundle.getInt(WIDTH,0);
+                layoutParams.height = bundle.getInt(HEIGHT,0);
+            }
+        }
+        switch (type){
+            case NOT_FULL_SCREEN: break;
+            case FULL_SCREEN:
+                ViewGroup.LayoutParams layoutParams1 = mBaseRecyclerEmptyContainer.getLayoutParams();
+                if (layoutParams1 instanceof ViewGroup.MarginLayoutParams){
+                    ((ViewGroup.MarginLayoutParams) layoutParams1).setMargins(0,0,0,0);
+                }
+                mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
+                break;
+        }
         view.setLayoutParams(layoutParams);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
     }
 
-    public View addLayoutToFrameLayout(int resLayout){
-        View view = LayoutInflater.from(mContext).inflate(resLayout, null);
-        addViewToFrameLayoutFullScreen(view);
-        mNeedDirectBack = true;
+    public void addViewToFrameLayout(View view, boolean isMatch,boolean isFullScreen){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(IS_MATCH,isMatch);
+        if (isFullScreen){
+            bundle.putBoolean(NEED_DIRECT_BACK,true);
+            addViewToFrameLayout(view, FULL_SCREEN, bundle);
+        }else {
+            addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
+        }
+    }
+    public View addViewWHToFL(View view,int resLayout,boolean isMatch,boolean isFullScreen,int width,int height,boolean isDirectBack){
+        if (view == null) view = LayoutInflater.from(mContext).inflate(resLayout, null);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(IS_MATCH,isMatch);
+        bundle.putBoolean(NEED_WH,true);
+        bundle.putInt(WIDTH,width);
+        bundle.putInt(HEIGHT,height);
+        if (isFullScreen){
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
+            addViewToFrameLayout(view, FULL_SCREEN, bundle);
+        }else {
+            addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
+        }
         return view;
     }
 
-    public void addViewToFrameLayoutFullScreen(View view){
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-        view.setLayoutParams(layoutParams);
-        ViewGroup.LayoutParams layoutParams1 = mBaseRecyclerEmptyContainer.getLayoutParams();
-        if (layoutParams1 instanceof ViewGroup.MarginLayoutParams){
-            ((ViewGroup.MarginLayoutParams) layoutParams1).setMargins(0,0,0,0);
+    public View addLayoutToFrameLayout(int resLayout, boolean needFullScreen){
+        View view = LayoutInflater.from(mContext).inflate(resLayout, null);
+        if(needFullScreen) {
+            addViewToFrameLayout(view,true,true);
+        }else{
+            addViewToFrameLayout(view,true,false);
         }
-        mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
-        mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
-        mBaseRecyclerEmptyContainer.removeAllViews();
-
-        ViewGroup parent = (ViewGroup)view.getParent();
-        if (parent != null) parent.removeAllViews();
-        mBaseRecyclerEmptyContainer.addView(view);
+        return view;
     }
 
 
-    boolean mNeedDirectBack = false;
+    protected boolean mNeedDirectBack = false;
     @Override
     public void onBackPressed() {
         if (mBaseRecyclerEmptyContainer.getChildCount() > 0 && !mNeedDirectBack){

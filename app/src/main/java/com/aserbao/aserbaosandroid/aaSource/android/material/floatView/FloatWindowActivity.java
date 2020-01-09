@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.floatView.FloatView;
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
@@ -15,7 +18,8 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加悬浮窗"));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加悬浮窗",0));
+        mBaseRecyclerBeen.add(new BaseRecyclerBean("显示旁边的悬浮窗",1));
     }
 
     @Override
@@ -24,9 +28,12 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
             case 0:
                 startFloatWindow();
                 break;
+            case 1:
+                showFloatView();
+                break;
         }
     }
-    
+
     public void startFloatWindow(){
         if (Build.VERSION.SDK_INT >= 23) {
             if (Settings.canDrawOverlays(FloatWindowActivity.this)) {
@@ -46,5 +53,10 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
             startService(intent);
             finish();
         }
+    }
+
+    private void showFloatView() {
+        FloatView floatView = new FloatView(this);
+        addViewToFrameLayout(floatView,false,true);
     }
 }

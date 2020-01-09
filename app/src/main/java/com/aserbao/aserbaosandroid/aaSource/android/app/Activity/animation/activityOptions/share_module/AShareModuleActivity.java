@@ -168,8 +168,8 @@ public class AShareModuleActivity extends AppCompatActivity {
             mTempBaseRecyclerBean.add(baseRecyclerBean);
         }
         AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mTempBaseRecyclerBean, null, AShareModuleAdapter.TOP);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
-        aShareModuleAdapter.setmOrientation(mOrientation);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
+        aShareModuleAdapter.setmOrientation(mRvOrientation);
         mModuleRecyclerView2.setLayoutManager(linearLayoutManager);
         mModuleRecyclerView2.setAdapter(aShareModuleAdapter);
         mModuleRecyclerView2.setVisibility(View.VISIBLE);*/
