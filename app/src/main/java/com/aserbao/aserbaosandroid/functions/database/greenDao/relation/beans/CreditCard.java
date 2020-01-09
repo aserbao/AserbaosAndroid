@@ -14,19 +14,17 @@ import org.greenrobot.greendao.annotation.Generated;
 public class CreditCard {
     @Id
     Long id;
-    Long studentId;
+    String studentId;   //可以用String
     Long teacherId;
     String userName;//持有者名字
     String cardNum;//卡号
     String whichBank;//哪个银行的
     int cardType;//卡等级，分类 0 ~ 5
 
-    @Generated(hash = 1860989810)
-    public CreditCard() {
-    }
 
-    @Generated(hash = 224468523)
-    public CreditCard(Long id, Long studentId, Long teacherId, String userName,
+
+    @Generated(hash = 1978631985)
+    public CreditCard(Long id, String studentId, Long teacherId, String userName,
             String cardNum, String whichBank, int cardType) {
         this.id = id;
         this.studentId = studentId;
@@ -36,6 +34,12 @@ public class CreditCard {
         this.whichBank = whichBank;
         this.cardType = cardType;
     }
+
+    @Generated(hash = 1860989810)
+    public CreditCard() {
+    }
+
+
 
     public Long getTeacherId() {
         return teacherId;
@@ -51,10 +55,10 @@ public class CreditCard {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getStudentId() {
+    public String getStudentId() {
         return this.studentId;
     }
-    public void setStudentId(Long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
     public String getUserName() {
