@@ -11,8 +11,8 @@ public class AndroidOSActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Handler 线程间通信", HandlerCommunicationActivity.class,0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Handler 原理", PrincipleHanlderActivity.class,1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Handler 线程间通信", HandlerCommunicationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Handler 原理", PrincipleHanlderActivity.class));
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder;
 
 import android.media.MediaRecorder;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -19,8 +16,8 @@ public class MediaRecorderAudioActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("点击开始录音",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("点击暂停录音",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("点击开始录音",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("点击暂停录音",1));
     }
 
     @Override

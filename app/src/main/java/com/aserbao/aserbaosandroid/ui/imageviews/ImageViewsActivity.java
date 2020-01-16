@@ -17,8 +17,8 @@ public class ImageViewsActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-//        mBaseRecyclerBeen.add(new BaseRecyclerBean("心形ImageView",520));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("带阴影的ImageView",1));
+//        mBaseRecyclerBean.add(new BaseRecyclerBean("心形ImageView",520));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("带阴影的ImageView",1));
     }
 
     @Override

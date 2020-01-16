@@ -50,11 +50,11 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     };
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("其他测试",404));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("检查是否已经下载完成",100));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("删除已下载好的文件",101));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Single Download",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("BunchDownLoad",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("其他测试",404));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("检查是否已经下载完成",100));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("删除已下载好的文件",101));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Single Download",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("BunchDownLoad",2));
     }
 
     @Override

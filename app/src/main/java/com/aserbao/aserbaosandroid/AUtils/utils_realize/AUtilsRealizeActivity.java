@@ -16,12 +16,12 @@ public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取当前手机信息",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("网络状态",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("多媒体数据获取",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("屏幕常用参数获取",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("ContextWrapper的常用方法调用",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("检测手机NavigationBar的高度",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("获取当前手机信息",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("网络状态",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("多媒体数据获取",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("屏幕常用参数获取",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ContextWrapper的常用方法调用",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("检测手机NavigationBar的高度",5));
     }
 
 

@@ -28,10 +28,10 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Translate",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Scale",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Rotate",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Alpha",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Translate",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Scale",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Rotate",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Alpha",3));
 
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.animator_layout, null);
         mAnimationIv = ((ImageView) rootView.findViewById(R.id.animator_iv));
@@ -49,7 +49,7 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
         switch (position){
             case 101:
                 /*BaserRecyclerViewManager aPopupManager = new BaserRecyclerViewManager(this, this);
-                ASourceUtil.getAllInterpoator(aPopupManager.mBaseRecyclerBeen);
+                ASourceUtil.getAllInterpoator(aPopupManager.mBaseRecyclerBean);
                 aPopupManager.showBottomRecyclerViewPop(new IBaseRecyclerItemClickListener() {
                     @Override
                     public void itemClickBack(View view, int position) {

@@ -16,7 +16,7 @@ public class ConstractListener extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("开启联系人变动监听"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("开启联系人变动监听"));
     }
 
     @Override

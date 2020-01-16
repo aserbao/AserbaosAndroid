@@ -1,14 +1,19 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.GreenDaoRelationActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class GreenDaoActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.GreenDaoRelationActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class GreenDaoActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("GreenDao的基本使用",GreenDaoSimpleActivity.class)) ;
-        mClassBeen.add(new ClassBean("GreenDao的多表关联",GreenDaoRelationActivity.class)) ;
+        mBaseRecyclerBean.add(new BaseRecyclerBean("GreenDao的基本使用",GreenDaoSimpleActivity.class)) ;
+        mBaseRecyclerBean.add(new BaseRecyclerBean("GreenDao的多表关联",GreenDaoRelationActivity.class)) ;
     }
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
+
 }

@@ -23,13 +23,13 @@ public class MyAccessibilityServiceActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("AccessibilityService"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开抖音"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开spot"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开微信"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开Item侧滑删除"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("打开Setting界面"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("测试"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("AccessibilityService"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("打开抖音"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("打开spot"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("打开微信"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("打开Item侧滑删除"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("打开Setting界面"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试"));
     }
 
     private static final String TAG = "MyAccessibilityServiceA";

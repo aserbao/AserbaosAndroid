@@ -1,16 +1,19 @@
 package com.aserbao.aserbaosandroid.functions.launch;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.launch.demo.LaunchDemoActivity;
 
-public class LaunchActivity extends BaseActivity {
+public class LaunchActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Launch Demo", LaunchDemoActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Launch Demo", LaunchDemoActivity.class));
     }
 
-
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

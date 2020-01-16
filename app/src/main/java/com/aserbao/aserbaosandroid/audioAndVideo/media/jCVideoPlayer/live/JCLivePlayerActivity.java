@@ -11,7 +11,7 @@ public class JCLivePlayerActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CCTV1"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CCTV1"));
     }
 
     @Override

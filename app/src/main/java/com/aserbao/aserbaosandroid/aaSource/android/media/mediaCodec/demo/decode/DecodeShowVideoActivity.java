@@ -38,13 +38,13 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"先选择视频，再播放视频"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("选择本地视频",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("用SurfaceView显示解码视频",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("用TexureView显示解码视频",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("用AspectTextureView显示解码视频",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("用TextureView + SurfaceTexture显示解码视频",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("用GlSurfaceView显示解码视频",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_HOLDER_HEAD,"先选择视频，再播放视频"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("选择本地视频",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("用SurfaceView显示解码视频",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("用TexureView显示解码视频",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("用AspectTextureView显示解码视频",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("用TextureView + SurfaceTexture显示解码视频",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("用GlSurfaceView显示解码视频",5));
 
     }
 

@@ -24,9 +24,9 @@ public class DaggerActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("不使用Dagger2的做法"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Dagger2"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("跳"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("不使用Dagger2的做法"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Dagger2"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("跳"));
     }
 
     private static final String TAG = "DaggerActivity";

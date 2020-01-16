@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/sb_des_tv"
+        android:layout_marginLeft="@dimen/common_view_margin_lr"
+        style="@style/show_text_anim_style"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+    <SeekBar
+        android:id="@+id/item_seek_bar"
+        android:max="100"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/sb_des_tv"
+        android:layout_toLeftOf="@+id/item_show_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/item_show_tv"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/common_view_margin_lr"
+        android:background="@drawable/stroke_w2_black_r8_bg"
+        android:layout_width="40dp"
+        android:layout_height="20dp"/>
+
+</RelativeLayout>

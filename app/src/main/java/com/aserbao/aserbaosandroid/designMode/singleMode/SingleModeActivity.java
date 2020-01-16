@@ -10,11 +10,11 @@ public class SingleModeActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("懒汉式，线程不安全",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("懒汉式，线程安全",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("饿汉式",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("双检锁/双重校验锁",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("静态内部类",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("懒汉式，线程不安全",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("懒汉式，线程安全",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("饿汉式",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("双检锁/双重校验锁",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("静态内部类",5));
     }
 
     @Override

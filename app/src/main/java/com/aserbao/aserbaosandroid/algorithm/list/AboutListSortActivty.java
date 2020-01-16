@@ -22,9 +22,9 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         initViews();
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("随机添加一名学生"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("List中两个相邻数据互换位置"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("List中set和remove方法"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("随机添加一名学生"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("List中两个相邻数据互换位置"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("List中set和remove方法"));
     }
 
     private void initViews() {

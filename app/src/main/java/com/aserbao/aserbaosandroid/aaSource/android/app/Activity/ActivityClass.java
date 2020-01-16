@@ -1,27 +1,34 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity;
 
+import android.view.View;
+
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.AnimationActivty;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode.LaunchModeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
-public class ActivityClass extends BaseActivity {
+public class ActivityClass extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Activity的启动模式", LaunchModeActivity.class));
-        mClassBeen.add(new ClassBean("Activity的跳转动画", AnimationActivty.class));
-        mClassBeen.add(new ClassBean("Activity的生命周期", LifeCycleActivity.class));
-        mClassBeen.add(new ClassBean("BasicActivity",BasicActivity.class));
-        mClassBeen.add(new ClassBean("BottomNavigationActivity",BottomNavigationActivity.class));
-        mClassBeen.add(new ClassBean("FragmentViewModelActivity",FragmentViewModelActivity.class));
-        mClassBeen.add(new ClassBean("FullscreenActivity",FullscreenActivity.class));
-        mClassBeen.add(new ClassBean("LoginActivity",LoginActivity.class));
-        mClassBeen.add(new ClassBean("Master/Detail flow",PersonListActivity.class));
-        mClassBeen.add(new ClassBean("NavigationDrawerActivity",NavigationDrawerActivity.class));
-        mClassBeen.add(new ClassBean("ScrollingActivity",ScrollingActivity.class));
-        mClassBeen.add(new ClassBean("SettingActivity",SettingsActivity.class));
-        mClassBeen.add(new ClassBean("TabbedActivity",TabbedActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Activity的启动模式", LaunchModeActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Activity的跳转动画", AnimationActivty.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Activity的生命周期", LifeCycleActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("BasicActivity",BasicActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("BottomNavigationActivity",BottomNavigationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("FragmentViewModelActivity",FragmentViewModelActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("FullscreenActivity",FullscreenActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("LoginActivity",LoginActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Master/Detail flow",PersonListActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("NavigationDrawerActivity",NavigationDrawerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ScrollingActivity",ScrollingActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("SettingActivity",SettingsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("TabbedActivity",TabbedActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

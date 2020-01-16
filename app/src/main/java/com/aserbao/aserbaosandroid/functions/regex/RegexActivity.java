@@ -14,8 +14,8 @@ public class RegexActivity extends BaseRecyclerViewActivity {
     public static final String sPngUrl = "http://npic.getremark.com/BulldogHarlamov.png";
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取Url中图片名称",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("选url中的图片名称",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("获取Url中图片名称",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("选url中的图片名称",1));
     }
 
     @Override

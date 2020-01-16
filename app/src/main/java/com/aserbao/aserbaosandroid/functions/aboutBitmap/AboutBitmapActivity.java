@@ -1,7 +1,9 @@
 package com.aserbao.aserbaosandroid.functions.aboutBitmap;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createLong.CreateLongBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.pineColor.PineColorBitmapActivity;
@@ -14,11 +16,14 @@ import com.aserbao.aserbaosandroid.functions.aboutBitmap.pineColor.PineColorBitm
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.functions.aboutBitmap
  */
-public class AboutBitmapActivity extends BaseActivity {
+public class AboutBitmapActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Bitmap生成", CreateBitmapActivity.class));
-        mClassBeen.add(new ClassBean("生成长图", CreateLongBitmapActivity.class));
-        mClassBeen.add(new ClassBean("获取图片颜色", PineColorBitmapActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Bitmap生成", CreateBitmapActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("生成长图", CreateLongBitmapActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("获取图片颜色", PineColorBitmapActivity.class));
     }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

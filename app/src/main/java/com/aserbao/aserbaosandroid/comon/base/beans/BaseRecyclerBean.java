@@ -1,5 +1,10 @@
 package com.aserbao.aserbaosandroid.comon.base.beans;
 
+import android.app.Activity;
+
+import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseListener;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.io.Serializable;
@@ -15,11 +20,11 @@ import java.io.Serializable;
  */
 public class BaseRecyclerBean implements Serializable {
     String name;            //名字
-    String extra_info;      //补充信息
     int tag = -1;           //标记
     private Class<?> clazz; //跳转的类
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
+    VHSeekBarBean mVHSeekBarBean;
 
     /**
      * 顶部文字提示
@@ -53,19 +58,22 @@ public class BaseRecyclerBean implements Serializable {
         this.tag = tag;
     }
 
-    public BaseRecyclerBean(int viewType,String extra_info,int tag) {
+    public BaseRecyclerBean(int viewType,String name,int tag) {
         this.viewType = viewType;
-        this.extra_info = extra_info;
+        this.name = name;
         this.tag = tag;
     }
 
-    public BaseRecyclerBean(String name, Class<?> clazz, int tag) {
+    public BaseRecyclerBean(String name, Class<?> clazz) {
         this.name = name;
-        this.tag = tag;
         this.clazz = clazz;
         this.viewType = StaticFinalValues.VIEW_HOLDER_CLASS;
     }
 
+    public BaseRecyclerBean(VHSeekBarBean vHSeekBarBean) {
+        mVHSeekBarBean = vHSeekBarBean;
+        this.viewType = StaticFinalValues.VIEW_SEEK_BAR;
+    }
 
     public Class<?> getClazz() {
         return clazz;

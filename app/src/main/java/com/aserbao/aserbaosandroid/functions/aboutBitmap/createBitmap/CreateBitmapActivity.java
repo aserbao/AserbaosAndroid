@@ -24,8 +24,8 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("根据View生成简单的Bitmap",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("生成bitmap的时候移动View的位置",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("根据View生成简单的Bitmap",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("生成bitmap的时候移动View的位置",1));
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.framelayout_image, null);
         frameLayout = ((FrameLayout) view.findViewById(R.id.frame_layout_container));

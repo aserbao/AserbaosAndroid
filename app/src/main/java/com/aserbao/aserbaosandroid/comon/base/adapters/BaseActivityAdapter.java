@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.ConstantUtils;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
 
 import java.util.ArrayList;
@@ -26,12 +26,12 @@ public class BaseActivityAdapter extends RecyclerView.Adapter<ClassViewHolder> {
 
     private Context mContext;
     private Activity mActivity;
-    private List<ClassBean> mClassBeen = new ArrayList<>();
+    private List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
-    public BaseActivityAdapter(Context context, Activity activity, List<ClassBean> classBeen) {
+    public BaseActivityAdapter(Context context, Activity activity, List<BaseRecyclerBean> classBeen) {
         mContext = context;
         mActivity = activity;
-        mClassBeen = classBeen;
+        mBaseRecyclerBean = classBeen;
     }
 
     @Override
@@ -42,15 +42,15 @@ public class BaseActivityAdapter extends RecyclerView.Adapter<ClassViewHolder> {
 
     @Override
     public void onBindViewHolder(ClassViewHolder holder, int position) {
-        final ClassBean classBean = mClassBeen.get(position);
+        final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position);
         holder.mItemCardView.setBackgroundResource(ConstantUtils.getDrawable());
         holder.mItemTv.setText(classBean.getName());
         holder.mItemCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mActivity, classBean.getClazz());
-                if (classBean.getFlag() >= 0){
-                    intent.setFlags(classBean.getFlag());
+                if (classBean.getTag() >= 0){
+                    intent.setFlags(classBean.getTag());
                 }
                 mActivity.startActivity(intent);
             }
@@ -60,8 +60,8 @@ public class BaseActivityAdapter extends RecyclerView.Adapter<ClassViewHolder> {
     @Override
     public int getItemCount() {
         int ret = 0;
-        if (mClassBeen.size() > 0) {
-            ret = mClassBeen.size();
+        if (mBaseRecyclerBean.size() > 0) {
+            ret = mBaseRecyclerBean.size();
         }
         return ret;
     }

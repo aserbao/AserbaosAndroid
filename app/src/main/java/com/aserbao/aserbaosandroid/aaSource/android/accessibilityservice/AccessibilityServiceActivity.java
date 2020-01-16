@@ -1,13 +1,22 @@
 package com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice;
 
-import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class AccessibilityServiceActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class AccessibilityServiceActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("AccessibilityService", MyAccessibilityServiceActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("AccessibilityService", MyAccessibilityServiceActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

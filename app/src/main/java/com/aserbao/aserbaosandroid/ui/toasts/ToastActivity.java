@@ -1,14 +1,21 @@
 package com.aserbao.aserbaosandroid.ui.toasts;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ACustomToastActivity;
 
-public class ToastActivity extends BaseActivity {
+public class ToastActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("自定义的Toast使用",ACustomToastActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("自定义的Toast使用",ACustomToastActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }
