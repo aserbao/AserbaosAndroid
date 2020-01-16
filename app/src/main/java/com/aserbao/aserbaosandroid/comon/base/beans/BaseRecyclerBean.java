@@ -110,4 +110,8 @@ public class BaseRecyclerBean implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public VHSeekBarBean getmVHSeekBarBean() {
+        return mVHSeekBarBean;
+    }
 }

@@ -140,6 +140,7 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         } else if (holder instanceof HeadViewHolder) {
             ((HeadViewHolder) holder).setDataSource(classBean);
         } else if (holder instanceof SeekBarViewHolder){
+            ((SeekBarViewHolder) holder).setDataSource(classBean);
         }
     }
 

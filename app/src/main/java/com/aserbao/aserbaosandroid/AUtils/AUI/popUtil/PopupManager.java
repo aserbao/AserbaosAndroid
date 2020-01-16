@@ -50,6 +50,10 @@ public class PopupManager implements PopupWindow.OnDismissListener{
         mCuurPoupWindow.showAtLocation(rootView.getRootView(), Gravity.BOTTOM, 0, 0);
     }
 
+    public void showSelectedPop(Activity activity, List<BaseRecyclerBean> list){
+        showSelectedPop(activity,list,null);
+    }
+
     public void showSelectedPop(Activity activity, List<BaseRecyclerBean> list, IBaseRecyclerItemClickListener listener){
         View view = LayoutInflater.from(mContext).inflate(R.layout.popup_simple_demo, null);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.pop_simple_rv);
@@ -66,6 +70,7 @@ public class PopupManager implements PopupWindow.OnDismissListener{
         mCuurPoupWindow.setAnimationStyle(R.style.pop_bottom_to_center_anim_style);
         mCuurPoupWindow.showAtLocation(view.getRootView(), Gravity.BOTTOM, 0, 0);
     }
+
 
     public void dismiss(){
         if (mCuurPoupWindow != null) {
