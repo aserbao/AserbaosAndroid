@@ -22,12 +22,12 @@ public class AActivityOptionsActivity extends BaseRecyclerViewActivity {
     }
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_left"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_top"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_right"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("slide_bottom"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("explode"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("fade"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("slide_left"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("slide_top"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("slide_right"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("slide_bottom"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("explode"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("fade"));
         mBaseRecyclerTv.setText("A");
     }
 

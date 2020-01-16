@@ -1,14 +1,19 @@
 package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu;
 
-import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class MenuActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class MenuActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Menu菜单", MenuDemoActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Menu菜单", MenuDemoActivity.class));
     }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

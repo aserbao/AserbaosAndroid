@@ -1,13 +1,20 @@
 package com.aserbao.aserbaosandroid.functions.network;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.functions.network.mqtt.MqttActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class NetWorkActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.functions.network.mqtt.MqttActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class NetWorkActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("MQTT协议", MqttActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("MQTT协议", MqttActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

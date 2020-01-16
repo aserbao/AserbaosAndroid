@@ -27,16 +27,16 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("移除"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("雷达"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("二阶贝塞尔曲线"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("三阶贝塞尔曲线"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过贝塞尔曲线绘制一个圆"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("点赞动画"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Path的使用2",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("PathInterpator动画",8));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("带红点的ImageView",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("移除"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("雷达"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("二阶贝塞尔曲线"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("三阶贝塞尔曲线"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("通过贝塞尔曲线绘制一个圆"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("点赞动画"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Path的使用"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Path的使用2",7));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("PathInterpator动画",8));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("带红点的ImageView",9));
     }
 
     @Override

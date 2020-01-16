@@ -9,9 +9,9 @@ public class Fragmentation extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("防GooglePlay交互Demo（流式栈设计）"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("防微信交互Demo(常用栈设计)"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("防知乎交互Demo（复杂栈嵌套设计）"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("防GooglePlay交互Demo（流式栈设计）"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("防微信交互Demo(常用栈设计)"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("防知乎交互Demo（复杂栈嵌套设计）"));
     }
 
     @Override

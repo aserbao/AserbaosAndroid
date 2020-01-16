@@ -14,9 +14,9 @@ public class ACustomToastActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("简单的Toast"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("带点击的Toast"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("自定义Toast"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("简单的Toast"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("带点击的Toast"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("自定义Toast"));
     }
 
 

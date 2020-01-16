@@ -1,15 +1,19 @@
 package com.aserbao.aserbaosandroid.functions.listener;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.listener.constractListener.ConstractListener;
 
-public class ListenerActivity extends BaseActivity {
+public class ListenerActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("监听联系人变动", ConstractListener.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("监听联系人变动", ConstractListener.class));
     }
 
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

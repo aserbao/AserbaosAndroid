@@ -1,7 +1,6 @@
 package com.aserbao.aserbaosandroid.aaThird.zt_zip;
 
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,9 +19,9 @@ public class ZtZipActivity extends BaseRecyclerViewActivity {
     public static final String storageUnZipFile = StaticFinalValues.STORAGE_UNZIP_FILE + "/456";
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("检测zip包中是否存在某个文件",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("将zip包中的某个文件转为Byte[]",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("解压",20));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("检测zip包中是否存在某个文件",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("将zip包中的某个文件转为Byte[]",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("解压",20));
     }
 
     @Override

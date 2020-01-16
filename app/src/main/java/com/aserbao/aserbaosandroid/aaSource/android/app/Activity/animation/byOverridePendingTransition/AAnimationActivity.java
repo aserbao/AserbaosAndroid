@@ -29,16 +29,16 @@ public class AAnimationActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("从上出现"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("从下出现"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("从左出现"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("从右出现"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("淡入淡出"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("放大缩小"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("左上角淡出效果"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("纵向压缩效果"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("横向压缩效果"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("左右交错效果"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("从上出现"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("从下出现"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("从左出现"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("从右出现"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("淡入淡出"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("放大缩小"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("左上角淡出效果"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("纵向压缩效果"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("横向压缩效果"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("左右交错效果"));
     }
 
     @Override

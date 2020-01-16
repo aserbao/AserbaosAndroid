@@ -17,8 +17,8 @@ public class ObjectAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("PathInterpolator",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("取消",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("PathInterpolator",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("取消",1));
         mBaseRecyclerTv.setText("动画");
         mBaseRecyclerTv.setTextColor(Color.WHITE);
         mBaseRecyclerTv.setBackgroundColor(Color.BLACK);

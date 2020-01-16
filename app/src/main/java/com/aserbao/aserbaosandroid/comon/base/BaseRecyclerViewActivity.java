@@ -73,7 +73,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     protected LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mRvOrientation = LinearLayoutManager.VERTICAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
 
@@ -110,18 +110,10 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void setTranslations() { }
 
-    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
+    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER;
 
     public void setMode(int mode) {
         mMode = mode;
-        switch (mMode) {
-            case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
-                mRvOrientation = LinearLayout.VERTICAL;
-                break;
-            case StaticFinalValues.LINEAR_LAYOUTMANAGER_HORIZONTAL:
-                mRvOrientation = LinearLayout.HORIZONTAL;
-                break;
-        }
         initViewForLinear();
     }
 
@@ -129,7 +121,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
 
     public void initViewForLinear() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
         } else {

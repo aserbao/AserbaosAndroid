@@ -1,13 +1,18 @@
 package com.aserbao.aserbaosandroid.audioAndVideo.media.jCVideoPlayer;
 
-import com.aserbao.aserbaosandroid.audioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class JCVideoPlayerActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.audioAndVideo.media.jCVideoPlayer.live.JCLivePlayerActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class JCVideoPlayerActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("直播", JCLivePlayerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("直播", JCLivePlayerActivity.class));
     }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

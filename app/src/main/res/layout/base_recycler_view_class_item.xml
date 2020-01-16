@@ -9,4 +9,5 @@
         android:id="@+id/item_tv"
         style="@style/global_text_view_style"
         />
+
 </android.support.v7.widget.CardView>

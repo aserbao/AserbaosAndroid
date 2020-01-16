@@ -1,14 +1,21 @@
 package com.aserbao.aserbaosandroid.audioAndVideo.detail_Info;
 
-import com.aserbao.aserbaosandroid.audioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class DetailInfoActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.audioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class DetailInfoActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("图片详情", ImageInfoActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("图片详情", ImageInfoActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

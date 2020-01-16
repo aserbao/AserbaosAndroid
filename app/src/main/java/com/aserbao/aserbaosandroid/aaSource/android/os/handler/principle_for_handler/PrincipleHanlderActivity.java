@@ -25,10 +25,10 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("清除所有",10));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("0",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("1",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("2",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("清除所有",10));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("0",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("1",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("2",2));
     }
 
 

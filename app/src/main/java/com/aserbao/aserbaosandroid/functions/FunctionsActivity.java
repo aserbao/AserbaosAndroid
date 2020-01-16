@@ -1,7 +1,9 @@
 package com.aserbao.aserbaosandroid.functions;
 
+import android.view.View;
+
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.AboutBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.database.DataBaseActivity;
 import com.aserbao.aserbaosandroid.functions.events.EventDealActivity;
@@ -15,26 +17,28 @@ import com.aserbao.aserbaosandroid.functions.listener.ListenerActivity;
 import com.aserbao.aserbaosandroid.functions.notifacations.networks.NetWorkNotification;
 import com.aserbao.aserbaosandroid.functions.regex.RegexActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
-public class FunctionsActivity extends BaseActivity {
+public class FunctionsActivity extends BaseRecyclerViewActivity {
 
     public void initGetData() {
-        mClassBeen.add(new ClassBean("跳转其他界面处理", Jump2OtherActivity.class));
-        mClassBeen.add(new ClassBean("常用工具类使用", AUtilsRealizeActivity.class));
-        mClassBeen.add(new ClassBean("不同手机跳转到设置界面", JumpSystemSettingActivity.class));
-        mClassBeen.add(new ClassBean("事件处理", EventDealActivity.class));
-        mClassBeen.add(new ClassBean("数据库的使用", DataBaseActivity.class));
-        mClassBeen.add(new ClassBean("图片的处理", ImagePhotoShopActivity.class));
-        mClassBeen.add(new ClassBean("so库文件的生成", HowCreateSoActivity.class));
-        mClassBeen.add(new ClassBean("传感器", SensorsActivity.class));
-        mClassBeen.add(new ClassBean("小兴趣", HobbiesAndInterestsActivity.class));
-        mClassBeen.add(new ClassBean("常用系统监听", ListenerActivity.class));
-        mClassBeen.add(new ClassBean("Launch", LaunchActivity.class));
-        mClassBeen.add(new ClassBean("网络状态监听", NetWorkNotification.class));
-        mClassBeen.add(new ClassBean("关于Bitmap", AboutBitmapActivity.class));
-        mClassBeen.add(new ClassBean("正则表达式", RegexActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("跳转其他界面处理", Jump2OtherActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("常用工具类使用", AUtilsRealizeActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("不同手机跳转到设置界面", JumpSystemSettingActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("事件处理", EventDealActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("数据库的使用", DataBaseActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("图片的处理", ImagePhotoShopActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("so库文件的生成", HowCreateSoActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("传感器", SensorsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("小兴趣", HobbiesAndInterestsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("常用系统监听", ListenerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Launch", LaunchActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("网络状态监听", NetWorkNotification.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("关于Bitmap", AboutBitmapActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("正则表达式", RegexActivity.class));
 
     }
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 
 }

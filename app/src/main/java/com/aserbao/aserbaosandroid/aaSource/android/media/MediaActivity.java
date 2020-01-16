@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.aaSource.android.media;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.MediaCodecActivity;
@@ -12,7 +10,7 @@ public class MediaActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("MediaCodec", MediaCodecActivity.class,0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("MediaCodec", MediaCodecActivity.class));
     }
 
     @Override

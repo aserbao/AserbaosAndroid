@@ -27,7 +27,7 @@ public class RVAndButtonEventActivity extends BaseAddFrameLayoutActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加布局显示",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("添加布局显示",0));
 
     }
 

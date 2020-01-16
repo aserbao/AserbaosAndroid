@@ -4,6 +4,8 @@
       <root url="jar://$USER_HOME$/Library/Android/sdk/build-tools/28.0.3/renderscript/lib/renderscript-v8.jar!/" />
     </CLASSES>
     <JAVADOC />
+    <LIBRARY_FILE />
+    <LIBRARY_FILE />
     <SOURCES />
   </library>
 </component>

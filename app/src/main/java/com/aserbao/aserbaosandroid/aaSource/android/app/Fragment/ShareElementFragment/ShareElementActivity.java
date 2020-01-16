@@ -15,7 +15,7 @@ import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 public class ShareElementActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-//        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen);
+//        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         /*ViewGroup.LayoutParams layoutParams = mBaseRecyclerEmptyContainer.getLayoutParams();
         if (layoutParams instanceof ViewGroup.MarginLayoutParams){
@@ -23,9 +23,9 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
         }
         mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams);*/
 
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("横向的",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("纵向的",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("网格的",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("横向的",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("纵向的",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("网格的",3));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ShareElementActivity extends BaseRecyclerViewActivity {
     }
 
     public void initViewForLinear() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);

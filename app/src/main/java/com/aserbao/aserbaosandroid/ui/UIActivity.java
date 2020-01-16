@@ -1,7 +1,9 @@
 package com.aserbao.aserbaosandroid.ui;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.animation.AnimationActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
 import com.aserbao.aserbaosandroid.ui.colorPicker.ColorPickerActivity;
@@ -13,21 +15,25 @@ import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.simpleDraw.SimpleDrawActivity;
 import com.aserbao.aserbaosandroid.ui.toasts.ToastActivity;
 
-public class UIActivity extends BaseActivity {
+public class UIActivity extends BaseRecyclerViewActivity {
 
 
 
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Canvas这边请", CanvasActivity.class));
-        mClassBeen.add(new ClassBean("随机生成不重叠的圆", RandomAndNoOverLayActivity.class));
-        mClassBeen.add(new ClassBean("动画效果", AnimationActivity.class));
-        mClassBeen.add(new ClassBean("自定义View", CustomViewActivity.class));
-        mClassBeen.add(new ClassBean("Android自定义绘制这边走", SimpleDrawActivity.class));
-        mClassBeen.add(new ClassBean("RecyclerView的使用", RecyclerViewActivity.class));
-        mClassBeen.add(new ClassBean("文本视图的使用", TextsActivity.class));
-        mClassBeen.add(new ClassBean("ColorPicker取色器的使用", ColorPickerActivity.class));
-        mClassBeen.add(new ClassBean("Toast的使用", ToastActivity.class));
-        mClassBeen.add(new ClassBean("ImageView的使用", ImageViewsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Canvas这边请", CanvasActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("随机生成不重叠的圆", RandomAndNoOverLayActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("动画效果", AnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("自定义View", CustomViewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Android自定义绘制这边走", SimpleDrawActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RecyclerView的使用", RecyclerViewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("文本视图的使用", TextsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ColorPicker取色器的使用", ColorPickerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Toast的使用", ToastActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ImageView的使用", ImageViewsActivity.class));
     }
 
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
+    }
 }

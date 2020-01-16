@@ -1,17 +1,14 @@
 package com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder;
 
 import android.graphics.PixelFormat;
-import android.graphics.Point;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
-import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.CameraUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.MainLooper;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
@@ -20,7 +17,6 @@ import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
@@ -30,8 +26,8 @@ public class MediaRecorderVideoActivity extends BaseRecyclerViewActivity{
     @Override
     public void initGetData() {
         mBaseRecyclerViewFl.bringChildToFront(mOpenglRecyclerView);
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("开始录制",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("停止录制",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("开始录制",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("停止录制",1));
         initCamera();
     }
 

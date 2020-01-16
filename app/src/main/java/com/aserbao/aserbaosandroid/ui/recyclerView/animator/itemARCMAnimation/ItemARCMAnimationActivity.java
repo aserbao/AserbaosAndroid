@@ -20,10 +20,10 @@ public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
         mBaseSpinnerRecyclerBeen.add(new BaseRecyclerBean("add"));
         mBaseSpinnerRecyclerBeen.add(new BaseRecyclerBean("remove"));
        /* for (int i = 0; i < 10; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
+            mBaseRecyclerBean.add(new BaseRecyclerBean(String.valueOf(i)));
         }*/
 
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
         mRvOrientation = LinearLayoutManager.HORIZONTAL;
 //        setMode(LinearLayoutManager.HORIZONTAL);
         mOpenglRecyclerView.setItemAnimator(new FadeInDownAnimator());

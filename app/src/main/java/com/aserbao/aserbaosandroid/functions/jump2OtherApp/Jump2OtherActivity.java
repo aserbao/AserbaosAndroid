@@ -18,7 +18,7 @@ public class Jump2OtherActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("抖音"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("抖音"));
     }
 
     @Override

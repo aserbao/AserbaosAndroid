@@ -1,16 +1,20 @@
 package com.aserbao.aserbaosandroid.functions.sensors;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.functions.sensors.testSensorData.TestSensorDataActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class SensorsActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.functions.sensors.testSensorData.TestSensorDataActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class SensorsActivity extends BaseRecyclerViewActivity {
 
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("测试传感器数据",TestSensorDataActivity.class));
-        mClassBeen.add(new ClassBean("摇一摇",SharkActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试传感器数据",TestSensorDataActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("摇一摇",SharkActivity.class));
     }
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {}
 }

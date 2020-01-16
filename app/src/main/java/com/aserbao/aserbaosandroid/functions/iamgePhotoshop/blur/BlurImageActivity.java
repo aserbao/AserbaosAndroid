@@ -1,12 +1,13 @@
 package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur;
 
 import android.os.Bundle;
+import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.mmin18.MMin18Activity;
 
-public class BlurImageActivity extends BaseActivity {
+public class BlurImageActivity extends BaseRecyclerViewActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +16,12 @@ public class BlurImageActivity extends BaseActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("EasyBlur高斯模糊",ImageBlurActivity.class));
-        mClassBeen.add(new ClassBean("动态高斯模糊", MMin18Activity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("EasyBlur高斯模糊",ImageBlurActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("动态高斯模糊", MMin18Activity.class));
     }
 
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
+    }
 }

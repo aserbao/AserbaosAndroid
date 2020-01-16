@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.floatView.FloatView;
@@ -18,8 +16,8 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加悬浮窗",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("显示旁边的悬浮窗",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("添加悬浮窗",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("显示旁边的悬浮窗",1));
     }
 
     @Override

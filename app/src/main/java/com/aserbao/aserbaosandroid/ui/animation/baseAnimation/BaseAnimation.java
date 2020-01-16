@@ -9,9 +9,9 @@ public class BaseAnimation extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("补间动画",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("帧动画",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("属性动画",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("补间动画",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("帧动画",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("属性动画",2));
     }
 
     @Override
