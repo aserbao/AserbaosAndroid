@@ -25,7 +25,7 @@ public class CShareModuleActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mRvOrientation = LinearLayoutManager.HORIZONTAL;
+        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
         int position = getIntent().getIntExtra(StaticFinalValues.POSITION, 0);
         mOpenglRecyclerView.setTransitionName(String.valueOf(ASourceUtil.imageUrls[position]));
 //        setMode(LinearLayoutManager.HORIZONTAL);

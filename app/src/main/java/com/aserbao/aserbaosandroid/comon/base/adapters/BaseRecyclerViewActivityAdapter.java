@@ -93,7 +93,18 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         return StaticFinalValues.VIEW_HOLDER_TEXT;
     }
 
-    public int getSpanner
+    public int getSpanSize(int position){
+        if (mBaseRecyclerBean != null) {
+            int viewType = mBaseRecyclerBean.get(position % mBaseRecyclerBean.size()).getViewType();
+            switch (viewType){
+                case StaticFinalValues.VIEW_HOLDER_CLASS:
+                    return  1;
+                default:
+                    return 3;
+            }
+        }
+        return 3;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -125,6 +136,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
                 return new ClassViewHolder(view);
             case StaticFinalValues.VIEW_SEEK_BAR:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_seek_bar_item, parent, false);
+                return new SeekBarViewHolder(view);
+            case StaticFinalValues.VIEW_SELECTE_POSITION:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_selecte_view_item, parent, false);
                 return new SeekBarViewHolder(view);
         }
         return null;

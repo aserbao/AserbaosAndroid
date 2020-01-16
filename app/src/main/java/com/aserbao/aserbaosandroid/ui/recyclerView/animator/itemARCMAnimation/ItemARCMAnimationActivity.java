@@ -24,7 +24,7 @@ public class ItemARCMAnimationActivity extends BaseRecyclerViewActivity {
         }*/
 
         mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
-        mRvOrientation = LinearLayoutManager.HORIZONTAL;
+        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
 //        setMode(LinearLayoutManager.HORIZONTAL);
         mOpenglRecyclerView.setItemAnimator(new FadeInDownAnimator());
     }

@@ -50,8 +50,10 @@ public class SeekBarViewHolder extends RecyclerView.ViewHolder {
         mItemSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mItemShowTv.setText(progress);
-                mIBaseRvItemInSeekBarListener.onProgressChanged(seekBar,progress,false,tag);
+                mItemShowTv.setText(String.valueOf(progress));
+                if (mIBaseRvItemInSeekBarListener != null) {
+                    mIBaseRvItemInSeekBarListener.onProgressChanged(seekBar,progress,false,tag);
+                }
             }
 
             @Override

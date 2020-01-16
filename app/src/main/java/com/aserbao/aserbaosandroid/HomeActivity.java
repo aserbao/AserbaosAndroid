@@ -23,6 +23,7 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.aserbao.aserbaosandroid.ui.buttons.switchButton.SwitchButtonActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,8 +56,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", AShareModuleActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(new VHSeekBarBean("test:",0,null)));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SwitchButtonActivity.class));
     }
     
 

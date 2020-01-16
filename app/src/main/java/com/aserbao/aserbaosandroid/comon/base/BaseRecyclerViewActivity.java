@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,10 +111,11 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void setTranslations() { }
 
-    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER;
+    public int mMode = StaticFinalValues.GRID_LAYOUTMANAGER;
 
-    public void setMode(int mode) {
+    public void changeOrientation(int mode,int orientation) {
         mMode = mode;
+        mRvOrientation = orientation;
         initViewForLinear();
     }
 
@@ -126,8 +128,8 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             mLinearLayoutManager = new GridLayoutManager(this, 3);
             ((GridLayoutManager) mLinearLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
-                public int getSpanSize(int i) {
-                    return mCommonAdapter.setmOrientation();
+                public int getSpanSize(int position) {
+                    return mCommonAdapter.getSpanSize(position);
                 }
             });
         } else {
@@ -197,6 +199,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
                 mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
                 break;
         }
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         view.setLayoutParams(layoutParams);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();

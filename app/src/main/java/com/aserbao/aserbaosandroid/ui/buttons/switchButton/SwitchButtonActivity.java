@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.ui.buttons.switchButton;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.SeekBar;
 
@@ -22,16 +23,10 @@ public class SwitchButtonActivity extends BaseRecyclerViewActivity implements IB
     private SwitchButton switchButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.switch_button_layout);
-        ButterKnife.bind(this);
-    }
-
-    @Override
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("弹框修改",0));
-        View view = addLayoutToFrameLayout(R.layout.switch_button_layout, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.switch_button_layout, null);
+        addViewToFrameLayout(view,false, false);
         switchButton = ((SwitchButton) view.findViewById(R.id.switch_button));
     }
 

@@ -62,7 +62,7 @@ public class PopupManager implements PopupWindow.OnDismissListener{
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(baseRecyclerViewActivityAdapter);
 
-        mCuurPoupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mCuurPoupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mCuurPoupWindow.setOutsideTouchable(true);
         mCuurPoupWindow.setFocusable(true);
         mCuurPoupWindow.setOnDismissListener(this);
