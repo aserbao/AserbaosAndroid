@@ -124,6 +124,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
+            ((GridLayoutManager) mLinearLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int i) {
+                    return mCommonAdapter.setmOrientation();
+                }
+            });
         } else {
             mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }

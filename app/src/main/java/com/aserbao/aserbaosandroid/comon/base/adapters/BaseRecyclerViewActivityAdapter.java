@@ -93,6 +93,8 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         return StaticFinalValues.VIEW_HOLDER_TEXT;
     }
 
+    public int getSpanner
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;

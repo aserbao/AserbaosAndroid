@@ -54,7 +54,6 @@ public class SwitchButtonActivity extends BaseRecyclerViewActivity implements IB
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser, int tag) {
         switch (tag){
             case 0:
-
                 switchButton.setThumbMargin(progress,progress,progress,progress);
                 break;
         }
