@@ -31,7 +31,7 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
         frameLayout = ((FrameLayout) view.findViewById(R.id.frame_layout_container));
         imageView = ((ImageView) view.findViewById(R.id.imageView));
         button = ((Button) view.findViewById(R.id.frame_layout_btn));
-        addViewToFrameLayout(view, true,false);
+        addViewToFrameLayout(view, true,false, false);
     }
 
     @Override

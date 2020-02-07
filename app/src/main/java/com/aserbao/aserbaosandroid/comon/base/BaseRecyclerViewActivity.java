@@ -205,11 +205,17 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mBaseRecyclerEmptyContainer.addView(view);
     }
 
-    public void addViewToFrameLayout(View view, boolean isMatch,boolean isFullScreen){
+    /**
+     * @param view
+     * @param isMatch       是否是LayoutParams.MATCH_PARENT？
+     * @param isFullScreen 添加的视图是否需要全屏？
+     * @param isDirectBack 点击物理返回键是否直接退出当前界面？
+     */
+    public void addViewToFrameLayout(View view, boolean isMatch, boolean isFullScreen, boolean isDirectBack){
         Bundle bundle = new Bundle();
         bundle.putBoolean(IS_MATCH,isMatch);
         if (isFullScreen){
-            bundle.putBoolean(NEED_DIRECT_BACK,true);
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, FULL_SCREEN, bundle);
         }else {
             addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
@@ -234,9 +240,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public View addLayoutToFrameLayout(int resLayout, boolean needFullScreen){
         View view = LayoutInflater.from(mContext).inflate(resLayout, null);
         if(needFullScreen) {
-            addViewToFrameLayout(view,true,true);
+            addViewToFrameLayout(view,true,true,true);
         }else{
-            addViewToFrameLayout(view,true,false);
+            addViewToFrameLayout(view,true,false, false);
         }
         return view;
     }

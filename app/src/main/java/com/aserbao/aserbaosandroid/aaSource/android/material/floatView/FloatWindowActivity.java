@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.floatView.FloatView;
@@ -57,6 +55,6 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
 
     private void showFloatView() {
         FloatView floatView = new FloatView(this);
-        addViewToFrameLayout(floatView,false,true);
+        addViewToFrameLayout(floatView,false,true, true);
     }
 }

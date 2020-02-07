@@ -18,13 +18,7 @@ import org.greenrobot.greendao.annotation.Transient;
 public class Thing {
     @Id(autoincrement = true)
     long id;
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Property(nameInDb="message")
     @Index(unique = true)
@@ -84,6 +78,10 @@ public class Thing {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
 

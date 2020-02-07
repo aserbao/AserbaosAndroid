@@ -48,7 +48,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity"></activity>
+        <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity"></activity>
+        <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.Camera2Activity" />
         <activity android:name=".aaSource.android.hardware.HardwareActivity" />
         <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity" />

@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.audioAndVideo;
+package com.aserbao.aserbaosandroid.AudioAndVideo;
 
 import com.aserbao.aserbaosandroid.audioAndVideo.detail_Info.DetailInfoActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.jnis.JnisActivity;
