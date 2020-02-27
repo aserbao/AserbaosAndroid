@@ -54,5 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp" />
     </LinearLayout>
-
+    <ImageView
+        android:id="@+id/matrix_iv"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/emoji_00"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
 </RelativeLayout>
