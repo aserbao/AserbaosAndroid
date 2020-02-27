@@ -1,12 +1,17 @@
 package com.aserbao.aserbaosandroid.ui.canvas.matrix;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +36,11 @@ public class MatrixActivity extends AppCompatActivity {
     SeekBar mScaleSb;
     @BindView(R.id.test_view)
     MatrixView mTestView;
+    @BindView(R.id.matrix_iv)
+    ImageView mMatrixIv;
+
     private List l = new ArrayList();
+    private int mTranslateX,mTranslateY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +55,10 @@ public class MatrixActivity extends AppCompatActivity {
         mScaleSb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mTestView.setmScale(progress/(float)100);
+                float mScale = progress / (float) 100;
+                mTestView.setmScale(mScale);
+                mMatrix.postScale(mScale,mScale);
+                mMatrixIv.setImageBitmap(createBitmap());
             }
 
             @Override
@@ -64,6 +76,8 @@ public class MatrixActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 mTestView.setmRotateDegress(progress);
+                mMatrix.postRotate(progress);
+                mMatrixIv.setImageBitmap(createBitmap());
             }
 
             @Override
@@ -81,6 +95,9 @@ public class MatrixActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 mTestView.setmTranslateX(progress);
+                mTranslateX = progress;
+                mMatrix.postTranslate(mTranslateX,mTranslateY);
+                mMatrixIv.setImageBitmap(createBitmap());
             }
 
             @Override
@@ -98,6 +115,9 @@ public class MatrixActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 mTestView.setmTranslateY(progress);
+                mTranslateY = progress;
+                mMatrix.postTranslate(mTranslateX,mTranslateY);
+                mMatrixIv.setImageBitmap(createBitmap());
             }
 
             @Override
@@ -111,6 +131,13 @@ public class MatrixActivity extends AppCompatActivity {
             }
         });
     }
+    Matrix mMatrix = new Matrix();
+    public Bitmap createBitmap(){
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
+        Bitmap bitmap1 = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), mMatrix, true);
+        return bitmap1;
+    }
+
 
 
 }
