@@ -87,6 +87,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     public static final int USE_TRANSFORMING_GROUP_BY = 37;
     public static final int USE_TRANSFORMING_SCAN = 38;
     public static final int USE_TRANSFORMING_CAST = 39;
+    public static final int USE_RETRY_CAST = 40;
 
 
     public static final int USE_FILTERING_DEBOUNCE = 50;
@@ -277,6 +278,7 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
             case USE_TRANSFORMING_SCAN:
             case USE_TRANSFORMING_CAST:
             case USE_TRANSFORMING_TOLIST:
+            case USE_RETRY_CAST:
                 useTransforming(position);
                 break;
             case USE_FILTERING_DEBOUNCE:
@@ -929,7 +931,16 @@ public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
                     .cast(Number.class)
                     .subscribe(result -> Log.e(TAG, "useTransforming: " + result ));
                 break;
+            case USE_RETRY_CAST:
+                Observable.create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<String> emitter) throws Exception {
 
+                    }
+                }).retryWhen(new RetryWithDelay(5,1000))
+                    .subscribe(string -> Log.e(TAG, "useTransforming: " + string ));
+
+                break;
         }
     }
 
