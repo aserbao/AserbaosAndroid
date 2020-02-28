@@ -11,8 +11,8 @@ public class AudioAndVideoActivity extends BaseActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("多媒体详情", DetailInfoActivity.class));
-        mClassBeen.add(new ClassBean("播放器", MediaActivity.class));
-        mClassBeen.add(new ClassBean("JNI", JnisActivity.class));
+//        mClassBeen.add(new ClassBean("多媒体详情", DetailInfoActivity.class));
+//        mClassBeen.add(new ClassBean("播放器", MediaActivity.class));
+//        mClassBeen.add(new ClassBean("JNI", JnisActivity.class));
     }
 }

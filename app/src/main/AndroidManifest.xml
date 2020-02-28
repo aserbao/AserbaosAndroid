@@ -392,7 +392,8 @@
             android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.canvas.CanvasActivity" />
-        <activity android:name=".ui.canvas.matrix.MatrixActivity" />
+        <activity android:name=".ui.canvas.matrix.MatrixActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity" />
 
         <service
