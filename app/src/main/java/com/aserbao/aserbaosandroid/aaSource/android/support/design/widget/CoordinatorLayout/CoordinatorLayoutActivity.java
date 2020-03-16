@@ -32,10 +32,10 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("使用CoordinatorLayout动态调整FloatingActionButton的位置",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CoordinatorLayout嵌套AppBarLayout",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CoordinatorLayout+AppBarLayout的使用",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("简单的CoordinatorLayout的使用",10));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("使用CoordinatorLayout动态调整FloatingActionButton的位置",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CoordinatorLayout嵌套AppBarLayout",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CoordinatorLayout+AppBarLayout的使用",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("简单的CoordinatorLayout的使用",10));
 
     }
 

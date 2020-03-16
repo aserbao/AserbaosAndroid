@@ -17,8 +17,8 @@ public class NetWorkNotification extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("开启网络监听"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("取消网络监听"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("开启网络监听"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("取消网络监听"));
     }
 
     @Override

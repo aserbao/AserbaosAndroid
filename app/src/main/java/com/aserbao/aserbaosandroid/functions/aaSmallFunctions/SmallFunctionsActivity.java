@@ -20,7 +20,7 @@ public class SmallFunctionsActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("点击涟漪", ClickEffectActivity.class,0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("点击涟漪", ClickEffectActivity.class));
     }
 
     @Override

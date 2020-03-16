@@ -11,9 +11,9 @@ public class AnimatorRecyclerViewActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("删除item"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("删除item"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加动画"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("删除item"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("删除item"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("添加动画"));
     }
 
     private static final String TAG = "AnimatorRecyclerViewAct";

@@ -15,7 +15,7 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 public class ScreenActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("获取View旋转后在屏幕中的位置",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("获取View旋转后在屏幕中的位置",0));
     }
 
     @Override

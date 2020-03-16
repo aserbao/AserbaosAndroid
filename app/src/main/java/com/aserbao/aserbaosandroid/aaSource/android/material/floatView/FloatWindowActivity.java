@@ -16,8 +16,8 @@ public class FloatWindowActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("添加悬浮窗",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("显示旁边的悬浮窗",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("添加悬浮窗",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("显示旁边的悬浮窗",1));
     }
 
     @Override

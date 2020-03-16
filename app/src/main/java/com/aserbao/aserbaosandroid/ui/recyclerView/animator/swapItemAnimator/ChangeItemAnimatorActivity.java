@@ -20,10 +20,11 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         /*for (int i = 0; i < 10; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
+            mBaseRecyclerBean.add(new BaseRecyclerBean(String.valueOf(i)));
         }*/
-        ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
-        mRvOrientation = LinearLayoutManager.HORIZONTAL;
+        ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
+        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
+
     }
 
     @Override
@@ -40,7 +41,7 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
 
      @Override
     public void initViewForLinear() {
-        changeItemAdapter = new ChangeItemAdapter(this, this, mBaseRecyclerBeen, this);
+        changeItemAdapter = new ChangeItemAdapter(this, this, mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
         } else {

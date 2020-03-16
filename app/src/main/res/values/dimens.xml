@@ -17,6 +17,7 @@
     <dimen name="bar_pointer_halo_radius">14dp</dimen>
     <dimen name="activity_vertical_margin">10dp</dimen>
     <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="common_view_margin_lr">12dp</dimen>
     <dimen name="explosion_wh">50dp</dimen>
     <dimen name="smooth_head_height">240dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -33,4 +34,5 @@
     <dimen name="creator_edit_text_max_textSize">80dp</dimen>
     <dimen name="default_corner_radius">4dp</dimen>
     <dimen name="default_shadow_radius">4dp</dimen>
+
 </resources>

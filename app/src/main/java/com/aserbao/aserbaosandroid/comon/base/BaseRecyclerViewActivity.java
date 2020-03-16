@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     protected LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mRvOrientation = LinearLayoutManager.VERTICAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
 
@@ -110,18 +111,11 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void setTranslations() { }
 
-    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL;
+    public int mMode = StaticFinalValues.GRID_LAYOUTMANAGER;
 
-    public void setMode(int mode) {
+    public void changeOrientation(int mode,int orientation) {
         mMode = mode;
-        switch (mMode) {
-            case StaticFinalValues.LINEAR_LAYOUTMANAGER_VERTICAL:
-                mRvOrientation = LinearLayout.VERTICAL;
-                break;
-            case StaticFinalValues.LINEAR_LAYOUTMANAGER_HORIZONTAL:
-                mRvOrientation = LinearLayout.HORIZONTAL;
-                break;
-        }
+        mRvOrientation = orientation;
         initViewForLinear();
     }
 
@@ -129,9 +123,15 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
 
     public void initViewForLinear() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
+            ((GridLayoutManager) mLinearLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return mCommonAdapter.getSpanSize(position);
+                }
+            });
         } else {
             mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }
@@ -199,6 +199,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
                 mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
                 break;
         }
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         view.setLayoutParams(layoutParams);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();

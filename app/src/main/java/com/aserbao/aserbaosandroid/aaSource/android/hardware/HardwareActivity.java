@@ -14,8 +14,8 @@ public class HardwareActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Camera2", Camera2Activity.class,0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Camera2的简单预览", Camera2SimpleShowSVActivity.class,0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Camera2", Camera2Activity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Camera2的简单预览", Camera2SimpleShowSVActivity.class));
     }
 
     @Override

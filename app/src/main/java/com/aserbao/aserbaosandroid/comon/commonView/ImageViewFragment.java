@@ -67,15 +67,15 @@ public class ImageViewFragment extends Fragment {
         if (bundle != null) {
             entrancePosition = bundle.getInt(StaticFinalValues.POSITION,0);
         }
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen, 1);
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
     }
 
     private LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.VERTICAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public void initView() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBeen, null);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBean, null);
         mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);

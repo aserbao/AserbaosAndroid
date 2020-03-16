@@ -16,7 +16,7 @@ import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 public class EventDemoActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Button和RecyclerView叠加的事件分发处理"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Button和RecyclerView叠加的事件分发处理"));
     }
 
     @Override

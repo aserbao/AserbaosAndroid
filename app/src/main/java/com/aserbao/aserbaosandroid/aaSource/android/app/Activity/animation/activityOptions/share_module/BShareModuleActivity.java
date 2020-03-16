@@ -13,6 +13,8 @@ import android.transition.PathMotion;
 import android.transition.TransitionSet;
 import android.util.Log;
 import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -23,13 +25,14 @@ import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.aserbao.aserbaosandroid.functions.events.MoveDragActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BShareModuleActivity extends AppCompatActivity {
+public class BShareModuleActivity extends MoveDragActivity {
 
 
     @BindView(R.id.b_share_module_fl)
@@ -79,7 +82,23 @@ public class BShareModuleActivity extends AppCompatActivity {
         setTransitionName(COMING);
         mShowActivityNameTv.setText("BShareModuleActivity");
         setEnterSharedElementCallback(new SharedElementCallback() {
+
         });
+    }
+
+    @Override
+    public void onViewClick(MotionEvent event) {
+
+    }
+
+    @Override
+    public void onViewLongClick(MotionEvent event) {
+
+    }
+
+    @Override
+    public View getContentView() {
+        return mBShareModuleFl;
     }
 
     private void setImageRes() {

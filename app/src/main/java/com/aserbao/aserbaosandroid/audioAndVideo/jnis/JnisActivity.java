@@ -1,13 +1,20 @@
 package com.aserbao.aserbaosandroid.audioAndVideo.jnis;
 
-import com.aserbao.aserbaosandroid.audioAndVideo.jnis.javaCallC.JavaCallCActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class JnisActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.audioAndVideo.jnis.javaCallC.JavaCallCActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class JnisActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Java调C代码实现", JavaCallCActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Java调C代码实现", JavaCallCActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

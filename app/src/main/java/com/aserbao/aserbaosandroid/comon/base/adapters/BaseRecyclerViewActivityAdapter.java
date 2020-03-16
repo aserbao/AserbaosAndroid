@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
@@ -14,11 +16,14 @@ import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickL
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.HeadViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.ImageViewHolder;
+import com.aserbao.aserbaosandroid.comon.base.viewHolder.SeekBarViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * description:
@@ -26,6 +31,7 @@ import java.util.List;
  */
 
 public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
     private Context mContext;
     protected Activity mActivity;
     protected List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
@@ -41,31 +47,32 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
     }
 
     public int mOrientation = LinearLayoutManager.VERTICAL;
-    public void setmOrientation(int orientation){
+
+    public void setmOrientation(int orientation) {
         mOrientation = orientation;
     }
 
-    public void remove(int position){
-        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() > position){
+    public void remove(int position) {
+        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() > position) {
             mBaseRecyclerBean.remove(position);
             notifyItemRemoved(position);
-            notifyItemRangeChanged(position,getItemCount());
+            notifyItemRangeChanged(position, getItemCount());
 //            notifyDataSetChanged();
         }
     }
 
-    public void removeRange(int position,int count){
-        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() >= count + position){
-            for (int i = count-1; i >= position; i--) {
+    public void removeRange(int position, int count) {
+        if (mBaseRecyclerBean != null && mBaseRecyclerBean.size() >= count + position) {
+            for (int i = count - 1; i >= position; i--) {
                 mBaseRecyclerBean.remove(i);
             }
-            notifyItemRangeRemoved(position,count);
+            notifyItemRangeRemoved(position, count);
         }
     }
 
-    public void add(int position,BaseRecyclerBean baseRecyclerBean){
+    public void add(int position, BaseRecyclerBean baseRecyclerBean) {
         if (mBaseRecyclerBean != null) {
-            mBaseRecyclerBean.add(position,baseRecyclerBean);
+            mBaseRecyclerBean.add(position, baseRecyclerBean);
             notifyItemInserted(position);
 //            notifyDataSetChanged();
         }
@@ -73,17 +80,30 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
 
     public void addRange(int startPosition, List<BaseRecyclerBean> list) {
         if (mBaseRecyclerBean != null) {
-            mBaseRecyclerBean.addAll(startPosition,list);
-            notifyItemRangeInserted(startPosition,list.size());
+            mBaseRecyclerBean.addAll(startPosition, list);
+            notifyItemRangeInserted(startPosition, list.size());
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (mBaseRecyclerBean != null ){
+        if (mBaseRecyclerBean != null) {
             return mBaseRecyclerBean.get(position % mBaseRecyclerBean.size()).getViewType();
         }
         return StaticFinalValues.VIEW_HOLDER_TEXT;
+    }
+
+    public int getSpanSize(int position){
+        if (mBaseRecyclerBean != null) {
+            int viewType = mBaseRecyclerBean.get(position % mBaseRecyclerBean.size()).getViewType();
+            switch (viewType){
+                case StaticFinalValues.VIEW_HOLDER_CLASS:
+                    return  1;
+                default:
+                    return 3;
+            }
+        }
+        return 3;
     }
 
     @Override
@@ -98,9 +118,12 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
                 return new TextViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_IMAGE_100H:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_vertical_image_item, parent, false);
-                if (mOrientation == LinearLayoutManager.HORIZONTAL){
+                if (mOrientation == LinearLayoutManager.HORIZONTAL) {
                     view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_horizontal_image_item, parent, false);
                 }
+                return new ImageViewHolder(view);
+            case StaticFinalValues.VIEW_FULL_IMAGE_ITEM:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_full_image_item, parent, false);
                 return new ImageViewHolder(view);
             case StaticFinalValues.VIEW_HOLDER_CIRCLE_IMAGE_ITEM:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_circle_50_50_image_item, parent, false);
@@ -111,6 +134,12 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             case StaticFinalValues.VIEW_BLEND_MODE:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_class_item, parent, false);
                 return new ClassViewHolder(view);
+            case StaticFinalValues.VIEW_SEEK_BAR:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_seek_bar_item, parent, false);
+                return new SeekBarViewHolder(view);
+            case StaticFinalValues.VIEW_SELECTE_POSITION:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_selecte_view_item, parent, false);
+                return new SeekBarViewHolder(view);
         }
         return null;
     }
@@ -119,13 +148,15 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final BaseRecyclerBean classBean = mBaseRecyclerBean.get(position % mBaseRecyclerBean.size());
         if (holder instanceof TextViewHolder) {
-            ((TextViewHolder) holder).setDataSource(classBean,holder.getAdapterPosition(),mIBaseRecyclerItemClickListener);
-        }else if (holder instanceof ImageViewHolder){
-            ((ImageViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
-        }else if (holder instanceof ClassViewHolder){
-            ((ClassViewHolder) holder).setDataSource(mActivity,classBean);
-        }else if (holder instanceof HeadViewHolder){
+            ((TextViewHolder) holder).setDataSource(classBean, holder.getAdapterPosition(), mIBaseRecyclerItemClickListener);
+        } else if (holder instanceof ImageViewHolder) {
+            ((ImageViewHolder) holder).setDataSource(classBean, position, mIBaseRecyclerItemClickListener);
+        } else if (holder instanceof ClassViewHolder) {
+            ((ClassViewHolder) holder).setDataSource(mActivity, classBean);
+        } else if (holder instanceof HeadViewHolder) {
             ((HeadViewHolder) holder).setDataSource(classBean);
+        } else if (holder instanceof SeekBarViewHolder){
+            ((SeekBarViewHolder) holder).setDataSource(classBean);
         }
     }
 
@@ -137,7 +168,6 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
         }
         return ret;
     }
-
 
 
 }

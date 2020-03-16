@@ -9,7 +9,7 @@ public class NotificationActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean(""));
+        mBaseRecyclerBean.add(new BaseRecyclerBean(""));
     }
 
     @Override

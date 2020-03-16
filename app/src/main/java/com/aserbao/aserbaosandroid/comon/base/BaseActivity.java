@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseActivityAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public BaseActivityAdapter mCommonAdapter;
 
-    public List<ClassBean> mClassBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
 
     @Override
@@ -45,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract  void initGetData();
 
     public void initView() {
-        mCommonAdapter = new BaseActivityAdapter(this,this, mClassBeen);
+        mCommonAdapter = new BaseActivityAdapter(this,this, mBaseRecyclerBean);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mOpenglRecyclerView.setLayoutManager(gridLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);

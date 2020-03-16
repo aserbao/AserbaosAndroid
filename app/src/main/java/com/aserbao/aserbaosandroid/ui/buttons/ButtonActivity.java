@@ -8,37 +8,24 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ButtonActivity extends AppCompatActivity {
+public class ButtonActivity extends BaseRecyclerViewActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_button);
-        ButterKnife.bind(this);
+    public void initGetData() {
+//        mBaseRecyclerBean.add(new BaseRecyclerBean("SwitchButton",))
     }
 
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 
-    public static void launch(Activity activity){
-        Intent intent = new Intent(activity,ButtonActivity.class);
-        activity.startActivity(intent);
-    }
-
-
-    private static final String TAG = "ButtonActivity";
-    @OnClick({R.id.one_btn, R.id.two_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.one_btn:
-                break;
-            case R.id.two_btn:
-
-                break;
-        }
     }
 }

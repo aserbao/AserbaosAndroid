@@ -26,23 +26,23 @@ public class CutOutActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("显示DisplayCutout的个数",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("进入全屏",1001));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("退出全屏",1002));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT",100));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES",101));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER",102));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LOW_PROFILE",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_FULLSCREEN",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_STABLE",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE_STICKY",8));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_STATUS_BAR",9));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_VISIBLE",10));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR",11));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("显示DisplayCutout的个数",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("进入全屏",1001));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("退出全屏",1002));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT",100));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES",101));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置主题为\n LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER",102));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LOW_PROFILE",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_FULLSCREEN",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_STABLE",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN",6));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE",7));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_IMMERSIVE_STICKY",8));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_STATUS_BAR",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_VISIBLE",10));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("设置SystemUiVisibility为\n SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR",11));
 
     }
 

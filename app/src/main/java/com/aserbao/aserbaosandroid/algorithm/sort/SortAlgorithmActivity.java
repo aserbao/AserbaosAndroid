@@ -18,19 +18,19 @@ public class SortAlgorithmActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("java中=的意义",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("冒泡排序",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("原始选择排序",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("选择排序升级版",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("直接插入排序",40));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("二分插入排序",41));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("希尔排序",42));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("归并排序",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("快速排序",61));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("计数排序",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("基数排序",8));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("堆排序",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("java中=的意义",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("冒泡排序",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("原始选择排序",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("选择排序升级版",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("直接插入排序",40));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("二分插入排序",41));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("希尔排序",42));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("归并排序",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("快速排序",6));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("快速排序",61));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("计数排序",7));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("基数排序",8));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("堆排序",9));
         int data_count = 10000;
         mRandom = new Random();
         source_data = new int[data_count];

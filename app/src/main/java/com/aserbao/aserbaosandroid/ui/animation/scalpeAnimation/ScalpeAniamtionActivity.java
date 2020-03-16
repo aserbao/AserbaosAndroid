@@ -43,32 +43,32 @@ public class ScalpeAniamtionActivity extends AppCompatActivity implements IBaseR
 
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
 
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
 
     public void initGetData(){
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("1"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("2"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("3"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("4"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("5"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("6"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("7"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("8"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("9"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("10"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("11"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("12"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("13"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("14"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("15"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("16"));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("17"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("1"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("2"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("3"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("4"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("5"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("6"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("7"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("8"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("9"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("10"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("11"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("12"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("13"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("14"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("15"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("16"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("17"));
     }
 
 
     public void initView() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBeen, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mScaleRecyclerView.setLayoutManager(linearLayoutManager);
         mScaleRecyclerView.setAdapter(mCommonAdapter);

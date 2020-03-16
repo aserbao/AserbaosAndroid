@@ -1,11 +1,18 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.functions;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
+import android.view.View;
 
-public class FunctionActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+
+public class FunctionActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 
     }
 }

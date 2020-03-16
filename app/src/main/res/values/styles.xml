@@ -98,13 +98,15 @@
     //============文字显示动画
 
     <style name="show_text_anim_style">
+        <item name="android:textStyle">bold</item>
         <item name="android:shadowRadius">8</item>
-        <item name="android:shadowColor">@color/black70</item>
+        <item name="android:shadowColor">@color/black</item>
         <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/text_show</item>
+        <item name="android:textColor">@color/global_show_text</item>
         <item name="android:text">@string/show_text</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -158,6 +160,7 @@
         <item name="android:windowSharedElementExitTransition">@transition/image_shared_element_transition</item>
         <item name="android:windowSharedElementEnterTransition">@transition/image_shared_element_transition</item>
     </style>
+
     <style name="windowIsTranslucent"  parent="AppTheme">
         <item name="android:background">@color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>

@@ -75,28 +75,28 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get同步请求 ",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Get异步请求 ",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post同步请求 ",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp实现Post异步请求 ",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp添加请求头请求 ",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp上传String到服务器 ",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp流上传 ",6));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp文件上传 ",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("通过moshi将json解析成对象 ",8));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 ",9));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 ",10));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp取消回调 ",11));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置超时 ",12));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp修改超时配置 ",13));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp认证处理 ",14));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置应用拦截 ",15));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp设置网络拦截 ",16));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp压缩请求主体 ",17));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp配置证书锁 ",18));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp自定义认证证书 ",19));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp事件监听 ",20));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("okhttp事件工厂类 ",201));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Get同步请求 ",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Get异步请求 ",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Post同步请求 ",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Post异步请求 ",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp添加请求头请求 ",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp上传String到服务器 ",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp流上传 ",6));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp文件上传 ",7));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("通过moshi将json解析成对象 ",8));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp通过拦截设置缓存 ",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp官方推荐的缓存方式 ",10));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp取消回调 ",11));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp配置超时 ",12));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp修改超时配置 ",13));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp认证处理 ",14));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp设置应用拦截 ",15));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp设置网络拦截 ",16));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp压缩请求主体 ",17));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp配置证书锁 ",18));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp自定义认证证书 ",19));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp事件监听 ",20));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp事件工厂类 ",201));
         init();
     }
 

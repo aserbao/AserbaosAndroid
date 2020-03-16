@@ -4,7 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/videocache-2.7.0.aar/b1c9ad24b7b1a9009b5d31d424c75c9d/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/videocache-2.7.0.aar/b1c9ad24b7b1a9009b5d31d424c75c9d/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.danikula/videocache/2.7.0/ed4af4a73e47dbb91767bb8c246d915cf8a5cd5a/videocache-2.7.0-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.danikula/videocache/2.7.0/e1a2970714db401ba71b93d6617cd79c52427725/videocache-2.7.0-sources.jar!/" />
     </SOURCES>

@@ -1,14 +1,21 @@
 package com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer;
 
-import com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.playerlist.PlayListActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
 
-public class ExoPlayerPActivity extends BaseActivity {
+import com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.playerlist.PlayListActivity;
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+
+public class ExoPlayerPActivity extends BaseRecyclerViewActivity {
 
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("无缝播放", PlayListActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("无缝播放", PlayListActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

@@ -86,12 +86,12 @@ public class AShareModuleActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     public AShareModuleAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.HORIZONTAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public static int endPosition, startPosition = 0;
 
     private void initView() {
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen,1);
-        mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean,1);
+        mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBean, new IBaseRecyclerItemClickListener() {
             @Override
             public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 startPosition = position;
@@ -103,7 +103,8 @@ public class AShareModuleActivity extends AppCompatActivity {
                     int absoultPosition = firstVisibleItemPosition + i;
                     sharedElements[i] = Pair.create(mLinearLayoutManager.findViewByPosition(absoultPosition), String.valueOf(ASourceUtil.imageUrls[absoultPosition]));
                 }
-                BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
+//                BShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, view, position, sharedElements);
+                CShareModuleActivity.launch(whichnInterpolator,AShareModuleActivity.this, position, sharedElements);
                 myHandler.sendEmptyMessageDelayed(0, 1000);
 
                 int scrollOffset = mModuleRecyclerView.computeHorizontalScrollOffset();
@@ -137,12 +138,12 @@ public class AShareModuleActivity extends AppCompatActivity {
             }
         });
 
-        AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, null, AShareModuleAdapter.TOP);
+        /*AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBean, null, AShareModuleAdapter.TOP);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, mOrientation, false);
         aShareModuleAdapter.setmOrientation(mOrientation);
         mModuleRecyclerView2.setLayoutManager(linearLayoutManager);
         mModuleRecyclerView2.setAdapter(aShareModuleAdapter);
-        mModuleRecyclerView2.setVisibility(View.VISIBLE);
+        mModuleRecyclerView2.setVisibility(View.VISIBLE);*/
     }
 
     @Override
@@ -164,7 +165,7 @@ public class AShareModuleActivity extends AppCompatActivity {
 
         /*List<BaseRecyclerBean> mTempBaseRecyclerBean = new ArrayList<>();
         for (int i = 0; i <= lastVisibleItemPosition - firstVisibleItemPosition; i++) {
-            BaseRecyclerBean baseRecyclerBean = mBaseRecyclerBeen.get(i);
+            BaseRecyclerBean baseRecyclerBean = mBaseRecyclerBean.get(i);
             mTempBaseRecyclerBean.add(baseRecyclerBean);
         }
         AShareModuleAdapter aShareModuleAdapter = new AShareModuleAdapter(this, this, mTempBaseRecyclerBean, null, AShareModuleAdapter.TOP);

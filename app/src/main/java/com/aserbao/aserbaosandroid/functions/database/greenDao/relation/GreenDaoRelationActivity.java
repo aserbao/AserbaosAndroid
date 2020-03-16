@@ -162,7 +162,7 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
         for (int j = 0; j < random.nextInt(5) + 1 ; j++) {
             CreditCard creditCard = new CreditCard();
             if (isStudent) {
-                creditCard.setStudentId(id);
+                creditCard.setStudentId(String.valueOf(id) + "_string");
             }else{
                 creditCard.setTeacherId(id);
             }

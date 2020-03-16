@@ -55,7 +55,7 @@ public abstract class BaseFragment extends Fragment implements IBaseRecyclerItem
     public LinearLayoutManager mLinearLayoutManager;
     public BaseRecyclerViewActivityAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.VERTICAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
 
     public abstract void initGetData();
@@ -80,7 +80,7 @@ public abstract class BaseFragment extends Fragment implements IBaseRecyclerItem
     }
 
     public void initView() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBeen, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBean, this);
         mLinearLayoutManager = new LinearLayoutManager(getContext(), mOrientation, false);
         mBaseRecyclerView.setLayoutManager(mLinearLayoutManager);
         mBaseRecyclerView.setAdapter(mCommonAdapter);

@@ -31,15 +31,15 @@ public class ASourceUtil {
     public static final int[] imageUrls = {R.drawable.mm_1,R.drawable.mm_2,R.drawable.mm_3,R.drawable.mm_4,R.drawable.mm_5,R.drawable.mm_6,R.drawable.mm_7};
 //      public static final int[] imageUrls = {R.drawable.starry_sky_1,R.drawable.starry_sky_2,R.drawable.starry_sky_3,R.drawable.starry_sky_4,R.drawable.starry_sky_5,R.drawable.starry_sky_6,R.drawable.starry_sky_7,R.drawable.starry_sky_8,R.drawable.starry_sky_9,R.drawable.starry_sky_10};
 
-    public static List<BaseRecyclerBean> getStaticRecyclerViewData(List<BaseRecyclerBean> mBaseRecyclerBeen, int times) {
-        if (mBaseRecyclerBeen == null) {
+    public static List<BaseRecyclerBean> getStaticRecyclerViewData(List<BaseRecyclerBean> mBaseRecyclerBean, int times) {
+        if (mBaseRecyclerBean == null) {
             new Exception("传个null进来开玩笑吧？,赶快给我修改了！墨迹个锤子🔨");
         }
         int[] imageUrl = ASourceUtil.imageUrls;
         for (int i = 0; i < imageUrl.length * times; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean(imageUrl[i%imageUrl.length],StaticFinalValues.VIEW_HOLDER_IMAGE_100H));
+            mBaseRecyclerBean.add(new BaseRecyclerBean(imageUrl[i%imageUrl.length],StaticFinalValues.VIEW_HOLDER_IMAGE_100H));
         }
-        return mBaseRecyclerBeen;
+        return mBaseRecyclerBean;
     }
 
     public static int getRandomImageId(){

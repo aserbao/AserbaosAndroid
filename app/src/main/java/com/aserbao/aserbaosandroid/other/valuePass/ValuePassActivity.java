@@ -13,8 +13,8 @@ public class ValuePassActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("测试下对象传递",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("测试下静态对象传递",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试下对象传递",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试下静态对象传递",2));
         mBaseRecyclerTv.setGravity(Gravity.CENTER);
         valuesBean = new ValuesBean(0, 0, "我没被修改");
     }

@@ -33,17 +33,17 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("循环滑动",100));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("不循环滑动",101));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Default",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularViewMode",1));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("ScaleXViewMode",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("ScaleYViewMode",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("RotateXScaleYViewMode",4));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("RotateYScaleXViewMode",5));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularHorizontalMode",7));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularViewRTLMode",8));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("CircularHorizontalBTTMode",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("循环滑动",100));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("不循环滑动",101));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Default",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CircularViewMode",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ScaleXViewMode",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ScaleYViewMode",3));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RotateXScaleYViewMode",4));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RotateYScaleXViewMode",5));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CircularHorizontalMode",7));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CircularViewRTLMode",8));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CircularHorizontalBTTMode",9));
 
     }
     private ItemViewMode mItemViewMode;

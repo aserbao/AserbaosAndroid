@@ -1,7 +1,9 @@
 package com.aserbao.aserbaosandroid.ui.animation;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.ClassBean;
+import android.view.View;
+
+import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.ExplosionActivity;
 import com.aserbao.aserbaosandroid.ui.animation.fragments3DAnimation.Fragment3DAnimationActivity;
@@ -12,18 +14,23 @@ import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.RecyclerVi
 import com.aserbao.aserbaosandroid.ui.animation.reside.ResideActivity;
 import com.aserbao.aserbaosandroid.ui.animation.scalpeAnimation.ScalpeAniamtionActivity;
 
-public class AnimationActivity extends BaseActivity {
+public class AnimationActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mClassBeen.add(new ClassBean("Fragment的3D切换效果", Fragment3DAnimationActivity.class));
-        mClassBeen.add(new ClassBean("RecyclerView的3D切换效果", RecyclerViewItemAnimationActivity.class));
-        mClassBeen.add(new ClassBean("CubeAnimation效果", CubeAnimationActivity.class));
-        mClassBeen.add(new ClassBean("Lottie的效果", LottieActivity.class));
-        mClassBeen.add(new ClassBean("爆炸效果", ExplosionActivity.class));
-        mClassBeen.add(new ClassBean("射击动画", MoveAnimActivity.class));
-        mClassBeen.add(new ClassBean("布局检测", ScalpeAniamtionActivity.class));
-        mClassBeen.add(new ClassBean("Reside", ResideActivity.class));
-        mClassBeen.add(new ClassBean("属性动画", ObjectAnimatorActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Fragment的3D切换效果", Fragment3DAnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RecyclerView的3D切换效果", RecyclerViewItemAnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("CubeAnimation效果", CubeAnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Lottie的效果", LottieActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("爆炸效果", ExplosionActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("射击动画", MoveAnimActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("布局检测", ScalpeAniamtionActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Reside", ResideActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("属性动画", ObjectAnimatorActivity.class));
+    }
+
+    @Override
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+
     }
 }

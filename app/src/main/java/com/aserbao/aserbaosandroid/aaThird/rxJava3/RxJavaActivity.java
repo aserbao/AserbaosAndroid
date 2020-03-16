@@ -25,12 +25,12 @@ public class RxJavaActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava实现一个模拟下载功能", RxJavaDownLoadActivity.class,10));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava API", RxJava3ApiActivity.class,10));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Hello World",0));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Flowable的使用讲解",100));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("Observable的使用讲解",101));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("RxJava使用三步骤",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RxJava实现一个模拟下载功能", RxJavaDownLoadActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RxJava API", RxJava3ApiActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Hello World",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Flowable的使用讲解",100));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Observable的使用讲解",101));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RxJava使用三步骤",1));
     }
 
     @Override
