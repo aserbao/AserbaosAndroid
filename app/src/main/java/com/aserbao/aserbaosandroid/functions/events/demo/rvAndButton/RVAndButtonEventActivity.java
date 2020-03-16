@@ -36,7 +36,7 @@ public class RVAndButtonEventActivity extends BaseAddFrameLayoutActivity {
         switch (position){
             case 0:
                 View addRootView = LayoutInflater.from(mContext).inflate(R.layout.function_event_rv_activity, null);
-                addViewToFrameLayout(addRootView, true,true);
+                addViewToFrameLayout(addRootView, true,true, true);
                 mEventRvCrProgress = ((ACustomRecordProgress) addRootView.findViewById(R.id.event_rv_cr_progress));
                 mEventRvPickerRv = ((PickerRecyclerView) addRootView.findViewById(R.id.event_rv_picker_rv));
                 mEventRvCrFrameLayout = ((FrameLayout) addRootView.findViewById(R.id.event_rv_cr_frame_layout));

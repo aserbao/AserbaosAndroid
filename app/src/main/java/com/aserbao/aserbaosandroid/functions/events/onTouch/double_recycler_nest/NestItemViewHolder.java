@@ -46,15 +46,15 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
     }
     private Context mContext;
 
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
     public void setDataSource(Context context,IItemOnLongClickListener iItemOnLongClickListener){
         mContext = context;
         mNestRvItem.setImageResource(ASourceUtil.getRandomImageId());
         for (int i = 0; i < 30; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean(String.valueOf(i)));
+            mBaseRecyclerBean.add(new BaseRecyclerBean(String.valueOf(i)));
         }
-        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(context, (Activity) context, mBaseRecyclerBeen, this);
+        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(context, (Activity) context, mBaseRecyclerBean, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true);
         mNestRvItemRv.setLayoutManager(linearLayoutManager);
         mNestRvItemRv.setAdapter(mCommonAdapter);

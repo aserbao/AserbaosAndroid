@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.audioAndVideo;
+package com.aserbao.aserbaosandroid.AudioAndVideo;
 
 import android.view.View;
 

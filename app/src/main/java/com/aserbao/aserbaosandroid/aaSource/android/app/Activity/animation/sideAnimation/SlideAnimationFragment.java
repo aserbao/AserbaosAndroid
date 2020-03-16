@@ -55,17 +55,17 @@ public class SlideAnimationFragment extends Fragment implements SlideItemAnimati
 
     private void initGetData() {
         for (int i = 1; i < 21; i++) {
-            mBaseRecyclerBeen.add(new BaseRecyclerBean("第" + i + "个数据",i));
+            mBaseRecyclerBean.add(new BaseRecyclerBean("第" + i + "个数据",i));
         }
     }
 
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     private void initView() {
         String string = getArguments().getString(StaticFinalValues.STRING);
         mSlideAnimationTv.setText(string);
         mSlideAnimationFl.setIItemOnTouchCallBackListener(this);
 
-        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
+        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(getContext(), getActivity(), mBaseRecyclerBean, new IBaseRecyclerItemClickListener() {
             @Override
             public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 Toast.makeText(getContext(), "你点击了" + position + "个位置的View 常按 =" + isLongClick, Toast.LENGTH_SHORT).show();

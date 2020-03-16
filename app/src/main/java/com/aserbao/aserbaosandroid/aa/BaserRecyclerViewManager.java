@@ -33,7 +33,7 @@ public class BaserRecyclerViewManager implements PopupWindow.OnDismissListener{
     private Context mContext;
     private Activity mActivity;
     PopupWindow mCuurPoupWindow;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
 
     public BaserRecyclerViewManager(Context mContext, Activity activity) {
         this.mContext = mContext;
@@ -41,7 +41,7 @@ public class BaserRecyclerViewManager implements PopupWindow.OnDismissListener{
     }
 
     public void addBaserRecyclerBean(BaseRecyclerBean baseRecyclerBean){
-        mBaseRecyclerBeen.add(baseRecyclerBean);
+        mBaseRecyclerBean.add(baseRecyclerBean);
     }
 
 
@@ -57,7 +57,7 @@ public class BaserRecyclerViewManager implements PopupWindow.OnDismissListener{
         mCuurPoupWindow.showAtLocation(rootView.getRootView(), Gravity.BOTTOM, 0, 0);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.base_recycler_view);
         rootView.findViewById(R.id.base_recycler_view_fl).setBackgroundColor(Color.WHITE);
-        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(mContext, mActivity, mBaseRecyclerBeen, iBaseRecyclerItemClickListener);
+        BaseRecyclerViewActivityAdapter mCommonAdapter = new BaseRecyclerViewActivityAdapter(mContext, mActivity, mBaseRecyclerBean, iBaseRecyclerItemClickListener);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLinearLayoutManager);
         recyclerView.setAdapter(mCommonAdapter);

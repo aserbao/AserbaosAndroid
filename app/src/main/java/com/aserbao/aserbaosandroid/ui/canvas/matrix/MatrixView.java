@@ -63,19 +63,19 @@ public class MatrixView extends View {
         float scaleWidth = arrowBitmapWidth * mScale;
         float dx = (width - arrowBitmapWidth * mScale) / 2;
         float dy = (height - arrowBitmapWidth * mScale) / 2;
-        mMatrix.postTranslate(dx, dy);
+        mMatrix.postTranslate(mTranslateX, mTranslateY);
         mMatrix.postScale(mScale,mScale,dx,dy);
         mMatrix.postRotate(mRotateDegress,dx + scaleWidth/2,dy + scaleHeight/2);
-        canvas.drawBitmap(mOtherArrowBitmap,mMatrix,mPaint);
+        canvas.drawBitmap(mOtherArrowBitmap,new Matrix(),mPaint);
 
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(halfWidth,halfHeight,10,mPaint);
     }
     private int mRotateDegress = 0;
-    private int mTranslateX = 1080;
+    private int mTranslateX = 0;
     private int mTranslateY = 0;
-    private float mScale = 0.5f;
+    private float mScale = 1f;
 
     public void setmRotateDegress(int mRotateDegress) {
         this.mRotateDegress = mRotateDegress;
@@ -95,5 +95,9 @@ public class MatrixView extends View {
     public void setmTranslateY(int mTranslateY) {
         this.mTranslateY = mTranslateY;
         invalidate();
+    }
+
+    public Matrix getMatrixs(){
+        return mMatrix;
     }
 }

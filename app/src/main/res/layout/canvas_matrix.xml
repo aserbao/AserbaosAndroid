@@ -5,10 +5,29 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:layout_height="wrap_content">
-    <com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixView
-        android:id="@+id/test_view"
+    <ImageView
+        android:id="@+id/matrix_iv"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/matrix_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixView
+            android:background="@color/black50"
+            android:id="@+id/test_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/test_matrix_iv"
+            android:src="@drawable/emoji_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -55,4 +74,18 @@
             android:layout_height="50dp" />
     </LinearLayout>
 
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/get_matrix_btn"
+        android:text="获取Matrix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/get_matrix_btn2"
+        android:text="获取Matrix2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

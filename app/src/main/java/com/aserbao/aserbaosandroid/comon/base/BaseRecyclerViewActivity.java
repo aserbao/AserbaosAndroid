@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,10 +111,11 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
     public void setTranslations() { }
 
-    public int mMode = StaticFinalValues.LINEAR_LAYOUTMANAGER;
+    public int mMode = StaticFinalValues.GRID_LAYOUTMANAGER;
 
-    public void setMode(int mode) {
+    public void changeOrientation(int mode,int orientation) {
         mMode = mode;
+        mRvOrientation = orientation;
         initViewForLinear();
     }
 
@@ -124,6 +126,12 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
             mLinearLayoutManager = new GridLayoutManager(this, 3);
+            ((GridLayoutManager) mLinearLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return mCommonAdapter.getSpanSize(position);
+                }
+            });
         } else {
             mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
         }
@@ -191,17 +199,24 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
                 mBaseRecyclerEmptyContainer.setLayoutParams(layoutParams1);
                 break;
         }
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         view.setLayoutParams(layoutParams);
         mBaseRecyclerEmptyContainer.setVisibility(View.VISIBLE);
         mBaseRecyclerEmptyContainer.removeAllViews();
         mBaseRecyclerEmptyContainer.addView(view);
     }
 
-    public void addViewToFrameLayout(View view, boolean isMatch,boolean isFullScreen){
+    /**
+     * @param view
+     * @param isMatch       是否是LayoutParams.MATCH_PARENT？
+     * @param isFullScreen 添加的视图是否需要全屏？
+     * @param isDirectBack 点击物理返回键是否直接退出当前界面？
+     */
+    public void addViewToFrameLayout(View view, boolean isMatch, boolean isFullScreen, boolean isDirectBack){
         Bundle bundle = new Bundle();
         bundle.putBoolean(IS_MATCH,isMatch);
         if (isFullScreen){
-            bundle.putBoolean(NEED_DIRECT_BACK,true);
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, FULL_SCREEN, bundle);
         }else {
             addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
@@ -226,9 +241,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public View addLayoutToFrameLayout(int resLayout, boolean needFullScreen){
         View view = LayoutInflater.from(mContext).inflate(resLayout, null);
         if(needFullScreen) {
-            addViewToFrameLayout(view,true,true);
+            addViewToFrameLayout(view,true,true,true);
         }else{
-            addViewToFrameLayout(view,true,false);
+            addViewToFrameLayout(view,true,false, false);
         }
         return view;
     }

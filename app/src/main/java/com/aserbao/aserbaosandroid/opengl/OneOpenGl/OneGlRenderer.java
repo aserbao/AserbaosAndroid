@@ -20,6 +20,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     private Triangle mTriangle;
     private TriangleColor mTriangleColor;
 
+    @Override
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
         GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -37,6 +38,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     public void setAngle(float angle) {
         mAngle = angle;
     }
+    @Override
     public void onDrawFrame(GL10 unused) {
         // 设置相机位置（查看矩阵）
         Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
@@ -63,6 +65,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     private final float[] mMVPMatrix = new float[16];
     private final float[] mProjectionMatrix = new float[16];
     private final float[] mViewMatrix = new float[16];
+    @Override
     public void onSurfaceChanged(GL10 unused, int width, int height) {
         GLES20.glViewport(0, 0, width, height);
 

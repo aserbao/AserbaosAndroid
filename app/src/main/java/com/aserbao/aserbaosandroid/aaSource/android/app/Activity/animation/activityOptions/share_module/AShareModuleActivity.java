@@ -86,12 +86,12 @@ public class AShareModuleActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     public AShareModuleAdapter mCommonAdapter;
     public int mOrientation = LinearLayoutManager.HORIZONTAL;
-    public List<BaseRecyclerBean> mBaseRecyclerBeen = new ArrayList<>();
+    public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public static int endPosition, startPosition = 0;
 
     private void initView() {
-        mBaseRecyclerBeen = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBeen,1);
-        mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBeen, new IBaseRecyclerItemClickListener() {
+        mBaseRecyclerBean = ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean,1);
+        mCommonAdapter = new AShareModuleAdapter(this, this, mBaseRecyclerBean, new IBaseRecyclerItemClickListener() {
             @Override
             public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
                 startPosition = position;

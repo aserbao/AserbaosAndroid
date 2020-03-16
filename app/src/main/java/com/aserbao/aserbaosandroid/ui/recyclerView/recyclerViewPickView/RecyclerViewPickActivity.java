@@ -108,7 +108,7 @@ public class RecyclerViewPickActivity extends BaseRecyclerViewActivity {
 
         }
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.recycler_picker, null);
-        addViewToFrameLayout(rootView, true,true);
+        addViewToFrameLayout(rootView, true,true, true);
         PickerRecyclerView recyclerView = (PickerRecyclerView) rootView.findViewById(R.id.picker_recycler_view);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setViewMode(mItemViewMode);

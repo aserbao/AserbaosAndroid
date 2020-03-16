@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.aserbao.aserbaosandroid.comon.base.beans.VHSeekBarBean;
+import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRvItemInSeekBarListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,28 +28,39 @@ public class SeekBarViewHolder extends RecyclerView.ViewHolder {
     SeekBar mItemSeekBar;
     @BindView(R.id.item_show_tv)
     TextView mItemShowTv;
+    @BindView(R.id.sb_des_tv)
+    TextView mItemDesTv;
+    private IBaseRvItemInSeekBarListener mIBaseRvItemInSeekBarListener;
 
     public SeekBarViewHolder(@NonNull View itemView) {
         super(itemView);
         ButterKnife.bind(this,itemView);
     }
-
-    public void setDataSource(BaseRecyclerBean classBean, int position, IBaseRecyclerItemClickListener mIBaseRecyclerItemClickListener){
+    VHSeekBarBean mVhSeekBarBean;
+    public void setDataSource(BaseRecyclerBean classBean){
+        mVhSeekBarBean = classBean.getmVHSeekBarBean();
+        if (mVhSeekBarBean == null) return;
+        mIBaseRvItemInSeekBarListener = mVhSeekBarBean.getmIBaseRvItemInSeekBarListener();
+        int tag = mVhSeekBarBean.getmTag();
+        int max = mVhSeekBarBean.getmMax();
+        int defaultPosition = mVhSeekBarBean.getmDefaultPosition();
+        if (max > 0) mItemSeekBar.setMax(max);
+        if (defaultPosition > 0) mItemSeekBar.setProgress(defaultPosition);
+        mItemDesTv.setText(mVhSeekBarBean.getmDescription());
         mItemSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                mItemShowTv.setText(String.valueOf(progress));
+                if (mIBaseRvItemInSeekBarListener != null) {
+                    mIBaseRvItemInSeekBarListener.onProgressChanged(seekBar,progress,false,tag);
+                }
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
 }

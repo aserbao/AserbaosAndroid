@@ -23,7 +23,8 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
             mBaseRecyclerBean.add(new BaseRecyclerBean(String.valueOf(i)));
         }*/
         ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
-        mRvOrientation = LinearLayoutManager.HORIZONTAL;
+        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
+
     }
 
     @Override

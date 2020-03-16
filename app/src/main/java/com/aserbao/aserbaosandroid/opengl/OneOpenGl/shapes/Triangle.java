@@ -58,16 +58,14 @@ public class Triangle {
             0f, 0f, 1.0f, 1.0f
     };
     public Triangle() {
-        ByteBuffer bb = ByteBuffer.allocateDirect(
-                triangleCoords.length * 4);
+        ByteBuffer bb = ByteBuffer.allocateDirect(triangleCoords.length * 4);
         bb.order(ByteOrder.nativeOrder());
 
         vertexBuffer = bb.asFloatBuffer();
         vertexBuffer.put(triangleCoords);
         vertexBuffer.position(0);
 
-        ByteBuffer dd = ByteBuffer.allocateDirect(
-                color.length * 4);
+        ByteBuffer dd = ByteBuffer.allocateDirect(color.length * 4);
         dd.order(ByteOrder.nativeOrder());
         colorBuffer = dd.asFloatBuffer();
         colorBuffer.put(color);

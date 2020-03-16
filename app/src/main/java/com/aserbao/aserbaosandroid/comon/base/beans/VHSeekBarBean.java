@@ -10,9 +10,7 @@ import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRvItemInSeekBarLis
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.comon.base.beans
  */
-public class VHSeekBarBean {
-    String mDescription;//描述
-    int mTag;  // 标记
+public class VHSeekBarBean extends VHBaseBean{
     int mMax = 100; // 最大范围
     int mDefaultPosition;//默认数字
     IBaseRvItemInSeekBarListener mIBaseRvItemInSeekBarListener;
@@ -24,8 +22,7 @@ public class VHSeekBarBean {
     }
 
     public VHSeekBarBean(String description, int tag, IBaseRvItemInSeekBarListener iBaseRvItemInSeekBarListener) {
-        mDescription = description;
-        mTag = tag;
+        super(description,tag);
         mIBaseRvItemInSeekBarListener = iBaseRvItemInSeekBarListener;
     }
 

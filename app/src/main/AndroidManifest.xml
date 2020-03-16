@@ -48,7 +48,12 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.buttons.switchButton.SwitchButtonActivity"></activity>
+        <activity android:name=".functions.database.room.RoomActivity"></activity>
+        <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
+        <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
+        <activity android:name=".ui.buttons.switchView.SwitchActivity"></activity>
+        <activity android:name=".ui.buttons.switchButton.SwitchButtonActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.CShareModuleActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.Camera2Activity" />
@@ -392,7 +397,9 @@
             android:name=".ui.randomAndNoOverLay.RandomAndNoOverLayActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.canvas.CanvasActivity" />
-        <activity android:name=".ui.canvas.matrix.MatrixActivity" />
+        <activity
+            android:name=".ui.canvas.matrix.MatrixActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.canvas.canvas.CanvasPropertyActivity" />
 
         <service

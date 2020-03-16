@@ -52,7 +52,7 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                         Snackbar.make(coorfinator_anchor_fl, "显示", Snackbar.LENGTH_SHORT).show();
                     }
                 });
-                addViewToFrameLayout(addView, true,true);
+                addViewToFrameLayout(addView, true,true, false);
                 break;
             case 1:
                 addView = LayoutInflater.from(this).inflate(R.layout.coordinator_and_appbar_layout, null);
@@ -90,11 +90,11 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                                     break;
                             }
                             appbarScrollIv.setLayoutParams(appbarScrollIvLayoutParams);
-                            addViewToFrameLayout(addView, true,true);
+                            addViewToFrameLayout(addView, true,true, false);
                         }
                     });
                 }else {
-                    addViewToFrameLayout(addView, true,true);
+                    addViewToFrameLayout(addView, true,true, false);
                 }
                 break;
             case 2:
@@ -116,11 +116,11 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
                     }
                 });
 
-
+                addViewToFrameLayout(simpleView, true,true, false);
                 break;
             case 10:
                 View view1 = LayoutInflater.from(this).inflate(R.layout.simple_coordinator_layout, null);
-                addViewToFrameLayout(view1, true,true);
+                addViewToFrameLayout(view1, true,true, false);
                 break;
         }
     }
