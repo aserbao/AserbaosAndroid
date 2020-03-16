@@ -143,8 +143,12 @@ public class GreenDaoRelationActivity extends AppCompatActivity {
                 mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
                 break;
             case R.id.delete_all_data_btn:
-                deleteDatabase(DB_NAME);
-                mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
+                boolean b = deleteDatabase(DB_NAME);
+                if(b){
+                    mRelationAdapter.refreshAllData(RelationAdapter.ALLDATA);
+                }else{
+                    Toast.makeText(this, "删除表失败", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
