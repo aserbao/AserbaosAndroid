@@ -182,8 +182,17 @@ public class MatrixActivity extends AppCompatActivity {
                 int height = mMatrixContainer.getHeight();
                 Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444);
                 Log.e(TAG, "onViewClicked: width  = " + width + " height =" + height);
-                final Canvas canvas = new Canvas(bitmap);
-                canvas.drawBitmap(bitmapSrc, matrix, new Paint());
+                final Canvas canvas = new Canvas();
+
+                int x = (canvas.getWidth() - bitmap.getWidth()) / 2;
+                int y = (canvas.getHeight() - bitmap.getHeight()) / 2;
+                Paint paint = new Paint();
+                paint.setAntiAlias(true);
+                canvas.setMatrix(matrix);
+                canvas.drawBitmap(bitmap, x,y, paint);
+
+
+//                canvas.drawBitmap(bitmapSrc, matrix, new Paint());
                 mMatrixIv.setImageBitmap(bitmap);
                 break;
             case R.id.get_matrix_btn2:

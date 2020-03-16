@@ -42,7 +42,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     useLibrary 'org.apache.http.legacy'
-    buildToolsVersion '28.0.1'
 }
 greendao {
     schemaVersion 3 //数据库版本号

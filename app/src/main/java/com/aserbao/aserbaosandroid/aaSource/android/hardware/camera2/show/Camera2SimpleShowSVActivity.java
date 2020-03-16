@@ -57,7 +57,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
     }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        openCamera();
+        openCamera(holder);
     }
 
     @Override
@@ -68,8 +68,9 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
 
     /**
      * 打开相机权限
+     * @param holder
      */
-    public void openCamera() {
+    public void openCamera(SurfaceHolder holder) {
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 //        CameraCharacteristics cameraCharacteristics = manager.getCameraCharacteristics("0");
         //CameraManager cameraManager1 = getSystemService(CameraManager.class);
@@ -82,7 +83,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
                 @Override
                 public void onOpened(@NonNull CameraDevice camera) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        Surface surface = mHolder.getSurface();
+                        Surface surface = holder.getSurface();
                         List<Surface> mSurfaces = new ArrayList<>();
                         mSurfaces.add(surface);
                         try {
@@ -92,7 +93,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
                                     CaptureRequest.Builder cameraCaptureRequest = null;
                                     try {
                                         cameraCaptureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-                                        cameraCaptureRequest.addTarget(mHolder.getSurface());
+                                        cameraCaptureRequest.addTarget(holder.getSurface());
                                         captureRequest = cameraCaptureRequest.build();
                                         session.setRepeatingRequest(captureRequest, new CameraCaptureSession.CaptureCallback() {
                                             @Override
