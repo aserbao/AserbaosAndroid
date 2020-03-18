@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.how_create_so.create_spot;
 
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 

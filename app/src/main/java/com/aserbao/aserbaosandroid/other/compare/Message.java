@@ -1,10 +1,8 @@
 package com.aserbao.aserbaosandroid.other.compare;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

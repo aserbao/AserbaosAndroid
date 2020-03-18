@@ -1,28 +1,21 @@
 package com.aserbao.aserbaosandroid.aaThird.videocache;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.AppCleanMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.events.scrollEvent.MyJZVideoPlayer;
-import com.aserbao.aserbaosandroid.other.compare.Video;
-import com.bumptech.glide.Glide;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
 
 import java.io.File;
-import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

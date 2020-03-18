@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     android:id="@+id/item_card_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/mm_1"
@@ -10,4 +10,4 @@
         style="@style/global_text_view_style"
         />
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

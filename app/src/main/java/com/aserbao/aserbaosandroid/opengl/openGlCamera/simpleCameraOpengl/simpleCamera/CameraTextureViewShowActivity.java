@@ -5,7 +5,7 @@ import android.animation.PropertyValuesHolder;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.TextureView;
 
 import com.aserbao.aserbaosandroid.R;

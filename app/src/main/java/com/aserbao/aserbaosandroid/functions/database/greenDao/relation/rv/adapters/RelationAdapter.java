@@ -1,21 +1,17 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.IdCardDao;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.StudentDao;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
@@ -28,8 +24,6 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewH
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * 功能:

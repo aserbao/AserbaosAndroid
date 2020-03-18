@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.buttons.switchButton;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.SeekBar;
@@ -15,8 +15,6 @@ import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRvItemInSeekBarLis
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 public class SwitchButtonActivity extends BaseRecyclerViewActivity implements IBaseRvItemInSeekBarListener {
 

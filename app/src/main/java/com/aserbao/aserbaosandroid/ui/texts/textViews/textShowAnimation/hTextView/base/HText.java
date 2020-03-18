@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextVi
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
@@ -11,7 +11,7 @@ import android.view.ViewTreeObserver;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.v4.view.ViewCompat.LAYOUT_DIRECTION_LTR;
+import static androidx.core.view.ViewCompat.LAYOUT_DIRECTION_LTR;
 
 /**
  * abstract class

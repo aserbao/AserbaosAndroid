@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.events.onTouch.simple_touch;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;

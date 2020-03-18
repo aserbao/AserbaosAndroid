@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.viewExplosion;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;

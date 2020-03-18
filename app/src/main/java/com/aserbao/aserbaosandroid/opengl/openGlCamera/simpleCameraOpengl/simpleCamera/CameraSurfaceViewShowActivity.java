@@ -5,11 +5,9 @@ import android.animation.PropertyValuesHolder;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.animation.ScaleAnimation;
-import android.widget.Button;
 
 import com.aserbao.aserbaosandroid.R;
 

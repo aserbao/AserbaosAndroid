@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.how_create_so.useCmake;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;

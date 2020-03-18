@@ -3,9 +3,9 @@ package com.aserbao.aserbaosandroid.aaThird.pickvideo.callback;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.Util;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.AudioFile;

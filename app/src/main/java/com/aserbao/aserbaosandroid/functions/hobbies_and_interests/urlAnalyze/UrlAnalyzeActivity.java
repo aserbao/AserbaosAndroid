@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.hobbies_and_interests.urlAnalyze;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;

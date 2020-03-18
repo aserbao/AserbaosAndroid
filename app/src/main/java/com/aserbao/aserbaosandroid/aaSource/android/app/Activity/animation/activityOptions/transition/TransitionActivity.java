@@ -2,17 +2,16 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.acti
 
 import android.graphics.Path;
 import android.os.Bundle;
-import android.support.transition.ChangeBounds;
-import android.support.transition.Explode;
-import android.support.transition.Fade;
-import android.support.transition.Scene;
-import android.support.transition.Slide;
-import android.support.transition.TransitionManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.transition.ChangeBounds;
+import androidx.transition.Explode;
+import androidx.transition.Fade;
+import androidx.transition.Scene;
+import androidx.transition.Slide;
+import androidx.transition.TransitionManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
 

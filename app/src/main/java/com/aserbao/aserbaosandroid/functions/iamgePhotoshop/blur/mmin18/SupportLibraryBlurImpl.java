@@ -8,11 +8,11 @@ package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.mmin18;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.renderscript.RSRuntimeException;
-import android.support.v8.renderscript.Allocation;
-import android.support.v8.renderscript.Element;
-import android.support.v8.renderscript.RenderScript;
-import android.support.v8.renderscript.ScriptIntrinsicBlur;
-import android.support.v8.renderscript.Allocation.MipmapControl;
+import androidx.renderscript.Allocation;
+import androidx.renderscript.Element;
+import androidx.renderscript.RenderScript;
+import androidx.renderscript.ScriptIntrinsicBlur;
+import androidx.renderscript.Allocation.MipmapControl;
 
 public class SupportLibraryBlurImpl implements BlurImpl {
     private RenderScript mRenderScript;

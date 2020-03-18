@@ -2,12 +2,11 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.text.style.ImageSpan;
 import android.view.View;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.utils.LinkMovementMethodExt;
-import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.utils.MImageGetter;
-import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.utils.MTagHandler;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.utils.MessageSpan;
 
 import java.io.BufferedReader;

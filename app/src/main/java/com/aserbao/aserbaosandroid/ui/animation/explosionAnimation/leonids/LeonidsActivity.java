@@ -1,12 +1,11 @@
 package com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids.modifiers.ScaleModifier;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

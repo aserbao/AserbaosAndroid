@@ -1,31 +1,22 @@
 package com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PointF;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.customView.bezier.evaluator.BezierEvaluator;
 import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.beans.TreeLine;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 功能:

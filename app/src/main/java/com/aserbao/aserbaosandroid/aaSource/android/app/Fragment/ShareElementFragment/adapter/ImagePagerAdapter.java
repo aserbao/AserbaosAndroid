@@ -16,8 +16,8 @@
 
 package com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ImageFragment;
 import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;

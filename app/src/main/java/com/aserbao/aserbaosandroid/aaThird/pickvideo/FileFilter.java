@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.aaThird.pickvideo;
 
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.AudioFile;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.ImageFile;

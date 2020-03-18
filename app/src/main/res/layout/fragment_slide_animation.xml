@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/slide_animation_rv"
         android:layout_gravity="right"
         android:layout_width="350dp"

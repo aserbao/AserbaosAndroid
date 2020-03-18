@@ -1,10 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.launchMode;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.aserbao.aserbaosandroid.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StandardActivity extends BaseLaunchModeActivity {
 

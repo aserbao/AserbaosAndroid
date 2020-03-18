@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.mmin18;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.SeekBar;

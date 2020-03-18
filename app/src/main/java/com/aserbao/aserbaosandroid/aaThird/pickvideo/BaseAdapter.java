@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.aaThird.pickvideo;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.callback.OnSelectStateListener;
 

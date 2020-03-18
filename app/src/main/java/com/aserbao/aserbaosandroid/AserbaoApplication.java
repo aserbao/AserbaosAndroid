@@ -1,9 +1,8 @@
 package com.aserbao.aserbaosandroid;
 
-import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoMaster;

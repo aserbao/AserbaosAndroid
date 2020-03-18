@@ -28,7 +28,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:minHeight="40dp"
                 android:layout_height="wrap_content">
@@ -39,7 +39,7 @@
                     style="@style/picTxt_tv_style"
                     android:textStyle="normal"
                     />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
                 android:id="@+id/iamge_span_tv"
                 style="@style/picTxt_tv_style"

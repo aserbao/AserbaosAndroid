@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method;
 
-import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.ui.recyclerView.scale_smooth_slide.common.ScaleBaseActivity;

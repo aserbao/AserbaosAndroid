@@ -1,12 +1,9 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -18,7 +15,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
-import com.aserbao.aserbaosandroid.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;

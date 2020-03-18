@@ -3,8 +3,8 @@ package com.aserbao.aserbaosandroid.AUtils.AUI.popUtil;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +12,10 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.PopBean;
-import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.demo.adapters.PopSimpleDemoAdapter;
 import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

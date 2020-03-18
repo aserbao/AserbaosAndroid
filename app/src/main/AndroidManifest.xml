@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.aserbao.aserbaosandroid">
     <!-- com.example.aserbao.aserbaosandroid/com.aserbao.aserbaosandroid.HomeActivity -->
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -48,14 +49,15 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.database.room.RoomActivity"></activity>
+        <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity"/>
+        <activity android:name=".aaThird.jetpack.JetpackActivity" />
+        <activity android:name=".functions.database.room.RoomActivity" />
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
         <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
-        <activity android:name=".ui.buttons.switchView.SwitchActivity"></activity>
+        <activity android:name=".ui.buttons.switchView.SwitchActivity" />
         <activity android:name=".ui.buttons.switchButton.SwitchButtonActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.CShareModuleActivity" />
-        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.Camera2Activity" />
         <activity android:name=".aaSource.android.hardware.HardwareActivity" />
         <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity" />

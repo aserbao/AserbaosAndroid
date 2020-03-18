@@ -4,13 +4,11 @@ import android.content.Context;
 import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Scroller;
 
 /**
