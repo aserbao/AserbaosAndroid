@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment;
 
-import android.support.v7.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;

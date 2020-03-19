@@ -6,7 +6,7 @@ import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.SpannableString;
@@ -15,7 +15,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.aserbao.aserbaosandroid.R;
 

@@ -1,8 +1,8 @@
 package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.viewHolders;
 
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,8 +10,6 @@ import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.CatchTouchCardView;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.BaseClickViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

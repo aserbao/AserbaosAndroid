@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.comon.base.extend;
 
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;

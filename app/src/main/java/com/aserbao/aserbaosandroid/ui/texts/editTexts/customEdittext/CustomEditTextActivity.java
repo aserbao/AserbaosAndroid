@@ -1,11 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;

@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.audioAndVideo.jnis.javaCallC;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.aserbao.aserbaosandroid.R;

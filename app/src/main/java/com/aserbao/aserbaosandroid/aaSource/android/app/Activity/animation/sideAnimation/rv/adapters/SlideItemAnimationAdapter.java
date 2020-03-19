@@ -3,8 +3,8 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.side
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +12,6 @@ import android.view.ViewGroup;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.viewHolders.SlideItemViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ImageViewHolder;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 
 import java.util.ArrayList;

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.LayoutDirection;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.text.TextUtilsCompat;
+import androidx.core.text.TextUtilsCompat;
 
 import com.aserbao.aserbaosandroid.R;
 

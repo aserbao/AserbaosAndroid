@@ -2,19 +2,14 @@ package com.aserbao.aserbaosandroid.ui.randomAndNoOverLay;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids.HexagonalGridView;
-import com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids_offical.Hex;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

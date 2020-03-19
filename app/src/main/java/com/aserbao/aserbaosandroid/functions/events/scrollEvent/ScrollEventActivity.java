@@ -3,9 +3,8 @@ package com.aserbao.aserbaosandroid.functions.events.scrollEvent;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManager;
@@ -16,9 +15,7 @@ import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.jzvd.JZMediaManager;
 import cn.jzvd.JZVideoPlayer;
-import cn.jzvd.JZVideoPlayerStandard;
 
 public class ScrollEventActivity extends AppCompatActivity {
 

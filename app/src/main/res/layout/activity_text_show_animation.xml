@@ -31,7 +31,7 @@
 
 
 
-        <android.support.v7.widget.AppCompatSeekBar
+        <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/text_show_seek_bar"
             android:max="100"
             android:layout_width="match_parent"

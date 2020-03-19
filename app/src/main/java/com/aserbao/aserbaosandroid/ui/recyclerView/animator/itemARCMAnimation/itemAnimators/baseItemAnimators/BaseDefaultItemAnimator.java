@@ -1,11 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation.itemAnimators.baseItemAnimators;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 
 /**
  * 功能:

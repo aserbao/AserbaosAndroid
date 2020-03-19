@@ -23,7 +23,7 @@ import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;

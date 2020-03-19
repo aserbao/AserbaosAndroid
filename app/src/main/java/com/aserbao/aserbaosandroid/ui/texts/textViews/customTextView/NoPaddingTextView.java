@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Rect;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.text.TextUtils;

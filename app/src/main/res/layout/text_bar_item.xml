@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -128,4 +128,4 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

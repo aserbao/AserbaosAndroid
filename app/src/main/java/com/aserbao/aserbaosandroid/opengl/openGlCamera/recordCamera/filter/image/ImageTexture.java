@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.filter.imag
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import android.support.annotation.IntegerRes;
+import androidx.annotation.IntegerRes;
 
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.tools.BitmapUtils;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.tools.GLESTools;

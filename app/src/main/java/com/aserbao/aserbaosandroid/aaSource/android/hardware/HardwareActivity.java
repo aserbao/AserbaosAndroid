@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.aaSource.android.hardware;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Camera2Activity;

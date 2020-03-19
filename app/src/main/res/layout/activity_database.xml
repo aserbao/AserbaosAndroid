@@ -62,7 +62,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp" />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/a_green_dao_search_et"
         android:id="@+id/a_data_base_recycler_view"
         android:layout_width="match_parent"

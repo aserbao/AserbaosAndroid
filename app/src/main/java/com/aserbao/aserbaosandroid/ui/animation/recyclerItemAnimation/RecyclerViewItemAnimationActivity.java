@@ -1,19 +1,15 @@
 package com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.adapters.AnimationAdapter;
-import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.A3DReyclcerView;
-import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.animation3DRecyclerView.SquareRecyclerView;
-import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.AnimManager;
-import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.galleryrecycler.GalleryRecyclerView;
 import com.aserbao.aserbaosandroid.ui.animation.recyclerItemAnimation.linearManagers.ALinearManager;
 
 import butterknife.BindView;

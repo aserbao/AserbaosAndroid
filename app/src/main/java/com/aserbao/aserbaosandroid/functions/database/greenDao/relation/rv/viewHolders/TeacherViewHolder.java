@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,7 +10,6 @@ import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Te
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 功能:

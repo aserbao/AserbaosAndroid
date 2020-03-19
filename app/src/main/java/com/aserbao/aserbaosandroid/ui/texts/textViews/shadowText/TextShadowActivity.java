@@ -2,7 +2,7 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews.shadowText;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;

@@ -3,13 +3,12 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.side
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
 

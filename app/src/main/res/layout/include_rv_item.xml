@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_above="@+id/nest_rv_item_tv"
         android:id="@+id/nest_rv_item_swipe_refresh_layout"
         android:layout_width="240dp"
@@ -20,7 +20,7 @@
             android:id="@+id/nest_rv_item_rv"
             android:layout_width="240dp"
             android:layout_height="240dp"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/nest_rv_item_tv"

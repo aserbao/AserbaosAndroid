@@ -1,8 +1,8 @@
 package com.aserbao.aserbaosandroid.functions.jumpSystemSetting;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;

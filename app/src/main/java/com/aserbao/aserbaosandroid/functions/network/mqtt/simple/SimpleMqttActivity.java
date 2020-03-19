@@ -2,15 +2,13 @@ package com.aserbao.aserbaosandroid.functions.network.mqtt.simple;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.google.gson.Gson;
-
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.Random;
 import java.util.logging.Level;

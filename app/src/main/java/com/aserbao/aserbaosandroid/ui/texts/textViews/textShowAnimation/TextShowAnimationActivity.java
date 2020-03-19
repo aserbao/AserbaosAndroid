@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSeekBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSeekBar;
 import android.widget.SeekBar;
 
 import com.aserbao.aserbaosandroid.R;

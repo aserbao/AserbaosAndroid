@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.opengl.OneOpenGl;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class OneOpenGlActivity extends AppCompatActivity {
     @Override
