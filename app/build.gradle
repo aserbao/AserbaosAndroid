@@ -53,6 +53,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     useLibrary 'org.apache.http.legacy'
+
+    viewBinding {
+        enabled = true
+    }
 }
 greendao {
     schemaVersion 3 //数据库版本号

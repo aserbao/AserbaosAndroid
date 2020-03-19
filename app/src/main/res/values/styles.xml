@@ -125,11 +125,11 @@
     </style>
 
     <declare-styleable name="CYTextView">
-        <attr name="textwidth" />
+        <attr name="textwidth" format="dimension"  />
         <attr name="textSize" format="dimension" />
         <attr name="textColor" format="reference|color" />
         <attr name="lineSpacingExtra" format="dimension" />
-        <attr name="typeface" />
+        <attr name="typeface" format="dimension"  />
     </declare-styleable>
 
     <style name="AppTheme.NoActionBar">

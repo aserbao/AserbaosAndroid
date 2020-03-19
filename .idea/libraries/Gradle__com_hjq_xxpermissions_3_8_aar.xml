@@ -1,10 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.hjq:xxpermissions:3.8@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/xxpermissions-3.8.aar/4e2bf9746cb572e5179519a17717cc6d/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/xxpermissions-3.8.aar/4e2bf9746cb572e5179519a17717cc6d/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/63e6c5ec8b06834b08e55b37c2620da4/jetified-xxpermissions-3.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/63e6c5ec8b06834b08e55b37c2620da4/jetified-xxpermissions-3.8/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hjq/xxpermissions/3.8/394d19daf3d7df537825ec354660909fe54347d1/xxpermissions-3.8-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hjq/xxpermissions/3.8/e81fbcd20c8a6801c3c7cff5e9a05709504534f6/xxpermissions-3.8-sources.jar!/" />
     </SOURCES>
