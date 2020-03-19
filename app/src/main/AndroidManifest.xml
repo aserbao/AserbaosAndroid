@@ -50,6 +50,7 @@
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
         <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity"/>
+        <activity android:name=".aaThird.jetpack.viewmodel.ViewModelActivity"/>
         <activity android:name=".aaThird.jetpack.JetpackActivity" />
         <activity android:name=".functions.database.room.RoomActivity" />
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
