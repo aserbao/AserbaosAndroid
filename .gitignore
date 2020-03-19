@@ -38,19 +38,9 @@ captures/
 
 # Keystore files
 *.jks
-Ving/.idea
-Ving/.gradle
-Ving/Ving.iml___jb_tmp___
 .idea/compiler.xml
 .idea/copyright/profiles_settings.xml
-.idea/libraries/gradle_wrapper.xml
-.idea/libraries/libs.xml
-.idea/libraries/libs1.xml
-.idea/libraries/nama.xml
-.idea/libraries/universal_image_loader_1_9_5_sources.xml
+.idea/libraries
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-Ving/app/src/main/java/com/ych/homepage/home/MeteorView.java
-Ving/.hgignore
-Ving/instapk.properties
