@@ -5,6 +5,7 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.JetpackActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity;
@@ -38,7 +39,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ViewModelActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ConstraintLayoutActvity.class));
     }
 
 

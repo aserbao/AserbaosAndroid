@@ -23,7 +23,5 @@ class ViewModelActivity : BaseRecyclerViewActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val model = ViewModelProviders.of(this)[SharedViewModel::class.java]
-
     }
 }

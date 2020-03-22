@@ -157,6 +157,8 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.30"
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     // 压缩解压 https://github.com/Leo0618/AndroidZip
 //    implementation 'com.leo618:zip:0.0.1' // 用的26.+,在高版本AS使用报错。
 }
