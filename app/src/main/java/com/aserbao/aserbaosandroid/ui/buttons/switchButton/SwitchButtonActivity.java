@@ -8,10 +8,10 @@ import android.widget.SeekBar;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.beans.VHSeekBarBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRvItemInSeekBarListener;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.VHSeekBarBean;
+import com.example.base.base.interfaces.IBaseRvItemInSeekBarListener;
 
 import java.util.ArrayList;
 import java.util.List;

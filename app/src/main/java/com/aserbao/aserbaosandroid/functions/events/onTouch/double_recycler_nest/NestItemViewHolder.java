@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.commonData.ASourceUtil;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;

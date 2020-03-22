@@ -10,12 +10,12 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.StudentAndTeacherBean;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Teacher;
+import com.example.base.database.greendao.db.DaoSession;
+import com.example.base.database.beans.CreditCard;
+import com.example.base.database.beans.IdCard;
+import com.example.base.database.beans.Student;
+import com.example.base.database.beans.StudentAndTeacherBean;
+import com.example.base.database.beans.Teacher;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.adapters.RelationAdapter;
 
 import java.util.Collections;

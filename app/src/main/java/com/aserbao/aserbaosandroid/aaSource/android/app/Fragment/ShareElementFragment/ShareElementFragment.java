@@ -17,9 +17,9 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.GridAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.commonData.ASourceUtil;
 
 import java.util.ArrayList;
 import java.util.List;

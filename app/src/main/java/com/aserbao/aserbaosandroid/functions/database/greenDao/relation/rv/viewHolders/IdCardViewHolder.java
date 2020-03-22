@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
+import com.example.base.database.beans.IdCard;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.commonData.ASourceUtil;
 
 /**
  * https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+blogspot%2FhsDu+%28Android+Developers+Blog%29

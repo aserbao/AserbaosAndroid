@@ -3,9 +3,8 @@ package com.aserbao.aserbaosandroid.functions.database.mySql.beans;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.TextUtils;
 
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
+import com.example.base.database.beans.Thing;
 
 import java.util.ArrayList;
 import java.util.List;

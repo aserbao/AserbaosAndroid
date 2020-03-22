@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ImagePagerFragment;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.example.base.commonData.ASourceUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.DataSource;

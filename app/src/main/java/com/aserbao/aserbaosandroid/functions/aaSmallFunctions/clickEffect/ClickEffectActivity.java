@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 
 /**
  * 控件点击涟漪

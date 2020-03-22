@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.floatView.FloatView;
 import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class FloatWindowActivity extends BaseRecyclerViewActivity {
 

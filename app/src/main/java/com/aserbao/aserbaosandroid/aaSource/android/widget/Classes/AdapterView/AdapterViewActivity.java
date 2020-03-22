@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.AdapterView;
 import android.os.Bundle;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 
 public class AdapterViewActivity extends BaseRecyclerViewActivity {
 

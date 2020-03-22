@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.commonData.ASourceUtil;
+import com.example.base.commonData.StaticFinalValues;
 
 public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "ChangeItemAnimatorActiv";

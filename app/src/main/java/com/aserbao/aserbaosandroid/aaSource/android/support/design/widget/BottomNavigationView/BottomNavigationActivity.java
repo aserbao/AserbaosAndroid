@@ -10,7 +10,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 
 import butterknife.ButterKnife;
 

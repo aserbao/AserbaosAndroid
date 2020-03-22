@@ -3,8 +3,8 @@ package com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.playerlist.PlayListActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class ExoPlayerPActivity extends BaseRecyclerViewActivity {
 

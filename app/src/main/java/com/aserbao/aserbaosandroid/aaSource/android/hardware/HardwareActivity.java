@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Camera2Activity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class HardwareActivity extends BaseRecyclerViewActivity {
 

@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.HtmlTextActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.picTxt.PicTxtActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.shadowText.TextShadowActivity;

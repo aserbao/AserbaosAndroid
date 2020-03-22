@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.commonData.StaticFinalValues;
 
 import java.lang.ref.WeakReference;
 

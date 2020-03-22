@@ -3,9 +3,9 @@ package com.aserbao.aserbaosandroid.ui.recyclerView.animator.swapItemAnimator;
 import android.app.Activity;
 import android.content.Context;
 
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 
 import java.util.Collections;
 import java.util.List;

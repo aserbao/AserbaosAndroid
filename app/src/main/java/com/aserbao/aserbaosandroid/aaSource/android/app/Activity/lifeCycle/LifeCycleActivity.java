@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
+import com.example.base.commonData.ASourceUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

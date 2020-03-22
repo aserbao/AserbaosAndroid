@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.functions;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.AboutBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.database.DataBaseActivity;
 import com.aserbao.aserbaosandroid.functions.events.EventDealActivity;
@@ -17,7 +17,7 @@ import com.aserbao.aserbaosandroid.functions.listener.ListenerActivity;
 import com.aserbao.aserbaosandroid.functions.notifacations.networks.NetWorkNotification;
 import com.aserbao.aserbaosandroid.functions.regex.RegexActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.SensorsActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class FunctionsActivity extends BaseRecyclerViewActivity {
 

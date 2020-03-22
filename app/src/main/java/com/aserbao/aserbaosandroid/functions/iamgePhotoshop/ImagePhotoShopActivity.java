@@ -2,10 +2,10 @@ package com.aserbao.aserbaosandroid.functions.iamgePhotoshop;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.blur.BlurImageActivity;
 import com.aserbao.aserbaosandroid.functions.iamgePhotoshop.compound.CompoundActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class ImagePhotoShopActivity extends BaseRecyclerViewActivity {
 

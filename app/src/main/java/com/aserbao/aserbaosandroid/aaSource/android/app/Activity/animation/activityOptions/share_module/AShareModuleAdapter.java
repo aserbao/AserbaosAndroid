@@ -5,11 +5,11 @@ import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.adapters.BaseRecyclerViewActivityAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ImageViewHolder;
+import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.base.viewHolder.ClassViewHolder;
+import com.example.base.base.viewHolder.ImageViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
 
 import java.util.List;

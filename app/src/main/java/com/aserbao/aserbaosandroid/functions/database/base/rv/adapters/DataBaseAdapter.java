@@ -13,7 +13,7 @@ import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.interfaces.ItemBackListener;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.viewHolder.TextViewHolder;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
+import com.example.base.database.beans.Thing;
 import com.aserbao.aserbaosandroid.functions.database.mySql.beans.ThingDBController;
 
 import java.util.ArrayList;

@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.ui.animation;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.ExplosionActivity;
 import com.aserbao.aserbaosandroid.ui.animation.fragments3DAnimation.Fragment3DAnimationActivity;

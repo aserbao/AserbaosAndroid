@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import android.util.Pair;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.commonData.ASourceUtil;
+import com.example.base.commonData.StaticFinalValues;
 
 public class CShareModuleActivity extends BaseRecyclerViewActivity {
     public static void launch(int whichLinearInterpolator, Activity activity, int position, Pair<View, String>... sharedElements) {

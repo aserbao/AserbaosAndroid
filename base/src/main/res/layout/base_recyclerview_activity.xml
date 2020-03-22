@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_recycler_view_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/base_recycler_tv"
+            android:textSize="18sp"
+            android:padding="5dp"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+    <androidx.appcompat.widget.Toolbar
+        android:visibility="gone"
+        android:id="@+id/base_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/base_top_tv"
+                android:text="aserbao"
+                android:textSize="28sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_gravity="right"
+                android:id="@+id/base_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </FrameLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/base_tool_bar"
+        android:id="@+id/base_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/show_data_content_rv"
+        android:layout_below="@+id/base_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <FrameLayout
+        android:layout_marginTop="150dp"
+        android:id="@+id/base_recycler_empty_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="12dp"
+        app:cardCornerRadius="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:foreground="?attr/selectableItemBackground"
+                android:visibility="gone"
+                android:id="@+id/base_up_tv"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="top"
+                android:layout_marginBottom="0.5dp"
+                android:background="@color/black10"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <TextView
+                android:visibility="gone"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/base_down_tv"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:text="bottom"
+                android:background="@color/black10"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

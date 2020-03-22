@@ -1,7 +1,7 @@
 package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.FrameLayout
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class FragmentLayoutActivity : AppCompatActivity() {
 

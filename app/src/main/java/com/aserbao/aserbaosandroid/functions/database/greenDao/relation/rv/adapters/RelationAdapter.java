@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.IdCardDao;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.CreditCard;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.IdCard;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Student;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.beans.Teacher;
+import com.example.base.database.greendao.db.DaoSession;
+import com.example.base.database.greendao.db.IdCardDao;
+import com.example.base.database.beans.CreditCard;
+import com.example.base.database.beans.IdCard;
+import com.example.base.database.beans.Student;
+import com.example.base.database.beans.Teacher;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.AllDataViewHolder;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.CreditCardViewHolder;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.relation.rv.viewHolders.IdCardViewHolder;

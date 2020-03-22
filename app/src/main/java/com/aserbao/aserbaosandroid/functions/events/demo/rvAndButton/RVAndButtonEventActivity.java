@@ -9,9 +9,9 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.extend.BaseAddFrameLayoutActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.extend.BaseAddFrameLayoutActivity;
+import com.example.base.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.PickerRecyclerView;
 
 /**
