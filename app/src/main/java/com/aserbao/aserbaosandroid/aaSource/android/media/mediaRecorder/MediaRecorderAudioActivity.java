@@ -3,12 +3,12 @@ package com.aserbao.aserbaosandroid.aaSource.android.media.mediaRecorder;
 import android.media.MediaRecorder;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 import java.io.IOException;
 
-import static com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues.MUSIC_PATH_NAME;
+import static com.example.base.commonData.StaticFinalValues.MUSIC_PATH_NAME;
 
 public class MediaRecorderAudioActivity extends BaseRecyclerViewActivity {
 

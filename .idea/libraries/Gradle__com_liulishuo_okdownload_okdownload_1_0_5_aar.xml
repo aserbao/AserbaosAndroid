@@ -1,10 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.liulishuo.okdownload:okdownload:1.0.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-okdownload-1.0.5.aar/12e17b0a8d170f9108d2101fc827e48c/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-okdownload-1.0.5.aar/12e17b0a8d170f9108d2101fc827e48c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/20266d24799f762bdc23f0f87b3396dd/jetified-okdownload-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/20266d24799f762bdc23f0f87b3396dd/jetified-okdownload-1.0.5/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.liulishuo.okdownload/okdownload/1.0.5/dd5764d2b5782c0a0a1a331b157d70904f85f4eb/okdownload-1.0.5-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.liulishuo.okdownload/okdownload/1.0.5/a17557715631ff7f1bb1c6ff9d2253c76f278ad/okdownload-1.0.5-sources.jar!/" />
     </SOURCES>

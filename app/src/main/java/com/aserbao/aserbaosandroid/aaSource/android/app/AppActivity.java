@@ -4,8 +4,8 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.ActivityClass;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class AppActivity extends BaseRecyclerViewActivity {
 

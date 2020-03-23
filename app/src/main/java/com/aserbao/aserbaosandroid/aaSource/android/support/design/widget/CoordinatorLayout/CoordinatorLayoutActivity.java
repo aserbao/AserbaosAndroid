@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

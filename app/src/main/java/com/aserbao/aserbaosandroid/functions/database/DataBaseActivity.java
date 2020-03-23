@@ -2,10 +2,10 @@ package com.aserbao.aserbaosandroid.functions.database;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity;
 import com.aserbao.aserbaosandroid.functions.database.mySql.MySqlActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class DataBaseActivity extends BaseRecyclerViewActivity {
 

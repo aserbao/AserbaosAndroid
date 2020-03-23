@@ -3,8 +3,8 @@ package com.aserbao.aserbaosandroid.other.valuePass;
 import android.view.Gravity;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 /**
  * 引用传递

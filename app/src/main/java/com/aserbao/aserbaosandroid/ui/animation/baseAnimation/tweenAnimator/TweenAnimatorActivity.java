@@ -14,8 +14,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
@@ -77,11 +77,6 @@ public class TweenAnimatorActivity extends BaseRecyclerViewActivity {
 
 
     public void useTranslateAnimation(){
-        float x = mBaseRecyclerTv.getX();
-        float y = mBaseRecyclerTv.getY();
-        Point point = new Point((int)x,(int)y);
-        mCanvasPointView.addPoint(point);
-
         TranslateAnimation translateAnimation = new TranslateAnimation(0, 0,0,200);
         translateAnimation.setInterpolator(interpolator);
         translateAnimation.setRepeatCount(-1);

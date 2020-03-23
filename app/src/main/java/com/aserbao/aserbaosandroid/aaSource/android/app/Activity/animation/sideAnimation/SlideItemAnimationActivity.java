@@ -19,8 +19,8 @@ import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.Date;

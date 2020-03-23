@@ -2,12 +2,12 @@ package com.aserbao.aserbaosandroid.functions.events;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.events.onTouch.OnTouchActivity;
 import com.aserbao.aserbaosandroid.functions.events.onTouch.double_recycler_nest.DoubleRecyclerNestActivity;
 import com.aserbao.aserbaosandroid.functions.events.recyclerviewEvent.RecyclerViewEventActivity;
 import com.aserbao.aserbaosandroid.functions.events.scrollEvent.ScrollEventActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class EventDealActivity extends BaseRecyclerViewActivity {
 

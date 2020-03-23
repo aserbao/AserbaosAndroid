@@ -1,12 +1,9 @@
 package com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.aserbao.aserbaosandroid.R
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity
+import com.example.base.base.BaseRecyclerViewActivity
 
 /*
  * 作用：
@@ -23,7 +20,5 @@ class ViewModelActivity : BaseRecyclerViewActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val model = ViewModelProviders.of(this)[SharedViewModel::class.java]
-
     }
 }

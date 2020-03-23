@@ -21,7 +21,7 @@ import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.callback.FilterResultCallback;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.callback.OnSelectStateListener;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.itemDecoration.DividerGridItemDecoration;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.commonData.StaticFinalValues;
 
 import java.io.File;
 import java.util.ArrayList;

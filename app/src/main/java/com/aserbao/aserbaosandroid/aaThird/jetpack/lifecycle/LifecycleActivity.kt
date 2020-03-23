@@ -1,12 +1,8 @@
 package com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LifecycleRegistry
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity
+import com.example.base.base.BaseRecyclerViewActivity
 
 /*
  * 作用：

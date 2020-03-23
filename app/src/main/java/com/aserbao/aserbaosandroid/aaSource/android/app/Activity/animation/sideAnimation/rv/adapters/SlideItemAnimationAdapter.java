@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.viewHolders.SlideItemViewHolder;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;

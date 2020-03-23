@@ -6,8 +6,8 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.AndroidScheduler;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.RxJavaDownLoadActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 
 import io.reactivex.Observable;

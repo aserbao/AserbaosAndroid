@@ -9,8 +9,8 @@ import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.AScreenUtils;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class AUtilsRealizeActivity extends BaseRecyclerViewActivity {
 

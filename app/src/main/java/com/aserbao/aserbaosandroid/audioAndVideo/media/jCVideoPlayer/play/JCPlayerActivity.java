@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.functions.events.scrollEvent.MyJZVideoPlayer;
 
 import butterknife.BindView;

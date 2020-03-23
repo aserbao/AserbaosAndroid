@@ -4,9 +4,9 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.audioAndVideo.detail_Info.DetailInfoActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.jnis.JnisActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.MediaActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class AudioAndVideoActivity extends BaseRecyclerViewActivity {
 

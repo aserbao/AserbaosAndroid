@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.base.interfaces.IBaseRecyclerItemClickListener;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ClassViewHolder;
-import com.aserbao.aserbaosandroid.comon.base.viewHolder.ImageViewHolder;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
+import com.example.base.base.viewHolder.ClassViewHolder;
+import com.example.base.base.viewHolder.ImageViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.commonData.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;

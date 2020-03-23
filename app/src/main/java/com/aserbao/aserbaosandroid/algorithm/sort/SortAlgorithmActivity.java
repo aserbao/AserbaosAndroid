@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 import java.util.Arrays;
 import java.util.Random;

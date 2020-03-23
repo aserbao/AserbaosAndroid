@@ -2,7 +2,8 @@ package com.aserbao.aserbaosandroid.aaThird.rxJava3.download;
 
 import android.util.Log;
 
-import com.aserbao.aserbaosandroid.comon.base.extend.BaseAboutProgressActivity;
+
+import com.example.base.base.extend.BaseAboutProgressActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +38,7 @@ public class RxJavaDownLoadActivity extends BaseAboutProgressActivity {
           .observeOn(AndroidScheduler.mainThread())
           .subscribe(new Consumer<Integer>() {
               @Override
-              public void accept(Integer integer) throws Throwable {
+              public void accept(Integer integer) {
                   updateProgress(integer);
               }
           });

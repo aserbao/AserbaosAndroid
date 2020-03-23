@@ -8,8 +8,8 @@ import android.view.View;
 import androidx.room.Room;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.database.room.beans.StudentRoom;
 import com.aserbao.aserbaosandroid.functions.database.room.daos.StudentRoomDao;
 

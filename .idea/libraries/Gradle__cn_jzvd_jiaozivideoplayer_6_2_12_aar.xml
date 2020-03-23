@@ -1,10 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: cn.jzvd:jiaozivideoplayer:6.2.12@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jiaozivideoplayer-6.2.12.aar/7ef949c62689772d51acb268ede678dd/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jiaozivideoplayer-6.2.12.aar/7ef949c62689772d51acb268ede678dd/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19de89f6f475f0ac312ee6e4bc3ee0a8/jetified-jiaozivideoplayer-6.2.12/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19de89f6f475f0ac312ee6e4bc3ee0a8/jetified-jiaozivideoplayer-6.2.12/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.jzvd/jiaozivideoplayer/6.2.12/e9e7e334e7087c5a5815c9ed63e6bd7535687a93/jiaozivideoplayer-6.2.12-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.jzvd/jiaozivideoplayer/6.2.12/cc7d7eb2075b2e2af05c14565d00c1a1d8cc14e7/jiaozivideoplayer-6.2.12-sources.jar!/" />
     </SOURCES>

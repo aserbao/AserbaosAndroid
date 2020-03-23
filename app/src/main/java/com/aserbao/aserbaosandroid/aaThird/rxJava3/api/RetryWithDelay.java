@@ -21,10 +21,10 @@ public class RetryWithDelay implements
         }
 
         @Override
-        public Observable<?> apply(Observable<? extends Throwable> observable) throws Throwable {
+        public Observable<?> apply(Observable<? extends Throwable> observable) {
             return observable.flatMap(new Function<Throwable, ObservableSource<?>>() {
                     @Override
-                    public ObservableSource<?> apply(Throwable throwable) throws Throwable {
+                    public ObservableSource<?> apply(Throwable throwable)  {
                         if (++retryCount <= maxRetries) {
                             ALogUtils.e("RetryWithDelay","error, it will try again after "+ retryDelayMillis + "  millisecond, retry count "+ retryCount + " maxRetries is "+ maxRetries);
                             return Observable.timer(retryDelayMillis,

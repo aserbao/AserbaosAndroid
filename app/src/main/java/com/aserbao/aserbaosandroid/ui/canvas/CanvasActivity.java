@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.ui.canvas;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.canvas.CanvasPropertyActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.matrix.MatrixActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowsActivity;

@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -3,10 +3,10 @@ package com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
-import com.aserbao.aserbaosandroid.comon.commonData.ASourceUtil;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.commonData.ASourceUtil;
+import com.example.base.commonData.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.animator.itemARCMAnimation.itemAnimators.FadeInDownAnimator;
 
 import java.util.ArrayList;

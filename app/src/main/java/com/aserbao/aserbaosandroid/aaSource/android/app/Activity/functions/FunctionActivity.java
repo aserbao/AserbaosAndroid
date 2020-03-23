@@ -2,7 +2,7 @@ package com.aserbao.aserbaosandroid.aaSource.android.app.Activity.functions;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 
 public class FunctionActivity extends BaseRecyclerViewActivity {
 

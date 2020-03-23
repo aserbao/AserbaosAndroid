@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.aaThird.jetpack
 
 import android.view.View
 import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean
+import com.example.base.base.BaseRecyclerViewActivity
+import com.example.base.base.beans.BaseRecyclerBean
 
 open class JetpackActivity : BaseRecyclerViewActivity() {
     override fun itemClickBack(view: View?, position: Int, isLongClick: Boolean, comeFrom: Int) {

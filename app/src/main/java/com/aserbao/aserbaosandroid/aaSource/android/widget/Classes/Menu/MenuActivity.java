@@ -3,8 +3,8 @@ package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.Menu.MenuDemo.MenuDemoActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class MenuActivity extends BaseRecyclerViewActivity {
 

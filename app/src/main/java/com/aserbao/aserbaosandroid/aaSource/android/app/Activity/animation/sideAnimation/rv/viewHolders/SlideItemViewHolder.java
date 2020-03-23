@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.CatchTouchCardView;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

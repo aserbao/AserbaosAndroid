@@ -2,8 +2,8 @@ package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.notification
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class NotificationActivity extends BaseRecyclerViewActivity {
 

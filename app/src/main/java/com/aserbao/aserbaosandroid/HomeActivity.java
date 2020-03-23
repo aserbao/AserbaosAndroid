@@ -5,16 +5,13 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
-import com.aserbao.aserbaosandroid.aaThird.jetpack.JetpackActivity;
-import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity;
-import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.ViewModelActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
 import com.aserbao.aserbaosandroid.functions.FunctionsActivity;
-import com.aserbao.aserbaosandroid.functions.database.room.RoomActivity;
 import com.aserbao.aserbaosandroid.functions.ffmpeg.FFmpegActivity;
 import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
@@ -38,7 +35,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ViewModelActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ConstraintLayoutActvity.class));
     }
 
 

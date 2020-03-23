@@ -3,10 +3,10 @@ package com.aserbao.aserbaosandroid.functions.how_create_so;
 import android.os.Bundle;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.how_create_so.useCmake.UseCMakeBuildSoActivity;
 import com.aserbao.aserbaosandroid.functions.how_create_so.useNdkBuild.UseNdkBuildActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class HowCreateSoActivity extends BaseRecyclerViewActivity {
 

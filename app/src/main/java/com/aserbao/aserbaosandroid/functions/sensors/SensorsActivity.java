@@ -2,9 +2,10 @@ package com.aserbao.aserbaosandroid.functions.sensors;
 
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.sensors.testSensorData.TestSensorDataActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class SensorsActivity extends BaseRecyclerViewActivity {
 

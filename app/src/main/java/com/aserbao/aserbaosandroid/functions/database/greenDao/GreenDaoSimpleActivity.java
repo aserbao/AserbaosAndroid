@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.DaoSession;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.db.ThingDao;
+import com.example.base.database.beans.Thing;
+import com.example.base.database.greendao.db.DaoSession;
+import com.example.base.database.greendao.db.ThingDao;
 
 import org.greenrobot.greendao.query.DeleteQuery;
 import org.greenrobot.greendao.query.Query;

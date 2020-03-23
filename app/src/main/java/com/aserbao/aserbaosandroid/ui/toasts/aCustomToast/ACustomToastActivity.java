@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ClickToast.ClickToast;
 
 public class ACustomToastActivity extends BaseRecyclerViewActivity {

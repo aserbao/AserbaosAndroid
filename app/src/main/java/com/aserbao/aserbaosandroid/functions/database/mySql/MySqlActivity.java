@@ -1,11 +1,10 @@
 package com.aserbao.aserbaosandroid.functions.database.mySql;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
+import com.example.base.database.beans.Thing;
 import com.aserbao.aserbaosandroid.functions.database.mySql.beans.ThingDBController;
 
 import java.util.List;

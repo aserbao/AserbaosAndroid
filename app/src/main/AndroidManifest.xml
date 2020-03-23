@@ -49,8 +49,11 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity"/>
-        <activity android:name=".aaThird.jetpack.viewmodel.ViewModelActivity"/>
+        <activity android:name=".aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity"></activity>
+        <activity android:name=".aaSource.android.view.ViewGroup.ViewGroupActivity" />
+        <activity android:name=".aaSource.android.view.ViewActivity" />
+        <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity" />
+        <activity android:name=".aaThird.jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".aaThird.jetpack.JetpackActivity" />
         <activity android:name=".functions.database.room.RoomActivity" />
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
@@ -118,6 +121,7 @@
         <activity android:name=".aaThird.videocache.VideoCacheActivity" />
         <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />
+        <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity2" />
         <activity android:name=".aaSource.android.support.SupportActivity" />
         <activity android:name=".ui.customView.CustomViewActivity" />
         <activity android:name=".aaSource.android.widget.Classes.notification.NotificationActivity" />

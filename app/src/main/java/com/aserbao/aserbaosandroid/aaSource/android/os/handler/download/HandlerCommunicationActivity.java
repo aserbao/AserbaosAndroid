@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils.MainLooper;
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.comon.base.extend.BaseAboutProgressActivity;
+import com.example.base.base.extend.BaseAboutProgressActivity;
 
 import java.lang.ref.WeakReference;
 

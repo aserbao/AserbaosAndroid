@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.adapters.DataBaseAdapter;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.interfaces.ItemBackListener;
-import com.aserbao.aserbaosandroid.functions.database.greenDao.beans.Thing;
+import com.example.base.database.beans.Thing;
 
 import java.util.ArrayList;
 import java.util.List;

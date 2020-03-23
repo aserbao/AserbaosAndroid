@@ -3,13 +3,13 @@ package com.aserbao.aserbaosandroid.audioAndVideo.media;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.audioAndVideo.media.jCVideoPlayer.JCVideoPlayerActivity;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
+import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.audio.AudioRecordActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.exoplayer.ExoPlayerPActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.mediacodec.MediaCodecActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.mediaplayer.MediaPlayerActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.videoView.VideoViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class MediaActivity extends BaseRecyclerViewActivity {
 

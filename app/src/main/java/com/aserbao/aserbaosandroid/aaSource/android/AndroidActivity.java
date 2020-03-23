@@ -7,8 +7,8 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.AppActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.MaterialActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.SupportActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.AndroidWidgetClasses;
-import com.aserbao.aserbaosandroid.comon.base.BaseRecyclerViewActivity;
-import com.aserbao.aserbaosandroid.comon.base.beans.BaseRecyclerBean;
+import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 
 public class AndroidActivity extends BaseRecyclerViewActivity {
 

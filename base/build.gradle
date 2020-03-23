@@ -1,0 +1,101 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.appInfo.versionCode
+        versionName rootProject.ext.appInfo.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+greendao {
+    schemaVersion 1 //数据库版本号,必须 >= 1
+    daoPackage 'com.example.base.database.greendao.db'
+// 设置DaoMaster、DaoSession、Dao 包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+    generateTests false //设置为true以自动生成单元测试。
+    targetGenDirTests 'src/main/java' //应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // usually
+    api rootProject.ext.dependencies["kotlin"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["corektx"]
+    api rootProject.ext.dependencies["anonotation"]
+
+    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["legacy"]
+    api rootProject.ext.dependencies["vectordrawable"]
+    api rootProject.ext.dependencies["lifecycleExtensions"]
+    api rootProject.ext.dependencies["lifecycleViewModelKtx"]
+    api rootProject.ext.dependencies["lifecycleRuntimeKtx"]
+    //UI
+    api rootProject.ext.dependencies["material"]
+    api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["cardview"]
+    api rootProject.ext.dependencies["constraint"]
+    api rootProject.ext.dependencies["baserecyclerview"]
+    api rootProject.ext.dependencies["smart_refreshlayout"]
+    api rootProject.ext.dependencies["refreshlayout_h"]
+    api rootProject.ext.dependencies["PhotoView"]
+    //media and player
+    api rootProject.ext.dependencies["jiaozivideoplayer"]
+    api rootProject.ext.dependencies["exoplayer"]
+    api rootProject.ext.dependencies["jcodec_android"]
+    api rootProject.ext.dependencies["videocache"]
+    api rootProject.ext.dependencies["glide"]
+    //database
+    api rootProject.ext.dependencies["greendao"]
+    api rootProject.ext.dependencies["greendaosql"]
+    api rootProject.ext.dependencies["greendaosql"]
+    api rootProject.ext.dependencies["mqttv3"]
+    api rootProject.ext.dependencies["mqttv3service"]
+    api rootProject.ext.dependencies["roomRuntime"]
+    api rootProject.ext.dependencies["roomKtx"]
+    annotationProcessor rootProject.ext.dependencies["roomCompiler"]
+//    api rootProject.ext.dependencies["roomRxJava2"]
+
+    //network
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["logging_interceptor"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["moshi"]
+    api rootProject.ext.dependencies["moshi_adapter"]
+    api rootProject.ext.dependencies["jsoup"]
+    // injection and event
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    api rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger_compiler"]
+    api rootProject.ext.dependencies["rxjava3"]
+    api rootProject.ext.dependencies["reactive_stream"]
+
+    // tools
+    api rootProject.ext.dependencies["okdownload"]
+    api rootProject.ext.dependencies["okdownload_sqlite"]
+    api rootProject.ext.dependencies["zt_zip"]
+    api rootProject.ext.dependencies["easypermissions"]
+    debugImplementation rootProject.ext.dependencies["debug_db"]
+    api rootProject.ext.dependencies["lottie"]
+
+
+}

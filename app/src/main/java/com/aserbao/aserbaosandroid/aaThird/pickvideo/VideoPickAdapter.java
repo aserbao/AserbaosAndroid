@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
-import com.aserbao.aserbaosandroid.comon.commonData.StaticFinalValues;
+import com.example.base.commonData.StaticFinalValues;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
