@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
+import com.aserbao.aserbaosandroid.aaThird.jetpack.databinding.DataBindingActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
@@ -38,7 +39,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CustomViewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", DataBindingActivity.class));
     }
 
 
