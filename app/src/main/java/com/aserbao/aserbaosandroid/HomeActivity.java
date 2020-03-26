@@ -6,8 +6,11 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
+import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity;
+import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -35,7 +38,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ConstraintLayoutActvity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CustomViewActivity.class));
     }
 
 

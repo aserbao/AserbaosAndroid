@@ -10,13 +10,13 @@ public class MyObserver implements LifecycleObserver {
         private static final String TAG = "MyObserver";
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        public void connectListener() {
-            Log.d(TAG, "connectListener() called");
+        public void onResume() {
+            Log.d(TAG, "onResume() called");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-        public void disconnectListener() {
-            Log.d(TAG, "disconnectListener() called");
+        public void onPause() {
+            Log.d(TAG, "onPause() called");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_START)

@@ -18,7 +18,4 @@ class ViewModelActivity : BaseRecyclerViewActivity() {
     }
     override fun itemClickBack(view: View, position: Int, isLongClick: Boolean, comeFrom: Int) {}
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

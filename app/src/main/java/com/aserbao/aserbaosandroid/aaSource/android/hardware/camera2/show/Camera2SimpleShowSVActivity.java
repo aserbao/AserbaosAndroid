@@ -39,7 +39,6 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_camera);
         ButterKnife.bind(this);
-        mSurfaceView = ((SurfaceView) findViewById(R.id.mSurface));
         SurfaceHolder mHolder = mSurfaceView.getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);

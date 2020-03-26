@@ -3,7 +3,9 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.zeroturnaround/zt-zip/1.13/3167064ecff25549375645d0afdd5c7ebbc232db/zt-zip-1.13.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.zeroturnaround/zt-zip/1.13/207fa9ae5cc289c538eeaea8c6b68003c1eb07ab/zt-zip-1.13-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.zeroturnaround/zt-zip/1.13/ca06673cfdc3cd567e2f373a91bb0ab61e1ce542/zt-zip-1.13-sources.jar!/" />
     </SOURCES>

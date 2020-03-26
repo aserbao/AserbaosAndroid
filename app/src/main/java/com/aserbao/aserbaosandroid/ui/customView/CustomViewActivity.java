@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.canvas.canvas.ARecordView;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.canvas.path.PathView;
@@ -27,9 +28,9 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBean.add(new BaseRecyclerBean("移除"));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("雷达"));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("二阶贝塞尔曲线"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("移除",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("雷达",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("二阶贝塞尔曲线",3));
         mBaseRecyclerBean.add(new BaseRecyclerBean("三阶贝塞尔曲线"));
         mBaseRecyclerBean.add(new BaseRecyclerBean("通过贝塞尔曲线绘制一个圆"));
         mBaseRecyclerBean.add(new BaseRecyclerBean("点赞动画"));
@@ -37,6 +38,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("Path的使用2",7));
         mBaseRecyclerBean.add(new BaseRecyclerBean("PathInterpator动画",8));
         mBaseRecyclerBean.add(new BaseRecyclerBean("带红点的ImageView",9));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("RecordView",10));
     }
 
     @Override
@@ -106,6 +108,16 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 pointImageView.setPointMode(PointImageView.NUMBER_POINT);
                 pointImageView.setHaveMesage(true);
                 mBaseRecyclerEmptyContainer.addView(pointImageView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                break;
+            case 10:
+                ARecordView aRecordView = new ARecordView(this);
+                int dp100 = DisplayUtil.dip2px(100);
+                mBaseRecyclerEmptyContainer.addView(aRecordView,ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams layoutParams2 = aRecordView.getLayoutParams();
+                layoutParams2.width = dp100;
+                layoutParams2.height = dp100;
+                aRecordView.setLayoutParams(layoutParams2);
+                aRecordView.startRecording();
                 break;
         }
     }
