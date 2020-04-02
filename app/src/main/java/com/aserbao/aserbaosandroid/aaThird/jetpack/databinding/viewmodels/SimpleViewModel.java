@@ -27,7 +27,7 @@ public class SimpleViewModel extends ViewModel {
         name.setValue(TEMP_NAME + RandomValue.getChineseName());
     }
 
-    public void changeAge(){
+    public void changeScore(){
         score.setValue( new Random().nextInt(100) );
     }
 
@@ -43,8 +43,6 @@ public class SimpleViewModel extends ViewModel {
             return headType;
         }
     });
-
-
 
     public enum HeadType{
         SAD,SMILE,HAPPY

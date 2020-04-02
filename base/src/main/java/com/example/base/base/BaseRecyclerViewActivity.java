@@ -63,7 +63,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
-
+    public abstract void initGetData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +118,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initViewForLinear();
     }
 
-    public abstract void initGetData();
+
 
 
     public void initViewForLinear() {

@@ -76,9 +76,8 @@ dependencies {
     api rootProject.ext.dependencies["kotlin"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["lifecycleExtensions"]
-
     api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    kapt rootProject.ext.dependencies["butterknife_compiler"]
     //UI
     api rootProject.ext.dependencies["material"]
     api rootProject.ext.dependencies["recyclerview"]

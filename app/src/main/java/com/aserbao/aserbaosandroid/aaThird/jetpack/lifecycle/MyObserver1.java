@@ -6,8 +6,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-public class MyObserver implements LifecycleObserver {
-        private static final String TAG = "MyObserver";
+public class MyObserver1 implements LifecycleObserver {
+        private static final String TAG = "MyObserver1";
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
         public void onResume() {

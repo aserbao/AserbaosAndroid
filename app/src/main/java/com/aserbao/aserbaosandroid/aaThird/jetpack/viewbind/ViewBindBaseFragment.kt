@@ -1,6 +1,7 @@
 package com.aserbao.aserbaosandroid.aaThird.jetpack.viewbind
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,13 @@ open class ViewBindBaseFragment : Fragment(){
         })
         model.getCurrentRightName().observe(this, Observer {
             binding.bottomTv.setText("右边数据："+ it)
+        })
+
+        model.getCurrentRightName().observe(this, Observer {
+            Handler().postDelayed({
+                binding.bottomTv.setText("右边改变数据："+ it)
+            },1000)
+
         })
     }
 }

@@ -29,6 +29,8 @@ import butterknife.OnClick;
  */
 public class SoftHeightMeasureActivity extends AppCompatActivity {
 
+    @BindView(R.id.soft_mid_et)
+    EditText siftMidEt;
     @BindView(R.id.soft_et)
     EditText softEt;
     @BindView(R.id.show_soft_height_tv)
@@ -45,11 +47,11 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int intExtra = getIntent().getIntExtra(StaticFinalValues.TYPE, -1);
         if (intExtra != -1) {
             getWindow().setSoftInputMode(intExtra);
         }
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_soft_height_measure);
         ButterKnife.bind(this);
         initListener();
@@ -70,12 +72,6 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        showSoftHeightTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initPop(mHeightDifference);
-            }
-        });
         View mChildOfContent = softHeightRl.getChildAt(0);
         mChildOfContent.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -105,11 +101,15 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 });
     }
 
-    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
+    @OnClick({R.id.show_soft_height_tv,R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
             R.id.btn_stateHidden, R.id.btn_stateAlwaysHidden, R.id.btn_stateVisible, R.id.btn_stateAlwaysVisible})
     public void onViewClicked(View view) {
         int inputMode = 0;
         switch (view.getId()) {
+            case R.id.show_soft_height_tv:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                initPop(mHeightDifference);
+                break;
             case R.id.bt_adjustPan:
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
                 break;

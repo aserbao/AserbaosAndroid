@@ -41,7 +41,7 @@
 
             <Button
                 android:text="修改分数"
-                android:onClick="@{() -> viewmodel.changeAge()}"
+                android:onClick="@{() -> viewmodel.changeScore()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

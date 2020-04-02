@@ -49,7 +49,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.jetpack.databinding.observable.ObservableFileActivity"></activity>
+        <activity android:name=".kotlin.KotlinActivity"></activity>
+        <activity android:name=".aaThird.jetpack.databinding.observable.ObservableFileActivity" />
         <activity android:name=".aaThird.jetpack.databinding.DataBindActivity" />
         <activity android:name=".aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity" />
         <activity android:name=".aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity" />

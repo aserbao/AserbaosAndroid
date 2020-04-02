@@ -5,9 +5,13 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity;
+import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity;
+import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.ViewModelActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -35,7 +39,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", DataBindingByVMActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SoftHeightMeasureActivity.class));
     }
 
 

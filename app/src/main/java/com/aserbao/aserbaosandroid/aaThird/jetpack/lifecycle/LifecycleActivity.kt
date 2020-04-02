@@ -21,6 +21,7 @@ class LifecycleActivity : BaseRecyclerViewActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getLifecycle().addObserver(MyObserver())
+        getLifecycle().addObserver(MyObserver1())
     }
 
 }

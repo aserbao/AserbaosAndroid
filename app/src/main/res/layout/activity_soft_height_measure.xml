@@ -92,6 +92,17 @@
         android:background="@color/black40"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
+
+    <EditText
+        android:hint="中间位置的EditText"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="120dp"
+        android:id="@+id/soft_mid_et"
+        android:background="@color/black40"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
     <TextView
         android:background="@color/white"
         android:text="我是尾布局"
