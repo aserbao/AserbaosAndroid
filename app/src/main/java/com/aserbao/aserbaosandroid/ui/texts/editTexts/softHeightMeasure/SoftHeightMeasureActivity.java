@@ -35,10 +35,12 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     EditText softEt;
     @BindView(R.id.show_soft_height_tv)
     TextView showSoftHeightTv;
-    @BindView(R.id.soft_height_rl)
-    RelativeLayout softHeightRl;
+    /*@BindView(R.id.soft_height_rl)
+    RelativeLayout softHeightRl;*/
+/*
     @BindView(R.id.image_view_bg)
     ImageView mImageViewBg;
+*/
     @BindView(R.id.soft_height_fl)
     FlowLayout mSoftHeightFl;
     private int mHeightDifference;
@@ -61,7 +63,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mImageViewBg.setImageResource(ASourceUtil.getRandomImageId());
+//        mImageViewBg.setImageResource(ASourceUtil.getRandomImageId());
     }
 
     private void initPop(int offy) {
@@ -72,7 +74,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        View mChildOfContent = softHeightRl.getChildAt(0);
+        /*View mChildOfContent = softHeightRl.getChildAt(0);
         mChildOfContent.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     public void onGlobalLayout() {
@@ -98,7 +100,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                                 "检测布局屏幕显示高度差为:" + mHeightDifference + "\n" +
                                 "检测布局屏幕显示宽度差为:" + +widthDifference);
                     }
-                });
+                });*/
     }
 
     @OnClick({R.id.show_soft_height_tv,R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
@@ -120,6 +122,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED;
                 break;
             case R.id.btn_adjustNothing:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING;
                 break;
             case R.id.btn_stateHidden:

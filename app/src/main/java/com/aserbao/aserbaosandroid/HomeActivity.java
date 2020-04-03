@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeC
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity;
+import com.aserbao.aserbaosandroid.aaThird.jetpack.liveData.LiveDataActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.ViewModelActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
@@ -39,7 +40,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SoftHeightMeasureActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", LiveDataActivity.class));
     }
 
 
