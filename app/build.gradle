@@ -81,6 +81,7 @@ dependencies {
     //UI
     api rootProject.ext.dependencies["material"]
     api rootProject.ext.dependencies["recyclerview"]
+    implementation project(path: ':camera')
 
 //    api rootProject.ext.dependencies["rxjava3"]
 //    api rootProject.ext.dependencies["reactive_stream"]

@@ -22,6 +22,8 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.example.camera.CameraActivity;
+import com.example.camera.camerax.CameraXPreviewActivity;
 
 public class HomeActivity extends BaseRecyclerViewActivity {
 
@@ -40,7 +42,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", LiveDataActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CameraXPreviewActivity.class));
     }
 
 

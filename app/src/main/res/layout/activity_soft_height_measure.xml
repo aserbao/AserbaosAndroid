@@ -88,6 +88,11 @@
             android:text="stateAlwaysVisible"
             style="@style/global_btn_style"
             />
+        <Button
+            android:id="@+id/fragment_btn"
+            android:text="用Fragment演示"
+            style="@style/global_btn_style"
+            />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
 
     <EditText
@@ -127,4 +132,13 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
+
+    <FrameLayout
+        android:id="@+id/fragment_cons"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

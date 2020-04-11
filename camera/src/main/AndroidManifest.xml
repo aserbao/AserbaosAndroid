@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.camera">
+
+    <application>
+        <activity android:name=".camerax.CameraXPreviewActivity"
+            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".CameraActivity" />
+    </application>
+
+</manifest>

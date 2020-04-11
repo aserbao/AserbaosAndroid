@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="AserbaosAndroid/app" />
       <module fileurl="file://$PROJECT_DIR$/aserbaoffmpeg/aserbaoffmpeg.iml" filepath="$PROJECT_DIR$/aserbaoffmpeg/aserbaoffmpeg.iml" group="AserbaosAndroid/aserbaoffmpeg" />
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" group="AserbaosAndroid/base" />
+      <module fileurl="file://$PROJECT_DIR$/camera/camera.iml" filepath="$PROJECT_DIR$/camera/camera.iml" group="AserbaosAndroid/camera" />
     </modules>
   </component>
 </project>
