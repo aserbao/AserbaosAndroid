@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaThird.dagger2.DaggerActivity;
+import com.aserbao.aserbaosandroid.aaThird.jetpack.JetpackActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
@@ -22,6 +23,7 @@ public class ThirdActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("OkDownload的使用", OkDownLoadActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("RxJava的使用", RxJavaActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Okhttp的使用", OkhttpActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Jetpack的使用", JetpackActivity.class));
     }
 
     @Override

@@ -1,23 +1,20 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout;
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
 import com.example.base.commonData.StaticFinalValues;
 
 import butterknife.BindView;
@@ -29,37 +26,43 @@ import butterknife.OnClick;
  */
 public class SoftHeightMeasureActivity extends AppCompatActivity {
 
+    @BindView(R.id.soft_mid_et)
+    EditText siftMidEt;
     @BindView(R.id.soft_et)
     EditText softEt;
     @BindView(R.id.show_soft_height_tv)
     TextView showSoftHeightTv;
-    @BindView(R.id.soft_height_rl)
-    RelativeLayout softHeightRl;
+    /*@BindView(R.id.soft_height_rl)
+    RelativeLayout softHeightRl;*/
+/*
     @BindView(R.id.image_view_bg)
     ImageView mImageViewBg;
+*/
     @BindView(R.id.soft_height_fl)
     FlowLayout mSoftHeightFl;
+    @BindView(R.id.fragment_cons)
+    FrameLayout mFragmentCons;
     private int mHeightDifference;
     private PopupWindow mPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int intExtra = getIntent().getIntExtra(StaticFinalValues.TYPE, -1);
         if (intExtra != -1) {
             getWindow().setSoftInputMode(intExtra);
         }
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_soft_height_measure);
         ButterKnife.bind(this);
         initListener();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_cons,new SoftHeightMeasureFragment()).commit();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mImageViewBg.setImageResource(ASourceUtil.getRandomImageId());
+//        mImageViewBg.setImageResource(ASourceUtil.getRandomImageId());
     }
 
     private void initPop(int offy) {
@@ -70,13 +73,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        showSoftHeightTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initPop(mHeightDifference);
-            }
-        });
-        View mChildOfContent = softHeightRl.getChildAt(0);
+        /*View mChildOfContent = softHeightRl.getChildAt(0);
         mChildOfContent.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     public void onGlobalLayout() {
@@ -102,14 +99,21 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                                 "检测布局屏幕显示高度差为:" + mHeightDifference + "\n" +
                                 "检测布局屏幕显示宽度差为:" + +widthDifference);
                     }
-                });
+                });*/
     }
 
-    @OnClick({R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
-            R.id.btn_stateHidden, R.id.btn_stateAlwaysHidden, R.id.btn_stateVisible, R.id.btn_stateAlwaysVisible})
+    @OnClick({R.id.fragment_btn, R.id.show_soft_height_tv, R.id.bt_adjustPan, R.id.bt_adjustResize, R.id.bt_adjustUnspecified, R.id.btn_adjustNothing,
+        R.id.btn_stateHidden, R.id.btn_stateAlwaysHidden, R.id.btn_stateVisible, R.id.btn_stateAlwaysVisible})
     public void onViewClicked(View view) {
         int inputMode = 0;
         switch (view.getId()) {
+            case R.id.fragment_btn:
+                mFragmentCons.setVisibility(View.VISIBLE);
+                break;
+            case R.id.show_soft_height_tv:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                initPop(mHeightDifference);
+                break;
             case R.id.bt_adjustPan:
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
                 break;
@@ -120,6 +124,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED;
                 break;
             case R.id.btn_adjustNothing:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 inputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING;
                 break;
             case R.id.btn_stateHidden:
@@ -148,4 +153,13 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if(mFragmentCons.getVisibility() == View.VISIBLE){
+            mFragmentCons.setVisibility(View.GONE);
+            return;
+        }
+        super.onBackPressed();
+    }
 }

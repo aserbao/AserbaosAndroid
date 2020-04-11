@@ -1,2 +1,3 @@
 include ':app', ':aserbaoffmpeg'
 include ':base'
+include ':camera'

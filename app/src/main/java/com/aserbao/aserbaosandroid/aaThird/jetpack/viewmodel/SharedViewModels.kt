@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
  * @project: AserbaosAndroid
  * @package: com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel
  */
-class SharedViewModels : ViewModel(){
+open class SharedViewModels : ViewModel(){
     // Create a LiveData with a String
     private var currentName: MutableLiveData<String> ?= null
     private var currentRightName: MutableLiveData<String> ?= null

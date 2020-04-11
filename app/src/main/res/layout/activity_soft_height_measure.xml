@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.views.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/soft_height_rl"
@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
 
-    <ScrollView
+    <!--<ScrollView
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,18 +23,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </ScrollView>
+    </ScrollView>-->
     <ImageView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/show_soft_height_tv"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_tv"
         android:src="@drawable/starry_sky_5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp" />
     <TextView
-        android:text="我是头布局"
-        android:textColor="@color/black"
         android:id="@+id/show_soft_height_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="我是头布局"
+        android:gravity="center"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/soft_height_fl"
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
@@ -79,9 +88,16 @@
             android:text="stateAlwaysVisible"
             style="@style/global_btn_style"
             />
+        <Button
+            android:id="@+id/fragment_btn"
+            android:text="用Fragment演示"
+            style="@style/global_btn_style"
+            />
     </com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout>
 
     <EditText
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_tv"
         android:hint="点击我来测量软件盘高度的"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
@@ -92,7 +108,23 @@
         android:background="@color/black40"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@+id/show_soft_height_tv"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:hint="中间位置的EditText"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/soft_mid_et"
+        android:background="@color/black40"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
     <TextView
+        android:id="@+id/bottom_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white"
         android:text="我是尾布局"
         android:layout_alignParentBottom="true"
@@ -100,4 +132,13 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
-</com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.views.ResizeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_cons"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

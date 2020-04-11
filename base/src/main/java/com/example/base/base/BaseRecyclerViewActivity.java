@@ -33,7 +33,6 @@ import butterknife.ButterKnife;
 
 /**
  * 功能:
- *
  * @author aserbao
  * @date : On 2019/2/19 4:40 PM
  * @email: this is empty email
@@ -63,7 +62,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
-
+    public abstract void initGetData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +117,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initViewForLinear();
     }
 
-    public abstract void initGetData();
+
 
 
     public void initViewForLinear() {
