@@ -2,7 +2,7 @@ package com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.fragments
 
 import android.os.Bundle
 import android.view.View
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue
+import com.example.base.utils.random.RandomValue
 import com.aserbao.aserbaosandroid.aaThird.jetpack.viewbind.ViewBindBaseFragment
 import kotlinx.android.synthetic.main.fragment_left.*
 
@@ -19,7 +19,7 @@ class RightFragment : ViewBindBaseFragment() {
         binding.tipTv.setText("RightFragment")
         binding.addBtn.setText("右数据+1")
         add_btn.setOnClickListener {
-            var randomName = RandomValue.getChineseName()
+            var randomName = com.example.base.utils.random.RandomValue.getChineseName()
             binding.tipTv.setText("当前数据为：\n " + randomName)
             model.changeRight(randomName)
         }

@@ -6,7 +6,7 @@ import android.media.MediaFormat;
 import android.os.SystemClock;
 import android.view.Surface;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

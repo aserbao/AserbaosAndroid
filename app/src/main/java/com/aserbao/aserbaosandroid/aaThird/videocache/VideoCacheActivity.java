@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.AppCleanMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.events.scrollEvent.MyJZVideoPlayer;
 import com.danikula.videocache.CacheListener;
 import com.danikula.videocache.HttpProxyCacheServer;
+import com.example.base.utils.others.AppCleanMgr;
 
 import java.io.File;
 

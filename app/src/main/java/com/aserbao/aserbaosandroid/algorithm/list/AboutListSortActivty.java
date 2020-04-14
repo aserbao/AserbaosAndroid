@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.algorithm.list;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
+import com.example.base.utils.random.RandomValue;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 

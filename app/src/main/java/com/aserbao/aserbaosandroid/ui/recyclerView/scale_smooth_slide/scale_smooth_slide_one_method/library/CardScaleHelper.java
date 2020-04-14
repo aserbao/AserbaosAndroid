@@ -4,8 +4,8 @@ import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.log.ALogUtils;
+import com.example.base.utils.screen.DisplayUtil;
 
 /**
  * 功能:

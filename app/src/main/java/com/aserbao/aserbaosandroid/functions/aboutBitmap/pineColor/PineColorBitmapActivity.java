@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 import com.aserbao.aserbaosandroid.ui.customView.gradient.LinearGradientView;
 
 import java.io.BufferedOutputStream;

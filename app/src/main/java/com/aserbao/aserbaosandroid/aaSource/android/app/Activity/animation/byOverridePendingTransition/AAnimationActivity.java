@@ -9,7 +9,7 @@ import android.view.View;
 import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 public class AAnimationActivity extends BaseRecyclerViewActivity {
 

@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.aaThird.okhttp;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.AppFileMgr;
+import com.example.base.utils.others.AppFileMgr;
 import com.aserbao.aserbaosandroid.aaThird.okhttp.Listeners.PrintingEventListener;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;

@@ -2,7 +2,7 @@ package com.aserbao.aserbaosandroid.functions.database.greenDao;
 
 import android.text.TextUtils;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
+import com.example.base.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.functions.database.base.DataBaseBaseActivity;
 import com.example.base.database.beans.Thing;

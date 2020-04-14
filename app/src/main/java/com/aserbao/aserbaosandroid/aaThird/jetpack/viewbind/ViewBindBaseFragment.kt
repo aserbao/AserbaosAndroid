@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue
+import com.example.base.utils.random.RandomValue
 import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.SharedViewModels
 import com.aserbao.aserbaosandroid.databinding.FragmentLeftBinding
-import kotlinx.android.synthetic.main.fragment_left.*
-import java.security.acl.Owner
 
 /*
  * 作用：

@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
+import com.example.base.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

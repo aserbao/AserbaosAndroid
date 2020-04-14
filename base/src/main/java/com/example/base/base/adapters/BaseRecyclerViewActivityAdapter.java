@@ -16,7 +16,7 @@ import com.example.base.base.viewHolder.HeadViewHolder;
 import com.example.base.base.viewHolder.ImageViewHolder;
 import com.example.base.base.viewHolder.SeekBarViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;

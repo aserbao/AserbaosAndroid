@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;

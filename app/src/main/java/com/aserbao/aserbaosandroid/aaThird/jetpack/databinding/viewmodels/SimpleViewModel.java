@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
+import com.example.base.utils.random.RandomValue;
 
 import java.util.Random;
 

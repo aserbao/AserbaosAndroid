@@ -1,7 +1,5 @@
 package com.aserbao.aserbaosandroid.aaSource.android.material.floatView.floatView;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.date.AppSysMgr;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 

@@ -93,7 +93,7 @@
     android:id="@+id/move_view_container_rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-        <com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress
+        <com.aserbao.common.ui.progress.ACustomRecordProgress
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="36dp"

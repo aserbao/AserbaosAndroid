@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
+import com.example.base.utils.date.ADateMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.functions.database.base.rv.interfaces.ItemBackListener;

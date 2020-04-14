@@ -3,7 +3,7 @@ package com.aserbao.aserbaosandroid.algorithm.sort;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
+import com.example.base.utils.log.ALogUtils;
 import com.aserbao.aserbaosandroid.algorithm.list.Student;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;

@@ -1,6 +1,6 @@
 package com.aserbao.aserbaosandroid.aaThird.rxJava3.api;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.log.ALogUtils;
+import com.example.base.utils.log.ALogUtils;
 
 import java.util.concurrent.TimeUnit;
 

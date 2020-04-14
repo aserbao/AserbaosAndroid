@@ -25,8 +25,8 @@ import android.widget.TextView;
 import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
-import com.example.base.commonData.ASourceUtil;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.ASourceUtil;
+import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 
 import java.util.ArrayList;

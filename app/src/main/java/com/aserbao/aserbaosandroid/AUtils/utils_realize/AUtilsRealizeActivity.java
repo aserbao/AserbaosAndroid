@@ -3,12 +3,12 @@ package com.aserbao.aserbaosandroid.AUtils.utils_realize;
 import android.bluetooth.BluetoothAdapter;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
-import com.aserbao.aserbaosandroid.AUtils.utils.date.AppSysMgr;
-import com.aserbao.aserbaosandroid.AUtils.utils.network.ANetworkUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneMediaUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.phone.APhoneUtils;
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.AScreenUtils;
+import com.example.base.utils.date.AppScreenMgr;
+import com.example.base.utils.date.AppSysMgr;
+import com.example.base.utils.network.ANetworkUtils;
+import com.example.base.utils.phone.APhoneMediaUtils;
+import com.example.base.utils.phone.APhoneUtils;
+import com.example.base.utils.screen.AScreenUtils;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 

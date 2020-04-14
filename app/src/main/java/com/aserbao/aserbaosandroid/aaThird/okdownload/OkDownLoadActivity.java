@@ -7,9 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.AppFileMgr;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
+import com.example.base.utils.others.AppFileMgr;
 import com.liulishuo.okdownload.DownloadContext;
 import com.liulishuo.okdownload.DownloadContextListener;
 import com.liulishuo.okdownload.DownloadTask;
@@ -28,7 +28,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.base.commonData.StaticFinalValues.STORAGE_TEMP_FILE;
+import static com.example.base.utils.data.StaticFinalValues.STORAGE_TEMP_FILE;
 
 public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     private static final String TAG = "OkDownLoadActivity";

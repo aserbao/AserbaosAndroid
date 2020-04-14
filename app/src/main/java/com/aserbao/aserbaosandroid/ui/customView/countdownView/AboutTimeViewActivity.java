@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
+import com.example.base.utils.date.ADateMgr;
 import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;

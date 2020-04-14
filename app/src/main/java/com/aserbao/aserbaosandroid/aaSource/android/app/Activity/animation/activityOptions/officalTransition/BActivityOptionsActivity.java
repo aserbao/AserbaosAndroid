@@ -10,7 +10,7 @@ import android.transition.TransitionInflater;
 import android.view.Window;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import butterknife.ButterKnife;
 

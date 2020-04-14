@@ -13,7 +13,7 @@ import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 import com.example.base.base.viewHolder.ClassViewHolder;
 import com.example.base.base.viewHolder.ImageViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;

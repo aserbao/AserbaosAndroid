@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.layout.FlowLayout;
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

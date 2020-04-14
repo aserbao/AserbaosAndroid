@@ -14,7 +14,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;

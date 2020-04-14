@@ -11,14 +11,14 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo.decode.glSurfaceView.CameraRenderer;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.VideoPickActivity;
 import com.aserbao.aserbaosandroid.aaThird.pickvideo.beans.VideoFile;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.ui.AspectTextureView;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
 import static com.aserbao.aserbaosandroid.aaThird.pickvideo.BaseActivity.IS_NEED_FOLDER_LIST;
 import static com.aserbao.aserbaosandroid.aaThird.pickvideo.VideoPickActivity.IS_NEED_CAMERA;
-import static com.example.base.commonData.StaticFinalValues.MAX_NUMBER;
+import static com.example.base.utils.data.StaticFinalValues.MAX_NUMBER;
 
 /**
  * MediaCodec视频解码到Surface上播放。

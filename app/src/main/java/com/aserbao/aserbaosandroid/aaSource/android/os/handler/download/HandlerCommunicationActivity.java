@@ -2,11 +2,9 @@ package com.aserbao.aserbaosandroid.aaSource.android.os.handler.download;
 
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.MainLooper;
-import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.extend.BaseAboutProgressActivity;
+import com.example.base.utils.others.MainLooper;
 
 import java.lang.ref.WeakReference;
 
