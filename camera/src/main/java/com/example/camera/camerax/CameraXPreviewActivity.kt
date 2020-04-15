@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.base.utils.log.ALogUtils
 import com.example.camera.databinding.CameraxPreviewBinding
+import com.getremark.base.kotlin_ext.singleClick
 import kotlinx.android.synthetic.main.camerax_preview.*
 import java.io.File
 import java.util.concurrent.Executors
@@ -51,7 +52,7 @@ class CameraXPreviewActivity : AppCompatActivity() {
     }
 
     private fun initViewEvent() {
-        custom_riv.setOnClickListener {
+        custom_riv.singleClick {
             val file = File(externalMediaDirs.first(),
                 "${System.currentTimeMillis()}.jpg")
 
@@ -89,7 +90,11 @@ class CameraXPreviewActivity : AppCompatActivity() {
                 })
         }
 
-//        camera_switch_button.
+        camera_switch_button.singleClick{
+            lensFacing = if (lensFacing == CameraSelector.LENS_FACING_FRONT)
+                CameraSelector.LENS_FACING_BACK else CameraSelector.LENS_FACING_FRONT
+            startCamera()
+        }
     }
 
     // Add this after onCreate
