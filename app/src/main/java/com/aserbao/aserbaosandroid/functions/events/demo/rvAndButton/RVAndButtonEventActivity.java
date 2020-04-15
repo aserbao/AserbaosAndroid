@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
+import com.aserbao.common.ui.progress.ACustomRecordProgress;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.extend.BaseAddFrameLayoutActivity;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.pickViewLibrary.PickerRecyclerView;
 
 /**
@@ -55,7 +55,7 @@ public class RVAndButtonEventActivity extends BaseAddFrameLayoutActivity {
     private int cuurTouchStatus = 0; // 0表示默认，1表示点击，2表示常按，3表示拖拽
     private long mActionDownStartTime = 0;
     public void  init(){
-        mEventRvCrProgress.setmEventRvDispatchTeFrameLayout(mEventRvDispatchTeFrameLayout);
+//        mEventRvCrProgress.setmEventRvDispatchTeFrameLayout(mEventRvDispatchTeFrameLayout);
         mEventRvDispatchTeFrameLayout.setmIScrollListener(new ADispatchTouchEventFragment.IScrollListener() {
             @Override
             public void scrollListener(float scrollX) {

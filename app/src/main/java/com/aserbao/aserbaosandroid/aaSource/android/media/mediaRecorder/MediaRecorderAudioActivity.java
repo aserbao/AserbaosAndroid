@@ -8,7 +8,7 @@ import com.example.base.base.beans.BaseRecyclerBean;
 
 import java.io.IOException;
 
-import static com.example.base.commonData.StaticFinalValues.MUSIC_PATH_NAME;
+import static com.example.base.utils.data.StaticFinalValues.MUSIC_PATH_NAME;
 
 public class MediaRecorderAudioActivity extends BaseRecyclerViewActivity {
 

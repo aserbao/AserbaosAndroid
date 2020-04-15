@@ -17,11 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress;
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
+import com.aserbao.common.ui.progress.ACustomRecordProgress;
+import com.example.base.utils.data.ASourceUtil;
+import com.example.base.utils.screen.DisplayUtil;
 
 import java.lang.reflect.Method;
 

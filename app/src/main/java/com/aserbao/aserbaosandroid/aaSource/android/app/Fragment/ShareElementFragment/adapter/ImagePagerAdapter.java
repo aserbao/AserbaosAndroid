@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.ImageFragment;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 
 
 public class ImagePagerAdapter extends FragmentStatePagerAdapter {

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.utils.AndroidSoftBoardAdjustHeightUtil;
 
 import butterknife.BindView;

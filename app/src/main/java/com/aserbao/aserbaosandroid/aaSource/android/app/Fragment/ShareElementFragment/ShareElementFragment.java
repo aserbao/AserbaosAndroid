@@ -19,7 +19,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.FragmentActivit
 import com.aserbao.aserbaosandroid.aaSource.android.app.Fragment.ShareElementFragment.adapter.GridAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 
 import java.util.ArrayList;
 import java.util.List;

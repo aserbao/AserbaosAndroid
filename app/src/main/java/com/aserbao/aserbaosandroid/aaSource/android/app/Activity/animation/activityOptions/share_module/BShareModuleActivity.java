@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.ASourceUtil;
+import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.functions.events.MoveDragActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CircleImageView;
 

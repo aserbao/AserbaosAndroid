@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
 
 import butterknife.BindView;

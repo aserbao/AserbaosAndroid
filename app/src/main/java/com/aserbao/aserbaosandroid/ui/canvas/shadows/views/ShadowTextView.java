@@ -5,12 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 
 /**
  * 功能:

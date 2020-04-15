@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 
 public class StoriesViewProgressBar extends View{
     private int mProgressCount = 1;

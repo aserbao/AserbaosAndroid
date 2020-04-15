@@ -11,8 +11,8 @@ import android.view.View;
 
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
-import com.example.base.commonData.ASourceUtil;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.ASourceUtil;
+import com.example.base.utils.data.StaticFinalValues;
 
 public class CShareModuleActivity extends BaseRecyclerViewActivity {
     public static void launch(int whichLinearInterpolator, Activity activity, int position, Pair<View, String>... sharedElements) {

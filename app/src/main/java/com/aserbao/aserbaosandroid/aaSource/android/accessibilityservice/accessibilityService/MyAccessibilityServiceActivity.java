@@ -11,7 +11,7 @@ import android.text.style.LocaleSpan;
 import android.util.Log;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.phone.AJumpUtils;
+import com.example.base.utils.phone.AJumpUtils;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.moveToDeleteRecyclerView.MoveToDeleteActivity;

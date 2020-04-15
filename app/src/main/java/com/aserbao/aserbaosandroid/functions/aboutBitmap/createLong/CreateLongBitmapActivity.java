@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.MainLooper;
-import com.aserbao.aserbaosandroid.AUtils.utils.date.AppScreenMgr;
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
+import com.example.base.utils.others.MainLooper;
+import com.example.base.utils.date.AppScreenMgr;
+import com.example.base.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.R;
 
 import java.io.BufferedOutputStream;

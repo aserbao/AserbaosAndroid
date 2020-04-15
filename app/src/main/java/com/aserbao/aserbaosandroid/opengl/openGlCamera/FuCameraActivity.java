@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.CameraUtils;
+import com.example.base.utils.others.CameraUtils;
 import com.aserbao.aserbaosandroid.R;
 
 import java.io.IOException;

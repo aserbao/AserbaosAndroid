@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.random.RandomValue;
+import com.example.base.utils.random.RandomValue;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.example.base.database.greendao.db.DaoSession;

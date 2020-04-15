@@ -47,9 +47,6 @@ ext {
         exoplayer            : 'com.google.android.exoplayer:exoplayer:2.8.4',
         jcodec_android       : 'org.jcodec:jcodec-android:0.1.9',
         videocache           : 'com.danikula:videocache:2.7.0',
-        camera_core          : 'androidx.camera:camera-core:1.0.0-alpha06',
-        camera_camera2       : 'androidx.camera:camera-camera2:1.0.0-alpha06',
-
         //glide
         glide                : 'com.github.bumptech.glide:glide:4.8.0',
 

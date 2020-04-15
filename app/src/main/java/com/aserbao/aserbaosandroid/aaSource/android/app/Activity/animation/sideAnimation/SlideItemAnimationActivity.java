@@ -15,12 +15,12 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.date.ADateMgr;
+import com.example.base.utils.date.ADateMgr;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideAnimation.rv.adapters.SlideItemAnimationAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.Date;

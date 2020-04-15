@@ -2,20 +2,8 @@ package com.aserbao.aserbaosandroid.aaSource.android.media.mediaCodec.demo.decod
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.opengl.GLES11Ext;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.util.Log;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.BufferUtil;
-import com.aserbao.aserbaosandroid.AUtils.utils.ShaderUtils;
-import com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleOne.CameraOneView;
-
-import java.nio.FloatBuffer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 /**
  * 功能:

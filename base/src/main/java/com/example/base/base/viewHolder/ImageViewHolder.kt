@@ -4,11 +4,10 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import butterknife.BindView
 import com.example.base.R
 import com.example.base.base.beans.BaseRecyclerBean
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener
-import com.example.base.commonData.ASourceUtil
+import com.example.base.utils.data.ASourceUtil
 
 class ImageViewHolder(itemView: View) : BaseClickViewHolder(itemView) {
     var mImageViewItem: ImageView? = null

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.beans.SimpleBean;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.interfaces.ISmoothCallBackListener;
 import com.aserbao.aserbaosandroid.ui.recyclerView.smooth.viewholders.SmoothFootViewHolder;

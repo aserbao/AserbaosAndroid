@@ -7,7 +7,7 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.download.AndroidScheduler;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
@@ -50,7 +50,7 @@ import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.example.base.commonData.StaticFinalValues.LOGO_FROM_ASERBAO;
+import static com.example.base.utils.data.StaticFinalValues.LOGO_FROM_ASERBAO;
 
 public class RxJava3ApiActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "RxJava3ApiActivity";

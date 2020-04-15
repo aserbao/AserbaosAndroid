@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
 
 /**

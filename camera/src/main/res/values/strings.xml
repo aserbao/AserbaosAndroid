@@ -1,1 +1,3 @@
-<resources></resources>
+<resources>
+    <string name="switch_camera_button_alt">Switch camera</string>
+</resources>

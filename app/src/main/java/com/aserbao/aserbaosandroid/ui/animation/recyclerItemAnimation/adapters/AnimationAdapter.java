@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.commonData.ASourceUtil;
+import com.example.base.utils.data.ASourceUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

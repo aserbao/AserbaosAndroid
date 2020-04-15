@@ -16,7 +16,7 @@
         android:id="@+id/event_rv_cr_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.aserbao.aserbaosandroid.AUtils.AUI.progress.ACustomRecordProgress
+        <com.aserbao.common.ui.progress.ACustomRecordProgress
             android:id="@+id/event_rv_cr_progress"
             android:layout_marginBottom="100dp"
             android:layout_gravity="center_horizontal|bottom"

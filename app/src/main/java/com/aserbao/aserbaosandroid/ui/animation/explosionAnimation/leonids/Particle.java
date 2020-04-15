@@ -7,7 +7,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.Log;
 
-import com.aserbao.aserbaosandroid.AUtils.utils.screen.DisplayUtil;
+import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.ui.animation.explosionAnimation.leonids.modifiers.ParticleModifier;
 
 import java.util.List;

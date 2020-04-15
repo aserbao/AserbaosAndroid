@@ -17,7 +17,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.animation.sideA
 import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;

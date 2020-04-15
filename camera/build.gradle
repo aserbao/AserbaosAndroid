@@ -29,15 +29,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':base')
-
-    implementation rootProject.ext.dependencies["camera_core"]
-    implementation rootProject.ext.dependencies["camera_camera2"]
+    api "androidx.camera:camera-core:1.0.0-beta02"
+    // CameraX Camera2 extensions
+    api "androidx.camera:camera-camera2:1.0.0-beta02"
+    // CameraX Lifecycle library
+    api "androidx.camera:camera-lifecycle:1.0.0-beta02"
+    api 'androidx.camera:camera-view:1.0.0-alpha09'
+    api project(path: ':common')
+//     project(path: ':base')
 }

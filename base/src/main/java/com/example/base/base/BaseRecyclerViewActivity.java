@@ -22,14 +22,11 @@ import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.adapters.BaseSpinnerAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
-import com.example.base.commonData.ASourceUtil;
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.ASourceUtil;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 功能:

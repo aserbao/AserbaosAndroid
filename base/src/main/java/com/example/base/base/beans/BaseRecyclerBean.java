@@ -1,6 +1,6 @@
 package com.example.base.base.beans;
 
-import com.example.base.commonData.StaticFinalValues;
+import com.example.base.utils.data.StaticFinalValues;
 
 import java.io.Serializable;
 
