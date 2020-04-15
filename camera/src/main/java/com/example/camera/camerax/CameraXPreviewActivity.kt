@@ -35,8 +35,6 @@ class CameraXPreviewActivity : AppCompatActivity() {
         if (allPermissionsGranted()) {
             viewFinder.post { startCamera() }
         } else {
-
-
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
