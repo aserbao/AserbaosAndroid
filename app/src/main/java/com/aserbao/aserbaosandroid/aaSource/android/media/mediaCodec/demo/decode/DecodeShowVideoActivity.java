@@ -108,7 +108,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         int width = DisplayUtil.dip2px(300);
         int height = DisplayUtil.dip2px(400);
         View root = addViewWHToFL(null,R.layout.texture_view_layout, false, true,width,height,false);
-        TextureView textureView = (TextureView) root.findViewById(R.id.texture_view);
+        TextureView textureView = (TextureView) root.findViewById(R.id.previewView);
         textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -173,7 +173,7 @@ public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
         int width = DisplayUtil.dip2px(300);
         int height = DisplayUtil.dip2px(400);
         View root = addViewWHToFL(null,R.layout.texture_view_layout, false, true,width,height,false);
-        TextureView textureView = (TextureView) root.findViewById(R.id.texture_view);
+        TextureView textureView = (TextureView) root.findViewById(R.id.previewView);
         SurfaceTexture surfaceTexture = new SurfaceTexture(false);
         textureView.setSurfaceTexture(surfaceTexture);
         newMediaCodec(surfaceTexture);

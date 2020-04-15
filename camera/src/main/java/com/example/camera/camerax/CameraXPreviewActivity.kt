@@ -2,35 +2,44 @@ package com.example.camera.camerax
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Size
-import android.view.Surface
-import android.view.SurfaceView
-import android.view.TextureView
-import android.view.ViewGroup
+import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.base.utils.log.ALogUtils
-import com.example.camera.R
 import com.example.camera.databinding.CameraxPreviewBinding
 import kotlinx.android.synthetic.main.camerax_preview.*
 import java.io.File
 import java.util.concurrent.Executors
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
 
 class CameraXPreviewActivity : AppCompatActivity() {
+    companion object {
+        const val TAG = "CameraXPreviewActivity"
+        private const val RATIO_4_3_VALUE = 4.0 / 3.0
+        private const val RATIO_16_9_VALUE = 16.0 / 9.0
+    }
     val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     val REQUEST_CODE_PERMISSIONS = 0
+
+    private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
+    private var preview: Preview? = null
+    private var imageCapture: ImageCapture? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = CameraxPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewFinder = findViewById(R.id.texture_view)
+        viewFinder = previewView
+        initViewEvent()
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -39,118 +48,109 @@ class CameraXPreviewActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
-
-        // Every time the provided texture view changes, recompute layout
-        viewFinder.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            updateTransform()
-        }
     }
 
-    // Add this after onCreate
-
-    private val executor = Executors.newSingleThreadExecutor()
-    private lateinit var viewFinder: TextureView
-
-    private fun startCamera() {
-        // Create configuration object for the viewfinder use case
-        val previewConfig = PreviewConfig.Builder().apply {
-            setTargetResolution(Size(640, 480))
-        }.build()
-
-
-        // Build the viewfinder use case
-        val preview = Preview(previewConfig)
-
-        // Every time the viewfinder is updated, recompute layout
-        preview.setOnPreviewOutputUpdateListener {
-
-            // To update the SurfaceTexture, we have to remove it and re-add it
-            val parent = viewFinder.parent as ViewGroup
-            parent.removeView(viewFinder)
-            parent.addView(viewFinder, 0)
-
-            viewFinder.surfaceTexture = it.surfaceTexture
-            updateTransform()
-        }
-
-
-
-        // Bind use cases to lifecycle
-        // If Android Studio complains about "this" being not a LifecycleOwner
-        // try rebuilding the project or updating the appcompat dependency to
-        // version 1.1.0 or higher.
-        CameraX.bindToLifecycle(this, preview,imageCaptuerConfig())
-    }
-
-    /**
-     * Create configuration object for the image capture use case
-     */
-    fun imageCaptuerConfig():ImageCapture{
-        // Create configuration object for the image capture use case
-        val imageCaptureConfig = ImageCaptureConfig.Builder()
-            .apply {
-                // We don't set a resolution for image capture; instead, we
-                // select a capture mode which will infer the appropriate
-                // resolution based on aspect ration and requested mode
-                setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
-            }.build()
-
-        // Build the image capture use case and attach button click listener
-        val imageCapture = ImageCapture(imageCaptureConfig)
+    private fun initViewEvent() {
         custom_riv.setOnClickListener {
             val file = File(externalMediaDirs.first(),
                 "${System.currentTimeMillis()}.jpg")
 
-            imageCapture.takePicture(file, executor,
-                object : ImageCapture.OnImageSavedListener {
-                    override fun onError(
-                        imageCaptureError: ImageCapture.ImageCaptureError,
-                        message: String,
-                        exc: Throwable?
-                    ) {
-                        val msg = "Photo capture failed: $message"
-                        ALogUtils.e("CameraXApp", msg +  exc.toString())
+            // Setup image capture metadata
+            val metadata = ImageCapture.Metadata().apply {
+
+                // Mirror image when using the front camera
+                isReversedHorizontal = lensFacing == CameraSelector.LENS_FACING_FRONT
+            }
+
+            // Create output options object which contains file + metadata
+            val outputOptions = ImageCapture.OutputFileOptions.Builder(file)
+                .setMetadata(metadata)
+                .build()
+
+            imageCapture?.takePicture(outputOptions, executor,
+                object :  ImageCapture.OnImageSavedCallback {
+
+                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                        val path = outputFileResults.savedUri?.path
+                        val msg = "Photo capture succeeded: ${path}"
+                        ALogUtils.d("CameraXApp", msg)
                         viewFinder.post {
                             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                         }
                     }
 
-                    override fun onImageSaved(file: File) {
-                        val msg = "Photo capture succeeded: ${file.absolutePath}"
-                        ALogUtils.d("CameraXApp", msg)
+                    override fun onError(exception: ImageCaptureException) {
+                        val msg = "Photo capture failed: $exception"
+                        ALogUtils.e("CameraXApp", msg +  exception.toString())
                         viewFinder.post {
                             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                         }
                     }
                 })
         }
-        return imageCapture
+
+//        camera_switch_button.
     }
 
+    // Add this after onCreate
 
-    /**
-     * update the matrix for surface
-     */
-    private fun updateTransform() {
-        val matrix = Matrix()
+    private val executor = Executors.newSingleThreadExecutor()
+    private lateinit var viewFinder: PreviewView
 
-        // Compute the center of the view finder
-        val centerX = viewFinder.width / 2f
-        val centerY = viewFinder.height / 2f
+    private fun startCamera() {
+        // Get screen metrics used to setup camera for full screen resolution
+        val metrics = DisplayMetrics().also { viewFinder.display.getRealMetrics(it) }
+        val screenAspectRatio = aspectRatio(metrics.widthPixels, metrics.heightPixels)
+        val rotation = viewFinder.display.rotation
 
-        // Correct preview output to account for display rotation
-        val rotationDegrees = when(viewFinder.display.rotation) {
-            Surface.ROTATION_0 -> 0
-            Surface.ROTATION_90 -> 90
-            Surface.ROTATION_180 -> 180
-            Surface.ROTATION_270 -> 270
-            else -> return
-        }
-        matrix.postRotate(-rotationDegrees.toFloat(), centerX, centerY)
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture.addListener(Runnable {
+            // Preview
+            preview = Preview.Builder().apply {
+                // We request aspect ratio but no resolution
+                setTargetAspectRatio(screenAspectRatio)
+                // Set initial target rotation
+                setTargetRotation(rotation)
+            }.build()
 
-        // Finally, apply transformations to our TextureView
-        viewFinder.setTransform(matrix)
+
+            // Create configuration object for the image capture use case
+            imageCapture = ImageCapture.Builder()
+                .apply {
+                    // We don't set a resolution for image capture; instead, we
+                    // select a capture mode which will infer the appropriate
+                    // resolution based on aspect ration and requested mode
+                    setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+                    setTargetAspectRatio(screenAspectRatio)
+                    setTargetRotation(rotation)
+                }.build()
+
+
+            // Bind the CameraProvider to the LifeCycleOwner
+            val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
+            // Bind use cases to lifecycle
+            // If Android Studio complains about "this" being not a LifecycleOwner
+            // try rebuilding the project or updating the appcompat dependency to
+            // version 1.1.0 or higher.
+//        CameraX.bindToLifecycle(this, preview!!,imageCapture)
+            var cameraProvider = cameraProviderFuture.get()
+            // Must unbind the use-cases before rebinding them
+            cameraProvider.unbindAll()
+
+
+            try {
+                // A variable number of use-cases can be passed here -
+                // camera provides access to CameraControl & CameraInfo
+                var camera = cameraProvider.bindToLifecycle(
+                    this, cameraSelector, preview, imageCapture)
+                // Attach the viewfinder's surface provider to preview use case
+                preview?.setSurfaceProvider(viewFinder.createSurfaceProvider(camera?.cameraInfo))
+            } catch(exc: Exception) {
+                Log.e(TAG, "Use case binding failed", exc)
+            }
+        },ContextCompat.getMainExecutor(this))
     }
+
 
     /**
      * Process result from permission request dialog box, has the request
@@ -175,5 +175,25 @@ class CameraXPreviewActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+
+    /**
+     *  [androidx.camera.core.ImageAnalysisConfig] requires enum value of
+     *  [androidx.camera.core.AspectRatio]. Currently it has values of 4:3 & 16:9.
+     *
+     *  Detecting the most suitable ratio for dimensions provided in @params by counting absolute
+     *  of preview ratio to one of the provided values.
+     *
+     *  @param width - preview width
+     *  @param height - preview height
+     *  @return suitable aspect ratio
+     */
+    private fun aspectRatio(width: Int, height: Int): Int {
+        val previewRatio = max(width, height).toDouble() / min(width, height)
+        if (abs(previewRatio - RATIO_4_3_VALUE) <= abs(previewRatio - RATIO_16_9_VALUE)) {
+            return AspectRatio.RATIO_4_3
+        }
+        return AspectRatio.RATIO_16_9
     }
 }

@@ -52,7 +52,7 @@ class LuminosityAnalyzer(var listener: LumaListener? = null) : ImageAnalysis.Ana
       * may not be received or the camera may stall, depending on back pressure setting.
       *
       */
-      override fun analyze(image: ImageProxy, rotationDegrees: Int) {
+      override fun analyze(image: ImageProxy) {
         // If there are no listeners attached, we don't need to perform analysis
         if (listeners.isEmpty()) {
             image.close()
