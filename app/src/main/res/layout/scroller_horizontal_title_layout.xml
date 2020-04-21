@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp">
+    <TextView
+        android:id="@+id/photoTv"
+        android:text="拍照"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:foreground="?android:selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/videoTv"
+        android:text="视频"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:foreground="?android:selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/noteTv"
+        android:text="纸条"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:foreground="?android:selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -16,4 +16,8 @@
             android:layout_height="wrap_content"/>
     </com.aserbao.aserbaosandroid.ui.viewPager.AViewPager>
 
+    <com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.scroller.custom.HorizontalCenterTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </FrameLayout>

@@ -49,7 +49,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".ui.viewPager.ViewPagerActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.scroller.ScrollerActivity"></activity>
+        <activity android:name=".ui.viewPager.ViewPagerActivity" />
         <activity android:name=".kotlin.scopes.KotlinScopeFunctionsActivity" />
         <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
         <activity android:name=".kotlin.KotlinActivity" />
