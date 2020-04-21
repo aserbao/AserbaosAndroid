@@ -30,7 +30,7 @@ public class AViewPager extends ViewPager {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.d(TAG, "onInterceptTouchEvent() called with: ev = [" + ev.getAction() + "]");
-        return true;
+        return super.onInterceptTouchEvent(ev);
     }
 
     @Override
