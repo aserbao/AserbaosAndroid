@@ -5,6 +5,18 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <View
+        android:id="@+id/top_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <View
+        android:id="@+id/bottom_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:background="@color/red"
@@ -14,6 +26,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:id="@+id/cons_ll"
+        app:layout_constraintDimensionRatio="h,9:16"
+        app:layout_constraintTop_toBottomOf="@+id/top_view"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/white"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+        <TextView
+            android:text="16:9居中"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
 
     <Button
         android:id="@+id/button22"
@@ -97,21 +129,7 @@
 
 
 
-    <LinearLayout
-        android:id="@+id/cons_ll"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+
 
 
 
