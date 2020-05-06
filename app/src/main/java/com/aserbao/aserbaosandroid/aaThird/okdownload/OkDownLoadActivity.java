@@ -18,6 +18,8 @@ import com.liulishuo.okdownload.StatusUtil;
 import com.liulishuo.okdownload.core.breakpoint.BlockInfo;
 import com.liulishuo.okdownload.core.breakpoint.BreakpointInfo;
 import com.liulishuo.okdownload.core.cause.EndCause;
+import com.liulishuo.okdownload.core.cause.ResumeFailedCause;
+import com.liulishuo.okdownload.core.listener.DownloadListener3;
 import com.liulishuo.okdownload.core.listener.DownloadListener4WithSpeed;
 import com.liulishuo.okdownload.core.listener.assist.Listener4SpeedAssistExtend;
 
@@ -36,7 +38,8 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     final String filename = "aserbao_test.apk";
 //    final String url = "https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk";
 //    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-5888a2b749d40ddb441af68db5a7f354";
-    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194";
+//    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194";
+    final String url = "https://s3.cn-north-1.amazonaws.com.cn/dev.android.package/ss-4_1_8.apk";
 //    final String url = "https://cn.bing.com/th?id=OIP.xq1C2fmnSw5DEoRMC86vJwD6D6&pid=Api&rs=1";
     File parentFile = new File(STORAGE_TEMP_FILE);
 
@@ -94,7 +97,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
         String s = generateFileName(url);
         parentFile = new File(STORAGE_TEMP_FILE);
         downloadTask = new DownloadTask.Builder(url, parentFile)
-            .setFilename(s)
+//            .setFilename(s)
             // the minimal interval millisecond for callback progress
             .setMinIntervalMillisCallbackProcess(16)
             // ignore the same task has already completed in the past.
@@ -102,7 +105,48 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             .build();
 
         Log.e(TAG, "singleDownload: " + s );
-        downloadTask.enqueue(new DownloadListener4WithSpeed() {
+        downloadTask.enqueue(new DownloadListener3() {
+            @Override
+            protected void started(@NonNull DownloadTask task) {
+                Log.d(TAG, "started() called with: task = [" + task + "]");
+            }
+
+            @Override
+            protected void completed(@NonNull DownloadTask task) {
+                Log.d(TAG, "completed() called with: task = [" + task + "]");
+            }
+
+            @Override
+            protected void canceled(@NonNull DownloadTask task) {
+
+            }
+
+            @Override
+            protected void error(@NonNull DownloadTask task, @NonNull Exception e) {
+
+            }
+
+            @Override
+            protected void warn(@NonNull DownloadTask task) {
+
+            }
+
+            @Override
+            public void retry(@NonNull DownloadTask task, @NonNull ResumeFailedCause cause) {
+                Log.d(TAG, "retry() called with: task = [" + task + "], cause = [" + cause + "]");
+            }
+
+            @Override
+            public void connected(@NonNull DownloadTask task, int blockCount, long currentOffset, long totalLength) {
+                Log.d(TAG, "connected() called with: task = [" + task + "], blockCount = [" + blockCount + "], currentOffset = [" + currentOffset + "], totalLength = [" + totalLength + "]");
+            }
+
+            @Override
+            public void progress(@NonNull DownloadTask task, long currentOffset, long totalLength) {
+                Log.d(TAG, "progress() called with: task = [" + task + "], currentOffset = [" + currentOffset + "], totalLength = [" + totalLength + "]");
+            }
+        });
+        /*downloadTask.enqueue(new DownloadListener4WithSpeed() {
             @Override
             public void infoReady(@NonNull DownloadTask task, @NonNull BreakpointInfo info, boolean fromBreakpoint, @NonNull Listener4SpeedAssistExtend.Listener4SpeedModel model) {
                 totalLength = info.getTotalLength();
@@ -144,7 +188,7 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             public void connectEnd(@NonNull DownloadTask task, int blockIndex, int responseCode, @NonNull Map<String, List<String>> responseHeaderFields) {
                 Log.e(TAG, "connectEnd() called with: task = [" + task + "], blockIndex = [" + blockIndex + "], responseCode = [" + responseCode + "], responseHeaderFields = [" + responseHeaderFields + "]");
             }
-        });
+        });*/
     }
 
 

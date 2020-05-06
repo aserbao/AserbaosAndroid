@@ -2,13 +2,19 @@ package com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.R;
@@ -16,7 +22,7 @@ import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 
 public class CreateBitmapActivity extends BaseRecyclerViewActivity {
-
+    private static final String TAG = "CreateBitmapActivity";
 
     private ImageView imageView;
     private Button button;
@@ -26,12 +32,13 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("根据View生成简单的Bitmap",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("生成bitmap的时候移动View的位置",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试View不可见的时候创建图片",2));
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.framelayout_image, null);
         frameLayout = ((FrameLayout) view.findViewById(R.id.frame_layout_container));
-        imageView = ((ImageView) view.findViewById(R.id.imageView));
+        /*imageView = ((ImageView) view.findViewById(R.id.imageView));
         button = ((Button) view.findViewById(R.id.frame_layout_btn));
-        addViewToFrameLayout(view, true,false, false);
+        addViewToFrameLayout(view, true,false, false);*/
     }
 
     @Override
@@ -49,6 +56,19 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
                 }
                 Bitmap bitmap1 = getViewBitmap(frameLayout);
                 imageView.setImageBitmap(bitmap1);
+                break;
+            case 2:
+                View view1 = LayoutInflater.from(mContext).inflate(R.layout.test_water, null);
+                ConstraintLayout cardView = view1.findViewById(R.id.water_cons);
+//                ImageView imageView = view1.findViewById(R.id.card_image);
+//                imageView.setImageResource(R.drawable.emoji_00);
+//                view1.buildDrawingCache(false);
+                int dp2px100 = DisplayUtil.dp2px(200);
+                int screenHeight = DisplayUtil.getScreenHeight(this);
+                int screenWidth = DisplayUtil.getScreenWidth(this);
+                Bitmap bitmapView1 = createBitmap3(cardView,screenWidth/2,screenHeight/2);
+                Log.e(TAG, "itemClickBack: " + bitmapView1);
+
                 break;
         }
     }
@@ -86,7 +106,22 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
         canvas.scale(scaleWidth, scaleHeight);
         canvas.setMatrix(matrix);
         v.draw(canvas);
-
         return bitmap;
     }
+
+    //如果出现图片只截取了上面的一部分   那么你就需要计算控件自适应的高度了
+    public static Bitmap createBitmap3(ViewGroup v, int width, int height) {
+        //测量使得view指定大小
+        int measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
+        int measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
+        v.measure(measuredWidth, measuredHeight);
+        //调用layout方法布局后，可以得到view的尺寸大小
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        Bitmap bmp = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.RGB_565);
+        Canvas c = new Canvas(bmp);
+        c.drawColor(Color.WHITE);
+        v.draw(c);
+        return bmp;
+    }
+
 }
