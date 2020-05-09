@@ -20,6 +20,7 @@ public class BaseRecyclerBean implements Serializable {
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
     VHSeekBarBean mVHSeekBarBean;
+    GridViewBean mGridViewBean;
 
     /**
      * 顶部文字提示
@@ -29,6 +30,12 @@ public class BaseRecyclerBean implements Serializable {
     public BaseRecyclerBean(int viewType,String name) {
         this.name = name;
         this.viewType = viewType;
+    }
+
+    public BaseRecyclerBean(int tag,int viewType, GridViewBean mGridViewBean) {
+        this.viewType = viewType;
+        this.mGridViewBean = mGridViewBean;
+        this.tag = tag;
     }
 
     public BaseRecyclerBean(String name) {
@@ -108,5 +115,9 @@ public class BaseRecyclerBean implements Serializable {
 
     public VHSeekBarBean getmVHSeekBarBean() {
         return mVHSeekBarBean;
+    }
+
+    public GridViewBean getmGridViewBean() {
+        return mGridViewBean;
     }
 }

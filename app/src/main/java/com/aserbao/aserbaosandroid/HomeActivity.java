@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.GridView.GridViewActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.JetpackActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity;
@@ -47,7 +48,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CreateBitmapActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", GridViewActivity.class));
     }
 
 

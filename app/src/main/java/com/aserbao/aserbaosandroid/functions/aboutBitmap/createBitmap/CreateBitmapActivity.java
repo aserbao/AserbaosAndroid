@@ -109,6 +109,13 @@ public class CreateBitmapActivity extends BaseRecyclerViewActivity {
         return bitmap;
     }
 
+    /**
+     * 根据xml生成图片
+     * @param v
+     * @param width
+     * @param height
+     * @return
+     */
     //如果出现图片只截取了上面的一部分   那么你就需要计算控件自适应的高度了
     public static Bitmap createBitmap3(ViewGroup v, int width, int height) {
         //测量使得view指定大小
