@@ -38,7 +38,7 @@
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
-
+<!--    android:requestLegacyExternalStorage="true"-->
     <application
         android:name=".AserbaoApplication"
         android:allowBackup="true"
