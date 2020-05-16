@@ -2,10 +2,12 @@ package com.example.base.base.viewHolder
 
 import android.content.Context
 import android.text.TextUtils
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -13,6 +15,7 @@ import com.example.base.R
 import com.example.base.base.beans.BaseRecyclerBean
 import com.example.base.base.beans.GridViewBean
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener
+import com.example.base.utils.screen.DisplayUtil
 import kotlinx.android.synthetic.main.base_recycler_view_gridview_item.view.*
 import kotlinx.android.synthetic.main.circle_image_item.view.*
 
@@ -30,29 +33,22 @@ class GridViewHolder(itemView: View) : BaseClickViewHolder(itemView) {
     fun setDataSource(classBean: BaseRecyclerBean, position: Int, mIBaseRecyclerItemClickListener: IBaseRecyclerItemClickListener?) {
         super.setDataSource(position, mIBaseRecyclerItemClickListener)
         mGridViewBean = classBean.getmGridViewBean()
-        val tag = classBean.tag
         var name = mGridViewBean?.title
-        if (tag >= 0) {
-            itemView.tag = tag
-            name = if (TextUtils.isEmpty(name)) {
-                tag.toString()
-            } else {
-                "$name $tag"
-            }
-        } else {
-            name = if (TextUtils.isEmpty(name)) {
-                tag.toString()
-            } else {
-                "$name $position"
-            }
-        }
         itemView.item_tv.setText(name)
         initGridView()
     }
 
     private fun initGridView() {
-        mGridViewBean?.apply {
-            itemView.grid_view.adapter = MyAdapter(itemView.context,srcUrl)
+        itemView.grid_view?.apply {
+            mGridViewBean?.let {
+                columnWidth = it.columnWidth
+                gravity = it.gravity
+                horizontalSpacing = it.horizontalSpacing
+                numColumns = it.numColumns
+                stretchMode = it.stretchMode
+                verticalSpacing = it.verticalSpacing
+                adapter = MyAdapter(itemView.context,it.srcUrl)
+            }
         }
     }
 
@@ -62,7 +58,6 @@ class GridViewHolder(itemView: View) : BaseClickViewHolder(itemView) {
      * @constructor
      */
     class MyAdapter(var context: Context, var srcList:MutableList<String>):BaseAdapter(){
-
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             var view:View ?= convertView;
             var holder: ViewHolder? = null

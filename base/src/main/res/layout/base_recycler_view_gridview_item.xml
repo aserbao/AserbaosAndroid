@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="200dp"
+    android:background="@color/black50"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:id="@+id/item_tv"
@@ -15,10 +15,11 @@
         android:stretchMode="none"
         android:verticalSpacing="8dp"
         android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
     </GridView>
 
 
-</LinearLayout>
+</FrameLayout>
 

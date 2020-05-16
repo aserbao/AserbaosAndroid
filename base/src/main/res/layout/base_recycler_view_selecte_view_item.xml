@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
-
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/item_tv"
+        style="@style/global_text_view_style"
+        />
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:layout_centerHorizontal="true"
-        android:id="@+id/item_rv"
+        android:id="@+id/itemRv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/sel_btn"
+        android:text="展开"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-
-</RelativeLayout>
+</LinearLayout>

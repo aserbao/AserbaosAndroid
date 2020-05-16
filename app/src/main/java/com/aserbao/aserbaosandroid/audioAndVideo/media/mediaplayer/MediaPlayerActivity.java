@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -53,16 +54,18 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
         mMediaPlayer = new MediaPlayer();
         try {
 //            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
+            path = Environment.getExternalStorageDirectory().getAbsolutePath()+"/output.mp3";
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            /*mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     mMediaPlayer.setDisplay(mHolder);
                     mMediaPlayer.start();
                 }
-            });
+            });*/
+            mMediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

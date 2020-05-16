@@ -1,5 +1,8 @@
 package com.example.base.base.beans;
 
+import com.example.base.base.interfaces.ISelItemListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,29 +13,36 @@ import java.util.List;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.comon.base.beans
  */
-public class VHSelecteBean extends VHBaseBean {
-    int defaultPosition;// 默认选中位置
-    List<Integer> mIntList;
+public class VHSelecteBean {
+    String desc;
+    SelBean defaultSelBean;
+    List<SelBean> classBean = new ArrayList<>();
+    ISelItemListener iSelItemListener;
 
-    public VHSelecteBean(String mDescription, int mTag, int defaultPosition, List<Integer> mIntList) {
-        super(mDescription, mTag);
-        this.defaultPosition = defaultPosition;
-        this.mIntList = mIntList;
+    public VHSelecteBean(String desc, List<SelBean> classBeen, ISelItemListener iSelItemListener) {
+        this.desc = desc;
+        this.classBean = classBeen;
+        this.iSelItemListener = iSelItemListener;
     }
 
-    public int getDefaultPosition() {
-        return defaultPosition;
+    public VHSelecteBean(String desc, SelBean defaultSelBean, List<SelBean> classBean, ISelItemListener iSelItemListener) {
+        this.desc = desc;
+        this.defaultSelBean = defaultSelBean;
+        this.classBean = classBean;
+        this.iSelItemListener = iSelItemListener;
     }
 
-    public void setDefaultPosition(int defaultPosition) {
-        this.defaultPosition = defaultPosition;
+    public String getDesc() {
+        return desc;
     }
 
-    public List<Integer> getmIntList() {
-        return mIntList;
+    public List<SelBean> getClassBean() {
+        return classBean;
     }
 
-    public void setmIntList(List<Integer> mIntList) {
-        this.mIntList = mIntList;
+    public ISelItemListener getiSelItemListener() {
+        return iSelItemListener;
     }
+
+
 }

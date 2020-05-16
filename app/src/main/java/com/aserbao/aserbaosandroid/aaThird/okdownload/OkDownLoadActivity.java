@@ -103,7 +103,6 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
             // ignore the same task has already completed in the past.
             .setPassIfAlreadyCompleted(true)
             .build();
-
         Log.e(TAG, "singleDownload: " + s );
         downloadTask.enqueue(new DownloadListener3() {
             @Override
