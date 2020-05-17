@@ -67,7 +67,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Su
                 Toast.makeText(this, "请提供相机权限", Toast.LENGTH_SHORT).show();
                 return;
             }
-            manager.openCamera("0", new CameraDevice.StateCallback() {
+            manager.openCamera("1", new CameraDevice.StateCallback() {
                 @Override
                 public void onOpened(@NonNull CameraDevice camera) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

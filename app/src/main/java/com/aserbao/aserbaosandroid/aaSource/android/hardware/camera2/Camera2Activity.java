@@ -11,6 +11,7 @@ public class Camera2Activity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("Camera2超简单预览", Camera2SimpleShowSVActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Camera2超简单预览", Camera2SimpleShowSVActivity.class));
     }
 
     @Override

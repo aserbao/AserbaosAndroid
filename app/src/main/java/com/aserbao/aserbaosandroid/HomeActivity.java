@@ -10,6 +10,8 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
 import com.aserbao.aserbaosandroid.aaSource.android.view.Choreographer.ChoreographerActivity;
@@ -61,8 +63,8 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ChoreographerActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("测试", 0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2CaptuerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2SimpleShowSVActivity.class));
 
 
     }
