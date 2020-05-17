@@ -82,7 +82,6 @@ class Camera2CaptuerActivity : AppCompatActivity(), SurfaceHolder.Callback {
      */
     fun openCamera() {
         val mCameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
-
         var usedCameraId: String? = null
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

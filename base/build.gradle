@@ -21,6 +21,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 greendao {
     schemaVersion 1 //数据库版本号,必须 >= 1
