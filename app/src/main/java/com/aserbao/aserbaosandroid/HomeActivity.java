@@ -64,7 +64,6 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2CaptuerActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2SimpleShowSVActivity.class));
 
 
     }

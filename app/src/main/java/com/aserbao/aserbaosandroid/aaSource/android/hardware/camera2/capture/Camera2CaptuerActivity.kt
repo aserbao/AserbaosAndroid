@@ -3,31 +3,91 @@ package com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.graphics.ImageFormat
+import android.graphics.Point
+import android.graphics.SurfaceTexture
 import android.hardware.camera2.*
+import android.media.ImageReader
+import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Surface
-import android.view.SurfaceHolder
-import android.view.SurfaceView
+import android.os.Handler
+import android.os.HandlerThread
+import android.util.Log
+import android.util.Size
+import android.view.*
 import android.widget.Toast
+import androidx.annotation.AnyThread
+import androidx.annotation.WorkerThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CameraOperaion
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CompareSizesByArea
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Facing
+import com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
 import com.aserbao.aserbaosandroid.databinding.ActivityCaptureCameraBinding
 import com.getremark.base.kotlin_ext.singleClick
+import kotlinx.android.synthetic.main.texture_view_layout.view.*
 import java.util.*
+import java.util.concurrent.Semaphore
+import java.util.concurrent.TimeUnit
 
-class Camera2CaptuerActivity : AppCompatActivity(), SurfaceHolder.Callback {
-    lateinit var mSurfaceView: SurfaceView
-    lateinit var mHolder: SurfaceHolder
+class Camera2CaptuerActivity : AppCompatActivity() {
+    companion object{
+         private const val TAG = "Camera2SurfaceViewActiv"
+         const val MAX_PREVIEW_WIDTH: Int = 1080
+         const val MAX_PREVIEW_HEIGHT: Int = 1920
+         const val MAX_IMAGE_WIDTH: Int = 4032
+         const val MAX_IMAGE_HEIGHT: Int = 3024
+    }
+
+    /**
+     * [TextureView.SurfaceTextureListener] handles several lifecycle events on a
+     * [TextureView].
+     */
+    private val surfaceTextureListener = object : TextureView.SurfaceTextureListener {
+
+        override fun onSurfaceTextureAvailable(texture: SurfaceTexture, width: Int, height: Int) {
+            openCamera(width, height)
+        }
+
+        override fun onSurfaceTextureSizeChanged(texture: SurfaceTexture, width: Int, height: Int) {
+            Log.e(TAG, ": onSurfaceTextureSizeChanged width = " + width + " height = "+ height );
+        }
+
+        override fun onSurfaceTextureDestroyed(surfaceTexture: SurfaceTexture) = true
+
+        override fun onSurfaceTextureUpdated(surfaceTexture: SurfaceTexture) = Unit
+
+    }
+
+    /**
+     * A [Semaphore] to prevent the app from exiting before closing the camera.
+     */
+    private val cameraOpenCloseLock = Semaphore(1)
+
+
+    lateinit var mTextureView: AutoFitTextureView
     lateinit var activityCaptureCameraBinding:ActivityCaptureCameraBinding
     private var captureRequest: CaptureRequest? = null
     var mCameraCharacteristics:CameraCharacteristics ?= null
+    private var mediaRecorder: MediaRecorder? = null
+
+    /**
+     * The [android.util.Size] of video recording.
+     */
+    private lateinit var videoSize: Size
+
+    private lateinit var previewSize: Size // 最适合的尺寸
+
+    var ratioWH:Float = 9f/16f // 宽高比
 
     open var cameraDevice:CameraDevice ?= null
-
     var cameraFacing = Facing.FRONT;
+
+    private var imageReader: ImageReader? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityCaptureCameraBinding = ActivityCaptureCameraBinding.inflate(LayoutInflater.from(this))
@@ -37,24 +97,13 @@ class Camera2CaptuerActivity : AppCompatActivity(), SurfaceHolder.Callback {
         initViewEvent();
     }
 
-    private fun initView() {
-        mSurfaceView = activityCaptureCameraBinding.mSurface;
-        mHolder = mSurfaceView.holder
-        mHolder.addCallback(this)
-        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)
-    }
-
-    private fun initViewEvent() {
-        activityCaptureCameraBinding.apply {
-            switchBtn.singleClick {
-                if (cameraFacing == Facing.BACK) {
-                    cameraFacing = Facing.FRONT
-                }else{
-                    cameraFacing = Facing.BACK
-                }
-                closeCamera()
-                openCamera()
-            }
+    override fun onResume() {
+        super.onResume()
+        if(mTextureView.isAvailable){
+            mTextureView.setAspectRatio(ratioWH)
+            openCamera(mTextureView.width,mTextureView.height)
+        }else{
+            mTextureView.surfaceTextureListener = surfaceTextureListener
         }
     }
 
@@ -69,76 +118,82 @@ class Camera2CaptuerActivity : AppCompatActivity(), SurfaceHolder.Callback {
         }
     }
 
-    override fun surfaceCreated(holder: SurfaceHolder) {
-        mHolder = holder
-        openCamera()
+
+    private fun initView() {
+        mTextureView = activityCaptureCameraBinding.autoTextureView;
     }
 
-    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
-    override fun surfaceDestroyed(holder: SurfaceHolder) {}
+    private fun initViewEvent() {
+        activityCaptureCameraBinding.apply {
+            switchBtn.singleClick {
+                if (cameraFacing == Facing.BACK) {
+                    cameraFacing = Facing.FRONT
+                }else{
+                    cameraFacing = Facing.BACK
+                }
+                closeCamera()
+                openCamera(mTextureView.width, mTextureView.height)
+            }
+        }
+    }
+
+
+
+
     /**
      * 打开相机权限
      * @param holder
      */
-    fun openCamera() {
+    fun openCamera(width: Int, height: Int) {
+        Log.e(TAG, ": openCamera width = "+ width + " height = " + height);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "请提供相机权限", Toast.LENGTH_SHORT).show()
+            return
+        }
         val mCameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
         var usedCameraId: String? = null
         try {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "请提供相机权限", Toast.LENGTH_SHORT).show()
-                return
-            }
             if (mCameraManager != null) {
                 for (cameraId in mCameraManager.getCameraIdList()) {
                     mCameraCharacteristics = mCameraManager.getCameraCharacteristics(cameraId)
                     val facing: Int = mCameraCharacteristics!!.get(CameraCharacteristics.LENS_FACING)
                     if (facing != null && facing === cameraFacing.value) {
                         usedCameraId = cameraId
-//                        setupCameraCharacteristics(mCameraCharacteristics)
+                        setupCameraCharacteristics(mCameraCharacteristics!!,width,height)
                         break
                     }
                 }
             }
+            mediaRecorder = MediaRecorder()
             mCameraManager.openCamera(usedCameraId, mStateCall, null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
     }
-    companion object {
-        private const val TAG = "Camera2SurfaceViewActiv"
+
+    private fun setupCameraCharacteristics(characteristics: CameraCharacteristics,width: Int,height: Int) {
+        val map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP) ?:
+        throw RuntimeException("Cannot get available preview/video sizes")
+        videoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder::class.java))
+        var outputSizes = map.getOutputSizes(SurfaceTexture::class.java)
+//        previewSize = CameraOperaion.chooseOptimalSize(map.getOutputSizes(SurfaceTexture::class.java), width,height,ratioWH)
+        previewSize = CameraOperaion.chooseOptimalSize(outputSizes,mTextureView.width,mTextureView.height,1920,1080,ratioWH)!!
+        mTextureView.setAspectRatio(ratioWH)
     }
+
+    /**
+     * we don't use sizes larger than 1080p,MediaRecorder cannot handle such a high-resolution video
+     * @param choices Array<Size>
+     * @return Size
+     */
+    private fun chooseVideoSize(choices: Array<Size>) = choices.firstOrNull {
+        it.width == ((it.height / ratioWH).toInt()) && it.width <= 1080 } ?: choices[choices.size - 1]
+
 
     var mStateCall = object:CameraDevice.StateCallback() {
         override fun onOpened(camera: CameraDevice) {
             cameraDevice = camera;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                val surface = mHolder.surface
-                val mSurfaces: MutableList<Surface> = ArrayList()
-                mSurfaces.add(surface)
-                try {
-                    camera.createCaptureSession(mSurfaces, object : CameraCaptureSession.StateCallback() {
-                        override fun onConfigured(session: CameraCaptureSession) {
-                            var cameraCaptureRequest: CaptureRequest.Builder? = null
-                            try {
-                                cameraCaptureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-                                cameraCaptureRequest.addTarget(mHolder.surface)
-                                captureRequest = cameraCaptureRequest.build()
-                                session.setRepeatingRequest(captureRequest, object : CameraCaptureSession.CaptureCallback() {
-                                    override fun onCaptureStarted(session: CameraCaptureSession, request: CaptureRequest, timestamp: Long, frameNumber: Long) {
-                                        super.onCaptureStarted(session, request, timestamp, frameNumber)
-                                    }
-                                }, null)
-                            } catch (e: CameraAccessException) {
-                                e.printStackTrace()
-                            }
-                        }
-
-                        override fun onConfigureFailed(session: CameraCaptureSession) {}
-                    }, null)
-                } catch (e: CameraAccessException) {
-                    e.printStackTrace()
-                }
-            }
+            startPreview(camera)
         }
 
         override fun onDisconnected(camera: CameraDevice) {}
@@ -147,6 +202,41 @@ class Camera2CaptuerActivity : AppCompatActivity(), SurfaceHolder.Callback {
         override fun onClosed(camera: CameraDevice) {
             super.onClosed(camera)
             cameraDevice  = null
+        }
+    }
+
+    /**
+     * [CameraDevice.StateCallback] is called when [CameraDevice] changes its status.
+     */
+    private fun startPreview(camera: CameraDevice) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            var surfaceTexture = mTextureView.surfaceTexture
+            surfaceTexture.setDefaultBufferSize(previewSize.width,previewSize.height)
+            Log.e(TAG, ": startPreview previewSize = " + previewSize );
+            val surface = Surface(surfaceTexture)
+            var cameraCaptureRequest: CaptureRequest.Builder? = null
+            cameraCaptureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+            cameraCaptureRequest.addTarget(surface)
+            try {
+                camera.createCaptureSession(Arrays.asList(surface), object : CameraCaptureSession.StateCallback() {
+                    override fun onConfigured(session: CameraCaptureSession) {
+                        try {
+                            captureRequest = cameraCaptureRequest.build()
+                            session.setRepeatingRequest(captureRequest, object : CameraCaptureSession.CaptureCallback() {
+                                override fun onCaptureStarted(session: CameraCaptureSession, request: CaptureRequest, timestamp: Long, frameNumber: Long) {
+                                    super.onCaptureStarted(session, request, timestamp, frameNumber)
+                                }
+                            }, null)
+                        } catch (e: CameraAccessException) {
+                            e.printStackTrace()
+                        }
+                    }
+
+                    override fun onConfigureFailed(session: CameraCaptureSession) {}
+                }, null)
+            } catch (e: CameraAccessException) {
+                e.printStackTrace()
+            }
         }
     }
 

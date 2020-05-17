@@ -13,26 +13,20 @@
         android:layout_height="10dp"
         android:background="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="100dp"
+        app:layout_constraintGuide_begin="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintDimensionRatio="h,9:16"
         app:layout_constraintTop_toBottomOf="@+id/topGuideLine"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="0dp"
         android:layout_height="0dp">
-
-        <SurfaceView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/mSurface" />
-
         <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
-            android:id="@+id/auto_fit_texture_view"
+            android:id="@+id/autoTextureView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
