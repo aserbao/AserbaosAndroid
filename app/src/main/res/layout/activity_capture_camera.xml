@@ -18,8 +18,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/frameLayout"
         app:layout_constraintDimensionRatio="h,9:16"
+        android:background="@color/black60"
         app:layout_constraintTop_toBottomOf="@+id/topGuideLine"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,7 +30,6 @@
             android:id="@+id/autoTextureView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
     </FrameLayout>
 
 

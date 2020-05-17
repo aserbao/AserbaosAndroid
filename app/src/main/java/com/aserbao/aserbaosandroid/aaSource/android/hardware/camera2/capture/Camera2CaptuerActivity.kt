@@ -3,43 +3,34 @@ package com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.content.res.Configuration
-import android.graphics.ImageFormat
-import android.graphics.Point
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.*
 import android.media.ImageReader
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
 import android.util.Log
 import android.util.Size
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Surface
+import android.view.TextureView
 import android.widget.Toast
-import androidx.annotation.AnyThread
-import androidx.annotation.WorkerThread
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.app.ActivityCompat
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CameraOperaion
-import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CompareSizesByArea
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Facing
 import com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
 import com.aserbao.aserbaosandroid.databinding.ActivityCaptureCameraBinding
 import com.getremark.base.kotlin_ext.singleClick
-import kotlinx.android.synthetic.main.texture_view_layout.view.*
 import java.util.*
-import java.util.concurrent.Semaphore
-import java.util.concurrent.TimeUnit
 
 class Camera2CaptuerActivity : AppCompatActivity() {
     companion object{
          private const val TAG = "Camera2SurfaceViewActiv"
-         const val MAX_PREVIEW_WIDTH: Int = 1080
-         const val MAX_PREVIEW_HEIGHT: Int = 1920
-         const val MAX_IMAGE_WIDTH: Int = 4032
-         const val MAX_IMAGE_HEIGHT: Int = 3024
+         const val W9H16 = 9f/16f;
+         const val W3H4 = 3f/4f;
     }
 
     /**
@@ -62,12 +53,6 @@ class Camera2CaptuerActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * A [Semaphore] to prevent the app from exiting before closing the camera.
-     */
-    private val cameraOpenCloseLock = Semaphore(1)
-
-
     lateinit var mTextureView: AutoFitTextureView
     lateinit var activityCaptureCameraBinding:ActivityCaptureCameraBinding
     private var captureRequest: CaptureRequest? = null
@@ -81,7 +66,7 @@ class Camera2CaptuerActivity : AppCompatActivity() {
 
     private lateinit var previewSize: Size // 最适合的尺寸
 
-    var ratioWH:Float = 9f/16f // 宽高比
+    var ratioWH:Float = W9H16 // 宽高比
 
     open var cameraDevice:CameraDevice ?= null
     var cameraFacing = Facing.FRONT;
@@ -133,6 +118,16 @@ class Camera2CaptuerActivity : AppCompatActivity() {
                 }
                 closeCamera()
                 openCamera(mTextureView.width, mTextureView.height)
+            }
+            ratioBtn.singleClick {
+                var frameLayout = activityCaptureCameraBinding.frameLayout
+                var layoutParams = frameLayout.layoutParams as ConstraintLayout.LayoutParams
+                layoutParams.dimensionRatio = "h,3:4"
+                activityCaptureCameraBinding.frameLayout.layoutParams = layoutParams
+                ratioWH = W3H4
+                closeCamera()
+                openCamera(mTextureView.width,mTextureView.height)
+
             }
         }
     }
