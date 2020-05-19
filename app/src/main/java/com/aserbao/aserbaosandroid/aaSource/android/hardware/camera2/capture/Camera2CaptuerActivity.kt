@@ -127,13 +127,9 @@ class Camera2CaptuerActivity : AppCompatActivity() {
                 ratioWH = W3H4
                 closeCamera()
                 openCamera(mTextureView.width,mTextureView.height)
-
             }
         }
     }
-
-
-
 
     /**
      * 打开相机权限

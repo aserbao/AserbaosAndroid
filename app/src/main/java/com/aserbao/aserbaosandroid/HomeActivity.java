@@ -25,6 +25,7 @@ import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.ViewModelActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.mediaplayer.MediaPlayerActivity;
+import com.aserbao.aserbaosandroid.functions.aaSmallFunctions.clickEffect.ClickEffectActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.cutout.CutOutActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
@@ -63,7 +64,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("其他", OthersActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2CaptuerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ClickEffectActivity.class));
 
 
     }
