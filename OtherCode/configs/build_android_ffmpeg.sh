@@ -6,6 +6,7 @@ SOURCE=$CWD/ffmpeg-3.3.9
 OUTPUT_DIR=$CWD/build/android/ffmpeg
 X264_DIR=$CWD/build/android/x264
 PNG_DIR=$CWD/build/android/png
+MP3LAME_DIR=$CWD/build/android/libmp3lame
 ACC_DIR=
 TEMP_DIR="tmp/android/ffmpeg"
 ARCHS="armeabi-v7a arm64-v8a"
@@ -14,22 +15,24 @@ ARCHS="armeabi-v7a arm64-v8a"
 MODULES="\
 	--enable-gpl
 	--enable-libx264 \
+	--enable-libmp3lame \
 	--enable-hwaccel=h264_vaapi \
 	--enable-hwaccel=h264_vaapi \
 	--enable-hwaccel=h264_dxva2 \
 	--enable-hwaccel=mpeg4_vaapi \
 	--enable-hwaccels \
+	--enable-pthreads \
 	--enable-jni \
 	--enable-mediacodec \
 	--enable-gpl \
 	--enable-nonfree \
 	--enable-version3 \
 	--enable-small \
-	--enable-shared \
 	--disable-vda \
 	--disable-iconv \
 	--disable-encoders \
 	--enable-encoder=libx264 \
+	--enable-encoder=libmp3lame \
 	--enable-encoder=mpeg4 \
 	--enable-encoder=aac \
 	--enable-encoder=gif \
@@ -37,6 +40,7 @@ MODULES="\
 	--enable-encoder=pcm_s16le \
 	--disable-muxers \
 	--enable-muxer=mp4 \
+	--enable-muxer=adts \
 	--enable-muxer=gif \
 	--enable-muxer=mp3 \
 	--enable-muxer=wav \
@@ -75,9 +79,6 @@ MODULES="\
 	--enable-bsf=h264_mp4toannexb \
 	--disable-indevs \
 	--enable-zlib \
-	--enable-neon \
-	--enable-asm \
-	--enable-shared \
 	--enable-avdevice"
 
 GENERAL="\
@@ -169,6 +170,10 @@ for ARCH in $ARCHS; do
 	fi
 	if [ "$PNG_DIR" ] ; then
 		EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L$PNG_DIR/$ARCH/lib"
+	fi
+	if [ "$MP3LAME_DIR" ] ; then
+		EXTRA_CFLAGS="$EXTRA_CFLAGS -I$MP3LAME_DIR/$ARCH/include"
+		EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L$MP3LAME_DIR/$ARCH/lib"
 	fi
 	if [ "$ACC_DIR" ] ; then
 		EXTRA_CFLAGS="$EXTRA_CFLAGS -I$ACC_DIR/$ARCH/include"
