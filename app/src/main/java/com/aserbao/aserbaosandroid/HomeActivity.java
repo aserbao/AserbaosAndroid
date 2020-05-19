@@ -14,6 +14,7 @@ import com.aserbao.aserbaosandroid.aaThird.jetpack.lifecycle.LifecycleActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.liveData.LiveDataActivity;
 import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.ViewModelActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
+import com.aserbao.aserbaosandroid.functions.aaSmallFunctions.clickEffect.ClickEffectActivity;
 import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
 import com.aserbao.aserbaosandroid.kotlin.scopes.KotlinScopeFunctionsActivity;
 import com.aserbao.aserbaosandroid.ui.simpleDraw.SimpleDrawActivity;
@@ -49,7 +50,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CameraXPreviewActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SimpleDrawActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ClickEffectActivity.class));
     }
 
 

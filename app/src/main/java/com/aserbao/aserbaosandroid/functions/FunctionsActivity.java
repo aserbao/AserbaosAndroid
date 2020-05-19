@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.functions;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.functions.aaSmallFunctions.SmallFunctionsActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.AboutBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.database.DataBaseActivity;
@@ -36,6 +37,7 @@ public class FunctionsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("网络状态监听", NetWorkNotification.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("关于Bitmap", AboutBitmapActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("正则表达式", RegexActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("小功能合集", SmallFunctionsActivity.class));
 
     }
     @Override

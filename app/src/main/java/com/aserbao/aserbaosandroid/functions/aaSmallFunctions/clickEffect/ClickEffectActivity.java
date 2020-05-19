@@ -8,7 +8,7 @@ import com.aserbao.aserbaosandroid.R;
 import com.example.base.base.BaseRecyclerViewActivity;
 
 /**
- * 控件点击涟漪
+ * 控件点击涟漪, 按钮点击效果
  */
 public class ClickEffectActivity extends BaseRecyclerViewActivity {
 
