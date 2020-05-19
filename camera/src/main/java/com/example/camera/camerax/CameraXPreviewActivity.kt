@@ -59,7 +59,6 @@ class CameraXPreviewActivity : AppCompatActivity() {
 
             // Setup image capture metadata
             val metadata = ImageCapture.Metadata().apply {
-
                 // Mirror image when using the front camera
                 isReversedHorizontal = lensFacing == CameraSelector.LENS_FACING_FRONT
             }

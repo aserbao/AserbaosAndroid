@@ -37,7 +37,7 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
     private fun scopeBuildExample() {
         runBlocking {
             launch {
-                delay(520L)
+                delay(886)
                  ALogUtils.d(TAG,"runBlocking task is running")
             }
 
@@ -47,7 +47,7 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
                      ALogUtils.d(TAG,"coroutine scope task is running")
                 }
 
-                delay(886)
+                delay(520)
                 ALogUtils.d(TAG,"coroutine scope is finish")
             }
              ALogUtils.d(TAG,"coroutine scope is over")
@@ -81,10 +81,11 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
     fun simpleExample(){
         GlobalScope.launch {
             delay(520)
-            ALogUtils.d(TAG,"World!")
+            ALogUtils.d(TAG,"World! ")
         }
         ALogUtils.d(TAG,"Hello,")
-        runBlocking { delay(1314) }
+        Thread.sleep(123)
+//        runBlocking { delay(1314) }
         ALogUtils.d(TAG,"GlobalScope ok")
     }
 

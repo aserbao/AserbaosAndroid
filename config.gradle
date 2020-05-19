@@ -62,6 +62,10 @@ ext {
         roomRxJava2          : 'android.arch.persistence.room:rxjava2:1.1.1',
 
         // network
+        retrofit             : 'com.squareup.retrofit2:retrofit:2.7.1',
+        retrofitConvertGson : 'com.squareup.retrofit2:converter-gson:2.7.1',
+        retrofit2_rxJava     : 'com.squareup.retrofit2:adapter-rxjava2:2.7.1',
+        retrofitConverter    : 'com.squareup.retrofit2:retrofit-converters:2.7.1',
         okhttp               : 'com.squareup.okhttp3:okhttp:4.0.1',
         logging_interceptor  : 'com.squareup.okhttp3:logging-interceptor:4.0.1',
         gson                 : 'com.google.code.gson:gson:2.8.0',
@@ -94,9 +98,7 @@ ext {
     ktxCoroutinesAndroid : 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1',
     utilCode             : 'com.blankj:utilcode:1.11.1',
     protobuf             : 'com.google.protobuf:protobuf-java:3.11.1',
-    retrofit             : 'com.squareup.retrofit2:retrofit:2.7.0',
-    retrofitConvertProto : 'com.squareup.retrofit2:converter-protobuf:2.7.0',
-    retrofitConverter    : 'com.squareup.retrofit2:retrofit-converters:2.7.0',
+
     okhttp3              : 'com.squareup.okhttp3:okhttp:3.10.0',
     loggingInterceptor   : 'com.squareup.okhttp3:logging-interceptor:3.10.0',
     gsonConver           : 'com.squareup.retrofit2:converter-gson:2.4.0',

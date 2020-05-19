@@ -75,6 +75,9 @@ dependencies {
 //    api rootProject.ext.dependencies["roomRxJava2"]
 
     //network
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofitConvertGson"]
+    api rootProject.ext.dependencies["retrofitConverter"]
     api rootProject.ext.dependencies["okhttp"]
     api rootProject.ext.dependencies["logging_interceptor"]
     api rootProject.ext.dependencies["gson"]
