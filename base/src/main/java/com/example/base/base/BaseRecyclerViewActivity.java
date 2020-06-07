@@ -214,6 +214,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, FULL_SCREEN, bundle);
         }else {
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
         }
     }

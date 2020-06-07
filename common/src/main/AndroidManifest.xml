@@ -1,2 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aserbao.common" />
+    package="com.aserbao.common">
+
+    <application>
+        <activity android:name=".ui.CommonUIActivity"></activity>
+        <activity android:name=".ui.photo.CropImageViewActivity" />
+    </application>
+
+</manifest>
