@@ -32,9 +32,11 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBean.add(new BaseRecyclerBean("这里有案例",PhotoGalleryAct.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("使用CoordinatorLayout动态调整FloatingActionButton的位置",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("CoordinatorLayout嵌套AppBarLayout",1));
         mBaseRecyclerBean.add(new BaseRecyclerBean("CoordinatorLayout+AppBarLayout的使用",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("头像搜索",3));
         mBaseRecyclerBean.add(new BaseRecyclerBean("简单的CoordinatorLayout的使用",10));
 
     }
@@ -118,6 +120,9 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
 
                 addViewToFrameLayout(simpleView, true,true, false);
                 break;
+            case 3:
+                createHeadLayout();
+                break;
             case 10:
                 View view1 = LayoutInflater.from(this).inflate(R.layout.simple_coordinator_layout, null);
                 addViewToFrameLayout(view1, true,true, false);
@@ -128,4 +133,25 @@ public class CoordinatorLayoutActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "CoordinatorLayoutActivi";
 
 
+    public void createHeadLayout(){
+        View simpleView = LayoutInflater.from(this).inflate(R.layout.coordinatorlayout_head_layout, null);;
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) simpleView.findViewById(R.id.collapsingToolbarLayout);
+        Toolbar tb = (Toolbar) simpleView.findViewById(R.id.toolbar);
+        AppBarLayout simpleAppBarLayout = (AppBarLayout) simpleView.findViewById(R.id.app_bar_layout);
+
+        setSupportActionBar(tb);//设置toolbar
+        collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.LEFT);//设置收缩后标题的位置
+        collapsingToolbarLayout.setExpandedTitleGravity(Gravity.LEFT);////设置展开后标题的位置
+        collapsingToolbarLayout.setTitle("Hello");//设置标题的名字
+        collapsingToolbarLayout.setExpandedTitleColor(Color.BLACK);//设置展开后标题的颜色
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.TRANSPARENT);//设置收缩后标题的颜色
+        simpleAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                Log.e(TAG, "onOffsetChanged: " + i );
+            }
+        });
+
+        addViewToFrameLayout(simpleView, true,true, false);
+    }
 }

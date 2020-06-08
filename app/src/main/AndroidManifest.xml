@@ -49,6 +49,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
+        <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct"/>
         <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity"></activity>
         <activity android:name=".aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity" />
         <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />

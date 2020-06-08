@@ -14,6 +14,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture.Cam
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
+import com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.view.Choreographer.ChoreographerActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.GridView.GridViewActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -68,7 +69,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CropImageViewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CoordinatorLayoutActivity.class));
 
 
     }
