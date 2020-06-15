@@ -85,7 +85,7 @@
             android:textSize="25sp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:background="@color/red"
+            android:background="@color/color_red_light"
             android:layout_width="match_parent"
             android:layout_height="100dp"/>
 

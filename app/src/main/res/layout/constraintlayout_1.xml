@@ -19,7 +19,7 @@
         android:layout_height="1dp"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:background="@color/red"
+        android:background="@color/color_red_light"
         android:clipChildren="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

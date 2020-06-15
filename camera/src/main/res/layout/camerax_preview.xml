@@ -25,7 +25,7 @@
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/ic_switch"
-        android:tint="@color/red"
+        android:tint="@color/color_red_light"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
         app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
         app:layout_constraintLeft_toLeftOf="parent"
