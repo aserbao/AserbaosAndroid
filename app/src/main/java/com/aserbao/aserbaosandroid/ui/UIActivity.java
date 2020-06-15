@@ -20,10 +20,10 @@ public class UIActivity extends BaseRecyclerViewActivity {
 
 
     public void initGetData() {
+        mBaseRecyclerBean.add(new BaseRecyclerBean("自定义View", CustomViewActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Canvas这边请", CanvasActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("随机生成不重叠的圆", RandomAndNoOverLayActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("动画效果", AnimationActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("自定义View", CustomViewActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Android自定义绘制这边走", SimpleDrawActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("RecyclerView的使用", RecyclerViewActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("文本视图的使用", TextsActivity.class));

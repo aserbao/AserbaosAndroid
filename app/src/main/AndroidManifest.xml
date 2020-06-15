@@ -38,7 +38,7 @@
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
-<!--    android:requestLegacyExternalStorage="true"-->
+
     <application
         android:name=".AserbaoApplication"
         android:allowBackup="true"
@@ -49,8 +49,9 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct"/>
-        <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity"></activity>
+        <activity android:name=".ui.customView.seekbar.SeekBarActivity"></activity>
+        <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
+        <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />
         <activity android:name=".aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity" />
         <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
         <activity android:name=".kotlin.KotlinActivity" />

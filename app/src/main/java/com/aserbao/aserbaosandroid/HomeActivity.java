@@ -30,6 +30,7 @@ import com.aserbao.aserbaosandroid.functions.aaSmallFunctions.clickEffect.ClickE
 import com.aserbao.aserbaosandroid.functions.aboutBitmap.createBitmap.CreateBitmapActivity;
 import com.aserbao.aserbaosandroid.functions.cutout.CutOutActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
+import com.aserbao.aserbaosandroid.ui.customView.seekbar.SeekBarActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
 import com.aserbao.common.ui.CommonUIActivity;
@@ -69,7 +70,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CoordinatorLayoutActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SeekBarActivity.class));
 
 
     }
