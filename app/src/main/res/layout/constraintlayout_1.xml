@@ -25,7 +25,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="16:9居中"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+    </androidx.viewpager.widget.ViewPager>
 
     <FrameLayout
         android:id="@+id/cons_ll"
@@ -38,13 +47,7 @@
         android:background="@color/white"
         android:layout_width="0dp"
         android:layout_height="0dp">
-        <TextView
-            android:text="16:9居中"
-            android:textSize="22sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
     </FrameLayout>
 
     <Button
@@ -93,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button2"
-        app:layout_constraintRight_toLeftOf="@id/button3"
+        android:layout_marginRight="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_group_1" />
 
@@ -105,7 +108,6 @@
         android:layout_marginRight="4dp"
         android:text="Button"
         app:layout_constraintLeft_toRightOf="@+id/button2"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <Button

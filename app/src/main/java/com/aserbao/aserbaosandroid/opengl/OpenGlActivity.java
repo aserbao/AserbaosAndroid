@@ -19,10 +19,9 @@ public class OpenGlActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("Camera+OpenGl显示", CameraOpenglActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("相机录制", RecordCameraActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("给相机添加滤镜", FilterCameraActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("GlSurfaceView的录制", OneOpenGlActivity.class));
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-
-    }
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) { }
 }

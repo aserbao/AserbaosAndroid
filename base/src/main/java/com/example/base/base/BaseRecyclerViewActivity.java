@@ -1,8 +1,10 @@
 package com.example.base.base;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +28,10 @@ import com.example.base.utils.data.ASourceUtil;
 import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 功能:
@@ -71,6 +76,8 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initGetData();
         initViewForLinear();
         initViewTopSpinner();
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
     }
 
     private void initView() {
