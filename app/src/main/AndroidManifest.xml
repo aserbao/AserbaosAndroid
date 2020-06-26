@@ -130,6 +130,7 @@
         <activity android:name=".algorithm.AlgorithmActivity" />
         <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
         <activity android:name=".aaThird.videocache.VideoCacheActivity" />
+        <activity android:name=".ui.texts.textViews.custom.CustomTextViewActivity" />
         <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity2" />

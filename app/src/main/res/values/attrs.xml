@@ -221,4 +221,26 @@
         <attr name="bsb_rtl" format="boolean"/> <!--right to left, default: false-->
         <attr name="android:enabled"/>
     </declare-styleable>
+
+
+    <declare-styleable name="VerticalTextView">
+        <attr name="v_text" format="string" />
+        <attr name="v_textSize" format="dimension" />
+        <attr name="v_textColor" format="color" />
+        <attr name="v_start" format="enum">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="v_line" format="enum">
+            <enum name="none" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="v_lineWidth" format="dimension" />
+        <attr name="v_lineColor" format="color" />
+        <attr name="v_textVerticalMargin" format="dimension" />
+        <attr name="v_textHorizontalMargin" format="dimension" />
+        <attr name="v_cutChars" format="string" />
+        <attr name="v_line2TextMargin" format="dimension" />
+    </declare-styleable>
 </resources>
