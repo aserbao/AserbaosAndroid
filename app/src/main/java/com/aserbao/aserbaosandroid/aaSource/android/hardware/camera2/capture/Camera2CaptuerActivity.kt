@@ -28,7 +28,7 @@ import java.util.*
 
 class Camera2CaptuerActivity : AppCompatActivity() {
     companion object{
-         private const val TAG = "Camera2SurfaceViewActiv"
+         private const val TAG = "Camera2CaptuerActivity"
          const val W9H16 = 9f/16f;
          const val W3H4 = 3f/4f;
     }

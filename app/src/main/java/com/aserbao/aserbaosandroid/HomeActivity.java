@@ -10,8 +10,10 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Camera2Activity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.java.util.concurent.executor.ThreadPoolExecutorActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.constraint.ConstraintLayoutActvity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.design.widget.CoordinatorLayout.CoordinatorLayoutActivity;
@@ -33,6 +35,7 @@ import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
 import com.aserbao.aserbaosandroid.ui.customView.seekbar.SeekBarActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
+import com.aserbao.aserbaosandroid.ui.texts.textViews.custom.CustomTextViewActivity;
 import com.aserbao.common.ui.CommonUIActivity;
 import com.aserbao.common.ui.photo.CropImageViewActivity;
 import com.bumptech.glide.Glide;
@@ -70,7 +73,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", MediaPlayerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2Activity.class));
 
 
     }

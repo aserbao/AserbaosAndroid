@@ -39,34 +39,50 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <TextView
             android:id="@+id/settingBtn"
             android:layout_weight="1"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/emoji_00"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <ImageView
+            android:drawableTop="@drawable/emoji_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
             android:id="@+id/ratioBtn"
             android:layout_weight="1"
+            android:text="比例"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/emoji_01"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <ImageView
+            android:drawableTop="@drawable/emoji_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
             android:id="@+id/timeBtn"
             android:layout_weight="1"
+            android:text="倒计时"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/emoji_02"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <ImageView
+            android:drawableTop="@drawable/emoji_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
             android:id="@+id/switchBtn"
             android:layout_weight="1"
+            android:text="切换摄像头"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/emoji_03"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:drawableTop="@drawable/emoji_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 

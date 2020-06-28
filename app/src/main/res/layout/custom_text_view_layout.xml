@@ -6,6 +6,18 @@
     android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.aserbao.aserbaosandroid.ui.texts.textViews.custom.VerticalTextView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:v_cutChars=","
+        app:v_line="right"
+        app:v_lineColor="#5555"
+        app:v_lineWidth="0.5dp"
+        app:v_start="right"
+        app:v_text="本周特惠8.8折 "
+        app:v_textColor="#565656"
+        app:v_textHorizontalMargin="18dp"
+        app:v_textSize="18dp" />
 
     <com.aserbao.aserbaosandroid.ui.texts.textViews.custom.VerticalTextView
         android:layout_width="wrap_content"
@@ -26,8 +38,8 @@
         android:layout_height="250dp"
         app:v_cutChars=","
         app:v_lineColor="#5555"
-        app:v_lineWidth="0.5dp"
         app:v_text="最开始的时候 你并不熟悉这座陌生的城市,你甚至摸得到内心那种无法融入的恐慌和彷徨,据说,这种感觉叫漂泊"
+        app:v_lineWidth="0.5dp"
         app:v_textColor="#565656"
         app:v_textHorizontalMargin="18dp"
         app:v_textSize="18dp" />

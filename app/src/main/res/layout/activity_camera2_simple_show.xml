@@ -4,19 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.opengl.openGlCamera.simpleCameraOpengl.simpleCamera.CameraSurfaceViewShowActivity">
+    android:layout_height="match_parent">
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <SurfaceView
-                    android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:id="@+id/mSurface" />
+        <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+            android:id="@+id/mSurface"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
         <Button
-            android:id="@+id/btn_change"
-            android:text="给动画,SurfaceView不支持设置透明度"
+            android:id="@+id/switchBtn"
+            android:onClick="switchCamera"
+            android:text="切换摄像头"
             android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.cameraTest;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.TextureView;
 
 /**
@@ -39,11 +40,13 @@ public class AutoFitTextureView extends TextureView {
         int height = MeasureSpec.getSize(heightMeasureSpec);
         if (width < height * mRatioWH)
         {
-            setMeasuredDimension(width, (int)(width * mRatioWH));
+            setMeasuredDimension(width, (int)(width / mRatioWH));
+            Log.e("TAG", "onMeasure: " + width  +" height = " + height  + " width * mRatioWH =  " +(int)(width / mRatioWH));
         }
         else
         {
             setMeasuredDimension((int)(height * mRatioWH), height);
+            Log.e("TAG", "onMeasure: " + width  +" height = " + height  + "height * mRatioWH = " + height * mRatioWH);
         }
     }
 }
