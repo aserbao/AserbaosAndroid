@@ -96,4 +96,22 @@ public class BitmapUtils {
         Log.i("SaveBitmap", "save pic success:"+jpegName);
 
     }
+
+    /**
+     * 图片保存
+     * 将位图保存到本地文件
+     */
+    public static void saveBitmap2File(Bitmap bitmap, String fileName) throws Exception {
+        if (bitmap!=null){
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+            byte[]  bitmapByteCount = baos.toByteArray();
+
+            FileOutputStream fos = new FileOutputStream(fileName);
+            fos.write(bitmapByteCount);
+            fos.flush();
+            fos.close();
+            baos.close();
+        }
+    }
 }
