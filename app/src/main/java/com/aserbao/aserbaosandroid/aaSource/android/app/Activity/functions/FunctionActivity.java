@@ -13,7 +13,10 @@ import com.example.base.base.beans.BaseRecyclerBean;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+
+import pl.droidsonroids.gif.GifDrawable;
 
 public class FunctionActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "FunctionActivity";
@@ -31,18 +34,17 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
                 gifDecoder();
                 break;
             case 1:
-
+                gifDrawableDecoder();
                 break;
         }
     }
-
-
+    String inputGifPath = "/storage/emulated/0/question.gif";
+    String absolute = Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp";
     public void gifDecoder(){
         try {
             GifDecoder mGifDecoder = new GifDecoder();
             //        InputStream inputStream  = mRes.openRawResource(absolutePath);
-            String inputGifPath = "/storage/emulated/0/question.gif";
-            String absolute = Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp";
+
             InputStream inputStream = null;
             inputStream = new FileInputStream(inputGifPath);
 
@@ -64,5 +66,21 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
 
     }
 
+    public void gifDrawableDecoder(){
+        try {
+            GifDrawable gifFromFile = new GifDrawable(inputGifPath);
+            int numberOfFrames = gifFromFile.getNumberOfFrames();
+            Log.e(TAG, "gifDecoder:  GifDrawable.getFrameCount() = " + numberOfFrames);
+            for (int i = 0; i < numberOfFrames; i++) {
+                gifFromFile.seekToFrame(i);
+                Bitmap currentFrame = gifFromFile.getCurrentFrame();
+                String path = absolute + "/" + i + ".png";
+                BitmapUtils.saveBitmap2File(currentFrame,path);
+            }
+            Log.e(TAG, "gifDecoder: 完成"  );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
