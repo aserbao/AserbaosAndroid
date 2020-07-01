@@ -82,6 +82,8 @@ dependencies {
     api rootProject.ext.dependencies["recyclerview"]
     api project(path: ':camera')
 
+    api  'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
+
 //    api rootProject.ext.dependencies["rxjava3"]
 //    api rootProject.ext.dependencies["reactive_stream"]
 

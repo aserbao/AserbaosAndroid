@@ -21,6 +21,7 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
     public void initGetData() {
         //用这个https://gist.github.com/devunwired/4479231 库的代码解析gif
         mBaseRecyclerBean.add(new BaseRecyclerBean("Gif解析成图片",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Gif解析成图片",1));
     }
 
     @Override
@@ -28,6 +29,9 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
         switch (position){
             case 0:
                 gifDecoder();
+                break;
+            case 1:
+
                 break;
         }
     }
@@ -59,4 +63,6 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
         }
 
     }
+
+
 }
