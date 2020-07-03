@@ -25,6 +25,7 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
         //用这个https://gist.github.com/devunwired/4479231 库的代码解析gif
         mBaseRecyclerBean.add(new BaseRecyclerBean("Gif解析成图片",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Gif解析成图片",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Gif解析成图片",2));
     }
 
     @Override
@@ -36,9 +37,18 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
             case 1:
                 gifDrawableDecoder();
                 break;
+            case 2:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        gifDrawableDecoder1();
+                    }
+                }).start();
+                break;
         }
     }
     String inputGifPath = "/storage/emulated/0/question.gif";
+    String inputGifPath1 = "/storage/emulated/0/question1.gif";
     String absolute = Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp";
     public void gifDecoder(){
         try {
@@ -83,4 +93,20 @@ public class FunctionActivity extends BaseRecyclerViewActivity {
         }
     }
 
+    public void gifDrawableDecoder1(){
+        try {
+            GifDrawable gifDrawable = new GifDrawable(inputGifPath1);
+            int numberOfFrames = gifDrawable.getNumberOfFrames();
+            Log.e(TAG, "gifDecoder:  GifDrawable.getFrameCount() = " + numberOfFrames);
+            for (int i = 0; i < numberOfFrames; i++) {
+                gifDrawable.seekToFrame(i);
+                Bitmap currentFrame = gifDrawable.getCurrentFrame();
+                String path = absolute + "/" + i + ".png";
+                BitmapUtils.saveBitmap2File(currentFrame,path);
+            }
+            Log.e(TAG, "gifDecoder: 完成"  );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
