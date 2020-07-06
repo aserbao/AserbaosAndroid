@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
@@ -12,6 +12,12 @@ android {
         versionName rootProject.ext.appInfo.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -21,11 +27,14 @@ android {
         }
     }
 
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
 greendao {
     schemaVersion 1 //数据库版本号,必须 >= 1
     daoPackage 'com.example.base.database.greendao.db'
@@ -35,8 +44,15 @@ greendao {
     targetGenDirTests 'src/main/java' //应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(path: ':arouter')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -92,7 +108,9 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger_compiler"]
     api rootProject.ext.dependencies["rxjava3"]
     api rootProject.ext.dependencies["reactive_stream"]
-
+//    api rootProject.ext.dependencies["arouter"]
+    kapt  rootProject.ext.dependencies["aroutercompiler"]
+    annotationProcessor rootProject.ext.dependencies["aroutercompiler"]
     // tools
     api rootProject.ext.dependencies["okdownload"]
     api rootProject.ext.dependencies["okdownload_sqlite"]
@@ -100,6 +118,4 @@ dependencies {
     api rootProject.ext.dependencies["easypermissions"]
     debugImplementation rootProject.ext.dependencies["debug_db"]
     api rootProject.ext.dependencies["lottie"]
-
-
 }

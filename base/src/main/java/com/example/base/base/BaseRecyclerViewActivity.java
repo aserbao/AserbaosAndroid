@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.R;
 import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.adapters.BaseSpinnerAdapter;
@@ -76,8 +77,14 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initGetData();
         initViewForLinear();
         initViewTopSpinner();
-
+        ARouter.getInstance().inject(this);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        ARouter.getInstance().destroy();
     }
 
     private void initView() {

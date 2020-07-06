@@ -76,6 +76,8 @@ ext {
         dagger_compiler      : 'com.google.dagger:dagger-compiler:2.21',
         rxjava3              : 'io.reactivex.rxjava3:rxjava:3.0.0-RC0@jar',
         reactive_stream      : 'org.reactivestreams:reactive-streams:1.0.2',
+        arouter               : 'com.alibaba:arouter-api:1.5.0',
+        aroutercompiler       : 'com.alibaba:arouter-compiler:1.2.2',
 
         // tools
         okdownload           : 'com.liulishuo.okdownload:okdownload:1.0.5',

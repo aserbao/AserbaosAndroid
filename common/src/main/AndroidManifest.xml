@@ -3,7 +3,7 @@
     package="com.aserbao.common">
 
     <application>
-        <activity android:name=".ui.CommonUIActivity"></activity>
+        <activity android:name=".ui.act.CommonUIActivity"></activity>
         <activity android:name=".ui.photo.CropImageViewActivity" />
     </application>
 

@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.example.base.database.MyDaoMaster;
 import com.example.base.database.greendao.db.DaoMaster;

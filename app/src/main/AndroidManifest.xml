@@ -49,7 +49,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity"></activity>
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
         <activity android:name=".ui.customView.seekbar.SeekBarActivity" />
         <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
         <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />
