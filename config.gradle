@@ -60,6 +60,7 @@ ext {
         roomKtx              : 'androidx.room:room-ktx:2.2.3',
         roomCompiler         : 'androidx.room:room-compiler:2.2.3',
         roomRxJava2          : 'android.arch.persistence.room:rxjava2:1.1.1',
+        databinding          : 'com.android.databinding:compiler:2.3.2',
 
         // network
         okhttp               : 'com.squareup.okhttp3:okhttp:4.0.1',

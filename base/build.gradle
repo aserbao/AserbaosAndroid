@@ -92,6 +92,8 @@ dependencies {
     api rootProject.ext.dependencies["roomRuntime"]
     api rootProject.ext.dependencies["roomKtx"]
     annotationProcessor rootProject.ext.dependencies["roomCompiler"]
+    kapt rootProject.ext.dependencies["databinding"]
+
 //    api rootProject.ext.dependencies["roomRxJava2"]
 
     //network

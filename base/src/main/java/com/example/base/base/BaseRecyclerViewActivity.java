@@ -248,6 +248,22 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         return view;
     }
 
+
+    public View addViewHToFl(View view,boolean isMatch,boolean isFullScreen,int width,int height,boolean isDirectBack){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(IS_MATCH,isMatch);
+        bundle.putBoolean(NEED_WH,true);
+        bundle.putInt(WIDTH,width);
+        bundle.putInt(HEIGHT,height);
+        if (isFullScreen){
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
+            addViewToFrameLayout(view, FULL_SCREEN, bundle);
+        }else {
+            addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
+        }
+        return view;
+    }
+
     public View addLayoutToFrameLayout(int resLayout, boolean needFullScreen){
         View view = LayoutInflater.from(mContext).inflate(resLayout, null);
         if(needFullScreen) {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black50"
+    tools:ignore="ResourceName">
+
+    <LinearLayout
+        android:id="@+id/editCons"
+        android:background="@drawable/solid_white_radio12_bg"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:maxHeight="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/tvEdit"
+                android:layout_gravity="center"
+                android:text="选择"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:layout_width="wrap_content"/>
+
+        </FrameLayout>
+        
+        <com.aserbao.common.ui.WheelView
+            android:id="@+id/wheelView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

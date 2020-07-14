@@ -38,6 +38,7 @@
 
     //灰色
     <color name="gray">#BEBEBE</color>
+    <color name="water_colorYellow">#FFAC38</color>
 
 
     <color name="global_show_text">#cecece</color>
