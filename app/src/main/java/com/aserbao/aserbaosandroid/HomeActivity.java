@@ -15,6 +15,7 @@ import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
+import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.font.TextFontActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.simple.SimpleTextViewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
@@ -53,7 +54,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CanvasActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", BlendModeActivity.class));
 
 
     }

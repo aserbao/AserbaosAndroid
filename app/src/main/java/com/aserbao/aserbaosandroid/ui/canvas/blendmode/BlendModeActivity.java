@@ -1,13 +1,44 @@
 package com.aserbao.aserbaosandroid.ui.canvas.blendmode;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 
+import com.aserbao.common.pop.PopSelSize;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.utils.data.StaticFinalValues;
+import com.example.base.utils.screen.DisplayUtil;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlendModeActivity extends BaseRecyclerViewActivity {
+    public final static List<String> mBlendModes = new ArrayList<>();
+    static {
+        mBlendModes.add("CLEAR");
+        mBlendModes.add("SRC");
+        mBlendModes.add("DST");
+        mBlendModes.add("SRC_OVER");
+        mBlendModes.add("DST_OVER");
+        mBlendModes.add("SRC_IN");
+        mBlendModes.add("DST_IN");
+        mBlendModes.add("SRC_OUT");
+        mBlendModes.add("DST_OUT");
+        mBlendModes.add("SRC_ATOP");
+        mBlendModes.add("DST_ATOP");
+        mBlendModes.add("XOR");
+        mBlendModes.add("DARKEN");
+        mBlendModes.add("LIGHTEN");
+        mBlendModes.add("MULTIPLY");
+        mBlendModes.add("SCREEN");
+        mBlendModes.add("ADD");
+        mBlendModes.add("OVERLAY");
+    }
+
+    private CustomViewForBlendMode mCustomViewForBlendMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,28 +47,88 @@ public class BlendModeActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"CLEAR",0));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SRC",1));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DST",2));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SRC_OVER",3));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DST_OVER",4));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SRC_IN",5));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DST_IN",6));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SRC_OUT",7));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DST_OUT",8));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SRC_ATOP",9));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DST_ATOP",10));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"XOR",11));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"DARKEN",16));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"LIGHTEN",17));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"MULTIPLY",13));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"SCREEN",14));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"ADD",12));
-        mBaseRecyclerBean.add(new BaseRecyclerBean(StaticFinalValues.VIEW_BLEND_MODE,"OVERLAY",15));
+        mCustomViewForBlendMode = new CustomViewForBlendMode(this);
+        addViewToFrameLayout(mCustomViewForBlendMode,true,true, true);
+        mCustomViewForBlendMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopSel();
+            }
+        });
+        mCustomViewForBlendMode.setXfermode(PorterDuff.Mode.CLEAR);
     }
+
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 
     }
+
+
+    public void showPopSel(){
+        new PopSelSize(this).showEditPop(new PopSelSize.IPopSelListener() {
+            @Override
+            public void selSize(@NotNull String size) {
+                PorterDuff.Mode blendMode = getBlendMode(size);
+                mCustomViewForBlendMode.setXfermode(blendMode);
+            }
+        },mBlendModes.get(0),mBlendModes);
+    }
+
+    /**
+     * 混合模式换算
+     * @param key
+     * @return
+     */
+    public PorterDuff.Mode getBlendMode(String key){
+        int resultKey = 0;
+        for (int i = 0; i < mBlendModes.size(); i++) {
+            String s = mBlendModes.get(i);
+            if(s .equals( key)){
+                resultKey= i;
+                break;
+            }
+        }
+        switch (resultKey) {
+            case 0:
+                return PorterDuff.Mode.CLEAR;
+            case 1:
+                return PorterDuff.Mode.SRC;
+            case 2:
+                return PorterDuff.Mode.DST;
+            case 3:
+                return PorterDuff.Mode.SRC_OVER;
+            case 4:
+                return PorterDuff.Mode.DST_OVER;
+            case 5:
+                return PorterDuff.Mode.SRC_IN;
+            case 6:
+                return PorterDuff.Mode.DST_IN;
+            case 7:
+                return PorterDuff.Mode.SRC_OUT;
+            case 8:
+                return PorterDuff.Mode.DST_OUT;
+            case 9:
+                return PorterDuff.Mode.SRC_ATOP;
+            case 10:
+                return PorterDuff.Mode.DST_ATOP;
+            case 11:
+                return PorterDuff.Mode.XOR;
+            case 16:
+                return PorterDuff.Mode.DARKEN;
+            case 17:
+                return PorterDuff.Mode.LIGHTEN;
+            case 13:
+                return PorterDuff.Mode.MULTIPLY;
+            case 14:
+                return PorterDuff.Mode.SCREEN;
+            case 12:
+                return PorterDuff.Mode.ADD;
+            case 15:
+                return PorterDuff.Mode.OVERLAY;
+        }
+        return null;
+    }
+
+
 }
