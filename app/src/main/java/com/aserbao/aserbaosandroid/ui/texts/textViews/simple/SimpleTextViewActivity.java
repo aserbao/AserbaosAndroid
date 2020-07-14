@@ -39,6 +39,8 @@ public class SimpleTextViewActivity extends AppCompatActivity {
 
 
         TextView textView = (TextView) findViewById(R.id.span_tv);
+        textView.setLetterSpacing(1f);//设置字间距
+
         EditText editText = (EditText) findViewById(R.id.editText);
 
     }

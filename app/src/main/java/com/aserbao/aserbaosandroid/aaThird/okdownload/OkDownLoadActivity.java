@@ -38,8 +38,8 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
     final String filename = "aserbao_test.apk";
 //    final String url = "https://cdn.llscdn.com/yy/files/xs8qmxn8-lls-LLS-5.8-800-20171207-111607.apk";
 //    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-5888a2b749d40ddb441af68db5a7f354";
-//    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194";
-    final String url = "https://s3.cn-north-1.amazonaws.com.cn/dev.android.package/ss-4_1_8.apk";
+    final String url = "http://npic.getremark.com/68d111bddc1a71def3ed6033ebcbb79c-3db263493a128bf6da1b1d12d06cb194";
+//    final String url = "https://s3.cn-north-1.amazonaws.com.cn/dev.android.package/ss-4_1_8.apk";
 //    final String url = "https://cn.bing.com/th?id=OIP.xq1C2fmnSw5DEoRMC86vJwD6D6&pid=Api&rs=1";
     File parentFile = new File(STORAGE_TEMP_FILE);
 
@@ -117,17 +117,17 @@ public class OkDownLoadActivity extends BaseRecyclerViewActivity{
 
             @Override
             protected void canceled(@NonNull DownloadTask task) {
-
+                Log.e(TAG, "canceled: " );
             }
 
             @Override
             protected void error(@NonNull DownloadTask task, @NonNull Exception e) {
-
+                Log.e(TAG, "error: " );
             }
 
             @Override
             protected void warn(@NonNull DownloadTask task) {
-
+                Log.d(TAG, "warn() called with: task = [" + task + "]");
             }
 
             @Override

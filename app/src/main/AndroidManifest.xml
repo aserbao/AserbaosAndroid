@@ -49,7 +49,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity"></activity>
+        <activity android:name=".ui.texts.textViews.font.TextFontActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
         <activity android:name=".ui.customView.seekbar.SeekBarActivity" />
         <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
@@ -440,6 +441,8 @@
         </service>
         <service android:name=".functions.listener.constractListener.ContactIntentService" />
         <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService" />
+
+        <activity android:name=".aaSource.android.java.lang.clone.CloneTestActivity" />
     </application>
 
 </manifest>
