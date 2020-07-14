@@ -2,6 +2,8 @@ package com.example.base.base.beans;
 
 import com.example.base.utils.data.StaticFinalValues;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 /**
@@ -20,6 +22,8 @@ public class BaseRecyclerBean implements Serializable {
     int imageSrc;           //背景图片地址
     int viewType = StaticFinalValues.VIEW_HOLDER_TEXT;
     VHSeekBarBean mVHSeekBarBean;
+    GridViewBean mGridViewBean;
+    VHSelecteBean mVHSelBean;
 
     /**
      * 顶部文字提示
@@ -31,10 +35,19 @@ public class BaseRecyclerBean implements Serializable {
         this.viewType = viewType;
     }
 
+    public BaseRecyclerBean(int tag,int viewType, GridViewBean mGridViewBean) {
+        this.viewType = viewType;
+        this.mGridViewBean = mGridViewBean;
+        this.tag = tag;
+    }
+    public BaseRecyclerBean(@NotNull VHSelecteBean mVHSelBean) {
+        this.viewType = StaticFinalValues.VIEW_SELECTE_POSITION;
+        this.mVHSelBean = mVHSelBean;
+    }
+
     public BaseRecyclerBean(String name) {
         this.name = name;
     }
-
 
     public BaseRecyclerBean(String name, int tag) {
         this.name = name;
@@ -69,6 +82,9 @@ public class BaseRecyclerBean implements Serializable {
         mVHSeekBarBean = vHSeekBarBean;
         this.viewType = StaticFinalValues.VIEW_SEEK_BAR;
     }
+
+
+
 
     public Class<?> getClazz() {
         return clazz;
@@ -108,5 +124,13 @@ public class BaseRecyclerBean implements Serializable {
 
     public VHSeekBarBean getmVHSeekBarBean() {
         return mVHSeekBarBean;
+    }
+
+    public GridViewBean getmGridViewBean() {
+        return mGridViewBean;
+    }
+
+    public VHSelecteBean getmVHSelBean() {
+        return mVHSelBean;
     }
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideLine"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        app:layout_constraintDimensionRatio="h,9:16"
+        android:background="@color/black60"
+        app:layout_constraintTop_toBottomOf="@+id/topGuideLine"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+        <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+            android:id="@+id/autoTextureView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/settingBtn"
+            android:layout_weight="1"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:drawableTop="@drawable/emoji_00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/ratioBtn"
+            android:layout_weight="1"
+            android:text="比例"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:drawableTop="@drawable/emoji_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/timeBtn"
+            android:layout_weight="1"
+            android:text="倒计时"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:drawableTop="@drawable/emoji_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/switchBtn"
+            android:layout_weight="1"
+            android:text="切换摄像头"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:drawableTop="@drawable/emoji_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

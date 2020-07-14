@@ -2,6 +2,8 @@ package com.aserbao.aserbaosandroid.ui.texts.textViews;
 
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.ui.texts.textViews.custom.CustomTextViewActivity;
+import com.aserbao.aserbaosandroid.ui.texts.textViews.font.TextFontActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.htmlText.HtmlTextActivity;
@@ -20,10 +22,10 @@ public class TextViewsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("图文混排", PicTxtActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("TextView显示Html", HtmlTextActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("TextVie文字显示动画", TextShowAnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("竖排的TextView", CustomTextViewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("字体设置", TextFontActivity.class));
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-
-    }
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) { }
 }

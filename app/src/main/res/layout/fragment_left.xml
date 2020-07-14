@@ -44,4 +44,13 @@
         android:text="右边数据为："
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+
+    <FrameLayout
+        android:id="@+id/test_cons"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+     <include
+            layout="@layout/activity_compare"/>
+    </FrameLayout>
 </LinearLayout>

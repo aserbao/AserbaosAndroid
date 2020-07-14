@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.cameraTest;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.TextureView;
 
 /**
@@ -11,8 +12,7 @@ import android.view.TextureView;
  */
 
 public class AutoFitTextureView extends TextureView {
-    private int mRatioWidth = 0;
-    private int mRatioHeight = 0;
+    private float mRatioWH = 9f/16f;
 
     public AutoFitTextureView(Context context) {
         super(context);
@@ -26,10 +26,9 @@ public class AutoFitTextureView extends TextureView {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setAspectRatio(int width, int height)
+    public void setAspectRatio(float ratioWH)
     {
-        mRatioWidth = width;
-        mRatioHeight = height;
+        mRatioWH = ratioWH;
         requestLayout();
     }
 
@@ -39,20 +38,15 @@ public class AutoFitTextureView extends TextureView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        if (0 == mRatioWidth || 0 == mRatioHeight)
+        if (width < height * mRatioWH)
         {
-            setMeasuredDimension(width, height);
+            setMeasuredDimension(width, (int)(width / mRatioWH));
+            Log.e("TAG", "onMeasure: " + width  +" height = " + height  + " width * mRatioWH =  " +(int)(width / mRatioWH));
         }
         else
         {
-            if (width < height * mRatioWidth / mRatioHeight)
-            {
-                setMeasuredDimension(width, width * mRatioHeight / mRatioWidth);
-            }
-            else
-            {
-                setMeasuredDimension(height * mRatioWidth / mRatioHeight, height);
-            }
+            setMeasuredDimension((int)(height * mRatioWH), height);
+            Log.e("TAG", "onMeasure: " + width  +" height = " + height  + "height * mRatioWH = " + height * mRatioWH);
         }
     }
 }

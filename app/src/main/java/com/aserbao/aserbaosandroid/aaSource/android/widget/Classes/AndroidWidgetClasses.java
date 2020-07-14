@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.popupwindow.PopupWindowActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.ProgressBarActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 
@@ -17,6 +18,7 @@ public class AndroidWidgetClasses extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("PopupWindow弹出框",PopupWindowActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("ProgressBar", ProgressBarActivity.class));
     }
 
     @Override

@@ -60,6 +60,7 @@ ext {
         roomKtx              : 'androidx.room:room-ktx:2.2.3',
         roomCompiler         : 'androidx.room:room-compiler:2.2.3',
         roomRxJava2          : 'android.arch.persistence.room:rxjava2:1.1.1',
+        databinding          : 'com.android.databinding:compiler:2.3.2',
 
         // network
         retrofit             : 'com.squareup.retrofit2:retrofit:2.7.1',
@@ -80,6 +81,8 @@ ext {
         dagger_compiler      : 'com.google.dagger:dagger-compiler:2.21',
         rxjava3              : 'io.reactivex.rxjava3:rxjava:3.0.0-RC0@jar',
         reactive_stream      : 'org.reactivestreams:reactive-streams:1.0.2',
+        arouter               : 'com.alibaba:arouter-api:1.5.0',
+        aroutercompiler       : 'com.alibaba:arouter-compiler:1.2.2',
 
         // tools
         okdownload           : 'com.liulishuo.okdownload:okdownload:1.0.5',

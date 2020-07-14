@@ -54,12 +54,21 @@
         <activity android:name=".ui.viewPager.ViewPagerActivity" />
         <activity android:name=".kotlin.scopes.KotlinScopeFunctionsActivity" />
         <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
+        <activity android:name=".ui.texts.textViews.font.TextFontActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
+        <activity android:name=".ui.customView.seekbar.SeekBarActivity" />
+        <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
+        <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />
+        <activity android:name=".aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity" />
+        <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".aaThird.jetpack.databinding.observable.ObservableFileActivity" />
         <activity android:name=".aaThird.jetpack.databinding.DataBindActivity" />
         <activity android:name=".aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity" />
         <activity android:name=".aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity" />
         <activity android:name=".aaSource.android.view.ViewGroup.ViewGroupActivity" />
+        <activity android:name=".aaSource.android.view.Choreographer.ChoreographerActivity" />
         <activity android:name=".aaSource.android.view.ViewActivity" />
         <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity" />
         <activity android:name=".aaThird.jetpack.viewmodel.ViewModelActivity" />
@@ -68,11 +77,13 @@
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
         <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity" />
         <activity android:name=".ui.buttons.switchView.SwitchActivity" />
         <activity android:name=".ui.buttons.switchButton.SwitchButtonActivity" />
         <activity android:name=".aaSource.android.app.Activity.animation.activityOptions.share_module.CShareModuleActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.Camera2Activity" />
         <activity android:name=".aaSource.android.hardware.HardwareActivity" />
+        <activity android:name=".aaSource.android.java.util.concurent.executor.ThreadPoolExecutorActivity" />
         <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderVideoActivity" />
         <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderAudioActivity" />
         <activity android:name=".aaSource.android.media.mediaRecorder.MediaRecorderActivity" />
@@ -128,6 +139,7 @@
         <activity android:name=".algorithm.AlgorithmActivity" />
         <activity android:name=".functions.notifacations.networks.NetWorkNotification" />
         <activity android:name=".aaThird.videocache.VideoCacheActivity" />
+        <activity android:name=".ui.texts.textViews.custom.CustomTextViewActivity" />
         <activity android:name=".aaThird.fragmentation.Fragmentation" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity" />
         <activity android:name=".aaSource.android.support.constraint.ConstraintLayoutActvity2" />
@@ -434,6 +446,8 @@
         </service>
         <service android:name=".functions.listener.constractListener.ContactIntentService" />
         <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService" />
+
+        <activity android:name=".aaSource.android.java.lang.clone.CloneTestActivity" />
     </application>
 
 </manifest>

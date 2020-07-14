@@ -1,6 +1,7 @@
 package com.example.base.utils.data;
 
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateInterpolator;
@@ -17,8 +18,13 @@ import com.example.base.BaseApplication;
 import com.example.base.R;
 import com.example.base.base.beans.BaseRecyclerBean;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+
+import io.reactivex.internal.util.LinkedArrayList;
 
 /**
  * 主要功能:
@@ -30,6 +36,28 @@ public class ASourceUtil {
 //    public static final int[] imageUrls = {R.drawable.emoji_00,R.drawable.emoji_01,R.drawable.emoji_02,R.drawable.emoji_03,R.drawable.emoji_04,R.drawable.emoji_05,R.drawable.emoji_06};
     public static final int[] imageUrls = {R.drawable.mm_1,R.drawable.mm_2,R.drawable.mm_3,R.drawable.mm_4,R.drawable.mm_5,R.drawable.mm_6,R.drawable.mm_7};
 //      public static final int[] imageUrls = {R.drawable.starry_sky_1,R.drawable.starry_sky_2,R.drawable.starry_sky_3,R.drawable.starry_sky_4,R.drawable.starry_sky_5,R.drawable.starry_sky_6,R.drawable.starry_sky_7,R.drawable.starry_sky_8,R.drawable.starry_sky_9,R.drawable.starry_sky_10};
+    public final static List<String> mBlendModes = new ArrayList<>();
+
+    static {
+        mBlendModes.add("CLEAR");
+        mBlendModes.add("SRC");
+        mBlendModes.add("DST");
+        mBlendModes.add("SRC_OVER");
+        mBlendModes.add("DST_OVER");
+        mBlendModes.add("SRC_IN");
+        mBlendModes.add("DST_IN");
+        mBlendModes.add("SRC_OUT");
+        mBlendModes.add("DST_OUT");
+        mBlendModes.add("SRC_ATOP");
+        mBlendModes.add("DST_ATOP");
+        mBlendModes.add("XOR");
+        mBlendModes.add("DARKEN");
+        mBlendModes.add("LIGHTEN");
+        mBlendModes.add("MULTIPLY");
+        mBlendModes.add("SCREEN");
+        mBlendModes.add("ADD");
+        mBlendModes.add("OVERLAY");
+    }
 
     public static List<BaseRecyclerBean> getStaticRecyclerViewData(List<BaseRecyclerBean> mBaseRecyclerBean, int times) {
         if (mBaseRecyclerBean == null) {
@@ -47,8 +75,8 @@ public class ASourceUtil {
         int nextInt = new Random().nextInt(length);
         return imageUrls[nextInt];
     }
-    
-    
+
+
     public static void getAllInterpoator(List<BaseRecyclerBean> baseRecyclerBeans){
         baseRecyclerBeans.add(new BaseRecyclerBean("AccelerateDecelerateInterpolator",StaticFinalValues.AccelerateDecelerateInterpolator));
         baseRecyclerBeans.add(new BaseRecyclerBean("AccelerateDecelerateInterpolator",StaticFinalValues.AccelerateDecelerateInterpolator ));
@@ -103,6 +131,9 @@ public class ASourceUtil {
         }
         return interpolator;
     }
+
+
+
 
     public static int getDrawable(){
         return drawables[new Random().nextInt(drawables.length)];

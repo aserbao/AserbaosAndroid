@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="default"
+        android:textSize="12sp"/>
+
+    <com.aserbao.aserbaosandroid.ui.customView.seekbar.bubbleSeekBar.BubbleSeekBar
+        android:id="@+id/demo_1_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="custom colors, show section mark, progress:50"
+        android:textSize="12sp"/>
+
+    <com.aserbao.aserbaosandroid.ui.customView.seekbar.bubbleSeekBar.BubbleSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:bsb_progress="50"
+        app:bsb_second_track_color="@color/green"
+        app:bsb_show_section_mark="true"
+        app:bsb_track_color="@color/gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="custom track size, min:100, max:500"
+        android:textSize="12sp"/>
+
+    <com.aserbao.aserbaosandroid.ui.customView.seekbar.bubbleSeekBar.BubbleSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:bsb_max="500"
+        app:bsb_min="100.0"
+        app:bsb_progress="200.0"
+        app:bsb_second_track_color="@color/blue"
+        app:bsb_track_size="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="section count:5, custom bubble attrs, show thumb text"/>
+
+    <com.aserbao.aserbaosandroid.ui.customView.seekbar.bubbleSeekBar.BubbleSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:bsb_bubble_color="@color/color_red_light"
+        app:bsb_bubble_text_color="@color/green"
+        app:bsb_bubble_text_size="18sp"
+        app:bsb_max="50"
+        app:bsb_min="-50"
+        app:bsb_second_track_color="@color/color_red_light"
+        app:bsb_section_count="5"
+        app:bsb_show_section_mark="true"
+        app:bsb_thumb_text_size="18sp"/>
+
+    <Button
+        android:id="@+id/demo_1_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="set random progress"/>
+</LinearLayout>

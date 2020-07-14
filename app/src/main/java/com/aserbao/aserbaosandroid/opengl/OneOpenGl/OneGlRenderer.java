@@ -38,6 +38,7 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     public void setAngle(float angle) {
         mAngle = angle;
     }
+
     @Override
     public void onDrawFrame(GL10 unused) {
         // 设置相机位置（查看矩阵）

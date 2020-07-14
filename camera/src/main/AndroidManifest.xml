@@ -3,9 +3,11 @@
     package="com.example.camera">
 
     <application>
-        <activity android:name=".camerax.CameraXPreviewActivity"
-            android:theme="@style/Theme.Design.NoActionBar"/>
-        <activity android:name=".CameraActivity" />
+        <activity android:name=".act.Camera2Activity"></activity>
+        <activity
+            android:name=".camerax.CameraXPreviewActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity android:name=".act.CameraActivity" />
     </application>
 
 </manifest>

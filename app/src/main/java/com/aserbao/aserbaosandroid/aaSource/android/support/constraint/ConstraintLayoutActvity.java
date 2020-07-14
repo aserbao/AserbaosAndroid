@@ -21,7 +21,6 @@ import butterknife.OnClick;
  * question1: 为什么constraintSet.centerVertically在Activity中可以生效，而在fragment中不能生效？
  */
 public class ConstraintLayoutActvity extends AppCompatActivity {
-
     @BindView(R.id.button22)
     Button mButton22;
     @BindView(R.id.btn_group_1)

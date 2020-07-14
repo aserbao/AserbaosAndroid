@@ -14,6 +14,9 @@ import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.List;
 
+/**
+ * 水滴屏
+ */
 public class CutOutActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "CutOutActivity";
 

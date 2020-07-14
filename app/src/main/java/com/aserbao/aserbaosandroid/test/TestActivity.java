@@ -22,7 +22,6 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coordinatorlayout_and_toolbar_and_collapsing_layout);
         ButterKnife.bind(this);
-
     }
 
     private static final String TAG = "TestActivity";

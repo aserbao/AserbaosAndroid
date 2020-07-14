@@ -63,6 +63,7 @@ public class StaticFinalValues {
     public static final int VIEW_BLEND_MODE = 103;
     public static final int VIEW_SEEK_BAR = 104;
     public static final int VIEW_SELECTE_POSITION = 105;
+    public static final int VIEW_GRID_VIEW_ITME = 106;
 
 
     //--------------reqeestCode--------------
@@ -91,6 +92,9 @@ public class StaticFinalValues {
     public static final int PathInterpolator = 9;
     public static final int PathMotion = 10;
     public static final int AcrMotion = 11;
+
+
+
 
 
     public static final String MAX_NUMBER = "max_number";

@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,13 +16,18 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.SeekBar;
 
 import com.aserbao.aserbaosandroid.R;
+import com.example.base.utils.VideoUtil;
+import com.example.base.utils.others.MainLooper;
 
 import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.media.MediaPlayer.SEEK_CLOSEST;
 
 public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
@@ -28,8 +35,12 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
     private static final int REQUEST_VIDEO_CODE = 0;
     @BindView(R.id.media_surface_view)
     SurfaceView mMediaSurfaceView;
+
+    @BindView(R.id.seekBar)
+    SeekBar seekBar;
     public MediaPlayer mMediaPlayer;
-    public String mVideoPath;
+//    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/testMedia.mp4";
+    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/yx.mp4";
     public SurfaceHolder mHolder;
 
 
@@ -39,7 +50,36 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
         setContentView(R.layout.activity_media_player);
         ButterKnife.bind(this);
         mHolder = mMediaSurfaceView.getHolder();
-        initModule("");
+//        initModule("");
+        mHolder.addCallback(this);
+        initView();
+    }
+
+    private void initView() {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                MainLooper.getInstance().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            mMediaPlayer.seekTo(progress,SEEK_CLOSEST);
+                            Log.e(TAG, "onProgressChanged: " + progress );
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+//                mMediaPlayer.pause();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+//                mMediaPlayer.start();
+            }
+        });
     }
 
     @Override
@@ -53,16 +93,20 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
         mMediaPlayer = new MediaPlayer();
         try {
 //            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
+            long videoDuration = VideoUtil.INSTANCE.getVideoDuration(path);
+            seekBar.setMax((int)videoDuration/1000);
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
-            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     mMediaPlayer.setDisplay(mHolder);
+                    mMediaPlayer.setLooping(true);
                     mMediaPlayer.start();
                 }
             });
+//            mMediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

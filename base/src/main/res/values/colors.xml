@@ -9,8 +9,10 @@
     <color name="transparent">#00000000</color>
     //基色
     <color name="red">#FF0000</color>
+    <color name="color_red_light">#FFB4B6</color>
     <color name="green">#00FF00</color>
     <color name="blue">#0000FF</color>
+    <color name="wathet_blue">#1FB2FF</color>
     //白色
     <color name="white">#ffffff</color>
     <color name="white10">#1AFFFFFF</color>
@@ -36,6 +38,7 @@
 
     //灰色
     <color name="gray">#BEBEBE</color>
+    <color name="water_colorYellow">#FFAC38</color>
 
 
     <color name="global_show_text">#cecece</color>

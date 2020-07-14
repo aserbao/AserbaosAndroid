@@ -55,7 +55,6 @@ public class CustomViewForBlendMode extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         mBottomPaint.reset();
     }
 

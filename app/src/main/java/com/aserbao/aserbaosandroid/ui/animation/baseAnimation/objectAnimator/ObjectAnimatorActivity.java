@@ -43,7 +43,6 @@ public class ObjectAnimatorActivity extends BaseRecyclerViewActivity {
       PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 2.0f);
 //      PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("rotationX", 0.0f, 90.0f, 0.0F);
 //        PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("translationX", 100f);
-
 //      ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mBaseRecyclerTv, valuesHolder, valuesHolder1, valuesHolder2, valuesHolder3);
         mBaseRecyclerTv.setPivotX(0);
         mBaseRecyclerTv.setPivotY(0);

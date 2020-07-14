@@ -105,4 +105,6 @@ public class CameraSurfaceViewShowActivity extends AppCompatActivity implements 
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mSurfaceView, valuesHolder, valuesHolder1, valuesHolder3);
         objectAnimator.setDuration(5000).start();
     }
+
+
 }

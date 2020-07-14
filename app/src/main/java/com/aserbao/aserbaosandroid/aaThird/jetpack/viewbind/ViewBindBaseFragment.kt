@@ -10,6 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.utils.random.RandomValue
 import com.aserbao.aserbaosandroid.aaThird.jetpack.viewmodel.SharedViewModels
+import com.aserbao.aserbaosandroid.databinding.ActivityCompareBinding
+import com.aserbao.aserbaosandroid.databinding.ActivityToastBinding
+import com.aserbao.aserbaosandroid.databinding.ActivityUiBinding
 import com.aserbao.aserbaosandroid.databinding.FragmentLeftBinding
 
 /*
@@ -24,6 +27,8 @@ open class ViewBindBaseFragment : Fragment(){
     public lateinit var binding: FragmentLeftBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLeftBinding.inflate(inflater)
+        var activityCompareBinding = ActivityCompareBinding.bind(binding.root)
+        activityCompareBinding.sortBtn.text = "测试一下就行"
         return binding.root
     }
 

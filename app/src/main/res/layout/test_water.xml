@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/water_cons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/top_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/black50"
+        android:shadowRadius="1"
+        android:text="音浪群视频"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/top_desc"
+        app:layout_constraintTop_toBottomOf="@+id/top_title"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:shadowColor="@color/black50"
+        android:shadowRadius="1"
+        android:text="来自aserbao的分享"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+            android:layout_gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomTv"
+            android:src="@drawable/mm_1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/bottomTv"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:shadowColor="@color/black50"
+            android:shadowRadius="1"
+            android:text="imerbao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

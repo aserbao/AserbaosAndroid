@@ -12,10 +12,12 @@ import com.example.base.R;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 import com.example.base.base.viewHolder.ClassViewHolder;
+import com.example.base.base.viewHolder.GridViewHolder;
 import com.example.base.base.viewHolder.HeadViewHolder;
 import com.example.base.base.viewHolder.ImageViewHolder;
 import com.example.base.base.viewHolder.SeekBarViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
+import com.example.base.base.viewHolder.ViewSelecteViewHolder;
 import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
@@ -135,7 +137,10 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
                 return new SeekBarViewHolder(view);
             case StaticFinalValues.VIEW_SELECTE_POSITION:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_selecte_view_item, parent, false);
-                return new SeekBarViewHolder(view);
+                return new ViewSelecteViewHolder(view);
+            case StaticFinalValues.VIEW_GRID_VIEW_ITME:
+                view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_gridview_item, parent, false);
+                return new GridViewHolder(view);
         }
         return null;
     }
@@ -153,6 +158,10 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             ((HeadViewHolder) holder).setDataSource(classBean);
         } else if (holder instanceof SeekBarViewHolder){
             ((SeekBarViewHolder) holder).setDataSource(classBean);
+        } else if(holder instanceof GridViewHolder){
+            ((GridViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
+        } else if(holder instanceof ViewSelecteViewHolder){
+            ((ViewSelecteViewHolder) holder).setDataSource(mContext,mActivity,classBean,position);
         }
     }
 

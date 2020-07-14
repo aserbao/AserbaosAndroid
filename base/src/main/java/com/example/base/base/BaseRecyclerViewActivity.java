@@ -1,8 +1,10 @@
 package com.example.base.base;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.R;
 import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.adapters.BaseSpinnerAdapter;
@@ -26,7 +29,10 @@ import com.example.base.utils.data.ASourceUtil;
 import com.example.base.utils.data.StaticFinalValues;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 功能:
@@ -71,6 +77,14 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initGetData();
         initViewForLinear();
         initViewTopSpinner();
+        ARouter.getInstance().inject(this);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        ARouter.getInstance().destroy();
     }
 
     private void initView() {
@@ -214,11 +228,28 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
             bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, FULL_SCREEN, bundle);
         }else {
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
             addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
         }
     }
     public View addViewWHToFL(View view,int resLayout,boolean isMatch,boolean isFullScreen,int width,int height,boolean isDirectBack){
         if (view == null) view = LayoutInflater.from(mContext).inflate(resLayout, null);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(IS_MATCH,isMatch);
+        bundle.putBoolean(NEED_WH,true);
+        bundle.putInt(WIDTH,width);
+        bundle.putInt(HEIGHT,height);
+        if (isFullScreen){
+            bundle.putBoolean(NEED_DIRECT_BACK,isDirectBack);
+            addViewToFrameLayout(view, FULL_SCREEN, bundle);
+        }else {
+            addViewToFrameLayout(view, NOT_FULL_SCREEN, bundle);
+        }
+        return view;
+    }
+
+
+    public View addViewHToFl(View view,boolean isMatch,boolean isFullScreen,int width,int height,boolean isDirectBack){
         Bundle bundle = new Bundle();
         bundle.putBoolean(IS_MATCH,isMatch);
         bundle.putBoolean(NEED_WH,true);
