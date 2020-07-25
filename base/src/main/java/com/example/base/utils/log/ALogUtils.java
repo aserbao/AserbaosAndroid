@@ -55,7 +55,7 @@ public class ALogUtils {
 
     public static void d(String tag, String msg) {
         if (mLogEnable) {
-            Log.d(tag, getMsgWithLineNumber(msg));
+            Log.d(tag, getMsgWithLineNumber(msg)+" ThreadName = "+ Thread.currentThread().getName());
         }
     }
 

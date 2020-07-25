@@ -3,6 +3,8 @@
     android:color="@color/black">
     <item android:id="@android:id/mask">
         <shape android:shape="oval">
+            <size android:width="50dp"
+                android:height="50dp"/>
             <solid android:color="#ffffff"/>
         </shape>
     </item>

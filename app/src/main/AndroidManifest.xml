@@ -49,6 +49,11 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
+        <activity android:name=".kotlin.coroutine.CoroutineActivity"></activity>
+        <activity android:name=".aaSource.android.widget.Classes.scroller.ScrollerActivity" />
+        <activity android:name=".ui.viewPager.ViewPagerActivity" />
+        <activity android:name=".kotlin.scopes.KotlinScopeFunctionsActivity" />
+        <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
         <activity android:name=".ui.texts.textViews.font.TextFontActivity"></activity>
         <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />

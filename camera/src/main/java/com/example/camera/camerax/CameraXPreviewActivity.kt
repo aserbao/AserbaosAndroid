@@ -2,6 +2,7 @@ package com.example.camera.camerax
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -58,7 +59,6 @@ class CameraXPreviewActivity : AppCompatActivity() {
 
             // Setup image capture metadata
             val metadata = ImageCapture.Metadata().apply {
-
                 // Mirror image when using the front camera
                 isReversedHorizontal = lensFacing == CameraSelector.LENS_FACING_FRONT
             }
@@ -72,7 +72,7 @@ class CameraXPreviewActivity : AppCompatActivity() {
                 object :  ImageCapture.OnImageSavedCallback {
 
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                        val path = outputFileResults.savedUri?.path
+                        val path = outputFileResults.savedUri ?: Uri.fromFile(file)
                         val msg = "Photo capture succeeded: ${path}"
                         ALogUtils.d("CameraXApp", msg)
                         viewFinder.post {

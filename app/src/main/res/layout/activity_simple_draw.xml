@@ -15,6 +15,10 @@
         <com.aserbao.aserbaosandroid.ui.simpleDraw.canvas.DrawCircleBitmap1
             android:layout_width="100dp"
             android:layout_height="100dp" />
+
+        <com.aserbao.aserbaosandroid.ui.simpleDraw.TriangleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <ImageView
             android:src="@drawable/test"
             android:layout_width="100dp"

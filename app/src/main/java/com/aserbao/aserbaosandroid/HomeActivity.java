@@ -1,8 +1,5 @@
 package com.aserbao.aserbaosandroid;
 
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -18,6 +15,7 @@ import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
+import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.font.TextFontActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.simple.SimpleTextViewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
@@ -39,17 +37,10 @@ import com.aserbao.aserbaosandroid.ui.UIActivity;
 import com.example.camera.act.CameraActivity;
 
 public class HomeActivity extends BaseRecyclerViewActivity {
-    private static final String TAG = "HomeActivity";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
-    }
 
     @Override
     public void initGetData() {
-        mBaseRecyclerBean.add(new BaseRecyclerBean("test", 0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Android", AndroidActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("第三方库的使用", ThirdActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("测试", TestActivity.class));
@@ -63,7 +54,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CanvasActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", BlendModeActivity.class));
 
 
     }
@@ -71,13 +62,6 @@ public class HomeActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-        switch (position){
-            case 0:
-                ARouter instance = ARouter.getInstance();
-                Postcard postcard = instance.build(RouterConfig.JUMP_TO_CAMERA_ACTIVITY);
-                postcard.navigation();
-                Log.e(TAG, "itemClickBack: " + instance + " \n postcard = " + postcard );
-                break;
-        }
+
     }
 }
