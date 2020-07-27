@@ -14,6 +14,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.P
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
+import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.font.TextFontActivity;

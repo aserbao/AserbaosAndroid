@@ -27,7 +27,7 @@ import java.util.Random;
 import io.reactivex.internal.util.LinkedArrayList;
 
 /**
- * 主要功能:
+ * 主要功能:数据管理
  * author aserbao
  * date : On 2018/9/13
  * email: this is empty email

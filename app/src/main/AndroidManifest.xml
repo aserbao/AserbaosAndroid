@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.aserbao.aserbaosandroid">
-    <!-- com.example.aserbao.aserbaosandroid/com.aserbao.aserbaosandroid.HomeActivity -->
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -61,7 +60,6 @@
         <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
         <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />
         <activity android:name=".aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity" />
-        <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".aaThird.jetpack.databinding.observable.ObservableFileActivity" />
         <activity android:name=".aaThird.jetpack.databinding.DataBindActivity" />
@@ -104,8 +102,6 @@
         <activity android:name=".aaSource.android.os.handler.download.HandlerCommunicationActivity" />
         <activity android:name=".aaSource.android.os.AndroidOSActivity" />
         <activity android:name=".aaThird.rxJava3.RxJavaActivity" />
-        <activity android:name=".functions.aboutCompression.CompressionActivity" />
-        <activity android:name=".functions.aboutCompression.AboutZipActivity" />
         <activity android:name=".ui.recyclerView.recyclerViewPickView.RecyclerViewPickActivity" />
         <activity
             android:name=".functions.cutout.CutOutActivity"
@@ -149,12 +145,10 @@
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".functions.launch.demo.LaunchDemoActivity">
-
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -290,7 +284,8 @@
             android:name=".ui.recyclerView.smooth.SmoothActivitiy"
             android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".WelcomeActivity" >
+        </activity>
         <activity android:name=".cameraTest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
@@ -347,7 +342,6 @@
         <activity
             android:name=".ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.AutoAdjustSoftHeightActivity"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
-        <activity android:name=".ui.constantUtilsShow.ConstantsUtilsShowActivity" />
         <activity
             android:name=".ui.texts.editTexts.autoAdjustSoftHeight.fullScreen.OneEditTextFullScreenActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -378,7 +372,6 @@
         <activity android:name=".functions.iamgePhotoshop.compound.CompoundActivity" />
         <activity android:name=".ui.recyclerView.addItemRecyclerView.AddRecyclerViewActivity" />
         <activity android:name=".ui.texts.editTexts.others.OthersActivity" />
-        <activity android:name=".audioAndVideo.AudioAndVideoActivity" />
         <activity android:name=".audioAndVideo.jnis.JnisActivity" />
         <activity android:name=".audioAndVideo.jnis.javaCallC.JavaCallCActivity" />
         <activity android:name=".functions.database.greenDao.relation.GreenDaoRelationActivity" />
@@ -400,7 +393,6 @@
         <activity android:name=".audioAndVideo.detail_Info.DetailInfoActivity" />
         <activity android:name=".audioAndVideo.detail_Info.iamgeInfo.ImageInfoActivity" />
         <activity android:name=".functions.network.NetWorkActivity" />
-        <activity android:name=".functions.network.okhttp.OkhttpActivity" />
         <activity android:name=".ui.cardView.CardViewActivity" />
         <activity android:name=".ui.cardView.simpleCardView.SimpleCardViewActivity" />
         <activity
@@ -411,8 +403,6 @@
         <activity android:name=".ui.animation.moveAnimation.MoveAnimActivity" />
         <activity android:name=".ui.animation.explosionAnimation.ExplosionActivity" />
         <activity android:name=".ui.animation.explosionAnimation.leonids.LeonidsActivity" />
-        <activity android:name=".system.SystemActivity" />
-        <activity android:name=".system.handlers.HandlerActivity" />
         <activity android:name=".aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity" />
         <activity android:name=".ui.recyclerView.scale_smooth_slide.scale_smooth_slide_one_method.ScaleSmoothSlideOneActivity" />
         <activity android:name=".ui.recyclerView.scale_smooth_slide.scale_smooth_slide_two_method.ScaleSmoothSlideTwoActivity" />

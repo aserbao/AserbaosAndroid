@@ -15,6 +15,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 混合模式 blend
+ */
 public class BlendModeActivity extends BaseRecyclerViewActivity {
     public final static List<String> mBlendModes = new ArrayList<>();
     static {
@@ -68,11 +71,12 @@ public class BlendModeActivity extends BaseRecyclerViewActivity {
     public void showPopSel(){
         new PopSelSize(this).showEditPop(new PopSelSize.IPopSelListener() {
             @Override
-            public void selSize(@NotNull String size) {
+            public void selSize(@NotNull String size, int selStatus) {
                 PorterDuff.Mode blendMode = getBlendMode(size);
                 mCustomViewForBlendMode.setXfermode(blendMode);
             }
-        },mBlendModes.get(0),mBlendModes);
+
+        },mBlendModes.get(0),mBlendModes,PopSelSize.TWO_WHEEL_VIEW);
     }
 
     /**

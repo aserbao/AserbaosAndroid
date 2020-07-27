@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.kotlin.coroutine
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.base.base.BaseRecyclerViewActivity
 import com.example.base.base.beans.BaseRecyclerBean
@@ -9,6 +10,14 @@ import com.example.base.utils.log.ALogUtils
 import kotlinx.coroutines.*
 import kotlin.concurrent.thread
 
+/**
+ * kotlin 协程的使用
+ * @property TAG String
+ * @property SIMPLE_EXAMPLE Int
+ * @property RUNBLOCKING Int
+ * @property JOB Int
+ * @property SCOPE_BUILD Int
+ */
 class CoroutineActivity : BaseRecyclerViewActivity() {
     var TAG = "CoroutineActivity"
 
@@ -29,7 +38,10 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
             SIMPLE_EXAMPLE -> simpleExample()
             RUNBLOCKING -> runBlockingExample()
             JOB -> jobExample()
-            SCOPE_BUILD -> scopeBuildExample()
+            SCOPE_BUILD -> {
+//                scopeBuildExample()
+                test()
+            }
         }
 
     }
@@ -89,4 +101,24 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
         ALogUtils.d(TAG,"GlobalScope ok")
     }
 
+
+
+    fun test(){
+        runBlocking{
+
+            val job = async {
+                Thread(Runnable {
+                    var i = 0;
+                    while(i < 10){
+                        i++;
+                        Log.e(TAG, ": test $i " );
+                        Thread.sleep(100)
+                    }
+                }).start()
+            }
+
+            Log.e(TAG, ": test 2" );
+        }
+        Log.e(TAG, ": test 完成了" );
+    }
 }

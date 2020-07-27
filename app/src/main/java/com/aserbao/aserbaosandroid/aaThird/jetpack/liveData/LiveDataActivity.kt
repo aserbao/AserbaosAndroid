@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.base.base.BaseRecyclerViewActivity
 import com.example.base.base.beans.BaseRecyclerBean
 
-class LiveDataActivity : BaseRecyclerViewActivity() {
+public class LiveDataActivity : BaseRecyclerViewActivity() {
     lateinit var useMediatorLiveData:UseMediatorLiveData
 
 
