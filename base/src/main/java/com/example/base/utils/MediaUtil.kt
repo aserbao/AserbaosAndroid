@@ -3,12 +3,13 @@ package com.example.base.utils
 import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.os.Environment
+import android.util.Log
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-object VideoUtil {
+object MediaUtil {
 
      fun getAudioDuration(filePath: String): Long {
         try {
@@ -40,6 +41,66 @@ object VideoUtil {
             e.printStackTrace()
         }
         return 0
+    }
+
+    /**
+     * 获取视频信息
+     *
+     * @param url
+     * @return    视频时长（单位微秒）
+     */
+    fun getDuration(url: String?): Long {
+        return try {
+            val mediaExtractor = MediaExtractor()
+            mediaExtractor.setDataSource(url)
+            var videoExt: Int = selectVideoTrack(mediaExtractor)
+            if (videoExt == -1) {
+                videoExt = selectAudioTrack(mediaExtractor)
+                if (videoExt == -1) {
+                    return 0
+                }
+            }
+            val mediaFormat = mediaExtractor.getTrackFormat(videoExt)
+            val res = if (mediaFormat.containsKey(MediaFormat.KEY_DURATION)) mediaFormat.getLong(MediaFormat.KEY_DURATION) else 0 //时长
+            mediaExtractor.release()
+            res
+        } catch (e: java.lang.Exception) {
+            0
+        }
+    }
+
+    /**
+     * 查找视频轨道
+     * @param extractor
+     * @return
+     */
+    fun selectVideoTrack(extractor: MediaExtractor): Int {
+        val numTracks = extractor.trackCount
+        for (i in 0 until numTracks) {
+            val format = extractor.getTrackFormat(i)
+            val mime = format.getString(MediaFormat.KEY_MIME)
+            if (mime.startsWith("video/")) {
+                return i
+            }
+        }
+        return -1
+    }
+
+    /**
+     * 查找音频轨道
+     * @param extractor
+     * @return
+     */
+    fun selectAudioTrack(extractor: MediaExtractor): Int {
+        val numTracks = extractor.trackCount
+        for (i in 0 until numTracks) {
+            val format = extractor.getTrackFormat(i)
+            val mime = format.getString(MediaFormat.KEY_MIME)
+            if (mime.startsWith("audio/")) {
+                return i
+            }
+        }
+        return -1
     }
 
 

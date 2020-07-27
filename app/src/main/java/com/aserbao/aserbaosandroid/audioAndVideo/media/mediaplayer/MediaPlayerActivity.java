@@ -3,7 +3,6 @@ package com.aserbao.aserbaosandroid.audioAndVideo.media.mediaplayer;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -19,7 +18,7 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.aserbao.aserbaosandroid.R;
-import com.example.base.utils.VideoUtil;
+import com.example.base.utils.MediaUtil;
 import com.example.base.utils.others.MainLooper;
 
 import java.io.IOException;
@@ -40,7 +39,8 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
     SeekBar seekBar;
     public MediaPlayer mMediaPlayer;
 //    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/testMedia.mp4";
-    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/yx.mp4";
+//    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/yx.mp4";
+    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/input.mp3";
     public SurfaceHolder mHolder;
 
 
@@ -88,13 +88,31 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
         mHolder.addCallback(this);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMediaPlayer != null) {
+            mMediaPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+        }
+    }
+
     private void initModule(String path) {
 //        mMediaSurfaceView = new SurfaceView(this);
         mMediaPlayer = new MediaPlayer();
         try {
 //            path = "http://ivi.bupt.edu.cn/hls/cctv1.m3u8";
-            long videoDuration = VideoUtil.INSTANCE.getVideoDuration(path);
-            seekBar.setMax((int)videoDuration/1000);
+            long videoDuration = MediaUtil.INSTANCE.getDuration(path);
+            int maxDuration = (int) videoDuration / 1000;
+            seekBar.setMax(maxDuration);
+            Log.e(TAG, "initModule: duration ="+ maxDuration );
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
 //            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -182,5 +200,17 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.e(TAG, "surfaceDestroyed: " );
+    }
+
+    public void btn_start(View view) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.start();
+        }
+    }
+
+    public void btn_pause(View view) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.pause();
+        }
     }
 }

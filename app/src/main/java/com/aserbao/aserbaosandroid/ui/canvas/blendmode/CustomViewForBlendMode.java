@@ -5,12 +5,15 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Region;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -47,7 +50,7 @@ public class CustomViewForBlendMode extends View {
     }
 
 
-    private Paint mFirstPaint,mXFermodePaint,mPathPaint;
+    private Paint mFirstPaint,mXFermodePaint,mPathPaint,mClipPaint;
     PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
 
     public void setXfermode(PorterDuff.Mode mode) {
@@ -61,6 +64,7 @@ public class CustomViewForBlendMode extends View {
         mFirstPaint = createPaint(Color.BLUE);
         mXFermodePaint = createPaint(Color.RED);
         mPathPaint = createPaint(Color.RED);
+        mClipPaint = createPaint(Color.YELLOW);
     }
 
     public Paint createPaint(int color){
@@ -77,7 +81,9 @@ public class CustomViewForBlendMode extends View {
         //设置背景色
         canvas.drawARGB(255, 139, 197, 186);
 //        handlerXFerMode(canvas);
-        drawPath(canvas);
+//        drawPath(canvas);
+//        drawProgress(canvas);
+        drawClipProgress(canvas);
 
 //        handlerCanvasMethod(canvas);
     }
@@ -165,6 +171,96 @@ public class CustomViewForBlendMode extends View {
 //        canvas.drawRect(rectF,mPathPaint);
         mPathPaint.setXfermode(null);
         canvas.restoreToCount(layerId);
+    }
+
+    /**
+     * 带渐变色的的圆角进度条
+     * @param canvas
+     */
+    private void drawProgress(Canvas canvas){
+        int canvasWidth = canvas.getWidth();
+        int canvasHeight = canvas.getHeight();
+        int layerId = canvas.saveLayer(0, 0, canvasWidth, canvasHeight, null, Canvas.ALL_SAVE_FLAG);
+        int width = dp100 * 3;
+        int height = dp100;
+        int left = (canvasWidth - width)/2;
+        int top = (canvasHeight - height)/2;
+        int rigth = left + width;
+        int bottom = top + height;
+        RectF rectF = new RectF(left,top,rigth,bottom);
+        int radius = dp50;
+        mPathPaint.setColor(0x7F000000);
+        canvas.drawRoundRect(rectF,radius,radius,mPathPaint);
+
+        int progress = width/3 * 2;
+//        Shader shader = new LinearGradient(0, 0, progress, 0, 0xFFFDFF0D, 0xFFD7F660, Shader.TileMode.CLAMP);
+        Shader shader = new LinearGradient(0, 0, progress, 0, 0xFFFFFFFF, 0xFF000000, Shader.TileMode.CLAMP);
+        mPathPaint.setShader(shader);
+        mPathPaint.setColor(Color.YELLOW);
+        RectF rectF1 = new RectF(left,top,left+progress,bottom);
+//        canvas.drawRect(rectF1,mPathPaint);
+        Path path = new Path();
+        path.addRoundRect(rectF1,
+            new float[]{
+                dp50, dp50,
+                0, 0,
+                0, 0,
+                dp50,dp50
+                }, Path.Direction.CCW);
+        path.close();
+        canvas.drawPath(path, mPathPaint);
+        mPathPaint.setShader(null);
+
+        /*mPathPaint.setXfermode(xfermode);
+        mPathPaint.setColor(Color.TRANSPARENT);
+        RectF rectF2 = new RectF(left,top,left+radius,bottom);
+        canvas.drawRect(rectF2,mPathPaint);
+        mPathPaint.setXfermode(null);*/
+        canvas.restoreToCount(layerId);
+    }
+
+    /**
+     * 测试canvas的clipRect方法
+     */
+    public void drawClipProgress(Canvas canvas){
+        RectF rectF = new RectF(0, 0, 300, 300);
+        mClipPaint.setColor(Color.BLUE);
+        canvas.drawRect(rectF,mClipPaint);
+        RectF rectF1 = new RectF(200, 200, 300, 300);
+        mClipPaint.setColor(Color.RED);
+        canvas.drawRect(rectF1,mClipPaint);
+
+
+        canvas.save();
+        canvas.translate(560, 0);
+        canvas.clipRect(0, 0, 300, 300);
+        canvas.clipRect(200, 200, 500, 500, Region.Op.INTERSECT);
+        drawScene(canvas);
+        canvas.restore();
+    }
+
+
+    private void drawScene(Canvas canvas) {
+        canvas.clipRect(0, 0, 500, 500);
+
+        canvas.drawColor(Color.WHITE);
+
+        mClipPaint.setColor(Color.BLUE);
+        canvas.drawRect(0, 0, 300, 300, mClipPaint);
+
+        mClipPaint.setColor(Color.WHITE);
+        mClipPaint.setTextSize(40);
+        canvas.drawText("A", 140, 140, mClipPaint);
+
+        mClipPaint.setColor(Color.GREEN);
+        canvas.drawRect(200, 200, 500, 500, mClipPaint);
+
+        mClipPaint.setColor(Color.WHITE);
+        canvas.drawText("B", 350, 350, mClipPaint);
+
+        mClipPaint.setColor(Color.RED);
+        canvas.drawRect(200, 200, 300, 300, mClipPaint);
+
     }
 
     /**

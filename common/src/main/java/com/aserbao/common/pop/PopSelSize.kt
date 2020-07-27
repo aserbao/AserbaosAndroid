@@ -68,17 +68,6 @@ public class PopSelSize(var mContext: Context) : PopupWindow.OnDismissListener {
                     listener?.selSize(selSize,ONE_WHEEL_VIEW)
                 }
             })
-            if(selStatus == ONE_WHEEL_VIEW) wheelView2.setVisible(false)
-            wheelView2.offset=2
-            wheelView2.setItems(sizeList)
-            var indexOf2 = sizeList.indexOf(selSize)
-            if(indexOf2 > 0) wheelView.setSeletion(indexOf2)
-            wheelView.setOnWheelViewListener(object : WheelView.OnWheelViewListener() {
-                override fun onSelected(selectedIndex: Int, item: String) {
-                    selSize = item
-                    listener?.selSize(selSize,TWO_WHEEL_VIEW)
-                }
-            })
         }
     }
 
