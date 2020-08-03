@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.TextureView;
@@ -62,9 +63,11 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
                 Toast.makeText(this, "请提供相机权限", Toast.LENGTH_SHORT).show();
                 return;
             }
+            Log.e(TAG, "openCamera: cameraId= "+cameraId );
             manager.openCamera(cameraId, new CameraDevice.StateCallback() {
                 @Override
                 public void onOpened(@NonNull CameraDevice camera) {
+                    Log.e(TAG, "onOpened: camera=" + camera );
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                         Surface surface = new Surface(surfaceTexture);
                         surfaceTexture.setDefaultBufferSize(1920,1080);
@@ -74,6 +77,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
                             camera.createCaptureSession(mSurfaces, new CameraCaptureSession.StateCallback() {
                                 @Override
                                 public void onConfigured(@NonNull CameraCaptureSession session) {
+                                    Log.e(TAG, "onConfigured: session=" + session );
                                     CaptureRequest.Builder cameraCaptureRequest = null;
                                     try {
                                         cameraCaptureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -83,30 +87,38 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
                                             @Override
                                             public void onCaptureStarted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, long timestamp, long frameNumber) {
                                                 super.onCaptureStarted(session, request, timestamp, frameNumber);
+                                                Log.e(TAG, "onCaptureStarted: session="+session+ " request="+request+ " timestamp="+timestamp+ " frameNumber="+frameNumber );
                                             }
                                         },null);
                                     } catch (CameraAccessException e) {
                                         e.printStackTrace();
+                                        Log.e(TAG, "onConfigured: 出错 "+ e.toString() );
                                     }
                                 }
 
                                 @Override
                                 public void onConfigureFailed(@NonNull CameraCaptureSession session) {
-
+                                    Log.d(TAG, "onConfigureFailed() called with: session = [" + session + "]");
                                 }
                             }, null);
 
                         } catch (CameraAccessException e) {
+                            Log.e(TAG, "onOpened: 失败="+e.toString() );
                             e.printStackTrace();
                         }
                     }
                 }
                 @Override
-                public void onDisconnected(@NonNull CameraDevice camera) {}
+                public void onDisconnected(@NonNull CameraDevice camera) {
+                    Log.d(TAG, "onDisconnected() called with: camera = [" + camera + "]");
+                }
                 @Override
-                public void onError(@NonNull CameraDevice camera, int error) {}
+                public void onError(@NonNull CameraDevice camera, int error) {
+                    Log.e(TAG, "onError: error=" + error );
+                }
             },null);
         } catch (CameraAccessException e) {
+            Log.e(TAG, "openCamera:出错 "+ e.toString());
             e.printStackTrace();
         }
     }
@@ -127,9 +139,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
     }
 
     @Override
-    public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-
-    }
+    public void onSurfaceTextureUpdated(SurfaceTexture surface) {}
 
     public void switchCamera(View view) {
         if(cameraId.equals(mBackCameraId)){

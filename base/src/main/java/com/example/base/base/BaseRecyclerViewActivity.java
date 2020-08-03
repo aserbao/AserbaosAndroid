@@ -43,6 +43,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @package:com.aserbao.aserbaosandroid.base
  */
 public abstract class BaseRecyclerViewActivity extends AppCompatActivity implements IBaseRecyclerItemClickListener {
+    public final String TAG = getClass().getSimpleName();
     protected static final int COME_FROM_SPINNER = 1;
 
     public TextView mBaseRecyclerTv;

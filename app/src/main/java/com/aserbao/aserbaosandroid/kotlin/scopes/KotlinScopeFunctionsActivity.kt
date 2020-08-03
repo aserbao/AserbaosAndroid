@@ -11,8 +11,7 @@ import com.example.base.base.beans.BaseRecyclerBean
  * kotlin scope学习
  */
 class KotlinScopeFunctionsActivity : BaseRecyclerViewActivity() {
-    val TAG = "KotlinScope"
-    
+
     private val SCOPE_LET       = 1
     private val SCOPE_RUN       = 2
     private val SCOPE_WITH      = 3

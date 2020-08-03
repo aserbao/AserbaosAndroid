@@ -38,9 +38,9 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
     @BindView(R.id.seekBar)
     SeekBar seekBar;
     public MediaPlayer mMediaPlayer;
-//    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/testMedia.mp4";
+    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/testMedia.mp4";
 //    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/yx.mp4";
-    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/input.mp3";
+//    public String mVideoPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/input.mp3";
     public SurfaceHolder mHolder;
 
 
@@ -72,12 +72,12 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-//                mMediaPlayer.pause();
+                mMediaPlayer.pause();
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-//                mMediaPlayer.start();
+                mMediaPlayer.start();
             }
         });
     }
@@ -112,7 +112,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements SurfaceHol
             long videoDuration = MediaUtil.INSTANCE.getDuration(path);
             int maxDuration = (int) videoDuration / 1000;
             seekBar.setMax(maxDuration);
-            Log.e(TAG, "initModule: duration ="+ maxDuration );
+            Log.e(TAG, "initModule: duration ="+ maxDuration+ " mVideoPath="+ mVideoPath);
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.prepare();
 //            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);

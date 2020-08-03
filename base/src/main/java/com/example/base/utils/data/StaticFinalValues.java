@@ -9,6 +9,7 @@ public class StaticFinalValues {
     //-====================path
     public static final String IMAGE_URL = "https://avatars1.githubusercontent.com/u/21996952?s=460&v=4";
     public static final String VIDEO_URL = "video_url";
+//    /storage/emulated/0/
     public static final String STORAGE_TEMP_VIDEO_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao.mp4";
     public static final String STORAGE_TEMP_VIDEO_PATH2 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao2.mp4";
     public static final String STORAGE_TEMP_FILE = Environment.getExternalStorageDirectory().getAbsolutePath() + "/aserbao";

@@ -19,7 +19,6 @@ import kotlin.concurrent.thread
  * @property SCOPE_BUILD Int
  */
 class CoroutineActivity : BaseRecyclerViewActivity() {
-    var TAG = "CoroutineActivity"
 
     private val SIMPLE_EXAMPLE = 0
     private val RUNBLOCKING = 1

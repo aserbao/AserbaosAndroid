@@ -48,12 +48,13 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".kotlin.coroutine.CoroutineActivity"></activity>
+        <activity android:name=".functions.aaSmallFunctions.lambda.LambdaActivity"></activity>
+        <activity android:name=".kotlin.coroutine.CoroutineActivity" />
         <activity android:name=".aaSource.android.widget.Classes.scroller.ScrollerActivity" />
         <activity android:name=".ui.viewPager.ViewPagerActivity" />
         <activity android:name=".kotlin.scopes.KotlinScopeFunctionsActivity" />
         <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
-        <activity android:name=".ui.texts.textViews.font.TextFontActivity"></activity>
+        <activity android:name=".ui.texts.textViews.font.TextFontActivity" />
         <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
         <activity android:name=".ui.customView.seekbar.SeekBarActivity" />
@@ -145,10 +146,12 @@
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".functions.launch.demo.LaunchDemoActivity">
+
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -284,8 +287,7 @@
             android:name=".ui.recyclerView.smooth.SmoothActivitiy"
             android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
-        <activity android:name=".WelcomeActivity" >
-        </activity>
+        <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".cameraTest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
