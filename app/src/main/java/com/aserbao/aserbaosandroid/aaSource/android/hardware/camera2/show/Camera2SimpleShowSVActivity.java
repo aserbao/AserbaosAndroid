@@ -42,6 +42,10 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
     private String mBackCameraId = "0";
     private String cameraId = mBackCameraId;
 
+    CameraDevice mCameraDevice;
+    CameraCaptureSession mCaptureSession;
+    CaptureRequest.Builder previewCaptureBuild;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +58,10 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
     /**
      * 打开相机权限
      */
-    public void openCamera(SurfaceTexture surfaceTexture) {
+    public void openCamera() {
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-//        CameraCharacteristics cameraCharacteristics = manager.getCameraCharacteristics("0");
         //CameraManager cameraManager1 = getSystemService(CameraManager.class);
+//        CameraCharacteristics cameraCharacteristics = manager.getCameraCharacteristics("0");
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "请提供相机权限", Toast.LENGTH_SHORT).show();
@@ -67,46 +71,9 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
             manager.openCamera(cameraId, new CameraDevice.StateCallback() {
                 @Override
                 public void onOpened(@NonNull CameraDevice camera) {
+                    mCameraDevice = camera;
+                    startPreview();
                     Log.e(TAG, "onOpened: camera=" + camera );
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        Surface surface = new Surface(surfaceTexture);
-                        surfaceTexture.setDefaultBufferSize(1920,1080);
-                        List<Surface> mSurfaces = new ArrayList<>();
-                        mSurfaces.add(surface);
-                        try {
-                            camera.createCaptureSession(mSurfaces, new CameraCaptureSession.StateCallback() {
-                                @Override
-                                public void onConfigured(@NonNull CameraCaptureSession session) {
-                                    Log.e(TAG, "onConfigured: session=" + session );
-                                    CaptureRequest.Builder cameraCaptureRequest = null;
-                                    try {
-                                        cameraCaptureRequest = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-                                        cameraCaptureRequest.addTarget(surface);
-                                        captureRequest = cameraCaptureRequest.build();
-                                        session.setRepeatingRequest(captureRequest, new CameraCaptureSession.CaptureCallback() {
-                                            @Override
-                                            public void onCaptureStarted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, long timestamp, long frameNumber) {
-                                                super.onCaptureStarted(session, request, timestamp, frameNumber);
-                                                Log.e(TAG, "onCaptureStarted: session="+session+ " request="+request+ " timestamp="+timestamp+ " frameNumber="+frameNumber );
-                                            }
-                                        },null);
-                                    } catch (CameraAccessException e) {
-                                        e.printStackTrace();
-                                        Log.e(TAG, "onConfigured: 出错 "+ e.toString() );
-                                    }
-                                }
-
-                                @Override
-                                public void onConfigureFailed(@NonNull CameraCaptureSession session) {
-                                    Log.d(TAG, "onConfigureFailed() called with: session = [" + session + "]");
-                                }
-                            }, null);
-
-                        } catch (CameraAccessException e) {
-                            Log.e(TAG, "onOpened: 失败="+e.toString() );
-                            e.printStackTrace();
-                        }
-                    }
                 }
                 @Override
                 public void onDisconnected(@NonNull CameraDevice camera) {
@@ -123,9 +90,57 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
         }
     }
 
+    /**
+     * 开启预览
+     */
+    private void startPreview(){
+        SurfaceTexture surfaceTexture = mAutoTextView.getSurfaceTexture();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            Surface surface = new Surface(surfaceTexture);
+            surfaceTexture.setDefaultBufferSize(1920,1080);
+            List<Surface> mSurfaces = new ArrayList<>();
+            mSurfaces.add(surface);
+            try {
+                previewCaptureBuild = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+                previewCaptureBuild.addTarget(surface);
+                mCameraDevice.createCaptureSession(mSurfaces, new CameraCaptureSession.StateCallback() {
+                    @Override
+                    public void onConfigured(@NonNull CameraCaptureSession session) {
+                        Log.e(TAG, "onConfigured: session=" + session );
+                        mCaptureSession = session;
+                        updatePreview();
+                    }
+                    @Override
+                    public void onConfigureFailed(@NonNull CameraCaptureSession session) {
+                        Log.d(TAG, "onConfigureFailed() called with: session = [" + session + "]");
+                    }
+                }, null);
+            } catch (CameraAccessException e) {
+                Log.e(TAG, "onOpened: 失败="+e.toString() );
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void updatePreview() {
+        try {
+            captureRequest = previewCaptureBuild.build();
+            mCaptureSession.setRepeatingRequest(captureRequest, new CameraCaptureSession.CaptureCallback() {
+                @Override
+                public void onCaptureStarted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, long timestamp, long frameNumber) {
+                    super.onCaptureStarted(session, request, timestamp, frameNumber);
+                    Log.e(TAG, "onCaptureStarted: session="+session+ " request="+request+ " timestamp="+timestamp+ " frameNumber="+frameNumber );
+                }
+            },null);
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+            Log.e(TAG, "onConfigured: 出错 "+ e.toString() );
+        }
+    }
+
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        openCamera(surface);
+        openCamera();
     }
 
     @Override
@@ -147,6 +162,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
         }else{
             cameraId = mBackCameraId;
         }
-        openCamera(mAutoTextView.getSurfaceTexture());
+        mCameraDevice.close();
+        openCamera();
     }
 }
