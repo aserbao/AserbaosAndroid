@@ -123,4 +123,5 @@ dependencies {
     api rootProject.ext.dependencies["easypermissions"]
     debugImplementation rootProject.ext.dependencies["debug_db"]
     api rootProject.ext.dependencies["lottie"]
+    api rootProject.ext.dependencies["logger"]
 }

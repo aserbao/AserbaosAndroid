@@ -2,6 +2,8 @@ package com.example.base.utils.log;
 
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -41,45 +43,44 @@ public class ALogUtils {
     public static void logErrorTime( int initTimeState){
             if(initTimeState == INT_NUM_END_TIME) {
                 long l = System.currentTimeMillis() - mStartTime;
-                Log.e(mClassname + "时间测试", mMethods + " 耗时 = " + String.valueOf(l) + "ms");
+                Logger.d(mClassname + "时间测试" + " "+  mMethods + " 耗时 = " + String.valueOf(l) + "ms");
             }else{
                 if(initTimeState == INT_NUM_START_TIME){
                     mStartTime = System.currentTimeMillis();
                 }
             }
     };
-
     public static void init(boolean logEnable) {
         mLogEnable = logEnable;
     }
 
     public static void d(String tag, String msg) {
         if (mLogEnable) {
-            Log.d(tag, getMsgWithLineNumber(msg)+" ThreadName = "+ Thread.currentThread().getName());
+            Logger.d(msg);
         }
     }
 
     public static void e(String tag, String msg) {
         if (mLogEnable) {
-            Log.e(tag, getMsgWithLineNumber(msg));
+            Logger.e(tag + " "+ msg);
         }
     }
 
     public static void i(String tag, String msg) {
         if (mLogEnable) {
-            Log.i(tag, getMsgWithLineNumber(msg));
+            Logger.i(tag+" "+msg);
         }
     }
 
     public static void w(String tag, String msg) {
         if (mLogEnable) {
-            Log.w(tag, getMsgWithLineNumber(msg));
+            Logger.w(tag+" "+ msg);
         }
     }
 
     public static void v(String tag, String msg) {
         if (mLogEnable) {
-            Log.v(tag, getMsgWithLineNumber(msg));
+            Logger.v(tag+ " "+ msg);
         }
     }
 

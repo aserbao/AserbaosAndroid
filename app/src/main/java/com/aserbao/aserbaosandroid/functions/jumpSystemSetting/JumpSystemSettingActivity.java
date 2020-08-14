@@ -26,9 +26,7 @@ public class JumpSystemSettingActivity extends AppCompatActivity {
         initRecylerView();
     }
 
-    private void initRecylerView() {
-
-    }
+    private void initRecylerView() {}
 
     @OnClick({R.id.jump_notification, R.id.jump_setting, R.id.jump_app_activity})
     public void onViewClicked(View view) {

@@ -91,6 +91,7 @@ ext {
         easypermissions      : 'pub.devrel:easypermissions:2.0.1',
         debug_db             : 'com.amitshekhar.android:debug-db:1.0.6',
         lottie               : 'com.airbnb.android:lottie:2.7.0',
+        logger               : 'com.orhanobut:logger:2.2.0'
 
         /*
     navigation_ui        : 'androidx.navigation:navigation-ui:2.0.0',
