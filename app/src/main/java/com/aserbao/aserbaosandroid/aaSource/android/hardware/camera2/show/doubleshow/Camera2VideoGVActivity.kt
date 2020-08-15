@@ -30,13 +30,13 @@ class Camera2VideoGVActivity : AppCompatActivity(){
         bindRoot.apply {
             glSurfaceView?.apply {
                 setEGLContextClientVersion(2) //在setRenderer()方法前调用此方法
-                setRenderer(CameraFontPreviewRender(this@Camera2VideoGVActivity,this,mFrontCameraId))
+                setRenderer(CameraPreviewRender(this@Camera2VideoGVActivity,this,mFrontCameraId))
                 renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY
             }
 
             glSurfaceView2?.apply {
                 setEGLContextClientVersion(2) //在setRenderer()方法前调用此方法
-                setRenderer(CameraFontPreviewRender(this@Camera2VideoGVActivity,this,mBackCameraId))
+                setRenderer(CameraPreviewRender(this@Camera2VideoGVActivity,this,mBackCameraId))
                 renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY
             }
 

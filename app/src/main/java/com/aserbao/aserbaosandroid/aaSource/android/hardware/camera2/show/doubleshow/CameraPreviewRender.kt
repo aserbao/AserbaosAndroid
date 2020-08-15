@@ -30,7 +30,7 @@ import javax.microedition.khronos.opengles.GL10
 * @project: AserbaosAndroid
 * @package: com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.doubleshow
 */
-class CameraFontPreviewRender(var context: Context, var glSurfaceView: GLSurfaceView,var cameraId:String) : GLSurfaceView.Renderer,SurfaceTexture.OnFrameAvailableListener{
+class CameraPreviewRender(var context: Context, var glSurfaceView: GLSurfaceView, var cameraId:String) : GLSurfaceView.Renderer,SurfaceTexture.OnFrameAvailableListener{
     private val TAG = "CameraFontPreviewRender"
     private val vertexShaderCode = """uniform mat4 textureTransform;
                 attribute vec2 inputTextureCoordinate;

@@ -41,17 +41,14 @@ class VideoGlRender(var context: Context) {
                 
                 void main() {
                     vec4 tc = texture2D(videoTex, textureCoordinate);
-//                    float color = tc.r * 0.3 + tc.g * 0.59 + tc.b * 0.11;
-//                    float color = tc.r  + tc.g  + tc.b;
                     gl_FragColor = vec4(tc.r,tc.g,tc.b,1.0);
-//                    gl_FragColor = vec4(color,color,color,1.0);
                 }
                 """
     private var mPosBuffer: FloatBuffer? = null
     private var mTexBuffer: FloatBuffer? = null
     private val mPosCoordinate = floatArrayOf(-1f, 1f, -1f, -1f, 1f, 1f, 1f, -1f)
     private val mTexCoordinateForntRight =
-        floatArrayOf(0f, 0f, 0f, 1f, 1f, 0f, 1f, 1f) //顺时针旋转90  后摄像头上下颠倒了，前摄像头正确
+        floatArrayOf(0f, 0f, 0f, 1f, 1f, 0f, 1f, 1f)
     var mProgram = 0
     var mSurfaceTexture: SurfaceTexture? = null
 
