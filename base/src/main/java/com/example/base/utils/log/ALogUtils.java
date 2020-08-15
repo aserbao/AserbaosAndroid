@@ -56,7 +56,7 @@ public class ALogUtils {
 
     public static void d(String tag, String msg) {
         if (mLogEnable) {
-            Logger.d(msg);
+            Logger.t(tag).d(msg);
         }
     }
 

@@ -127,10 +127,11 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
     private void setUpCameraCharacteristics(CameraCharacteristics cameraCharacteristics) {
         Camera2Utils.setupCameraCharacteristics(cameraCharacteristics);
         Camera2Utils.getCameraStreamInfo(cameraCharacteristics);
+        /** 拿到当前相机的尺寸预览列表**/
         StreamConfigurationMap map = cameraCharacteristics.get(
             CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         optimalPreviewSize = Camera2Utils.chooseOptimalPreviewSize(
-            map.getOutputSizes(SurfaceTexture.class), RECOMMEND_WIDTH, RECOMMEND_HEIGHT, MAX_PREVIEW_WIDTH, MAX_PREVIEW_HEIGHT, previewWHRatio);
+            map.getOutputSizes(SurfaceTexture.class), RECOMMEND_WIDTH, RECOMMEND_HEIGHT,  previewWHRatio);
         mAutoTextView.setAspectRatio(previewWHRatio);
     }
 
