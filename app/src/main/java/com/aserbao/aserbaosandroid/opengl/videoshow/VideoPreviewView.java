@@ -70,6 +70,7 @@ public class VideoPreviewView extends GLSurfaceView implements GLSurfaceView.Ren
         Surface surface = new Surface(surfaceTexture);
         mMediaPlayer.setSurface(surface);
         try {
+            mMediaPlayer.setLooping(true);
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
