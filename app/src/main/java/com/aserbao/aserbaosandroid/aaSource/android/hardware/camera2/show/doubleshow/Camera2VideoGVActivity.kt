@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_camera2_glsurface_view.view.*
  * @author: aserbao
  * @date:2020/8/14 6:02 PM
  * @package:
- * @describle: 开启前后置摄像头同时预览,小米手机可以正常运行，华为机型无法正常同时预览
+ * @describle: 开启前后置摄像头同时预览,小米手机可以正常运行，华为,vivo,oppo机型无法正常同时预览
  * 原因：只有支持三路及以上的Camera才支持同时预览，系统默认是两路Camera。
  */
 class Camera2VideoGVActivity : AppCompatActivity(){

@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".functions.aaSmallFunctions.lambda.LambdaActivity"></activity>
+        <activity android:name=".opengl.videoshow.VideoShowGlSurfaceViewACT"></activity>
+        <activity android:name=".functions.aaSmallFunctions.lambda.LambdaActivity" />
         <activity android:name=".kotlin.coroutine.CoroutineActivity" />
         <activity android:name=".aaSource.android.widget.Classes.scroller.ScrollerActivity" />
         <activity android:name=".ui.viewPager.ViewPagerActivity" />
@@ -288,7 +289,7 @@
             android:name=".ui.recyclerView.smooth.SmoothActivitiy"
             android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
-        <activity android:name=".WelcomeActivity"></activity>
+        <activity android:name=".WelcomeActivity" />
         <activity android:name=".cameraTest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
