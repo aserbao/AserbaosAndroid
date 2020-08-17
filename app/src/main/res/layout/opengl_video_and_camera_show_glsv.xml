@@ -11,7 +11,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
-    <com.aserbao.aserbaosandroid.opengl.videoshow.VideoPreviewView
+    <com.aserbao.aserbaosandroid.opengl.videoandcamera.VideoGlSurfaceView
         android:id="@+id/videoPreview"
         app:layout_constraintTop_toBottomOf="@+id/cameraGLSV"
         app:layout_constraintBottom_toBottomOf="parent"

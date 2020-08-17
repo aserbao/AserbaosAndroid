@@ -35,6 +35,4 @@ class VideoAndCameraShowACT : BaseRecyclerViewActivity() {
 
     override fun itemClickBack(view: View?, position: Int, isLongClick: Boolean, comeFrom: Int) {}
 
-
-
 }
