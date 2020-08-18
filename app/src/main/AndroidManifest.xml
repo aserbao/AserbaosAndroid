@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".opengl.videoandcamera.VideoAndCameraShowACT"></activity>
+        <activity android:name=".opengl.OneOpenGl.texture.OpenGlTextureAct"></activity>
+        <activity android:name=".opengl.videoandcamera.VideoAndCameraShowACT" />
         <activity android:name=".opengl.videoshow.VideoShowGlSurfaceViewACT" />
         <activity android:name=".functions.aaSmallFunctions.lambda.LambdaActivity" />
         <activity android:name=".kotlin.coroutine.CoroutineActivity" />

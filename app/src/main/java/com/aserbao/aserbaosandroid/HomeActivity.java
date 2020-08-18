@@ -21,6 +21,7 @@ import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.mediaplayer.MediaPlayerActivity;
 import com.aserbao.aserbaosandroid.kotlin.KotlinActivity;
 import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
+import com.aserbao.aserbaosandroid.opengl.OneOpenGl.texture.OpenGlTextureAct;
 import com.aserbao.aserbaosandroid.opengl.videoandcamera.VideoAndCameraShowACT;
 import com.aserbao.aserbaosandroid.opengl.videoshow.VideoShowGlSurfaceViewACT;
 import com.aserbao.aserbaosandroid.ui.animation.baseAnimation.objectAnimator.ObjectAnimatorActivity;
@@ -64,7 +65,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", VideoAndCameraShowACT.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", OpenGlTextureAct.class));
     }
 
     @Override

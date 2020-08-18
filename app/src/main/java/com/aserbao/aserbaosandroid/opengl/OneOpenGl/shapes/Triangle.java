@@ -96,23 +96,24 @@ public class Triangle {
     private final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
     public void draw(float[] mvpMatrix){
+        // 清除预设值的缓冲区
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT| GLES20.GL_DEPTH_BUFFER_BIT);
-        // 将程序添加到OpenGL ES环境
+        // 使用程序对象mProgram作为当前渲染状态的一部分
         GLES20.glUseProgram(mProgram);
 
-        // 得到形状的变换矩阵的句柄
+        // 特定统一变量的位置
         mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
 
-        // 将投影和视图转换传递给着色器
+        // 通过一致变量（uniform修饰的变量）引用将一致变量值传入渲染管线
         GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
 
-        // 获取顶点着色器的vPosition成员的句柄
+        // 获取属性变量的索引
         mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
 
-        // 启用三角形顶点的句柄
+        // 启用通用顶点属性数组
         GLES20.glEnableVertexAttribArray(mPositionHandle);
 
-        // 准备三角形坐标数据
+        // 指定了渲染时索引值为 index 的顶点属性数组的数据格式和位置
         GLES20.glVertexAttribPointer(mPositionHandle, COORDS_PER_VERTEX,
                 GLES20.GL_FLOAT, false,
                 vertexStride, vertexBuffer);
