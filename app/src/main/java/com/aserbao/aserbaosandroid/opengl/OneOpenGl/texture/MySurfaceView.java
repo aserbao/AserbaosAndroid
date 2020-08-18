@@ -20,7 +20,7 @@ import com.aserbao.aserbaosandroid.R;
  * @author: aserbao
  * @date:2020/8/18 9:27 AM
  * @package:
- * @describle:
+ * @describle: openGL 1.0 的纹理贴图
  */
 public class MySurfaceView extends GLSurfaceView{
  
@@ -34,9 +34,9 @@ public class MySurfaceView extends GLSurfaceView{
 	private class MyRenderer implements Renderer {
  
 		float vertices[]=new float[] {
-        		-1, -1,
-            	1, -1,
-            	0, 1
+            0.0f,  0.622008459f,
+            -0.5f, -0.311004243f,
+            0.5f, -0.311004243f,
         };
 		
 		float textureCoors[]=new float[] {
@@ -61,8 +61,6 @@ public class MySurfaceView extends GLSurfaceView{
 	        mTexCoordBuffer = cbb.asFloatBuffer();//转换为int型缓冲
 	        mTexCoordBuffer.put(textureCoors);//向缓冲区中放入顶点着色数据
 	        mTexCoordBuffer.position(0);//设置缓冲区起始位置
-	        
-	        
 		}
  
 		private int initTexture(GL10 gl, Bitmap bitmap) {
@@ -87,31 +85,14 @@ public class MySurfaceView extends GLSurfaceView{
 		public void onDrawFrame(GL10 gl) {
 			// TODO Auto-generated method stub
 			gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-	        gl.glVertexPointer
-	        (
-	        		2,				
-	        		GL10.GL_FLOAT,	
-	        		0, 				
-	        		mVertexBuffer
-	        );
+	        gl.glVertexPointer(2, GL10.GL_FLOAT, 0, mVertexBuffer);
 	        
 	        gl.glEnable(GL10.GL_TEXTURE_2D);   
 	        gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
-	        gl.glTexCoordPointer
-	        (
-	        		2, 					//每个顶点两个纹理坐标数据 S、T
-	        		GL10.GL_FLOAT, 		//数据类型
-	        		0, 					//连续纹理坐标数据之间的间隔
-	        		mTexCoordBuffer		//纹理坐标数据
-	        );
+	        gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, mTexCoordBuffer);
 	        gl.glBindTexture(GL10.GL_TEXTURE_2D, mTexId);   
 	        
-	        gl.glDrawArrays
-	        (
-	        		GL10.GL_TRIANGLES, 
-	        		0, 
-	        		3
-	        );
+	        gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 3);
 	        gl.glDisable(GL10.GL_TEXTURE_2D);//关闭纹理
 		}
  
@@ -128,7 +109,7 @@ public class MySurfaceView extends GLSurfaceView{
 		@Override
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 			// TODO Auto-generated method stub
-			Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_00);
+			Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mm_1);
 			
 			mTexId = initTexture(gl, bitmap);
 		}

@@ -444,6 +444,8 @@
         <service android:name=".aaSource.android.material.floatView.launchWindow.SLaunchFloatWindowService" />
 
         <activity android:name=".aaSource.android.java.lang.clone.CloneTestActivity" />
+        <activity android:name=".opengl.OneOpenGl.texture.es2.ES2TextureAct" />
+        <activity android:name=".opengl.OneOpenGl.texture.es2.OpenGL2TextureAct" />
     </application>
 
 </manifest>
