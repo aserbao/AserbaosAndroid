@@ -130,7 +130,7 @@ public class Triangle extends Model{
 		shader.useProgram();
 
 		/** 绑定之前获取的纹理ID **/
-//		glBindTexture(GL_TEXTURE_2D, textureId[0]);
+		glBindTexture(GL_TEXTURE_2D, textureId[0]);
 
 		// 设置纹理贴图
 		glVertexAttribPointer(aTextureCoord, 2, GL_FLOAT, false, 0,
