@@ -10,10 +10,10 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--<SurfaceView
+        <SurfaceView
                     android:layout_width="match_parent"
                      android:layout_height="match_parent"
-                     android:id="@+id/mSurface" />-->
+                     android:id="@+id/mSurface" />
         <FrameLayout
             android:visibility="gone"
             android:id="@+id/container_fl"

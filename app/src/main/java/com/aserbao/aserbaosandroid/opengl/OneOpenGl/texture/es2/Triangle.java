@@ -39,6 +39,7 @@ public class Triangle extends Model{
 	Shader shader;
 	// number of coordinates per vertex in this array
 	static final int COORDS_PER_VERTEX = 3;
+
     /**
      * 顶点着色器
      */
@@ -64,7 +65,7 @@ public class Triangle extends Model{
 	};
 
 	float textureCoords[]={
-        0.5f, 0,
+        1f, 0,
         0, 1f,
         1f, 1f
     };
@@ -128,7 +129,6 @@ public class Triangle extends Model{
 	public void draw(float[] mvpMatrix) {
 		// 将program加入OpenGL ES环境中
 		shader.useProgram();
-
 		/** 绑定之前获取的纹理ID **/
 		glBindTexture(GL_TEXTURE_2D, textureId[0]);
 

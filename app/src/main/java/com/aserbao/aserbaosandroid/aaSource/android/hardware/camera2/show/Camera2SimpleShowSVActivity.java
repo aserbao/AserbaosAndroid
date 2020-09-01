@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -42,7 +43,7 @@ import butterknife.ButterKnife;
  * @Author: aserbao
  * @date:2020/8/5 10:42 AM
  * @package:com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show
- * @describle: 简单相机预览
+ * @describle: Camera2 简单相机预览
  */
 public class Camera2SimpleShowSVActivity extends AppCompatActivity implements TextureView.SurfaceTextureListener {
     public final String TAG = this.getClass().getSimpleName();;
@@ -110,7 +111,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
                 CameraCharacteristics cameraCharacteristics = manager.getCameraCharacteristics(cameraId);
                 Integer cameraDirection = cameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
                 if (facing.getValue() == cameraDirection) {
-                    setUpCameraCharacteristics(cameraCharacteristics);
+                    setUpCameraCharacteristics(cameraCharacteristics);//获取一些相机参数
                     mCameraId = cameraId;
                     break;
                 }
@@ -132,6 +133,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
             CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         optimalPreviewSize = Camera2Utils.chooseOptimalPreviewSize(
             map.getOutputSizes(SurfaceTexture.class), RECOMMEND_WIDTH, RECOMMEND_HEIGHT,  previewWHRatio);
+        Log.e(TAG, "setUpCameraCharacteristics: " + optimalPreviewSize.toString() );
         mAutoTextView.setAspectRatio(previewWHRatio);
     }
 
@@ -176,7 +178,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
                     ALogUtils.d(TAG, "onCaptureStarted: session="+session+ " request="+request+ " timestamp="+timestamp+ " frameNumber="+frameNumber );
                 }
             },null);
-        } catch (CameraAccessException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             ALogUtils.d(TAG, "onConfigured: 出错 "+ e.toString() );
         }

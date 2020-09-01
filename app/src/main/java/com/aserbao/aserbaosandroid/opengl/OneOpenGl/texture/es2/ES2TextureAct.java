@@ -7,6 +7,12 @@ import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
 
+/**
+ * @author: aserbao
+ * @date:2020/8/19 7:27 PM
+ * @package:
+ * @describle:  三角形纹理添加
+ */
 public class ES2TextureAct extends Activity {
 
 	@Override

@@ -1,34 +1,11 @@
- /**
- * 获取最佳预览尺寸
- * @param outputSizes 相机支持的输出
- * @param recommendWidth 预览容器的宽
- * @param recommendHeight 预览容器的高
- * @param whAspectRatio 预览宽高比 eg:9f/16f
- * @return
- */
-public static Size chooseOptimalPreviewSize(Size[] outputSizes, int recommendWidth, int recommendHeight, float whAspectRatio ){
-    List bigEnough = new ArrayList();
-    List notBigEnough = new ArrayList();
-    for (Size option : outputSizes) {
-        int height = (int) (option.getWidth() * whAspectRatio);
-        if(option.getWidth() == recommendWidth && option.getHeight() == recommendHeight){
-            return option;
+try {
+    captureRequest = previewCaptureBuild.build();
+    mCaptureSession.setRepeatingRequest(captureRequest, new CameraCaptureSession.CaptureCallback() {
+        @Override
+        public void onCaptureStarted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, long timestamp, long frameNumber) {
+            super.onCaptureStarted(session, request, timestamp, frameNumber);
         }
-        if(option.getHeight() == height){
-            if(option.getWidth() > recommendWidth && option.getHeight() > recommendHeight){
-                bigEnough.add(option);
-            }else{
-                notBigEnough.add(option);
-            }
-        }
-    }
-
-    if (bigEnough.size() > 0) {
-        return Collections.min(bigEnough, new CompareSizesByArea());
-    } else if (notBigEnough.size() > 0) {
-        return Collections.max(notBigEnough, new CompareSizesByArea());
-    } else {
-        Log.e(TAG, "Couldn't find any suitable preview size");
-        return new Size(1920,1080);
-    }
+    },null);
+} catch (Exception e) {
+    e.printStackTrace();
 }

@@ -1,5 +1,7 @@
 package com.aserbao.aserbaosandroid.ui.randomAndNoOverLay.hexagonal_grids;
 
+import android.util.Size;
+
 /**
  * 功能:
  *
@@ -14,6 +16,9 @@ public class test {
 
     public void cube_ring(){
         float[] results = new float[2];
-
+        Size[] size= new Size[10];
+        size[0] = new Size(1,2);
     }
+
+
 }

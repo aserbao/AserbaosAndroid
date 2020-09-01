@@ -3,7 +3,9 @@ package com.aserbao.aserbaosandroid.opengl.OneOpenGl;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
+import android.util.Log;
 
+import com.aserbao.aserbaosandroid.AserbaoApplication;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.Triangle;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes.TriangleColor;
 
@@ -30,6 +32,8 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     }
     private float[] mRotationMatrix = new float[16];
     public volatile float mAngle;
+    public volatile float mTranslationX;
+    public volatile float mTranslationY;
 
     public float getAngle() {
         return mAngle;
@@ -42,11 +46,10 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 unused) {
         // 设置相机位置（查看矩阵）
-        Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+       Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 
         // 计算投影和视图变换
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
-
         float[] scratch = new float[16];
         // 为三角形创建一个旋转变换
 //        long time = SystemClock.uptimeMillis() % 4000L;
@@ -59,11 +62,23 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
         Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
         // 绘制形状
 //        mTriangle.draw(scratch);
+
+//        float x = mTranslationX / (float) AserbaoApplication.screenWidth;
+//        float y = mTranslationY / (float) AserbaoApplication.screenHeight;
+//        Matrix.translateM(scratch,0,0.5f,0f,0);
+//        Matrix.translateM(scratch,0,x,-y,0);
+//        Log.e("Matrix.translateM", "onDrawFrame: x=" +x + " y="+ y  );
         mTriangle.draw(scratch);
     }
 
     // mMVPMatrix is an abbreviation for "Model View Projection Matrix"
-    private final float[] mMVPMatrix = new float[16];
+//    private final float[] mMVPMatrix = new float[16];
+    private final float[] mMVPMatrix = new float[]{
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,0,1
+    };
     private final float[] mProjectionMatrix = new float[16];
     private final float[] mViewMatrix = new float[16];
     @Override

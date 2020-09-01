@@ -8,6 +8,7 @@ public class OneOpenGlActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OneGlSurfaceView glSurfaceView = new OneGlSurfaceView(this);
+//        TwoGlSurfaceView glSurfaceView = new TwoGlSurfaceView(this);
         setContentView(glSurfaceView);
     }
 }
