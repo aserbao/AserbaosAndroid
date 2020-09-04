@@ -41,6 +41,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("PathInterpator动画",8));
         mBaseRecyclerBean.add(new BaseRecyclerBean("带红点的ImageView",9));
         mBaseRecyclerBean.add(new BaseRecyclerBean("RecordView",10));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("圆形头像动画",11));
     }
 
     @Override
@@ -113,7 +114,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 break;
             case 10:
                 ARecordView aRecordView = new ARecordView(this);
-                int dp100 = DisplayUtil.dip2px(100);
+
                 mBaseRecyclerEmptyContainer.addView(aRecordView,ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 ViewGroup.LayoutParams layoutParams2 = aRecordView.getLayoutParams();
                 layoutParams2.width = dp100;
@@ -121,6 +122,13 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 aRecordView.setLayoutParams(layoutParams2);
                 aRecordView.startRecording();
                 break;
+            case 11:
+                AAnimatorCircleImageView aAnimatorCircleImageView = new AAnimatorCircleImageView(this);
+                aAnimatorCircleImageView.setImageResource(R.drawable.mm_1);
+                mBaseRecyclerEmptyContainer.addView(aAnimatorCircleImageView, dp100, dp100);
+                break;
         }
     }
+
+    int dp100 = DisplayUtil.dip2px(100);
 }

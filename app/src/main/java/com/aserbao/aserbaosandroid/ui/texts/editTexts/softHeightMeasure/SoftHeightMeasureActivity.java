@@ -21,8 +21,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 /**
- * 非全屏状态下的软键盘显示
+ * @author: aserbao
+ * @date:2020/9/3 8:36 PM
+ * @package:
+ * @describle: 非全屏状态下的软键盘功能显示
  */
 public class SoftHeightMeasureActivity extends AppCompatActivity {
 

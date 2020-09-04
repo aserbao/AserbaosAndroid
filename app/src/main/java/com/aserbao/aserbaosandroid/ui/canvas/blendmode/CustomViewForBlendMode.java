@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.ui.canvas.blendmode;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -15,12 +16,17 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.common.ui.progress.ARecordView;
 import com.example.base.utils.screen.DisplayUtil;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 功能:
@@ -65,6 +71,7 @@ public class CustomViewForBlendMode extends View {
         mXFermodePaint = createPaint(Color.RED);
         mPathPaint = createPaint(Color.RED);
         mClipPaint = createPaint(Color.YELLOW);
+        myHandler.sendEmptyMessage(0);
     }
 
     public Paint createPaint(int color){
@@ -79,11 +86,12 @@ public class CustomViewForBlendMode extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //设置背景色
-        canvas.drawARGB(255, 139, 197, 186);
+//        canvas.drawARGB(255, 139, 197, 186);
 //        handlerXFerMode(canvas);
+        handleCircleMode(canvas);
 //        drawPath(canvas);
 //        drawProgress(canvas);
-        drawClipProgress(canvas);
+//        drawClipProgress(canvas);
 
 //        handlerCanvasMethod(canvas);
     }
@@ -127,8 +135,43 @@ public class CustomViewForBlendMode extends View {
             canvas.drawRect(r, r, r * 2.7f, r * 2.7f, mXFermodePaint);
             mXFermodePaint.setXfermode(null);
         canvas.restoreToCount(layerId);
-
     }
+    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_earth);
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    int radius = DisplayUtil.dp2px(200);
+    /**
+     * 动画
+     */
+    private void handleCircleMode(Canvas canvas){
+        xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+        int width = canvas.getWidth();
+        int height = canvas.getHeight();
+        canvas.saveLayer(0, 0, width, height, null, Canvas.ALL_SAVE_FLAG);
+        paint.setColor(Color.BLACK);
+        canvas.drawCircle(width/2, height/2, radius, paint);
+        paint.setXfermode(xfermode);
+        int maxLeft = bitmap.getWidth() - radius * 3;
+        int top = height/2 - radius;
+        int left = index % maxLeft;
+        Log.e(TAG, "handleCircleMode: " + index + " left=" + left + " maxLeft="+ maxLeft );
+
+        canvas.drawBitmap(bitmap, left, top, paint);
+        paint.setXfermode(null);
+        canvas.restore();
+        index = index - 2;
+    }
+
+    int index = 0;
+
+    private MyHandler myHandler = new MyHandler();
+    private class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            sendEmptyMessageDelayed(0,10);
+            invalidate();
+        }
+    }
+
 
     int dp2 = DisplayUtil.dp2px(2);
     int dp8 = DisplayUtil.dp2px(8);
@@ -136,6 +179,7 @@ public class CustomViewForBlendMode extends View {
     int dp50 = DisplayUtil.dp2px(50);
     int dp64 = DisplayUtil.dp2px(64);
     int dp100 = DisplayUtil.dp2px(100);
+    int dp200 = DisplayUtil.dp2px(200);
     int dp300 = DisplayUtil.dp2px(300);
     /**
      * 绘制多边形
