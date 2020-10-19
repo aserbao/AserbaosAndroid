@@ -7,8 +7,24 @@
     tools:context=".act.Camera2Activity">
 
     <com.aserbao.camera.Camera2View
+        android:id="@+id/camera2View"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/btn1"
+        android:text="capture"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn2"
+        android:text="stop"
+        app:layout_constraintLeft_toRightOf="@+id/btn1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,9 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.aserbao.camera.utils.CameraOperaion
 import com.aserbao.camera.utils.ImageSaver
+import com.getremark.base.kotlin_ext.runOnMainThread
 import java.io.File
+import java.io.IOException
 import java.util.*
 
 /*
@@ -31,7 +33,40 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
     companion object{
         const val IMAGE_WIDTH = 1920
         const val IMAGE_HEIHGT = 1080
+
+        /**
+         * Camera state: Showing camera preview.
+         */
+        val CAMERA_STATE_PREVIEW = 0
+        /**
+         * Camera state: Waiting for the focus to be locked.
+         */
+        val CAMERA_STATE_WAITING_LOCK = 2
+        /**
+         * Camera state: Waiting for the exposure to be precapture state.
+         */
+        val CAMERA_STATE_WAITING_PRECAPTURE = 3
+        /**
+         * Camera state: Waiting for the exposure state to be something other than precapture.
+         */
+        val CAMERA_STATE_WAITING_NON_PRECAPTURE = 4
+        /**
+         * Camera state: Picture was taken.
+         */
+        val CAMERA_STATE_PICTURE_TAKEN = 5
+        /**
+         * 录制中
+         */
+        val CAMERA_STATE_START_RECORDING = 5
+        val CAMERA_STATE_PAUSE = 6
+        /**
+         * 结束录制
+         */
+        val CAMERA_STATE_STOP_RECORDING = 7
     }
+
+
+    var cameraAction:Int = CAMERA_STATE_PREVIEW
 
 
     open var cameraDevice:CameraDevice ?= null
@@ -50,6 +85,11 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
      * This is the output file for our picture.
      */
     private lateinit var picFile: File
+
+    /**
+     * Output file for video
+     */
+    private var nextVideoAbsolutePath: String? = null
     /**
      * This a callback object for the [ImageReader]. "onImageAvailable" will be called when a
      * still image is ready to be saved.
@@ -73,6 +113,8 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
      */
     private lateinit var previewRequest: CaptureRequest
 
+    protected var mIHandleCameraListener:IHandleCameraListener ?= null
+
 
     var mStateCall = object: CameraDevice.StateCallback() {
         override fun onOpened(camera: CameraDevice) {
@@ -90,9 +132,7 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
     }
 
 
-    init {
-        picFile = File(createPicFileName(context,"${System.currentTimeMillis()}.jpg"))
-    }
+
 
     /**
      * 打开相机权限
@@ -122,6 +162,15 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
+    }
+
+    /**
+     * 拍照
+     */
+    override fun capturePic(picName: String, ihandle: IHandleCameraListener) {
+        mIHandleCameraListener = ihandle
+        picFile = File(createPicFileName(context,"$picName.jpg"))
+        lockFocus()
     }
 
     /**
@@ -216,4 +265,284 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             context.filesDir.toString() + "/" + fileName
         }
     }
+
+    // ===================== about capture ==============
+
+    /**
+     * Lock the focus as the first step for a still image capture.
+     */
+    fun lockFocus(){
+        try {
+            // This is how to tell the camera to lock focus.
+            previewRequestBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER,
+                CameraMetadata.CONTROL_AF_TRIGGER_START)
+            // Tell #captureCallback to wait for the lock.
+            cameraAction = CAMERA_STATE_WAITING_LOCK
+            captureSession?.capture(previewRequestBuilder.build(), captureCallback,null)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+            mIHandleCameraListener?.error(e)
+        }
+    }
+
+
+    /**
+     * Unlock the focus. This method should be called when still image capture sequence is
+     * finished.
+     */
+    private fun unlockFocus() {
+        try {
+            // Reset the auto-focus trigger
+            previewRequestBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER,
+                CameraMetadata.CONTROL_AF_TRIGGER_CANCEL)
+            captureSession?.capture(previewRequestBuilder.build(), captureCallback, null)
+            // After this, the camera will go back to the normal state of preview.
+            cameraAction = CAMERA_STATE_PREVIEW
+            captureSession?.setRepeatingRequest(previewRequest, captureCallback, null)
+        } catch (e: CameraAccessException) {
+            mIHandleCameraListener?.error(e)
+        }
+    }
+
+
+    private val captureCallback = object:CameraCaptureSession.CaptureCallback(){
+
+        fun process(result:CaptureResult){
+            when (cameraAction) {
+                CAMERA_STATE_PREVIEW -> Unit
+                CAMERA_STATE_WAITING_LOCK -> capturePicture(result)
+                CAMERA_STATE_WAITING_PRECAPTURE -> {
+                    // CONTROL_AE_STATE can be null on some devices
+                    val aeState = result.get(CaptureResult.CONTROL_AE_STATE)
+                    if (aeState == null ||
+                        aeState == CaptureResult.CONTROL_AE_STATE_PRECAPTURE ||
+                        aeState == CaptureRequest.CONTROL_AE_STATE_FLASH_REQUIRED) {
+                        cameraAction = CAMERA_STATE_WAITING_NON_PRECAPTURE
+                    }
+                }
+                CAMERA_STATE_WAITING_NON_PRECAPTURE -> {
+                    // CONTROL_AE_STATE can be null on some devices
+                    val aeState = result.get(CaptureResult.CONTROL_AE_STATE)
+                    if (aeState == null || aeState != CaptureResult.CONTROL_AE_STATE_PRECAPTURE) {
+                        cameraAction = CAMERA_STATE_PICTURE_TAKEN
+                        captureStillPicture()
+                    }
+                }
+            }
+        }
+
+        private fun capturePicture(result: CaptureResult) {
+            val afState = result.get(CaptureResult.CONTROL_AF_STATE)
+            if (afState == null) {
+                captureStillPicture()
+            } else if (afState == CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED
+                || afState == CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED) {
+                // CONTROL_AE_STATE can be null on some devices
+                val aeState = result.get(CaptureResult.CONTROL_AE_STATE)
+                if (aeState == null || aeState == CaptureResult.CONTROL_AE_STATE_CONVERGED) {
+                    cameraAction = CAMERA_STATE_PICTURE_TAKEN
+                    captureStillPicture()
+                } else {
+                    runPrecaptureSequence()
+                }
+            }
+        }
+
+        override fun onCaptureCompleted(
+            session: CameraCaptureSession,
+            request: CaptureRequest,
+            result: TotalCaptureResult
+        ) {
+            process(result)
+        }
+
+        override fun onCaptureProgressed(
+            session: CameraCaptureSession,
+            request: CaptureRequest,
+            partialResult: CaptureResult
+        ) {
+            process(partialResult)
+        }
+    }
+
+
+    /**
+     * Capture a still picture. This method should be called when we get a response in
+     * [.captureCallback] from both [.lockFocus].
+     */
+    fun captureStillPicture(){
+        try {
+            if (cameraDevice == null) return
+            // This is the CaptureRequest.Builder that we use to take a picture.
+            var createCaptureRequest = cameraDevice?.createCaptureRequest(
+                CameraDevice.TEMPLATE_STILL_CAPTURE
+            )
+            val captureBuilder = createCaptureRequest?.apply {
+                addTarget(imageReader?.surface!!)
+
+                // Sensor orientation is 90 for most devices, or 270 for some devices (eg. Nexus 5X)
+                // We have to take that into account and rotate JPEG properly.
+                // For devices with orientation of 90, we return our mapping from ORIENTATIONS.
+                // For devices with orientation of 270, we need to rotate the JPEG 180 degrees.
+                set(CaptureRequest.JPEG_ORIENTATION,90)
+
+                // Use the same AE and AF modes as the preview.
+                set(CaptureRequest.CONTROL_AF_MODE,
+                    CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE)
+            }
+
+            val captureCallback = object : CameraCaptureSession.CaptureCallback() {
+
+                override fun onCaptureCompleted(session: CameraCaptureSession,
+                                                request: CaptureRequest,
+                                                result: TotalCaptureResult) {
+                    unlockFocus()
+                    mIHandleCameraListener?.capturePic(picFile.path)
+                }
+            }
+
+            captureSession?.apply {
+                stopRepeating()
+                abortCaptures()
+                capture(captureBuilder?.build()!!, captureCallback, null)
+            }
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+            mIHandleCameraListener?.error(e)
+        }
+    }
+
+    /**
+     * Run the precapture sequence for capturing a still image. This method should be called when
+     * we get a response in [.captureCallback] from [.lockFocus].
+     */
+    private fun runPrecaptureSequence() {
+        try {
+            // This is how to tell the camera to trigger.
+            previewRequestBuilder.set(CaptureRequest.CONTROL_AE_PRECAPTURE_TRIGGER,
+                CaptureRequest.CONTROL_AE_PRECAPTURE_TRIGGER_START)
+            // Tell #captureCallback to wait for the precapture sequence to be set.
+            cameraAction = CAMERA_STATE_WAITING_PRECAPTURE
+            captureSession?.capture(previewRequestBuilder.build(), captureCallback, null)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+            mIHandleCameraListener?.error(e)
+        }
+    }
+
+    // ======================== video record ==============
+    /**
+     * 开始录制
+     */
+    public fun startRecordingVideo(picVideo: String, ihandle: IHandleCameraListener) {
+        mIHandleCameraListener = ihandle
+        if (cameraDevice == null || !mCamera2View.isAvailable) return
+        try {
+            closePreviewSession()
+            setUpMediaRecorder(picVideo)
+            val texture = mCamera2View.surfaceTexture.apply {
+                setDefaultBufferSize(previewSize.width, previewSize.height)
+            }
+
+            // Set up Surface for camera preview and MediaRecorder
+            val previewSurface = Surface(texture)
+            val recorderSurface = mediaRecorder!!.surface
+            val surfaces = ArrayList<Surface>().apply {
+                add(previewSurface)
+                add(recorderSurface)
+            }
+            previewRequestBuilder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_RECORD).apply {
+                addTarget(previewSurface)
+                addTarget(recorderSurface)
+            }
+
+            // Start a capture session
+            // Once the session starts, we can update the UI and start recording
+            cameraDevice?.createCaptureSession(surfaces,
+                object : CameraCaptureSession.StateCallback() {
+
+                    override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
+                        captureSession = cameraCaptureSession
+                        updatePreview()
+                        runOnMainThread {
+                            cameraAction = CAMERA_STATE_START_RECORDING
+                            mediaRecorder?.start()
+                        }
+                    }
+
+                    override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
+                        mIHandleCameraListener?.error(Exception("onConfigureFailed"))
+                    }
+                }, null)
+        } catch (e: Exception) {
+            mIHandleCameraListener?.error(e)
+        }
+
+    }
+
+    /**
+     * 结束录制
+     */
+    public fun stopRecordingVideo(){
+        cameraAction = CAMERA_STATE_STOP_RECORDING
+        mediaRecorder?.apply {
+            stop()
+            reset()
+        }
+        mIHandleCameraListener?.videoComplete(nextVideoAbsolutePath)
+        nextVideoAbsolutePath = null
+        startPreview()
+    }
+
+    @Throws(IOException::class)
+    private fun setUpMediaRecorder(picVideo: String) {
+
+        if (nextVideoAbsolutePath.isNullOrEmpty()) {
+            nextVideoAbsolutePath = createVideoFileName(context,"$picVideo.mp4")
+        }
+
+        mediaRecorder?.setOrientationHint(90)
+
+        mediaRecorder?.apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setVideoSource(MediaRecorder.VideoSource.SURFACE)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setOutputFile(nextVideoAbsolutePath)
+            setVideoEncodingBitRate(10000000)
+            setVideoFrameRate(30)
+            setVideoSize(videoSize.width, videoSize.height)
+            setVideoEncoder(MediaRecorder.VideoEncoder.H264)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            prepare()
+        }
+    }
+
+
+    private fun closePreviewSession() {
+        captureSession?.close()
+        captureSession = null
+    }
+
+
+    /**
+     * 创造对应的视频文件路径
+     * @param context
+     * @param fileName
+     * @return
+     */
+    fun createVideoFileName(context: Context, fileName: String): String? {
+        val externalStorageState = Environment.getExternalStorageState()
+        return if (externalStorageState == Environment.MEDIA_MOUNTED) {
+            val file = File(Environment.getExternalStorageDirectory().absolutePath + "/" + "spot/video/"
+                + fileName)
+            if (!file.parentFile.exists()) {
+                file.parentFile.mkdirs()
+            }
+            file.absolutePath
+        } else {
+            context.filesDir.toString() + "/" + fileName
+        }
+    }
+
+
 }

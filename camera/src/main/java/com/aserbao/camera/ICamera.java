@@ -1,8 +1,5 @@
 package com.aserbao.camera;
 
-import android.graphics.SurfaceTexture;
-import android.view.TextureView;
-
 /*
  * 作用：
  * @author aserbao
@@ -12,5 +9,10 @@ import android.view.TextureView;
  */
 interface ICamera {
     void openCamera(int cameraId, int width, int height);
-
+    /**
+     * 拍照
+     * @param picPath test
+     * @param ihandle
+     */
+    void capturePic(String picPath, IHandleCameraListener ihandle);
 }

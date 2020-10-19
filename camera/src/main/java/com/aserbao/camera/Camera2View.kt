@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.CameraMetadata
 import android.util.AttributeSet
-import android.util.Log
 import android.view.TextureView
 
 /*
@@ -53,6 +52,32 @@ class Camera2View @JvmOverloads constructor(context: Context, attrs: AttributeSe
         mRatioWH = ratioWH
         requestLayout()
     }
+
+    /**
+     * 拍照
+     * @param picName String ：test
+     */
+    fun capturePic(picName:String, ihandle :IHandleCameraListener){
+        mCameraControl.capturePic(picName,ihandle)
+    }
+
+    /**
+     * 开始录制
+     * @param picVideo String
+     * @param ihandle IHandleCameraListener
+     */
+    fun startRecord(picVideo:String,ihandle: IHandleCameraListener){
+        mCameraControl.startRecordingVideo(picVideo,ihandle)
+    }
+
+    /**
+     * 停止录制
+     */
+    fun stopRecord(){
+        mCameraControl.stopRecordingVideo()
+    }
+
+
 
     override fun onMeasure(
         widthMeasureSpec: Int,
