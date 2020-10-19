@@ -47,6 +47,7 @@ ext {
         exoplayer            : 'com.google.android.exoplayer:exoplayer:2.8.4',
         jcodec_android       : 'org.jcodec:jcodec-android:0.1.9',
         videocache           : 'com.danikula:videocache:2.7.0',
+        rxffmpeg             : 'com.github.microshow:RxFFmpeg:4.8.0-lite',
         //glide
         glide                : 'com.github.bumptech.glide:glide:4.8.0',
 
@@ -60,7 +61,7 @@ ext {
         roomKtx              : 'androidx.room:room-ktx:2.2.3',
         roomCompiler         : 'androidx.room:room-compiler:2.2.3',
         roomRxJava2          : 'android.arch.persistence.room:rxjava2:1.1.1',
-        databinding          : 'com.android.databinding:compiler:2.3.2',
+        databinding          : 'com.android.databinding:compiler:3.6.0',
 
         // network
         retrofit             : 'com.squareup.retrofit2:retrofit:2.7.1',

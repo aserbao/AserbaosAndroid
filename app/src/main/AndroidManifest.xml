@@ -48,7 +48,8 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SurfaceViewActivity"></activity>
+        <activity android:name=".functions.ffmpeg.RxFFmpegAct"></activity>
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SurfaceViewActivity" />
         <activity android:name=".opengl.OneOpenGl.texture.OpenGlTextureAct" />
         <activity android:name=".opengl.videoandcamera.VideoAndCameraShowACT" />
         <activity android:name=".opengl.videoshow.VideoShowGlSurfaceViewACT" />

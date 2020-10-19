@@ -16,12 +16,14 @@ echo "Compiling FFmpeg for $CPU"
     --enable-jni \
     --enable-mediacodec \
     --enable-decoder=h264_mediacodec \
+    --enable-ffmpeg \
+    --enable-avdevice \
     --disable-static \
     --disable-doc \
-    --enable-ffmpeg \
     --disable-ffplay \
     --disable-ffprobe \
-    --enable-avdevice \
+    --disable-server \
+    --disable-programs \
     --disable-doc \
     --disable-symver \
     --cross-prefix=$CROSS_PREFIX \
@@ -48,32 +50,3 @@ PREFIX=$(pwd)/android/$CPU
 OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
 build_android
 
-#armv8-a
-ARCH=arm64
-CPU=armv8-a
-TOOLCHAIN=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64
-SYSROOT=$NDK/platforms/android-21/arch-$ARCH/
-CROSS_PREFIX=$TOOLCHAIN/bin/aarch64-linux-android-
-PREFIX=$(pwd)/android/$CPU
-OPTIMIZE_CFLAGS="-march=$CPU"
-build_android
-
-#x86
-ARCH=x86
-CPU=x86
-TOOLCHAIN=$NDK/toolchains/x86-4.9/prebuilt/darwin-x86_64
-SYSROOT=$NDK/platforms/android-21/arch-$ARCH/
-CROSS_PREFIX=$TOOLCHAIN/bin/x86_64-linux-android-
-PREFIX=$(pwd)/android/$CPU
-OPTIMIZE_CFLAGS="-march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32"
-build_android
-
-#x86_64
-ARCH=x86_64
-CPU=x86-64
-TOOLCHAIN=$NDK/toolchains/x86_64-4.9/prebuilt/darwin-x86_64
-SYSROOT=$NDK/platforms/android-21/arch-$ARCH/
-CROSS_PREFIX=$TOOLCHAIN/bin/x86_64-linux-android-
-PREFIX=$(pwd)/android/$CPU
-OPTIMIZE_CFLAGS="-march=$CPU -msse4.2 -mpopcnt -m64 -mtune=intel"
-build_android

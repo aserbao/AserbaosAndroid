@@ -10,6 +10,7 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.HardwareActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Camera2Activity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SurfaceViewActivity;
@@ -21,6 +22,8 @@ import com.aserbao.aserbaosandroid.aaThird.okdownload.OkDownLoadActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.media.mediaplayer.MediaPlayerActivity;
+import com.aserbao.aserbaosandroid.functions.cutout.CutOutActivity;
+//import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
 import com.aserbao.aserbaosandroid.kotlin.KotlinActivity;
 import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
@@ -32,6 +35,7 @@ import com.aserbao.aserbaosandroid.ui.animation.baseAnimation.objectAnimator.Obj
 import com.aserbao.aserbaosandroid.ui.canvas.CanvasActivity;
 import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.customView.seekbar.SeekBarActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.TextViewsActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.font.TextFontActivity;
@@ -52,7 +56,6 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-import com.example.camera.act.CameraActivity;
 
 public class HomeActivity extends BaseRecyclerViewActivity {
     @Override
@@ -70,11 +73,12 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", BlendModeActivity.class));
+//        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2Activity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-
+        ARouter.getInstance().build( RouterConfig.JUMP_TO_CAMERA_ACTIVITY2).navigation();
     }
 }
