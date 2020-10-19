@@ -144,13 +144,13 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             return
         }
         val mCameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager
-        var usedCameraId: String? = null
+        var usedCameraId: String = cId.toString()
         try {
             if (mCameraManager != null) {
                 for (cameraId in mCameraManager.getCameraIdList()) {
                     mCameraCharacteristics = mCameraManager.getCameraCharacteristics(cameraId)
                     val facing: Int = mCameraCharacteristics!!.get(CameraCharacteristics.LENS_FACING)!!
-                    if (!(facing == null && cId == facing)) {
+                    if (facing != null && cId == facing) {
                         usedCameraId = cameraId
                         setupCameraCharacteristics(mCameraCharacteristics!!,width,height)
                         break
@@ -541,6 +541,13 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             file.absolutePath
         } else {
             context.filesDir.toString() + "/" + fileName
+        }
+    }
+
+
+    fun closeCamera() {
+        cameraDevice?.apply {
+            close()
         }
     }
 

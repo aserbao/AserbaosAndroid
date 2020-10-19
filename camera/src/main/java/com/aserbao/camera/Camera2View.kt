@@ -53,6 +53,25 @@ class Camera2View @JvmOverloads constructor(context: Context, attrs: AttributeSe
         requestLayout()
     }
 
+    fun onResume(){
+        if(isAvailable){
+            setAspectRatio(mRatioWH)
+            mCameraControl.openCamera(cameraId,width,height)
+        }else{
+            surfaceTextureListener = textureListener
+        }
+    }
+
+    fun onPause(){
+        mCameraControl.closeCamera()
+    }
+
+    fun switchCamera(){
+        cameraId = if(cameraId == CameraMetadata.LENS_FACING_FRONT) CameraMetadata.LENS_FACING_BACK else CameraMetadata.LENS_FACING_FRONT
+        mCameraControl.closeCamera()
+        mCameraControl.openCamera(cameraId,width,height)
+    }
+
     /**
      * 拍照
      * @param picName String ：test
