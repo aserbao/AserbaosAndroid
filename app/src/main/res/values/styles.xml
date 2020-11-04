@@ -14,6 +14,7 @@
     <style name="AFullscreenTheme" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <style name="CutoutTheme" parent="AFullscreenTheme">
         <item name="android:windowNoTitle">true</item>

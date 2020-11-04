@@ -1,16 +1,20 @@
 package com.aserbao.camera.act
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.aserbao.camera.IHandleCameraListener
-import com.example.base.arouter.RouterConfig
 import com.aserbao.camera.R
+import com.example.base.arouter.RouterConfig
 import com.getremark.base.kotlin_ext.singleClick
 import kotlinx.android.synthetic.main.activity_camera2.*
-import java.lang.Exception
 
 @Route(path = RouterConfig.JUMP_TO_CAMERA_ACTIVITY2)
 class Camera2Activity : AppCompatActivity(),IHandleCameraListener {
@@ -30,6 +34,7 @@ class Camera2Activity : AppCompatActivity(),IHandleCameraListener {
             camera2View.switchCamera()
         }
     }
+
 
     override fun capturePic(picPath: String?) {
         Toast.makeText(this, picPath, Toast.LENGTH_SHORT).show()

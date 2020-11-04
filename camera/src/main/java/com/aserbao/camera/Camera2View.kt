@@ -18,7 +18,7 @@ class Camera2View @JvmOverloads constructor(context: Context, attrs: AttributeSe
     public var mRatioWH = 9f / 16f
     var cameraId = CameraMetadata.LENS_FACING_FRONT
 
-    lateinit var mCameraControl: CameraControl
+    lateinit var mCameraControl: CameraCaptureControl
 
     /**
      * [TextureView.SurfaceTextureListener] handles several lifecycle events on a
@@ -40,7 +40,7 @@ class Camera2View @JvmOverloads constructor(context: Context, attrs: AttributeSe
     }
 
     init {
-        mCameraControl = CameraControl(context,this)
+        mCameraControl = CameraCaptureControl(context,this)
         surfaceTextureListener = textureListener
     }
 
@@ -86,14 +86,14 @@ class Camera2View @JvmOverloads constructor(context: Context, attrs: AttributeSe
      * @param ihandle IHandleCameraListener
      */
     fun startRecord(picVideo:String,ihandle: IHandleCameraListener){
-        mCameraControl.startRecordingVideo(picVideo,ihandle)
+//        mCameraControl.startRecordingVideo(picVideo,ihandle)
     }
 
     /**
      * 停止录制
      */
     fun stopRecord(){
-        mCameraControl.stopRecordingVideo()
+//        mCameraControl.stopRecordingVideo()
     }
 
 

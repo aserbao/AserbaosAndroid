@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -81,6 +82,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         ARouter.getInstance().inject(this);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
     }
+
 
     @Override
     protected void onDestroy() {

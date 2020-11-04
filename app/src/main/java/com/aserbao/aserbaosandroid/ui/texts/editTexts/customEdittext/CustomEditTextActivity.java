@@ -88,6 +88,19 @@ public class CustomEditTextActivity extends AppCompatActivity {
                 Log.e(TAG, "onViewClicked: mLrEditTv.getHeight() = " + DisplayUtil.px2dp(this,mLrEditTv.getHeight()) + " mLrEditTv.getWidth() = " +  DisplayUtil.px2dp(this,mLrEditTv.getWidth()) + " mFrameLayoutSecond.getHeight() = "+ DisplayUtil.px2dp(this, mFrameLayoutSecond.getHeight()) );
                 break;
             case R.id.decrease_btn:
+                width = (int)(width  *  (1-0.05f));
+                this.height = (int)(this.height * (1-0.05f));
+                LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(width, this.height);
+                mLrEditTv.setLayoutParams(layoutParams1);
+                scale =  (float) DisplayUtil.dip2px(500)/(float)height;
+                Log.e(TAG, "onViewClicked: " +scale);
+                if (mLrEditTv != null) {
+                    mLrEditTv.setMatrix(scale);
+                }
+                mFrameLayoutSecond.removeAllViews();
+
+                mFrameLayoutSecond.addView(mLrEditTv);
+
                 Log.e(TAG, "onViewClicked: mLrEditTv.getHeight() = " + DisplayUtil.px2dp(this,mLrEditTv.getHeight()) + " mLrEditTv.getWidth() = " +  DisplayUtil.px2dp(this,mLrEditTv.getWidth()) + " mFrameLayoutSecond.getHeight() = "+ DisplayUtil.px2dp(this, mFrameLayoutSecond.getHeight()) );
                 break;
         }

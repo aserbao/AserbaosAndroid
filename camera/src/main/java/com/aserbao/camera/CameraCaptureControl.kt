@@ -29,7 +29,7 @@ import java.util.*
  * @project: AserbaosAndroid
  * @package: com.aserbao.camera
  */
-class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamera {
+class CameraCaptureControl(var context: Context, var mCamera2View: Camera2View) : ICamera {
     companion object{
         const val IMAGE_WIDTH = 1920
         const val IMAGE_HEIHGT = 1080
@@ -65,7 +65,10 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
         val CAMERA_STATE_STOP_RECORDING = 7
     }
 
-
+    /**
+     * Whether the current camera device supports Flash or not.
+     */
+    private var flashSupported = false
     var cameraAction:Int = CAMERA_STATE_PREVIEW
 
 
@@ -85,11 +88,6 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
      * This is the output file for our picture.
      */
     private lateinit var picFile: File
-
-    /**
-     * Output file for video
-     */
-    private var nextVideoAbsolutePath: String? = null
     /**
      * This a callback object for the [ImageReader]. "onImageAvailable" will be called when a
      * still image is ready to be saved.
@@ -122,13 +120,11 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             startPreview()
         }
 
-        override fun onDisconnected(camera: CameraDevice) {}
-        override fun onError(camera: CameraDevice, error: Int) {}
-
-        override fun onClosed(camera: CameraDevice) {
-            super.onClosed(camera)
-            cameraDevice  = null
+        override fun onDisconnected(camera: CameraDevice) {
+            camera.close()
+            cameraDevice = null
         }
+        override fun onError(camera: CameraDevice, error: Int) {}
     }
 
 
@@ -152,12 +148,14 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
                     val facing: Int = mCameraCharacteristics!!.get(CameraCharacteristics.LENS_FACING)!!
                     if (facing != null && cId == facing) {
                         usedCameraId = cameraId
+                        // Check if the flash is supported.
+                        flashSupported =
+                            mCameraCharacteristics?.get(CameraCharacteristics.FLASH_INFO_AVAILABLE) == true
                         setupCameraCharacteristics(mCameraCharacteristics!!,width,height)
                         break
                     }
                 }
             }
-            mediaRecorder = MediaRecorder()
             mCameraManager.openCamera(usedCameraId!!,mStateCall,null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
@@ -208,7 +206,6 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
      * [CameraDevice.StateCallback] is called when [CameraDevice] changes its status.
      */
     private fun startPreview() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             var surfaceTexture = mCamera2View.surfaceTexture
             surfaceTexture.setDefaultBufferSize(previewSize.width,previewSize.height)
             val surface = Surface(surfaceTexture)
@@ -218,6 +215,7 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             try {
                 cameraDevice?.createCaptureSession(Arrays.asList(surface,imageReader?.surface), object : CameraCaptureSession.StateCallback() {
                     override fun onConfigured(session: CameraCaptureSession) {
+                        if(cameraDevice == null) return
                         captureSession = session
                         updatePreview()
                     }
@@ -227,17 +225,26 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
             } catch (e: CameraAccessException) {
                 e.printStackTrace()
             }
-        }
     }
 
     fun updatePreview(){
         try {
-            previewRequestBuilder?.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
-            HandlerThread("CameraPreview").start()
+//            previewRequestBuilder?.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
+            previewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE)
+            // Flash is automatically enabled when necessary.
+            setAutoFlash(previewRequestBuilder)
+//            HandlerThread("CameraPreview").start()
             previewRequest = previewRequestBuilder.build()
             captureSession?.setRepeatingRequest(previewRequest, captureCallback, null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
+        }
+    }
+
+    private fun setAutoFlash(requestBuilder: CaptureRequest.Builder) {
+        if (flashSupported) {
+            requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
+                CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH)
         }
     }
 
@@ -383,8 +390,7 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
                 set(CaptureRequest.JPEG_ORIENTATION,90)
 
                 // Use the same AE and AF modes as the preview.
-                set(CaptureRequest.CONTROL_AF_MODE,
-                    CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE)
+                set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE)
             }
 
             val captureCallback = object : CameraCaptureSession.CaptureCallback() {
@@ -426,119 +432,6 @@ class CameraControl(var context: Context,var mCamera2View: Camera2View) : ICamer
         }
     }
 
-    // ======================== video record ==============
-    /**
-     * 开始录制
-     */
-    public fun startRecordingVideo(picVideo: String, ihandle: IHandleCameraListener) {
-        mIHandleCameraListener = ihandle
-        if (cameraDevice == null || !mCamera2View.isAvailable) return
-        try {
-            closePreviewSession()
-            setUpMediaRecorder(picVideo)
-            val texture = mCamera2View.surfaceTexture.apply {
-                setDefaultBufferSize(previewSize.width, previewSize.height)
-            }
-
-            // Set up Surface for camera preview and MediaRecorder
-            val previewSurface = Surface(texture)
-            val recorderSurface = mediaRecorder!!.surface
-            val surfaces = ArrayList<Surface>().apply {
-                add(previewSurface)
-                add(recorderSurface)
-            }
-            previewRequestBuilder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_RECORD).apply {
-                addTarget(previewSurface)
-                addTarget(recorderSurface)
-            }
-
-            // Start a capture session
-            // Once the session starts, we can update the UI and start recording
-            cameraDevice?.createCaptureSession(surfaces,
-                object : CameraCaptureSession.StateCallback() {
-
-                    override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
-                        captureSession = cameraCaptureSession
-                        updatePreview()
-                        runOnMainThread {
-                            cameraAction = CAMERA_STATE_START_RECORDING
-                            mediaRecorder?.start()
-                        }
-                    }
-
-                    override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
-                        mIHandleCameraListener?.error(Exception("onConfigureFailed"))
-                    }
-                }, null)
-        } catch (e: Exception) {
-            mIHandleCameraListener?.error(e)
-        }
-
-    }
-
-    /**
-     * 结束录制
-     */
-    public fun stopRecordingVideo(){
-        cameraAction = CAMERA_STATE_STOP_RECORDING
-        mediaRecorder?.apply {
-            stop()
-            reset()
-        }
-        mIHandleCameraListener?.videoComplete(nextVideoAbsolutePath)
-        nextVideoAbsolutePath = null
-        startPreview()
-    }
-
-    @Throws(IOException::class)
-    private fun setUpMediaRecorder(picVideo: String) {
-
-        if (nextVideoAbsolutePath.isNullOrEmpty()) {
-            nextVideoAbsolutePath = createVideoFileName(context,"$picVideo.mp4")
-        }
-
-        mediaRecorder?.setOrientationHint(90)
-
-        mediaRecorder?.apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setVideoSource(MediaRecorder.VideoSource.SURFACE)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            setOutputFile(nextVideoAbsolutePath)
-            setVideoEncodingBitRate(10000000)
-            setVideoFrameRate(30)
-            setVideoSize(videoSize.width, videoSize.height)
-            setVideoEncoder(MediaRecorder.VideoEncoder.H264)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            prepare()
-        }
-    }
-
-
-    private fun closePreviewSession() {
-        captureSession?.close()
-        captureSession = null
-    }
-
-
-    /**
-     * 创造对应的视频文件路径
-     * @param context
-     * @param fileName
-     * @return
-     */
-    fun createVideoFileName(context: Context, fileName: String): String? {
-        val externalStorageState = Environment.getExternalStorageState()
-        return if (externalStorageState == Environment.MEDIA_MOUNTED) {
-            val file = File(Environment.getExternalStorageDirectory().absolutePath + "/" + "spot/video/"
-                + fileName)
-            if (!file.parentFile.exists()) {
-                file.parentFile.mkdirs()
-            }
-            file.absolutePath
-        } else {
-            context.filesDir.toString() + "/" + fileName
-        }
-    }
 
 
     fun closeCamera() {

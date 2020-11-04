@@ -42,7 +42,7 @@ class SeekBarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 mItemShowTv!!.text = progress.toString()
                 if (mIBaseRvItemInSeekBarListener != null) {
-                    mIBaseRvItemInSeekBarListener!!.onProgressChanged(seekBar, progress, false, tag)
+                    mIBaseRvItemInSeekBarListener!!.onProgressChanged(seekBar, progress, fromUser, tag)
                 }
             }
 
