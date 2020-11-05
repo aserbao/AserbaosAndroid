@@ -21,7 +21,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.app.ActivityCompat
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CameraOperaion
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Facing
-import com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+import com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView
 import com.aserbao.aserbaosandroid.databinding.ActivityCaptureCameraBinding
 import com.getremark.base.kotlin_ext.singleClick
 import java.util.*

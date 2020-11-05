@@ -9,7 +9,7 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+        <com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView
             android:id="@+id/mSurface"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

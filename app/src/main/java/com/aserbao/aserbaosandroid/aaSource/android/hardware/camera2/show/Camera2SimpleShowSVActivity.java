@@ -30,7 +30,7 @@ import android.widget.Toast;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Facing;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.cameraUtils.Camera2Utils;
-import com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView;
+import com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView;
 import com.example.base.utils.log.ALogUtils;
 
 import java.util.ArrayList;

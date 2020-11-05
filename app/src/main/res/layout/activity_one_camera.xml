@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aserbao.aserbaosandroid.cameraTest.OneCameraActivity">
-    <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+    tools:context="com.aserbao.aserbaosandroid.cameratest.OneCameraActivity">
+    <com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView
         android:id="@+id/auto_fit_texture_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -26,7 +26,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="0dp"
         android:layout_height="0dp">
-        <com.aserbao.aserbaosandroid.cameraTest.AutoFitTextureView
+        <com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView
             android:id="@+id/autoTextureView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

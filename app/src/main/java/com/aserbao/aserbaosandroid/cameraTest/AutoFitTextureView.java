@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.cameraTest;
+package com.aserbao.aserbaosandroid.cameratest;
 
 import android.content.Context;
 import android.util.AttributeSet;
