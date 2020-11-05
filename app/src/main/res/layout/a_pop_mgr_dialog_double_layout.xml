@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_width="268dp"
+    android:layout_height="113dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#1E1E1E"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/popTipTv"
+            android:text="this is a tip message"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="#0A84FF"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:background="#545454"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <TextView
+            android:id="@+id/popSureTv"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="OK"
+            android:textColor="#0A84FF"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

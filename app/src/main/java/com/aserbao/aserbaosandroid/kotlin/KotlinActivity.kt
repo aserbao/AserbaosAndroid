@@ -1,9 +1,8 @@
 package com.aserbao.aserbaosandroid.kotlin
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct
 import com.example.base.base.BaseRecyclerViewActivity
 import com.example.base.base.beans.BaseRecyclerBean
 
@@ -14,6 +13,7 @@ class KotlinActivity : BaseRecyclerViewActivity() {
     companion object{
     }
     override fun initGetData() {
+        mBaseRecyclerBean.add(BaseRecyclerBean("kotlin的基础用法",KotlinBaseUseAct::class.java))
         mBaseRecyclerBean.add(BaseRecyclerBean("默认参数的的用法",0))
         mBaseRecyclerBean.add(BaseRecyclerBean("inline函数的用法",1))
     }

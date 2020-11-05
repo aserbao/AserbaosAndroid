@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
 
-    <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.AutoFitEditText
+    <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText
         android:id="@+id/autoFitEditText"
-        android:background="#cecece"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:background="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="280dp"/>
+
+    <com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar
+        android:id="@+id/autoFitSeekBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

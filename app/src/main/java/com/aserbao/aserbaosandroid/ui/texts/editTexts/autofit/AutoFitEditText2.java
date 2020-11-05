@@ -5,24 +5,20 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.base.utils.screen.DisplayUtil;
 
 /*
- * 作用：自定义仿Instagram的自动换行的输入框
+ * 作用：
  * @author aserbao
  * @date: on 2020/11/2
  * @project: AserbaosAndroid
  * @package: com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit
  */
-public class AutoFitEditText extends AppCompatEditText {
-
-    private static final int STATUS_ADD_TEXT = 0; // 表示添加文字
-    private static final int STATUS_REMOVE_TEXT = 1; // 表示删除文字
-    private static final int STATUS_CHANGE_LAYOUT_FOLD = 2; // 表示布局折叠
-    private static final int STATUS_CHANGE_LAYOUT_UNFOLD = 3; // 表示布局展开
+public class AutoFitEditText2 extends AppCompatEditText {
 
     private static int DEFAULT_MIN_TEXT_SIZE = 12; // 最小的字体大小
     private static int DEFAULT_MAX_TEXT_SIZE = 112;// 验证大部分手机情况下无效值
@@ -41,18 +37,17 @@ public class AutoFitEditText extends AppCompatEditText {
     private float minTextSize, maxTextSize,cuurTextSize = DEFAULT_TEXT_SIZE;
 
 
-
-    public AutoFitEditText(Context context) {
+    public AutoFitEditText2(Context context) {
         super(context);
         initialise();
     }
 
-    public AutoFitEditText(Context context, AttributeSet attrs) {
+    public AutoFitEditText2(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialise();
     }
 
-    public AutoFitEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AutoFitEditText2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialise();
     }
@@ -71,42 +66,32 @@ public class AutoFitEditText extends AppCompatEditText {
         minTextSize = DEFAULT_MIN_TEXT_SIZE;
     }
 
-    /**
-     * 处理不同的状态
-     * @param status
-     * @see STATUS_ADD_TEXT
-     */
-    private void refitTextHeight(int status) {
+    private void refitTextHeight() {
         int supportBigSize = DEFAULT_MIN_TEXT_SIZE + (int)(cuurPercent * DEFAULT_RANGE);
         while(true) {
             boolean fillHeight = isFillHeight(DisplayUtil.dip2px(cuurTextSize));
-            switch (status){
-                case STATUS_ADD_TEXT:
-                case STATUS_CHANGE_LAYOUT_FOLD:
-                    if(fillHeight){
-                        cuurTextSize --;
-                        Log.d(TAG, "--- refitTextHeight: fillHeight=" + fillHeight + " cuurTextSize="+ cuurTextSize+ " STATUS_CHANGE_LAYOUT" + status);
+            if (cuurTextSize < supportBigSize) {
+                if(fillHeight){
+                    cuurTextSize--;
+                    if(!isFillHeight(DisplayUtil.dip2px(cuurTextSize))){
+                        setTextSize(cuurTextSize);
                     }
-                    break;
-                case STATUS_CHANGE_LAYOUT_UNFOLD:
-                case STATUS_REMOVE_TEXT:
-                    if(cuurTextSize > supportBigSize) cuurTextSize = supportBigSize;
-                    if(cuurTextSize < supportBigSize){
-                        for (int i = (int)cuurTextSize; i <= supportBigSize ; i++) {
-                            if(isFillHeight(DisplayUtil.dip2px(i))){
-                                cuurTextSize = i - 1;
-                                Log.d(TAG, "++ refitTextHeight: fillHeight=" + fillHeight + " cuurTextSize="+ cuurTextSize+ " STATUS_CHANGE_LAYOUT" + status);
-                                break;
-                            }
-                            if(i == supportBigSize){
-                                cuurTextSize = supportBigSize;
-                            }
+                }else {
+                    while(true) {
+                        cuurTextSize++;
+                        if(isFillHeight(DisplayUtil.dip2px(cuurTextSize))){
+                            break;
                         }
                     }
-                    break;
+                }
+            } else if(cuurTextSize > supportBigSize){
+                cuurTextSize--;
+            } else{
+                if(fillHeight)  cuurTextSize--;
             }
-            if(!isFillHeight(DisplayUtil.dip2px(cuurTextSize))){
-                Log.e(TAG, "setTextSize refitTextHeight: cuurTextSize=" + cuurTextSize  + " fillHeight=" + fillHeight + " supportBigSize= "+ supportBigSize);
+            fillHeight = isFillHeight(DisplayUtil.dip2px(cuurTextSize));
+            Log.e(TAG, "refitTextHeight: cuurTextSize=" + cuurTextSize  + " fillHeight=" + fillHeight + " supportBigSize= "+ supportBigSize);
+            if(!fillHeight){
                 setTextSize(cuurTextSize);
                 break;
             }
@@ -122,30 +107,51 @@ public class AutoFitEditText extends AppCompatEditText {
         cuurPercent = percent;
         int size = DEFAULT_MIN_TEXT_SIZE + (int)(percent * DEFAULT_RANGE);
         if(lastTextSize > size){ // 往下调
-            if(size <= supportMaxSize){
+            if(size >= supportMaxSize){
+                ViewGroup.LayoutParams layoutParams = getLayoutParams();
+                layoutParams.width = SCREEN_WIDTH - (int)(WIDTH_RANGE * (percent - maxPercent));
+                setLayoutParams(layoutParams);
+            }else{
                 cuurTextSize = size;
-                setTextSize(cuurTextSize);
+                refitTextHeight();
             }
         }else{ //往上调
+//            getLayoutParams().width = SCREEN_WIDTH - (int)(WIDTH_RANGE * percent);
             if(!isFillHeight(DisplayUtil.dip2px(size))){
                 cuurTextSize = size;
+                refitTextHeight();
                 supportMaxSize = size;
                 maxPercent = percent;
-                setTextSize(cuurTextSize);
+            }else{
+                ViewGroup.LayoutParams layoutParams = getLayoutParams();
+                layoutParams.width = SCREEN_WIDTH - (int)(WIDTH_RANGE * (percent - maxPercent));
+                setLayoutParams(layoutParams);
+                Log.e(TAG, "changeSize: layoutParams.width="+ layoutParams.width + " percent="+ percent );
             }
         }
-
         lastTextSize = size;
     }
-    int lastLayoutBottom = 0;
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if(changed){
-            int status = STATUS_CHANGE_LAYOUT_FOLD;
-            if(lastLayoutBottom - bottom < 0)  status= STATUS_CHANGE_LAYOUT_UNFOLD;
-            refitTextHeight(status);
-            lastLayoutBottom = bottom;
+        if(isStartChange) refitTextHeight();
+        Log.d(TAG, "onLayout() called with: changed = [" + changed + "], left = [" + left + "], top = [" + top + "], right = [" + right + "], bottom = [" + bottom + "]");
+    }
+
+    /**
+     * 删除文字后的布局变动
+     */
+    private void changeRemoveText() {
+        int supportBigSize = DEFAULT_MIN_TEXT_SIZE + (int)(cuurPercent * DEFAULT_RANGE);
+        if(cuurTextSize < supportBigSize ){
+            for (int i = (int)cuurTextSize; i < supportBigSize + 1; i++) {
+                ++cuurTextSize;
+                if(isFillHeight(DisplayUtil.dip2px(cuurTextSize))){
+                    refitTextHeight();
+                    break;
+                }
+            }
         }
     }
 
@@ -157,15 +163,13 @@ public class AutoFitEditText extends AppCompatEditText {
     public int getFontHeight(float fontSize)  {
         Paint paint = new Paint();
         paint.setTextSize(fontSize);
-        float measureText = paint.measureText(getText().toString());
         Paint.FontMetrics fm = paint.getFontMetrics();
-        int singleSizeHeight = (int) Math.ceil(fm.descent - fm.ascent);
-        float lineCount = measureText / getWidth();
-        return singleSizeHeight;
+        return (int) Math.ceil(fm.descent - fm.ascent);
     }
 
 
     /**
+     *
      * @param sizePx
      * @return
      */
@@ -173,13 +177,13 @@ public class AutoFitEditText extends AppCompatEditText {
         boolean result = false;
         int height = getHeight();
         int availableHeight = height - this.getPaddingTop() - this.getPaddingBottom();// 获取改TextView的画布可用大小
-        int lineCount = getLineCount() + 1;
+        int lineCount = getLineCount()+1;
         int lineHeight = getFontHeight(sizePx);
         int textContentH = lineCount * lineHeight + this.getPaddingTop() + this.getPaddingBottom();
         if(availableHeight > 0){
             result = textContentH >= availableHeight;
         }
-        Log.e(TAG, "ATest isFillHeight: result=" +result +"lineCount = "+ lineCount+ " lineHeight=" + lineHeight+ " textContentH="+ textContentH+ " availableHeight="+ availableHeight + " cuurTextSize =" + cuurTextSize);
+        Log.e(TAG, "ATest isFillHeight: result=" +result + " textContentH="+ textContentH+ " availableHeight="+ availableHeight );
         return result;
     }
 
@@ -193,10 +197,7 @@ public class AutoFitEditText extends AppCompatEditText {
         }
         if(before != after) {
             isStartChange = true;
-            int status = STATUS_ADD_TEXT;
-            //删除文字
-            if(before > after) status = STATUS_REMOVE_TEXT;
-            refitTextHeight(status);
+            refitTextHeight();
         }
     }
 
@@ -206,6 +207,7 @@ public class AutoFitEditText extends AppCompatEditText {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
     }
 
     private static final String TAG = "AutoFitEditText";

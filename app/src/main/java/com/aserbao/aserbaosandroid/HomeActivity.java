@@ -5,18 +5,15 @@ import android.view.View;
 
 import androidx.core.app.ActivityCompat;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.material.floatView.FloatWindowActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
-import com.aserbao.aserbaosandroid.ui.texts.editTexts.EditTextsActivity;
+import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
 import com.aserbao.common.ui.act.CommonUIActivity;
-import com.example.base.arouter.RouterConfig;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -51,6 +48,5 @@ public class HomeActivity extends BaseRecyclerViewActivity {
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 //        ARouter.getInstance().build( RouterConfig.JUMP_TO_CAMERA_ACTIVITY2).navigation();
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, 0 );
-
     }
 }
