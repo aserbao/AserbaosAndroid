@@ -28,6 +28,7 @@ import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 import com.example.base.utils.data.ASourceUtil;
 import com.example.base.utils.data.StaticFinalValues;
+import com.example.base.utils.permission.CheckPermissionUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,7 +81,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initViewForLinear();
         initViewTopSpinner();
         ARouter.getInstance().inject(this);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        if (CheckPermissionUtil.isCameraGranted()) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, 0);
+        }
     }
 
 

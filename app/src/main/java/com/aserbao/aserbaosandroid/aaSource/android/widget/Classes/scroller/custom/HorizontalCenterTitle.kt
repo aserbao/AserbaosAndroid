@@ -8,7 +8,6 @@ import android.view.MotionEvent
 import android.widget.FrameLayout
 import com.aserbao.aserbaosandroid.R
 import com.aserbao.aserbaosandroid.databinding.ScrollerHorizontalTitleLayoutBinding
-import com.example.base.utils.ContextUtil.init
 import kotlinx.android.synthetic.main.scroller_horizontal_title_layout.view.*
 
 /*

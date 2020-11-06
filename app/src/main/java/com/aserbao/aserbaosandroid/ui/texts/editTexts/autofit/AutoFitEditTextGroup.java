@@ -1,7 +1,14 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText;
 
 /*
@@ -42,13 +50,13 @@ public class AutoFitEditTextGroup extends FrameLayout {
         initView();
     }
 
-    SeekBar seekBar;
+    VerticalRangeSeekBar seekBar;
     AutoEditText autoFitEditText;
     private void initView(){
         View view = LayoutInflater.from(getContext()).inflate(R.layout.auto_fit_edit_text_group, null);
         seekBar= view.findViewById(R.id.autoFitSeekBar);
         autoFitEditText= view.findViewById(R.id.autoFitEditText);
-        seekBar.setMax(100);
+
         seekBar.setProgress(10);
         addView(view);
        /* seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -67,6 +75,34 @@ public class AutoFitEditTextGroup extends FrameLayout {
 
             }
         });*/
+        /*autoFitEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.d("ATesddd", "beforeTextChanged() called with: s = [" + s + "], start = [" + start + "], count = [" + count + "], after = [" + after + "]");
+                changeSpan(s.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });*/
+    }
+
+    private void changeSpan(String content){
+        SpannableString spannableString=new SpannableString(content);
+        BackgroundColorSpan backgroundColorSpan=new BackgroundColorSpan(Color.YELLOW);
+        int start = 0;
+        int end = content.length();
+        spannableString.setSpan(backgroundColorSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        ColorSpan colorSpan = new ColorSpan(Color.RED,Color.BLUE);
+//        spannableString.setSpan(spannableString,start,end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        autoFitEditText.setText(spannableString);
     }
 
 

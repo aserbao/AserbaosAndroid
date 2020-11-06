@@ -17,7 +17,7 @@
         android:background="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="280dp"/>
 
     <com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar

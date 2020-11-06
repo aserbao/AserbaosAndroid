@@ -10,6 +10,7 @@ import com.danikula.videocache.HttpProxyCacheServer;
 import com.example.base.database.MyDaoMaster;
 import com.example.base.database.greendao.db.DaoMaster;
 import com.example.base.database.greendao.db.DaoSession;
+import com.example.base.utils.ContextUtil;
 
 /*
  * 作用：
@@ -26,6 +27,7 @@ public class BaseApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         initData();
+        ContextUtil.INSTANCE.init(this);
     }
 
     private void initData() {

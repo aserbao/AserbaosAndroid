@@ -6,12 +6,11 @@ import android.view.View;
 import androidx.core.app.ActivityCompat;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.AudioAndVideo.AudioAndVideoActivity;
+import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
-import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
 import com.aserbao.common.ui.act.CommonUIActivity;
 import com.example.base.base.BaseRecyclerViewActivity;

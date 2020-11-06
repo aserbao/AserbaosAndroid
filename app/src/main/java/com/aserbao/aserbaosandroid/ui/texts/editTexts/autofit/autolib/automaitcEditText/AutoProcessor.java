@@ -1,12 +1,15 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.Editable;
 import android.text.Layout;
+import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.aspan.BackgroundCoordinator;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.span.spandata.CustomSpanData;
 
 import java.util.ArrayList;
@@ -87,7 +91,10 @@ public class AutoProcessor {
                 }
             }
         }
+
+
     }
+
 
     /**
      * 判断是否需要更新文本
@@ -183,6 +190,12 @@ public class AutoProcessor {
             spannableString.setSpan(customSpanData.onCreateSpan(),customSpanData.getStartIndex(),customSpanData.getEndIndex(),
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+
+        BackgroundColorSpan backgroundColorSpan=new BackgroundColorSpan(Color.YELLOW);
+//        BackgroundCoordinator backgroundColorSpan=new BackgroundCoordinator();
+        int end = text.length();
+        spannableString.setSpan(backgroundColorSpan, 0, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         int start = mHost.getSelectionStart();
         mHost.setText(spannableString);
         mHost.setSelection(start);

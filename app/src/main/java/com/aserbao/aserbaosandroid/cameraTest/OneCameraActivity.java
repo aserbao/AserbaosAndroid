@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.cameraTest;
+package com.aserbao.aserbaosandroid.cameratest;
 
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.TextureView;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.cameratest.AutoFitTextureView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
