@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:id="@+id/edit_cons"
+    android:background="@color/black30"
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selColorCsl"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/note_panel_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@drawable/bg_note_panel_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <LinearLayout
+            android:id="@+id/doodle_sticker_ctrl_color_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_yellow"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_cyan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_cyan"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_red"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="16dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_white"
+                    app:civ_border_color="@color/black70"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_black"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_pink"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+            <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
+                android:id="@+id/color_selector_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                app:sl_cornerRadius="12dp"
+                app:sl_dx="0dp"
+                app:sl_dy="0dp"
+                app:sl_shadowColor="@color/black70"
+                app:sl_shadowRadius="1dp">
+
+                <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@color/paint_color_green"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="2dp" />
+
+            </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
+
+        </LinearLayout>
+        <!-- 完成按钮 -->
+        <TextView
+            android:id="@+id/note_edit_done_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="16dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="Saved"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:shadowRadius="1"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowColor="@color/black70"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 是否添加底版 -->
+
+
+    <FrameLayout
+        android:id="@+id/inputEtCons"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.LineResizeEditText
+            android:id="@+id/inputEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:inputType="textMultiLine"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@drawable/softkeyboard_cursor"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            app:text_max_size="@dimen/creator_edit_text_max_textSize2"
+            app:text_min_size="@dimen/creator_edit_text_min_textSize2"
+            android:shadowColor="@color/black70"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="1"
+            app:text_default_size="@dimen/creator_edit_text_default_textSize2"
+            app:edit_text_view_width="100dp"
+            app:fix_width="true"
+            android:background="@color/color_red_light"
+            android:minWidth="26dp"/>
+        <!-- 加上 minWidth，否则在 background 有颜色的时候，输入框没内容的时候，里面的光标不会显示出来 -->
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

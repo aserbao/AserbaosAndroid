@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
 
+
     <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText
         android:id="@+id/autoFitEditText"
         app:layout_constraintTop_toTopOf="parent"

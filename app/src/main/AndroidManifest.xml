@@ -300,7 +300,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".functions.how_create_so.create_spot.TestBeatActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".cameraTest.OneCameraActivity" />
+        <activity android:name=".cameratest.OneCameraActivity" />
         <activity android:name=".opengl.OpenGlActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
         <activity android:name=".opengl.OneOpenGl.OneOpenGlActivity" />

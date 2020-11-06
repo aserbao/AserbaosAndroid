@@ -23,7 +23,7 @@ public class CustomEditTextActivity extends AppCompatActivity {
     @BindView(R.id.emoji_custom_btn)
     Button mEmojiCustomBtn;
     @BindView(R.id.lr_edit_tv)
-    LineResizeEditText mLrEditTv;
+    LineResizeEditTextWH mLrEditTv;
     @BindView(R.id.frame_layout_second)
     FrameLayout mFrameLayoutSecond;
     @BindView(R.id.frame_layout_first)

@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.text.style.BackgroundColorSpan;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -56,7 +57,7 @@ public class AutoFitEditTextGroup extends FrameLayout {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.auto_fit_edit_text_group, null);
         seekBar= view.findViewById(R.id.autoFitSeekBar);
         autoFitEditText= view.findViewById(R.id.autoFitEditText);
-
+        autoFitEditText.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
         seekBar.setProgress(10);
         addView(view);
        /* seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -72,23 +73,6 @@ public class AutoFitEditTextGroup extends FrameLayout {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });*/
-        /*autoFitEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Log.d("ATesddd", "beforeTextChanged() called with: s = [" + s + "], start = [" + start + "], count = [" + count + "], after = [" + after + "]");
-                changeSpan(s.toString());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
 
             }
         });*/

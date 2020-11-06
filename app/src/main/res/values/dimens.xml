@@ -30,8 +30,22 @@
 
 
     <dimen name="creator_edit_text_width">240dp</dimen>
+    <!-- 注意这个值是根据小纸条界面的布局计算出来的，也就是说如果小纸条界面的布局变了要检查下这里是否也需要变 -->
+    <dimen name="creator_edit_text_margin">104dp</dimen>
+    <dimen name="creator_edit_text_margin_big">168dp</dimen>
+    <dimen name="creator_edit_camera_height">492dp</dimen>
     <dimen name="creator_edit_text_min_textSize">20dp</dimen>
-    <dimen name="creator_edit_text_max_textSize">80dp</dimen>
+    <dimen name="creator_edit_text_min_textSize_mode_2">1dp</dimen>
+    <dimen name="creator_edit_text_max_textSize">300dp</dimen>
+    <dimen name="creator_edit_text_default_textSize">36dp</dimen>
+    <dimen name="creator_edit_text_cursor_default_textSize">20dp</dimen>
+    <dimen name="creator_edit_text_letter_default_textSize">8dp</dimen>
+    <dimen name="creator_edit_text_default_line_break_textSize">2dp</dimen>
+    <dimen name="creator_edit_text_diff_line_break_textSize">24dp</dimen>
+    <dimen name="creator_edit_text_default_textSize2">14dp</dimen>
+    <dimen name="creator_edit_text_max_textSize2">80dp</dimen>
+    <dimen name="creator_edit_text_min_textSize2">8dp</dimen>
+
     <dimen name="default_corner_radius">4dp</dimen>
     <dimen name="default_shadow_radius">4dp</dimen>
 

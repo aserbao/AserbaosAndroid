@@ -382,4 +382,12 @@
         <attr name="v_cutChars" format="string" />
         <attr name="v_line2TextMargin" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="LineResizeEditTextWH">
+        <attr name="text_max_size" format="dimension" />
+        <attr name="text_min_size" format="dimension" />
+        <attr name="text_default_size" format="dimension" />
+        <attr name="edit_text_view_width" format="dimension" />
+        <!-- View 是否是固定大小 -->
+        <attr name="fix_width" format="boolean" />
+    </declare-styleable>
 </resources>

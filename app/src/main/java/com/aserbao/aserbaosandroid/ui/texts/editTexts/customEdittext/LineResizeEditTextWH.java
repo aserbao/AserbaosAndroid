@@ -21,7 +21,7 @@ import com.aserbao.aserbaosandroid.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LineResizeEditText extends AppCompatEditText {
+public class LineResizeEditTextWH extends AppCompatEditText {
     private static final String TAG = "LineResizeEditText";
 
     private int mMaxTextSize = 40;
@@ -37,15 +37,15 @@ public class LineResizeEditText extends AppCompatEditText {
 
     private final Map<String, Integer> mCachedSizes = new HashMap<>();
 
-    public LineResizeEditText(Context context) {
+    public LineResizeEditTextWH(Context context) {
         this(context, null);
     }
 
-    public LineResizeEditText(Context context, AttributeSet attrs) {
+    public LineResizeEditTextWH(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LineResizeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LineResizeEditTextWH(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mMaxTextSize = context.getResources().getDimensionPixelSize(R.dimen.creator_edit_text_max_textSize);
         mMinTextSize = context.getResources().getDimensionPixelSize(R.dimen.creator_edit_text_min_textSize);

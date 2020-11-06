@@ -32,8 +32,4 @@ public class AutoEditText extends AppCompatEditText {
         Log.d(TAG, "onSizeChanged() called with: w = [" + w + "], h = [" + h + "], oldw = [" + oldw + "], oldh = [" + oldh + "]");
        mAutoMaticProcessor.handleSizeChanged(w,h,oldw,oldh);
     }
-
-    public void requestChange(){
-        mAutoMaticProcessor.handleSizeChanged(getWidth(),getHeight(),0,0);
-    }
 }

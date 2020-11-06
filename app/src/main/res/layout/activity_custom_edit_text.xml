@@ -74,7 +74,7 @@
             android:id="@+id/frame_layout_second"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.LineResizeEditText
+            <com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.LineResizeEditTextWH
                 android:id="@+id/lr_edit_tv"
                 android:background="@color/black30"
                 android:cursorVisible="true"

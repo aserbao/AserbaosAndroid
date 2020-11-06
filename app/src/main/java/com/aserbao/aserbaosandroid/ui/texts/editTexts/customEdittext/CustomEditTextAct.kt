@@ -9,6 +9,7 @@ import android.widget.SeekBar
 import com.aserbao.aserbaosandroid.R
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.AutoFitEditText
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.AutoFitEditTextGroup
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.wraps.TextStickerController
 import com.aserbao.aserbaosandroid.ui.texts.textViews.textShowAnimation.hTextView.base.DisplayUtils
 import com.example.base.BaseApplication
 import com.example.base.base.BaseRecyclerViewActivity
@@ -30,6 +31,7 @@ class CustomEditTextAct : BaseRecyclerViewActivity() {
 //        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 //       mBaseRecyclerBean.add(BaseRecyclerBean("整个View放大缩小的做法",CustomEditTextActivity::class.java))
        mBaseRecyclerBean.add(BaseRecyclerBean("自动适配文字大小的EditText",0))
+       mBaseRecyclerBean.add(BaseRecyclerBean("自动适配文字大小的EditText（Playground）",2))
        mBaseRecyclerBean.add(BaseRecyclerBean("自动适配文字大小的EditText",1))
         mBaseRecyclerBean.add(BaseRecyclerBean(VHSeekBarBean("GridView的个数", 0, MAX_STEP_WIDTH, 10, object :IBaseRvItemInSeekBarListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean, tag: Int) {
@@ -39,6 +41,10 @@ class CustomEditTextAct : BaseRecyclerViewActivity() {
     }
     override fun itemClickBack(view: View?, position: Int, isLongClick: Boolean, comeFrom: Int) {
         when(position){
+            2->{
+                var textStickerController = TextStickerController(this)
+                addViewHToFl(textStickerController,true,true,FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT,false);
+            }
             0->{
                 var autoFitEditText =  AutoFitEditTextGroup(this)
                 addViewHToFl(autoFitEditText,true,true,FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT,false);

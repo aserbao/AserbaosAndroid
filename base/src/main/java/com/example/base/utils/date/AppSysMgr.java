@@ -534,6 +534,7 @@ public class AppSysMgr {
      * 获取震动器对象
      * @param context 上下文对象
      * @return Vibrator 震动器对象
+     * vibrato.
      */
     public static Vibrator getVibrator(Context context){
     	return (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
