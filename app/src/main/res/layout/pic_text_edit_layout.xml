@@ -13,7 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/selColorCsl"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginHorizontal="16dp"
@@ -223,7 +223,8 @@
             android:id="@+id/inputEt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
+            android:minHeight="60dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginHorizontal="8dp"
@@ -245,7 +246,7 @@
             android:shadowDy="0"
             android:shadowRadius="1"
             app:text_default_size="@dimen/creator_edit_text_default_textSize2"
-            app:edit_text_view_width="100dp"
+            app:edit_text_view_width="300dp"
             app:fix_width="true"
             android:background="@color/color_red_light"
             android:minWidth="26dp"/>

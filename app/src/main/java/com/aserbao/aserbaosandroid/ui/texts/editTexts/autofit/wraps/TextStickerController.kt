@@ -143,27 +143,8 @@ class TextStickerController : ConstraintLayout {
     private fun initEvent() {
         SoftKeyboardStateHelper(this).addSoftKeyboardStateListener(object : SoftKeyboardStateHelper.SoftKeyboardStateListener {
             override fun onSoftKeyboardOpened(keyboardHeightInPx: Int) {
-                if(!needCallBack) return
-                val lp = rootBinding.inputEt.getLayoutParams() as FrameLayout.LayoutParams
-                if (!mHasInputHeightLimitSet || lp.height <= 0) {
-                    rootBinding.inputEt.postDelayed({
-                        mHasInputHeightLimitSet = true
-                        /*val top: Int = rootBinding.textTypeLl.getTop()
-                        val bottom: Int = rootBinding.selColorCsl.getBottom()
-                        val paddingTop: Int = rootBinding.inputEt.getPaddingTop()
-                        val paddingBottom: Int = rootBinding.inputEt.getPaddingBottom()
-                        val lp12 = rootBinding.inputEt.getLayoutParams() as FrameLayout.LayoutParams
-                        val height = top - bottom - lp12.topMargin - lp12.bottomMargin - paddingBottom - paddingTop
-*/
-                        var dip2px = DisplayUtil.dip2px(250f)
-                        rootBinding.inputEt.setHeightLimit(dip2px)
-                        val lp1 = rootBinding.inputEtCons.getLayoutParams() as FrameLayout.LayoutParams
-                        lp1.height = dip2px
-                        rootBinding.inputEtCons.setLayoutParams(lp1)
-                        // bug 修改【创作】从相册里选一个图片，文字编辑有底板时，默认的底板太小
-                        fixBugInputEtInitSoSmall()
-                    }, 60)
-                }
+                var dip2px = DisplayUtil.dip2px(250f)
+                rootBinding.inputEt.setHeightLimit(dip2px)
             }
             override fun onSoftKeyboardClosed() {
                 if(needCallBack && isVisiable) {

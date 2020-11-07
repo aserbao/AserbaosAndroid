@@ -12,6 +12,7 @@ import android.os.Message
 import android.text.*
 import android.text.style.AbsoluteSizeSpan
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
@@ -68,7 +69,7 @@ class LineResizeEditText @JvmOverloads constructor(
     private val mSourceTextSize: Float
     private var mWidthPx: Int
     private val mWidthPx2: Int
-    private var mHeightPx = 0
+    private var mHeightPx = DisplayUtil.dip2px(250f)
     /**
      * View 的宽度是否同内容的宽度
      */
@@ -204,7 +205,6 @@ class LineResizeEditText @JvmOverloads constructor(
             val lineStart = layout.getLineStart(i)
             val lineEnd = layout.getLineEnd(i)
             val subText = textStr.substring(lineStart, lineEnd).replace("\n", "")
-            //Log.d(TAG, "Line " + i + ", text==" + subText + ", start==" + lineStart + ", end==" + lineEnd + ", lineWidth==" + layout.getLineWidth(i));
             var lineTextSize = mMinTextSize
             if (!TextUtils.isEmpty(subText)) {
                 lineTextSize = binarySearchSize(
@@ -251,7 +251,7 @@ class LineResizeEditText @JvmOverloads constructor(
             if (maxWidth < measureLineWidth) {
                 maxWidth = measureLineWidth.toDouble()
             }
-            //Log.d(TAG, "Line " + i + ", final TextSize == " + lineTextSize + ", finalLineWidth == " + measureLineWidth +  ", " + subText);
+            Log.d(TAG, "Line " + i + ", final TextSize == " + lineTextSize + ", finalLineWidth == " + measureLineWidth +  ", " + subText);
             sp.setSpan(
                 AbsoluteSizeSpan(lineTextSize),
                 lineStart,
@@ -311,20 +311,8 @@ class LineResizeEditText @JvmOverloads constructor(
                 val lineStart = layout.getLineStart(i)
                 val lineEnd = layout.getLineEnd(i)
                 val subText = text.substring(lineStart, lineEnd).replace("\n", "")
-                val lineTextSize = binarySearchSize(
-                    textPaint,
-                    i,
-                    subText,
-                    mWidthPx,
-                    mMinTextSize,
-                    mMaxTextSize
-                )
-                sp.setSpan(
-                    AbsoluteSizeSpan(lineTextSize),
-                    lineStart,
-                    lineEnd,
-                    Spanned.SPAN_INCLUSIVE_EXCLUSIVE
-                )
+                val lineTextSize = binarySearchSize(textPaint, i, subText, mWidthPx, mMinTextSize, mMaxTextSize)
+                sp.setSpan(AbsoluteSizeSpan(lineTextSize), lineStart, lineEnd, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
             }
             sp
         } else {
@@ -365,20 +353,9 @@ class LineResizeEditText @JvmOverloads constructor(
                 val lineStart = layout.getLineStart(i)
                 val lineEnd = layout.getLineEnd(i)
                 val subText = text.substring(lineStart, lineEnd).replace("\n", "")
-                val lineTextSize = binarySearchSize(
-                    textPaint,
-                    i,
-                    subText,
-                    mWidthPx,
-                    mMinTextSize,
-                    mMaxTextSize
-                )
-                sp.setSpan(
-                    AbsoluteSizeSpan(lineTextSize),
-                    lineStart,
-                    lineEnd,
-                    Spanned.SPAN_INCLUSIVE_EXCLUSIVE
-                )
+                val lineTextSize = binarySearchSize(textPaint, i, subText, mWidthPx, mMinTextSize, mMaxTextSize)
+                sp.setSpan(AbsoluteSizeSpan(lineTextSize), lineStart, lineEnd, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+                Log.d(TAG, "getSpanText: 第" +i+ "行 subText=" + subText + " lineTextSize="+ lineTextSize)
             }
             sp
         } else {
@@ -601,7 +578,7 @@ class LineResizeEditText @JvmOverloads constructor(
         var maxSize = 0
         var minSize = 0
         var defaultSize = 0
-        var etViewWidth = 0
+        var etViewWidth = 0 // 编辑视图的最大宽度
         maxSize = a.getDimensionPixelSize(
             R.styleable.LineResizeEditTextWH_text_max_size,
             maxSize
