@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
 
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText;
+import com.example.base.utils.screen.DisplayUtil;
 
 /*
  * 作用：仿Instagram的文本编辑
@@ -60,6 +62,10 @@ public class AutoFitEditTextGroup extends FrameLayout {
         autoFitEditText.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
         seekBar.setProgress(10);
         addView(view);
+
+        ViewGroup.LayoutParams layoutParams = autoFitEditText.getLayoutParams();
+        layoutParams.width = DisplayUtil.getScreenWidth(getContext());
+        autoFitEditText.setLayoutParams(layoutParams);
        /* seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

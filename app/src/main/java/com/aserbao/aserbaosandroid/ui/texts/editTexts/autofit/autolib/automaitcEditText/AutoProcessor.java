@@ -82,7 +82,7 @@ public class AutoProcessor {
                 updateText(text);
                 updateTextSize();
                 int maxLineWidth = (int) calculateMaxLineWidth();
-                if(maxLineWidth > 0){
+                if(maxLineWidth > 0 && calculateLayout.getLineCount() > 1){
                     mResetWidgetSize = true;
                     ViewGroup.LayoutParams layoutParams = mHost.getLayoutParams();
                     layoutParams.width = maxLineWidth + mHost.getPaddingLeft() + mHost.getPaddingRight();
@@ -226,7 +226,7 @@ public class AutoProcessor {
         if(maxLineWidth > mLayoutHelper.getLayoutWidth()){
             maxLineWidth = mLayoutHelper.getLayoutWidth();
         }
-        Log.d("hyh", "AutomaticEditText: calculateMaxLineWidth: maxLineWidth="+maxLineWidth);
+        Log.d("hyh", "AutomaticEditText: calculateMaxLineWidth: maxLineWidth="+maxLineWidth +" mLayoutHelper.getLayoutWidth()= "+ mLayoutHelper.getLayoutWidth());
         return maxLineWidth;
     }
 

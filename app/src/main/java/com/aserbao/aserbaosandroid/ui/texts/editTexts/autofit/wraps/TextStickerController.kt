@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.pic_text_edit_layout.view.*
 import java.util.*
 
 /**
- * Instagram 文字自动排版
+ * Instagram 文字自动排版(Playground from zgsm)
  * @property mShadowColor Int
  * @property mHasInputHeightLimitSet Boolean
  * @property rootBinding PicTextEditLayoutBinding

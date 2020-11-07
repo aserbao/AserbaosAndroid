@@ -61,6 +61,22 @@ public class LayoutHelper {
     }
 
     protected float getMatchWidthFontSize(String lineText){
+        /*Paint paint = copyPaint();
+        float textWidth = paint.measureText(lineText);
+        if(textWidth < mMinWidth){
+            textWidth = mMinWidth;
+            lineText = sSeizeText;
+        }
+        //按照宽比缩放字体
+        float textSize = mLayoutWidth / textWidth * mFontSize;
+        paint.setTextSize(textSize);
+        //缩放字体后还得检查行宽度是否大于最大文本宽度，如果大于则还需要调小字体
+        textSize = mTextSizeAdjustHelper.calculateMatchWidthSize(paint,lineText, mLayoutWidth);*/
+        return mFontSize;
+    }
+
+
+    protected float getMatchWidthFontSizeOld(String lineText){
         Paint paint = copyPaint();
         float textWidth = paint.measureText(lineText);
         if(textWidth < mMinWidth){

@@ -6,20 +6,28 @@
     android:layout_height="match_parent"
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
 
-
-    <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText
-        android:id="@+id/autoFitEditText"
+    <FrameLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:background="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="280dp"/>
+        android:layout_height="match_parent">
+        <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText.AutoEditText
+            android:id="@+id/autoFitEditText"
+            android:padding="10dp"
+            android:gravity="left"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+
 
     <com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar
         android:id="@+id/autoFitSeekBar"
