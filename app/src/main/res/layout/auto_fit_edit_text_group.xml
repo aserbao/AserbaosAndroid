@@ -7,7 +7,158 @@
     tools:context="com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity">
 
     <FrameLayout
+        android:id="@+id/topFl"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:src="@drawable/back_white"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Text"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/savedTv"
+            android:text="Saved"
+            android:textColor="@color/white"
+            android:layout_marginRight="12dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selColorCsl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/colorPickerIv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@drawable/color_picker"
+            android:background="@drawable/solid_white_radiu25_bg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/colorSelCons"/>
+        <LinearLayout
+            android:id="@+id/colorSelCons"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toRightOf="@+id/colorPickerIv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_yellow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_yellow"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_cyan"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_cyan"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_red"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_red"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_grey"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_grey"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_black"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_black"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_pink"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:src="@color/paint_color_pink"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+
+            <com.aserbao.aserbaosandroid.ui.customView.CircleImageView
+                android:id="@+id/color_selector_green"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@color/paint_color_green"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp" />
+
+        </LinearLayout>
+        <!-- 完成按钮 -->
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/note_edit_done_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="16dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="Saved"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:shadowRadius="1"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowColor="@color/black70"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        app:layout_constraintTop_toBottomOf="@+id/topFl"
+        app:layout_constraintBottom_toTopOf="@+id/selColorCsl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_gravity="center"
@@ -20,21 +171,42 @@
             android:textSize="50sp"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:background="@color/white"
+            android:background="@null"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </FrameLayout>
 
-
-
     <com.aserbao.aserbaosandroid.ui.customView.seekbar.rangeSeekBar.VerticalRangeSeekBar
         android:id="@+id/autoFitSeekBar"
+        app:rsb_mode="single"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="200dp"/>
+
+    <ImageView
+        android:id="@+id/alignIv"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@+id/autoFitSeekBar"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/align_center"
+        android:layout_width="45dp"
+        android:layout_height="45dp"/>
+
+    <ImageView
+        android:id="@+id/bgIv"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@+id/alignIv"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/fontsize_white"
+        android:layout_width="45dp"
+        android:layout_height="45dp"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

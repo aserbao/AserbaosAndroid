@@ -32,4 +32,35 @@ public class AutoEditText extends AppCompatEditText {
         Log.d(TAG, "onSizeChanged() called with: w = [" + w + "], h = [" + h + "], oldw = [" + oldw + "], oldh = [" + oldh + "]");
        mAutoMaticProcessor.handleSizeChanged(w,h,oldw,oldh);
     }
+
+    /**
+     * 设置文字背景色
+     * @param color
+     */
+    public void setBackgroundColorSpan(int color) {
+        if (mAutoMaticProcessor != null) {
+            mAutoMaticProcessor.setBackgroundColor(color);
+        }
+    }
+
+    /**
+     * 设置强制更新
+     */
+    public void setForceRefresh() {
+        if (mAutoMaticProcessor != null) {
+            mAutoMaticProcessor.setForceRefresh(true);
+            mAutoMaticProcessor.refresh();
+        }
+    }
+
+    /**
+     * 设置文字大小
+     */
+    public void setTextFont(float textFont){
+        if (mAutoMaticProcessor != null) {
+            mAutoMaticProcessor.setForceRefresh(true);
+            mAutoMaticProcessor.setTextFont(textFont);
+            mAutoMaticProcessor.refresh();
+        }
+    }
 }

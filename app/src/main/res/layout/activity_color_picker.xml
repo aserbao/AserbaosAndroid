@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <com.aserbao.aserbaosandroid.AUtils.AUI.colorPicker.holoColorPicker.ValueBar
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/value_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

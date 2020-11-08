@@ -94,4 +94,14 @@ public class LayoutHelper {
     protected void claculateMatchHeightFontSize(List<CustomSpanData> customTextSpanDataList, int height){
         mTextSizeAdjustHelper.calculateMatchHeightSize(customTextSpanDataList,height);
     }
+
+    /**
+     * 设置字体
+     * @param mFontSize
+     */
+    public void setFontSize(float mFontSize) {
+        this.mFontSize = mFontSize;
+    }
+
+
 }

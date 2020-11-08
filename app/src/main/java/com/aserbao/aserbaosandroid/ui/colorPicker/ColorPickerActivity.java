@@ -130,6 +130,8 @@ public class ColorPickerActivity extends AppCompatActivity {
             case R.id.three_btn:
                 holoColorLl.setVisibility(View.GONE);
                 colorCardView.setVisibility(View.GONE);
+                valueBar.setVisibility(View.VISIBLE);
+                svBar.setVisibility(View.VISIBLE);
                 break;
         }
     }

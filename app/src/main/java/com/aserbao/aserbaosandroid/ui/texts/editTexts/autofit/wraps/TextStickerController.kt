@@ -54,20 +54,20 @@ class TextStickerController : ConstraintLayout {
 
     var firstTimeInit:Boolean = true
 
-    var paintColor:Int = ContextCompat.getColor(context, R.color.paint_color_white);
+    var paintColor:Int = ContextCompat.getColor(context, R.color.paint_color_grey);
     val mColorSelectorList :List<TextStickerBean> =
         ArrayList(Arrays.asList(
             TextStickerBean(R.id.color_selector_yellow, R.color.paint_color_yellow,R.color.paint_color_yellow, R.color.black),
             TextStickerBean(R.id.color_selector_cyan, R.color.paint_color_cyan,R.color.paint_color_cyan, R.color.black),
             TextStickerBean(R.id.color_selector_red, R.color.paint_color_red,R.color.paint_color_red, R.color.white),
-            TextStickerBean(R.id.color_selector_white, R.color.paint_color_white,R.color.paint_color_white, R.color.black),
+            TextStickerBean(R.id.color_selector_grey, R.color.paint_color_grey,R.color.paint_color_grey, R.color.black),
             TextStickerBean(R.id.color_selector_black, R.color.paint_color_black,R.color.paint_color_black, R.color.white),
             TextStickerBean(R.id.color_selector_pink, R.color.paint_color_pink,R.color.paint_color_pink, R.color.white),
             TextStickerBean(R.id.color_selector_green, R.color.paint_color_green,R.color.paint_color_green, R.color.black)
     ))
 
     private var mColorSelector: ViewGroup? = null
-    var cuurTextSb :TextStickerBean = TextStickerBean(R.id.color_selector_white, R.color.paint_color_white,R.color.paint_color_white, R.color.black)
+    var cuurTextSb :TextStickerBean = TextStickerBean(R.id.color_selector_grey, R.color.paint_color_grey,R.color.paint_color_grey, R.color.black)
 
     constructor(context: Context) : super(context) {
         initialize(context)
@@ -272,7 +272,7 @@ class TextStickerController : ConstraintLayout {
         colorSelector.scaleY = scaleY
         val imageView = colorSelector.getChildAt(0) as CircleImageView
         imageView.borderWidth = DisplayUtil.dip2px( 3f)
-        imageView.borderColor = if (colorSelector.id == R.id.color_selector_white) borderColorForSelected else Color.WHITE
+        imageView.borderColor = if (colorSelector.id == R.id.color_selector_grey) borderColorForSelected else Color.WHITE
     }
 
     private fun scaleDownColorSelector(colorSelector: ViewGroup, scaleX: Float, scaleY: Float) {
@@ -286,7 +286,7 @@ class TextStickerController : ConstraintLayout {
             mColorSelector!!.getChildAt(0) as CircleImageView
         imageView.borderWidth = DisplayUtil.dip2px(2f)
         imageView.borderColor =
-            if (mColorSelector!!.id == R.id.color_selector_white) borderColorForSelected else Color.WHITE
+            if (mColorSelector!!.id == R.id.color_selector_grey) borderColorForSelected else Color.WHITE
     }
 
     var textStickerIv: ImageView?= null

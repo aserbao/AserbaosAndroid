@@ -761,6 +761,10 @@ public class RangeSeekBar extends View {
         setProgress(value, maxProgress);
     }
 
+    public void setMaxProgress(float value){
+        maxProgress = value;
+    }
+
     public void setProgress(float leftValue, float rightValue) {
         leftValue = Math.min(leftValue, rightValue);
         rightValue = Math.max(leftValue, rightValue);

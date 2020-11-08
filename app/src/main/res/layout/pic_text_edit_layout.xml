@@ -104,7 +104,7 @@
             </com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout>
 
             <com.aserbao.aserbaosandroid.ui.canvas.shadows.ShadowLayout
-                android:id="@+id/color_selector_white"
+                android:id="@+id/color_selector_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -118,7 +118,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:src="@color/paint_color_white"
+                    android:src="@color/paint_color_grey"
                     app:civ_border_color="@color/black70"
                     app:civ_border_width="2dp" />
 

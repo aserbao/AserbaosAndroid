@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.automaitcEditText;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.Editable;
@@ -17,7 +18,6 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
-import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.aspan.BackgroundCoordinator;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.autolib.span.spandata.CustomSpanData;
 
 import java.util.ArrayList;
@@ -33,9 +33,10 @@ public class AutoProcessor {
     private static final String SYM_CHANGE_LINE = "\n";
     private EditText mHost;
     private String mLastText = "";
-    private boolean mResetWidgetSize;
+    private boolean mResetWidgetSize, forceRefresh = false;
     private List<LineData> mLineDataList;
     private LayoutHelper mLayoutHelper;
+    private int backgroundColor = Color.TRANSPARENT;
     /**
      * 最大文本高度
      */
@@ -68,13 +69,14 @@ public class AutoProcessor {
         });
     }
 
-    private void refresh(){
+    protected void refresh(){
         if(mHost.getLayout() != null){
             //这里的Layout不能用EditText的Layout，不然无法正确拿到每行文本，需要构建一个辅助Layout，文本的换行都依据该Layout算出
             Layout calculateLayout = getCalculateLayout();
             String text = calculateLayout.getText().toString();
             boolean update = isUpdateText(calculateLayout,text);
-            if(update) {
+            if(update || forceRefresh) {
+                forceRefresh = false;
                 mLastText = text;
                 spliteLineData(calculateLayout,text);
                 matchMaxWidthFontSize();
@@ -82,13 +84,21 @@ public class AutoProcessor {
                 updateText(text);
                 updateTextSize();
                 int maxLineWidth = (int) calculateMaxLineWidth();
-                if(maxLineWidth > 0 && calculateLayout.getLineCount() > 1){
+                int lineCount = calculateLayout.getLineCount();
+                int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+                if(lineCount == 1 && mHost.getWidth() != screenWidth ){
+                    mResetWidgetSize = true;
+                    ViewGroup.LayoutParams layoutParams = mHost.getLayoutParams();
+                    layoutParams.width = screenWidth;
+                    mHost.setLayoutParams(layoutParams);
+                }else if(maxLineWidth > 0 && lineCount > 1){
                     mResetWidgetSize = true;
                     ViewGroup.LayoutParams layoutParams = mHost.getLayoutParams();
                     layoutParams.width = maxLineWidth + mHost.getPaddingLeft() + mHost.getPaddingRight();
                     Log.d("hyh", "AutomaticEditText: refresh: layoutParams.width="+layoutParams.width);
                     mHost.setLayoutParams(layoutParams);
                 }
+
             }
         }
 
@@ -191,8 +201,7 @@ public class AutoProcessor {
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        BackgroundColorSpan backgroundColorSpan=new BackgroundColorSpan(Color.YELLOW);
-//        BackgroundCoordinator backgroundColorSpan=new BackgroundCoordinator();
+        BackgroundColorSpan backgroundColorSpan=new BackgroundColorSpan(backgroundColor);
         int end = text.length();
         spannableString.setSpan(backgroundColorSpan, 0, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
@@ -283,5 +292,29 @@ public class AutoProcessor {
                 ", mEndIndex=" + mCustomSpanData.getEndIndex() +
                 '}';
         }
+    }
+
+    /**
+     * 设置背景色
+     * @param backgroundColor
+     */
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    /**
+     * 设置强制更新
+     * @param forceRefresh
+     */
+    public void setForceRefresh(boolean forceRefresh) {
+        this.forceRefresh = forceRefresh;
+    }
+
+    /**
+     * 设置字体
+     * @param textFont
+     */
+    public void setTextFont(float textFont){
+        mLayoutHelper.setFontSize(textFont);
     }
 }

@@ -154,7 +154,7 @@
     <color name="paint_color_yellow">#FEDE33</color>
     <color name="paint_color_cyan">#AEEDFF</color>
     <color name="paint_color_red">#FE433B</color>
-    <color name="paint_color_white">@android:color/white</color>
+    <color name="paint_color_grey">#607D8B</color>
     <color name="paint_color_black">@android:color/black</color>
     <color name="paint_color_pink">#FB348F</color>
     <color name="paint_color_green">#73E162</color>
