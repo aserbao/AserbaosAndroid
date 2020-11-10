@@ -78,4 +78,8 @@
     </androidx.core.widget.NestedScrollView>
 
 
+    <com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit.AutoFitEditTextGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

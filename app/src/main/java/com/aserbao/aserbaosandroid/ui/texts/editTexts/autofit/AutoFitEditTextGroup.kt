@@ -28,9 +28,17 @@ import kotlinx.android.synthetic.main.auto_fit_edit_text_group.view.*
  * @project: AserbaosAndroid
  * @package: com.aserbao.aserbaosandroid.ui.texts.editTexts.autofit
  */
-class AutoFitEditTextGroup(context: Context,var attrs: AttributeSet ?= null,var defStyleAttr: Int = 0,var defStyleRes: Int = 0) : FrameLayout(context,attrs,defStyleAttr,defStyleRes) {
-
-    init {
+class AutoFitEditTextGroup : FrameLayout {
+    constructor(context: Context) : super(context) {
+        initView()
+    }
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        initView()
+    }
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initView()
+    }
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
         initView()
     }
 

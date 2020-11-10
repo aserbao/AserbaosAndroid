@@ -244,12 +244,17 @@ class TextStickerController : ConstraintLayout {
     }
 
 
-
+    /**
+     * 打开软键盘
+     */
     private fun showKeyboard(){
         var imm = rootBinding.inputEt.getContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(rootBinding.inputEt,0)
     }
 
+    /**
+     * 关闭软键盘
+     */
     private fun hideSoftKeyboard() {
         if (null != inputEt) {
             val im = inputEt.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
