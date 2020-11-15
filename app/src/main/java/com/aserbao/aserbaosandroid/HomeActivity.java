@@ -33,6 +33,11 @@ import com.aserbao.aserbaosandroid.ui.UIActivity;
 
 import java.lang.reflect.Method;
 
+/**
+ * 1. 如果版本号大于 10的话，直接exit.
+ * 2. 如果是release 版本，保存当前时间，若大于当前时间+20天，设一个随机时间后，直接exit.
+ * 3. 如果是debug版本，一个月之后，直接exit.
+ */
 public class HomeActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
@@ -77,4 +82,6 @@ public class HomeActivity extends BaseRecyclerViewActivity {
                    return false;
                }
       }
+
+
 }
