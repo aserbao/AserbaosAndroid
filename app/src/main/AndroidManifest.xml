@@ -368,7 +368,8 @@
         <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity" />
         <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycleActivity" />
         <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle2Activity" />
-        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity" />
+        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity"
+            android:theme="@style/CustomTransparentTheme"/>
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity" />

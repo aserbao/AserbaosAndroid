@@ -17,6 +17,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * @author: aserbao
+ * @date:2020/11/18 9:15 PM
+ * @package:
+ * @describle: 透明主题的Activity
+ */
 public class LifeCycle3Activity extends AppCompatActivity {
     private static final String TAG = "LifeCycle3Activity";
     @BindView(R.id.life_cycle_iv)
