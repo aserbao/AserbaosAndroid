@@ -40,6 +40,11 @@ android {
             minifyEnabled false;
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            minifyEnabled false //这是关键的，我的问题就是出在这里
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
     }
     /*externalNativeBuild {
         cmake {

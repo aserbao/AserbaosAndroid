@@ -12,12 +12,14 @@ import java.lang.ref.WeakReference;
 
 public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "PrincipleHanlderActivit";
-    public static final int NUM_ONE = 1;
-    public static final int NUM_TWO = 2;
-    public static final int NUM_THREE = 3;
-    public static final int DELAY_MILLIS = 10;
-    public static final int DELAY_MILLIS_TWO = 51;
-    public static final int DELAY_MILLIS_THREE = 101;
+    public static final int WHAT_NUM_ONE = 1;
+    public static final int WHAT_NUM_TWO = 2;
+    public static final int WHAT_NUM_THREE = 3;
+    public static final int WHAT_HANDLE_SLEEP = 4;
+    public static final int ONE_DELAY_MILLIS = 10;
+    public static final int TWO_DELAY_MILLIS = 51;
+    public static final int THREE_DELAY_MILLIS = 101;
+    public static final int FOUR_DELAY_MILLIS = 100;
 
 
     private MyHandler myHandler = new MyHandler(new WeakReference<PrincipleHanlderActivity>(this));
@@ -26,9 +28,10 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("清除所有",10));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("0",0));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("1",1));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("2",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("延迟"+ONE_DELAY_MILLIS+"ms",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("延迟"+TWO_DELAY_MILLIS+"ms",1));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("延迟"+THREE_DELAY_MILLIS+"ms",2));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("SLEEP", WHAT_HANDLE_SLEEP));
     }
 
 
@@ -45,22 +48,29 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
         Message message = new Message();
         switch (position){
             case 10:
+//                myHandler.removeMessages(WHAT_NUM_ONE);
 //                myHandler.removeCallbacks(null);
-                myHandler.removeMessages(NUM_ONE);
+                myHandler.removeCallbacksAndMessages(null);
                 break;
             case 0:
                 message.obj = System.currentTimeMillis();
-                message.what = NUM_ONE;
-                myHandler.sendMessageDelayed(message, DELAY_MILLIS);
+                message.what = WHAT_NUM_ONE;
+                myHandler.sendMessageDelayed(message, ONE_DELAY_MILLIS);
                 break;
             case 1:
                 message.obj = System.currentTimeMillis();
-                message.what = NUM_TWO;
-                myHandler.sendMessageDelayed(message, DELAY_MILLIS_TWO);
+                message.what = WHAT_NUM_TWO;
+                myHandler.sendMessageDelayed(message, TWO_DELAY_MILLIS);
                 break;
             case 2:
-                message.what = NUM_THREE;
-                myHandler.sendMessageDelayed(message, DELAY_MILLIS_THREE);
+                message.obj = System.currentTimeMillis();
+                message.what = WHAT_NUM_THREE;
+                myHandler.sendMessageDelayed(message, THREE_DELAY_MILLIS);
+                break;
+            case WHAT_HANDLE_SLEEP:
+                message.obj = System.currentTimeMillis();
+                message.what = WHAT_HANDLE_SLEEP;
+                myHandler.sendMessageDelayed(message, THREE_DELAY_MILLIS);
                 break;
         }
     }
@@ -78,20 +88,32 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
             if (principleHanlderActivity != null) {
                 long diffTime = System.currentTimeMillis() - (long) msg.obj;
                 int what = msg.what;
-                Log.e(TAG, "handleMessage: What = " + what + "     \t 时间差为 ： " + diffTime);
                 Message message = new Message();
                 message.what = what;
                 message.obj = System.currentTimeMillis();
                 switch (msg.what) {
-                    case NUM_ONE:
-                        sendMessageDelayed(message, DELAY_MILLIS);
+                    case WHAT_NUM_ONE:
+                        Log.e(TAG, "handleMessage: What = " + what + "     \t 时间差为 ： " + diffTime + " cuurThread.name="+ Thread.currentThread().getName());
+                        sendMessageDelayed(message, ONE_DELAY_MILLIS);
                         principleHanlderActivity.sleep();
                         break;
-                    case NUM_TWO:
-                        sendMessageDelayed(message, DELAY_MILLIS_TWO);
+                    case WHAT_NUM_TWO:
+                        Log.e(TAG, "handleMessage: What = " + what + "     \t 时间差为 ： " + diffTime + " cuurThread.name="+ Thread.currentThread().getName());
+                        sendMessageDelayed(message, TWO_DELAY_MILLIS);
                         break;
-                    case NUM_THREE:
-                        sendMessageDelayed(message, DELAY_MILLIS_THREE);
+                    case WHAT_NUM_THREE:
+                        Log.e(TAG, "handleMessage: What = " + what + "     \t 时间差为 ： " + diffTime + " cuurThread.name="+ Thread.currentThread().getName());
+                        sendMessageDelayed(message, THREE_DELAY_MILLIS);
+                        break;
+                    case WHAT_HANDLE_SLEEP:
+                        try {
+                            Thread.sleep(100);
+                            sendMessageDelayed(message, FOUR_DELAY_MILLIS);
+                            Log.e(TAG, "handleMessage: What = " + what + "     \t 时间差为 ： " + diffTime + " cuurThread.name="+ Thread.currentThread().getName());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            Log.e(TAG, "handleMessage: error message=" + e.toString() );
+                        }
                         break;
                 }
             }

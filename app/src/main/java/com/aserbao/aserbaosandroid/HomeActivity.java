@@ -7,6 +7,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.ProgressBarActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
@@ -41,7 +43,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CustomEditTextAct.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", PrincipleHanlderActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
