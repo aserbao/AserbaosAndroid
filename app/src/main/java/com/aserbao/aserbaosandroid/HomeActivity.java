@@ -60,9 +60,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
        /* System.exit(0);
         Runtime.getRuntime().exit(0);
         android.os.Process.killProcess(android.os.Process.myPid());*/
-
         boolean apkInDebug = isApkInDebug(this);
-
     }
 
 
