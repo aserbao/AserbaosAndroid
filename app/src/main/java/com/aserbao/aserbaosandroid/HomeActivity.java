@@ -1,7 +1,10 @@
 package com.aserbao.aserbaosandroid;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
@@ -28,6 +31,8 @@ import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
 
+import java.lang.reflect.Method;
+
 public class HomeActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
@@ -45,12 +50,33 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", LifeCycleActivity.class));
-//        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
 //        ARouter.getInstance().build( RouterConfig.JUMP_TO_CAMERA_ACTIVITY2).navigation();
 //        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, 0 );
+       /* System.exit(0);
+        Runtime.getRuntime().exit(0);
+        android.os.Process.killProcess(android.os.Process.myPid());*/
+
+        boolean apkInDebug = isApkInDebug(this);
+
     }
+
+
+    /**
+     * 当前是否在正式环境中
+     * @param context
+     * @return
+     */
+      public static boolean isApkInDebug(Context context) {
+        try {
+                ApplicationInfo info = context.getApplicationInfo();
+                  return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+              } catch (Exception e) {
+                   return false;
+               }
+      }
 }
