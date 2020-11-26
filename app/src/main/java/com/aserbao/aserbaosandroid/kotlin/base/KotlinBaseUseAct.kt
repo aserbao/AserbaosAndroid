@@ -38,19 +38,26 @@ class KotlinBaseUseAct : BaseRecyclerViewActivity() {
         val list = intArrayOf(1,2,3,4,5,6,7)
         list.forEachIndexed continuing@{
             index,context->
-                if(index ==3) return@continuing
-                Log.d(TAG, "the $index value:  $context")
+            Log.d(TAG, "the $index value:  $context")
+            if(index ==3) return@continuing
         }
         Log.d(TAG, "continue is end")
 
         run breaking@{
             list.forEachIndexed{
                 index,context->
-                if(index >=4) return@breaking
                 Log.d(TAG, "the $index value:  $context")
+                if(index >=4) return@breaking
             }
         }
         Log.d(TAG, "break is end")
+
+        list.forEachIndexed{
+            index,context->
+            Log.d(TAG, "the $index value:  $context")
+            if(index >=4) return
+        }
+        Log.d(TAG, "return is end")
     }
 
 }
