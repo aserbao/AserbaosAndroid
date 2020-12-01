@@ -57,14 +57,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    api "androidx.camera:camera-core:1.0.0-beta02"
-    // CameraX Camera2 extensions
-    api "androidx.camera:camera-camera2:1.0.0-beta02"
-    // CameraX Lifecycle library
-    api "androidx.camera:camera-lifecycle:1.0.0-beta02"
-    api 'androidx.camera:camera-view:1.0.0-alpha09'
     kapt  rootProject.ext.dependencies["aroutercompiler"]
     annotationProcessor rootProject.ext.dependencies["aroutercompiler"]
     api project(path: ':common')
     api project(path: ':base')
+
+
+    // CameraX Camera2 extensions
+    def camerax_version = "1.0.0-beta07"
+    api "androidx.camera:camera-core:$camerax_version"
+    api "androidx.camera:camera-camera2:$camerax_version"
+    // CameraX Lifecycle library
+    api "androidx.camera:camera-lifecycle:$camerax_version"
+    api 'androidx.camera:camera-view:1.0.0-alpha14'
 }

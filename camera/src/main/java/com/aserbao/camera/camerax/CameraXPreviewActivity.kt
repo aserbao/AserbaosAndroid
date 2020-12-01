@@ -4,10 +4,12 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.DisplayMetrics
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.camera2.Camera2Config
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -18,6 +20,7 @@ import com.example.base.utils.log.ALogUtils
 import com.getremark.base.kotlin_ext.singleClick
 import kotlinx.android.synthetic.main.camerax_preview.*
 import java.io.File
+import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
@@ -54,40 +57,7 @@ class CameraXPreviewActivity : AppCompatActivity() {
 
     private fun initViewEvent() {
         custom_riv.singleClick {
-            val file = File(externalMediaDirs.first(),
-                "${System.currentTimeMillis()}.jpg")
-
-            // Setup image capture metadata
-            val metadata = ImageCapture.Metadata().apply {
-                // Mirror image when using the front camera
-                isReversedHorizontal = lensFacing == CameraSelector.LENS_FACING_FRONT
-            }
-
-            // Create output options object which contains file + metadata
-            val outputOptions = ImageCapture.OutputFileOptions.Builder(file)
-                .setMetadata(metadata)
-                .build()
-
-            imageCapture?.takePicture(outputOptions, executor,
-                object :  ImageCapture.OnImageSavedCallback {
-
-                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                        val path = outputFileResults.savedUri ?: Uri.fromFile(file)
-                        val msg = "Photo capture succeeded: ${path}"
-                        ALogUtils.d("CameraXApp", msg)
-                        viewFinder.post {
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    override fun onError(exception: ImageCaptureException) {
-                        val msg = "Photo capture failed: $exception"
-                        ALogUtils.e("CameraXApp", msg +  exception.toString())
-                        viewFinder.post {
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                })
+            takePhoto()
         }
 
         camera_switch_button.singleClick{
@@ -102,6 +72,9 @@ class CameraXPreviewActivity : AppCompatActivity() {
     private val executor = Executors.newSingleThreadExecutor()
     private lateinit var viewFinder: PreviewView
 
+    /**
+     * 开启相机
+     */
     private fun startCamera() {
         // Get screen metrics used to setup camera for full screen resolution
         val metrics = DisplayMetrics().also { viewFinder.display.getRealMetrics(it) }
@@ -117,8 +90,6 @@ class CameraXPreviewActivity : AppCompatActivity() {
                 // Set initial target rotation
                 setTargetRotation(rotation)
             }.build()
-
-
             // Create configuration object for the image capture use case
             imageCapture = ImageCapture.Builder()
                 .apply {
@@ -149,7 +120,7 @@ class CameraXPreviewActivity : AppCompatActivity() {
                 var camera = cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture)
                 // Attach the viewfinder's surface provider to preview use case
-                preview?.setSurfaceProvider(viewFinder.createSurfaceProvider(camera?.cameraInfo))
+                preview?.setSurfaceProvider(viewFinder.createSurfaceProvider())
             } catch(exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
@@ -200,5 +171,46 @@ class CameraXPreviewActivity : AppCompatActivity() {
             return AspectRatio.RATIO_4_3
         }
         return AspectRatio.RATIO_16_9
+    }
+
+
+    /**
+     * 拍照
+     */
+    public fun takePhoto(){
+        val file = File(externalMediaDirs.first(),
+            "${System.currentTimeMillis()}.jpg")
+
+        // Setup image capture metadata
+        val metadata = ImageCapture.Metadata().apply {
+            // Mirror image when using the front camera
+            isReversedHorizontal = lensFacing == CameraSelector.LENS_FACING_FRONT
+        }
+
+        // Create output options object which contains file + metadata
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(file)
+            .setMetadata(metadata)
+            .build()
+
+        imageCapture?.takePicture(outputOptions, executor,
+            object :  ImageCapture.OnImageSavedCallback {
+
+                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                    val path = outputFileResults.savedUri ?: Uri.fromFile(file)
+                    val msg = "Photo capture succeeded: ${path}"
+                    ALogUtils.d("CameraXApp", msg)
+                    viewFinder.post {
+                        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onError(exception: ImageCaptureException) {
+                    val msg = "Photo capture failed: $exception"
+                    ALogUtils.e("CameraXApp", msg +  exception.toString())
+                    viewFinder.post {
+                        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
     }
 }

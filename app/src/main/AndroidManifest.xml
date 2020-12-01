@@ -49,7 +49,23 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".kotlin.base.KotlinBaseUseAct"></activity>
+        <activity android:name=".aaSource.java.util.concurrent.FutureAct"></activity>
+        <activity android:name=".aaSource.java.util.JavaUtilAct" />
+        <activity android:name=".aaSource.java.JavaAct" />
+        <activity android:name=".functions.appLink.AppLinkAct">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.example.com"
+                    android:pathPrefix="/gizmos"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".kotlin.base.KotlinBaseUseAct" />
         <activity
             android:name=".ui.texts.editTexts.customEdittext.CustomEditTextAct"
             android:theme="@style/AppTheme.NoActionBar"
@@ -368,8 +384,9 @@
         <activity android:name=".ui.texts.textViews.htmlText.HtmlTextActivity" />
         <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycleActivity" />
         <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle2Activity" />
-        <activity android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity"
-            android:theme="@style/CustomTransparentTheme"/>
+        <activity
+            android:name=".aaSource.android.app.Activity.lifeCycle.LifeCycle3Activity"
+            android:theme="@style/CustomTransparentTheme" />
         <activity android:name=".ui.texts.textViews.simple.SimpleTextViewActivity" />
         <activity android:name=".functions.database.greenDao.GreenDaoSimpleActivity" />
         <activity android:name=".functions.database.DataBaseActivity" />

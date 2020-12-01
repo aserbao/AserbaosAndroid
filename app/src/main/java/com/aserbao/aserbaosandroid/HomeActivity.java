@@ -2,7 +2,10 @@ package com.aserbao.aserbaosandroid;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,7 +16,9 @@ import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.ProgressBarActivity;
+import com.aserbao.aserbaosandroid.aaSource.java.util.concurrent.FutureAct;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
+import com.aserbao.aserbaosandroid.algorithm.list.AboutListSortActivty;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -22,6 +27,7 @@ import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
+import com.aserbao.camera.camerax.CameraXPreviewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
@@ -43,7 +49,7 @@ import java.lang.reflect.Method;
 public class HomeActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
-        mBaseRecyclerBean.add(new BaseRecyclerBean("Android", AndroidActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Android基础类", AndroidActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("第三方库的使用", ThirdActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("测试", TestActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("OpenGl", OpenGlActivity.class));
@@ -56,7 +62,8 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", KotlinBaseUseAct.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CameraXPreviewActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", FutureAct.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
@@ -86,4 +93,12 @@ public class HomeActivity extends BaseRecyclerViewActivity {
       }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
+    }
 }
