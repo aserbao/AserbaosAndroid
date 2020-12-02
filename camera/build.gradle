@@ -64,7 +64,7 @@ dependencies {
 
 
     // CameraX Camera2 extensions
-    def camerax_version = "1.0.0-beta07"
+    def camerax_version = "1.0.0-beta12"
     api "androidx.camera:camera-core:$camerax_version"
     api "androidx.camera:camera-camera2:$camerax_version"
     // CameraX Lifecycle library

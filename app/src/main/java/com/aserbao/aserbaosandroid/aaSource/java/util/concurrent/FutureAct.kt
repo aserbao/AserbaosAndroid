@@ -5,6 +5,7 @@ import android.view.View
 import com.example.base.base.BaseRecyclerViewActivity
 import com.example.base.base.beans.BaseRecyclerBean
 import java.util.concurrent.Callable
+import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
 
 /**
@@ -17,11 +18,13 @@ class FutureAct : BaseRecyclerViewActivity() {
 
     override fun initGetData() {
         mBaseRecyclerBean.add(BaseRecyclerBean("Future demo",0))
+        mBaseRecyclerBean.add(BaseRecyclerBean("Future 和线程池结合",1))
     }
 
     override fun itemClickBack(view: View?, position: Int, isLongClick: Boolean, comeFrom: Int) {
         when(position){
             0->simpleFuture()
+            1->simpleFuture()
         }
     }
 
@@ -61,4 +64,11 @@ class FutureAct : BaseRecyclerViewActivity() {
 
     }
 
+    /**
+     * 结合线程池
+     */
+    fun combineExecutor(){
+        val cachedThreadPool = Executors.newCachedThreadPool()
+
+    }
 }

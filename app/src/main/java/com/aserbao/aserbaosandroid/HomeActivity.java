@@ -25,6 +25,7 @@ import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
 import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
+import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
 import com.aserbao.camera.camerax.CameraXPreviewActivity;
@@ -62,8 +63,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CameraXPreviewActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", FutureAct.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CoroutineActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 

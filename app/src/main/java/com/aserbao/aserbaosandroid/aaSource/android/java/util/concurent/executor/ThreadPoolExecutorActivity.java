@@ -16,7 +16,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /*
- *
  * 作用：线程池的使用
  * ThreadPoolExecutor : 普通线程池
  *
