@@ -26,7 +26,12 @@ import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
-
+/**
+ * @author: aserbao
+ * @date:2020/12/4 5:42 PM
+ * @package:com.aserbao.camera.camerax
+ * @describle: CameraX 相机预览
+ */
 class CameraXPreviewActivity : AppCompatActivity() {
     companion object {
         const val TAG = "CameraXPreviewActivity"

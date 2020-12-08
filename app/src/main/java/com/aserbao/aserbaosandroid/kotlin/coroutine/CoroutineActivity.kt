@@ -135,22 +135,23 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
      */
     fun concurrenceRequest(){
         GlobalScope.launch {
+            var startTime = System.currentTimeMillis()
             var addResult = withContext(Dispatchers.IO){
                 val one = async { one() }
                 val two = async { two() }
                 one.await() + two.await()
             }
-            Log.d(TAG, "addResult() called = "+ addResult);
+            Log.d(TAG, "addResult() called = "+ addResult + " 耗时="+ (System.currentTimeMillis()-startTime));
         }
     }
 
     suspend fun one():String{
-        delay(1000)
+        delay(3000)
         return "one Result"
     }
 
     suspend fun two():String{
-        delay(3000)
+        delay(1000)
         return "two Result"
     }
 }
