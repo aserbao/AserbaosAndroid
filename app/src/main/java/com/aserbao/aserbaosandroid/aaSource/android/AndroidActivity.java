@@ -9,6 +9,7 @@ import com.aserbao.aserbaosandroid.aaSource.android.hardware.HardwareActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.material.MaterialActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.support.SupportActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.AndroidWidgetClasses;
+import com.aserbao.aserbaosandroid.aaSource.java.JavaAct;
 import com.example.base.arouter.RouterConfig;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
@@ -18,6 +19,7 @@ public class AndroidActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBean.add(new BaseRecyclerBean("Java基础类", JavaAct.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("App", AppActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Hardware", HardwareActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Material", MaterialActivity.class));

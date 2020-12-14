@@ -1,6 +1,8 @@
 package com.aserbao.aserbaosandroid.algorithm.list;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.util.Log;
 import android.view.View;
 
 import com.example.base.utils.random.RandomValue;
@@ -25,6 +27,7 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("随机添加一名学生"));
         mBaseRecyclerBean.add(new BaseRecyclerBean("List中两个相邻数据互换位置"));
         mBaseRecyclerBean.add(new BaseRecyclerBean("List中set和remove方法"));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("List中addAll方法",3));
     }
 
     private void initViews() {
@@ -62,6 +65,16 @@ public class AboutListSortActivty extends BaseRecyclerViewActivity {
                 studentList.set(1,new Student(RandomValue.getChineseName(), random.nextInt(5) + 15, 100));
                 studentList.remove(studentList.size()-1);
                 studentAdapters.addStudentList(studentList);
+                break;
+            case 3:
+                ArrayList<String> arrayList = new ArrayList<>();
+                ArrayList<String> arrayList2 = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    arrayList.add(String.valueOf(i));
+                    arrayList2.add(String.valueOf(i));
+                }
+                arrayList.addAll(1,arrayList2);
+                Log.d(TAG, "itemClickBack() called with: view = [" + view + "], position = [" + position + "], isLongClick = [" + isLongClick + "], comeFrom = [" + comeFrom + "]");
                 break;
         }
     }

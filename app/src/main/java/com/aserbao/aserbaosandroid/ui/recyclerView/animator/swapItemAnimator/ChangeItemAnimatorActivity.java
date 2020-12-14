@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.base.base.BaseRecyclerViewActivity;
+import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.utils.data.ASourceUtil;
 import com.example.base.utils.data.StaticFinalValues;
 
@@ -19,11 +20,12 @@ public class ChangeItemAnimatorActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
-        /*for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             mBaseRecyclerBean.add(new BaseRecyclerBean(String.valueOf(i)));
-        }*/
+        }
         ASourceUtil.getStaticRecyclerViewData(mBaseRecyclerBean, 1);
-        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
+//        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.HORIZONTAL);
+        changeOrientation(StaticFinalValues.LINEAR_LAYOUTMANAGER, LinearLayoutManager.VERTICAL);
 
     }
 

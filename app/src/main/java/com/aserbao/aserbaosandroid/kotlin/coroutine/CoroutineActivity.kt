@@ -24,12 +24,14 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
     private val RUNBLOCKING = 1
     private val JOB = 2
     private val SCOPE_BUILD = 3
+    private val SAME_REQUEST = 4
 
     override fun initGetData() {
         mBaseRecyclerBean.add(BaseRecyclerBean("basic of coroutine", SIMPLE_EXAMPLE))
         mBaseRecyclerBean.add(BaseRecyclerBean("RunBlicking", RUNBLOCKING))
         mBaseRecyclerBean.add(BaseRecyclerBean("job", JOB))
         mBaseRecyclerBean.add(BaseRecyclerBean("scope build", SCOPE_BUILD))
+        mBaseRecyclerBean.add(BaseRecyclerBean("等多个请求同时请求的返回结果", SAME_REQUEST))
     }
 
     override fun itemClickBack(view: View?, position: Int, isLongClick: Boolean, comeFrom: Int) {
@@ -40,6 +42,9 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
             SCOPE_BUILD -> {
 //                scopeBuildExample()
                 test()
+            }
+            SAME_REQUEST->{
+                concurrenceRequest()
             }
         }
 
@@ -102,6 +107,8 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
 
 
 
+
+
     fun test(){
         runBlocking{
 
@@ -114,10 +121,37 @@ class CoroutineActivity : BaseRecyclerViewActivity() {
                         Thread.sleep(100)
                     }
                 }).start()
+                "result1"
             }
 
-            Log.e(TAG, ": test 2" );
+            Log.e(TAG, ": test 2");
         }
         Log.e(TAG, ": test 完成了" );
+    }
+
+
+    /**
+     * 多个请求同时返回
+     */
+    fun concurrenceRequest(){
+        GlobalScope.launch {
+            var startTime = System.currentTimeMillis()
+            var addResult = withContext(Dispatchers.IO){
+                val one = async { one() }
+                val two = async { two() }
+                one.await() + two.await()
+            }
+            Log.d(TAG, "addResult() called = "+ addResult + " 耗时="+ (System.currentTimeMillis()-startTime));
+        }
+    }
+
+    suspend fun one():String{
+        delay(3000)
+        return "one Result"
+    }
+
+    suspend fun two():String{
+        delay(1000)
+        return "two Result"
     }
 }

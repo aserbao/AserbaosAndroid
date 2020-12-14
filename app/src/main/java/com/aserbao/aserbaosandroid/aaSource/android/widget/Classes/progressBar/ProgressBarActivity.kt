@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar
 
+import android.os.Bundle
 import android.view.View
 import com.aserbao.aserbaosandroid.R
 import com.example.base.base.BaseRecyclerViewActivity
@@ -26,4 +27,7 @@ class ProgressBarActivity : BaseRecyclerViewActivity() {
             }
         }
     }
+
+
+
 }
