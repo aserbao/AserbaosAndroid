@@ -17,6 +17,7 @@ import com.example.base.base.viewHolder.HeadViewHolder;
 import com.example.base.base.viewHolder.ImageViewHolder;
 import com.example.base.base.viewHolder.SeekBarViewHolder;
 import com.aserbao.aserbaosandroid.comon.base.viewHolder.TextViewHolder;
+import com.example.base.base.viewHolder.TestViewHolder;
 import com.example.base.base.viewHolder.ViewSelecteViewHolder;
 import com.example.base.utils.data.StaticFinalValues;
 
@@ -141,6 +142,9 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             case StaticFinalValues.VIEW_GRID_VIEW_ITME:
                 view = LayoutInflater.from(mContext).inflate(R.layout.base_recycler_view_gridview_item, parent, false);
                 return new GridViewHolder(view);
+             case StaticFinalValues.VIEW_TEST:
+                view = LayoutInflater.from(mContext).inflate(R.layout.test, parent, false);
+                return new TestViewHolder(view);
         }
         return null;
     }
@@ -162,6 +166,8 @@ public class BaseRecyclerViewActivityAdapter extends RecyclerView.Adapter<Recycl
             ((GridViewHolder) holder).setDataSource(classBean,position,mIBaseRecyclerItemClickListener);
         } else if(holder instanceof ViewSelecteViewHolder){
             ((ViewSelecteViewHolder) holder).setDataSource(mContext,mActivity,classBean,position);
+        }else if(holder instanceof TestViewHolder) {
+            ((TestViewHolder) holder).setDataSource(classBean);
         }
     }
 
