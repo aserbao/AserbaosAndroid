@@ -90,16 +90,10 @@
         <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />
         <activity android:name=".aaSource.android.material.bottomSheetDialog.BottomSheetDialogActivity" />
         <activity android:name=".kotlin.KotlinActivity" />
-        <activity android:name=".aaThird.jetpack.databinding.observable.ObservableFileActivity" />
-        <activity android:name=".aaThird.jetpack.databinding.DataBindActivity" />
-        <activity android:name=".aaThird.jetpack.databinding.viewmodels.DataBindingByVMActivity" />
         <activity android:name=".aaSource.android.widget.Classes.FrameLayout.FragmentLayoutActivity" />
         <activity android:name=".aaSource.android.view.ViewGroup.ViewGroupActivity" />
         <activity android:name=".aaSource.android.view.Choreographer.ChoreographerActivity" />
         <activity android:name=".aaSource.android.view.ViewActivity" />
-        <activity android:name=".aaThird.jetpack.lifecycle.LifecycleActivity" />
-        <activity android:name=".aaThird.jetpack.viewmodel.ViewModelActivity" />
-        <activity android:name=".aaThird.jetpack.JetpackActivity" />
         <activity android:name=".functions.database.room.RoomActivity" />
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
         <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />

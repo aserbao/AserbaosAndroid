@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -29,8 +30,10 @@ import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
 import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
+import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ACustomToastActivity;
 import com.aserbao.camera.camerax.CameraXPreviewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
+import com.aserbao.jetpack.architecture.navigation.NavigationAct;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -64,8 +67,18 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2CaptuerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", NavigationAct.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
+
+        Button button = new Button(this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "测试", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button button1 = button;
+        addViewToFrameLayout(button1,false,false,false);
     }
 
     @Override
