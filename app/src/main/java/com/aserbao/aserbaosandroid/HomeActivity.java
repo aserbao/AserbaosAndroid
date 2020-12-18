@@ -70,6 +70,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", NavigationAct.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
 
+
         Button button = new Button(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
