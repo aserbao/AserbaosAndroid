@@ -71,9 +71,9 @@ public class Triangle {
         colorBuffer.put(color);
         colorBuffer.position(0);
 
-        int vertexShader = OneGlRenderer.loadShader(GLES20.GL_VERTEX_SHADER,
+        int vertexShader = OneGlRenderer.compileShader(GLES20.GL_VERTEX_SHADER,
                 vertexShaderCode);
-        int fragmentShader = OneGlRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,
+        int fragmentShader = OneGlRenderer.compileShader(GLES20.GL_FRAGMENT_SHADER,
                 fragmentShaderCode);
 
         // 创建空的OpenGL ES程序

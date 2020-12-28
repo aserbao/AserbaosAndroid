@@ -91,17 +91,30 @@ public class OneGlRenderer implements GLSurfaceView.Renderer {
         Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
     }
 
-    public static int loadShader(int type, String shaderCode){
-
+    /**
+     * 创建编译着色器
+     * @param type
+     * @param shaderCode
+     * @return
+     */
+    public static int compileShader(int type, String shaderCode){
         // create a vertex shader type (GLES20.GL_VERTEX_SHADER)
         // or a fragment shader type (GLES20.GL_FRAGMENT_SHADER)
         int shader = GLES20.glCreateShader(type);
-
-
         // add the source code to the shader and compile it
         GLES20.glShaderSource(shader, shaderCode);
         GLES20.glCompileShader(shader);
-
+        // Get the compilation status.
+        final int[] compileStatus = new int[1];
+        GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS,
+            compileStatus, 0);
+        // Verify the compile status.
+        if (compileStatus[0] == 0) {
+            // If it failed, delete the shader object.
+            GLES20.glDeleteShader(shader);
+            Log.e("loadShader", "Compilation of shader failed.");
+            return 0;
+        }
         return shader;
     }
 }

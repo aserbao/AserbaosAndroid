@@ -7,17 +7,12 @@
 package com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes;
 
 import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.view.View;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import static com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneGlRenderer.loadShader;
+import static com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneGlRenderer.compileShader;
 
 /**
  * Description:
@@ -87,9 +82,9 @@ public class TriangleColor {
         colorBuffer.put(color);
         colorBuffer.position(0);
 
-        int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER,
+        int vertexShader = compileShader(GLES20.GL_VERTEX_SHADER,
                 vertexShaderCode);
-        int fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER,
+        int fragmentShader = compileShader(GLES20.GL_FRAGMENT_SHADER,
                 fragmentShaderCode);
 
         //创建一个空的OpenGLES程序

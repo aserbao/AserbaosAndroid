@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import static com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneGlRenderer.loadShader;
+import static com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneGlRenderer.compileShader;
 
 /**
  * @author: aserbao
@@ -104,9 +104,9 @@ public class TriangleTexture {
         textureBuffer.put(texture);
         textureBuffer.position(0);
 
-        int vertexShader = loadShader(GLES20.GL_VERTEX_SHADER,
+        int vertexShader = compileShader(GLES20.GL_VERTEX_SHADER,
                 vertexShaderCode);
-        int fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER,
+        int fragmentShader = compileShader(GLES20.GL_FRAGMENT_SHADER,
                 fragmentShaderCode);
 
         //创建一个空的OpenGLES程序
