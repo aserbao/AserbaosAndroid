@@ -1,5 +1,6 @@
 package com.aserbao.aserbaosandroid.ui.toasts.aCustomToast;
 
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.toasts.aCustomToast.ClickToast.ClickToast;
 
 public class ACustomToastActivity extends BaseRecyclerViewActivity {
-
 
     @Override
     public void initGetData() {
@@ -58,7 +58,8 @@ public class ACustomToastActivity extends BaseRecyclerViewActivity {
             case 1:
                 // TODO: 2019/4/25 点击多次就蹦了
                 ClickToast clickToast = new ClickToast();
-                final View toastClickView = clickToast.show(mContext, Toast.LENGTH_LONG, R.layout.toast_item_1);
+//                final View toastClickView = clickToast.show(mContext, Toast.LENGTH_LONG, R.layout.toast_item_1);
+                View toastClickView = clickToast.show(mContext, 5 * 1000, R.layout.toast_item_1);
                 toastClickView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -17,10 +17,7 @@ import java.lang.reflect.Field;
 
 public class ClickToast{
 
-    private View mIv;
-
-    private static Toast mToast;
-    private static TextView btn;
+    private Toast mToast;
     private View mView;
 
 

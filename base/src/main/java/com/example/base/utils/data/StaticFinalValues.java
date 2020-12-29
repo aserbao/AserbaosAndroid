@@ -65,6 +65,7 @@ public class StaticFinalValues {
     public static final int VIEW_SEEK_BAR = 104;
     public static final int VIEW_SELECTE_POSITION = 105;
     public static final int VIEW_GRID_VIEW_ITME = 106;
+    public static final int VIEW_TEST = 107;
 
 
     //--------------reqeestCode--------------

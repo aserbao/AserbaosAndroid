@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aserbao.jetpack">
+
+    <application>
+        <activity android:name=".architecture.navigation.NavigationAct"></activity>
+        <activity android:name=".architecture.ArchitectureAct" />
+        <activity android:name=".JetpackAct" />
+        <activity android:name=".architecture.databinding.observable.ObservableFileActivity" />
+        <activity android:name=".architecture.databinding.DataBindActivity" />
+        <activity android:name=".architecture.databinding.viewmodels.DataBindingByVMActivity" />
+        <activity android:name=".architecture.lifecycle.LifecycleActivity" />
+        <activity android:name=".architecture.viewmodel.ViewModelActivity" />
+    </application>
+
+</manifest>

@@ -84,6 +84,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     api project(path: ':base')
     implementation project(path: ':arouter')
+    implementation project(path: ':jetpack')
     testImplementation 'junit:junit:4.12'
 
     api rootProject.ext.dependencies["kotlin"]

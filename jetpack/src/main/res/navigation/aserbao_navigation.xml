@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/NavigationHomeFragment">
+
+    <fragment
+        android:id="@+id/NavigationHomeFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationHomeFragment"
+        >
+        <action
+            android:id="@+id/action_NavigationHomeFragment_self"
+            app:destination="@id/NavigationHomeFragment" />
+        <action
+            android:id="@+id/action_NavigationHomeFragment_to_NavigationTopFragment2"
+            app:destination="@id/NavigationTopFragment" />
+        <action
+            android:id="@+id/action_NavigationHomeFragment_to_NavigationRightFragment"
+            app:destination="@id/NavigationRightFragment" />
+        <action
+            android:id="@+id/action_NavigationHomeFragment_to_NavigationBottomFragment"
+            app:destination="@id/NavigationBottomFragment"
+            app:popUpTo="@id/NavigationBottomFragment" />
+        <action
+            android:id="@+id/action_NavigationHomeFragment_to_NavigationLeftFragment"
+            app:destination="@id/NavigationLeftFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/NavigationBottomFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationBottomFragment"
+        />
+
+    <fragment
+        android:id="@+id/NavigationTopFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationTopFragment"
+        />
+
+    <fragment
+        android:id="@+id/NavigationRightFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationRightFragment"
+        >
+        <action
+            android:id="@+id/action_NavigationRightFragment_to_NavigationRightChildFragment"
+            app:destination="@id/NavigationRightChildFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/NavigationRightChildFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationRightChildFragment"
+        />
+
+    <fragment
+        android:id="@+id/NavigationLeftFragment"
+        android:name="com.aserbao.jetpack.architecture.navigation.NavigationLeftFragment"
+        />
+
+    <activity
+        android:id="@+id/CommonUIActivity"
+        android:name="com.aserbao.common.ui.act.CommonUIActivity"
+        />
+</navigation>

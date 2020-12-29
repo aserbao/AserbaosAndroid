@@ -16,7 +16,12 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * @author: aserbao
+ * @date:2020/12/8 10:56 AM
+ * @package:
+ * @describle: 集合排序
+ */
 public class CompareActivity extends AppCompatActivity {
 
     @BindView(R.id.original_tv)

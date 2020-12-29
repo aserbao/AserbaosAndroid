@@ -3,22 +3,25 @@ package com.example.base.base;
 import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.R;
@@ -31,10 +34,7 @@ import com.example.base.utils.data.StaticFinalValues;
 import com.example.base.utils.permission.CheckPermissionUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 功能:
@@ -44,7 +44,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @project:AserbaosAndroid
  * @package:com.aserbao.aserbaosandroid.base
  */
-public abstract class BaseRecyclerViewActivity extends AppCompatActivity implements IBaseRecyclerItemClickListener {
+public abstract class BaseRVFragment extends Fragment implements IBaseRecyclerItemClickListener {
     public final String TAG = getClass().getSimpleName();
     protected static final int COME_FROM_SPINNER = 1;
 
@@ -68,48 +68,49 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();
     public List<BaseRecyclerBean> mBaseSpinnerRecyclerBeen = new ArrayList<>();
 
+    public void setClassTip(){
+        mBaseRecyclerTv.setText(TAG);
+    }
+
     public abstract void initGetData();
+    
+    View mRootView;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mRootView = LayoutInflater.from(getContext()).inflate(R.layout.base_recyclerview_activity, container, false);
+        return mRootView;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTranslations();
-        setContentView(R.layout.base_recyclerview_activity);
-        mContext = this;
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mContext = getContext();
         initView();
         initGetData();
         initViewForLinear();
         initViewTopSpinner();
         ARouter.getInstance().inject(this);
-        if (CheckPermissionUtil.isCameraGranted()) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, 0);
-        }
     }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        ARouter.getInstance().destroy();
-    }
+    
 
     private void initView() {
-        mBaseDownTv = findViewById(R.id.base_down_tv);
-        mBaseUpTv = findViewById(R.id.base_up_tv);
-        mBaseSpinner = findViewById(R.id.base_spinner);
-        mBaseTopTv = findViewById(R.id.base_top_tv);
-        mBaseToolBar = findViewById(R.id.base_tool_bar);
-        mBaseRecyclerEmptyContainer = findViewById(R.id.base_recycler_empty_container);
-        mBaseRecyclerViewFl = findViewById(R.id.base_recycler_view_fl);
-        mOpenglRecyclerView = findViewById(R.id.base_recycler_view);
-        mShowDataContentRv = findViewById(R.id.show_data_content_rv);
-        mBaseRecyclerTv = findViewById(R.id.base_recycler_tv);
+        mBaseDownTv = mRootView.findViewById(R.id.base_down_tv);
+        mBaseUpTv = mRootView.findViewById(R.id.base_up_tv);
+        mBaseSpinner = mRootView.findViewById(R.id.base_spinner);
+        mBaseTopTv = mRootView.findViewById(R.id.base_top_tv);
+        mBaseToolBar = mRootView.findViewById(R.id.base_tool_bar);
+        mBaseRecyclerEmptyContainer = mRootView.findViewById(R.id.base_recycler_empty_container);
+        mBaseRecyclerViewFl = mRootView.findViewById(R.id.base_recycler_view_fl);
+        mOpenglRecyclerView = mRootView.findViewById(R.id.base_recycler_view);
+        mShowDataContentRv = mRootView.findViewById(R.id.show_data_content_rv);
+        mBaseRecyclerTv = mRootView.findViewById(R.id.base_recycler_tv);
     }
 
     protected  void initViewTopSpinner(){
         if (mBaseSpinnerRecyclerBeen.size() != 0) {
             mBaseToolBar.setVisibility(View.VISIBLE);
-            BaseSpinnerAdapter baseSpinnerAdapter = new BaseSpinnerAdapter(this, mBaseSpinnerRecyclerBeen);
+            BaseSpinnerAdapter baseSpinnerAdapter = new BaseSpinnerAdapter(mContext, mBaseSpinnerRecyclerBeen);
             mBaseSpinner.setAdapter(baseSpinnerAdapter);
             mBaseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -138,9 +139,9 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
 
 
     public void initViewForLinear() {
-        mCommonAdapter = new BaseRecyclerViewActivityAdapter(this, this, mBaseRecyclerBean, this);
+        mCommonAdapter = new BaseRecyclerViewActivityAdapter(mContext, getActivity(), mBaseRecyclerBean, this);
         if (mMode == StaticFinalValues.GRID_LAYOUTMANAGER) {
-            mLinearLayoutManager = new GridLayoutManager(this, 3);
+            mLinearLayoutManager = new GridLayoutManager(mContext, 3);
             ((GridLayoutManager) mLinearLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
@@ -148,8 +149,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
                 }
             });
         } else {
-//            mLinearLayoutManager = new LinearLayoutManager(this, mRvOrientation, false);
-            mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            mLinearLayoutManager = new LinearLayoutManager(mContext, mRvOrientation, false);
         }
         mOpenglRecyclerView.setLayoutManager(mLinearLayoutManager);
         mOpenglRecyclerView.setAdapter(mCommonAdapter);
@@ -193,13 +193,11 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
     public static final String WIDTH = "width";
     public static final String HEIGHT = "height";
     private void addViewToFrameLayout(View view,int type,Bundle bundle){
-        mNeedDirectBack = false;
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         if (bundle != null){
             if (!bundle.getBoolean(IS_MATCH)) {
                 layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             }
-            mNeedDirectBack = bundle.getBoolean(NEED_DIRECT_BACK);
             if (bundle.getBoolean(NEED_WH)){
                 layoutParams.width = bundle.getInt(WIDTH,0);
                 layoutParams.height = bundle.getInt(HEIGHT,0);
@@ -281,16 +279,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         return view;
     }
 
-
-    protected boolean mNeedDirectBack = false;
-    @Override
-    public void onBackPressed() {
-        if (mBaseRecyclerEmptyContainer.getChildCount() > 0 && !mNeedDirectBack){
-            mBaseRecyclerEmptyContainer.removeAllViews();
-            return;
-        }
-        super.onBackPressed();
-    }
+    
 
 
 
