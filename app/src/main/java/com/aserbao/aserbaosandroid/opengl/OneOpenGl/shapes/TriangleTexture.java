@@ -6,11 +6,14 @@
  */
 package com.aserbao.aserbaosandroid.opengl.OneOpenGl.shapes;
 
+import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+
+import javax.microedition.khronos.opengles.GL10;
 
 import static com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneGlRenderer.compileShader;
 
@@ -143,12 +146,31 @@ public class TriangleTexture {
                 GLES20.GL_FLOAT,false,
                 0,colorBuffer);
 
-
-
         //绘制三角形
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
         //禁止顶点数组的句柄
         GLES20.glDisableVertexAttribArray(mPositionHandle);
+    }
+
+    /**
+     * 创建纹理
+     * @return
+     */
+    public static int getExternalOESTextureID(){
+        int[] texture = new int[1];
+
+        GLES20.glGenTextures(1, texture, 0);
+        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture[0]);
+        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+            GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR);
+        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+            GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
+        GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+            GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+        GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+            GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+
+        return texture[0];
     }
 
 }

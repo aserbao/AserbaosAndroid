@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.opengl;
 
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.opengl.OneOpenGl.texture.es2.ES2TextureAct;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
@@ -15,6 +16,7 @@ public class OpenGlActivity extends BaseRecyclerViewActivity {
 
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("绘制简单图形", OneOpenGlActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("OpenGL 纹理三角形", ES2TextureAct.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("简单相机视图预览", CameraShowActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Camera+OpenGl显示", CameraOpenglActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("相机录制", RecordCameraActivity.class));

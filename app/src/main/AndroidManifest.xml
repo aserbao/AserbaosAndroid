@@ -84,7 +84,7 @@
         <activity android:name=".ui.texts.textViews.font.TextFontActivity" />
         <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
-        <activity android:name=".aaSource.android.hardware.camera2.show.doubleshow.Camera2VideoGVActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.show.doubleshow.DoobleCamera2VideoGVActivity" />
         <activity android:name=".ui.customView.seekbar.SeekBarActivity" />
         <activity android:name=".aaSource.android.support.design.widget.CoordinatorLayout.PhotoGalleryAct" />
         <activity android:name=".aaSource.android.widget.Classes.GridView.GridViewActivity" />

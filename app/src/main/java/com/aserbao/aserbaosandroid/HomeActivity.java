@@ -15,6 +15,7 @@ import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.ProgressBarActivity;
 import com.aserbao.aserbaosandroid.aaSource.java.util.concurrent.FutureAct;
@@ -27,6 +28,7 @@ import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
 import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
 import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
+import com.aserbao.aserbaosandroid.opengl.OneOpenGl.texture.es2.ES2TextureAct;
 import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
 import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
 import com.aserbao.camera.camerax.CameraXPreviewActivity;
@@ -64,7 +66,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2CaptuerActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2GlsurfaceViewActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 

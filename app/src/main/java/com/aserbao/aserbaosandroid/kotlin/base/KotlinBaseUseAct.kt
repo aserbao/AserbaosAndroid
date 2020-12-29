@@ -42,7 +42,6 @@ class KotlinBaseUseAct : BaseRecyclerViewActivity() {
             if(index ==3) return@continuing
         }
         Log.d(TAG, "continue is end")
-
         run breaking@{
             list.forEachIndexed{
                 index,context->

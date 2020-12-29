@@ -73,12 +73,13 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
 
     inner class MyRender : GLSurfaceView.Renderer {
         private val vertexShaderCode = """uniform mat4 textureTransform;
+                uniform mat4 uMVPMatrix;
                 attribute vec2 inputTextureCoordinate;
                 attribute vec4 position;
                 varying   vec2 textureCoordinate;
                 
                  void main() {
-                     gl_Position = position;
+                     gl_Position = uMVPMatrix * position;
                      textureCoordinate = inputTextureCoordinate;
                  }"""
         private val fragmentShaderCode = """#extension GL_OES_EGL_image_external : require
@@ -144,6 +145,8 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
         private var uPosHandle = 0
         private var aTexHandle = 0
         private var mMVPMatrixHandle = 0
+        private var muMVPMatrixLHandle = 0
+
         private val mProjectMatrix = FloatArray(16)
         private val mCameraMatrix = FloatArray(16)
         private val mMVPMatrix = FloatArray(16)
@@ -159,6 +162,8 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
             uPosHandle = GLES20.glGetAttribLocation(mProgram, "position")
             aTexHandle = GLES20.glGetAttribLocation(mProgram, "inputTextureCoordinate")
             mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "textureTransform")
+            muMVPMatrixLHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix")
+
             mPosBuffer = convertToFloatBuffer(mPosCoordinate)
             mTexBuffer = if (cameraId.equals(mBackCameraId)) {
                 convertToFloatBuffer(mTexCoordinateBackRight)
@@ -211,16 +216,12 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
                 GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, mPosCoordinate.size / 2)
             }
         }
-
         init {
             Matrix.setIdentityM(mProjectMatrix, 0)
             Matrix.setIdentityM(mCameraMatrix, 0)
             Matrix.setIdentityM(mMVPMatrix, 0)
             Matrix.setIdentityM(mTempMatrix, 0)
         }
-
-
-
     }
 
     private val mFrontCameraId = "1"
@@ -291,6 +292,10 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
 
     companion object {
         var camera: Camera? = null
+
+        /**
+         * 创建外部纹理对象
+         */
         fun createOESTextureObject(): Int {
             val tex = IntArray(1)
             //生成一个纹理
