@@ -1,52 +1,80 @@
-#!/bin/bash
-# 清空上次的编译
-make clean
-#你自己的NDK路径.
-export NDK=$NDK20
-function build_android
-{
-echo "Compiling FFmpeg for $CPU"
-./configure \
-    --prefix=$PREFIX \
-    --enable-neon \
-    --enable-hwaccels \
-    --enable-gpl \
-    --enable-postproc \
-    --enable-shared \
-    --enable-jni \
-    --enable-mediacodec \
-    --enable-decoder=h264_mediacodec \
-    --enable-ffmpeg \
-    --enable-avdevice \
-    --disable-static \
-    --disable-doc \
-    --disable-ffplay \
-    --disable-ffprobe \
-    --disable-server \
-    --disable-programs \
-    --disable-doc \
-    --disable-symver \
-    --cross-prefix=$CROSS_PREFIX \
-    --target-os=android \
-    --arch=$ARCH \
-    --cpu=$CPU \
-    --enable-cross-compile \
-    --sysroot=$SYSROOT \
-    --extra-cflags="-Os -fpic $OPTIMIZE_CFLAGS" \
-    --extra-ldflags="$ADDI_LDFLAGS" \
-    $ADDITIONAL_CONFIGURE_FLAG
-make clean
-make
-make install
-echo "The Compilation of FFmpeg for $CPU is completed"
-}
-#armv7-a
-ARCH=arm
-CPU=armv7-a
-TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64
-SYSROOT=$NDK/platforms/android-21/arch-$ARCH/
-CROSS_PREFIX=$TOOLCHAIN/bin/arm-linux-androideabi-
-PREFIX=$(pwd)/android/$CPU
-OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
-build_android
+//////// 3.3 ///
+00000000002470cc 00000000003c75ac 00000000003c7474 00000000003c7dcc 000000000055d6e0 000000000023d414 000000000000da08 0000000000012350 0000000000009334 00000000000181a4 00000000001b449c   00000000001af76c 0000000000487510 0000000000003914 00000070f3b9807c
 
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin/aarch64-linux-android-addr2line -f -e /Users/bytedance/aserbao/code/bytedance/byted_effect_sdk/byted_effect/android/sample/libs/arm64-v8a/symbol/libeffect.so.symbol 00000000002470cc 00000000003c75ac 00000000003c7474 00000000003c7dcc 000000000055d6e0 000000000023d414 000000000000da08 0000000000012350 0000000000009334 00000000000181a4 00000000001b449c   00000000001af76c 0000000000487510 0000000000003914 00000070f3b9807c
+
+_ZNKSt6__ndk125__bucket_list_deallocatorINS_9allocatorIPNS_16__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEPvEESA_EEEEEEE4sizeEv
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/__hash_table:799
+_ZNSt6__ndk112__hash_tableINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPvEENS_22__unordered_map_hasherIS7_S9_NS_4hashIS7_EELb1EEENS_21__unordered_map_equalIS7_S9_NS_8equal_toIS7_EELb1EEENS5_IS9_EEE14__erase_uniqueIS7_EEmRKT_
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/__hash_table:2633
+_ZNSt6__ndk113unordered_mapINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPvNS_4hashIS6_EENS_8equal_toIS6_EENS4_INS_4pairIKS6_S7_EEEEE5eraseERSD_
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/unordered_map:1195
+~BEFEffectBaseController
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Lego/base/BEFEffectBaseController.cpp:61
+~InfoStickerDirector
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:2622
+bef_info_sticker_director_destory
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:130
+
+
+//////// 3.2 ///
+pc 0000000000b42f14 /data/app/com.bytedance.labcv.demo-Xg-WdGupR3CLIxRd8bd7Jg==/lib/arm64/libeffect.so [arm64-v8a]
+0000000000b42e48 0000000000b33d00 0000000000361e90 00000000002c4c7c 00000000002c4ae4 000000000039ea34 00000000006cf718 0000000000744018 0000000000744274 00000000007459f4 00000000005b3f70 000000000055c6b4 000000000023f938 000000000000a984
+
+
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2442
+SWIG_Lua_class_register(lua_State*, swig_lua_class*)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2462
+luaopen_EffectSdk
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:38225
+openEffectSdkLuaLib
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/effect_framework/luasystem/LuaScriptsMgr.cpp:42
+AmazingEngine::LuaManager::init()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/Foundation/Lua/AMGLuaManager.cpp:133
+AmazingEngine::Amazer::_createScriptManager()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:143
+AmazingEngine::Amazer::initSingletons()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:228
+AmazingEngine::Amazer::init()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:318
+AmazingEngine::InfoStickerManager::init(int, int, unsigned long, BRC::RenderApi)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/AmazingInfoSticker/AMGInfoStickerManager.cpp:74
+InfoStickerDirector::init2dEngine(int, int, bef_render_api_type)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:135
+bef_info_sticker_check_license
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:1604
+
+
+
+
+0000000000b41e60  0000000000b34698  0000000000361fbc  00000000002c4c7c  00000000002c4ae4  000000000039ea34  00000000006cf718  0000000000744018  0000000000744274   00000000007459f4  00000000005b3f70  000000000055c6b4  000000000023f938  000000000000a984
+
+
+luaH_next
+/Libs/lua/src/ltable.c:164
+lua_next
+/Libs/lua/src/lapi.c:979
+SWIG_Lua_add_class_user_metamethods(lua_State*, swig_lua_class*)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2298
+SWIG_Lua_class_register(lua_State*, swig_lua_class*)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2462
+luaopen_EffectSdk
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:38225
+openEffectSdkLuaLib
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/effect_framework/luasystem/LuaScriptsMgr.cpp:42
+AmazingEngine::LuaManager::init()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/Foundation/Lua/AMGLuaManager.cpp:133
+AmazingEngine::Amazer::_createScriptManager()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:143
+AmazingEngine::Amazer::initSingletons()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:228
+AmazingEngine::Amazer::init()
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:318
+AmazingEngine::InfoStickerManager::init(int, int, unsigned long, BRC::RenderApi)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/AmazingInfoSticker/AMGInfoStickerManager.cpp:74
+InfoStickerDirector::init2dEngine(int, int, bef_render_api_type)
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:135
+bef_info_sticker_check_license
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:1604
+??
+??:0

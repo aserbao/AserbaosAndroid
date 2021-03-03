@@ -31,4 +31,8 @@ class LambdaActivity : BaseRecyclerViewActivity() {
         Arrays.sort(arrayOf){i1,i2->i1.compareTo(i2)}
         Log.e(TAG, ": lambdaComparator"+ Arrays.toString(arrayOf) );
     }
+
+    fun testAutoIntercept(){
+        
+    }
 }
