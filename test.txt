@@ -1,20 +1,37 @@
 //////// 3.3 ///
-00000000002470cc 00000000003c75ac 00000000003c7474 00000000003c7dcc 000000000055d6e0 000000000023d414 000000000000da08 0000000000012350 0000000000009334 00000000000181a4 00000000001b449c   00000000001af76c 0000000000487510 0000000000003914 00000070f3b9807c
 
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin/aarch64-linux-android-addr2line -f -e /Users/bytedance/aserbao/code/bytedance/byted_effect_sdk/byted_effect/android/sample/libs/arm64-v8a/symbol/libeffect.so.symbol 00000000002470cc 00000000003c75ac 00000000003c7474 00000000003c7dcc 000000000055d6e0 000000000023d414 000000000000da08 0000000000012350 0000000000009334 00000000000181a4 00000000001b449c   00000000001af76c 0000000000487510 0000000000003914 00000070f3b9807c
+EffectTask 和 InfoStickerTask混合运行才会报的错。
+SIGBUS(BUS_ADRALN)
+0x25cca0cd00010406 25cca0cd00010406 000000000025d934 0000000000b76180 0000000000b76130 0000000000ba757c 000000000025d934 0000000000b9f898 0000000000b79e88 0000000000b847fc 00000000002ae504 00000000002ae25c 00000000002ae554 000000000028a774 000000000028abfc 00000000002333f4 000000000000aea0 0000000000012350 000000009d4b0bac
 
-_ZNKSt6__ndk125__bucket_list_deallocatorINS_9allocatorIPNS_16__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS1_IcEEEEPvEESA_EEEEEEE4sizeEv
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/__hash_table:799
-_ZNSt6__ndk112__hash_tableINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPvEENS_22__unordered_map_hasherIS7_S9_NS_4hashIS7_EELb1EEENS_21__unordered_map_equalIS7_S9_NS_8equal_toIS7_EELb1EEENS5_IS9_EEE14__erase_uniqueIS7_EEmRKT_
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/__hash_table:2633
-_ZNSt6__ndk113unordered_mapINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPvNS_4hashIS6_EENS_8equal_toIS6_EENS4_INS_4pairIKS6_S7_EEEEE5eraseERSD_
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/unordered_map:1195
-~BEFEffectBaseController
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Lego/base/BEFEffectBaseController.cpp:61
-~InfoStickerDirector
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:2622
-bef_info_sticker_director_destory
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:130
+~SharePtr
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/../../render_core/render_core/pub/inc/render_core/SharePtr.h:34
+_ZNSt6__ndk19allocatorIN3BRC8SharePtrINS1_12RenderTargetEEEE7destroyEPS4_
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/memory:1880
+_ZNSt6__ndk16vectorIN3BRC8SharePtrINS1_12RenderTargetEEENS_9allocatorIS4_EEE5clearEv
+/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/vector:772
+~FrameBufferGLES20
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/FrameBufferGLES20.cpp:25
+~SharePtr
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/../../render_core/render_core/pub/inc/render_core/SharePtr.h:34
+~RenderDeviceGLES20
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/RenderDeviceGLES20.cpp:36
+~RenderEngine
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/core/engine/RenderEngine.cpp:149
+~RenderEngineGLES20
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/RenderEngineGLES20.cpp:22
+_ZN3BEF13RenderManager19releaseRenderEngineEv
+sfp-exceptions.c:?
+~RenderManager
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/RenderManager.cpp:198
+~RenderManager
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/RenderManager.cpp:196
+_ZN3BEF13EffectManagerD2Ev
+sfp-exceptions.c:?
+~EffectManager
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/EffectManager.cpp:701
+bef_effect_destroy
+/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_effect_api.cpp:2683
 
 
 //////// 3.2 ///
