@@ -1,97 +1,42 @@
-//////// 3.3 ///
+A: tob_effect-sdk 7.9.0 --> demo（打aar） --> tob sample demo
 
-EffectTask 和 InfoStickerTask混合运行才会报的错。
-SIGBUS(BUS_ADRALN)
-0x25cca0cd00010406 25cca0cd00010406 000000000025d934 0000000000b76180 0000000000b76130 0000000000ba757c 000000000025d934 0000000000b9f898 0000000000b79e88 0000000000b847fc 00000000002ae504 00000000002ae25c 00000000002ae554 000000000028a774 000000000028abfc 00000000002333f4 000000000000aea0 0000000000012350 000000009d4b0bac
-
-~SharePtr
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/../../render_core/render_core/pub/inc/render_core/SharePtr.h:34
-_ZNSt6__ndk19allocatorIN3BRC8SharePtrINS1_12RenderTargetEEEE7destroyEPS4_
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/memory:1880
-_ZNSt6__ndk16vectorIN3BRC8SharePtrINS1_12RenderTargetEEENS_9allocatorIS4_EEE5clearEv
-/Users/bytedance/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/c++/v1/vector:772
-~FrameBufferGLES20
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/FrameBufferGLES20.cpp:25
-~SharePtr
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/../../render_core/render_core/pub/inc/render_core/SharePtr.h:34
-~RenderDeviceGLES20
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/RenderDeviceGLES20.cpp:36
-~RenderEngine
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/core/engine/RenderEngine.cpp:149
-~RenderEngineGLES20
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../render_core/render_core/dev/src/render/gles20/RenderEngineGLES20.cpp:22
-_ZN3BEF13RenderManager19releaseRenderEngineEv
-sfp-exceptions.c:?
-~RenderManager
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/RenderManager.cpp:198
-~RenderManager
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/RenderManager.cpp:196
-_ZN3BEF13EffectManagerD2Ev
-sfp-exceptions.c:?
-~EffectManager
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/base/EffectManager.cpp:701
-bef_effect_destroy
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_effect_api.cpp:2683
-
-
-//////// 3.2 ///
-pc 0000000000b42f14 /data/app/com.bytedance.labcv.demo-Xg-WdGupR3CLIxRd8bd7Jg==/lib/arm64/libeffect.so [arm64-v8a]
-0000000000b42e48 0000000000b33d00 0000000000361e90 00000000002c4c7c 00000000002c4ae4 000000000039ea34 00000000006cf718 0000000000744018 0000000000744274 00000000007459f4 00000000005b3f70 000000000055c6b4 000000000023f938 000000000000a984
-
-
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2442
-SWIG_Lua_class_register(lua_State*, swig_lua_class*)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2462
-luaopen_EffectSdk
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:38225
-openEffectSdkLuaLib
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/effect_framework/luasystem/LuaScriptsMgr.cpp:42
-AmazingEngine::LuaManager::init()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/Foundation/Lua/AMGLuaManager.cpp:133
-AmazingEngine::Amazer::_createScriptManager()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:143
-AmazingEngine::Amazer::initSingletons()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:228
-AmazingEngine::Amazer::init()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:318
-AmazingEngine::InfoStickerManager::init(int, int, unsigned long, BRC::RenderApi)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/AmazingInfoSticker/AMGInfoStickerManager.cpp:74
-InfoStickerDirector::init2dEngine(int, int, bef_render_api_type)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:135
-bef_info_sticker_check_license
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:1604
+B: effect-sdk 8.5.0 --> demo（打aar） --> tob sample demo 
 
 
 
+如果B是没有问题的，说明 8.5.0版本没有问题。
+  解决方案：将tob_effect-sdk 升级到 8.5.0
 
-0000000000b41e60  0000000000b34698  0000000000361fbc  00000000002c4c7c  00000000002c4ae4  000000000039ea34  00000000006cf718  0000000000744018  0000000000744274   00000000007459f4  00000000005b3f70  000000000055c6b4  000000000023f938  000000000000a984
+  分析原因有两种情况：
+  1. effect-sdk 7.9.0 有问题，在8.5.0被修复了。
+  2. tob改造有问题。effect-sdk 7.9.0 打一个纯净包验证是否是tob改造的问题。
+
+如果B有问题的。
 
 
-luaH_next
-/Libs/lua/src/ltable.c:164
-lua_next
-/Libs/lua/src/lapi.c:979
-SWIG_Lua_add_class_user_metamethods(lua_State*, swig_lua_class*)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2298
-SWIG_Lua_class_register(lua_State*, swig_lua_class*)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:2462
-luaopen_EffectSdk
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/luasystem/LuaBindings.cpp:38225
-openEffectSdkLuaLib
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/effect_framework/luasystem/LuaScriptsMgr.cpp:42
-AmazingEngine::LuaManager::init()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/Foundation/Lua/AMGLuaManager.cpp:133
-AmazingEngine::Amazer::_createScriptManager()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:143
-AmazingEngine::Amazer::initSingletons()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:228
-AmazingEngine::Amazer::init()
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../amazing_engine/amazing_engine/dev/src/Runtime/Engine/AmazingFramework/AMGAmazer.cpp:318
-AmazingEngine::InfoStickerManager::init(int, int, unsigned long, BRC::RenderApi)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/AmazingInfoSticker/AMGInfoStickerManager.cpp:74
-InfoStickerDirector::init2dEngine(int, int, bef_render_api_type)
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/Features/InfoSticker/InfoStickerDirector.cpp:135
-bef_info_sticker_check_license
-/Users/bytedance/aserbao/code/bytedance/effect_sdk/AndroidDemo/effectAAR/.cxx/cmake/release/arm64-v8a/../../../../../../effect_sdk/dev/src/bef_info_sticker_api.cpp:1604
-??
-??:0
+
+toB:
+bef_effect_ai_api
+bef_effect_ai_api
+bef_effect_ai_*
+
+original:
+bef_effect_api
+
+
+bef_effect_info_sticker_ai_api.h
+
+bef_effect_info_sticker_api.h
+
+
+出现问题的调用：
+
+bef_effect_info_sticker_ai_api.h
+bef_effect_ai_api.h
+
+混合调用才会出现问题。
+
+测试在850 纯净版上：
+bef_effect_api
+bef_effect_info_sticker_api
+混用是否崩溃
