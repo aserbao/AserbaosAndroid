@@ -55,31 +55,6 @@ public class ColorSelectorFrameLayout extends FrameLayout {
         addView(view,params);
         initColorRV(((RecyclerView) view.findViewById(R.id.colorSelRV)));
         initSelFeatureRV(((RecyclerView) view.findViewById(R.id.featureSelRV)));
-
-        
-//        BorderSelRoundImageView borderSelRoundImageView3 = new BorderSelRoundImageView(context);
-//        borderSelRoundImageView3.isHasBorder = true;
-//        borderSelRoundImageView3.isChecked = true;
-//        borderSelRoundImageView3.currMode = 2;
-//        borderSelRoundImageView3.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//        borderSelRoundImageView3.setImageDrawable(getResources().getDrawable(R.drawable.mm_2));
-//        LayoutParams params3 = new LayoutParams(dp100, dp100);
-//        addView(borderSelRoundImageView3,getChildCount(),params3);
-//
-//        BorderSelRoundImageView borderSelRoundImageView = new BorderSelRoundImageView(context);
-//        borderSelRoundImageView.isHasBorder = true;
-//        borderSelRoundImageView.isChecked = true;
-//        borderSelRoundImageView.centerColor = Color.BLACK;
-//        LayoutParams params = new LayoutParams(dp100, dp100);
-//        addView(borderSelRoundImageView,getChildCount(),params);
-////
-//        BorderSelRoundImageView borderSelRoundImageView1 = new BorderSelRoundImageView(context);
-//        borderSelRoundImageView1.isHasBorder = true;
-//        borderSelRoundImageView1.isChecked = false;
-//        borderSelRoundImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//        borderSelRoundImageView1.setImageDrawable(getResources().getDrawable(R.drawable.mm_2));
-//        LayoutParams params1 = new LayoutParams(dp100, dp100);
-//        addView(borderSelRoundImageView1,getChildCount(),params1);
     }
 
 
@@ -114,6 +89,7 @@ public class ColorSelectorFrameLayout extends FrameLayout {
 
             }
         });
+        featureSelRVAdapter.setHasHeader(true);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(featureSelRVAdapter);
     }
@@ -131,6 +107,8 @@ public class ColorSelectorFrameLayout extends FrameLayout {
         "#FFB90F","#FFB6C1","#FFB5C5","#FFAEB9",
         "#FFA54F","#FFA500","#FFA07A","#FF8C69"};
     static int[] SEL_FEATURE = {
+        R.drawable.feature_sel_custom,
+        R.drawable.place_holder,
        R.drawable.mm_1,
        R.drawable.mm_2,
        R.drawable.mm_3,

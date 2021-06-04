@@ -16,10 +16,10 @@ import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelBeans;
  * @author: aserbao
  * @description:
  **/
-public class ColorSelVH extends RecyclerView.ViewHolder {
+public class HeadSelVH extends RecyclerView.ViewHolder {
     private final RvItemBorderSelRoundBinding binding;
 
-    public ColorSelVH(@NonNull View itemView) {
+    public HeadSelVH(@NonNull View itemView) {
         super(itemView);
         binding = RvItemBorderSelRoundBinding.bind(itemView);
     }
@@ -27,16 +27,12 @@ public class ColorSelVH extends RecyclerView.ViewHolder {
     public void setDataSource(SelBeans beans, int position, SelRVAdapter.ItemClickerListener itemClickerListener){
         if(beans == null) return;
         if(beans.resId > 0){
+            binding.borderSelRoundIV.setCurrMode(0);
             binding.borderSelRoundIV.setImageResource(beans.resId);
-            binding.borderSelRoundIV.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            binding.borderSelRoundIV.setCurrMode(2);
+            binding.borderSelRoundIV.setBorderInterval(0);
+
+//            binding.borderSelRoundIV.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
-        if(!TextUtils.isEmpty(beans.color)) {
-            binding.borderSelRoundIV.setCenterColor(Color.parseColor(beans.color));
-        }
-        binding.borderSelRoundIV.isHasBorder = true;
-        binding.borderSelRoundIV.isChecked = beans.isSel;
-        binding.borderSelRoundIV.postInvalidate();
         binding.borderSelRoundIV.setOnClickListener(v -> {
             beans.isSel = true;
             if (itemClickerListener != null) {
