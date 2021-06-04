@@ -97,8 +97,22 @@
             <enum name="circle" value="1"/>
             <enum name="round" value="2"/>
         </attr>
-        <attr name="radius" format="dimension"/>ssss
+        <attr name="radius" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="BorderSelRoundImageView">
+        <attr name="sel_type" format="enum">
+            <enum name="circle" value="1"/>
+            <enum name="round" value="2"/>
+        </attr>
+        <attr name="sel_radius" format="dimension"/>
+        <attr name="sel_border_color" format="color"/>
+        <attr name="sel_center_color" format="color"/>
+        <attr name="sel_border_width" format="dimension"/>
+        <attr name="sel_border_interval" format="dimension"/>
+
+    </declare-styleable>
+
     <declare-styleable name="ShadowRoundImageView">
         <attr name="image_radius" format="dimension" />//圆角大小
         <attr name="image_shadow_radius" format="dimension" />//阴影大小
@@ -398,5 +412,19 @@
         <attr name="progStartColor" format="color" />   <!--进度圆环开始颜色-->
         <attr name="progFirstColor" format="color" />   <!--进度圆环结束颜色-->
         <attr name="progress" format="integer" />       <!--圆环进度-->
+    </declare-styleable>
+    <declare-styleable name="NiceImageView">
+        <attr name="is_circle" format="boolean" />
+        <attr name="is_cover_src" format="boolean" />
+        <attr name="corner_radius" format="dimension" />
+        <attr name="corner_top_left_radius" format="dimension" />
+        <attr name="corner_top_right_radius" format="dimension" />
+        <attr name="corner_bottom_left_radius" format="dimension" />
+        <attr name="corner_bottom_right_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="inner_border_width" format="dimension" />
+        <attr name="inner_border_color" format="color" />
+        <attr name="mask_color" format="color" />
     </declare-styleable>
 </resources>

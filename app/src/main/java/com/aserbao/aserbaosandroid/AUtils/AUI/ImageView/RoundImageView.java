@@ -31,7 +31,7 @@ public class RoundImageView extends AppCompatImageView {
      */
     private static final int MODE_ROUND = 2;
     private Paint mPaint;
-    private int currMode = 0;
+    private int currMode = MODE_ROUND;
     /**
      * 圆角半径
      */
@@ -111,6 +111,7 @@ public class RoundImageView extends AppCompatImageView {
                 canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPaint);
             } else if (currMode == MODE_ROUND) {//当为圆角模式的时候
                 Bitmap bitmap = drawable2Bitmap(mDrawable);
+
                 mPaint.setShader(new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
                 canvas.drawRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom()),
                         currRound, currRound, mPaint);

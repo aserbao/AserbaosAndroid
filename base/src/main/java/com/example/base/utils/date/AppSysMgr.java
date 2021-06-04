@@ -463,7 +463,7 @@ public class AppSysMgr {
             e.printStackTrace();
             ALogUtils.e("AppSysMgr-->>getSysScreenStatusHeight",  "获取屏幕状态栏高度失败！" + e.getMessage());
         }
-        	return statusHeight;
+        return statusHeight;
     }
 
 

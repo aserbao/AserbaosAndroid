@@ -1,14 +1,17 @@
 package com.aserbao.aserbaosandroid.ui.customView;
 
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.aserbao.aserbaosandroid.ui.customView.seekbar.SeekBarActivity;
+import com.aserbao.aserbaosandroid.ui.customView.selector.ColorSelectorFrameLayout;
 import com.aserbao.common.ui.progress.ARecordView;
 import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
@@ -42,6 +45,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("带红点的ImageView",9));
         mBaseRecyclerBean.add(new BaseRecyclerBean("RecordView",10));
         mBaseRecyclerBean.add(new BaseRecyclerBean("圆形头像动画",11));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("圆形头像选择器",12));
     }
 
     @Override
@@ -127,8 +131,16 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
                 aAnimatorCircleImageView.setImageResource(R.drawable.mm_1);
                 mBaseRecyclerEmptyContainer.addView(aAnimatorCircleImageView, dp100, dp100);
                 break;
+            case 12:
+                ColorSelectorFrameLayout colorSelectorLinearLayout = new ColorSelectorFrameLayout(this);
+                colorSelectorLinearLayout.setBackgroundColor(Color.YELLOW);
+
+                LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+                mBaseRecyclerEmptyContainer.addView(colorSelectorLinearLayout,layoutParams1);
+                break;
         }
     }
 
     int dp100 = DisplayUtil.dip2px(100);
+    int dp200 = DisplayUtil.dip2px(200);
 }

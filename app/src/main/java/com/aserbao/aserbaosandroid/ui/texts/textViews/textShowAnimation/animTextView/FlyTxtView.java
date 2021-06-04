@@ -13,6 +13,11 @@ import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
+/**
+* @Created time:2021/6/3 4:52 PM
+* @author: aserbao
+* @description:文字飞入
+**/
 public class FlyTxtView extends ViewGroup {
 
 	private static final String TAG = "FlyTxtView";

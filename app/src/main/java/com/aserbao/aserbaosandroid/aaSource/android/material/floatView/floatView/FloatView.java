@@ -94,7 +94,6 @@ public class FloatView extends FrameLayout {
                     break;
                 case MotionEvent.ACTION_MOVE:
                     updateViewPosition(event);
-
                     break;
                 case MotionEvent.ACTION_UP:
                     goToWall();
