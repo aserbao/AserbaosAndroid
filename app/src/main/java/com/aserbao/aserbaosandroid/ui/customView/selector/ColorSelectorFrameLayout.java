@@ -89,7 +89,7 @@ public class ColorSelectorFrameLayout extends FrameLayout {
 
             }
         });
-        featureSelRVAdapter.setHasHeader(true);
+//        featureSelRVAdapter.setHasHeader(true);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(featureSelRVAdapter);
     }
@@ -107,8 +107,7 @@ public class ColorSelectorFrameLayout extends FrameLayout {
         "#FFB90F","#FFB6C1","#FFB5C5","#FFAEB9",
         "#FFA54F","#FFA500","#FFA07A","#FF8C69"};
     static int[] SEL_FEATURE = {
-        R.drawable.feature_sel_custom,
-        R.drawable.place_holder,
+       R.drawable.place_holder,
        R.drawable.mm_1,
        R.drawable.mm_2,
        R.drawable.mm_3,

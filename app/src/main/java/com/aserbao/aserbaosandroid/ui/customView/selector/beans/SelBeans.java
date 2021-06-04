@@ -8,7 +8,8 @@ import com.aserbao.aserbaosandroid.ui.customView.selector.BorderSelRoundImageVie
  * @description:
  **/
 public class SelBeans {
-
+    // 类型 0表示正常内容，1 表示头部，2表示尾部
+    int type = 0;
     public String color;
     public boolean isSel = false;
     public int resId;//图片
