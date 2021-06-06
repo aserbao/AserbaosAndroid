@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.customView.selector.rv;
+package com.aserbao.aserbaosandroid.ui.customView.selector.rv.color;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,34 +9,33 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelBeans;
+import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelColorBean;
+import com.aserbao.aserbaosandroid.ui.customView.selector.rv.HeadFooterClickerListener;
+import com.aserbao.aserbaosandroid.ui.customView.selector.rv.feature.HeadSelVH;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.aserbao.aserbaosandroid.ui.customView.selector.data.DataProviderFactory.CONTENT_TYPE;
+import static com.aserbao.aserbaosandroid.ui.customView.selector.data.DataProviderFactory.FOOT_TYPE;
+import static com.aserbao.aserbaosandroid.ui.customView.selector.data.DataProviderFactory.HEAD_TYPE;
 
 /**
  * description:
  * Created by aserbao on 2018/1/25.
  */
-public class SelRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    //头部布局
-    public static final int HEAD_TYPE = 0;
-    //尾部布局
-    public static final int FOOT_TYPE = 1;
-    //内容
-    public static final int CONTENT_TYPE = 2;
+public class SelColorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
 
     private Context mContext;
-    protected List<SelBeans> mColorBeans = new ArrayList<>();
+    protected List<SelColorBean> mColorBeans = new ArrayList<>();
     private ItemClickerListener mItemClickerListener;
 
-    @Nullable
     private HeadFooterClickerListener mHeadFooterClickerListener;
-    private int lastSelPosition = -1;
     boolean isHasHeader = false;
     boolean isHasFooter = false;
 
-    public SelRVAdapter(Context mContext, List<SelBeans> mColorBeans, ItemClickerListener itemClickerListener) {
+    public SelColorAdapter(Context mContext, List<SelColorBean> mColorBeans, ItemClickerListener itemClickerListener) {
         this.mContext = mContext;
         this.mColorBeans = mColorBeans;
         this.mItemClickerListener = itemClickerListener;
@@ -57,12 +56,16 @@ public class SelRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.rv_item_border_sel_round, parent, false);
         switch (viewType){
             case HEAD_TYPE:
+                view = LayoutInflater.from(mContext).inflate(R.layout.rv_item_border_sel_head, parent, false);
                 return new HeadSelVH(view);
+            case FOOT_TYPE:
+                view = LayoutInflater.from(mContext).inflate(R.layout.rv_item_border_sel_foot, parent, false);
+                return new FootSelVH(view);
+            default:
+                view = LayoutInflater.from(mContext).inflate(R.layout.rv_item_border_sel_round, parent, false);
         }
         return new ColorSelVH(view);
     }
@@ -73,31 +76,21 @@ public class SelRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             if (position < mColorBeans.size()) {
                 ((ColorSelVH)holder).setDataSource(mColorBeans.get(position), position, new ItemClickerListener() {
                     @Override
-                    public void itemClick(SelBeans beans, int position) {
-                        if (lastSelPosition > 0 && mColorBeans.size() > lastSelPosition) {
-                            mColorBeans.get(lastSelPosition).isSel = false;
-                            notifyItemChanged(position);
-                            notifyItemChanged(lastSelPosition);
-                        } else {
-                            for (SelBeans mColorBean : mColorBeans) {
-                                if (mColorBean != beans) {
-                                    mColorBean.isSel = false;
-                                }
+                    public void itemClick(SelColorBean beans, int position) {
+                        for (SelColorBean mColorBean : mColorBeans) {
+                            if (mColorBean != beans) {
+                                mColorBean.isSel = false;
                             }
-                            notifyDataSetChanged();
                         }
-                        lastSelPosition = position;
+                        notifyDataSetChanged();
                         mItemClickerListener.itemClick(beans, position);
                     }
                 });
             }
         }else if(holder instanceof HeadSelVH){
-            ((HeadSelVH)holder).setDataSource(mColorBeans.get(position), position, new ItemClickerListener() {
-                @Override
-                public void itemClick(SelBeans beans, int position) {
-
-                }
-            });
+            ((HeadSelVH)holder).setDataSource(position, mHeadFooterClickerListener);
+        }else if(holder instanceof FootSelVH){
+            ((FootSelVH) holder).setDataSource(position, mHeadFooterClickerListener);
         }
     }
 
@@ -118,13 +111,11 @@ public class SelRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
     public interface ItemClickerListener{
-        void itemClick(SelBeans beans, int position);
+        void itemClick(SelColorBean beans, int position);
     }
 
 
-    public interface HeadFooterClickerListener{
-        void itemClick(boolean isHead);
-    }
+
 
 
     public void setHasHeader(boolean hasHeader) {

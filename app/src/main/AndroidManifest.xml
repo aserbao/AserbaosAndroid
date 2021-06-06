@@ -49,6 +49,7 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
+        <activity android:name=".ui.customView.selector.SelectorActivity"></activity>
         <activity android:name=".aaSource.java.util.concurrent.FutureAct" />
         <activity android:name=".aaSource.java.util.JavaUtilAct" />
         <activity android:name=".aaSource.java.JavaAct" />

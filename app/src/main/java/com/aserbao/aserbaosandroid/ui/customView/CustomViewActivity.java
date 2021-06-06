@@ -27,6 +27,8 @@ import com.aserbao.aserbaosandroid.ui.customView.bezier.likeAnimation.BezierCust
 import com.aserbao.aserbaosandroid.ui.customView.customImageView.PointImageView;
 import com.aserbao.aserbaosandroid.ui.customView.radar.RadarView;
 
+import static com.aserbao.aserbaosandroid.ui.customView.selector.data.DataProviderFactory.mRoleList;
+
 public class CustomViewActivity extends BaseRecyclerViewActivity {
 
 

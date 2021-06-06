@@ -169,7 +169,7 @@ public class BorderSelRoundImageView extends AppCompatImageView {
         if (drawable == null) {
             return null;
         }
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(mViewWidth, mViewHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         //根据传递的scaletype获取matrix对象，设置给bitmap
         Matrix matrix = getImageMatrix();
@@ -288,6 +288,7 @@ public class BorderSelRoundImageView extends AppCompatImageView {
                 if (mDrawMatrix != null) {
                     canvas.concat(mDrawMatrix);
                 }
+//                Bitmap bitmap = drawable2Bitmap(mDrawable);
                 mDrawable.draw(canvas);
             }
             canvas.restoreToCount(saveCount);

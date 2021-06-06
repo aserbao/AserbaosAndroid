@@ -2,20 +2,26 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <LinearLayout
+        android:background="@drawable/solid_white_radio12_bg"
         android:orientation="vertical"
         android:layout_gravity="bottom"
-        android:background="@drawable/solid_white_radio12_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/colorSelRV"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"/>
+        android:layout_height="240dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/featureSelRV"
+        <RadioGroup
+            android:orientation="horizontal"
+            android:id="@+id/selTitleRG"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_height="wrap_content">
+        </RadioGroup>
+
+        <com.aserbao.aserbaosandroid.ui.viewPager.UnScrollViewPager
+            android:id="@+id/selFeatureConfigVP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

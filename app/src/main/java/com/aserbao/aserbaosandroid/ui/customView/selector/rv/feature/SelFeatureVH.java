@@ -1,4 +1,4 @@
-package com.aserbao.aserbaosandroid.ui.customView.selector.rv;
+package com.aserbao.aserbaosandroid.ui.customView.selector.rv.feature;
 
 import android.graphics.Color;
 import android.text.TextUtils;
@@ -9,35 +9,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aserbao.aserbaosandroid.databinding.RvItemBorderSelRoundBinding;
-import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelBeans;
+import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelFeatureBean;
 
 /**
  * @Created time:2021/6/4 4:32 PM
  * @author: aserbao
  * @description:
  **/
-public class ColorSelVH extends RecyclerView.ViewHolder {
+public class SelFeatureVH extends RecyclerView.ViewHolder {
     private final RvItemBorderSelRoundBinding binding;
 
-    public ColorSelVH(@NonNull View itemView) {
+    public SelFeatureVH(@NonNull View itemView) {
         super(itemView);
         binding = RvItemBorderSelRoundBinding.bind(itemView);
     }
 
-    public void setDataSource(SelBeans beans, int position, SelRVAdapter.ItemClickerListener itemClickerListener){
+    public void setDataSource(SelFeatureBean beans, int position, SelFeatureAdapter.ItemClickerListener itemClickerListener){
         if(beans == null) return;
-        if(beans.resId > 0){
-            binding.borderSelRoundIV.setImageResource(beans.resId);
+        if(beans.thumbnail > 0){
+            binding.borderSelRoundIV.setImageResource(beans.thumbnail);
             binding.borderSelRoundIV.setScaleType(ImageView.ScaleType.CENTER_CROP);
             binding.borderSelRoundIV.setCurrMode(2);
-        }
-        if(!TextUtils.isEmpty(beans.color)) {
-            binding.borderSelRoundIV.setCenterColor(Color.parseColor(beans.color));
         }
         binding.borderSelRoundIV.isHasBorder = true;
         binding.borderSelRoundIV.isChecked = beans.isSel;
         binding.borderSelRoundIV.postInvalidate();
         binding.borderSelRoundIV.setOnClickListener(v -> {
+            if(beans.isSel) return;
             beans.isSel = true;
             if (itemClickerListener != null) {
                 itemClickerListener.itemClick(beans,position);

@@ -6,14 +6,19 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.aserbao.aserbaosandroid.R;
-import com.aserbao.aserbaosandroid.ui.customView.selector.beans.SelBeans;
-import com.aserbao.aserbaosandroid.ui.customView.selector.rv.SelRVAdapter;
+import com.aserbao.aserbaosandroid.databinding.CustomColorSelectorLlBinding;
+import com.aserbao.aserbaosandroid.ui.customView.selector.beans.RoleConfig;
+import com.aserbao.aserbaosandroid.ui.customView.selector.vm.FeatureConfigureVM;
+import com.aserbao.aserbaosandroid.ui.customView.selector.vm.FeaturePagerAdapter;
+import com.example.base.utils.screen.DisplayUtil;
 
 import java.util.ArrayList;
 
@@ -24,106 +29,70 @@ import java.util.ArrayList;
  **/
 public class ColorSelectorFrameLayout extends FrameLayout {
     private Context mContext;
-
+    private CustomColorSelectorLlBinding binding;
+    private FeatureConfigureVM featureConfigureVM;
     public ColorSelectorFrameLayout(Context context) {
         super(context);
-        initView(context);
+        initFragment(context);
     }
 
     public ColorSelectorFrameLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initView(context);
+        initFragment(context);
     }
 
     public ColorSelectorFrameLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context);
+        initFragment(context);
     }
 
     public ColorSelectorFrameLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initView(context);
+        initFragment(context);
     }
 
 
-    private void initView(Context context){
+    private void initFragment(Context context){
         mContext = context;
-
-        View view = LayoutInflater.from(context).inflate(R.layout.custom_color_selector_ll, null);
+        binding = CustomColorSelectorLlBinding.inflate(LayoutInflater.from(mContext));
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         params.gravity = Gravity.BOTTOM;
-        addView(view,params);
-        initColorRV(((RecyclerView) view.findViewById(R.id.colorSelRV)));
-        initSelFeatureRV(((RecyclerView) view.findViewById(R.id.featureSelRV)));
+        addView(binding.getRoot(),params);
+        AppCompatActivity fragmentAct = (AppCompatActivity) context;
+        featureConfigureVM = new ViewModelProvider(fragmentAct).get(FeatureConfigureVM.class);
+        initFragment(fragmentAct);
     }
 
 
-    SelRVAdapter colorSelRVAdapter;
-    SelRVAdapter featureSelRVAdapter;
-    private void initColorRV(RecyclerView rv){
-        ArrayList<SelBeans> colorBeans = new ArrayList<>();
-        for (String s : SEL_COLOR) {
-            colorBeans.add(new SelBeans(s));
+    private void initFragment(FragmentActivity activity) {
+        ArrayList<RoleConfig> roleConfigure = featureConfigureVM.roleConfigure;
+        for (int i = 0; i < roleConfigure.size(); i++) {
+            RoleConfig roleConfig = featureConfigureVM.getRoleConfig(i);
+            RadioButton radioButton = (RadioButton)LayoutInflater.from(activity).inflate(R.layout.dynamic_role_radio_button, null);
+            radioButton.setText(roleConfig.getName());
+            radioButton.setClickable(true);
+            radioButton.setTag(i);
+            radioButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    binding.selFeatureConfigVP.setCurrentItem(((int) v.getTag()));
+                }
+            });
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = DisplayUtil.dip2px(14f);
+            params.rightMargin = DisplayUtil.dip2px(14f);
+            binding.selTitleRG.addView(radioButton,params);
         }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,5);
-        colorSelRVAdapter = new SelRVAdapter(mContext, colorBeans, new SelRVAdapter.ItemClickerListener() {
-            @Override
-            public void itemClick(SelBeans beans, int position) {
-
-            }
-        });
-        rv.setLayoutManager(gridLayoutManager);
-        rv.setAdapter(colorSelRVAdapter);
-    }
-
-    private void initSelFeatureRV(RecyclerView rv){
-        ArrayList<SelBeans> colorBeans = new ArrayList<>();
-        for (int s : SEL_FEATURE) {
-            SelBeans selBeans = new SelBeans(s);
-            colorBeans.add(selBeans);
-        }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext,5);
-        featureSelRVAdapter = new SelRVAdapter(mContext, colorBeans, new SelRVAdapter.ItemClickerListener() {
-            @Override
-            public void itemClick(SelBeans beans, int position) {
-
-            }
-        });
-//        featureSelRVAdapter.setHasHeader(true);
-        rv.setLayoutManager(gridLayoutManager);
-        rv.setAdapter(featureSelRVAdapter);
+        FeaturePagerAdapter featurePagerAdapter = new FeaturePagerAdapter(activity.getSupportFragmentManager(), featureConfigureVM.roleConfigure);
+        binding.selFeatureConfigVP.setAdapter(featurePagerAdapter);
     }
 
 
 
-    static String[] SEL_COLOR = {
-        "#FFFFFF","#FFFFF0","#FFFFE0","#FFFF00",
-        "#FFFAFA","#FFFAF0","#FFFACD","#FFF8DC",
-        "#FFF68F","#FFF5EE","#FFF0F5","#FFEFDB",
-        "#FFEFD5","#FFEC8B","#FFEBCD","#FFE7BA",
-        "#FFE4E1","#FFE4C4","#FFE4B5","#FFE1FF",
-        "#FFDEAD","#FFDAB9","#FFD700","#FFD39B",
-        "#FFC1C1","#FFC125","#FFC0CB","#FFBBFF",
-        "#FFB90F","#FFB6C1","#FFB5C5","#FFAEB9",
-        "#FFA54F","#FFA500","#FFA07A","#FF8C69"};
-    static int[] SEL_FEATURE = {
-       R.drawable.place_holder,
-       R.drawable.mm_1,
-       R.drawable.mm_2,
-       R.drawable.mm_3,
-       R.drawable.mm_4,
-       R.drawable.mm_5,
-       R.drawable.mm_6,
-       R.drawable.mm_7,
-       R.drawable.emoji_00,
-       R.drawable.emoji_01,
-       R.drawable.emoji_02,
-       R.drawable.emoji_03,
-       R.drawable.emoji_04,
-       R.drawable.emoji_05,
-       R.drawable.emoji_06,
-       R.drawable.emoji_07,
-       R.drawable.emoji_08
-    };
+
+
+
+
+
 
 }
