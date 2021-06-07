@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.ui.customView.selector;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.databinding.CustomColorSelectorLlBinding;
@@ -31,6 +33,7 @@ public class ColorSelectorFrameLayout extends FrameLayout {
     private Context mContext;
     private CustomColorSelectorLlBinding binding;
     private FeatureConfigureVM featureConfigureVM;
+    private AppCompatActivity fragmentAct;
     public ColorSelectorFrameLayout(Context context) {
         super(context);
         initFragment(context);
@@ -58,10 +61,13 @@ public class ColorSelectorFrameLayout extends FrameLayout {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         params.gravity = Gravity.BOTTOM;
         addView(binding.getRoot(),params);
-        AppCompatActivity fragmentAct = (AppCompatActivity) context;
+        fragmentAct = (AppCompatActivity) context;
         featureConfigureVM = new ViewModelProvider(fragmentAct).get(FeatureConfigureVM.class);
         initFragment(fragmentAct);
+        handleViewEvent();
+        fieldObserver();
     }
+
 
 
     private void initFragment(FragmentActivity activity) {
@@ -87,7 +93,53 @@ public class ColorSelectorFrameLayout extends FrameLayout {
         binding.selFeatureConfigVP.setAdapter(featurePagerAdapter);
     }
 
+    /**
+     * 事件处理
+     */
+    private void handleViewEvent() {
+        ViewPager selFeatureConfigVP = binding.selFeatureConfigVP;
+        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                ((RadioButton) binding.selTitleRG.getChildAt(position)).setChecked(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        };
+        selFeatureConfigVP.addOnPageChangeListener(listener);
+        binding.featureBackIv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                featureConfigureVM.changeFeatureStatus(FeatureConfigureVM.FEATURE_DEFAULT_STATUS);
+            }
+        });
+    }
+
+
+    /**
+     * 属性监听
+     */
+    private void fieldObserver() {
+        featureConfigureVM.featureStatus.observe(fragmentAct,status -> {
+            switch (status){
+                case FeatureConfigureVM.FEATURE_DEFAULT_STATUS:
+                    binding.featureBackIv.setVisibility(INVISIBLE);
+                    binding.selTitleRG.setVisibility(VISIBLE);
+                    break;
+                case FeatureConfigureVM.FEATURE_MORE_COLOR_STATUS:
+                    binding.selTitleRG.setVisibility(INVISIBLE);
+                    binding.featureBackIv.setVisibility(VISIBLE);
+                    break;
+            }
+        });
+    }
 
 
 

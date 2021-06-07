@@ -9,18 +9,29 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="240dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <RadioGroup
+                android:orientation="horizontal"
+                android:id="@+id/selTitleRG"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_height="wrap_content">
+            </RadioGroup>
+            <ImageView
+                android:id="@+id/featureBackIv"
+                android:src="@drawable/back_white"
+                android:visibility="invisible"
+                android:tint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
 
-        <RadioGroup
-            android:orientation="horizontal"
-            android:id="@+id/selTitleRG"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_height="wrap_content">
-        </RadioGroup>
 
-        <com.aserbao.aserbaosandroid.ui.viewPager.UnScrollViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/selFeatureConfigVP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

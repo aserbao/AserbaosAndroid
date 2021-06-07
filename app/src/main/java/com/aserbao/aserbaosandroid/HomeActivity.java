@@ -1,41 +1,21 @@
 package com.aserbao.aserbaosandroid;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-
-import com.aserbao.aserbaosandroid.AUtils.AUI.popUtil.PopupManager;
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.app.Activity.lifeCycle.LifeCycleActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.widget.Classes.progressBar.ProgressBarActivity;
-import com.aserbao.aserbaosandroid.aaSource.java.util.concurrent.FutureAct;
-import com.aserbao.aserbaosandroid.aaThird.rxJava3.api.RxJava3ApiActivity;
-import com.aserbao.aserbaosandroid.algorithm.list.AboutListSortActivty;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
 import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
-import com.aserbao.aserbaosandroid.kotlin.base.KotlinBaseUseAct;
-import com.aserbao.aserbaosandroid.kotlin.coroutine.CoroutineActivity;
-import com.aserbao.aserbaosandroid.opengl.OneOpenGl.OneOpenGlActivity;
-import com.aserbao.aserbaosandroid.opengl.OneOpenGl.texture.es2.ES2TextureAct;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
-import com.aserbao.aserbaosandroid.ui.customView.selector.SelectorActivity;
-import com.aserbao.aserbaosandroid.ui.recyclerView.RecyclerViewActivity;
-import com.aserbao.aserbaosandroid.ui.texts.editTexts.customEdittext.CustomEditTextAct;
-import com.aserbao.camera.camerax.CameraXPreviewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
+import com.aserbao.thirdlibs.tablayout.TabLayoutAct;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.designMode.DesignModeActivity;
@@ -45,8 +25,6 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
-
-import java.lang.reflect.Method;
 
 /**
  * 1. 如果版本号大于 10的话，直接exit.
@@ -69,7 +47,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", SelectorActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", CustomViewActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 

@@ -8,6 +8,7 @@ import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.aaThird.rxJava3.RxJavaActivity;
 import com.aserbao.aserbaosandroid.aaThird.videocache.VideoCacheActivity;
 import com.aserbao.jetpack.JetpackAct;
+import com.aserbao.thirdlibs.ThirdLibActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.functions.database.greenDao.GreenDaoActivity;
@@ -24,6 +25,7 @@ public class ThirdActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("RxJava的使用", RxJavaActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Okhttp的使用", OkhttpActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Jetpack的使用", JetpackAct.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("第三方UI库", ThirdLibActivity.class));
     }
 
     @Override

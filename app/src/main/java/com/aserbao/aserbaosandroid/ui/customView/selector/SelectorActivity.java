@@ -2,31 +2,31 @@ package com.aserbao.aserbaosandroid.ui.customView.selector;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.aserbao.aserbaosandroid.R;
 import com.aserbao.aserbaosandroid.databinding.CustomColorSelectorLlBinding;
 import com.aserbao.aserbaosandroid.ui.customView.selector.beans.RoleConfig;
-import com.aserbao.aserbaosandroid.ui.customView.selector.rv.SelRVBottomContainerAdapter;
-import com.aserbao.aserbaosandroid.ui.customView.selector.rv.title.SelTitleAdapter;
 import com.aserbao.aserbaosandroid.ui.customView.selector.vm.FeatureConfigureVM;
 import com.aserbao.aserbaosandroid.ui.customView.selector.vm.FeaturePagerAdapter;
 import com.example.base.utils.screen.DisplayUtil;
 
 import java.util.ArrayList;
 
-public class SelectorActivity extends AppCompatActivity {
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
+public class SelectorActivity extends AppCompatActivity {
+    private static final String TAG = "SelectorActivity";
     private Context mContext;
-    private SelTitleAdapter selTitleAdapter;
-    private SelRVBottomContainerAdapter selRVBottomContainerAdapter;
     private CustomColorSelectorLlBinding binding;
     private FeatureConfigureVM featureConfigureVM;
 
@@ -37,12 +37,11 @@ public class SelectorActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         featureConfigureVM = new ViewModelProvider(this).get(FeatureConfigureVM.class);
         mContext = this;
-        binding.selFeatureConfigVP.setScrollable(false);
-       initView(this);
-       handleViewEvent();
+//        binding.selFeatureConfigVP.setScrollable(true);
+        handleViewEvent();
+        initView(this);
+        fieldObserver();
     }
-
-
 
     private void initView(SelectorActivity selectorActivity) {
         ArrayList<RoleConfig> roleConfigure = featureConfigureVM.roleConfigure;
@@ -68,13 +67,47 @@ public class SelectorActivity extends AppCompatActivity {
     }
 
     private void handleViewEvent() {
-//        binding.selTitleRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//
-//            }
-//        });
+        ViewPager selFeatureConfigVP = binding.selFeatureConfigVP;
+        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                ((RadioButton) binding.selTitleRG.getChildAt(position)).setChecked(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.d(TAG, "onPageScrollStateChanged() called with: state = [" + state + "]");
+            }
+        };
+        selFeatureConfigVP.addOnPageChangeListener(listener);
+        binding.featureBackIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                featureConfigureVM.changeFeatureStatus(FeatureConfigureVM.FEATURE_DEFAULT_STATUS);
+            }
+        });
     }
 
-
+    /**
+     * 属性监听
+     */
+    private void fieldObserver() {
+        featureConfigureVM.featureStatus.observe(this,status -> {
+            switch (status){
+                case FeatureConfigureVM.FEATURE_DEFAULT_STATUS:
+                    binding.featureBackIv.setVisibility(INVISIBLE);
+                    binding.selTitleRG.setVisibility(VISIBLE);
+                    break;
+                case FeatureConfigureVM.FEATURE_MORE_COLOR_STATUS:
+                    binding.selTitleRG.setVisibility(INVISIBLE);
+                    binding.featureBackIv.setVisibility(VISIBLE);
+                    break;
+            }
+        });
+    }
 }

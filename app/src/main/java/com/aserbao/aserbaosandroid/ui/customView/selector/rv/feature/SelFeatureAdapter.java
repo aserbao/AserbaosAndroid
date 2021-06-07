@@ -68,7 +68,6 @@ public class SelFeatureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof SelFeatureVH) {
-            if (position < selFeatureBeans.size()) {
                 if(isHasHeader) position --;
                 ((SelFeatureVH)holder).setDataSource(selFeatureBeans.get(position), position, new ItemClickerListener() {
                     @Override
@@ -82,7 +81,6 @@ public class SelFeatureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         mItemClickerListener.itemClick(beans, position);
                     }
                 });
-            }
         }else if(holder instanceof HeadSelVH){
             ((HeadSelVH)holder).setDataSource(position, mHeadFooterClickerListener);
         }else if(holder instanceof FootSelVH){

@@ -46,14 +46,33 @@ public class RoleConfig implements Serializable {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSelColor() {
         return selColor;
+    }
+
+    public void setSelColor(String selColor) {
+        this.selColor = selColor;
     }
 
     public String getSelSource() {
         return selSource;
     }
 
+    public void setSelSource(String selSource) {
+        this.selSource = selSource;
+    }
+
+    public ArrayList<SelFeatureBean> getFeatureBeans() {
+        return featureBeans;
+    }
+
+    public void setFeatureBeans(ArrayList<SelFeatureBean> featureBeans) {
+        this.featureBeans = featureBeans;
+    }
 
     public boolean isSel() {
         return isSel;
@@ -61,9 +80,5 @@ public class RoleConfig implements Serializable {
 
     public void setSel(boolean sel) {
         isSel = sel;
-    }
-
-    public ArrayList<SelFeatureBean> getFeatureBeans() {
-        return featureBeans;
     }
 }

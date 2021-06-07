@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.aserbao.aserbaosandroid.ui.customView.seekbar.SeekBarActivity;
 import com.aserbao.aserbaosandroid.ui.customView.selector.ColorSelectorFrameLayout;
+import com.aserbao.aserbaosandroid.ui.customView.selector.SelectorActivity;
 import com.aserbao.common.ui.progress.ARecordView;
 import com.example.base.utils.screen.DisplayUtil;
 import com.aserbao.aserbaosandroid.AserbaoApplication;
@@ -35,6 +36,7 @@ public class CustomViewActivity extends BaseRecyclerViewActivity {
     @Override
     public void initGetData() {
         mBaseRecyclerBean.add(new BaseRecyclerBean("SeekBar", SeekBarActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("颜色选择器", SelectorActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("移除",1));
         mBaseRecyclerBean.add(new BaseRecyclerBean("雷达",2));
         mBaseRecyclerBean.add(new BaseRecyclerBean("二阶贝塞尔曲线",3));

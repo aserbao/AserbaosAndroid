@@ -34,11 +34,21 @@ public class SelColorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private HeadFooterClickerListener mHeadFooterClickerListener;
     boolean isHasHeader = false;
     boolean isHasFooter = false;
+    private int maxShowLength = 0;
 
     public SelColorAdapter(Context mContext, List<SelColorBean> mColorBeans, ItemClickerListener itemClickerListener) {
         this.mContext = mContext;
         this.mColorBeans = mColorBeans;
         this.mItemClickerListener = itemClickerListener;
+        this.maxShowLength = mColorBeans.size();
+    }
+
+    /**
+     * 最多可显示Item数
+     * @param maxShowLength，不包括头尾
+     */
+    public void setMaxShowLength(int maxShowLength) {
+        this.maxShowLength = maxShowLength;
     }
 
     @Override
@@ -98,7 +108,7 @@ public class SelColorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemCount() {
         int ret = 0;
         if (mColorBeans.size() > 0) {
-            ret = mColorBeans.size();
+            ret = maxShowLength;
         }
         if(isHasHeader){
             ret ++;

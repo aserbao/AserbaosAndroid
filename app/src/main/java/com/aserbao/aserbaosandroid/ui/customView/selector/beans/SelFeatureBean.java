@@ -11,7 +11,7 @@ public class SelFeatureBean implements Serializable {
     //缩略图
     public int thumbnail;
     //特征路径
-    String path = "";
+    public String path = "";
 
     // 是否被选中？
     public boolean isSel = false;

@@ -78,6 +78,7 @@ kapt {
 
 dependencies {
     api project(':aserbaoffmpeg')
+    api project(path: ':thirdlibs')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies["appcompat"]

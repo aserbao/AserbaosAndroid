@@ -27,6 +27,8 @@ import com.aserbao.aserbaosandroid.ui.customView.selector.vm.FeatureConfigureVM;
 
 import java.util.ArrayList;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 import static com.aserbao.aserbaosandroid.ui.customView.selector.data.DataProviderFactory.SELCOLORBEANS;
 
 /**
@@ -41,6 +43,10 @@ public class FeatureConfigFragment extends Fragment {
     private RoleConfig mRoleConfigure;
     private FeatureConfigureVM featureConfigureVM;
     private int mPosition;
+    /**
+     * 数据源
+     */
+    private  ArrayList<SelColorBean> selColorBeans = new ArrayList<>();
 
     public static FeatureConfigFragment getInstance(int position) {
         FeatureConfigFragment fragment = new FeatureConfigFragment();
@@ -74,11 +80,12 @@ public class FeatureConfigFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ArrayList<SelColorBean> selColorBeans = new ArrayList<>();
+
         selColorBeans.addAll(SELCOLORBEANS);
 
         initColorRV(binding.rvItemColorSelRV,selColorBeans);
         initSelFeatureRV(binding.rvItemFeatureSelRV,mRoleConfigure.getFeatureBeans());
+        fieldObserver();
     }
 
     SelColorAdapter colorSelRVAdapter;
@@ -94,17 +101,18 @@ public class FeatureConfigFragment extends Fragment {
         colorSelRVAdapter = new SelColorAdapter(mContext, colorBeans, new SelColorAdapter.ItemClickerListener() {
             @Override
             public void itemClick(SelColorBean beans, int position) {
-
+                mRoleConfigure.setSelColor(beans.color);
             }
         });
+        colorSelRVAdapter.setMaxShowLength(6);
         colorSelRVAdapter.setHasFooter(true);
         colorSelRVAdapter.setmHeadFooterClickerListener(new HeadFooterClickerListener() {
             @Override
             public void itemClick(boolean isHead) {
                 initMoreColorRv(rv,colorBeans);
+                featureConfigureVM.changeFeatureStatus(FeatureConfigureVM.FEATURE_MORE_COLOR_STATUS);
             }
         });
-//        rv.setLayoutManager(gridLayoutManager);
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(colorSelRVAdapter);
     }
@@ -119,16 +127,10 @@ public class FeatureConfigFragment extends Fragment {
         colorSelRVAdapter = new SelColorAdapter(mContext, colorBeans, new SelColorAdapter.ItemClickerListener() {
             @Override
             public void itemClick(SelColorBean beans, int position) {
-
+                mRoleConfigure.setSelColor(beans.color);
             }
         });
-        colorSelRVAdapter.setHasFooter(true);
-        colorSelRVAdapter.setmHeadFooterClickerListener(new HeadFooterClickerListener() {
-            @Override
-            public void itemClick(boolean isHead) {
-                initColorRV(rv,colorBeans);
-            }
-        });
+        colorSelRVAdapter.setHasFooter(false);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(colorSelRVAdapter);
     }
@@ -143,11 +145,24 @@ public class FeatureConfigFragment extends Fragment {
         featureSelRVAdapter = new SelFeatureAdapter(mContext, featureBeans, new SelFeatureAdapter.ItemClickerListener() {
             @Override
             public void itemClick(SelFeatureBean beans, int position) {
-
+                mRoleConfigure.setSelSource(beans.path);
             }
         });
         featureSelRVAdapter.setHasHeader(true);
         rv.setLayoutManager(gridLayoutManager);
         rv.setAdapter(featureSelRVAdapter);
+    }
+
+    /**
+     * 属性观察
+     */
+    private void fieldObserver(){
+        featureConfigureVM.featureStatus.observe(this,status -> {
+            switch (status){
+                case FeatureConfigureVM.FEATURE_DEFAULT_STATUS:
+                    initColorRV(binding.rvItemColorSelRV,selColorBeans);
+                    break;
+            }
+        });
     }
 }
