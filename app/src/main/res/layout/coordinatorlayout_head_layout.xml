@@ -72,7 +72,7 @@
                 <LinearLayout
                     android:layout_gravity="bottom"
                     android:orientation="vertical"
-                    android:background="@drawable/solid_white_radios12_bg"
+                    android:background="@drawable/solid_white_toplr_radios12_bg"
                     android:layout_width="match_parent"
                     android:layout_height="150dp">
                     <TextView

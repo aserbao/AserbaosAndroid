@@ -158,6 +158,6 @@
     <color name="paint_color_black">@android:color/black</color>
     <color name="paint_color_pink">#FB348F</color>
     <color name="paint_color_green">#73E162</color>
-
+    <color name="colorYellow">#FFFF33</color>
 
 </resources>

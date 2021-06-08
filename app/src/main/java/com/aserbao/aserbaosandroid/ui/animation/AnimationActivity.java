@@ -2,6 +2,7 @@ package com.aserbao.aserbaosandroid.ui.animation;
 
 import android.view.View;
 
+import com.aserbao.aserbaosandroid.ui.animation.viewAnimation.ViewAnimationActivity;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.aserbao.aserbaosandroid.ui.animation.cubeAnimation.CubeAnimationActivity;
@@ -27,6 +28,7 @@ public class AnimationActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("布局检测", ScalpeAniamtionActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Reside", ResideActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("属性动画", ObjectAnimatorActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("View动画", ViewAnimationActivity.class));
     }
 
     @Override
