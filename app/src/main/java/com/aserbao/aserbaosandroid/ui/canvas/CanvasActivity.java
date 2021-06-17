@@ -1,11 +1,10 @@
 package com.aserbao.aserbaosandroid.ui.canvas;
 
 import android.graphics.Color;
-import android.view.Display;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.ui.canvas.blendmode.BlendModeActivity;
-import com.aserbao.aserbaosandroid.ui.canvas.canvas.CoverView;
+import com.aserbao.aserbaosandroid.ui.canvas.canvas.ARadiusView;
 import com.aserbao.aserbaosandroid.ui.canvas.canvas.ProgressView;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
@@ -44,7 +43,7 @@ public class CanvasActivity extends BaseRecyclerViewActivity {
     }
 
     public void addCoverView(){
-        CoverView coverView = new CoverView(this);
+        ARadiusView coverView = new ARadiusView(this);
         coverView.setBackgroundColor(Color.BLACK);
         addViewHToFl(coverView,false,false,DisplayUtil.getScreenWidth(this), DisplayUtil.dp2px(50),false);
     }

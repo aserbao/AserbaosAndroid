@@ -36,6 +36,12 @@ public class PopupManager implements PopupWindow.OnDismissListener{
         this.mContext = mContext;
     }
 
+
+    public void showYesAndNoPop(){
+
+    }
+
+
     public void showAnimationConfigure(){
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.a_pop_tween_animation_layout, null);
         mCuurPoupWindow = new PopupWindow(rootView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

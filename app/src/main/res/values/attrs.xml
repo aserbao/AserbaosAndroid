@@ -427,4 +427,5 @@
         <attr name="inner_border_color" format="color" />
         <attr name="mask_color" format="color" />
     </declare-styleable>
+    <declare-styleable name="CoverView"></declare-styleable>
 </resources>

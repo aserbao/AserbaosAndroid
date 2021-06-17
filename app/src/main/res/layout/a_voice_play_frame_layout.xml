@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="10dp"
+    android:background="@drawable/solid_white_toplr_radios12_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/textNumTv"
+            android:textSize="12sp"
+            android:text="0/300"
+            android:textColor="#1c1f23"
+            android:layout_marginLeft="24dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textCancelBtn"
+            android:layout_toLeftOf="@+id/textPlayBtn"
+            android:textSize="14sp"
+            android:text="取消"
+            android:textColor="#A7ABB0"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textPlayBtn"
+            android:layout_alignParentRight="true"
+            android:textSize="14sp"
+            android:text="播报"
+            android:textColor="@color/white"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@drawable/solid_6b7075_radius16_bg"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/inputEt"
+        android:background="@null"
+        android:hint="输入播报文本"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:gravity="center_vertical"
+        android:textColorHint="#A7ABB0"
+        android:textColor="#1C1F23"
+        android:textSize="14sp"
+        android:minHeight="44dp"
+        android:maxHeight="96dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

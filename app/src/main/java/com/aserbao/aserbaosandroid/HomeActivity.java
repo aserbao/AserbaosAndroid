@@ -15,6 +15,7 @@ import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
 import com.aserbao.aserbaosandroid.ui.animation.viewAnimation.ViewAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.texts.textViews.TextViewsActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
 import com.aserbao.thirdlibs.tablayout.TabLayoutAct;
 import com.example.base.base.BaseRecyclerViewActivity;
@@ -48,7 +49,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", ViewAnimationActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", TextViewsActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 

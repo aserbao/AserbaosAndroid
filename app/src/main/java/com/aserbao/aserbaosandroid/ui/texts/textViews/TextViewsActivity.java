@@ -24,8 +24,16 @@ public class TextViewsActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("TextVie文字显示动画", TextShowAnimationActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("竖排的TextView", CustomTextViewActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("字体设置", TextFontActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("语音播放TextView",0));
     }
 
     @Override
-    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) { }
+    public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
+        switch (position){
+            case 0:
+                VoicePlayFrameLayout voicePlayFrameLayout = new VoicePlayFrameLayout(this);
+                addViewToFrameLayout(voicePlayFrameLayout,true,false,true);
+                break;
+        }
+    }
 }

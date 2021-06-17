@@ -30,6 +30,7 @@ public class SwitchAnimationView extends LinearLayout{
     private ImageView mImageView;
     private int minWidth = DisplayUtil.dip2px(40);
     private int maxWidth = DisplayUtil.dip2px(100);
+    private int centerIVWidth = DisplayUtil.dip2px(24);
     private int minLeftMargin = DisplayUtil.dip2px(4);
     private TextView mTextView;
 
@@ -58,10 +59,11 @@ public class SwitchAnimationView extends LinearLayout{
 
     private void initView(Context context){
         mImageView = new ImageView(context);
-        LayoutParams layoutParams = new LayoutParams(minWidth, minWidth);
+        LayoutParams layoutParams = new LayoutParams(centerIVWidth, centerIVWidth);
         layoutParams.gravity = Gravity.CENTER_VERTICAL;
         mImageView.setLayoutParams(layoutParams);
         mImageView.setImageResource(R.drawable.emoji_00);
+        layoutParams.leftMargin = (minWidth - centerIVWidth)/2;
         addView(mImageView,layoutParams);
 
         mTextView = new TextView(context);
@@ -92,7 +94,7 @@ public class SwitchAnimationView extends LinearLayout{
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int animatedValue = (int) animation.getAnimatedValue();
-                textAnimation(animatedValue);
+                otherAnimation(animation,true);
                 ViewGroup.LayoutParams params = getLayoutParams();
                 params.width = animatedValue;
                 setLayoutParams(params);
@@ -125,7 +127,8 @@ public class SwitchAnimationView extends LinearLayout{
                 ViewGroup.LayoutParams params = getLayoutParams();
                 params.width = animatedValue;
                 setLayoutParams(params);
-                textAnimation(animatedValue);
+                otherAnimation(animation,false);
+
             }
         });
         animatorBack.addListener(new AnimatorListenerAdapter() {
@@ -146,15 +149,24 @@ public class SwitchAnimationView extends LinearLayout{
     }
 
 
-    private void textAnimation(int values){
-//        ViewGroup.LayoutParams layoutParams = mTextView.getLayoutParams();
-//        int leftStart = minWidth;
-//        int distance = values - leftStart;
-//        Log.d("TAG", "textAnimation: " + distance  + " leftstart= " + leftStart + " value = " + values);
-//        if(distance > 0) {
-//            layoutParams.width = distance;
-//            mTextView.setLayoutParams(layoutParams);
-//        }
+    private void otherAnimation(ValueAnimator animation, boolean isOpen){
+
+        long currentPlayTime = animation.getCurrentPlayTime();
+        long totalDuration = animation.getDuration();
+        float progress = (float)currentPlayTime / (float)totalDuration;
+        float alpha = 1.0f,rotation = 0;
+
+        if(isOpen){
+            rotation = currentPlayTime;
+            alpha = progress;
+        }else{
+            rotation = ANIMATION_DURATION - currentPlayTime;
+            alpha = (float) rotation / (float)totalDuration;
+        }
+        mImageView.setRotation(rotation);
+
+        mTextView.setAlpha(alpha);
+
     }
 
 }

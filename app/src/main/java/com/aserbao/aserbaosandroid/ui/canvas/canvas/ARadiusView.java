@@ -32,8 +32,9 @@ import com.example.base.utils.screen.DisplayUtil;
  * @date: on 2020/7/14
  * @project: AserbaosAndroid
  * @package: com.aserbao.aserbaosandroid.ui.canvas.canvas
+ * @description: 自定义圆角的ViewGroup
  */
-public class CoverView extends FrameLayout {
+public class ARadiusView extends FrameLayout {
 
     private RectF tempRectF = new RectF();
     private Rect tempRect = new Rect();
@@ -48,19 +49,19 @@ public class CoverView extends FrameLayout {
     private Paint coverPaint;
     private boolean hasSet;
 
-    public CoverView(@NonNull Context context) {
+    public ARadiusView(@NonNull Context context) {
         super(context);
         init(context, null);
 
     }
 
-    public CoverView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public ARadiusView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
 
     }
 
-    public CoverView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public ARadiusView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }

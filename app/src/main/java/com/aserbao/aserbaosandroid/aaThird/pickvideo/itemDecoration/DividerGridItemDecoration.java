@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
- * Created by Vincent Woo
- * Date: 2016/10/13
- * Time: 17:26
- */
-
+* @Created time:2021/6/9 2:23 PM
+* @author: aserbao
+* @description: recyclerView 自定义边距
+**/
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = new int[]{android.R.attr.listDivider};
     private Drawable mDivider;
