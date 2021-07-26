@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -49,7 +50,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", TextViewsActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", OkhttpActivity.class));
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 

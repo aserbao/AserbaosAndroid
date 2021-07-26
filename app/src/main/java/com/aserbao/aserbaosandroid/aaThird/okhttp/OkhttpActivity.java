@@ -75,6 +75,7 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试 ",1000));
         mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Get同步请求 ",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Get异步请求 ",1));
         mBaseRecyclerBean.add(new BaseRecyclerBean("okhttp实现Post同步请求 ",2));
@@ -125,6 +126,9 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         switch (position){
+            case 1000:
+                testHttp();
+                break;
             case 0:
                 syncSimpleOkhttpGet();
                 break;
@@ -195,7 +199,31 @@ public class OkhttpActivity extends BaseRecyclerViewActivity {
     }
 
 
+    private void testHttp(){
+        RequestBody body = RequestBody.create( MediaType.parse("application/json; charset=utf-8"), "{\"Text\": \"你好你好\", \"Tone\": 0}");
+        Request request = new Request.Builder()
+            .url("https://cv-tob.bytedance.com/chimera/api/v1/animation/avatar_bs")
+                .header("Content-Type"," application/json")
+//                .addHeader("AccountId","123")
+            .post(body)
+            .build();
+        Log.d(TAG, "requestText: body =" + body.toString() + "Content-Type header= ");
+        mHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e){
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Headers headers = response.headers();
+                Headers responseHeaders = response.headers();       //headers()方法
+                for (int i = 0, size = responseHeaders.size(); i < size; i++) {
+                    Log.e(TAG, "\n onResponse: name = " + responseHeaders.name(i) + " values = " +  responseHeaders.value(i));
+                }
+                String responseBody = response.body().string();
+            }
+        });
+    }
 
     public static final String sUrl = "https://cn.bing.com/";
 //    public static final String sUrl = "http://gank.io/api/today ";

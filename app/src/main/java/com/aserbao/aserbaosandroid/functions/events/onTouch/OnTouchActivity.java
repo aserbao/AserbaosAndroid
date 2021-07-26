@@ -11,7 +11,11 @@ import com.aserbao.aserbaosandroid.R;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+* @Created time:2021/7/26 6:15 PM
+* @author: aserbao
+* @description:事件分发分析
+**/
 public class OnTouchActivity extends AppCompatActivity {
 
 

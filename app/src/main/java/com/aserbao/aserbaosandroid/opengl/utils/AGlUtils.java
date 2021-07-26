@@ -3,6 +3,7 @@ package com.aserbao.aserbaosandroid.opengl.utils;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
+import android.opengl.GLUtils;
 import android.util.Log;
 
 
@@ -140,4 +141,51 @@ public class AGlUtils {
         return createBitmap;
     }
 
+
+    /**
+     * Creates a texture from bitmap.
+     *
+     * @param bmp bitmap data
+     * @return Handle to texture.
+     */
+    public static int createImageTexture(Bitmap bmp) {
+        if (null == bmp || bmp.isRecycled())return -1;
+        int[] textureHandles = new int[1];
+        int textureHandle;
+        GLES20.glGenTextures(1, textureHandles, 0);
+        AGlUtils.checkGlError("glGenTextures");
+
+        textureHandle = textureHandles[0];
+
+
+        // Bind the texture handle to the 2D texture target.
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureHandle);
+        AGlUtils.checkGlError("glBindTexture");
+
+
+        // Configure min/mag filtering, i.e. what scaling method do we use if what we're rendering
+        // is smaller or larger than the source image.
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,
+            GLES20.GL_LINEAR);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER,
+            GLES20.GL_LINEAR);
+        AGlUtils.checkGlError("loadImageTexture");
+
+        // Load the data from the buffer into the texture handle.
+        GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, /*level*/ 0, bmp, 0);
+        AGlUtils.checkGlError("loadImageTexture");
+
+        return textureHandle;
+    }
+
+    /**
+     * Checks to see if a GLES error has been raised.
+     */
+    public static void checkGlError(String op) {
+        int error = GLES20.glGetError();
+        if (error != GLES20.GL_NO_ERROR) {
+            String msg = op + ": glError 0x" + Integer.toHexString(error);
+            Log.e(TAG, msg);
+        }
+    }
 }
