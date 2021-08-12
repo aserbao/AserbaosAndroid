@@ -16,6 +16,7 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     public static final int WHAT_NUM_TWO = 2;
     public static final int WHAT_NUM_THREE = 3;
     public static final int WHAT_HANDLE_SLEEP = 4;
+
     public static final int ONE_DELAY_MILLIS = 10;
     public static final int TWO_DELAY_MILLIS = 51;
     public static final int THREE_DELAY_MILLIS = 101;
@@ -27,6 +28,7 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
 
     @Override
     public void initGetData() {
+        mBaseRecyclerBean.add(new BaseRecyclerBean("测试", 1024));
         mBaseRecyclerBean.add(new BaseRecyclerBean("清除所有",10));
         mBaseRecyclerBean.add(new BaseRecyclerBean("延迟"+ONE_DELAY_MILLIS+"ms",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean("延迟"+TWO_DELAY_MILLIS+"ms",1));
@@ -46,16 +48,28 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
         Message message = new Message();
+        Log.d(TAG, "itemClickBack() called with: view = [" + view + "], position = [" + position + "], isLongClick = [" + isLongClick + "], comeFrom = [" + comeFrom + "]");
         switch (position){
+            case 1024:
+                if(isLongClick){
+                    myHandler.removeMessages(1000);
+                }else{
+                    myHandler.sendEmptyMessageDelayed(1000,3 * 1000);
+                }
+                break;
             case 10:
 //                myHandler.removeMessages(WHAT_NUM_ONE);
 //                myHandler.removeCallbacks(null);
                 myHandler.removeCallbacksAndMessages(null);
                 break;
             case 0:
-                message.obj = System.currentTimeMillis();
-                message.what = WHAT_NUM_ONE;
-                myHandler.sendMessageDelayed(message, ONE_DELAY_MILLIS);
+                if(isLongClick){
+                    myHandler.removeMessages(ONE_DELAY_MILLIS);
+                }else {
+                    message.obj = System.currentTimeMillis();
+                    message.what = WHAT_NUM_ONE;
+                    myHandler.sendMessageDelayed(message, ONE_DELAY_MILLIS);
+                }
                 break;
             case 1:
                 message.obj = System.currentTimeMillis();
@@ -86,7 +100,10 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
         public void handleMessage(Message msg) {
             PrincipleHanlderActivity principleHanlderActivity = principleHanlderActivityWeakReference.get();
             if (principleHanlderActivity != null) {
-                long diffTime = System.currentTimeMillis() - (long) msg.obj;
+                long diffTime = 0;
+                if(msg.obj != null) {
+                    diffTime = System.currentTimeMillis() - (long) msg.obj;
+                }
                 int what = msg.what;
                 Message message = new Message();
                 message.what = what;
@@ -114,6 +131,9 @@ public class PrincipleHanlderActivity extends BaseRecyclerViewActivity {
                             e.printStackTrace();
                             Log.e(TAG, "handleMessage: error message=" + e.toString() );
                         }
+                        break;
+                    default:
+                        Log.d(TAG, "handleMessage() called with: msg = [" + msg + "]");
                         break;
                 }
             }

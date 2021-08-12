@@ -1,0 +1,530 @@
+[
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.054,
+        "g": 0.056,
+        "r": 0.066
+      },
+      {
+        "a": 1,
+        "b": 0.251,
+        "g": 0.267,
+        "r": 0.286
+      },
+      {
+        "a": 1,
+        "b": 0.357,
+        "g": 0.725,
+        "r": 1
+      },
+      {
+        "a": 1,
+        "b": 0.063,
+        "g": 0.082,
+        "r": 0.154
+      },
+      {
+        "a": 1,
+        "b": 0.333,
+        "g": 0.365,
+        "r": 0.486
+      },
+      {
+        "a": 1,
+        "b": 0.752,
+        "g": 0.817,
+        "r": 0.921
+      },
+      {
+        "a": 1,
+        "b": 0.129,
+        "g": 0.263,
+        "r": 0.592
+      },
+      {
+        "a": 1,
+        "b": 0.576,
+        "g": 0.443,
+        "r": 0.396
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165406
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165407
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165408
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165409
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165410
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "发型",
+    "type":{
+      "feature_id": 6,
+      "change_color_id": 10,
+      "isSupportCustomize": false
+    }
+  },
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.054,
+        "g": 0.056,
+        "r": 0.066
+      },
+      {
+        "a": 1,
+        "b": 0.251,
+        "g": 0.267,
+        "r": 0.286
+      },
+      {
+        "a": 1,
+        "b": 0.357,
+        "g": 0.725,
+        "r": 1
+      },
+      {
+        "a": 1,
+        "b": 0.063,
+        "g": 0.082,
+        "r": 0.154
+      },
+      {
+        "a": 1,
+        "b": 0.333,
+        "g": 0.365,
+        "r": 0.486
+      },
+      {
+        "a": 1,
+        "b": 0.752,
+        "g": 0.817,
+        "r": 0.921
+      },
+      {
+        "a": 1,
+        "b": 0.129,
+        "g": 0.263,
+        "r": 0.592
+      },
+      {
+        "a": 1,
+        "b": 0.576,
+        "g": 0.443,
+        "r": 0.396
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165763
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165764
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165765
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165766
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "胡子",
+    "type":{
+      "feature_id": 9,
+      "change_color_id": 10,
+      "isSupportCustomize": false
+    }
+  },
+  {
+    "colorBeans": [],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165770
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165771
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165772
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165773
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165774
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": false,
+    "name": "鼻子",
+    "type":{
+      "feature_id": 5,
+      "change_color_id": -1,
+      "isSupportCustomize": true
+    }
+  },
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.054,
+        "g": 0.056,
+        "r": 0.066,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.251,
+        "g": 0.267,
+        "r": 0.286,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.357,
+        "g": 0.725,
+        "r": 1,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.063,
+        "g": 0.082,
+        "r": 0.154,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.333,
+        "g": 0.365,
+        "r": 0.486,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.752,
+        "g": 0.817,
+        "r": 0.921,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.129,
+        "g": 0.263,
+        "r": 0.592,
+        "type": "EYE_BROW"
+      },
+      {
+        "a": 1,
+        "b": 0.576,
+        "g": 0.443,
+        "r": 0.396,
+        "type": "EYE_BROW"
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165338,
+        "type": "EYE_BROW"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165339,
+        "type": "EYE_BROW"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165340,
+        "type": "EYE_BROW"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165341,
+        "type": "EYE_BROW"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165342,
+        "type": "EYE_BROW"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165343,
+        "type": "EYE_BROW"
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "眉毛",
+    "type": "EYE_BROW"
+  },
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.2,
+        "g": 0.165,
+        "r": 0.137,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.271,
+        "g": 0.267,
+        "r": 0.263,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.071,
+        "g": 0.027,
+        "r": 0.145,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.027,
+        "g": 0.043,
+        "r": 0.247,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.055,
+        "g": 0.098,
+        "r": 0.196,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.078,
+        "g": 0.208,
+        "r": 0.4,
+        "type": "EYE"
+      },
+      {
+        "a": 1,
+        "b": 0.129,
+        "g": 0.502,
+        "r": 0.89,
+        "type": "EYE"
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165332,
+        "type": "EYE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165333,
+        "type": "EYE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165334,
+        "type": "EYE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165335,
+        "type": "EYE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165336,
+        "type": "EYE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165337,
+        "type": "EYE"
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "眼睛",
+    "type": "EYE"
+  },
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.914,
+        "g": 0.757,
+        "r": 0.565,
+        "type": "MOUTH"
+      },
+      {
+        "a": 1,
+        "b": 0.922,
+        "g": 0.835,
+        "r": 0.996,
+        "type": "MOUTH"
+      },
+      {
+        "a": 1,
+        "b": 1,
+        "g": 0.875,
+        "r": 0.839,
+        "type": "MOUTH"
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165744,
+        "type": "MOUTH"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165745,
+        "type": "MOUTH"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165746,
+        "type": "MOUTH"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165747,
+        "type": "MOUTH"
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "嘴巴",
+    "type": "MOUTH"
+  },
+  {
+    "colorBeans": [
+      {
+        "a": 1,
+        "b": 0.808,
+        "g": 0.827,
+        "r": 1,
+        "type": "FACE"
+      },
+      {
+        "a": 1,
+        "b": 0.643,
+        "g": 0.737,
+        "r": 0.933,
+        "type": "FACE"
+      },
+      {
+        "a": 1,
+        "b": 0.502,
+        "g": 0.639,
+        "r": 0.922,
+        "type": "FACE"
+      },
+      {
+        "a": 1,
+        "b": 0.169,
+        "g": 0.251,
+        "r": 0.349,
+        "type": "FACE"
+      },
+      {
+        "a": 1,
+        "b": 0.169,
+        "g": 0.251,
+        "r": 0.349,
+        "type": "FACE"
+      }
+    ],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165356,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165357,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165358,
+        "type": "FACE"
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": true,
+    "name": "脸型",
+    "type": "FACE"
+  },
+  {
+    "colorBeans": [],
+    "featureBeans": [
+      {
+        "path": "",
+        "thumbnail": 2131165397,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165398,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165399,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165400,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165401,
+        "type": "FACE"
+      },
+      {
+        "path": "",
+        "thumbnail": 2131165402,
+        "type": "FACE"
+      }
+    ],
+    "isSel": false,
+    "isSupportColor": false,
+    "name": "眼镜",
+    "type": "GLASSES"
+  }
+]

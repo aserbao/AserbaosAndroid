@@ -3,11 +3,15 @@ package com.aserbao.aserbaosandroid;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
 import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
@@ -28,6 +32,12 @@ import com.aserbao.aserbaosandroid.opengl.OpenGlActivity;
 import com.aserbao.aserbaosandroid.other.OthersActivity;
 import com.aserbao.aserbaosandroid.test.TestActivity;
 import com.aserbao.aserbaosandroid.ui.UIActivity;
+import com.example.base.utils.screen.DisplayUtil;
+
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * 1. 如果版本号大于 10的话，直接exit.
@@ -50,8 +60,8 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", OkhttpActivity.class));
-//        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", PrincipleHanlderActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
     @Override
@@ -61,9 +71,31 @@ public class HomeActivity extends BaseRecyclerViewActivity {
        /* System.exit(0);
         Runtime.getRuntime().exit(0);
         android.os.Process.killProcess(android.os.Process.myPid());*/
-        boolean apkInDebug = isApkInDebug(this);
+//        boolean apkInDebug = isApkInDebug(this);
+        int dp200 = DisplayUtil.dip2px(200);
+        ImageView imageView = new ImageView(this);
+        String fileName = "emoji_00";
+        int resID = getResources().getIdentifier(fileName , "drawable", getPackageName());
+//        Bitmap emoji_00 = BitmapFactory.decodeResource(getResources(), R.drawable.fileName);
+        imageView.setImageResource(resID);
+        addViewHToFl(imageView,true,true, dp200,dp200,true);
+
     }
 
+
+    private void test(String s) throws Exception {
+        Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+
+        SecretKeySpec secretKey = new SecretKeySpec("1234".getBytes(), "HmacSHA256");
+
+        sha256_HMAC.init(secretKey);
+
+        byte[] hash = sha256_HMAC.doFinal("test".getBytes());
+
+        String check = Hex.encodeHexString(hash);
+
+        System.out.println(new String(check));
+    }
 
     /**
      * 当前是否在正式环境中

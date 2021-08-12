@@ -1,0 +1,950 @@
+  [
+    {
+      "girl": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.054,
+            "g": 0.056,
+            "r": 0.066
+          },
+          {
+            "a": 1,
+            "b": 0.251,
+            "g": 0.267,
+            "r": 0.286
+          },
+          {
+            "a": 1,
+            "b": 0.357,
+            "g": 0.725,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.063,
+            "g": 0.082,
+            "r": 0.154
+          },
+          {
+            "a": 1,
+            "b": 0.333,
+            "g": 0.365,
+            "r": 0.486
+          },
+          {
+            "a": 1,
+            "b": 0.752,
+            "g": 0.817,
+            "r": 0.921
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.263,
+            "r": 0.592
+          },
+          {
+            "a": 1,
+            "b": 0.576,
+            "g": 0.443,
+            "r": 0.396
+          }
+        ],
+        "featureBeans": [
+          {
+            "key": "bobotou",
+            "path": "/girl/hair/girl_bobotou",
+            "icon": "hair_girl_1"
+          },
+          {
+            "key": "bobotou_liuhai",
+            "path": "girl/hair/girl_bobotou_liuhai",
+            "icon": "hair_girl_2"
+          },
+          {
+            "key": "changjuan",
+            "path": "girl/hair/girl_changjuan",
+            "icon": "hair_girl_3"
+          },
+          {
+            "key": "changjuan_liuhai",
+            "path": "girl/hair/girl_changjuanliuhai",
+            "icon": "hair_girl_4"
+          },
+          {
+            "key": "changzhi_liuhai",
+            "path": "girl/hair/girl_changzhiliuhai",
+            "icon": "hair_girl_5"
+          },
+          {
+            "key": "danmawei",
+            "path": "girl/hair/girl_danmawei",
+            "icon": "hair_girl_6"
+          },
+          {
+            "key": "danmawei_liuhai",
+            "path": "girl/hair/girl_danmaweiliuhai",
+            "icon": "hair_girl_7"
+          },
+          {
+            "key": "duanfa",
+            "path": "girl/hair/girl_duanfa",
+            "icon": "hair_girl_8"
+          },
+          {
+            "key": "shuangmawei",
+            "path": "girl/hair/girl_shuangmawei",
+            "icon": "hair_girl_9"
+          },
+          {
+            "key": "shuangmaweiliuhai",
+            "path": "girl/hair/girl_shuangmaweiliuhai",
+            "icon": "hair_girl_10"
+          },
+          {
+            "key": "zhongchangjuan",
+            "path": "girl/hair/girl_zhongchang",
+            "icon": "hair_girl_11"
+          },
+          {
+            "key": "zhongchangjuan_liuhai",
+            "path": "girl/hair/girl_zhongchangliuhai",
+            "icon": "hair_girl_12"
+          },
+          {
+            "key": "zhongchangzhi",
+            "path": "girl/hair/girl_zhongchangzhi",
+            "icon": "hair_girl_13"
+          },
+          {
+            "key": "zhongchangzhi_liuhai",
+            "path": "girl/hair/girl_zhongchangzhiliuhai",
+            "icon": "hair_girl_14"
+          },
+          {
+            "key": "",
+            "path": "girl/hair/",
+            "icon": "hair_girl_15"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.054,
+            "g": 0.056,
+            "r": 0.066
+          },
+          {
+            "a": 1,
+            "b": 0.251,
+            "g": 0.267,
+            "r": 0.286
+          },
+          {
+            "a": 1,
+            "b": 0.357,
+            "g": 0.725,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.063,
+            "g": 0.082,
+            "r": 0.154
+          },
+          {
+            "a": 1,
+            "b": 0.333,
+            "g": 0.365,
+            "r": 0.486
+          },
+          {
+            "a": 1,
+            "b": 0.752,
+            "g": 0.817,
+            "r": 0.921
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.263,
+            "r": 0.592
+          },
+          {
+            "a": 1,
+            "b": 0.576,
+            "g": 0.443,
+            "r": 0.396
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "hair_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "hair_boy_2"
+          },
+          {
+            "path": "",
+            "icon": "hair_boy_3"
+          },
+          {
+            "path": "",
+            "icon": "hair_boy_4"
+          },
+          {
+            "path": "",
+            "icon": "hair_boy_5"
+          }
+        ]
+      },
+      "name": "发型",
+      "type":{
+        "feature_id": 6,
+        "change_color_id": 10,
+        "isSupportCustomize": false
+      }
+    },
+    {
+      "girl": {
+        "colorBeans": [],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "nose_girl_1"
+          },
+          {
+            "path": "",
+            "icon": "nose_girl_2"
+          },
+          {
+            "path": "",
+            "icon": "nose_girl_3"
+          },
+          {
+            "path": "",
+            "icon": "nose_girl_4"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "nose_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "nose_boy_2"
+          },
+          {
+            "path": "",
+            "icon": "nose_boy_3"
+          },
+          {
+            "path": "",
+            "icon": "nose_boy_4"
+          },
+          {
+            "path": "",
+            "icon": "nose_boy_5"
+          }
+        ]
+      },
+      "name": "鼻子",
+      "type":{
+        "feature_id": 5,
+        "change_color_id": -1,
+        "isSupportCustomize": true
+      }
+    },
+    {
+      "girl": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.2,
+            "g": 0.165,
+            "r": 0.137
+          },
+          {
+            "a": 1,
+            "b": 0.271,
+            "g": 0.267,
+            "r": 0.263
+          },
+          {
+            "a": 1,
+            "b": 0.071,
+            "g": 0.027,
+            "r": 0.145
+          },
+          {
+            "a": 1,
+            "b": 0.027,
+            "g": 0.043,
+            "r": 0.247
+          },
+          {
+            "a": 1,
+            "b": 0.055,
+            "g": 0.098,
+            "r": 0.196
+          },
+          {
+            "a": 1,
+            "b": 0.078,
+            "g": 0.208,
+            "r": 0.4
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.502,
+            "r": 0.89
+          }
+        ],
+        "featureBeans": [
+          {
+            "key": "jianmei",
+            "path": "girl/eye_brow/girl_jianmei",
+            "icon": "eyebrow_girl_1"
+          },
+          {
+            "key": "kelianmei",
+            "path": "girl/eye_brow/girl_kelianmei",
+            "icon": "eyebrow_girl_2"
+          },
+          {
+            "key": "pingmei",
+            "path": "girl/eye_brow/girl_pingmei",
+            "icon": "eyebrow_girl_3"
+          },
+          {
+            "key": "tiaomei",
+            "path": "girl/eye_brow/girl_tiaomei",
+            "icon": "eyebrow_girl_4"
+          },
+          {
+            "key": "wanmei",
+            "path": "girl/eye_brow/girl_wanmei",
+            "icon": "eyebrow_girl_5"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.054,
+            "g": 0.056,
+            "r": 0.066
+          },
+          {
+            "a": 1,
+            "b": 0.251,
+            "g": 0.267,
+            "r": 0.286
+          },
+          {
+            "a": 1,
+            "b": 0.357,
+            "g": 0.725,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.063,
+            "g": 0.082,
+            "r": 0.154
+          },
+          {
+            "a": 1,
+            "b": 0.333,
+            "g": 0.365,
+            "r": 0.486
+          },
+          {
+            "a": 1,
+            "b": 0.752,
+            "g": 0.817,
+            "r": 0.921
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.263,
+            "r": 0.592
+          },
+          {
+            "a": 1,
+            "b": 0.576,
+            "g": 0.443,
+            "r": 0.396
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "eye_brow_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "eye_brow_boy_2"
+          },
+          {
+            "path": "",
+            "icon": "eye_brow_boy_3"
+          },
+          {
+            "path": "",
+            "icon": "eye_brow_boy_4"
+          },
+          {
+            "path": "",
+            "icon": "eye_brow_boy_5"
+          },
+          {
+            "path": "",
+            "icon": "eye_brow_boy_6"
+          }
+        ]
+      },
+      "name": "眉毛",
+      "type":{
+        "feature_id": 3,
+        "change_color_id": 10,
+        "isSupportCustomize": true
+      }
+    },
+    {
+      "girl": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.054,
+            "g": 0.056,
+            "r": 0.066
+          },
+          {
+            "a": 1,
+            "b": 0.251,
+            "g": 0.267,
+            "r": 0.286
+          },
+          {
+            "a": 1,
+            "b": 0.357,
+            "g": 0.725,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.063,
+            "g": 0.082,
+            "r": 0.154
+          },
+          {
+            "a": 1,
+            "b": 0.333,
+            "g": 0.365,
+            "r": 0.486
+          },
+          {
+            "a": 1,
+            "b": 0.752,
+            "g": 0.817,
+            "r": 0.921
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.263,
+            "r": 0.592
+          },
+          {
+            "a": 1,
+            "b": 0.576,
+            "g": 0.443,
+            "r": 0.396
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "eye_girl_1"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_2"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_3"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_4"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_5"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.2,
+            "g": 0.165,
+            "r": 0.137
+          },
+          {
+            "a": 1,
+            "b": 0.271,
+            "g": 0.267,
+            "r": 0.263
+          },
+          {
+            "a": 1,
+            "b": 0.071,
+            "g": 0.027,
+            "r": 0.145
+          },
+          {
+            "a": 1,
+            "b": 0.027,
+            "g": 0.043,
+            "r": 0.247
+          },
+          {
+            "a": 1,
+            "b": 0.055,
+            "g": 0.098,
+            "r": 0.196
+          },
+          {
+            "a": 1,
+            "b": 0.078,
+            "g": 0.208,
+            "r": 0.4
+          },
+          {
+            "a": 1,
+            "b": 0.129,
+            "g": 0.502,
+            "r": 0.89
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "eye_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_2"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_3"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_4"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_5"
+          },
+          {
+            "path": "",
+            "icon": "eye_girl_6"
+          }
+        ]
+      },
+      "name": "眼睛",
+      "type":{
+        "feature_id": 2,
+        "change_color_id": 9,
+        "isSupportCustomize": true
+      }
+    },
+    {
+      "girl": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0,
+            "g": 0.125,
+            "r": 0.859
+          },
+          {
+            "a": 1,
+            "b": 0.255,
+            "g": 0.341,
+            "r": 0.545
+          },
+          {
+            "a": 1,
+            "b": 0.443,
+            "g": 0.271,
+            "r": 0.663
+          },
+          {
+            "a": 1,
+            "b": 0.251,
+            "g": 0.612,
+            "r": 0.976
+          },
+          {
+            "a": 1,
+            "b": 0.416,
+            "g": 0.4,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.125,
+            "g": 0.388,
+            "r": 0.875
+          },
+          {
+            "a": 1,
+            "b": 0.02,
+            "g": 0.224,
+            "r": 0.706
+          },
+          {
+            "a": 1,
+            "b": 0.871,
+            "g": 0.643,
+            "r": 1
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "mouth_girl_1"
+          },
+          {
+            "path": "",
+            "icon": "mouth_girl_2"
+          },
+          {
+            "path": "",
+            "icon": "mouth_girl_3"
+          },
+          {
+            "path": "",
+            "icon": "mouth_girl_4"
+          },
+          {
+            "path": "",
+            "icon": "mouth_girl_5"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.914,
+            "g": 0.757,
+            "r": 0.565
+          },
+          {
+            "a": 1,
+            "b": 0.922,
+            "g": 0.835,
+            "r": 0.996
+          },
+          {
+            "a": 1,
+            "b": 1,
+            "g": 0.875,
+            "r": 0.839
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "mouth_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "mouth_boy_2"
+          },
+          {
+            "path": "",
+            "icon": "mouth_boy_3"
+          },
+          {
+            "path": "",
+            "icon": "mouth_boy_4"
+          }
+        ]
+      },
+      "name": "嘴巴",
+      "type":{
+        "feature_id": 4,
+        "change_color_id": 8,
+        "isSupportCustomize": true
+      }
+    },
+    {
+      "girl": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.808,
+            "g": 0.827,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.643,
+            "g": 0.737,
+            "r": 0.933
+          },
+          {
+            "a": 1,
+            "b": 0.502,
+            "g": 0.639,
+            "r": 0.922
+          },
+          {
+            "a": 1,
+            "b": 0.169,
+            "g": 0.251,
+            "r": 0.349
+          },
+          {
+            "a": 1,
+            "b": 0.169,
+            "g": 0.251,
+            "r": 0.349
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "face_girl_1"
+          },
+          {
+            "path": "",
+            "icon": "face_girl_2"
+          },
+          {
+            "path": "",
+            "icon": "face_girl_3"
+          }
+        ]
+      },
+      "boy": {
+        "colorBeans": [
+          {
+            "a": 1,
+            "b": 0.808,
+            "g": 0.827,
+            "r": 1
+          },
+          {
+            "a": 1,
+            "b": 0.643,
+            "g": 0.737,
+            "r": 0.933
+          },
+          {
+            "a": 1,
+            "b": 0.502,
+            "g": 0.639,
+            "r": 0.922
+          },
+          {
+            "a": 1,
+            "b": 0.169,
+            "g": 0.251,
+            "r": 0.349
+          },
+          {
+            "a": 1,
+            "b": 0.169,
+            "g": 0.251,
+            "r": 0.349
+          }
+        ],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "face_boy_1"
+          },
+          {
+            "path": "",
+            "icon": "face_boy_2"
+          },
+          {
+            "path": "",
+            "icon": "face_boy_3"
+          }
+        ]
+      },
+      "name": "脸型",
+      "type":{
+        "feature_id": 1,
+        "change_color_id": 7,
+        "isSupportCustomize": true
+      }
+    },
+    {
+      "girl":{
+        "colorBeans": [],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "glass_1"
+          },
+          {
+            "path": "",
+            "icon": "glass_2"
+          },
+          {
+            "path": "",
+            "icon": "glass_3"
+          },
+          {
+            "path": "",
+            "icon": "glass_4"
+          },
+          {
+            "path": "",
+            "icon": "glass_5"
+          },
+          {
+            "path": "",
+            "icon": "glass_6"
+          }
+        ]
+      },
+      "boy":{
+        "colorBeans": [],
+        "featureBeans": [
+          {
+            "path": "",
+            "icon": "glass_1"
+          },
+          {
+            "path": "",
+            "icon": "glass_2"
+          },
+          {
+            "path": "",
+            "icon": "glass_3"
+          },
+          {
+            "path": "",
+            "icon": "glass_4"
+          },
+          {
+            "path": "",
+            "icon": "glass_5"
+          },
+          {
+            "path": "",
+            "icon": "glass_6"
+          }
+        ]
+      },
+      "name": "眼镜",
+      "type":{
+        "feature_id": 8,
+        "change_color_id": -1,
+        "isSupportCustomize": false
+      }
+    },
+    {
+      "colorBeans": [
+        {
+          "a": 1,
+          "b": 0.054,
+          "g": 0.056,
+          "r": 0.066
+        },
+        {
+          "a": 1,
+          "b": 0.251,
+          "g": 0.267,
+          "r": 0.286
+        },
+        {
+          "a": 1,
+          "b": 0.357,
+          "g": 0.725,
+          "r": 1
+        },
+        {
+          "a": 1,
+          "b": 0.063,
+          "g": 0.082,
+          "r": 0.154
+        },
+        {
+          "a": 1,
+          "b": 0.333,
+          "g": 0.365,
+          "r": 0.486
+        },
+        {
+          "a": 1,
+          "b": 0.752,
+          "g": 0.817,
+          "r": 0.921
+        },
+        {
+          "a": 1,
+          "b": 0.129,
+          "g": 0.263,
+          "r": 0.592
+        },
+        {
+          "a": 1,
+          "b": 0.576,
+          "g": 0.443,
+          "r": 0.396
+        }
+      ],
+      "featureBeans": [
+        {
+          "path": "allgender_heikuangfangxing",
+          "icon": "glass_1"
+        },
+        {
+          "path": "allgender_heikuangyuanxing",
+          "icon": "glass_2"
+        },
+        {
+          "path": "allgender_mojingfangxing",
+          "icon": "glass_3"
+        },
+        {
+          "path": "allgender_mojingyuanxing",
+          "icon": "glass_4"
+        }
+      ],
+      "isSel": false,
+      "isSupportColor": true,
+      "name": "胡子",
+      "type":{
+        "feature_id": 9,
+        "change_color_id": 10,
+        "isSupportCustomize": false
+      }
+    }
+  ]
