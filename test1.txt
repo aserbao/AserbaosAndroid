@@ -1,41 +1,28 @@
-#00 pc 000000000029a75c  /data/app/com.bytedance.labcv.demo-8jfGJkGhnXmNzFFkxc0J2w==/lib/arm64/libeffect.so (BuildId: 7cfa0dc62c64cdca9acaa1080acf8825df4b08e9)
-00000000003d003c
-00000000003cffe8
-00000000003cfa20
-00000000005d7568
-00000000003d52e8
-00000000003d52e0
-00000000003d58e0
-00000000003d3f9c
-00000000002ba394
-0000000000266740
-0000000000008d68
-000000000013f350
-0000000000136334
-0000000000145060
-00000000002ddcd8
-00000000002d8a38
-0000000000591294
-0000000000130914
-00000000001fe448
-000000000058f148
-0000000000130814
-000000000030ab78
-000000000058f148
-0000000000130814
-00000000002bbd40
-000000000058f148
-0000000000130814
-00000000002bbcea
-000000000058f148
-0000000000130814
-00000000002bb9d2
-000000000058f148
-0000000000130814
-00000000001f1a5c
-000000000059093c
-0000000000130a14
-00000000002f2b68
-00000000005914d8
-0000000000130914
-00000000002f37c6
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export ANDROID_HOME=/Users/bytedance/Library/Android/sdk
+
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export NDK=${ANDROID_HOME}/ndk/22.1.7171670
+export PATH=${PATH}:${ANDROID_HOME}/tools/bin:$NDK
+
+export ANDROID_CMAKE_HOME=${ANDROID_HOME}/cmake/3.18.1/bin
+export PATH=${PATH}:${ANDROID_CMAKE_HOME}
+
+JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:.
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+
+PATH=/Users/bytedance/.gradle/wrapper/dists/gradle-7.1.1-all/1wqbeia0d49252rmlcr6o8lbl/gradle-7.1.1/bin:$PATH
+PATH=/usr/local/lib/python3.9/site-packages:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
+
+export PATH
+
+export LANG=en_US.UTF-8
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
