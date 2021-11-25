@@ -52,7 +52,7 @@ public class SoftHeightMeasureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int intExtra = getIntent().getIntExtra(StaticFinalValues.TYPE, -1);
         if (intExtra != -1) {
             getWindow().setSoftInputMode(intExtra);

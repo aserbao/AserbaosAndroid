@@ -49,7 +49,13 @@
         android:roundIcon="@drawable/like"
         android:supportsRtl="true"
         android:theme="@style/AFullscreenTheme">
-        <activity android:name=".aaThird.gson.GsonActivity"></activity>
+        <activity
+            android:name=".ui.webview.js.JsAct"
+            android:exported="true" />
+        <activity
+            android:name=".ui.webview.WebViewActivity"
+            android:exported="true" />
+        <activity android:name=".aaThird.gson.GsonActivity" />
         <activity android:name=".ui.animation.viewAnimation.ViewAnimationActivity" />
         <activity android:name=".ui.customView.selector.SelectorActivity" />
         <activity android:name=".aaSource.java.util.concurrent.FutureAct" />
@@ -194,7 +200,9 @@
         <activity android:name=".functions.listener.ListenerActivity" />
         <activity
             android:name=".aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            >
 
             <!--
             <intent-filter>

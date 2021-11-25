@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
+import android.net.Uri
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -20,6 +21,7 @@ class ImageViewsActivity : BaseRecyclerViewActivity() {
 //        mBaseRecyclerBean.add(new BaseRecyclerBean("心形ImageView",520));
         mBaseRecyclerBean.add(BaseRecyclerBean("带阴影的ImageView", 1))
         mBaseRecyclerBean.add(BaseRecyclerBean("只显示图片黑白色的ImageView", 2))
+        mBaseRecyclerBean.add(BaseRecyclerBean("动态修改tint", 3))
     }
 
     override fun itemClickBack(view: View, position: Int, isLongClick: Boolean, comeFrom: Int) {
@@ -43,6 +45,11 @@ class ImageViewsActivity : BaseRecyclerViewActivity() {
                 imageView.setImageResource(ASourceUtil.getRandomImageId())
                 mBaseRecyclerEmptyContainer.addView(imageView)
                 onlyBlackAndWhite(imageView)
+            }
+            3->{
+                var mImageView = ImageView(this)
+                mImageView.setImageURI(Uri.parse("/storage/emulated/0/DCIM/Camera/IMG_20210908_180325.jpg"))
+                mBaseRecyclerEmptyContainer.addView(mImageView)
             }
         }
     }

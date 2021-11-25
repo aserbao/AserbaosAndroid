@@ -4,12 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.View;
-
+/**
+* @Created time:2021/10/9 4:17 下午
+* @author: aserbao
+* @description: 等比例处理TextureView
+**/
 public class AspectTextureView extends TextureView {
     public static final int MODE_FITXY = 0;
     public static final int MODE_INSIDE = 1;
     public static final int MODE_OUTSIDE = 2;
-    private double targetAspect = -1;
+    private double targetAspect = 9.0f/16.0f;
     private int aspectMode = MODE_OUTSIDE;
 
     public AspectTextureView(Context context) {

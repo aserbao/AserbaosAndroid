@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.accessibilityservice.accessibilityService.MyAccessibilityServiceActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.os.handler.principle_for_handler.PrincipleHanlderActivity;
 import com.aserbao.aserbaosandroid.aaThird.okhttp.OkhttpActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
@@ -20,7 +21,10 @@ import com.aserbao.aserbaosandroid.algorithm.AlgorithmActivity;
 //import com.aserbao.aserbaosandroid.functions.ffmpeg.RxFFmpegAct;
 import com.aserbao.aserbaosandroid.ui.animation.viewAnimation.ViewAnimationActivity;
 import com.aserbao.aserbaosandroid.ui.customView.CustomViewActivity;
+import com.aserbao.aserbaosandroid.ui.imageviews.ImageViewsActivity;
+import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeightMeasureActivity;
 import com.aserbao.aserbaosandroid.ui.texts.textViews.TextViewsActivity;
+import com.aserbao.aserbaosandroid.ui.webview.WebViewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
 import com.aserbao.thirdlibs.tablayout.TabLayoutAct;
 import com.example.base.base.BaseRecyclerViewActivity;
@@ -60,42 +64,15 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", PrincipleHanlderActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", MyAccessibilityServiceActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
     }
 
     @Override
     public void itemClickBack(View view, int position, boolean isLongClick, int comeFrom) {
-//        ARouter.getInstance().build( RouterConfig.JUMP_TO_CAMERA_ACTIVITY2).navigation();
-//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, 0 );
-       /* System.exit(0);
-        Runtime.getRuntime().exit(0);
-        android.os.Process.killProcess(android.os.Process.myPid());*/
-//        boolean apkInDebug = isApkInDebug(this);
-        int dp200 = DisplayUtil.dip2px(200);
-        ImageView imageView = new ImageView(this);
-        String fileName = "emoji_00";
-        int resID = getResources().getIdentifier(fileName , "drawable", getPackageName());
-//        Bitmap emoji_00 = BitmapFactory.decodeResource(getResources(), R.drawable.fileName);
-        imageView.setImageResource(resID);
-        addViewHToFl(imageView,true,true, dp200,dp200,true);
 
     }
 
-
-    private void test(String s) throws Exception {
-        Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
-
-        SecretKeySpec secretKey = new SecretKeySpec("1234".getBytes(), "HmacSHA256");
-
-        sha256_HMAC.init(secretKey);
-
-        byte[] hash = sha256_HMAC.doFinal("test".getBytes());
-
-        String check = Hex.encodeHexString(hash);
-
-        System.out.println(new String(check));
-    }
 
     /**
      * 当前是否在正式环境中

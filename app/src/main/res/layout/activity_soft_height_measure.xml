@@ -28,7 +28,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/show_soft_height_tv"
         app:layout_constraintBottom_toTopOf="@+id/bottom_tv"
-        android:src="@drawable/starry_sky_5"
+        android:src="@drawable/starry_sky_2"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
     <TextView
