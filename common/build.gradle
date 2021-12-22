@@ -38,6 +38,13 @@ android {
     dataBinding {
         enabled true
     }
+    sourceSets{
+        if (project.gradleTest == 'true'){
+            debug{
+                java.srcDirs=['src/testGradle/java']
+            }
+        }
+    }
 }
 
 kapt {

@@ -6,6 +6,14 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+    signingConfigs {
+        release {
+        storeFile file('/Users/bytedance/aserbao/code/aserbao/A_UI/AserbaosAndroid/aserbao.jks')
+            storePassword 'aserbao'
+            keyAlias 'aserbao'
+            keyPassword 'aserbao'
+        }
+    }
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId rootProject.ext.appInfo.appId
@@ -34,6 +42,7 @@ android {
                         "room.expandProjection": "true"]
             }
         }
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {

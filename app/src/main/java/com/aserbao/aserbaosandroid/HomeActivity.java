@@ -26,6 +26,7 @@ import com.aserbao.aserbaosandroid.ui.texts.editTexts.softHeightMeasure.SoftHeig
 import com.aserbao.aserbaosandroid.ui.texts.textViews.TextViewsActivity;
 import com.aserbao.aserbaosandroid.ui.webview.WebViewActivity;
 import com.aserbao.common.ui.act.CommonUIActivity;
+import com.aserbao.common.utils.AGradleClass;
 import com.aserbao.thirdlibs.tablayout.TabLayoutAct;
 import com.example.base.base.BaseRecyclerViewActivity;
 import com.example.base.base.beans.BaseRecyclerBean;
@@ -66,6 +67,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", MyAccessibilityServiceActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
+        mBaseRecyclerBean.add(new BaseRecyclerBean(AGradleClass.getExtraString()));
     }
 
     @Override

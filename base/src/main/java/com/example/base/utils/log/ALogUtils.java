@@ -2,7 +2,6 @@ package com.example.base.utils.log;
 
 import android.util.Log;
 
-import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -18,11 +17,11 @@ import java.util.ArrayList;
  */
 public class ALogUtils {
     private static long mStartTime = 0;
-    public static boolean mLogEnable = true;
     public static final String PREFIX = "LogUtils--";
 
     private static String mClassname;
     private static ArrayList<String> mMethods;
+    public static boolean mLogEnable = true;
 
     static {
         mClassname = ALogUtils.class.getName();
@@ -41,49 +40,15 @@ public class ALogUtils {
      * @param initTimeState 0表示不处理时间,1表示开始时间，2表示结算时间
      */
     public static void logErrorTime( int initTimeState){
-            if(initTimeState == INT_NUM_END_TIME) {
-                long l = System.currentTimeMillis() - mStartTime;
-                Logger.d(mClassname + "时间测试" + " "+  mMethods + " 耗时 = " + String.valueOf(l) + "ms");
-            }else{
-                if(initTimeState == INT_NUM_START_TIME){
-                    mStartTime = System.currentTimeMillis();
-                }
+        if(initTimeState == INT_NUM_END_TIME) {
+            long l = System.currentTimeMillis() - mStartTime;
+            Log.d("",mClassname + "时间测试" + " "+  mMethods + " 耗时 = " + String.valueOf(l) + "ms");
+        }else{
+            if(initTimeState == INT_NUM_START_TIME){
+                mStartTime = System.currentTimeMillis();
             }
+        }
     };
-    public static void init(boolean logEnable) {
-        mLogEnable = logEnable;
-    }
-
-    public static void d(String tag, String msg) {
-        if (mLogEnable) {
-            Logger.t(tag).d(msg);
-        }
-    }
-
-    public static void e(String tag, String msg) {
-        if (mLogEnable) {
-            Logger.e(tag + " "+ msg);
-        }
-    }
-
-    public static void i(String tag, String msg) {
-        if (mLogEnable) {
-            Logger.i(tag+" "+msg);
-        }
-    }
-
-    public static void w(String tag, String msg) {
-        if (mLogEnable) {
-            Logger.w(tag+" "+ msg);
-        }
-    }
-
-    public static void v(String tag, String msg) {
-        if (mLogEnable) {
-            Logger.v(tag+ " "+ msg);
-        }
-    }
-
 
     public static void d(String msg) {
         if (mLogEnable) {
@@ -135,7 +100,7 @@ public class ALogUtils {
                 } else {
                     int b = st.getClassName().lastIndexOf(".") + 1;
                     String message = new StringBuilder(st.getClassName().substring(b)).append("->").append(st.getMethodName())
-                            .append("():").append(st.getLineNumber()).append(msg).toString();
+                        .append("():").append(st.getLineNumber()).append(msg).toString();
                     return message;
                 }
 
