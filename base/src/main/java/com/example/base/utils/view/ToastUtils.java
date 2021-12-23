@@ -5,7 +5,9 @@ import android.widget.Toast;
 
 import com.example.base.utils.log.ALogUtils;
 
-
+/**
+* toast工具
+*/
 public class ToastUtils {
     private static Context mAppContext = null;
 
