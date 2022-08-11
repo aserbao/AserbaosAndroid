@@ -20,8 +20,6 @@ import androidx.core.app.ActivityCompat
 import com.aserbao.aserbaosandroid.databinding.ActivityCamera2GlsurfaceViewBinding
 import com.getremark.base.kotlin_ext.runOnMainThread
 import com.getremark.base.kotlin_ext.singleClick
-import kotlinx.android.synthetic.main.activity_camera2_glsurface_view.*
-import kotlinx.android.synthetic.main.activity_camera2_glsurface_view.view.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -34,18 +32,19 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
     var mSurfaceTexture: SurfaceTexture? = null
     private var camera_status = 1
     var mRenderer: MyRender? = null
+    private lateinit var binding:ActivityCamera2GlsurfaceViewBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var inflate = ActivityCamera2GlsurfaceViewBinding.inflate(LayoutInflater.from(this))
-        bindRoot = inflate.root
+        binding = ActivityCamera2GlsurfaceViewBinding.inflate(LayoutInflater.from(this))
+        bindRoot = binding.root
         setContentView(bindRoot)
         initView()
         initViewEvent()
     }
 
     private fun initViewEvent() {
-        glSurfaceView.singleClick {
+        binding.glSurfaceView.singleClick {
             if(cameraId.equals(mBackCameraId)){
                 cameraId = mFrontCameraId;
             }else{
@@ -57,17 +56,17 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
 
     private fun initView() {
         bindRoot.apply {
-            glSurfaceView!!.setEGLContextClientVersion(2) //在setRenderer()方法前调用此方法
+            binding.glSurfaceView!!.setEGLContextClientVersion(2) //在setRenderer()方法前调用此方法
             mRenderer = MyRender()
-            glSurfaceView!!.setRenderer(mRenderer)
-            glSurfaceView!!.renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY
+            binding.glSurfaceView!!.setRenderer(mRenderer)
+            binding.glSurfaceView!!.renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY
         }
     }
 
 
 
     override fun onFrameAvailable(surfaceTexture: SurfaceTexture) {
-        glSurfaceView.requestRender()
+        binding.glSurfaceView.requestRender()
     }
 
 
@@ -271,7 +270,7 @@ class Camera2GlsurfaceViewActivity : AppCompatActivity(), SurfaceTexture.OnFrame
                     override fun onConfigured(session: CameraCaptureSession) {
                         try {
                             captureRequest = cameraCaptureRequest.build()
-                            session.setRepeatingRequest(captureRequest, object : CameraCaptureSession.CaptureCallback() {
+                            session.setRepeatingRequest(captureRequest!!, object : CameraCaptureSession.CaptureCallback() {
                                 override fun onCaptureStarted(session: CameraCaptureSession, request: CaptureRequest, timestamp: Long, frameNumber: Long) {
                                     super.onCaptureStarted(session, request, timestamp, frameNumber)
                                 }

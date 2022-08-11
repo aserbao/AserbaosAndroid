@@ -17,7 +17,6 @@ import android.view.TextureView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.app.ActivityCompat
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.CameraOperaion
 import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.Facing
@@ -147,7 +146,7 @@ class Camera2CaptuerActivity : AppCompatActivity() {
             if (mCameraManager != null) {
                 for (cameraId in mCameraManager.getCameraIdList()) {
                     mCameraCharacteristics = mCameraManager.getCameraCharacteristics(cameraId)
-                    val facing: Int = mCameraCharacteristics!!.get(CameraCharacteristics.LENS_FACING)
+                    val facing: Int? = mCameraCharacteristics!!.get(CameraCharacteristics.LENS_FACING)
                     if (facing != null && facing === cameraFacing.value) {
                         usedCameraId = cameraId
                         setupCameraCharacteristics(mCameraCharacteristics!!,width,height)
@@ -156,7 +155,7 @@ class Camera2CaptuerActivity : AppCompatActivity() {
                 }
             }
             mediaRecorder = MediaRecorder()
-            mCameraManager.openCamera(usedCameraId, mStateCall, null)
+            mCameraManager.openCamera(usedCameraId!!, mStateCall, null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
@@ -202,7 +201,7 @@ class Camera2CaptuerActivity : AppCompatActivity() {
     private fun startPreview(camera: CameraDevice) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             var surfaceTexture = mTextureView.surfaceTexture
-            surfaceTexture.setDefaultBufferSize(previewSize.width,previewSize.height)
+            surfaceTexture?.setDefaultBufferSize(previewSize.width,previewSize.height)
             Log.e(TAG, ": startPreview previewSize = " + previewSize );
             val surface = Surface(surfaceTexture)
             var cameraCaptureRequest: CaptureRequest.Builder? = null
@@ -213,7 +212,7 @@ class Camera2CaptuerActivity : AppCompatActivity() {
                     override fun onConfigured(session: CameraCaptureSession) {
                         try {
                             captureRequest = cameraCaptureRequest.build()
-                            session.setRepeatingRequest(captureRequest, object : CameraCaptureSession.CaptureCallback() {
+                            session.setRepeatingRequest(captureRequest!!, object : CameraCaptureSession.CaptureCallback() {
                                 override fun onCaptureStarted(session: CameraCaptureSession, request: CaptureRequest, timestamp: Long, frameNumber: Long) {
                                     super.onCaptureStarted(session, request, timestamp, frameNumber)
                                 }

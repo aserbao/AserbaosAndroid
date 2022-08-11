@@ -22,6 +22,7 @@ import com.example.base.utils.data.StaticFinalValues;
 import com.aserbao.aserbaosandroid.opengl.openGlCamera.recordCamera.ui.AspectTextureView;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.opengl.GLSurfaceView.RENDERMODE_WHEN_DIRTY;
 import static com.aserbao.aserbaosandroid.aaThird.pickvideo.BaseActivity.IS_NEED_FOLDER_LIST;
@@ -33,7 +34,7 @@ import static com.example.base.utils.data.StaticFinalValues.MAX_NUMBER;
  */
 public class DecodeShowVideoActivity extends BaseRecyclerViewActivity {
     private static final String TAG = "DecodeShowVideoActivity";
-
+    private AtomicBoolean test;
 
 
     @Override

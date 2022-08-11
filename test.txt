@@ -1,0 +1,43 @@
+//有问题
+EffectSDK-960 [BEFEffect.cpp 622] +++++ BEFEffect: use old engine!
+
+EffectSDK-960 [BEFEffect.cpp 622] +++++ BEFEffect: use old engine!
+
+EffectSDK-960 [BEFEffect.cpp 796] EFFECT_RES_STATE_SUC
+EffectSDK-960 [AlgorithmSensorDataDelegate.cpp 208] Sensor Disable : GravityData AccelerationData GyroData
+EffectSDK-960 [DeviceSensorService.cpp 235] Sensor enable type : 2
+EffectSDK-960 [DeviceSensorService.h 135] setRefreshRate  sensorData:RotationData  rate:10.000000
+EffectSDK-960 [IOSDeviceSensor.mm 220] IOSDeviceSensor setRefreshRate : type:2  rate:10.000000
+EffectSDK-960 [IOSDeviceSensor.mm 224] IOSDeviceSensor rate map : type:2  rate:10.000000
+EffectSDK-960 [IOSDeviceSensor.mm 230] Sensor ios setRefreshRate  10.000000
+EffectSDK-960 [EffectManager.cpp 1365] althogtrm 640 360
+EffectSDK-960 [EffectManager.cpp 1365] althogtrm 640 360
+EffectSDK-960 [EffectManager.cpp 6981] EffectManager::updateComposerEffectNode: nodePath: /private/var/containers/Bundle/Application/1527B36D-B3C3-4D91-8EB1-121429502EAC/AgoraDemo.app/ComposeMakeup.bundle/ComposeMakeup/beauty_IOS_standard, nodeTag: whiten, nodeValue: 1.000000
+EffectSDK-960 [EffectManager.cpp 6981] EffectManager::updateComposerEffectNode: nodePath: /private/var/containers/Bundle/Application/1527B36D-B3C3-4D91-8EB1-121429502EAC/AgoraDemo.app/ComposeMakeup.bundle/ComposeMakeup/beauty_IOS_standard, nodeTag: smooth, nodeValue: 0.800000
+EffectSDK-960 [EffectManager.cpp 6981] EffectManager::updateComposerEffectNode: nodePath: /private/var/containers/Bundle/Application/1527B36D-B3C3-4D91-8EB1-121429502EAC/AgoraDemo.app/ComposeMakeup.bundle/ComposeMakeup/body/allslim, nodeTag: BEF_BEAUTY_BODY_ENHANCE_NECK, nodeValue: 5.000000
+EffectSDK-960 [EffectManager.cpp 10255] EffectManager::refreshFinalAssignedModel(),  (priority != 0) contains : nothing
+EffectSDK-960 [LuaBindings.cpp 3439] handleEffectEvent in BEAUTY_MODULE init
+EffectSDK-960 [GeneralEffectFeature.cpp 372] can not find correct uniform name! name = whiten
+EffectSDK-960 [GeneralEffectFeature.cpp 372] can not find correct uniform name! name = whiten
+EffectSDK-960 [GeneralEffectFeature.cpp 372] can not find correct uniform name! name = smooth
+EffectSDK-960 [GeneralEffectFeature.cpp 372] can not find correct uniform name! name = smooth
+EffectSDK-960 [FileUtil.cpp 558] FileUtil: isFile skeleton_model/tt_skeleton_v7.0.model error
+SMASH_E_LOG there are not model named [net_param] in the model file, please checking if your provide the correct one ?
+EffectSDK-960 [FileUtil.cpp 558] FileUtil: isFile skeleton_model/tt_skeleton_v7.0.model error
+SMASH_E_LOG there are not model named [net_param] in the model file, please checking if your provide the correct one ?
+SMASH_E_LOG Invalid network type
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: useMask, programId: 45
+EffectSDK-960 [EffectABConfig.cpp 665] EffectABConfig::getABValue : license = "", key = "enable_fastmode_faceDetect240", value = 0
+SMASH_E_LOG smash face base model version;: tt_face_v10.0.model
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: body_is_detected, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: face_is_detected, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: scale, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: sho_dis_between_sho_and_hip_smooth_hard, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: sho_scale, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: stretch_legs_center_point, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: stretch_legs_cross_point_param_x, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: stretch_legs_cross_point_param_y, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: stretch_legs_is_detect, programId: 72
+EffectSDK-960 [ProgramGLES30.cpp 256] getUniformId: Error in getting uniform: inputImageTexture1, programId: 72
+SMASH_E_LOG smash face extra model version;: tt_face_extra_v13.0.model
+EffectSDK-960 [FaceDetectAlgorithmTT.cpp 330] --face Detect initForceFace 0

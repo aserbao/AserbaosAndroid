@@ -226,7 +226,7 @@ class CameraPreviewRender(var context: Context, var glSurfaceView: GLSurfaceView
                         try {
                             ALogUtils.d(TAG, "onConfigured");
                             captureRequest = cameraCaptureRequest.build()
-                            session.setRepeatingRequest(captureRequest, object : CameraCaptureSession.CaptureCallback() {
+                            session.setRepeatingRequest(captureRequest!!, object : CameraCaptureSession.CaptureCallback() {
                                 override fun onCaptureStarted(session: CameraCaptureSession, request: CaptureRequest, timestamp: Long, frameNumber: Long) {
                                     super.onCaptureStarted(session, request, timestamp, frameNumber)
                                 }

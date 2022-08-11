@@ -1,7 +1,6 @@
 package com.example.base.utils.data;
 
 import android.graphics.Path;
-import android.graphics.PorterDuff;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateInterpolator;
@@ -18,13 +17,8 @@ import com.example.base.BaseApplication;
 import com.example.base.R;
 import com.example.base.base.beans.BaseRecyclerBean;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-
-import io.reactivex.internal.util.LinkedArrayList;
 
 /**
  * 主要功能:数据管理
@@ -121,5 +115,10 @@ public class ASourceUtil {
     public static int[] drawables = {
         R.drawable.mm_1,
         R.drawable.mm_2,
+        R.drawable.mm_3,
+        R.drawable.mm_4,
+        R.drawable.mm_5,
+        R.drawable.mm_6,
+        R.drawable.mm_7,
     };
 }

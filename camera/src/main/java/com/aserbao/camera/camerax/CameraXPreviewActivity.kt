@@ -4,10 +4,8 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.util.DisplayMetrics
 import android.util.Log
-import android.util.Size
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 //import androidx.camera.camera2.Camera2Config
@@ -21,7 +19,6 @@ import com.example.base.utils.log.ALogUtils
 import com.getremark.base.kotlin_ext.singleClick
 import kotlinx.android.synthetic.main.camerax_preview.*
 import java.io.File
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
@@ -126,7 +123,7 @@ class CameraXPreviewActivity : AppCompatActivity() {
                 var camera = cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture)
                 // Attach the viewfinder's surface provider to preview use case
-                preview?.setSurfaceProvider(viewFinder.createSurfaceProvider())
+                preview?.setSurfaceProvider(viewFinder.getSurfaceProvider())
             } catch(exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }

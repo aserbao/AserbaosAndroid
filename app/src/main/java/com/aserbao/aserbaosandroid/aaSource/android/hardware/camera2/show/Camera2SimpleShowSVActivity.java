@@ -1,7 +1,6 @@
 package com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
@@ -93,6 +92,7 @@ public class Camera2SimpleShowSVActivity extends AppCompatActivity implements Te
         setContentView(R.layout.activity_camera2_simple_show);
         ButterKnife.bind(this);
         mAutoTextView.setSurfaceTextureListener(this);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, 0);
     }
 
     /**

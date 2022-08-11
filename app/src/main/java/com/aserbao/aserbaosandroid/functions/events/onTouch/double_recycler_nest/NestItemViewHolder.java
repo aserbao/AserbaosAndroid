@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aserbao.aserbaosandroid.R;
+import com.aserbao.aserbaosandroid.ui.recyclerView.commonRecyclerView.baseAdapter.viewholders.BaseViewHolder;
 import com.example.base.base.adapters.BaseRecyclerViewActivityAdapter;
 import com.example.base.base.beans.BaseRecyclerBean;
 import com.example.base.base.interfaces.IBaseRecyclerItemClickListener;
 import com.example.base.utils.data.ASourceUtil;
-import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +44,12 @@ public class NestItemViewHolder extends BaseViewHolder implements IBaseRecyclerI
         super(view);
         ButterKnife.bind(this,view);
     }
+
+    @Override
+    public void baseViewHoldBinder(BaseViewHolder holder, int position) {
+        
+    }
+
     private Context mContext;
 
     public List<BaseRecyclerBean> mBaseRecyclerBean = new ArrayList<>();

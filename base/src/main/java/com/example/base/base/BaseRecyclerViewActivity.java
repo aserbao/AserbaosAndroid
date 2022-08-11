@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -31,10 +30,7 @@ import com.example.base.utils.data.StaticFinalValues;
 import com.example.base.utils.permission.CheckPermissionUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 功能:
@@ -81,7 +77,7 @@ public abstract class BaseRecyclerViewActivity extends AppCompatActivity impleme
         initViewForLinear();
         initViewTopSpinner();
         ARouter.getInstance().inject(this);
-        if (CheckPermissionUtil.isCameraGranted()) {
+        if (!CheckPermissionUtil.isCameraGranted()) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, 0);
         }
     }

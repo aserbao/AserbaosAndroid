@@ -17,6 +17,7 @@ public class IdCard {
     String userName;//用户名
     @Unique
     String idNo;//身份证号
+
     @Generated(hash = 1028827110)
     public IdCard(String userName, String idNo) {
         this.userName = userName;

@@ -2,7 +2,9 @@ package com.example.base.utils.phone;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 
 /**
  * 功能:
@@ -45,5 +47,15 @@ public class AJumpUtils {
         intentWeChat.setComponent(componentNameKuaiShou);
         intentWeChat.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intentWeChat);
+    }
+
+    /**
+    * 卸载
+    */
+    public static void  unInstallApplicationWithPackageName(String packageName, Context context){
+        Intent uninstall_intent = new Intent();
+        uninstall_intent.setAction(Intent.ACTION_DELETE);
+        uninstall_intent.setData(Uri.parse("package:"+packageName));
+        context.startActivity(uninstall_intent);
     }
 }

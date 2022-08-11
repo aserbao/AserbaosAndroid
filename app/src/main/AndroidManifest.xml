@@ -11,7 +11,7 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />   <!--震动权限-->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -25,7 +25,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -61,7 +60,8 @@
         <activity android:name=".aaSource.java.util.concurrent.FutureAct" />
         <activity android:name=".aaSource.java.util.JavaUtilAct" />
         <activity android:name=".aaSource.java.JavaAct" />
-        <activity android:name=".functions.appLink.AppLinkAct">
+        <activity android:name=".functions.appLink.AppLinkAct"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -79,7 +79,6 @@
             android:name=".ui.texts.editTexts.customEdittext.CustomEditTextAct"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateUnspecified" />
-        <activity android:name=".functions.ffmpeg.RxFFmpegAct" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SurfaceViewActivity" />
         <activity android:name=".opengl.OneOpenGl.texture.OpenGlTextureAct" />
         <activity android:name=".opengl.videoandcamera.VideoAndCameraShowACT" />
@@ -89,7 +88,7 @@
         <activity android:name=".aaSource.android.widget.Classes.scroller.ScrollerActivity" />
         <activity android:name=".ui.viewPager.ViewPagerActivity" />
         <activity android:name=".kotlin.scopes.KotlinScopeFunctionsActivity" />
-        <activity android:name=".aaThird.jetpack.liveData.LiveDataActivity" />
+        <activity android:name="com.aserbao.jetpack.architecture.liveData.LiveDataActivity" />
         <activity android:name=".ui.texts.textViews.font.TextFontActivity" />
         <activity android:name=".aaSource.android.widget.Classes.progressBar.ProgressBarActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2GlsurfaceViewActivity" />
@@ -174,7 +173,8 @@
         <activity android:name=".aaSource.android.support.SupportActivity" />
         <activity android:name=".ui.customView.CustomViewActivity" />
         <activity android:name=".aaSource.android.widget.Classes.notification.NotificationActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

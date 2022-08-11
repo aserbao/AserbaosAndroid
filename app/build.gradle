@@ -1,8 +1,11 @@
-apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'org.greenrobot.greendao'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+
 
 
 android {
@@ -71,10 +74,13 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
 
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
     }
 
+    viewBinding {
+        enabled true
+    }
     dataBinding {
         enabled true
     }

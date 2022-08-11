@@ -1,28 +1,41 @@
-export PATH=/usr/local/opt/ruby/bin:$PATH
-export ANDROID_HOME=/Users/bytedance/Library/Android/sdk
+0x286600002056
+2022-04-06 14:46:48.282 8278-13552/com.bytedance.labcv.demo E/CrashReport: # RUNTIME AVAIL RAM:4422975488 ROM:218698436608 SD:218698436608
+    #00    pc 000000000004e40c    /apex/com.android.runtime/lib64/bionic/libc.so (abort+164) [arm64-v8a::07fbaeed7b7a19203975f06be6f1d5ef]
+    #01    pc 000000000004e7d4    /apex/com.android.runtime/lib64/bionic/libc.so (__assert2+36) [arm64-v8a::07fbaeed7b7a19203975f06be6f1d5ef]
+    #02    pc 0000000003516fe8    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+636) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #03    pc 000000000351b8d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+19304) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #04    pc 000000000351c494    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16_BytesToObjectV2EPNS_12AssetManagerERPKhRiRKNS_26SerializedObjectIdentifierEPNS_4RTTIEPNS_11LoadContextEPNS_6ObjectE+1596) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #00    pc 000000000004e40c    /apex/com.android.runtime/lib64/bionic/libc.so (abort+164) [arm64-v8a::07fbaeed7b7a19203975f06be6f1d5ef]
+    #01    pc 000000000004e7d4    /apex/com.android.runtime/lib64/bionic/libc.so (__assert2+36) [arm64-v8a::07fbaeed7b7a19203975f06be6f1d5ef]
+    #05    pc 000000000351749c    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+1840) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #02    pc 0000000003516fe8    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+636) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #06    pc 000000000351b8d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+19304) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #03    pc 000000000351b8d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+19304) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #07    pc 000000000351c494    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16_BytesToObjectV2EPNS_12AssetManagerERPKhRiRKNS_26SerializedObjectIdentifierEPNS_4RTTIEPNS_11LoadContextEPNS_6ObjectE+1596) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #04    pc 000000000351c494    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16_BytesToObjectV2EPNS_12AssetManagerERPKhRiRKNS_26SerializedObjectIdentifierEPNS_4RTTIEPNS_11LoadContextEPNS_6ObjectE+1596) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #08    pc 000000000351cdf8    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer15BytesToObjectV2EPNS_12AssetManagerEPKhiRKNS_26SerializedObjectIdentifierEPNS_11LoadContextERKNSt6__ndk112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEEPNS_6ObjectE+628) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #05    pc 000000000351749c    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+1840) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #09    pc 00000000034f36ec    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine14SerializedFile10readObjectEiPNS_11LoadContextEPNS_6ObjectE+1648) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #06    pc 000000000351b8d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16BytesToVariantV2EPNS_12AssetManagerERPKhRiiPNS_11LoadContextE+19304) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #10    pc 00000000034af1d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine16ObjectPersistent27_readObjectFromFileWithLockERKNS_4NameEiPNS_6ObjectEPNS_11LoadContextE+344) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #07    pc 000000000351c494    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer16_BytesToObjectV2EPNS_12AssetManagerERPKhRiRKNS_26SerializedObjectIdentifierEPNS_4RTTIEPNS_11LoadContextEPNS_6ObjectE+1596) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #11    pc 00000000034aee50    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine16ObjectPersistent18readObjectFromFileERKNS_4NameEiPNS_6ObjectEPNS_11LoadContextEb+116) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #08    pc 000000000351cdf8    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine10Serializer15BytesToObjectV2EPNS_12AssetManagerEPKhiRKNS_26SerializedObjectIdentifierEPNS_11LoadContextERKNSt6__ndk112basic_stringIcNSA_11char_traitsIcEENSA_9allocatorIcEEEEPNS_6ObjectE+628) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #12    pc 000000000332d454    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine12AssetManager12SyncLoadCoreERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEiPNS_6ObjectEPNS_11LoadContextE+576) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #09    pc 00000000034f36ec    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine14SerializedFile10readObjectEiPNS_11LoadContextEPNS_6ObjectE+1648) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #10    pc 00000000034af1d4    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine16ObjectPersistent27_readObjectFromFileWithLockERKNS_4NameEiPNS_6ObjectEPNS_11LoadContextE+344) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+           pc 000000000332d018    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine12AssetManager15SyncLoadWrapperERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEiPNS_6ObjectEPNS_4MetaE+96) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #11    pc 00000000034aee50    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine16ObjectPersistent18readObjectFromFileERKNS_4NameEiPNS_6ObjectEPNS_11LoadContextEb+116) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #14    pc 000000000332d15c    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine12AssetManager8SyncLoadERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEPNS_6ObjectE+100) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #12    pc 000000000332d454    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine12AssetManager12SyncLoadCoreERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEiPNS_6ObjectEPNS_11LoadContextE+576) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #15    pc 0000000002ae61b8    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN13AmazingEngine11SceneLoader9loadSceneERKNSt6__ndk112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEb+936) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #16    pc 0000000002a00df0    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN3BEF17AmazingSceneAsset11loadContentEv+188) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    #17    pc 00000000020246bc    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so (_ZN3BEF9AssetBase4loadEv+328) [arm64-v8a::71b8b720b02febd9a86cd0143c632653]
+    java:
+2022-04-06 14:46:48.283 8278-13552/com.bytedance.labcv.demo E/CrashReport: #13    pc 000000000332d018    /data/app/~~Gwpz1J00rYmoW_4QQYM2oA==/com.bytedance.labcv.demo-7sBDNvK6WlKZM8JGj2jaZQ==/lib/arm64/libeffect.so
 
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export NDK=${ANDROID_HOME}/ndk/22.1.7171670
-export PATH=${PATH}:${ANDROID_HOME}/tools/bin:$NDK
-
-export ANDROID_CMAKE_HOME=${ANDROID_HOME}/cmake/3.18.1/bin
-export PATH=${PATH}:${ANDROID_CMAKE_HOME}
-
-JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
-PATH=$JAVA_HOME/bin:$PATH:.
-CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
-export JAVA_HOME
-export PATH
-export CLASSPATH
 
 
-PATH=/Users/bytedance/.gradle/wrapper/dists/gradle-7.1.1-all/1wqbeia0d49252rmlcr6o8lbl/gradle-7.1.1/bin:$PATH
-PATH=/usr/local/lib/python3.9/site-packages:$PATH
-export PATH=/usr/local/opt/ruby/bin:$PATH
 
-export PATH
 
-export LANG=en_US.UTF-8
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+000000000004e40c 000000000004e7d4 0000000003516fe8 000000000351b8d4 000000000351c494 000000000004e40c 000000000004e7d4 000000000351749c 0000000003516fe8 000000000351b8d4 000000000351b8d4 000000000351c494 000000000351c494 000000000351cdf8 000000000351749c 00000000034f36ec 000000000351b8d4 00000000034af1d4 000000000351c494 00000000034aee50 000000000351cdf8 000000000332d454 00000000034f36ec 00000000034af1d4 000000000332d018 00000000034aee50 000000000332d15c 000000000332d454 0000000002ae61b8 0000000002a00df0 00000000020246bc
