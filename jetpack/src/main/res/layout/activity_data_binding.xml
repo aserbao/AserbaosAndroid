@@ -45,7 +45,6 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
-                app:detailUserHead="@{viewmodel.mood}"
                 android:layout_width="50dp"
                 android:layout_height="50dp"/>
 

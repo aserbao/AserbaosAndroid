@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import androidx.databinding.BindingAdapter
 import com.aserbao.jetpack.R
 import com.aserbao.jetpack.architecture.databinding.viewmodels.SimpleViewModel.HeadType
 
@@ -17,8 +16,9 @@ import com.aserbao.jetpack.architecture.databinding.viewmodels.SimpleViewModel.H
  */
 object SimpleAdapter{
 
-    @BindingAdapter("app:detailUserHead")
-    @JvmStatic fun detailUserHead(view: ImageView, headtype: HeadType){
+//    @BindingAdapter("app:detailUserHead")
+    @JvmStatic
+    fun detailUserHead(view: ImageView, headtype: HeadType){
         var drawablePopularity = getDrawablePopularity(headtype, view.context)
         view.setImageDrawable(drawablePopularity)
 //        view.setImageResource(getDrawablePopularitys(headtype)!!)

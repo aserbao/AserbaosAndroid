@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.aserbao.aserbaosandroid.AUtils.utils_realize.AUtilsRealizeActivity;
-import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity;
+import com.aserbao.aserbaosandroid.aaSource.android.hardware.camera2.show.Camera2MoreShowSVActivity;
 import com.aserbao.aserbaosandroid.audioAndVideo.AudioAndVideoActivity;
 import com.aserbao.aserbaosandroid.aaSource.android.AndroidActivity;
 import com.aserbao.aserbaosandroid.aaThird.ThirdActivity;
@@ -58,7 +58,7 @@ public class HomeActivity extends BaseRecyclerViewActivity {
         mBaseRecyclerBean.add(new BaseRecyclerBean("ffmpeg", FFmpegActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("算法", AlgorithmActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("Common", CommonUIActivity.class));
-        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2SimpleShowSVActivity.class));
+        mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面", Camera2MoreShowSVActivity.class));
         mBaseRecyclerBean.add(new BaseRecyclerBean("当前调试的界面",0));
         mBaseRecyclerBean.add(new BaseRecyclerBean(AGradleClass.getExtraString()));
 

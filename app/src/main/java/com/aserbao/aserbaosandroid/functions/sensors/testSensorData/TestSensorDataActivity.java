@@ -66,7 +66,7 @@ public class TestSensorDataActivity extends AppCompatActivity implements SensorE
         float[] values = event.values;
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < values.length; i++) {
-            sb.append(String.valueOf(i)).append("值： ").append(values[i]);
+            sb.append(String.valueOf(i)).append("值： ").append(values[i]).append("\n");
         }
 //        double v = Math.pow(values[0], 2) + Math.pow(values[1], 2) + Math.pow(values[2], 2);
         Log.e(TAG, "onSensorChanged:" + sb.toString());

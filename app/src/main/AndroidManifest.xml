@@ -106,6 +106,7 @@
         <activity android:name=".functions.aaSmallFunctions.clickEffect.ClickEffectActivity" />
         <activity android:name=".functions.aaSmallFunctions.SmallFunctionsActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.show.Camera2SimpleShowSVActivity" />
+        <activity android:name=".aaSource.android.hardware.camera2.show.Camera2MoreShowSVActivity" />
         <activity android:name=".aaSource.android.hardware.camera2.capture.Camera2CaptuerActivity" />
         <activity android:name=".ui.buttons.switchView.SwitchActivity" />
         <activity android:name=".ui.buttons.switchButton.SwitchButtonActivity" />
